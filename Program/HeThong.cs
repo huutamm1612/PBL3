@@ -313,5 +313,10 @@ namespace Program
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
+
+        public static void TaoShop()
+        {
+
+        }
     }
 }
