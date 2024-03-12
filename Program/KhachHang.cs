@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program
+{
+    internal class KhachHang : Nguoi
+    {
+        public string taiKhoan { get; private set; }
+        public int nFollow { get; private set; }
+        public int chiTieu { get; private set; }
+        public int xu { get; private set; }
+        public string avt { get; private set; }
+        public List<DiaChi> diaChis { get; private set; }
+
+        public override bool Equals(object obj)
+        {
+            return ((KhachHang)obj).maSo == this.maSo;
+        }
+
+        public KhachHang() : base()
+        {
+            this.taiKhoan = null;
+            this.nFollow = 0;
+            this.xu = 0;
+            this.chiTieu = 0;
+        }
+        public KhachHang(string maSo, string taiKhoan) : base(maSo)
+        {
+            this.taiKhoan = taiKhoan;
+        }
+        public KhachHang(string maSo, string ten, string soDT, string email, DiaChi diaChi, int gioiTinh, DateTime ngaySinh, string taiKhoan, int nFollow, int chiTieu, int xu) : base(maSo, ten, soDT, email, diaChi, gioiTinh, ngaySinh)
+        {
+            this.taiKhoan = taiKhoan;
+            this.nFollow = nFollow;
+            this.chiTieu = chiTieu;
+            this.xu = xu;
+        }
+        public KhachHang(KhachHang khachHang) : base(khachHang)
+        {
+            this.taiKhoan = khachHang.taiKhoan;
+            this.nFollow = khachHang.nFollow;
+            this.xu = khachHang.xu;
+            this.chiTieu = khachHang.chiTieu;
+        }
+
+        public override void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh)
+        {
+            this.ten = ten;
+            this.email = email;
+            this.soDT = soDT;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+        }
+
+        public override void sua(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh)
+        {
+            this.ten = ten;
+            this.email = email;
+            this.soDT = soDT;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+        }
+
+        public void capNhatDiaChi(DiaChi diaChiMoi)
+        {
+            this.diaChi = diaChiMoi;
+        }
+
+        public void capNhatDiaChi(int index, DiaChi diaChi)
+        {
+            this.diaChis[index] = diaChi;
+        }
+
+        public void themDiaChi(DiaChi diaChi)
+        {
+            this.diaChis.Insert(0, diaChi);
+        }
+
+        public void xoaDiaChi(int index)
+        {
+            this.diaChis.RemoveAt(index);
+        }
+
+        public void setDiaChis(List<DiaChi> list)
+        {
+            this.diaChis = list;
+        }
+    }
+}
