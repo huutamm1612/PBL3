@@ -16,7 +16,7 @@ namespace Program
         private User user = null;
         private KhachHang khachHang = null;
         public MainForm()
-        {
+        { 
             InitializeComponent();
         }
         private void refreshDangNhap_Panel()
