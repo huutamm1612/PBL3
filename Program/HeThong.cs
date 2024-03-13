@@ -86,7 +86,7 @@ namespace Program
 
         public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
         {
-            string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}')";
+            string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
 
@@ -95,7 +95,7 @@ namespace Program
 
         public static void TaoKhachHangMoi(string taiKhoan)
         {
-            string noiDung = $"INSERT INTO KhachHang(maKH, taiKhoan, nFollow, xu, chiTieu) VALUES('{MaMoi("maKH")}', '{taiKhoan}', 0, 0, 0)";
+            string noiDung = $"INSERT INTO KhachHang(maKH, taiKhoan) VALUES('{MaMoi("maKH")}', '{taiKhoan}')";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
@@ -115,7 +115,6 @@ namespace Program
             bool result = true;
             if (reader.Read())
                 result = false;
-
             reader.Close();
             return result;
         }

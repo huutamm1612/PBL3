@@ -161,7 +161,6 @@ namespace Program
                 string cauTraLoi = cauTraLoi_Box.Text;
 
                 HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
-
                 MessageBox.Show("Đăng ký thành công!!!");
 
                 SigninPanel.Visible = false;
