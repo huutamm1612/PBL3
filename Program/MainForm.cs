@@ -508,7 +508,10 @@ namespace Program
             profilePanel.Visible = false;
             doiMatKhauPanel.Visible = false;
             diaChiUser_Panel.Visible = true;
-            ve();
+    
+            veLai_DiaChi();
+            
+
         }
 
         private void backDiaChi_Button_Click(object sender, EventArgs e)
@@ -584,6 +587,7 @@ namespace Program
 
             themDiaChi_Panel.Visible = false;
             refreshThemDiaChi_Panel();
+            veLai_DiaChi();
         }
 
         private void dangNhap_Button_Click(object sender, EventArgs e)
@@ -605,15 +609,39 @@ namespace Program
             LoginPanel.Visible = false;
             KhachHang_Panel.Visible = true;
         }
-
-        private void ve()
+        private void veLai_DiaChi()
         {
+            if (khachHang.diaChi == null) return;
+            listDiaChi_FLPanel.Controls.Clear();
+            veDiaChiMacDinh();
+            
+            foreach (DiaChi diachi in khachHang.diaChis)
+            {
+                veDiaChi(diachi);
+            }
+            
+        }
+        
+
+
+        private void veDiaChiMacDinh()
+        {
+            Label lb = new Label();
+            lb.Text = "Mặc Định";
+            lb.Size = new Size(100, 25);
+            lb.BorderStyle = BorderStyle.FixedSingle;
+            lb.Location = new System.Drawing.Point(11, 0);
+            lb.TextAlign = ContentAlignment.MiddleCenter;
+            lb.ForeColor = Color.Red;
+
             TextBox txt = new TextBox();
             txt.Multiline = true;
             txt.Text = khachHang.diaChi.ToString();
             txt.Size = new Size(606, 83);
             txt.Location = new System.Drawing.Point(11, 27);
-       
+            txt.BorderStyle = BorderStyle.None;
+            txt.BackColor = Color.Snow;
+
             Panel panel = new Panel();
             panel.Size = new Size(918, 130);
             panel.BackColor = Color.Snow;
@@ -632,10 +660,53 @@ namespace Program
 
             panel.Controls.Add(txt);
             panel.Controls.Add(btn1);
-            panel.Controls.Add(btn2);  
+            panel.Controls.Add(btn2);
+            panel.Controls.Add(lb);
             listDiaChi_FLPanel.Controls.Add(panel);
 
         }
+       
+        private void veDiaChi(DiaChi diaChi)
+        {
+            TextBox txt = new TextBox();
+            txt.Multiline = true;
+            txt.Text = diaChi.ToString();
+            txt.Size = new Size(606, 83);
+            txt.Location = new System.Drawing.Point(11, 27);
+            txt.BorderStyle = BorderStyle.None;
+            txt.BackColor = Color.Snow;
+
+            Panel panel = new Panel();
+            panel.Size = new Size(918, 130);
+            panel.BackColor = Color.Snow;
+            
+            Button btn1 = new Button();
+            btn1.Text = "Cập nhật";
+            btn1.Size = new Size(120, 28);
+            btn1.Location = new System.Drawing.Point(779, 35);
+            btn1.BackColor = Color.Snow;
+
+            Button btn2 = new Button();
+            btn2.Text = "Thiết lập mặc định";
+            btn2.Size = new Size(239, 40);
+            btn2.Location = new System.Drawing.Point(660, 70);
+            btn2.BackColor = Color.Snow;
+
+            Button btn3 = new Button();
+            btn3.Text = "Xóa";
+            btn3.Size = new Size(120, 28);
+            btn3.Location = new System.Drawing.Point(660, 35);
+            btn3.BackColor = Color.Snow;
+
+            panel.Controls.Add(txt);
+            panel.Controls.Add(btn1);
+            panel.Controls.Add(btn2);
+            panel.Controls.Add(btn3);
+      
+            listDiaChi_FLPanel.Controls.Add(panel);
+
+        }
+
 
     }
 }
