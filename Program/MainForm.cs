@@ -16,7 +16,7 @@ namespace Program
         private User user = null;
         private KhachHang khachHang = null;
         public MainForm()
-        {
+        { 
             InitializeComponent();
         }
         private void refreshDangNhap_Panel()
@@ -534,6 +534,13 @@ namespace Program
             HeThong.ThemDiaChi(khachHang, diaChi);
             themDiaChi_Panel.Visible = false;
             refreshThemDiaChi_Panel();
+        }
+
+        private void dangNhap_Button_Click(object sender, EventArgs e)
+        {
+            KhachHang_Panel.Visible = false;
+            LoginPanel.Visible = true;
+
         }
     }
 }
