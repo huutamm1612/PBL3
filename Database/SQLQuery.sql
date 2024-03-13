@@ -65,13 +65,6 @@ CREATE TABLE KhachHang (
 	CONSTRAINT FK_KhachHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC),
 )
 
-ALTER TABLE DiaChi
-ADD CONSTRAINT FK_DiaChi_KhachHang
-FOREIGN KEY (maSo) REFERENCES KhachHang(maKH)
-
-ALTER TABLE DiaChi
-DROP CONSTRAINT FK_DiaChi_KhachHang
-
 CREATE TABLE Shop (	
 	maS varchar(10) PRIMARY KEY,
 	ten nvarchar(50),
@@ -89,12 +82,7 @@ CREATE TABLE Shop (
 )
 
 ALTER TABLE DiaChi
-ADD CONSTRAINT FK_DiaChi_Shop
-FOREIGN KEY (maSo) REFERENCES Shop(maS)
-
-
-ALTER TABLE DiaChi
-DROP CONSTRAINT FK_DiaChi_KhachHang
+DROP CONSTRAINT FK_DiaChi_Shop
 
 CREATE TABLE MaHienTai(
 	maKH varchar(10) DEFAULT '0000000000',
@@ -109,5 +97,4 @@ CREATE TABLE KhachHang_Shop (
 	maS varchar(10)
 
 	CONSTRAINT FK_KhachHang_Shop_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH)
-	CONSTRAINT FK_KhachHang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
 )
