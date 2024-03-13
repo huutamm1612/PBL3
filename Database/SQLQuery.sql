@@ -7,14 +7,14 @@ CREATE TABLE Quan_Huyen (
 	maQH int PRIMARY KEY,
 	maT_TP int,
 	ten nvarchar(50)
-	FOREIGN KEY (maT_TP) REFERENCES Tinh_ThanhPho(maT_TP)
+	CONSTRAINT FK_Quan_Huyen_Tinh_ThanhPho FOREIGN KEY (maT_TP) REFERENCES Tinh_ThanhPho(maT_TP)
 )
 
 CREATE TABLE Phuong_Xa (
 	maPX int PRIMARY KEY,
 	maQH int,
 	ten nvarchar(50)
-	FOREIGN KEY (maQH) REFERENCES Quan_Huyen(maQH)
+	CONSTRAINT FK_Phuong_Xa_Quan_Huyen FOREIGN KEY (maQH) REFERENCES Quan_Huyen(maQH)
 )
 
 CREATE TABLE CauHoi(
@@ -34,13 +34,14 @@ CREATE TABLE UserAccount(
 
 CREATE TABLE DiaChi (
 	maDC varchar(10) PRIMARY KEY,
-	maKH varchar(10) NULL,
+	maSo varchar(10),
 	ten nvarchar(50),
 	soDT varchar(10),
 	maT_TP int,
 	maQH int,
 	maPX int,
-	diaChiCuThe nvarchar(50)
+	diaChiCuThe nvarchar(50),
+	diaChiKH bit default 1
 
 	CONSTRAINT FK_DiaChi_Tinh_ThanhPho FOREIGN KEY (maT_TP) REFERENCES Tinh_ThanhPho(maT_TP),
 	CONSTRAINT FK_DiaChi_Quan_Huyen FOREIGN KEY (maQH) REFERENCES Quan_Huyen(maQH),
@@ -66,7 +67,27 @@ CREATE TABLE KhachHang (
 
 ALTER TABLE DiaChi
 ADD CONSTRAINT FK_DiaChi_KhachHang
-FOREIGN KEY (maKH) REFERENCES KhachHang(maKH)
+FOREIGN KEY (maSo) REFERENCES KhachHang(maKH)
+
+CREATE TABLE Shop (	
+	maS varchar(10) PRIMARY KEY,
+	ten nvarchar(50),
+	soDT varchar(10),
+	email varchar(50),
+	maDC varchar(10),
+	nFollower int default 0,
+	ngayTao date,
+	tinhTrang bit default 1,
+	doanhThu int default 0,
+	sao real default 0.0,
+	avt varchar(255)
+
+	CONSTRAINT FK_Shop_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
+)
+
+ALTER TABLE DiaChi
+ADD CONSTRAINT FK_DiaChi_Shop
+FOREIGN KEY (maSo) REFERENCES Shop(maS)
 
 CREATE TABLE MaHienTai(
 	maKH varchar(10) DEFAULT '0000000000',

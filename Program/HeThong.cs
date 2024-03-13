@@ -116,7 +116,6 @@ namespace Program
             bool result = true;
             if (reader.Read())
                 result = false;
-
             reader.Close();
             return result;
         }
@@ -317,7 +316,6 @@ namespace Program
 
         public static void TaoShop()
         {
-
         }
     }
 }
