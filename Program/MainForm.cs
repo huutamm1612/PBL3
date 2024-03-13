@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Program
@@ -122,6 +124,49 @@ namespace Program
                 matKhau_DN_Box.UseSystemPasswordChar = true;
         }
 
+        private void writeCache(User user)
+        {
+            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            writer.WriteLine(user.taiKhoan);
+            writer.WriteLine(user.matKhau);
+            writer.Close();
+        }
+
+        private List<string> readCache()
+        {
+            FileInfo sourceFile = new FileInfo(@"Cache.txt");
+            StreamReader reader = sourceFile.OpenText();
+
+            string taiKhoan = reader.ReadLine();
+            if (taiKhoan == null)
+                return null;
+            
+            List<string> list = new List<string>();
+            list.Add(taiKhoan);
+            list.Add(reader.ReadLine());
+
+            reader.Close();
+            return list;
+        }
+
+        private void tuDongDangNhap()
+        {
+            List<string> list = readCache();
+            if (list != null)
+            {
+                user = new User();
+                user.dangNhap(list[0], list[1]);
+                LoginPanel.Visible = false;
+                KhachHang_Panel.Visible = true;
+                HomePanel.Visible = true;
+                HeaderPannel.Visible = true;
+                dangNhap_Button.Visible = false;
+                SignUp_Button.Visible = false;
+                userProfile_Button.Visible = true;
+                khachHang = HeThong.DangNhap(user);
+            }
+        }
+
         private void dangNhap_DN_Button_Click(object sender, EventArgs e)
         {
             string taiKhoan = taiKhoan_DN_Box.Text;
@@ -139,6 +184,7 @@ namespace Program
                 SignUp_Button.Visible = false;
                 userProfile_Button.Visible = true;
                 khachHang = HeThong.DangNhap(user);
+                writeCache(user);
             }
             else
             {
