@@ -187,6 +187,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
+            this.dangNhap_Button = new System.Windows.Forms.Button();
+            this.SignUp_Button = new System.Windows.Forms.Button();
             this.LoginPanel.SuspendLayout();
             this.SigninPanel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -351,6 +353,7 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(510, 570);
             this.LoginPanel.TabIndex = 10;
+            this.LoginPanel.Visible = false;
             // 
             // LoginError
             // 
@@ -644,6 +647,8 @@
             this.HeaderPannel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeaderPannel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.HeaderPannel.Controls.Add(this.SignUp_Button);
+            this.HeaderPannel.Controls.Add(this.dangNhap_Button);
             this.HeaderPannel.Controls.Add(this.userProfile_Button);
             this.HeaderPannel.Controls.Add(this.button4);
             this.HeaderPannel.Controls.Add(this.textBox1);
@@ -651,9 +656,8 @@
             this.HeaderPannel.Controls.Add(this.home_Button);
             this.HeaderPannel.Location = new System.Drawing.Point(12, 1);
             this.HeaderPannel.Name = "HeaderPannel";
-            this.HeaderPannel.Size = new System.Drawing.Size(1511, 135);
+            this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
-            this.HeaderPannel.Visible = false;
             // 
             // userProfile_Button
             // 
@@ -661,12 +665,13 @@
             this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_Button.Location = new System.Drawing.Point(1271, 3);
+            this.userProfile_Button.Location = new System.Drawing.Point(1269, 3);
             this.userProfile_Button.Name = "userProfile_Button";
             this.userProfile_Button.Size = new System.Drawing.Size(106, 38);
             this.userProfile_Button.TabIndex = 6;
             this.userProfile_Button.Text = "Cá nhân";
             this.userProfile_Button.UseVisualStyleBackColor = false;
+            this.userProfile_Button.Visible = false;
             this.userProfile_Button.Click += new System.EventHandler(this.userProfile_Button_Click);
             // 
             // button4
@@ -676,7 +681,7 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button4.Location = new System.Drawing.Point(1081, 43);
+            this.button4.Location = new System.Drawing.Point(945, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 47);
             this.button4.TabIndex = 4;
@@ -691,7 +696,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(426, 52);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(649, 27);
+            this.textBox1.Size = new System.Drawing.Size(513, 27);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Tìm kiếm...";
             // 
@@ -703,7 +708,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(410, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(763, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(627, 54);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -754,7 +759,7 @@
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(92, 210);
+            this.groupBox1.Size = new System.Drawing.Size(71, 210);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DANH MỤC";
@@ -771,16 +776,15 @@
             this.HomePanel.Controls.Add(this.panel3);
             this.HomePanel.Location = new System.Drawing.Point(0, 135);
             this.HomePanel.Name = "HomePanel";
-            this.HomePanel.Size = new System.Drawing.Size(1392, 684);
+            this.HomePanel.Size = new System.Drawing.Size(1398, 684);
             this.HomePanel.TabIndex = 8;
-            this.HomePanel.Visible = false;
             // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(25, 829);
+            this.panel4.Location = new System.Drawing.Point(28, 829);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1331, 272);
             this.panel4.TabIndex = 5;
@@ -820,7 +824,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(25, 457);
+            this.panel2.Location = new System.Drawing.Point(28, 457);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1331, 323);
             this.panel2.TabIndex = 4;
@@ -1042,7 +1046,7 @@
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(25, 18);
+            this.panel3.Location = new System.Drawing.Point(28, 18);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1331, 392);
             this.panel3.TabIndex = 3;
@@ -1085,10 +1089,10 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
+            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
             this.accountPanel.Controls.Add(this.themDiaChi_Panel);
-            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
@@ -2156,7 +2160,7 @@
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 135);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(1523, 700);
+            this.UserPanel.Size = new System.Drawing.Size(1529, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
             // 
@@ -2406,14 +2410,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KhachHang_Panel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Controls.Add(this.HeaderPannel);
             this.KhachHang_Panel.Controls.Add(this.UserPanel);
+            this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
-            this.KhachHang_Panel.Size = new System.Drawing.Size(1384, 813);
+            this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
             this.KhachHang_Panel.TabIndex = 14;
-            this.KhachHang_Panel.Visible = false;
             // 
             // Shop_Panel
             // 
@@ -2426,6 +2429,33 @@
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
             // 
+            // dangNhap_Button
+            // 
+            this.dangNhap_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dangNhap_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.dangNhap_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dangNhap_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dangNhap_Button.Location = new System.Drawing.Point(1157, 3);
+            this.dangNhap_Button.Name = "dangNhap_Button";
+            this.dangNhap_Button.Size = new System.Drawing.Size(106, 38);
+            this.dangNhap_Button.TabIndex = 7;
+            this.dangNhap_Button.Text = "Đăng nhập";
+            this.dangNhap_Button.UseVisualStyleBackColor = false;
+            this.dangNhap_Button.Click += new System.EventHandler(this.dangNhap_Button_Click);
+            // 
+            // SignUp_Button
+            // 
+            this.SignUp_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SignUp_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.SignUp_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUp_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SignUp_Button.Location = new System.Drawing.Point(1269, 2);
+            this.SignUp_Button.Name = "SignUp_Button";
+            this.SignUp_Button.Size = new System.Drawing.Size(106, 38);
+            this.SignUp_Button.TabIndex = 8;
+            this.SignUp_Button.Text = "Cá nhân ";
+            this.SignUp_Button.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2435,9 +2465,9 @@
             this.ClientSize = new System.Drawing.Size(1392, 819);
             this.Controls.Add(this.KhachHang_Panel);
             this.Controls.Add(this.SigninPanel);
+            this.Controls.Add(this.Shop_Panel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.quenMK_Panel);
-            this.Controls.Add(this.Shop_Panel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -2648,6 +2678,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel KhachHang_Panel;
         private System.Windows.Forms.Panel Shop_Panel;
+        private System.Windows.Forms.Button SignUp_Button;
+        private System.Windows.Forms.Button dangNhap_Button;
     }
 }
 
