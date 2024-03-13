@@ -7,12 +7,13 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -86,7 +87,7 @@ namespace Program
 
         public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
         {
-            string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}')";
+            string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
 
@@ -95,7 +96,7 @@ namespace Program
 
         public static void TaoKhachHangMoi(string taiKhoan)
         {
-            string noiDung = $"INSERT INTO KhachHang(maKH, taiKhoan, nFollow, xu, chiTieu) VALUES('{MaMoi("maKH")}', '{taiKhoan}', 0, 0, 0)";
+            string noiDung = $"INSERT INTO KhachHang(maKH, taiKhoan) VALUES('{MaMoi("maKH")}', '{taiKhoan}')";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
@@ -219,7 +220,7 @@ namespace Program
         public static void CapNhatThongTinCaNhan(Nguoi nguoi, string bang = "KhachHang")
         {
             string loaiMa = bang == "KhachHang" ? "maKH" : "maS";
-            string noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date}' WHERE {loaiMa} = '{nguoi.maSo}'";
+            string noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date.ToString("MM/dd/yyyy")}' WHERE {loaiMa} = '{nguoi.maSo}'";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
