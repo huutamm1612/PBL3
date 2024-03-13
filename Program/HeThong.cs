@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace Program
             return sqlCmd;
         }
 
-        public static string MaMoi(string loaiMa)
+        public static string MaMoi(string loaiMa) // tạo mã mới cho loại mã truyền vào, ví dụ maKH, maDC...
         {
             string noiDung = $"SELECT {loaiMa} FROM maHienTai";
 
@@ -69,7 +70,7 @@ namespace Program
             return maMoi;
         }
 
-        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
+        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true) // trả về true nếu đăng nhập thành công, false nếu không
         {
             string table = userState ? "UserAccount" : "Admin";
             string noiDung = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
@@ -85,7 +86,40 @@ namespace Program
             return ketQua;
         }
 
-        public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
+        public static void WriteAccoutCache(User user) // Lưu lại user đăng nhập hiện tại khi đăng nhập
+        {
+            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            writer.WriteLine(user.taiKhoan);
+            writer.WriteLine(user.matKhau);
+            writer.Close();
+        }
+
+        public static void ClearAccountCache() // xóa khi đăng xuất
+        {
+            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            writer.Close();
+        }
+
+        public static List<string> ReadAccountCache()
+        {
+            FileInfo sourceFile = new FileInfo(@"Cache.txt");
+            StreamReader reader = sourceFile.OpenText();
+
+            string taiKhoan = reader.ReadLine();
+            if (taiKhoan == null)
+                return null;
+            if (HeThong.KiemTraTaiKhoan(taiKhoan))
+                return null;
+
+            List<string> list = new List<string>();
+            list.Add(taiKhoan);
+            list.Add(reader.ReadLine());
+
+            reader.Close();
+            return list;
+        }
+
+        public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi) // Lưu thông tin đăng ký của user
         {
             string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
             SqlCommand sqlCmd = TruyVan(noiDung);
@@ -101,7 +135,7 @@ namespace Program
             sqlCmd.ExecuteNonQuery();
         }
 
-        public static bool KiemTraMatKhau(TaiKhoan account, string matKhau)
+        public static bool KiemTraMatKhau(TaiKhoan account, string matKhau) // trả về true nếu matKhau truyền vào đúng với matKhau của người dùng
         {
             return account.matKhau == matKhau;
         }

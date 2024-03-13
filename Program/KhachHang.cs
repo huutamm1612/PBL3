@@ -64,17 +64,17 @@ namespace Program
             this.ngaySinh = ngaySinh;
         }
 
-        public void capNhatDiaChi(int index, DiaChi diaChi)
+        public void capNhatDiaChi(int index, DiaChi diaChi) //update địa chỉ không mặc định
         {
             this.diaChis[index] = diaChi;
         }
 
-        public void themDiaChi(DiaChi diaChi)
+        public void themDiaChi(DiaChi diaChi) // thêm địa chỉ không mặc định
         {
             this.diaChis.Insert(0, diaChi);
         }
 
-        public void xoaDiaChi(int index)
+        public void xoaDiaChi(int index) // xóa địa chỉ không mặc định
         {
             this.diaChis.RemoveAt(index);
         }
@@ -82,6 +82,14 @@ namespace Program
         public void setDiaChis(List<DiaChi> list)
         {
             this.diaChis = list;
+        }
+
+        public void thayDoiDiaChiMacDinh(DiaChi diaChi) // thay đổi địa chỉ mặc định bằng cách thêm vào một trong các địa chỉ mặc định
+        {
+            this.diaChis.Insert(0, this.diaChi);
+            this.diaChis.Remove(diaChi);
+
+            this.diaChi = diaChi;
         }
     }
 }

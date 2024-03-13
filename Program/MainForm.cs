@@ -20,6 +20,7 @@ namespace Program
         public MainForm()
         { 
             InitializeComponent();
+            tuDongDangNhap();
         }
         private void refreshDangNhap_Panel()
         {
@@ -132,26 +133,9 @@ namespace Program
             writer.Close();
         }
 
-        private List<string> readCache()
-        {
-            FileInfo sourceFile = new FileInfo(@"Cache.txt");
-            StreamReader reader = sourceFile.OpenText();
-
-            string taiKhoan = reader.ReadLine();
-            if (taiKhoan == null)
-                return null;
-            
-            List<string> list = new List<string>();
-            list.Add(taiKhoan);
-            list.Add(reader.ReadLine());
-
-            reader.Close();
-            return list;
-        }
-
         private void tuDongDangNhap()
         {
-            List<string> list = readCache();
+            List<string> list = HeThong.ReadAccountCache();
             if (list != null)
             {
                 user = new User();
@@ -176,6 +160,7 @@ namespace Program
                 LoginError.Visible = false;
                 user = new User();
                 user.dangNhap(taiKhoan, matKhau);
+
                 LoginPanel.Visible = false;
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
@@ -183,8 +168,9 @@ namespace Program
                 dangNhap_Button.Visible = false;
                 SignUp_Button.Visible = false;
                 userProfile_Button.Visible = true;
+
                 khachHang = HeThong.DangNhap(user);
-                writeCache(user);
+                HeThong.WriteAccoutCache(user);
             }
             else
             {
@@ -621,46 +607,38 @@ namespace Program
             }
             
         }
-        
-
 
         private void veDiaChiMacDinh()
         {
-            Label lb = new Label();
-            lb.Text = "Mặc Định";
-            lb.Size = new Size(100, 25);
-            lb.BorderStyle = BorderStyle.FixedSingle;
-            lb.Location = new System.Drawing.Point(11, 0);
-            lb.TextAlign = ContentAlignment.MiddleCenter;
-            lb.ForeColor = Color.Red;
-
             TextBox txt = new TextBox();
             txt.Multiline = true;
             txt.Text = khachHang.diaChi.ToString();
-            txt.Size = new Size(606, 83);
+            txt.Size = new Size(606, 60);
             txt.Location = new System.Drawing.Point(11, 27);
             txt.BorderStyle = BorderStyle.None;
             txt.BackColor = Color.Snow;
 
-            Panel panel = new Panel();
-            panel.Size = new Size(918, 130);
-            panel.BackColor = Color.Snow;
-
             Button btn1 = new Button();
             btn1.Text = "Cập nhật";
             btn1.Size = new Size(120, 28);
-            btn1.Location = new System.Drawing.Point(779, 35);
+            btn1.Location = new System.Drawing.Point(779, 10);
             btn1.BackColor = Color.Snow;
 
-            Button btn2 = new Button();
-            btn2.Text = "Thiết lập mặc định";
-            btn2.Size = new Size(239, 40);
-            btn2.Location = new System.Drawing.Point(660, 70);
-            btn2.BackColor = Color.Snow;
+            Label lb = new Label();
+            lb.Text = "Mặc Định";
+            lb.Size = new Size(100, 25);
+            lb.BorderStyle = BorderStyle.FixedSingle;
+            lb.Location = new System.Drawing.Point(11, 95);
+            lb.TextAlign = ContentAlignment.MiddleCenter;
+            lb.ForeColor = Color.Red;
+
+            Panel panel = new Panel();
+            panel.Size = new Size(918, 130);
+            panel.BackColor = Color.Snow;
+            panel.BorderStyle = BorderStyle.FixedSingle;
 
             panel.Controls.Add(txt);
             panel.Controls.Add(btn1);
-            panel.Controls.Add(btn2);
             panel.Controls.Add(lb);
             listDiaChi_FLPanel.Controls.Add(panel);
 
@@ -675,10 +653,6 @@ namespace Program
             txt.Location = new System.Drawing.Point(11, 27);
             txt.BorderStyle = BorderStyle.None;
             txt.BackColor = Color.Snow;
-
-            Panel panel = new Panel();
-            panel.Size = new Size(918, 130);
-            panel.BackColor = Color.Snow;
             
             Button btn1 = new Button();
             btn1.Text = "Cập nhật";
@@ -697,6 +671,11 @@ namespace Program
             btn3.Size = new Size(120, 28);
             btn3.Location = new System.Drawing.Point(660, 35);
             btn3.BackColor = Color.Snow;
+
+            Panel panel = new Panel();
+            panel.Size = new Size(918, 130);
+            panel.BackColor = Color.Snow;
+            panel.BorderStyle = BorderStyle.FixedSingle;
 
             panel.Controls.Add(txt);
             panel.Controls.Add(btn1);
