@@ -316,7 +316,6 @@ namespace Program
 
         public static void TaoShop()
         {
-
         }
     }
 }

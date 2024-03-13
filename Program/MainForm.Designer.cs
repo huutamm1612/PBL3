@@ -444,7 +444,6 @@
             this.cauHoi_CB.Name = "cauHoi_CB";
             this.cauHoi_CB.Size = new System.Drawing.Size(414, 30);
             this.cauHoi_CB.TabIndex = 22;
-            this.cauHoi_CB.SelectedIndexChanged += new System.EventHandler(this.cauHoi_CB_SelectedIndexChanged);
             // 
             // label
             // 
@@ -1758,7 +1757,6 @@
             this.matKhauCu_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauCu_Box.TabIndex = 4;
             this.matKhauCu_Box.UseSystemPasswordChar = true;
-            this.matKhauCu_Box.TextChanged += new System.EventHandler(this.matKhauCu_Box_TextChanged);
             // 
             // textBox10
             // 
@@ -2161,7 +2159,6 @@
             this.UserPanel.Size = new System.Drawing.Size(1523, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
-            this.UserPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.UserPanel_Paint);
             // 
             // quenMK_Panel
             // 

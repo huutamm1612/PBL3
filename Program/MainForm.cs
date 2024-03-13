@@ -86,15 +86,6 @@ namespace Program
             this.hienMatKhau(hienMK_DN_Check, matKhau_DN_Box);
         }
 
-        private void LoginPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void setTinh_ThanhPho(ComboBox comboBox)
-        {
-        }
-
         private void setCauHoi(ComboBox comboBox)
         {
             List<string> listCauHoi = HeThong.LoadCauHoi();
@@ -190,11 +181,6 @@ namespace Program
                 matKhau2_DK_Box.UseSystemPasswordChar = true;
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             refreshUserProfile_Panel();
@@ -232,11 +218,6 @@ namespace Program
                 matKhauKhongKhop_UP_Text.Visible = false;
         }
 
-        private void matKhauCu_Box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void xacNhan_UP_Button_Click(object sender, EventArgs e)
         {
             if (!HeThong.KiemTraMatKhau(user, matKhauCu_Box.Text))
@@ -255,11 +236,6 @@ namespace Program
                 matKhauMoi1_Box.Clear();
                 matKhauMoi2_Box.Clear();
             }
-        }
-
-        private void UserPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void matKhau2_DK_Box_TextChanged_1(object sender, EventArgs e)
@@ -285,16 +261,6 @@ namespace Program
             HomePanel.Visible = false;
             UserPanel.Visible = true;
             profilePanel.Visible = true;
-        }
-
-        private void userProfile_Button_MouseHover(object sender, EventArgs e)
-        {
-            MessageBox.Show("Mouse Hovered over Button!");
-        }
-
-        private void cauHoi_CB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void quenMK_Button_Click(object sender, EventArgs e)
