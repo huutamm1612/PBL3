@@ -13,7 +13,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -288,9 +288,10 @@ namespace Program
             return s;
         }
 
-        public static void ThemDiaChi(KhachHang khachHang, DiaChi diaChi)
+        public static void ThemDiaChi(Nguoi obj, DiaChi diaChi, bool dcKhachHang = true)
         {
-            string noiDung = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{khachHang.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}')";
+            int state = dcKhachHang == true ? 1 : 0;
+            string noiDung = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }

@@ -754,7 +754,7 @@
             this.HeaderPannel.Controls.Add(this.textBox1);
             this.HeaderPannel.Controls.Add(this.pictureBox1);
             this.HeaderPannel.Controls.Add(this.home_Button);
-            this.HeaderPannel.Location = new System.Drawing.Point(12, 1);
+            this.HeaderPannel.Location = new System.Drawing.Point(12, 0);
             this.HeaderPannel.Name = "HeaderPannel";
             this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
@@ -1212,6 +1212,7 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
@@ -1220,7 +1221,6 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
