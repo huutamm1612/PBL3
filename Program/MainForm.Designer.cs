@@ -649,9 +649,9 @@
             this.HeaderPannel.Controls.Add(this.textBox1);
             this.HeaderPannel.Controls.Add(this.pictureBox1);
             this.HeaderPannel.Controls.Add(this.home_Button);
-            this.HeaderPannel.Location = new System.Drawing.Point(12, 1);
+            this.HeaderPannel.Location = new System.Drawing.Point(12, 0);
             this.HeaderPannel.Name = "HeaderPannel";
-            this.HeaderPannel.Size = new System.Drawing.Size(1511, 135);
+            this.HeaderPannel.Size = new System.Drawing.Size(1379, 135);
             this.HeaderPannel.TabIndex = 3;
             this.HeaderPannel.Visible = false;
             // 
@@ -661,7 +661,7 @@
             this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_Button.Location = new System.Drawing.Point(1271, 3);
+            this.userProfile_Button.Location = new System.Drawing.Point(1266, 3);
             this.userProfile_Button.Name = "userProfile_Button";
             this.userProfile_Button.Size = new System.Drawing.Size(106, 38);
             this.userProfile_Button.TabIndex = 6;
@@ -676,7 +676,7 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button4.Location = new System.Drawing.Point(1081, 43);
+            this.button4.Location = new System.Drawing.Point(949, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 47);
             this.button4.TabIndex = 4;
@@ -691,7 +691,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(426, 52);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(649, 27);
+            this.textBox1.Size = new System.Drawing.Size(517, 27);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Tìm kiếm...";
             // 
@@ -703,7 +703,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(410, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(763, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(631, 54);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -754,7 +754,7 @@
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(92, 210);
+            this.groupBox1.Size = new System.Drawing.Size(71, 210);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DANH MỤC";
@@ -771,7 +771,7 @@
             this.HomePanel.Controls.Add(this.panel3);
             this.HomePanel.Location = new System.Drawing.Point(0, 135);
             this.HomePanel.Name = "HomePanel";
-            this.HomePanel.Size = new System.Drawing.Size(1392, 684);
+            this.HomePanel.Size = new System.Drawing.Size(1399, 684);
             this.HomePanel.TabIndex = 8;
             this.HomePanel.Visible = false;
             // 
@@ -780,7 +780,7 @@
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(25, 829);
+            this.panel4.Location = new System.Drawing.Point(29, 829);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1331, 272);
             this.panel4.TabIndex = 5;
@@ -820,7 +820,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(25, 457);
+            this.panel2.Location = new System.Drawing.Point(29, 457);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1331, 323);
             this.panel2.TabIndex = 4;
@@ -1042,7 +1042,7 @@
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(25, 18);
+            this.panel3.Location = new System.Drawing.Point(29, 18);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1331, 392);
             this.panel3.TabIndex = 3;
@@ -2156,7 +2156,7 @@
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 135);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(1523, 700);
+            this.UserPanel.Size = new System.Drawing.Size(1530, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
             // 
@@ -2411,7 +2411,7 @@
             this.KhachHang_Panel.Controls.Add(this.UserPanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
-            this.KhachHang_Panel.Size = new System.Drawing.Size(1384, 813);
+            this.KhachHang_Panel.Size = new System.Drawing.Size(1391, 813);
             this.KhachHang_Panel.TabIndex = 14;
             this.KhachHang_Panel.Visible = false;
             // 
