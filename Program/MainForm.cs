@@ -462,6 +462,7 @@ namespace Program
             profilePanel.Visible = false;
             doiMatKhauPanel.Visible = false;
             diaChiUser_Panel.Visible = true;
+            ve();
         }
 
         private void backDiaChi_Button_Click(object sender, EventArgs e)
@@ -563,7 +564,22 @@ namespace Program
         {  
             
             Panel panel = new Panel();
-            
+            panel.Size = new Size(918, 130);
+            Button btn1 = new Button();
+            panel.BackColor = Color.Snow;
+            btn1.Text = "Cập nhật";
+            btn1.Size = new Size(120, 28);
+            btn1.Location = new System.Drawing.Point(779, 35);
+            btn1.BackColor = Color.Snow;
+            Button btn2 = new Button();
+            btn2.Text = "Thiết lập mặc định";
+            btn2.Size = new Size(239, 40);
+            btn2.Location = new System.Drawing.Point(660, 70);
+            btn2.BackColor = Color.Snow;
+            panel.Controls.Add(btn1);
+            panel.Controls.Add(btn2);  
+            listDiaChi_FLPanel.Controls.Add(panel);
+
         }
 
     }
