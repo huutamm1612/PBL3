@@ -29,6 +29,8 @@ namespace Program
 
         private void refreshDangKy_Panel()
         {
+            if (cauHoi_CB.Items.Count == 0)
+                this.setCauHoi(cauHoi_CB);
             taiKhoan_DK_Box.Text = "Tài khoản";
             cauTraLoi_Box.Text = "Câu trả lời";
             matKhau1_DK_Box.Text = "Mật khẩu";
@@ -94,11 +96,10 @@ namespace Program
 
         private void dangKyBox_Click(object sender, EventArgs e)
         {
-            if (cauHoi_CB.Items.Count == 0)
-                this.setCauHoi(cauHoi_CB);
+            
             this.refreshDangKy_Panel();
             LoginPanel.Visible = false;
-            SigninPanel.Visible = true;
+            Signup_Panel.Visible = true;
 
         }
 
@@ -110,9 +111,9 @@ namespace Program
 
         private void troVe_DK_Button_Click(object sender, EventArgs e)
         {
-            this.refreshDangNhap_Panel();
-            SigninPanel.Visible = false;
-            LoginPanel.Visible = true;
+            
+            Signup_Panel.Visible = false;
+            KhachHang_Panel.Visible = true;
         }
 
         private void matKhau_DN_Box_TextChanged(object sender, EventArgs e)
@@ -134,7 +135,9 @@ namespace Program
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
                 HeaderPannel.Visible = true;
-
+                dangNhap_Button.Visible = false;
+                SignUp_Button.Visible = false;
+                userProfile_Button.Visible = true;
                 khachHang = HeThong.DangNhap(user);
             }
             else
@@ -163,7 +166,7 @@ namespace Program
                 HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
                 MessageBox.Show("Đăng ký thành công!!!");
 
-                SigninPanel.Visible = false;
+                Signup_Panel.Visible = false;
                 LoginPanel.Visible = true;
             }
         }
@@ -540,7 +543,28 @@ namespace Program
         {
             KhachHang_Panel.Visible = false;
             LoginPanel.Visible = true;
-
+            Signup_Panel.Visible = false;
         }
+
+        private void SignUp_Button_Click(object sender, EventArgs e)
+        {
+            refreshDangKy_Panel();
+            KhachHang_Panel.Visible = false;
+            Signup_Panel.Visible = true;
+        }
+
+        private void troVe_button_Click(object sender, EventArgs e)
+        {
+            LoginPanel.Visible = false;
+            KhachHang_Panel.Visible = true;
+        }
+
+        private void ve()
+        {  
+            
+            Panel panel = new Panel();
+            
+        }
+
     }
 }

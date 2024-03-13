@@ -41,7 +41,7 @@ namespace Program
 
         public override string ToString()
         {
-            return $"{ten} | {soDT} \n{diaChiCuThe} \n{HeThong.MoTaDiaChi(maPX)}";
+            return $"{ten} | {soDT}\r\n{diaChiCuThe}\r\n{HeThong.MoTaDiaChi(maPX)}";
         }
     }
 }
