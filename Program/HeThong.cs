@@ -138,7 +138,7 @@ namespace Program
 
         private static void SetDiaChis(KhachHang khachHang)
         {
-            string noiDung = $"SELECT * FROM DiaChi WHERE maKH = '{khachHang.maSo}'";
+            string noiDung = $"SELECT * FROM DiaChi WHERE maSo = '{khachHang.maSo}' and diaChiKH = 1";
             SqlCommand sqlCmd = TruyVan(noiDung);
             SqlDataReader reader = sqlCmd.ExecuteReader();
 
