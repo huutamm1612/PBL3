@@ -518,6 +518,7 @@ namespace Program
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
             int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
             DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
+            HeThong.ThemDiaChi(khachHang, diaChi);
 
             if (datDCMacDinh_check.Checked)
             {
@@ -534,7 +535,6 @@ namespace Program
                 khachHang.themDiaChi(diaChi);
             }
 
-            HeThong.ThemDiaChi(khachHang, diaChi);
             themDiaChi_Panel.Visible = false;
             refreshThemDiaChi_Panel();
         }

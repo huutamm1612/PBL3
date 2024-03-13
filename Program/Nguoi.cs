@@ -59,6 +59,10 @@ namespace Program
             this.ngaySinh = nguoi.ngaySinh;
         }
 
+        public void capNhatDiaChi(DiaChi diaChiMoi)
+        {
+            this.diaChi = diaChiMoi;
+        }
         public abstract void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
         public abstract void sua(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
     }

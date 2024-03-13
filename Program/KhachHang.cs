@@ -64,11 +64,6 @@ namespace Program
             this.ngaySinh = ngaySinh;
         }
 
-        public void capNhatDiaChi(DiaChi diaChiMoi)
-        {
-            this.diaChi = diaChiMoi;
-        }
-
         public void capNhatDiaChi(int index, DiaChi diaChi)
         {
             this.diaChis[index] = diaChi;

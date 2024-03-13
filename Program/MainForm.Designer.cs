@@ -37,6 +37,8 @@
             this.quenMK_Button = new System.Windows.Forms.Button();
             this.dangKy_Button = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.LoginError = new System.Windows.Forms.Label();
             this.troVe_button = new System.Windows.Forms.Button();
             this.dangNhap_DN_Button = new System.Windows.Forms.Button();
@@ -178,6 +180,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.quenMK_Panel = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.saiMK_Text = new System.Windows.Forms.TextBox();
             this.hienMK_QMK_Check = new System.Windows.Forms.CheckBox();
             this.troVe_QMK_Button = new System.Windows.Forms.Button();
@@ -195,12 +201,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -366,6 +366,28 @@
             this.LoginPanel.Size = new System.Drawing.Size(510, 570);
             this.LoginPanel.TabIndex = 10;
             this.LoginPanel.Visible = false;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label32.Location = new System.Drawing.Point(48, 239);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(69, 18);
+            this.label32.TabIndex = 29;
+            this.label32.Text = "Mật khẩu";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label31.Location = new System.Drawing.Point(48, 159);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(73, 18);
+            this.label31.TabIndex = 28;
+            this.label31.Text = "Tài khoản";
             // 
             // LoginError
             // 
@@ -741,7 +763,6 @@
             this.HeaderPannel.Controls.Add(this.home_Button);
             this.HeaderPannel.Location = new System.Drawing.Point(12, 0);
             this.HeaderPannel.Name = "HeaderPannel";
-            this.HeaderPannel.Size = new System.Drawing.Size(1379, 135);
             this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
             // 
@@ -779,7 +800,6 @@
             this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_Button.Location = new System.Drawing.Point(1266, 3);
             this.userProfile_Button.Location = new System.Drawing.Point(1269, 3);
             this.userProfile_Button.Name = "userProfile_Button";
             this.userProfile_Button.Size = new System.Drawing.Size(106, 38);
@@ -796,7 +816,6 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button4.Location = new System.Drawing.Point(949, 43);
             this.button4.Location = new System.Drawing.Point(945, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 47);
@@ -812,7 +831,6 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(426, 52);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(517, 27);
             this.textBox1.Size = new System.Drawing.Size(513, 27);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Tìm kiếm...";
@@ -825,7 +843,6 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(410, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(631, 54);
             this.pictureBox1.Size = new System.Drawing.Size(627, 54);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -894,7 +911,6 @@
             this.HomePanel.Controls.Add(this.panel3);
             this.HomePanel.Location = new System.Drawing.Point(0, 135);
             this.HomePanel.Name = "HomePanel";
-            this.HomePanel.Size = new System.Drawing.Size(1399, 684);
             this.HomePanel.Size = new System.Drawing.Size(1398, 684);
             this.HomePanel.TabIndex = 8;
             // 
@@ -903,7 +919,6 @@
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(29, 829);
             this.panel4.Location = new System.Drawing.Point(28, 829);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1331, 272);
@@ -944,7 +959,6 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(29, 457);
             this.panel2.Location = new System.Drawing.Point(28, 457);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1331, 323);
@@ -1167,7 +1181,6 @@
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(29, 18);
             this.panel3.Location = new System.Drawing.Point(28, 18);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1331, 392);
@@ -1206,6 +1219,7 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
@@ -1214,7 +1228,6 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
@@ -2282,7 +2295,6 @@
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 135);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(1530, 700);
             this.UserPanel.Size = new System.Drawing.Size(1529, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
@@ -2315,6 +2327,50 @@
             this.quenMK_Panel.Size = new System.Drawing.Size(510, 692);
             this.quenMK_Panel.TabIndex = 13;
             this.quenMK_Panel.Visible = false;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label36.Location = new System.Drawing.Point(48, 404);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(126, 18);
+            this.label36.TabIndex = 32;
+            this.label36.Text = "Nhập lại mật khẩu";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label35.Location = new System.Drawing.Point(48, 331);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(69, 18);
+            this.label35.TabIndex = 31;
+            this.label35.Text = "Mật khẩu";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label34.Location = new System.Drawing.Point(48, 251);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(75, 18);
+            this.label34.TabIndex = 30;
+            this.label34.Text = "Câu trả lời";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label33.Location = new System.Drawing.Point(48, 131);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(73, 18);
+            this.label33.TabIndex = 29;
+            this.label33.Text = "Tài khoản";
             // 
             // saiMK_Text
             // 
@@ -2538,7 +2594,6 @@
             this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
-            this.KhachHang_Panel.Size = new System.Drawing.Size(1391, 813);
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
             this.KhachHang_Panel.TabIndex = 14;
             // 
@@ -2552,72 +2607,6 @@
             this.Shop_Panel.Size = new System.Drawing.Size(1384, 813);
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label31.Location = new System.Drawing.Point(48, 159);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(73, 18);
-            this.label31.TabIndex = 28;
-            this.label31.Text = "Tài khoản";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label32.Location = new System.Drawing.Point(48, 239);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(69, 18);
-            this.label32.TabIndex = 29;
-            this.label32.Text = "Mật khẩu";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label33.Location = new System.Drawing.Point(48, 131);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(73, 18);
-            this.label33.TabIndex = 29;
-            this.label33.Text = "Tài khoản";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label34.Location = new System.Drawing.Point(48, 251);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(75, 18);
-            this.label34.TabIndex = 30;
-            this.label34.Text = "Câu trả lời";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label35.Location = new System.Drawing.Point(48, 331);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(69, 18);
-            this.label35.TabIndex = 31;
-            this.label35.Text = "Mật khẩu";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label36.Location = new System.Drawing.Point(48, 404);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(126, 18);
-            this.label36.TabIndex = 32;
-            this.label36.Text = "Nhập lại mật khẩu";
             // 
             // MainForm
             // 
