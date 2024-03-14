@@ -1,3 +1,6 @@
+CREATE DATABASE PBL3_Database
+USE PBL3_Database
+
 CREATE TABLE Tinh_ThanhPho (
 	maT_TP int PRIMARY KEY,
 	ten nvarchar(50)

@@ -159,6 +159,7 @@ namespace Program
 
         public static bool KiemTraTaoShop(string taiKhoan) // trả về false nếu khách hàng
         {
+
             return false;
         }
 
@@ -347,7 +348,9 @@ namespace Program
 
         public static void CapNhatDiaChi(DiaChi diaChi)
         {
-            string noiDung = $"UPDATE DiaChi SET ";
+            string noiDung = $"UPDATE DiaChi SET ten = '{diaChi.ten}', soDT = '{diaChi.soDT}', maT_TP = {diaChi.maT_TP}, maQH = {diaChi.maQH}, maPX = {diaChi.maPX}, diaChiCuThe = '{diaChi.diaChiCuThe}' WHERE maDC = '{diaChi.maDC}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
         }
 
         public static DiaChi LoadDiaChi(string maDC)
