@@ -35,6 +35,7 @@ CREATE TABLE UserAccount(
 	CONSTRAINT FK_UserAccount_CauHoi FOREIGN KEY (maCH) REFERENCES CauHoi(maCH)
 )
 
+
 CREATE TABLE DiaChi (
 	maDC varchar(10) PRIMARY KEY,
 	maSo varchar(10),
@@ -66,6 +67,7 @@ CREATE TABLE KhachHang (
 	avt varchar(255)
 	
 	CONSTRAINT FK_KhachHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC),
+	CONSTRAINT FK_KhachHang_UserAccount FOREIGN KEY (taiKhoan) REFERENCES UserAccount(taiKhoan)
 )
 
 CREATE TABLE Shop (	
@@ -103,3 +105,4 @@ CREATE TABLE KhachHang_Shop (
 	CONSTRAINT FK_KhachHang_Shop_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
 	CONSTRAINT FK_KhachHang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
 )
+
