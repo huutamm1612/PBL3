@@ -760,7 +760,7 @@
             this.HeaderPannel.Name = "HeaderPannel";
             this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
-            this.HeaderPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.HeaderPannel_Paint);
+        
             // 
             // SignUp_Button
             // 

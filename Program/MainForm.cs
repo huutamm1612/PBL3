@@ -694,9 +694,6 @@ namespace Program
             userProfile_Button.Visible = false;
         }
 
-        private void HeaderPannel_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 }
