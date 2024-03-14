@@ -108,7 +108,7 @@ namespace Program
             string taiKhoan = reader.ReadLine();
             if (taiKhoan == null)
             {
-                reader.Close();
+                reader.Close();    
                 return null;
             }
             if (KiemTraTaiKhoan(taiKhoan))
