@@ -767,7 +767,7 @@
             this.SignUp_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.SignUp_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUp_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SignUp_Button.Location = new System.Drawing.Point(1269, 3);
+            this.SignUp_Button.Location = new System.Drawing.Point(1266, 3);
             this.SignUp_Button.Name = "SignUp_Button";
             this.SignUp_Button.Size = new System.Drawing.Size(106, 38);
             this.SignUp_Button.TabIndex = 8;
@@ -795,7 +795,7 @@
             this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_Button.Location = new System.Drawing.Point(1269, 3);
+            this.userProfile_Button.Location = new System.Drawing.Point(1157, 3);
             this.userProfile_Button.Name = "userProfile_Button";
             this.userProfile_Button.Size = new System.Drawing.Size(106, 38);
             this.userProfile_Button.TabIndex = 6;
@@ -861,12 +861,13 @@
             this.user_DangXuat_Button.BackColor = System.Drawing.SystemColors.ControlDark;
             this.user_DangXuat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.user_DangXuat_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.user_DangXuat_Button.Location = new System.Drawing.Point(1157, 3);
+            this.user_DangXuat_Button.Location = new System.Drawing.Point(1266, 3);
             this.user_DangXuat_Button.Name = "user_DangXuat_Button";
             this.user_DangXuat_Button.Size = new System.Drawing.Size(106, 38);
             this.user_DangXuat_Button.TabIndex = 9;
             this.user_DangXuat_Button.Text = "Đăng xuất";
             this.user_DangXuat_Button.UseVisualStyleBackColor = false;
+            this.user_DangXuat_Button.Visible = false;
             this.user_DangXuat_Button.Click += new System.EventHandler(this.user_DangXuat_Button_Click);
             // 
             // panel1
