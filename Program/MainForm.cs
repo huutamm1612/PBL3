@@ -663,18 +663,22 @@ namespace Program
             btn1.Size = new Size(120, 28);
             btn1.Location = new System.Drawing.Point(779, 35);
             btn1.BackColor = Color.Snow;
+            btn1.Click += CapNhat_Button;
+        
 
             Button btn2 = new Button();
             btn2.Text = "Thiết lập mặc định";
             btn2.Size = new Size(239, 40);
             btn2.Location = new System.Drawing.Point(660, 70);
             btn2.BackColor = Color.Snow;
+         
 
             Button btn3 = new Button();
             btn3.Text = "Xóa";
             btn3.Size = new Size(120, 28);
             btn3.Location = new System.Drawing.Point(660, 35);
             btn3.BackColor = Color.Snow;
+            btn3.Click += xoa_Button;
 
             Panel panel = new Panel();
             panel.Size = new Size(918, 130);
@@ -685,9 +689,25 @@ namespace Program
             panel.Controls.Add(btn1);
             panel.Controls.Add(btn2);
             panel.Controls.Add(btn3);
-      
+            
             listDiaChi_FLPanel.Controls.Add(panel);
 
+        }
+
+        private void xoa_Button(object sender, EventArgs e)
+        {
+            foreach (DiaChi diaChi in khachHang.diaChis)
+                khachHang.diaChis.Remove(diaChi);
+        
+        }
+
+
+
+        private void CapNhat_Button(object sender, EventArgs e) 
+        {
+            
+            themDiaChi_Button_Click(sender, e); 
+            
         }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
