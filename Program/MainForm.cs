@@ -706,7 +706,7 @@ namespace Program
         private void CapNhat_Button(object sender, EventArgs e) 
         {
             
-            themDiaChi_Button_Click(sender, e); 
+            themDiaChi_Button_Click(sender, e);
             
         }
 

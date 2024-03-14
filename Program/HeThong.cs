@@ -15,7 +15,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source= DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -329,6 +329,13 @@ namespace Program
         {
             int state = dcKhachHang == true ? 1 : 0;
             string noiDung = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static void XoaDiaChi(DiaChi diaChi)
+        {
+            string noiDung = $"REMOVE FROM DiaChi WHERE maDC = {diaChi.maDC}";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
