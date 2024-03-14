@@ -78,9 +78,9 @@ CREATE TABLE Shop (
 	maDC varchar(10),
 	nFollower int default 0,
 	ngayTao date,
-	tinhTrang bit default 1,
+	tinhTrang int default 1,
 	doanhThu int default 0,
-	sao real default 0.0,
+	sao float(1) default 0.0,
 	avt varchar(255)
 
 	CONSTRAINT FK_Shop_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
@@ -106,3 +106,35 @@ CREATE TABLE KhachHang_Shop (
 	CONSTRAINT FK_KhachHang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
 )
 
+CREATE TABLE LoaiSanPham (
+	maLoaiSP varchar(10) PRIMARY KEY,
+	ten nvarchar(50)
+)
+
+CREATE TABLE SanPham(
+	maSP varchar(10) PRIMARY KEY,
+	maLoaiSP varchar(10),
+	ten nvarchar(50),
+	gia int,
+	soLuong int,
+	tacGia nvarchar(50),
+	dichGia nvarchar(50) null,
+	ngonNgu nvarchar(20),
+	soTrang int,
+	namXuaBan int,
+	nhaXuatBan nvarchar(50),
+	loaiBia nvarchar(5),
+	moTa nvarchar(500),
+	anh varchar(255)
+
+	CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (maLoaiSP) REFERENCES LoaiSanPham(maLoaiSP)
+)
+
+CREATE TABLE BaiDang(
+	maBD varchar(10) PRIMARY KEY,
+	tieuDe nvarchar(100),
+	moTa nvarchar(500),
+	luocBan int DEFAULT 0,
+	luocThich int DEFAULT 0,
+	giamGia int DEFAULT 0,
+)

@@ -9,17 +9,17 @@ namespace Program
     internal class Shop : Nguoi
     {
         public int nFollower { get; private set; }
-        public bool tinhTrang { get; private set; }
+        public int tinhTrang { get; private set; }
         public int doanhThu { get; private set; }
 
         public Shop() : base()
         {
             nFollower = 0;
             doanhThu = 0;
-            tinhTrang = true;
+            tinhTrang = 1;
         }
 
-        public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, int _, DateTime ngaySinh, int nFollower, bool tinhTrang, int doanhThu) : base(maSo, ten, soDT, email, diaChi, _, ngaySinh)
+        public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, int _, DateTime ngaySinh, int nFollower, int tinhTrang, int doanhThu) : base(maSo, ten, soDT, email, diaChi, _, ngaySinh)
         {
             this.nFollower = nFollower;
             this.doanhThu = doanhThu;
@@ -42,6 +42,11 @@ namespace Program
             this.email = email;
             this.soDT = soDT;
             this.ngaySinh = ngaySinh;
+        }
+
+        public void capNhatTinhTrang(int tinhTrang)
+        {
+            this.tinhTrang = tinhTrang;
         }
     }
 }
