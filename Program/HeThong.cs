@@ -157,6 +157,11 @@ namespace Program
             return result;
         }
 
+        public static bool KiemTraTaoShop(string taiKhoan) // trả về false nếu khách hàng
+        {
+            return false;
+        }
+
         public static void CapNhatMatKhau(TaiKhoan account, bool userState = true)
         {
             string table = userState ? "UserAccount" : "Admin";
@@ -331,6 +336,18 @@ namespace Program
             string noiDung = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
+        }
+
+        public static void XoaDiaChi(DiaChi diaChi)
+        {
+            string noiDung = $"REMOVE FROM DiaChi WHERE maDC = {diaChi.maDC}";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static void CapNhatDiaChi(DiaChi diaChi)
+        {
+            string noiDung = $"UPDATE DiaChi SET ";
         }
 
         public static DiaChi LoadDiaChi(string maDC)
