@@ -86,6 +86,38 @@ namespace Program
             reader.Close();
             return ketQua;
         }
+        public static void WriteAccoutCache(User user) // Lưu lại user đăng nhập hiện tại khi đăng nhập
+        {
+            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            writer.WriteLine(user.taiKhoan);
+            writer.WriteLine(user.matKhau);
+            writer.Close();
+        }
+
+        public static void ClearAccountCache() // xóa khi đăng xuất
+        {
+            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            writer.Close();
+        }
+
+        public static List<string> ReadAccountCache()
+        {
+            FileInfo sourceFile = new FileInfo(@"Cache.txt");
+            StreamReader reader = sourceFile.OpenText();
+
+            string taiKhoan = reader.ReadLine();
+            if (taiKhoan == null)
+                return null;
+            if (HeThong.KiemTraTaiKhoan(taiKhoan))
+                return null;
+
+            List<string> list = new List<string>();
+            list.Add(taiKhoan);
+            list.Add(reader.ReadLine());
+
+            reader.Close();
+            return list;
+        }
 
         public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
         {
