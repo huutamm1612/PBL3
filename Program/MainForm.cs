@@ -481,6 +481,7 @@ namespace Program
 
         private void themDiaChi_Button_Click(object sender, EventArgs e)
         {
+            txtDiaChi.Text = "Địa chỉ mới";
             themDiaChi_Panel.Visible = true;
             themDiaChi_Panel.BringToFront();
             if (khachHang.diaChi == null)
@@ -707,7 +708,8 @@ namespace Program
         {
             
             themDiaChi_Button_Click(sender, e);
-            
+            txtDiaChi.Text = "Cập nhật địa chỉ";
+            HeThong.CapNhatDiaChi(khachHang.diaChi);
         }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)

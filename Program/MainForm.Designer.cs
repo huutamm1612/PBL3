@@ -130,7 +130,7 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.hoVaTen_Box = new System.Windows.Forms.TextBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.Label();
             this.diaChiUser_Panel = new System.Windows.Forms.Panel();
             this.themDiaChi_Button = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -1324,7 +1324,7 @@
             this.themDiaChi_Panel.Controls.Add(this.pictureBox10);
             this.themDiaChi_Panel.Controls.Add(this.hoVaTen_Box);
             this.themDiaChi_Panel.Controls.Add(this.pictureBox9);
-            this.themDiaChi_Panel.Controls.Add(this.label14);
+            this.themDiaChi_Panel.Controls.Add(this.txtDiaChi);
             this.themDiaChi_Panel.Location = new System.Drawing.Point(600, 8);
             this.themDiaChi_Panel.Name = "themDiaChi_Panel";
             this.themDiaChi_Panel.Size = new System.Drawing.Size(559, 502);
@@ -1528,15 +1528,15 @@
             this.pictureBox9.TabIndex = 2;
             this.pictureBox9.TabStop = false;
             // 
-            // label14
+            // txtDiaChi
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(16, 15);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 32);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Địa chỉ mới";
+            this.txtDiaChi.AutoSize = true;
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Location = new System.Drawing.Point(16, 15);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(154, 32);
+            this.txtDiaChi.TabIndex = 0;
+            this.txtDiaChi.Text = "Địa chỉ mới";
             // 
             // diaChiUser_Panel
             // 
@@ -2747,7 +2747,7 @@
         private System.Windows.Forms.Label loiNgaySinh_Text;
         private System.Windows.Forms.Panel diaChiUser_Panel;
         private System.Windows.Forms.Panel themDiaChi_Panel;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label txtDiaChi;
         private System.Windows.Forms.TextBox hoVaTen_Box;
         private System.Windows.Forms.TextBox soDienThoai_Box;
         private System.Windows.Forms.PictureBox pictureBox10;
