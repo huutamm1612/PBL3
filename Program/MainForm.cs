@@ -270,7 +270,7 @@ namespace Program
                 matKhauCu_Box.Clear();
                 matKhauMoi1_Box.Clear();
                 matKhauMoi2_Box.Clear();
-            }
+            }  
         }
 
         private void matKhau2_DK_Box_TextChanged_1(object sender, EventArgs e)
