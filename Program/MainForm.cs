@@ -169,6 +169,7 @@ namespace Program
                 HeaderPannel.Visible = true;
                 userProfile_Button.Visible = true;
                 user_DangXuat_Button.Visible = true;
+
                 khachHang = HeThong.DangNhap(user);
                 HeThong.WriteAccoutCache(user);
             }
@@ -692,6 +693,7 @@ namespace Program
             SignUp_Button.Visible = true;
             user_DangXuat_Button.Visible = false;
             userProfile_Button.Visible = false;
+            HeThong.ClearAccountCache();
         }
 
 

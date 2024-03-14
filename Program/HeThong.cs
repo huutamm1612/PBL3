@@ -88,7 +88,7 @@ namespace Program
         }
         public static void WriteAccoutCache(User user) // Lưu lại user đăng nhập hiện tại khi đăng nhập
         {
-            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
+            StreamWriter writer = new StreamWriter(@"Cache.txt");
             writer.WriteLine(user.taiKhoan);
             writer.WriteLine(user.matKhau);
             writer.Close();
