@@ -168,7 +168,7 @@ namespace Program
                 dangNhap_Button.Visible = false;
                 SignUp_Button.Visible = false;
                 userProfile_Button.Visible = true;
-
+                user_DangXuat_Button.Visible = true;
                 khachHang = HeThong.DangNhap(user);
                 HeThong.WriteAccoutCache(user);
             }
@@ -686,6 +686,17 @@ namespace Program
 
         }
 
+        private void user_DangXuat_Button_Click(object sender, EventArgs e)
+        {
+            dangNhap_Button.Visible = true;
+            SignUp_Button.Visible = true;
+            user_DangXuat_Button.Visible = false;
+            userProfile_Button.Visible = false;
+        }
 
+        private void HeaderPannel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
