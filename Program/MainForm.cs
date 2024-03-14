@@ -140,6 +140,7 @@ namespace Program
             {
                 user = new User();
                 user.dangNhap(list[0], list[1]);
+
                 LoginPanel.Visible = false;
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
@@ -147,6 +148,8 @@ namespace Program
                 dangNhap_Button.Visible = false;
                 SignUp_Button.Visible = false;
                 userProfile_Button.Visible = true;
+                user_DangXuat_Button.Visible = true;
+
                 khachHang = HeThong.DangNhap(user);
             }
         }
