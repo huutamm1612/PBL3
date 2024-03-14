@@ -108,7 +108,7 @@ namespace Program
             string taiKhoan = reader.ReadLine();
             if (taiKhoan == null)
             {
-                reader.Close();
+                reader.Close();    
                 return null;
             }
             if (KiemTraTaiKhoan(taiKhoan))
@@ -352,8 +352,10 @@ namespace Program
             sqlCmd.ExecuteNonQuery();
         }
 
-        public static void TaoShop()
+        public static void TaoShop(Shop shop)
         {
+            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC) VALUES('{shop.maSo}', '{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}')";
+
 
         }
     }
