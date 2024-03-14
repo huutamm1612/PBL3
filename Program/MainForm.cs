@@ -162,11 +162,11 @@ namespace Program
                 user.dangNhap(taiKhoan, matKhau);
 
                 LoginPanel.Visible = false;
+                dangNhap_Button.Visible = false;
+                SignUp_Button.Visible = false;
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
                 HeaderPannel.Visible = true;
-                dangNhap_Button.Visible = false;
-                SignUp_Button.Visible = false;
                 userProfile_Button.Visible = true;
 
                 khachHang = HeThong.DangNhap(user);
