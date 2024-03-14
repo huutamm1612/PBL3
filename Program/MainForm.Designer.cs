@@ -72,6 +72,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.home_Button = new System.Windows.Forms.Button();
+            this.user_DangXuat_Button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -105,26 +106,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.accountPanel = new System.Windows.Forms.Panel();
-            this.themDiaChi_Panel = new System.Windows.Forms.Panel();
-            this.HTThemDiaChi_Button = new System.Windows.Forms.Button();
-            this.backDiaChi_Button = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.PX_ComboBox = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.QH_ComboBox = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.TTP_ComboBox = new System.Windows.Forms.ComboBox();
-            this.datDCMacDinh_check = new System.Windows.Forms.CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.diaChiCuThe_Box = new System.Windows.Forms.TextBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.soDienThoai_Box = new System.Windows.Forms.TextBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.hoVaTen_Box = new System.Windows.Forms.TextBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.doiMK_Botton = new System.Windows.Forms.Button();
             this.diaChiUser_Button = new System.Windows.Forms.Button();
@@ -173,6 +154,26 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.themDiaChi_Panel = new System.Windows.Forms.Panel();
+            this.HTThemDiaChi_Button = new System.Windows.Forms.Button();
+            this.backDiaChi_Button = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.PX_ComboBox = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.QH_ComboBox = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.TTP_ComboBox = new System.Windows.Forms.ComboBox();
+            this.datDCMacDinh_check = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.diaChiCuThe_Box = new System.Windows.Forms.TextBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.soDienThoai_Box = new System.Windows.Forms.TextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.hoVaTen_Box = new System.Windows.Forms.TextBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.quenMK_Panel = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
@@ -196,7 +197,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
-            this.user_DangXuat_Button = new System.Windows.Forms.Button();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -210,10 +210,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.accountPanel.SuspendLayout();
-            this.themDiaChi_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.diaChiUser_Panel.SuspendLayout();
             this.profilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -221,6 +217,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.doiMatKhauPanel.SuspendLayout();
+            this.themDiaChi_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.UserPanel.SuspendLayout();
             this.quenMK_Panel.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
@@ -760,7 +760,6 @@
             this.HeaderPannel.Name = "HeaderPannel";
             this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
-        
             // 
             // SignUp_Button
             // 
@@ -855,6 +854,20 @@
             this.home_Button.Text = "Book world";
             this.home_Button.UseVisualStyleBackColor = false;
             this.home_Button.Click += new System.EventHandler(this.home_Button_Click);
+            // 
+            // user_DangXuat_Button
+            // 
+            this.user_DangXuat_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.user_DangXuat_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.user_DangXuat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user_DangXuat_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.user_DangXuat_Button.Location = new System.Drawing.Point(1157, 3);
+            this.user_DangXuat_Button.Name = "user_DangXuat_Button";
+            this.user_DangXuat_Button.Size = new System.Drawing.Size(106, 38);
+            this.user_DangXuat_Button.TabIndex = 9;
+            this.user_DangXuat_Button.Text = "Đăng xuất";
+            this.user_DangXuat_Button.UseVisualStyleBackColor = false;
+            this.user_DangXuat_Button.Click += new System.EventHandler(this.user_DangXuat_Button_Click);
             // 
             // panel1
             // 
@@ -1228,242 +1241,6 @@
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
             this.accountPanel.TabIndex = 7;
-            // 
-            // themDiaChi_Panel
-            // 
-            this.themDiaChi_Panel.BackColor = System.Drawing.Color.White;
-            this.themDiaChi_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.themDiaChi_Panel.Controls.Add(this.HTThemDiaChi_Button);
-            this.themDiaChi_Panel.Controls.Add(this.backDiaChi_Button);
-            this.themDiaChi_Panel.Controls.Add(this.label23);
-            this.themDiaChi_Panel.Controls.Add(this.PX_ComboBox);
-            this.themDiaChi_Panel.Controls.Add(this.label22);
-            this.themDiaChi_Panel.Controls.Add(this.QH_ComboBox);
-            this.themDiaChi_Panel.Controls.Add(this.label21);
-            this.themDiaChi_Panel.Controls.Add(this.TTP_ComboBox);
-            this.themDiaChi_Panel.Controls.Add(this.datDCMacDinh_check);
-            this.themDiaChi_Panel.Controls.Add(this.label20);
-            this.themDiaChi_Panel.Controls.Add(this.diaChiCuThe_Box);
-            this.themDiaChi_Panel.Controls.Add(this.pictureBox11);
-            this.themDiaChi_Panel.Controls.Add(this.label19);
-            this.themDiaChi_Panel.Controls.Add(this.label18);
-            this.themDiaChi_Panel.Controls.Add(this.soDienThoai_Box);
-            this.themDiaChi_Panel.Controls.Add(this.pictureBox10);
-            this.themDiaChi_Panel.Controls.Add(this.hoVaTen_Box);
-            this.themDiaChi_Panel.Controls.Add(this.pictureBox9);
-            this.themDiaChi_Panel.Controls.Add(this.label14);
-            this.themDiaChi_Panel.Location = new System.Drawing.Point(600, 8);
-            this.themDiaChi_Panel.Name = "themDiaChi_Panel";
-            this.themDiaChi_Panel.Size = new System.Drawing.Size(559, 502);
-            this.themDiaChi_Panel.TabIndex = 0;
-            this.themDiaChi_Panel.Visible = false;
-            // 
-            // HTThemDiaChi_Button
-            // 
-            this.HTThemDiaChi_Button.BackColor = System.Drawing.Color.Gainsboro;
-            this.HTThemDiaChi_Button.Location = new System.Drawing.Point(389, 435);
-            this.HTThemDiaChi_Button.Name = "HTThemDiaChi_Button";
-            this.HTThemDiaChi_Button.Size = new System.Drawing.Size(147, 41);
-            this.HTThemDiaChi_Button.TabIndex = 7;
-            this.HTThemDiaChi_Button.Text = "Hoàn thành";
-            this.HTThemDiaChi_Button.UseVisualStyleBackColor = false;
-            this.HTThemDiaChi_Button.Click += new System.EventHandler(this.HTThemDiaChi_Button_Click);
-            // 
-            // backDiaChi_Button
-            // 
-            this.backDiaChi_Button.Location = new System.Drawing.Point(225, 435);
-            this.backDiaChi_Button.Name = "backDiaChi_Button";
-            this.backDiaChi_Button.Size = new System.Drawing.Size(147, 41);
-            this.backDiaChi_Button.TabIndex = 8;
-            this.backDiaChi_Button.Text = "Trở về";
-            this.backDiaChi_Button.UseVisualStyleBackColor = true;
-            this.backDiaChi_Button.Click += new System.EventHandler(this.backDiaChi_Button_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label23.Location = new System.Drawing.Point(34, 242);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(73, 16);
-            this.label23.TabIndex = 16;
-            this.label23.Text = "Phường/Xã";
-            // 
-            // PX_ComboBox
-            // 
-            this.PX_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PX_ComboBox.DropDownHeight = 200;
-            this.PX_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PX_ComboBox.Enabled = false;
-            this.PX_ComboBox.FormattingEnabled = true;
-            this.PX_ComboBox.IntegralHeight = false;
-            this.PX_ComboBox.Location = new System.Drawing.Point(25, 252);
-            this.PX_ComboBox.Name = "PX_ComboBox";
-            this.PX_ComboBox.Size = new System.Drawing.Size(511, 33);
-            this.PX_ComboBox.TabIndex = 4;
-            this.PX_ComboBox.SelectedIndexChanged += new System.EventHandler(this.PX_ComboBox_SelectedIndexChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label22.Location = new System.Drawing.Point(306, 165);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(82, 16);
-            this.label22.TabIndex = 14;
-            this.label22.Text = "Quận/Huyện";
-            // 
-            // QH_ComboBox
-            // 
-            this.QH_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.QH_ComboBox.DropDownHeight = 200;
-            this.QH_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.QH_ComboBox.Enabled = false;
-            this.QH_ComboBox.FormattingEnabled = true;
-            this.QH_ComboBox.IntegralHeight = false;
-            this.QH_ComboBox.Location = new System.Drawing.Point(297, 174);
-            this.QH_ComboBox.Name = "QH_ComboBox";
-            this.QH_ComboBox.Size = new System.Drawing.Size(239, 33);
-            this.QH_ComboBox.TabIndex = 3;
-            this.QH_ComboBox.SelectedIndexChanged += new System.EventHandler(this.QH_ComboBox_SelectedIndexChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label21.Location = new System.Drawing.Point(34, 165);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(101, 16);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Tỉnh/Thành phố";
-            // 
-            // TTP_ComboBox
-            // 
-            this.TTP_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TTP_ComboBox.DropDownHeight = 200;
-            this.TTP_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TTP_ComboBox.FormattingEnabled = true;
-            this.TTP_ComboBox.IntegralHeight = false;
-            this.TTP_ComboBox.Location = new System.Drawing.Point(25, 174);
-            this.TTP_ComboBox.Name = "TTP_ComboBox";
-            this.TTP_ComboBox.Size = new System.Drawing.Size(236, 33);
-            this.TTP_ComboBox.TabIndex = 2;
-            this.TTP_ComboBox.Tag = "";
-            this.TTP_ComboBox.SelectedIndexChanged += new System.EventHandler(this.TTP_ComboBox_SelectedIndexChanged);
-            // 
-            // datDCMacDinh_check
-            // 
-            this.datDCMacDinh_check.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.datDCMacDinh_check.AutoSize = true;
-            this.datDCMacDinh_check.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datDCMacDinh_check.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.datDCMacDinh_check.Location = new System.Drawing.Point(22, 390);
-            this.datDCMacDinh_check.Name = "datDCMacDinh_check";
-            this.datDCMacDinh_check.Size = new System.Drawing.Size(216, 24);
-            this.datDCMacDinh_check.TabIndex = 6;
-            this.datDCMacDinh_check.Text = "Đặt làm địa chỉ mặc định";
-            this.datDCMacDinh_check.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label20.Location = new System.Drawing.Point(34, 323);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(97, 18);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "Địa chỉ cụ thể";
-            // 
-            // diaChiCuThe_Box
-            // 
-            this.diaChiCuThe_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.diaChiCuThe_Box.Enabled = false;
-            this.diaChiCuThe_Box.Location = new System.Drawing.Point(37, 345);
-            this.diaChiCuThe_Box.Name = "diaChiCuThe_Box";
-            this.diaChiCuThe_Box.Size = new System.Drawing.Size(482, 23);
-            this.diaChiCuThe_Box.TabIndex = 5;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox11.Enabled = false;
-            this.pictureBox11.Location = new System.Drawing.Point(22, 332);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(514, 48);
-            this.pictureBox11.TabIndex = 8;
-            this.pictureBox11.TabStop = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label19.Location = new System.Drawing.Point(309, 67);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(94, 18);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Số điện thoại";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label18.Location = new System.Drawing.Point(34, 68);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(71, 18);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Họ và tên";
-            // 
-            // soDienThoai_Box
-            // 
-            this.soDienThoai_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.soDienThoai_Box.Location = new System.Drawing.Point(312, 84);
-            this.soDienThoai_Box.Name = "soDienThoai_Box";
-            this.soDienThoai_Box.Size = new System.Drawing.Size(207, 23);
-            this.soDienThoai_Box.TabIndex = 1;
-            this.soDienThoai_Box.Text = "...";
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox10.Location = new System.Drawing.Point(297, 75);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(239, 48);
-            this.pictureBox10.TabIndex = 4;
-            this.pictureBox10.TabStop = false;
-            // 
-            // hoVaTen_Box
-            // 
-            this.hoVaTen_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.hoVaTen_Box.Location = new System.Drawing.Point(37, 84);
-            this.hoVaTen_Box.Name = "hoVaTen_Box";
-            this.hoVaTen_Box.Size = new System.Drawing.Size(207, 23);
-            this.hoVaTen_Box.TabIndex = 0;
-            this.hoVaTen_Box.Text = "...";
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox9.Location = new System.Drawing.Point(22, 75);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(239, 48);
-            this.pictureBox9.TabIndex = 2;
-            this.pictureBox9.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(16, 15);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 32);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Địa chỉ mới";
             // 
             // button10
             // 
@@ -2221,6 +1998,242 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Đổi mật khẩu";
             // 
+            // themDiaChi_Panel
+            // 
+            this.themDiaChi_Panel.BackColor = System.Drawing.Color.White;
+            this.themDiaChi_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.themDiaChi_Panel.Controls.Add(this.HTThemDiaChi_Button);
+            this.themDiaChi_Panel.Controls.Add(this.backDiaChi_Button);
+            this.themDiaChi_Panel.Controls.Add(this.label23);
+            this.themDiaChi_Panel.Controls.Add(this.PX_ComboBox);
+            this.themDiaChi_Panel.Controls.Add(this.label22);
+            this.themDiaChi_Panel.Controls.Add(this.QH_ComboBox);
+            this.themDiaChi_Panel.Controls.Add(this.label21);
+            this.themDiaChi_Panel.Controls.Add(this.TTP_ComboBox);
+            this.themDiaChi_Panel.Controls.Add(this.datDCMacDinh_check);
+            this.themDiaChi_Panel.Controls.Add(this.label20);
+            this.themDiaChi_Panel.Controls.Add(this.diaChiCuThe_Box);
+            this.themDiaChi_Panel.Controls.Add(this.pictureBox11);
+            this.themDiaChi_Panel.Controls.Add(this.label19);
+            this.themDiaChi_Panel.Controls.Add(this.label18);
+            this.themDiaChi_Panel.Controls.Add(this.soDienThoai_Box);
+            this.themDiaChi_Panel.Controls.Add(this.pictureBox10);
+            this.themDiaChi_Panel.Controls.Add(this.hoVaTen_Box);
+            this.themDiaChi_Panel.Controls.Add(this.pictureBox9);
+            this.themDiaChi_Panel.Controls.Add(this.label14);
+            this.themDiaChi_Panel.Location = new System.Drawing.Point(600, 8);
+            this.themDiaChi_Panel.Name = "themDiaChi_Panel";
+            this.themDiaChi_Panel.Size = new System.Drawing.Size(559, 502);
+            this.themDiaChi_Panel.TabIndex = 0;
+            this.themDiaChi_Panel.Visible = false;
+            // 
+            // HTThemDiaChi_Button
+            // 
+            this.HTThemDiaChi_Button.BackColor = System.Drawing.Color.Gainsboro;
+            this.HTThemDiaChi_Button.Location = new System.Drawing.Point(389, 435);
+            this.HTThemDiaChi_Button.Name = "HTThemDiaChi_Button";
+            this.HTThemDiaChi_Button.Size = new System.Drawing.Size(147, 41);
+            this.HTThemDiaChi_Button.TabIndex = 7;
+            this.HTThemDiaChi_Button.Text = "Hoàn thành";
+            this.HTThemDiaChi_Button.UseVisualStyleBackColor = false;
+            this.HTThemDiaChi_Button.Click += new System.EventHandler(this.HTThemDiaChi_Button_Click);
+            // 
+            // backDiaChi_Button
+            // 
+            this.backDiaChi_Button.Location = new System.Drawing.Point(225, 435);
+            this.backDiaChi_Button.Name = "backDiaChi_Button";
+            this.backDiaChi_Button.Size = new System.Drawing.Size(147, 41);
+            this.backDiaChi_Button.TabIndex = 8;
+            this.backDiaChi_Button.Text = "Trở về";
+            this.backDiaChi_Button.UseVisualStyleBackColor = true;
+            this.backDiaChi_Button.Click += new System.EventHandler(this.backDiaChi_Button_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label23.Location = new System.Drawing.Point(34, 242);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(73, 16);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "Phường/Xã";
+            // 
+            // PX_ComboBox
+            // 
+            this.PX_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PX_ComboBox.DropDownHeight = 200;
+            this.PX_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PX_ComboBox.Enabled = false;
+            this.PX_ComboBox.FormattingEnabled = true;
+            this.PX_ComboBox.IntegralHeight = false;
+            this.PX_ComboBox.Location = new System.Drawing.Point(25, 252);
+            this.PX_ComboBox.Name = "PX_ComboBox";
+            this.PX_ComboBox.Size = new System.Drawing.Size(511, 33);
+            this.PX_ComboBox.TabIndex = 4;
+            this.PX_ComboBox.SelectedIndexChanged += new System.EventHandler(this.PX_ComboBox_SelectedIndexChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label22.Location = new System.Drawing.Point(306, 165);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(82, 16);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "Quận/Huyện";
+            // 
+            // QH_ComboBox
+            // 
+            this.QH_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.QH_ComboBox.DropDownHeight = 200;
+            this.QH_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.QH_ComboBox.Enabled = false;
+            this.QH_ComboBox.FormattingEnabled = true;
+            this.QH_ComboBox.IntegralHeight = false;
+            this.QH_ComboBox.Location = new System.Drawing.Point(297, 174);
+            this.QH_ComboBox.Name = "QH_ComboBox";
+            this.QH_ComboBox.Size = new System.Drawing.Size(239, 33);
+            this.QH_ComboBox.TabIndex = 3;
+            this.QH_ComboBox.SelectedIndexChanged += new System.EventHandler(this.QH_ComboBox_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label21.Location = new System.Drawing.Point(34, 165);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(101, 16);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Tỉnh/Thành phố";
+            // 
+            // TTP_ComboBox
+            // 
+            this.TTP_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TTP_ComboBox.DropDownHeight = 200;
+            this.TTP_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TTP_ComboBox.FormattingEnabled = true;
+            this.TTP_ComboBox.IntegralHeight = false;
+            this.TTP_ComboBox.Location = new System.Drawing.Point(25, 174);
+            this.TTP_ComboBox.Name = "TTP_ComboBox";
+            this.TTP_ComboBox.Size = new System.Drawing.Size(236, 33);
+            this.TTP_ComboBox.TabIndex = 2;
+            this.TTP_ComboBox.Tag = "";
+            this.TTP_ComboBox.SelectedIndexChanged += new System.EventHandler(this.TTP_ComboBox_SelectedIndexChanged);
+            // 
+            // datDCMacDinh_check
+            // 
+            this.datDCMacDinh_check.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.datDCMacDinh_check.AutoSize = true;
+            this.datDCMacDinh_check.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datDCMacDinh_check.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.datDCMacDinh_check.Location = new System.Drawing.Point(22, 390);
+            this.datDCMacDinh_check.Name = "datDCMacDinh_check";
+            this.datDCMacDinh_check.Size = new System.Drawing.Size(216, 24);
+            this.datDCMacDinh_check.TabIndex = 6;
+            this.datDCMacDinh_check.Text = "Đặt làm địa chỉ mặc định";
+            this.datDCMacDinh_check.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label20.Location = new System.Drawing.Point(34, 323);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(97, 18);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Địa chỉ cụ thể";
+            // 
+            // diaChiCuThe_Box
+            // 
+            this.diaChiCuThe_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.diaChiCuThe_Box.Enabled = false;
+            this.diaChiCuThe_Box.Location = new System.Drawing.Point(37, 345);
+            this.diaChiCuThe_Box.Name = "diaChiCuThe_Box";
+            this.diaChiCuThe_Box.Size = new System.Drawing.Size(482, 23);
+            this.diaChiCuThe_Box.TabIndex = 5;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox11.Enabled = false;
+            this.pictureBox11.Location = new System.Drawing.Point(22, 332);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(514, 48);
+            this.pictureBox11.TabIndex = 8;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label19.Location = new System.Drawing.Point(309, 67);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(94, 18);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Số điện thoại";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label18.Location = new System.Drawing.Point(34, 68);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(71, 18);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Họ và tên";
+            // 
+            // soDienThoai_Box
+            // 
+            this.soDienThoai_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.soDienThoai_Box.Location = new System.Drawing.Point(312, 84);
+            this.soDienThoai_Box.Name = "soDienThoai_Box";
+            this.soDienThoai_Box.Size = new System.Drawing.Size(207, 23);
+            this.soDienThoai_Box.TabIndex = 1;
+            this.soDienThoai_Box.Text = "...";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox10.Location = new System.Drawing.Point(297, 75);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(239, 48);
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // hoVaTen_Box
+            // 
+            this.hoVaTen_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.hoVaTen_Box.Location = new System.Drawing.Point(37, 84);
+            this.hoVaTen_Box.Name = "hoVaTen_Box";
+            this.hoVaTen_Box.Size = new System.Drawing.Size(207, 23);
+            this.hoVaTen_Box.TabIndex = 0;
+            this.hoVaTen_Box.Text = "...";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox9.Location = new System.Drawing.Point(22, 75);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(239, 48);
+            this.pictureBox9.TabIndex = 2;
+            this.pictureBox9.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(16, 15);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(154, 32);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Địa chỉ mới";
+            // 
             // UserPanel
             // 
             this.UserPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2231,7 +2244,7 @@
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 135);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(1529, 700);
+            this.UserPanel.Size = new System.Drawing.Size(1390, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
             // 
@@ -2544,20 +2557,6 @@
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
             // 
-            // user_DangXuat_Button
-            // 
-            this.user_DangXuat_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.user_DangXuat_Button.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.user_DangXuat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user_DangXuat_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.user_DangXuat_Button.Location = new System.Drawing.Point(1157, 3);
-            this.user_DangXuat_Button.Name = "user_DangXuat_Button";
-            this.user_DangXuat_Button.Size = new System.Drawing.Size(106, 38);
-            this.user_DangXuat_Button.TabIndex = 9;
-            this.user_DangXuat_Button.Text = "Đăng xuất";
-            this.user_DangXuat_Button.UseVisualStyleBackColor = false;
-            this.user_DangXuat_Button.Click += new System.EventHandler(this.user_DangXuat_Button_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2593,11 +2592,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.accountPanel.ResumeLayout(false);
-            this.themDiaChi_Panel.ResumeLayout(false);
-            this.themDiaChi_Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.diaChiUser_Panel.ResumeLayout(false);
             this.diaChiUser_Panel.PerformLayout();
             this.profilePanel.ResumeLayout(false);
@@ -2608,6 +2602,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.doiMatKhauPanel.ResumeLayout(false);
             this.doiMatKhauPanel.PerformLayout();
+            this.themDiaChi_Panel.ResumeLayout(false);
+            this.themDiaChi_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.UserPanel.ResumeLayout(false);
             this.quenMK_Panel.ResumeLayout(false);
             this.quenMK_Panel.PerformLayout();

@@ -107,8 +107,11 @@ namespace Program
 
             string taiKhoan = reader.ReadLine();
             if (taiKhoan == null)
+            {
+                reader.Close();
                 return null;
-            if (HeThong.KiemTraTaiKhoan(taiKhoan))
+            }
+            if (KiemTraTaiKhoan(taiKhoan))
                 return null;
 
             List<string> list = new List<string>();
