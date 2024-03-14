@@ -320,7 +320,7 @@ namespace Program
         }
         public static string MoTaDiaChi(int maPX)
         {
-            string noiDung = $"select Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten from Tinh_ThanhPho inner join Quan_Huyen on Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP inner join Phuong_Xa on Phuong_Xa.maQH = Quan_Huyen.maQH where Phuong_Xa.maPX = {maPX}";
+            string noiDung = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
             SqlCommand sqlCmd = TruyVan(noiDung);
             SqlDataReader reader = sqlCmd.ExecuteReader();
 
