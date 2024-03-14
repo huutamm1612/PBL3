@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -51,7 +52,7 @@ namespace Program
             return sqlCmd;
         }
 
-        public static string MaMoi(string loaiMa) // tạo mã mới cho loại mã truyền vào, ví dụ maKH, maDC...
+        public static string MaMoi(string loaiMa)
         {
             string noiDung = $"SELECT {loaiMa} FROM maHienTai";
 
@@ -70,7 +71,7 @@ namespace Program
             return maMoi;
         }
 
-        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true) // trả về true nếu đăng nhập thành công, false nếu không
+        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
         {
             string table = userState ? "UserAccount" : "Admin"; 
             string noiDung = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
@@ -86,40 +87,7 @@ namespace Program
             return ketQua;
         }
 
-        public static void WriteAccoutCache(User user) // Lưu lại user đăng nhập hiện tại khi đăng nhập
-        {
-            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
-            writer.WriteLine(user.taiKhoan);
-            writer.WriteLine(user.matKhau);
-            writer.Close();
-        }
-
-        public static void ClearAccountCache() // xóa khi đăng xuất
-        {
-            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
-            writer.Close();
-        }
-
-        public static List<string> ReadAccountCache()
-        {
-            FileInfo sourceFile = new FileInfo(@"Cache.txt");
-            StreamReader reader = sourceFile.OpenText();
-
-            string taiKhoan = reader.ReadLine();
-            if (taiKhoan == null)
-                return null;
-            if (HeThong.KiemTraTaiKhoan(taiKhoan))
-                return null;
-
-            List<string> list = new List<string>();
-            list.Add(taiKhoan);
-            list.Add(reader.ReadLine());
-
-            reader.Close();
-            return list;
-        }
-
-        public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi) // Lưu thông tin đăng ký của user
+        public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
         {
             string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
             SqlCommand sqlCmd = TruyVan(noiDung);
@@ -135,7 +103,7 @@ namespace Program
             sqlCmd.ExecuteNonQuery();
         }
 
-        public static bool KiemTraMatKhau(TaiKhoan account, string matKhau) // trả về true nếu matKhau truyền vào đúng với matKhau của người dùng
+        public static bool KiemTraMatKhau(TaiKhoan account, string matKhau)
         {
             return account.matKhau == matKhau;
         }
@@ -352,5 +320,6 @@ namespace Program
         public static void TaoShop()
         {
         }
+
     }
 }
