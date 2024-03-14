@@ -256,7 +256,7 @@ namespace Program
         public static void CapNhatThongTinCaNhan(Nguoi nguoi, string bang = "KhachHang")
         {
             string loaiMa = bang == "KhachHang" ? "maKH" : "maS";
-            string noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date.ToString("MM/dd/yyyy")}' WHERE {loaiMa} = '{nguoi.maSo}'";
+            string noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date:MM/dd/yyyy}' WHERE {loaiMa} = '{nguoi.maSo}'";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
@@ -345,6 +345,7 @@ namespace Program
 
             return diaChi;
         }
+
         public static void CapNhatDiaChiMacDinh(KhachHang khachHang)
         {
             string noiDung = $"UPDATE KhachHang SET maDC = '{khachHang.diaChi.maDC}' WHERE maKH = '{khachHang.maSo}'";
@@ -352,11 +353,14 @@ namespace Program
             sqlCmd.ExecuteNonQuery();
         }
 
-        public static void TaoShop(Shop shop)
+        public static void DangKy(KhachHang khachHang, string tenShop, DiaChi diachiShop) // khách hàng tạo shop
         {
-            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC) VALUES('{shop.maSo}', '{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}')";
+            string maS = MaMoi("maS");
+            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES ('{maS}', '{tenShop}', '{khachHang.soDT}', '{khachHang.email}', '{diachiShop.maDC}', {DateTime.Now:MM/dd/yyyy})";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
 
-
+            ThemDiaChi(new Shop(maS), diachiShop);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Program
             this.tinhTrang = tinhTrang;
         }
 
+        public Shop(string maSo) : base(maSo){ }
+
         public override void nhap(string ten, string email, string soDT, int _, DateTime ngaySinh)
         {
             this.ten = ten;

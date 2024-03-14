@@ -79,6 +79,11 @@ namespace Program
             this.diaChis.RemoveAt(index);
         }
 
+        public void xoaDiaChi(DiaChi diaChi) // xóa địa chỉ không mặc định
+        {
+            this.diaChis.Remove(diaChi);
+        }
+
         public void setDiaChis(List<DiaChi> list)
         {
             this.diaChis = list;
