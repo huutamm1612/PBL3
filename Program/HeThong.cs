@@ -72,7 +72,7 @@ namespace Program
 
         public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true) // trả về true nếu đăng nhập thành công, false nếu không
         {
-            string table = userState ? "UserAccount" : "Admin";
+            string table = userState ? "UserAccount" : "Admin"; 
             string noiDung = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
 
             SqlCommand sqlCmd = TruyVan(noiDung);
