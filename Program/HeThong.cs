@@ -157,10 +157,17 @@ namespace Program
             return result;
         }
 
-        public static bool KiemTraTaoShop(string taiKhoan) // trả về false nếu khách hàng
+        public static bool KiemTraTaoShop(string taiKhoan) // trả về true nếu khách hàng đã tạo shop
         {
+            string noiDung = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
 
-            return false;
+            bool result = false;
+            if (reader.Read())
+                result = true;
+            reader.Close();
+            return result;
         }
 
         public static void CapNhatMatKhau(TaiKhoan account, bool userState = true)
@@ -318,6 +325,7 @@ namespace Program
 
             return list;
         }
+        
         public static string MoTaDiaChi(int maPX)
         {
             string noiDung = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
@@ -376,11 +384,19 @@ namespace Program
         public static void DangKy(KhachHang khachHang, string tenShop, DiaChi diachiShop) // khách hàng tạo shop
         {
             string maS = MaMoi("maS");
+
+            // insert thông tin của shop mới tạo vào table Shop
             string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES ('{maS}', '{tenShop}', '{khachHang.soDT}', '{khachHang.email}', '{diachiShop.maDC}', {DateTime.Now:MM/dd/yyyy})";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
 
+            // Thêm địa chỉ của shop vào table DiaChi
             ThemDiaChi(new Shop(maS), diachiShop);
+
+            // insert liên kết giữa khách hàng và shop vào table KhachHang_Shop
+            noiDung = $"INSERT INTO KhachHang_Shop VALUES('{khachHang.maSo}, '{maS}')";
+            sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
         }
     }
 }
