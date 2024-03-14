@@ -196,6 +196,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
+            this.user_DangXuat_Button = new System.Windows.Forms.Button();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -754,10 +755,12 @@
             this.HeaderPannel.Controls.Add(this.textBox1);
             this.HeaderPannel.Controls.Add(this.pictureBox1);
             this.HeaderPannel.Controls.Add(this.home_Button);
+            this.HeaderPannel.Controls.Add(this.user_DangXuat_Button);
             this.HeaderPannel.Location = new System.Drawing.Point(12, 0);
             this.HeaderPannel.Name = "HeaderPannel";
             this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
             this.HeaderPannel.TabIndex = 3;
+        
             // 
             // SignUp_Button
             // 
@@ -887,7 +890,7 @@
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(8, 210);
+            this.groupBox1.Size = new System.Drawing.Size(0, 210);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DANH MỤC";
@@ -1212,7 +1215,6 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
@@ -1221,6 +1223,7 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
@@ -2541,6 +2544,20 @@
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
             // 
+            // user_DangXuat_Button
+            // 
+            this.user_DangXuat_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.user_DangXuat_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.user_DangXuat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user_DangXuat_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.user_DangXuat_Button.Location = new System.Drawing.Point(1157, 3);
+            this.user_DangXuat_Button.Name = "user_DangXuat_Button";
+            this.user_DangXuat_Button.Size = new System.Drawing.Size(106, 38);
+            this.user_DangXuat_Button.TabIndex = 9;
+            this.user_DangXuat_Button.Text = "Đăng xuất";
+            this.user_DangXuat_Button.UseVisualStyleBackColor = false;
+            this.user_DangXuat_Button.Click += new System.EventHandler(this.user_DangXuat_Button_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2548,11 +2565,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1392, 819);
+            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.KhachHang_Panel);
             this.Controls.Add(this.Shop_Panel);
             this.Controls.Add(this.quenMK_Panel);
             this.Controls.Add(this.Signup_Panel);
-            this.Controls.Add(this.LoginPanel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -2769,6 +2786,7 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button user_DangXuat_Button;
     }
 }
 
