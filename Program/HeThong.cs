@@ -352,7 +352,7 @@ namespace Program
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
-
+      
         public static DiaChi LoadDiaChi(string maDC)
         {
             string noiDung = $"SELECT * FROM DiaChi WHERE maDC = '{maDC}'";
