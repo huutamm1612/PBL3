@@ -554,6 +554,7 @@ namespace Program
 
         private void HTThemDiaChi_Button_Click(object sender, EventArgs e)
         {
+            if (PX_ComboBox.SelectedIndex == -1) return;
             string maDC = HeThong.MaMoi("maDC");
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -672,7 +673,7 @@ namespace Program
             btn2.Size = new Size(239, 40);
             btn2.Location = new System.Drawing.Point(660, 70);
             btn2.BackColor = Color.Snow;
-         
+            btn2.Click += MacDinh_Button;
 
             Button btn3 = new Button();
             btn3.Text = "Xóa";
@@ -695,22 +696,49 @@ namespace Program
 
         }
 
-        private void xoa_Button(object sender, EventArgs e)
-        {
-            foreach (DiaChi diaChi in khachHang.diaChis)
-                khachHang.diaChis.Remove(diaChi);
-        
-        }
-
-
-        private void CapNhat_Button(object sender, EventArgs e) 
+        private void MacDinh_Button(object sender, EventArgs e)
         {
             
+        }
+
+        private void xoa_Button(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToRemove = clickedButton.Parent as Panel;
+            int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
+ 
+            if (panelIndex != -1)
+            {
+          
+                if (panelIndex < listDiaChi_FLPanel.Controls.Count)
+                {
+            
+                    listDiaChi_FLPanel.Controls.RemoveAt(panelIndex);
+                
+                    HeThong.XoaDiaChi(khachHang.diaChis[panelIndex]);
+                }
+            }
+        }
+
+        private void CapNhat_Button(object sender, EventArgs e)
+        {
             themDiaChi_Button_Click(sender, e);
             txtDiaChi.Text = "Cập nhật địa chỉ";
-            HTThemDiaChi_Button.Enabled = true;
-            HeThong.CapNhatDiaChi(khachHang.diaChi); 
+
+            if (TTP_ComboBox.SelectedIndex != -1 && QH_ComboBox.SelectedIndex != -1 && PX_ComboBox.SelectedIndex != -1)
+            {
+                
+                HTThemDiaChi_Button_Click(sender, e);
+                HeThong.CapNhatDiaChi(khachHang.diaChis[0]);
+                
+                if (khachHang.diaChis.Count > 0)
+                {
+                    int lastIndex = khachHang.diaChis.Count - 1;
+                    HeThong.XoaDiaChi(khachHang.diaChis[lastIndex]);
+                }
+            }
         }
+
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
         {
