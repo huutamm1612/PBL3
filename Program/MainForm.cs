@@ -755,7 +755,7 @@ namespace Program
             {
                 listDiaChi_FLPanel.Controls.RemoveAt(panelIndex);
                 HeThong.XoaDiaChi(khachHang.diaChis[panelIndex - 1]);
-                khachHang.xoaDiaChi(panelIndex);
+                khachHang.xoaDiaChi(panelIndex - 1);
             }
             veLai_DiaChi();
         }
