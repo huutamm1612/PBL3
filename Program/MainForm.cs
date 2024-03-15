@@ -709,7 +709,8 @@ namespace Program
             
             themDiaChi_Button_Click(sender, e);
             txtDiaChi.Text = "Cập nhật địa chỉ";
-            HeThong.CapNhatDiaChi(khachHang.diaChi);
+            HTThemDiaChi_Button.Enabled = true;
+            HeThong.CapNhatDiaChi(khachHang.diaChi); 
         }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
