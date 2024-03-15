@@ -703,7 +703,6 @@ namespace Program
         }
 
 
-
         private void CapNhat_Button(object sender, EventArgs e) 
         {
             

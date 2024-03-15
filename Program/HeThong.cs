@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-
 namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source= DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -157,10 +156,17 @@ namespace Program
             return result;
         }
 
-        public static bool KiemTraTaoShop(string taiKhoan) // trả về false nếu khách hàng
+        public static bool KiemTraTaoShop(string taiKhoan) // trả về true nếu khách hàng đã tạo shop
         {
+            string noiDung = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
 
-            return false;
+            bool result = false;
+            if (reader.Read())
+                result = true;
+            reader.Close();
+            return result;
         }
 
         public static void CapNhatMatKhau(TaiKhoan account, bool userState = true)
@@ -262,7 +268,17 @@ namespace Program
         public static void CapNhatThongTinCaNhan(Nguoi nguoi, string bang = "KhachHang")
         {
             string loaiMa = bang == "KhachHang" ? "maKH" : "maS";
-            string noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date:MM/dd/yyyy}' WHERE {loaiMa} = '{nguoi.maSo}'";
+            string noiDung;
+
+            if (bang == "KhachHang")
+            {
+                noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date:MM/dd/yyyy}' WHERE {loaiMa} = '{nguoi.maSo}'";
+            }
+            else
+            {
+                noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}' WHERE {loaiMa} = '{nguoi.maSo}'";
+            }
+            
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
@@ -318,9 +334,10 @@ namespace Program
 
             return list;
         }
+        
         public static string MoTaDiaChi(int maPX)
         {
-            string noiDung = $"select Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten from Tinh_ThanhPho inner join Quan_Huyen on Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP inner join Phuong_Xa on Phuong_Xa.maQH = Quan_Huyen.maQH where Phuong_Xa.maPX = {maPX}";
+            string noiDung = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
             SqlCommand sqlCmd = TruyVan(noiDung);
             SqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -348,7 +365,7 @@ namespace Program
 
         public static void CapNhatDiaChi(DiaChi diaChi)
         {
-            string noiDung = $"UPDATE DiaChi SET ten = '{diaChi.ten}', soDT = '{diaChi.soDT}', maT_TP = {diaChi.maT_TP}, maQH = {diaChi.maQH}, maPX = {diaChi.maPX}, diaChiCuThe = '{diaChi.diaChiCuThe}' WHERE maDC = '{diaChi.maDC}'";
+            string noiDung = $"UPDATE DiaChi SET ten = N'{diaChi.ten}', soDT = '{diaChi.soDT}', maT_TP = {diaChi.maT_TP}, maQH = {diaChi.maQH}, maPX = {diaChi.maPX}, diaChiCuThe = N'{diaChi.diaChiCuThe}' WHERE maDC = '{diaChi.maDC}'";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }
@@ -376,11 +393,42 @@ namespace Program
         public static void DangKy(KhachHang khachHang, string tenShop, DiaChi diachiShop) // khách hàng tạo shop
         {
             string maS = MaMoi("maS");
-            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES ('{maS}', '{tenShop}', '{khachHang.soDT}', '{khachHang.email}', '{diachiShop.maDC}', {DateTime.Now:MM/dd/yyyy})";
+
+            // insert thông tin của shop mới tạo vào table Shop
+            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES ('{maS}', N'{tenShop}', '{khachHang.soDT}', '{khachHang.email}', '{diachiShop.maDC}', {DateTime.Now:MM/dd/yyyy})";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
 
+            // Thêm địa chỉ của shop vào table DiaChi
             ThemDiaChi(new Shop(maS), diachiShop);
+
+            // insert liên kết giữa khách hàng và shop vào table KhachHang_Shop
+            noiDung = $"INSERT INTO KhachHang_Shop VALUES('{khachHang.maSo}, '{maS}')";
+            sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static Shop LoadShop(KhachHang khachHang)
+        {
+            string noiDung = $"SELECT Shop.* FROM Shop INNER JOIN KhachHang_Shop on KhachHang_Shop.maS = Shop.maS INNER JOIN KhachHang on KhachHang_Shop.maKH = KhachHang.maKH WHERE KhachHang.maKH = '{khachHang.maSo}'";
+
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+            reader.Read();
+
+            Shop shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
+
+            reader.Close();
+            shop.capNhatDiaChi(LoadDiaChi(shop.maSo));
+
+            return shop;
+        }
+
+        public static void CapNhatTinhTrangShop(Shop shop)
+        {
+            string noiDung = $"UPDATE Shop SET tinhTrang = {shop.tinhTrang} WHERE maS = '{shop.maSo}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
         }
     }
 }
