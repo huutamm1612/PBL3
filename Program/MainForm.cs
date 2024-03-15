@@ -74,6 +74,18 @@ namespace Program
             datDCMacDinh_check.Checked = false;
         }
 
+        private void refreshCapNhatDiaChi_Panel(DiaChi diaChi)
+        {
+            hoVaTen_Box.Text = diaChi.ten;
+            soDienThoai_Box.Text = diaChi.soDT;
+            TTP_ComboBox.SelectedIndex = diaChi.maT_TP;
+            QH_ComboBox.SelectedIndex = diaChi.maQH % 100;
+            PX_ComboBox.SelectedIndex = diaChi.maPX % 100;
+            diaChiCuThe_Box.Text = diaChi.diaChiCuThe;
+            HTThemDiaChi_Button.Visible = false;
+            HTCapNhatDC_Button.Visible = true;
+        }
+
         private void hienMatKhau(CheckBox hienMK, TextBox box)
         {
             if (hienMK.Checked)
@@ -85,6 +97,7 @@ namespace Program
                 box.UseSystemPasswordChar = true;
             }
         }
+
 
         private void hienMKCheck_CheckedChanged(object sender, EventArgs e)
         {
@@ -542,19 +555,23 @@ namespace Program
 
         private void PX_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (PX_ComboBox.SelectedIndex != 0)
+            if (PX_ComboBox.SelectedIndex == 0 || PX_ComboBox.Enabled == false)
             {
-                diaChiCuThe_Box.Enabled = true;
+                diaChiCuThe_Box.Text = "";
+                diaChiCuThe_Box.Enabled = false;
+                HTCapNhatDC_Button.Enabled = false;
+                HTThemDiaChi_Button.Enabled = false;
             }
             else
             {
-                diaChiCuThe_Box.Enabled = false;
+                diaChiCuThe_Box.Enabled = true;
+                HTThemDiaChi_Button.Enabled = true;
+                HTCapNhatDC_Button.Enabled = true;
             }
         }
 
         private void HTThemDiaChi_Button_Click(object sender, EventArgs e)
         {
-            if (PX_ComboBox.SelectedIndex == -1) return;
             string maDC = HeThong.MaMoi("maDC");
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -616,32 +633,41 @@ namespace Program
 
         private void veDiaChiMacDinh()
         {
-            TextBox txt = new TextBox();
-            txt.Multiline = true;
-            txt.Text = khachHang.diaChi.ToString();
-            txt.Size = new Size(606, 60);
-            txt.Location = new System.Drawing.Point(11, 27);
-            txt.BorderStyle = BorderStyle.None;
-            txt.BackColor = Color.Snow;
+            TextBox txt = new TextBox
+            {
+                Multiline = true,
+                Text = khachHang.diaChi.ToString(),
+                Size = new Size(606, 60),
+                Location = new System.Drawing.Point(11, 27),
+                BorderStyle = BorderStyle.None,
+                BackColor = Color.Snow
+            };
 
-            Button btn1 = new Button();
-            btn1.Text = "Cập nhật";
-            btn1.Size = new Size(120, 28);
-            btn1.Location = new System.Drawing.Point(779, 10);
-            btn1.BackColor = Color.Snow;
+            Button btn1 = new Button
+            {
+                Text = "Cập nhật",
+                Size = new Size(120, 28),
+                Location = new System.Drawing.Point(779, 10),
+                BackColor = Color.Snow
+            };
+            btn1.Click += CapNhat_Button;
 
-            Label lb = new Label();
-            lb.Text = "Mặc Định";
-            lb.Size = new Size(100, 25);
-            lb.BorderStyle = BorderStyle.FixedSingle;
-            lb.Location = new System.Drawing.Point(11, 95);
-            lb.TextAlign = ContentAlignment.MiddleCenter;
-            lb.ForeColor = Color.Red;
+            Label lb = new Label
+            {
+                Text = "Mặc Định",
+                Size = new Size(100, 25),
+                BorderStyle = BorderStyle.FixedSingle,
+                Location = new System.Drawing.Point(11, 95),
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.Red
+            };
 
-            Panel panel = new Panel();
-            panel.Size = new Size(918, 130);
-            panel.BackColor = Color.Snow;
-            panel.BorderStyle = BorderStyle.FixedSingle;
+            Panel panel = new Panel
+            {
+                Size = new Size(918, 130),
+                BackColor = Color.Snow,
+                BorderStyle = BorderStyle.FixedSingle
+            };
 
             panel.Controls.Add(txt);
             panel.Controls.Add(btn1);
@@ -652,40 +678,50 @@ namespace Program
        
         private void veDiaChi(DiaChi diaChi)
         {
-            TextBox txt = new TextBox();
-            txt.Multiline = true;
-            txt.Text = diaChi.ToString();
-            txt.Size = new Size(606, 83);
-            txt.Location = new System.Drawing.Point(11, 27);
-            txt.BorderStyle = BorderStyle.None;
-            txt.BackColor = Color.Snow;
-            
-            Button btn1 = new Button();
-            btn1.Text = "Cập nhật";
-            btn1.Size = new Size(120, 28);
-            btn1.Location = new System.Drawing.Point(779, 35);
-            btn1.BackColor = Color.Snow;
-            btn1.Click += CapNhat_Button;
-        
+            TextBox txt = new TextBox
+            {
+                Multiline = true,
+                Text = diaChi.ToString(),
+                Size = new Size(606, 83),
+                Location = new System.Drawing.Point(11, 27),
+                BorderStyle = BorderStyle.None,
+                BackColor = Color.Snow
+            };
 
-            Button btn2 = new Button();
-            btn2.Text = "Thiết lập mặc định";
-            btn2.Size = new Size(239, 40);
-            btn2.Location = new System.Drawing.Point(660, 70);
-            btn2.BackColor = Color.Snow;
+            Button btn1 = new Button
+            {
+                Text = "Cập nhật",
+                Size = new Size(120, 28),
+                Location = new System.Drawing.Point(779, 35),
+                BackColor = Color.Snow
+            };
+            btn1.Click += CapNhat_Button;
+
+
+            Button btn2 = new Button
+            {
+                Text = "Thiết lập mặc định",
+                Size = new Size(239, 40),
+                Location = new System.Drawing.Point(660, 70),
+                BackColor = Color.Snow
+            };
             btn2.Click += MacDinh_Button;
 
-            Button btn3 = new Button();
-            btn3.Text = "Xóa";
-            btn3.Size = new Size(120, 28);
-            btn3.Location = new System.Drawing.Point(660, 35);
-            btn3.BackColor = Color.Snow;
+            Button btn3 = new Button
+            {
+                Text = "Xóa",
+                Size = new Size(120, 28),
+                Location = new System.Drawing.Point(660, 35),
+                BackColor = Color.Snow
+            };
             btn3.Click += xoa_Button;
 
-            Panel panel = new Panel();
-            panel.Size = new Size(918, 130);
-            panel.BackColor = Color.Snow;
-            panel.BorderStyle = BorderStyle.FixedSingle;
+            Panel panel = new Panel
+            {
+                Size = new Size(918, 130),
+                BackColor = Color.Snow,
+                BorderStyle = BorderStyle.FixedSingle
+            };
 
             panel.Controls.Add(txt);
             panel.Controls.Add(btn1);
@@ -698,7 +734,15 @@ namespace Program
 
         private void MacDinh_Button(object sender, EventArgs e)
         {
-            
+            Button clickedButton = sender as Button;
+            Panel panelToRemove = clickedButton.Parent as Panel;
+            int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
+
+            khachHang.thayDoiDiaChiMacDinh(khachHang.diaChis[panelIndex - 1]);
+            HeThong.CapNhatDiaChiMacDinh(khachHang);
+
+
+            veLai_DiaChi();
         }
 
         private void xoa_Button(object sender, EventArgs e)
@@ -706,18 +750,14 @@ namespace Program
             Button clickedButton = sender as Button;
             Panel panelToRemove = clickedButton.Parent as Panel;
             int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
- 
-            if (panelIndex != -1)
+
+            if (panelIndex != -1 && panelIndex < listDiaChi_FLPanel.Controls.Count)
             {
-          
-                if (panelIndex < listDiaChi_FLPanel.Controls.Count)
-                {
-            
-                    listDiaChi_FLPanel.Controls.RemoveAt(panelIndex);
-                
-                    HeThong.XoaDiaChi(khachHang.diaChis[panelIndex]);
-                }
+                listDiaChi_FLPanel.Controls.RemoveAt(panelIndex);
+                HeThong.XoaDiaChi(khachHang.diaChis[panelIndex - 1]);
+                khachHang.xoaDiaChi(panelIndex);
             }
+            veLai_DiaChi();
         }
 
         private void CapNhat_Button(object sender, EventArgs e)
@@ -725,20 +765,44 @@ namespace Program
             themDiaChi_Button_Click(sender, e);
             txtDiaChi.Text = "Cập nhật địa chỉ";
 
-            if (TTP_ComboBox.SelectedIndex != -1 && QH_ComboBox.SelectedIndex != -1 && PX_ComboBox.SelectedIndex != -1)
-            {
-                
-                HTThemDiaChi_Button_Click(sender, e);
-                HeThong.CapNhatDiaChi(khachHang.diaChis[0]);
-                
-                if (khachHang.diaChis.Count > 0)
-                {
-                    int lastIndex = khachHang.diaChis.Count - 1;
-                    HeThong.XoaDiaChi(khachHang.diaChis[lastIndex]);
-                }
-            }
+            Button clickedButton = sender as Button;
+            Panel panelToRemove = clickedButton.Parent as Panel;
+            int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
+
+            indexOfDiaChi.Text = panelIndex.ToString();
+            datDCMacDinh_check.Visible = false;
+
+            if (panelIndex == 0)
+                refreshCapNhatDiaChi_Panel(khachHang.diaChi);
+            else
+                refreshCapNhatDiaChi_Panel(khachHang.diaChis[panelIndex - 1]);
         }
 
+        private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
+        {
+            int index = int.Parse(indexOfDiaChi.Text);
+            int maT_TP = TTP_ComboBox.SelectedIndex;
+            int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
+            int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
+            DiaChi diaChi;
+
+            if (index == 0)
+            {
+                diaChi = khachHang.diaChi;
+                diaChi.capNhat(hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
+                khachHang.capNhatDiaChi(diaChi);
+            }
+            else
+            {
+                diaChi = khachHang.diaChis[index - 1];
+                diaChi.capNhat(hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
+                khachHang.capNhatDiaChi(index - 1, diaChi);
+            }
+            HeThong.CapNhatDiaChi(diaChi);
+            refreshThemDiaChi_Panel();
+            themDiaChi_Panel.Visible = false;
+            veLai_DiaChi();
+        }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
         {
@@ -748,7 +812,6 @@ namespace Program
             userProfile_Button.Visible = false;
             HeThong.ClearAccountCache();
         }
-
 
     }
 }
