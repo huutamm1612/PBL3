@@ -64,7 +64,7 @@ CREATE TABLE KhachHang (
 	nFollow int DEFAULT 0,
 	xu int DEFAULT 0,
 	chiTieu int DEFAULT 0,
-	avt varchar(255)
+	avt varchar(255) null,
 	
 	CONSTRAINT FK_KhachHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC),
 	CONSTRAINT FK_KhachHang_UserAccount FOREIGN KEY (taiKhoan) REFERENCES UserAccount(taiKhoan)
@@ -81,21 +81,21 @@ CREATE TABLE Shop (
 	tinhTrang int default 1,
 	doanhThu int default 0,
 	sao float(1) default 0.0,
-	avt varchar(255)
+	avt varchar(255) null,
 
 	CONSTRAINT FK_Shop_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
 )
-
-ALTER TABLE DiaChi
-DROP CONSTRAINT FK_DiaChi_Shop
 
 CREATE TABLE MaHienTai(
 	maKH varchar(10),
 	maS varchar(10),
 	maDC varchar(10),
+	maLoaiSP varchar(10),
+	maSP varchar(10),
+	maBD varchar(10)
 )
 
-INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000')
+INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000', '0000000000','0000000000','0000000000')
 
 CREATE TABLE KhachHang_Shop (
 	maKH varchar(10),
@@ -125,7 +125,8 @@ CREATE TABLE SanPham(
 	nhaXuatBan nvarchar(50),
 	loaiBia nvarchar(5),
 	moTa nvarchar(500),
-	anh varchar(255)
+	luocBan int DEFAULT 0,
+	anh varchar(255) null,
 
 	CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (maLoaiSP) REFERENCES LoaiSanPham(maLoaiSP)
 )
@@ -134,7 +135,25 @@ CREATE TABLE BaiDang(
 	maBD varchar(10) PRIMARY KEY,
 	tieuDe nvarchar(100),
 	moTa nvarchar(500),
-	luocBan int DEFAULT 0,
 	luocThich int DEFAULT 0,
 	giamGia int DEFAULT 0,
+	anh varchar(255) null
+)
+
+CREATE TABLE SanPham_BaiDang(
+	maSP varchar(10),
+	maBD varchar(10),
+	PRIMARY KEY (maSP, maBD),
+
+	CONSTRAINT FK_SanPham_BaiDang_SanPham FOREIGN KEY (maSP) REFERENCES SanPham(maSP),
+	CONSTRAINT FK_SanPham_BaiDang_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD)
+)
+
+CREATE TABLE BaiDang_Shop(
+	maBD varchar(10),
+	maS varchar(10),
+	PRIMARY KEY (maBD, maS),
+
+	CONSTRAINT FK_BaiDang_Shop_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
+	CONSTRAINT FK_BaiDang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
 )
