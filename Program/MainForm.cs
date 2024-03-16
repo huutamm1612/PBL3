@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -18,7 +19,7 @@ namespace Program
         private User user = null;
         private KhachHang khachHang = null;
         public MainForm()
-        { 
+        {
             InitializeComponent();
             tuDongDangNhap();
         }
@@ -76,6 +77,7 @@ namespace Program
 
         private void refreshCapNhatDiaChi_Panel(DiaChi diaChi)
         {
+           
             hoVaTen_Box.Text = diaChi.ten;
             soDienThoai_Box.Text = diaChi.soDT;
             TTP_ComboBox.SelectedIndex = diaChi.maT_TP;
@@ -103,7 +105,7 @@ namespace Program
         {
             this.hienMatKhau(hienMK_DN_Check, matKhau_DN_Box);
         }
-
+            
         private void setCauHoi(ComboBox comboBox)
         {
             List<string> listCauHoi = HeThong.LoadCauHoi();
@@ -112,7 +114,6 @@ namespace Program
 
         private void dangKyBox_Click(object sender, EventArgs e)
         {
-            
             this.refreshDangKy_Panel();
             LoginPanel.Visible = false;
             Signup_Panel.Visible = true;
@@ -127,7 +128,7 @@ namespace Program
 
         private void troVe_DK_Button_Click(object sender, EventArgs e)
         {
-            
+
             Signup_Panel.Visible = false;
             KhachHang_Panel.Visible = true;
         }
@@ -512,9 +513,9 @@ namespace Program
             profilePanel.Visible = false;
             doiMatKhauPanel.Visible = false;
             diaChiUser_Panel.Visible = true;
-    
+
             veLai_DiaChi();
-            
+
 
         }
 
@@ -572,6 +573,16 @@ namespace Program
 
         private void HTThemDiaChi_Button_Click(object sender, EventArgs e)
         {
+            int tmp = 0;
+            foreach (char c in soDienThoai_Box.Text)
+            {
+                if (char.IsLetter(c))
+                    tmp += 1;
+            }
+            if (tmp > 0)
+            {
+                MessageBox.Show("Bạn đã nhập sai số điện thoại, vui lòng nhập lại.");
+            }
             string maDC = HeThong.MaMoi("maDC");
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -623,12 +634,12 @@ namespace Program
             if (khachHang.diaChi == null) return;
             listDiaChi_FLPanel.Controls.Clear();
             veDiaChiMacDinh();
-            
+
             foreach (DiaChi diachi in khachHang.diaChis)
             {
                 veDiaChi(diachi);
             }
-            
+
         }
 
         private void veDiaChiMacDinh()
@@ -658,7 +669,7 @@ namespace Program
                 Size = new Size(100, 25),
                 BorderStyle = BorderStyle.FixedSingle,
                 Location = new System.Drawing.Point(11, 95),
-                TextAlign = ContentAlignment.MiddleCenter,
+                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
                 ForeColor = Color.Red
             };
 
@@ -675,7 +686,7 @@ namespace Program
             listDiaChi_FLPanel.Controls.Add(panel);
 
         }
-       
+
         private void veDiaChi(DiaChi diaChi)
         {
             TextBox txt = new TextBox
@@ -727,7 +738,7 @@ namespace Program
             panel.Controls.Add(btn1);
             panel.Controls.Add(btn2);
             panel.Controls.Add(btn3);
-            
+
             listDiaChi_FLPanel.Controls.Add(panel);
 
         }
@@ -780,6 +791,17 @@ namespace Program
 
         private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
         {
+            int tmp = 0;
+            foreach (char c in soDienThoai_Box.Text)
+            {
+                if (char.IsLetter(c))
+                    tmp += 1;
+            }
+            if (tmp > 0)
+            {
+                MessageBox.Show("Bạn đã nhập sai số điện thoại, vui lòng nhập lại.");
+                return;
+            }
             int index = int.Parse(indexOfDiaChi.Text);
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -813,5 +835,9 @@ namespace Program
             HeThong.ClearAccountCache();
         }
 
+        private void soDienThoai_Box_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

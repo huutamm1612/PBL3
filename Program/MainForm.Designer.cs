@@ -112,6 +112,8 @@
             this.userProfile_Botton = new System.Windows.Forms.Button();
             this.myAccount_Button = new System.Windows.Forms.Button();
             this.themDiaChi_Panel = new System.Windows.Forms.Panel();
+            this.indexOfDiaChi = new System.Windows.Forms.Label();
+            this.HTCapNhatDC_Button = new System.Windows.Forms.Button();
             this.HTThemDiaChi_Button = new System.Windows.Forms.Button();
             this.backDiaChi_Button = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
@@ -197,8 +199,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
-            this.HTCapNhatDC_Button = new System.Windows.Forms.Button();
-            this.indexOfDiaChi = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -1335,6 +1335,27 @@
             this.themDiaChi_Panel.TabIndex = 0;
             this.themDiaChi_Panel.Visible = false;
             // 
+            // indexOfDiaChi
+            // 
+            this.indexOfDiaChi.AutoSize = true;
+            this.indexOfDiaChi.Location = new System.Drawing.Point(536, 6);
+            this.indexOfDiaChi.Name = "indexOfDiaChi";
+            this.indexOfDiaChi.Size = new System.Drawing.Size(0, 25);
+            this.indexOfDiaChi.TabIndex = 18;
+            this.indexOfDiaChi.Visible = false;
+            // 
+            // HTCapNhatDC_Button
+            // 
+            this.HTCapNhatDC_Button.BackColor = System.Drawing.Color.Gainsboro;
+            this.HTCapNhatDC_Button.Location = new System.Drawing.Point(389, 437);
+            this.HTCapNhatDC_Button.Name = "HTCapNhatDC_Button";
+            this.HTCapNhatDC_Button.Size = new System.Drawing.Size(147, 41);
+            this.HTCapNhatDC_Button.TabIndex = 17;
+            this.HTCapNhatDC_Button.Text = "Hoàn thành";
+            this.HTCapNhatDC_Button.UseVisualStyleBackColor = false;
+            this.HTCapNhatDC_Button.Visible = false;
+            this.HTCapNhatDC_Button.Click += new System.EventHandler(this.HTCapNhatDC_Button_Click);
+            // 
             // HTThemDiaChi_Button
             // 
             this.HTThemDiaChi_Button.BackColor = System.Drawing.Color.Gainsboro;
@@ -1504,6 +1525,7 @@
             this.soDienThoai_Box.Size = new System.Drawing.Size(207, 23);
             this.soDienThoai_Box.TabIndex = 1;
             this.soDienThoai_Box.Text = "...";
+            this.soDienThoai_Box.TextChanged += new System.EventHandler(this.soDienThoai_Box_TextChanged);
             // 
             // pictureBox10
             // 
@@ -2561,27 +2583,6 @@
             this.Shop_Panel.Size = new System.Drawing.Size(1384, 813);
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
-            // 
-            // HTCapNhatDC_Button
-            // 
-            this.HTCapNhatDC_Button.BackColor = System.Drawing.Color.Gainsboro;
-            this.HTCapNhatDC_Button.Location = new System.Drawing.Point(389, 435);
-            this.HTCapNhatDC_Button.Name = "HTCapNhatDC_Button";
-            this.HTCapNhatDC_Button.Size = new System.Drawing.Size(147, 41);
-            this.HTCapNhatDC_Button.TabIndex = 17;
-            this.HTCapNhatDC_Button.Text = "Hoàn thành";
-            this.HTCapNhatDC_Button.UseVisualStyleBackColor = false;
-            this.HTCapNhatDC_Button.Visible = false;
-            this.HTCapNhatDC_Button.Click += new System.EventHandler(this.HTCapNhatDC_Button_Click);
-            // 
-            // indexOfDiaChi
-            // 
-            this.indexOfDiaChi.AutoSize = true;
-            this.indexOfDiaChi.Location = new System.Drawing.Point(536, 6);
-            this.indexOfDiaChi.Name = "indexOfDiaChi";
-            this.indexOfDiaChi.Size = new System.Drawing.Size(0, 25);
-            this.indexOfDiaChi.TabIndex = 18;
-            this.indexOfDiaChi.Visible = false;
             // 
             // MainForm
             // 
