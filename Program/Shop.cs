@@ -28,6 +28,13 @@ namespace Program
 
         public Shop(string maSo) : base(maSo){ }
 
+        public Shop(Shop shop) : base(shop)
+        {
+            this.nFollower = shop.nFollower;
+            this.tinhTrang = shop.tinhTrang;
+            this.doanhThu = shop.doanhThu;
+        }
+
         public override void nhap(string ten, string email, string soDT, int _, DateTime ngaySinh)
         {
             this.ten = ten;

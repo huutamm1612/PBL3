@@ -1,4 +1,4 @@
-CREATE DATABASE PBL3_Database
+	CREATE DATABASE PBL3_Database
 USE PBL3_Database
 
 CREATE TABLE Tinh_ThanhPho (
@@ -64,7 +64,7 @@ CREATE TABLE KhachHang (
 	nFollow int DEFAULT 0,
 	xu int DEFAULT 0,
 	chiTieu int DEFAULT 0,
-	avt varchar(255) null,
+	avt varchar(255),
 	
 	CONSTRAINT FK_KhachHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC),
 	CONSTRAINT FK_KhachHang_UserAccount FOREIGN KEY (taiKhoan) REFERENCES UserAccount(taiKhoan)
@@ -81,7 +81,7 @@ CREATE TABLE Shop (
 	tinhTrang int default 1,
 	doanhThu int default 0,
 	sao float(1) default 0.0,
-	avt varchar(255) null,
+	avt varchar(255),
 
 	CONSTRAINT FK_Shop_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
 )
@@ -118,7 +118,7 @@ CREATE TABLE SanPham(
 	gia int,
 	soLuong int,
 	tacGia nvarchar(50),
-	dichGia nvarchar(50) null,
+	dichGia nvarchar(50),
 	ngonNgu nvarchar(20),
 	soTrang int,
 	namXuaBan int,
@@ -126,7 +126,7 @@ CREATE TABLE SanPham(
 	loaiBia nvarchar(5),
 	moTa nvarchar(500),
 	luocBan int DEFAULT 0,
-	anh varchar(255) null,
+	anh varchar(255) NULL,
 
 	CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (maLoaiSP) REFERENCES LoaiSanPham(maLoaiSP)
 )

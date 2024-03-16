@@ -221,6 +221,23 @@ namespace Program
             }
         }
 
+        private bool kiemTraSoDT(string soDT)
+        {
+            if (soDT.Length != 10 || soDT[0] != '0')
+            {
+                return false;
+            }
+
+            foreach(char i in soDT)
+            {
+                if (!char.IsDigit(i))
+                {
+                    return false;
+                }
+            }
+            return true;
+            
+        }
         private void matKhau1_DK_Box_TextChanged(object sender, EventArgs e)
         {
             if (matKhau1_DK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
@@ -573,16 +590,6 @@ namespace Program
 
         private void HTThemDiaChi_Button_Click(object sender, EventArgs e)
         {
-            int tmp = 0;
-            foreach (char c in soDienThoai_Box.Text)
-            {
-                if (char.IsLetter(c))
-                    tmp += 1;
-            }
-            if (tmp > 0)
-            {
-                MessageBox.Show("Bạn đã nhập sai số điện thoại, vui lòng nhập lại.");
-            }
             string maDC = HeThong.MaMoi("maDC");
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -791,17 +798,6 @@ namespace Program
 
         private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
         {
-            int tmp = 0;
-            foreach (char c in soDienThoai_Box.Text)
-            {
-                if (char.IsLetter(c))
-                    tmp += 1;
-            }
-            if (tmp > 0)
-            {
-                MessageBox.Show("Bạn đã nhập sai số điện thoại, vui lòng nhập lại.");
-                return;
-            }
             int index = int.Parse(indexOfDiaChi.Text);
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
@@ -837,7 +833,44 @@ namespace Program
 
         private void soDienThoai_Box_TextChanged(object sender, EventArgs e)
         {
+            if (soDienThoai_Box.Text == "...")
+                return;
 
+            if (!kiemTraSoDT(soDienThoai_Box.Text))
+            {
+                soDTKhongHopLe_Label.Visible = true;
+                HTCapNhatDC_Button.Enabled = false;
+                HTThemDiaChi_Button.Enabled = false;
+            }
+            else
+            {
+                soDTKhongHopLe_Label.Visible = false;
+                if(diaChiCuThe_Box.Enabled)
+                {
+                    HTCapNhatDC_Button.Enabled = true;
+                }
+            }
+        }
+
+        private void soDT_UP_Box_TextChanged(object sender, EventArgs e)
+        {
+            if (soDT_UP_Box.Text == "")
+                return;
+
+            if (!kiemTraSoDT(soDT_UP_Box.Text))
+            {
+                SDTKhongHopLe_Label.Visible = true;
+                luu_UP_Button.Enabled = false;
+                if(suaSDT_button.Text == "Lưu")
+                    suaSDT_button.Enabled = false;
+            }
+            else
+            {
+                SDTKhongHopLe_Label.Visible = false;
+                luu_UP_Button.Enabled = true;
+                if (suaSDT_button.Text == "Lưu")
+                    suaSDT_button.Enabled = true;
+            }
         }
     }
 }

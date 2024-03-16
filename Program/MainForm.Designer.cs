@@ -199,6 +199,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.Shop_Panel = new System.Windows.Forms.Panel();
+            this.soDTKhongHopLe_Label = new System.Windows.Forms.Label();
+            this.SDTKhongHopLe_Label = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
             this.HeaderPannel.SuspendLayout();
@@ -1231,15 +1233,15 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
-            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
+            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
@@ -1308,6 +1310,7 @@
             // 
             this.themDiaChi_Panel.BackColor = System.Drawing.Color.White;
             this.themDiaChi_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.themDiaChi_Panel.Controls.Add(this.soDTKhongHopLe_Label);
             this.themDiaChi_Panel.Controls.Add(this.indexOfDiaChi);
             this.themDiaChi_Panel.Controls.Add(this.HTCapNhatDC_Button);
             this.themDiaChi_Panel.Controls.Add(this.HTThemDiaChi_Button);
@@ -1347,7 +1350,7 @@
             // HTCapNhatDC_Button
             // 
             this.HTCapNhatDC_Button.BackColor = System.Drawing.Color.Gainsboro;
-            this.HTCapNhatDC_Button.Location = new System.Drawing.Point(389, 437);
+            this.HTCapNhatDC_Button.Location = new System.Drawing.Point(389, 435);
             this.HTCapNhatDC_Button.Name = "HTCapNhatDC_Button";
             this.HTCapNhatDC_Button.Size = new System.Drawing.Size(147, 41);
             this.HTCapNhatDC_Button.TabIndex = 17;
@@ -1359,6 +1362,7 @@
             // HTThemDiaChi_Button
             // 
             this.HTThemDiaChi_Button.BackColor = System.Drawing.Color.Gainsboro;
+            this.HTThemDiaChi_Button.Enabled = false;
             this.HTThemDiaChi_Button.Location = new System.Drawing.Point(389, 435);
             this.HTThemDiaChi_Button.Name = "HTThemDiaChi_Button";
             this.HTThemDiaChi_Button.Size = new System.Drawing.Size(147, 41);
@@ -1520,7 +1524,7 @@
             // soDienThoai_Box
             // 
             this.soDienThoai_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.soDienThoai_Box.Location = new System.Drawing.Point(312, 84);
+            this.soDienThoai_Box.Location = new System.Drawing.Point(312, 90);
             this.soDienThoai_Box.Name = "soDienThoai_Box";
             this.soDienThoai_Box.Size = new System.Drawing.Size(207, 23);
             this.soDienThoai_Box.TabIndex = 1;
@@ -1539,7 +1543,7 @@
             // hoVaTen_Box
             // 
             this.hoVaTen_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.hoVaTen_Box.Location = new System.Drawing.Point(37, 84);
+            this.hoVaTen_Box.Location = new System.Drawing.Point(37, 89);
             this.hoVaTen_Box.Name = "hoVaTen_Box";
             this.hoVaTen_Box.Size = new System.Drawing.Size(207, 23);
             this.hoVaTen_Box.TabIndex = 0;
@@ -1610,6 +1614,7 @@
             // profilePanel
             // 
             this.profilePanel.BackColor = System.Drawing.Color.White;
+            this.profilePanel.Controls.Add(this.SDTKhongHopLe_Label);
             this.profilePanel.Controls.Add(this.loiNgaySinh_Text);
             this.profilePanel.Controls.Add(this.suaSDT_button);
             this.profilePanel.Controls.Add(this.suaEmail_button);
@@ -1701,6 +1706,7 @@
             this.soDT_UP_Box.ReadOnly = true;
             this.soDT_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.soDT_UP_Box.TabIndex = 3;
+            this.soDT_UP_Box.TextChanged += new System.EventHandler(this.soDT_UP_Box_TextChanged);
             // 
             // pictureBox8
             // 
@@ -2584,6 +2590,30 @@
             this.Shop_Panel.TabIndex = 15;
             this.Shop_Panel.Visible = false;
             // 
+            // soDTKhongHopLe_Label
+            // 
+            this.soDTKhongHopLe_Label.AutoSize = true;
+            this.soDTKhongHopLe_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
+            this.soDTKhongHopLe_Label.Location = new System.Drawing.Point(294, 123);
+            this.soDTKhongHopLe_Label.Name = "soDTKhongHopLe_Label";
+            this.soDTKhongHopLe_Label.Size = new System.Drawing.Size(162, 16);
+            this.soDTKhongHopLe_Label.TabIndex = 19;
+            this.soDTKhongHopLe_Label.Text = "Số điện thọa không hợp lệ";
+            this.soDTKhongHopLe_Label.Visible = false;
+            // 
+            // SDTKhongHopLe_Label
+            // 
+            this.SDTKhongHopLe_Label.AutoSize = true;
+            this.SDTKhongHopLe_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
+            this.SDTKhongHopLe_Label.Location = new System.Drawing.Point(274, 352);
+            this.SDTKhongHopLe_Label.Name = "SDTKhongHopLe_Label";
+            this.SDTKhongHopLe_Label.Size = new System.Drawing.Size(162, 16);
+            this.SDTKhongHopLe_Label.TabIndex = 20;
+            this.SDTKhongHopLe_Label.Text = "Số điện thọa không hợp lệ";
+            this.SDTKhongHopLe_Label.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2815,6 +2845,8 @@
         private System.Windows.Forms.Button user_DangXuat_Button;
         private System.Windows.Forms.Button HTCapNhatDC_Button;
         private System.Windows.Forms.Label indexOfDiaChi;
+        private System.Windows.Forms.Label soDTKhongHopLe_Label;
+        private System.Windows.Forms.Label SDTKhongHopLe_Label;
     }
 }
 
