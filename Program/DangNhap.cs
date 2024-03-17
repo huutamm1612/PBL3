@@ -12,37 +12,46 @@ namespace Program
 {
     public partial class DangNhap_Form : Form
     {
-        private User user = null;
-        private KhachHang khachHang = null;
-        private bool dangNhapF;
-        public DangNhap_Form(bool dangNhapF = true)
+        public bool dangNhapF;
+        
+        public DangNhap_Form(bool dangNhapState = true)
         {
-            this.dangNhapF = dangNhapF;
             InitializeComponent();
-            if (dangNhapF )
-            {
+            state(dangNhapState);
+        }
+
+        public void state(bool dangNhapState)
+        {
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            if (dangNhapState)
                 dangNhap();
-            }
             else
-            {
                 dangKy();
-            }
         }
 
         private void dangKy()
         {
+            dangNhapF = false;
+            if (cauHoi_CB.Items.Count == 0)
+                setCauHoi(cauHoi_CB);
+            cauHoi_CB.Cursor = Cursors.Hand;
             Signup_Panel.Visible = true;
             quenMK_Panel.Visible = false;
             LoginPanel.Visible = false;
             this.Size = new System.Drawing.Size(510, 729);
+            this.Show();
         }
 
         private void dangNhap()
         {
+            dangNhapF = true;
             LoginPanel.Visible = true;
             this.Size = new System.Drawing.Size(510, 570);
             Signup_Panel.Visible = false;
             quenMK_Panel.Visible = false;
+            this.Show();
         }
 
         private void SignUp_Button_Click(object sender, EventArgs e)
@@ -75,14 +84,11 @@ namespace Program
             if (HeThong.DangNhap(taiKhoan, matKhau))
             {
                 LoginError.Visible = false;
-                user = new User();
-                user.dangNhap(taiKhoan, matKhau);
-                LoginPanel.Visible = false;
-                khachHang = HeThong.DangNhap(user);
-                HeThong.WriteAccoutCache(user);
+                KhachHangForm KHForm = new KhachHangForm();
+                sendData send = new sendData(KHForm.setData);
+                send(taiKhoan, matKhau);
                 this.Hide();
-                MainForm main = new MainForm();
-                DialogResult result = main.ShowDialog();
+                KHForm.Show();
             }
             else
             {
@@ -122,9 +128,10 @@ namespace Program
         private void troVe_button_Click(object sender, EventArgs e)
         {
             LoginPanel.Visible = false;
+
+            KhachHangForm KHForm = new KhachHangForm();
             this.Hide();
-            MainForm mainForm = new MainForm();
-            DialogResult result = mainForm.ShowDialog();
+            KHForm.Show();
         }
 
         private void dangKy_Botton_Click(object sender, EventArgs e)
@@ -156,7 +163,6 @@ namespace Program
                 
             }
         }
-
 
         private void refreshDangNhap_Panel()
         {
@@ -213,9 +219,9 @@ namespace Program
             }
             else
             {
+                KhachHangForm KHForm = new KhachHangForm();
                 this.Hide();
-                MainForm main = new MainForm();
-                DialogResult result = main.ShowDialog();
+                KHForm.Show();
             }
 
         }

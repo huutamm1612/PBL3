@@ -52,8 +52,8 @@ namespace Program
         public int luocBan()
         {
             int daBan = 0;
-            
-            foreach(SanPham sanPham in list)
+
+            foreach (SanPham sanPham in list)
             {
                 daBan += sanPham.luocBan;
             }
@@ -65,9 +65,9 @@ namespace Program
         {
             int min = list[0].gia;
 
-            foreach(SanPham sanPham in list)
+            foreach (SanPham sanPham in list)
             {
-                if(sanPham.gia < min)
+                if (sanPham.gia < min)
                     min = sanPham.gia;
             }
 

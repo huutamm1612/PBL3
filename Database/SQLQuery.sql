@@ -156,4 +156,4 @@ CREATE TABLE BaiDang_Shop(
 
 	CONSTRAINT FK_BaiDang_Shop_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
 	CONSTRAINT FK_BaiDang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
-)
+)	

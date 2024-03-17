@@ -14,26 +14,39 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Program
 {
-    public partial class MainForm : Form
+    public delegate void sendData(string taiKhoan, string matKhau);
+    public partial class KhachHangForm : Form
     {
-        private User user = null;
-        private User matkhau = null;
-        private KhachHang khachHang = null;
-        public MainForm()
+        private User user;
+        private KhachHang khachHang;
+
+        public KhachHangForm(bool nonStart = true)
         {
             InitializeComponent();
-            tuDongDangNhap();
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            if (!nonStart) 
+                tuDongDangNhap();
         }
-        /*
-        public MainForm(User user, User mk)
+
+        public void setData(string taiKhoan, string matKhau)
         {
-            InitializeComponent();
-            this.user = user;
-            this.matkhau = mk;
+            user = new User();
+            user.dangNhap(taiKhoan, matKhau);
+            khachHang = HeThong.DangNhap(user);
+            HeThong.WriteAccoutCache(user);
+
+            KhachHang_Panel.Visible = true;
+            HomePanel.Visible = true;
+            HeaderPannel.Visible = true;
+            dangNhap_Button.Visible = false;
+            SignUp_Button.Visible = false;
+            userProfile_Button.Visible = true;
+            user_DangXuat_Button.Visible = true;
+            
         }
-
-        */
-
 
         private void refreshThemDiaChi_Panel()
         {
@@ -74,29 +87,6 @@ namespace Program
             }
         }
 
-
-
-            
-        private void setCauHoi(ComboBox comboBox)
-        {
-            List<string> listCauHoi = HeThong.LoadCauHoi();
-            comboBox.DataSource = listCauHoi;
-        }
-
-
-
-
-
-
-
-        private void writeCache(User user)
-        {
-            StreamWriter writer = new StreamWriter(@"Cache.txt", false);
-            writer.WriteLine(user.taiKhoan);
-            writer.WriteLine(user.matKhau);
-            writer.Close();
-        }
-
         private void tuDongDangNhap()
         {
             List<string> list = HeThong.ReadAccountCache();
@@ -105,7 +95,6 @@ namespace Program
                 user = new User();
                 user.dangNhap(list[0], list[1]);
 
-                //LoginPanel.Visible = false;
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
                 HeaderPannel.Visible = true;
@@ -117,9 +106,6 @@ namespace Program
                 khachHang = HeThong.DangNhap(user);
             }
         }
-
-
-
 
         private bool kiemTraSoDT(string soDT)
         {
@@ -195,8 +181,6 @@ namespace Program
                 matKhauMoi2_Box.Clear();
             }  
         }
-
-
 
         private void home_Button_Click(object sender, EventArgs e)
         {
@@ -426,16 +410,16 @@ namespace Program
 
         private void dangNhap_Button_Click(object sender, EventArgs e)
         {
+            DangNhap_Form DNForm = new DangNhap_Form();
+            DNForm.Show();
             this.Hide();
-            DangNhap_Form dangNhap = new DangNhap_Form(true);
-            DialogResult result = dangNhap.ShowDialog();
         }
 
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
+            DangNhap_Form DNForm = new DangNhap_Form(false);
+            DNForm.Show();
             this.Hide();
-            DangNhap_Form dangKy = new DangNhap_Form(false);
-            DialogResult result = dangKy.ShowDialog();
         }
 
         private void troVe_button_Click(object sender, EventArgs e)
@@ -634,6 +618,8 @@ namespace Program
             dangNhap_Button.Visible = true;
             SignUp_Button.Visible = true;
             user_DangXuat_Button.Visible = false;
+            HomePanel.Visible = true;
+            UserPanel.Visible = false;
             userProfile_Button.Visible = false;
             HeThong.ClearAccountCache();
         }
