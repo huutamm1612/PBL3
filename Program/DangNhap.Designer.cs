@@ -915,7 +915,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";
-            this.Text = "DangNhap";
+            this.Text = "Đăng Nhập";
             this.quenMK_Panel.ResumeLayout(false);
             this.quenMK_Panel.PerformLayout();
             this.LoginPanel.ResumeLayout(false);

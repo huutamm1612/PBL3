@@ -54,6 +54,12 @@
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="DiaChi.cs" />
+    <Compile Include="BanHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BanHangForm.Designer.cs">
+      <DependentUpon>BanHangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HeThong.cs" />
     <Compile Include="KhachHang.cs" />
     <Compile Include="KhachHangForm.cs">
@@ -72,6 +78,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BanHangForm.resx">
+      <DependentUpon>BanHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhachHangForm.resx">
       <DependentUpon>KhachHangForm.cs</DependentUpon>

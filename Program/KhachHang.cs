@@ -96,5 +96,10 @@ namespace Program
 
             this.diaChi = diaChi;
         }
+
+        public bool daTaoShop() // trả về true nếu khách hàng đã tạo shop
+        {
+            return HeThong.KiemTraTaoShop(this);
+        }
     }
 }

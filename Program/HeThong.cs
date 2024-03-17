@@ -50,6 +50,22 @@ namespace Program
             };
             return sqlCmd;
         }
+        public static bool KiemTraSoDT(string soDT)
+        {
+            if (soDT.Length != 10 || soDT[0] != '0')
+            {
+                return false;
+            }
+
+            foreach (char i in soDT)
+            {
+                if (!char.IsDigit(i))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public static string MaMoi(string loaiMa)
         {
@@ -141,7 +157,6 @@ namespace Program
         {
             return account.matKhau == matKhau;
         }
-
 
         public static bool KiemTraTaiKhoan(string taiKhoan) // trả về false nếu taiKhoan đã tồn tại
         {
@@ -387,6 +402,19 @@ namespace Program
             string noiDung = $"UPDATE KhachHang SET maDC = '{khachHang.diaChi.maDC}' WHERE maKH = '{khachHang.maSo}'";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
+        }
+
+        public static bool KiemTraTaoShop(KhachHang khachHang) // trả về true nếu khách hàng đã tạo shop
+        {
+            string noiDung = $"SELECT * FROM KhachHang_Shop WHERE maKH = '{khachHang.maSo}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+
+            bool result = true;
+            if (reader.Read())
+                result = false;
+            reader.Close();
+            return result;
         }
 
         public static void DangKy(KhachHang khachHang, string tenShop, DiaChi diachiShop) // khách hàng tạo shop

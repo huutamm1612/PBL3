@@ -39,6 +39,11 @@ namespace Program
             this.doanhThu = shop.doanhThu;
         }
 
+        public void setMaSo(string maSo)
+        {
+            this.maSo = maSo;
+        }
+
         public void themBaiDang(BaiDang baiDang)
         {
             list.Add(baiDang);

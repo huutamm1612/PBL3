@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.HeaderPannel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.KenhNguoiBan_button = new System.Windows.Forms.Button();
             this.SignUp_Button = new System.Windows.Forms.Button();
             this.dangNhap_Button = new System.Windows.Forms.Button();
-            this.userProfile_Button = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.home_Button = new System.Windows.Forms.Button();
             this.user_DangXuat_Button = new System.Windows.Forms.Button();
+            this.userProfile_Button = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,11 +73,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.accountPanel = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.doiMK_Botton = new System.Windows.Forms.Button();
-            this.diaChiUser_Button = new System.Windows.Forms.Button();
-            this.userProfile_Botton = new System.Windows.Forms.Button();
-            this.myAccount_Button = new System.Windows.Forms.Button();
             this.themDiaChi_Panel = new System.Windows.Forms.Panel();
             this.soDTKhongHopLe_Label = new System.Windows.Forms.Label();
             this.indexOfDiaChi = new System.Windows.Forms.Label();
@@ -98,10 +96,11 @@
             this.hoVaTen_Box = new System.Windows.Forms.TextBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.txtDiaChi = new System.Windows.Forms.Label();
-            this.diaChiUser_Panel = new System.Windows.Forms.Panel();
-            this.themDiaChi_Button = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.listDiaChi_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.doiMK_Botton = new System.Windows.Forms.Button();
+            this.diaChiUser_Button = new System.Windows.Forms.Button();
+            this.userProfile_Botton = new System.Windows.Forms.Button();
+            this.myAccount_Button = new System.Windows.Forms.Button();
             this.profilePanel = new System.Windows.Forms.Panel();
             this.SDTKhongHopLe_Label = new System.Windows.Forms.Label();
             this.loiNgaySinh_Text = new System.Windows.Forms.Label();
@@ -142,9 +141,12 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.diaChiUser_Panel = new System.Windows.Forms.Panel();
+            this.themDiaChi_Button = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.listDiaChi_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
-            this.Shop_Panel = new System.Windows.Forms.Panel();
             this.HeaderPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -160,13 +162,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.diaChiUser_Panel.SuspendLayout();
             this.profilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.doiMatKhauPanel.SuspendLayout();
+            this.diaChiUser_Panel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
             this.SuspendLayout();
@@ -176,28 +178,66 @@
             this.HeaderPannel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeaderPannel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.HeaderPannel.Controls.Add(this.label1);
+            this.HeaderPannel.Controls.Add(this.KenhNguoiBan_button);
             this.HeaderPannel.Controls.Add(this.SignUp_Button);
             this.HeaderPannel.Controls.Add(this.dangNhap_Button);
-            this.HeaderPannel.Controls.Add(this.userProfile_Button);
             this.HeaderPannel.Controls.Add(this.button4);
             this.HeaderPannel.Controls.Add(this.textBox1);
             this.HeaderPannel.Controls.Add(this.pictureBox1);
             this.HeaderPannel.Controls.Add(this.home_Button);
             this.HeaderPannel.Controls.Add(this.user_DangXuat_Button);
-            this.HeaderPannel.Location = new System.Drawing.Point(12, 0);
+            this.HeaderPannel.Controls.Add(this.userProfile_Button);
+            this.HeaderPannel.Controls.Add(this.label2);
+            this.HeaderPannel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPannel.Name = "HeaderPannel";
-            this.HeaderPannel.Size = new System.Drawing.Size(1375, 135);
+            this.HeaderPannel.Size = new System.Drawing.Size(1387, 135);
             this.HeaderPannel.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(1289, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 25);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "|";
+            // 
+            // KenhNguoiBan_button
+            // 
+            this.KenhNguoiBan_button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.KenhNguoiBan_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.KenhNguoiBan_button.FlatAppearance.BorderSize = 0;
+            this.KenhNguoiBan_button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.KenhNguoiBan_button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.KenhNguoiBan_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.KenhNguoiBan_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KenhNguoiBan_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.KenhNguoiBan_button.Location = new System.Drawing.Point(48, 3);
+            this.KenhNguoiBan_button.Name = "KenhNguoiBan_button";
+            this.KenhNguoiBan_button.Size = new System.Drawing.Size(138, 28);
+            this.KenhNguoiBan_button.TabIndex = 10;
+            this.KenhNguoiBan_button.Text = "Kênh người bán";
+            this.KenhNguoiBan_button.UseVisualStyleBackColor = false;
+            this.KenhNguoiBan_button.Click += new System.EventHandler(this.KenhNguoiBan_button_Click);
             // 
             // SignUp_Button
             // 
             this.SignUp_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SignUp_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.SignUp_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SignUp_Button.FlatAppearance.BorderSize = 0;
+            this.SignUp_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.SignUp_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.SignUp_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignUp_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUp_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SignUp_Button.Location = new System.Drawing.Point(1266, 3);
+            this.SignUp_Button.Location = new System.Drawing.Point(1299, 3);
             this.SignUp_Button.Name = "SignUp_Button";
-            this.SignUp_Button.Size = new System.Drawing.Size(106, 38);
+            this.SignUp_Button.Size = new System.Drawing.Size(81, 38);
             this.SignUp_Button.TabIndex = 8;
             this.SignUp_Button.Text = "Đăng ký";
             this.SignUp_Button.UseVisualStyleBackColor = false;
@@ -207,30 +247,20 @@
             // 
             this.dangNhap_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dangNhap_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.dangNhap_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dangNhap_Button.FlatAppearance.BorderSize = 0;
+            this.dangNhap_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.dangNhap_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.dangNhap_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dangNhap_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dangNhap_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dangNhap_Button.Location = new System.Drawing.Point(1157, 3);
+            this.dangNhap_Button.Location = new System.Drawing.Point(1191, 3);
             this.dangNhap_Button.Name = "dangNhap_Button";
             this.dangNhap_Button.Size = new System.Drawing.Size(106, 38);
             this.dangNhap_Button.TabIndex = 7;
             this.dangNhap_Button.Text = "Đăng nhập";
             this.dangNhap_Button.UseVisualStyleBackColor = false;
             this.dangNhap_Button.Click += new System.EventHandler(this.dangNhap_Button_Click);
-            // 
-            // userProfile_Button
-            // 
-            this.userProfile_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userProfile_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_Button.Location = new System.Drawing.Point(1157, 3);
-            this.userProfile_Button.Name = "userProfile_Button";
-            this.userProfile_Button.Size = new System.Drawing.Size(106, 38);
-            this.userProfile_Button.TabIndex = 6;
-            this.userProfile_Button.Text = "Cá nhân";
-            this.userProfile_Button.UseVisualStyleBackColor = false;
-            this.userProfile_Button.Visible = false;
-            this.userProfile_Button.Click += new System.EventHandler(this.userProfile_Button_Click);
             // 
             // button4
             // 
@@ -239,7 +269,7 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button4.Location = new System.Drawing.Point(945, 43);
+            this.button4.Location = new System.Drawing.Point(957, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 47);
             this.button4.TabIndex = 4;
@@ -252,9 +282,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(426, 52);
+            this.textBox1.Location = new System.Drawing.Point(283, 52);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(513, 27);
+            this.textBox1.Size = new System.Drawing.Size(668, 27);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Tìm kiếm...";
             // 
@@ -264,20 +294,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(410, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(267, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(627, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(782, 54);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // home_Button
             // 
             this.home_Button.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.home_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.home_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.home_Button.FlatAppearance.BorderSize = 0;
+            this.home_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.home_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.home_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.home_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.home_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.home_Button.Location = new System.Drawing.Point(81, 25);
+            this.home_Button.Location = new System.Drawing.Point(48, 30);
             this.home_Button.Name = "home_Button";
-            this.home_Button.Size = new System.Drawing.Size(243, 82);
+            this.home_Button.Size = new System.Drawing.Size(214, 68);
             this.home_Button.TabIndex = 2;
             this.home_Button.Text = "Book world";
             this.home_Button.UseVisualStyleBackColor = false;
@@ -287,16 +322,53 @@
             // 
             this.user_DangXuat_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.user_DangXuat_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.user_DangXuat_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.user_DangXuat_Button.FlatAppearance.BorderSize = 0;
+            this.user_DangXuat_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.user_DangXuat_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.user_DangXuat_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.user_DangXuat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user_DangXuat_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.user_DangXuat_Button.Location = new System.Drawing.Point(1266, 3);
+            this.user_DangXuat_Button.ForeColor = System.Drawing.Color.White;
+            this.user_DangXuat_Button.Location = new System.Drawing.Point(1291, 3);
             this.user_DangXuat_Button.Name = "user_DangXuat_Button";
-            this.user_DangXuat_Button.Size = new System.Drawing.Size(106, 38);
+            this.user_DangXuat_Button.Size = new System.Drawing.Size(96, 38);
             this.user_DangXuat_Button.TabIndex = 9;
             this.user_DangXuat_Button.Text = "Đăng xuất";
             this.user_DangXuat_Button.UseVisualStyleBackColor = false;
             this.user_DangXuat_Button.Visible = false;
             this.user_DangXuat_Button.Click += new System.EventHandler(this.user_DangXuat_Button_Click);
+            // 
+            // userProfile_Button
+            // 
+            this.userProfile_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.userProfile_Button.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.userProfile_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userProfile_Button.FlatAppearance.BorderSize = 0;
+            this.userProfile_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.userProfile_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.userProfile_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userProfile_Button.ForeColor = System.Drawing.Color.White;
+            this.userProfile_Button.Location = new System.Drawing.Point(1206, 3);
+            this.userProfile_Button.Name = "userProfile_Button";
+            this.userProfile_Button.Size = new System.Drawing.Size(87, 38);
+            this.userProfile_Button.TabIndex = 6;
+            this.userProfile_Button.Text = "Cá nhân";
+            this.userProfile_Button.UseVisualStyleBackColor = false;
+            this.userProfile_Button.Visible = false;
+            this.userProfile_Button.Click += new System.EventHandler(this.userProfile_Button_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(1282, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 25);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "|";
             // 
             // panel1
             // 
@@ -657,78 +729,20 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
+            this.accountPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
             this.accountPanel.Size = new System.Drawing.Size(1363, 663);
             this.accountPanel.TabIndex = 7;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.Location = new System.Drawing.Point(89, 315);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(233, 45);
-            this.button10.TabIndex = 11;
-            this.button10.Text = "Đơn mua";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // doiMK_Botton
-            // 
-            this.doiMK_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.doiMK_Botton.Location = new System.Drawing.Point(122, 275);
-            this.doiMK_Botton.Name = "doiMK_Botton";
-            this.doiMK_Botton.Size = new System.Drawing.Size(200, 31);
-            this.doiMK_Botton.TabIndex = 10;
-            this.doiMK_Botton.Text = "Đổi mật khẩu";
-            this.doiMK_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.doiMK_Botton.UseVisualStyleBackColor = false;
-            this.doiMK_Botton.Click += new System.EventHandler(this.doiMK_Botton_Click);
-            // 
-            // diaChiUser_Button
-            // 
-            this.diaChiUser_Button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.diaChiUser_Button.Location = new System.Drawing.Point(122, 233);
-            this.diaChiUser_Button.Name = "diaChiUser_Button";
-            this.diaChiUser_Button.Size = new System.Drawing.Size(200, 31);
-            this.diaChiUser_Button.TabIndex = 9;
-            this.diaChiUser_Button.Text = "Địa chỉ";
-            this.diaChiUser_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.diaChiUser_Button.UseVisualStyleBackColor = false;
-            this.diaChiUser_Button.Click += new System.EventHandler(this.diaChiUser_Button_Click);
-            // 
-            // userProfile_Botton
-            // 
-            this.userProfile_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.userProfile_Botton.Location = new System.Drawing.Point(122, 189);
-            this.userProfile_Botton.Name = "userProfile_Botton";
-            this.userProfile_Botton.Size = new System.Drawing.Size(200, 31);
-            this.userProfile_Botton.TabIndex = 8;
-            this.userProfile_Botton.Text = "Hồ sơ";
-            this.userProfile_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.userProfile_Botton.UseVisualStyleBackColor = false;
-            this.userProfile_Botton.Click += new System.EventHandler(this.button7_Click_1);
-            // 
-            // myAccount_Button
-            // 
-            this.myAccount_Button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.myAccount_Button.Location = new System.Drawing.Point(89, 138);
-            this.myAccount_Button.Name = "myAccount_Button";
-            this.myAccount_Button.Size = new System.Drawing.Size(233, 45);
-            this.myAccount_Button.TabIndex = 7;
-            this.myAccount_Button.Text = "Tài khoản của tôi";
-            this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.myAccount_Button.UseVisualStyleBackColor = false;
-            this.myAccount_Button.Click += new System.EventHandler(this.button6_Click);
             // 
             // themDiaChi_Panel
             // 
@@ -1004,48 +1018,64 @@
             this.txtDiaChi.TabIndex = 0;
             this.txtDiaChi.Text = "Địa chỉ mới";
             // 
-            // diaChiUser_Panel
+            // button10
             // 
-            this.diaChiUser_Panel.BackColor = System.Drawing.Color.White;
-            this.diaChiUser_Panel.Controls.Add(this.themDiaChi_Button);
-            this.diaChiUser_Panel.Controls.Add(this.label24);
-            this.diaChiUser_Panel.Controls.Add(this.listDiaChi_FLPanel);
-            this.diaChiUser_Panel.Location = new System.Drawing.Point(408, 20);
-            this.diaChiUser_Panel.Name = "diaChiUser_Panel";
-            this.diaChiUser_Panel.Size = new System.Drawing.Size(943, 631);
-            this.diaChiUser_Panel.TabIndex = 13;
-            this.diaChiUser_Panel.Visible = false;
+            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.Location = new System.Drawing.Point(89, 315);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(233, 45);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "Đơn mua";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.UseVisualStyleBackColor = false;
             // 
-            // themDiaChi_Button
+            // doiMK_Botton
             // 
-            this.themDiaChi_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.themDiaChi_Button.BackColor = System.Drawing.Color.LightGray;
-            this.themDiaChi_Button.Location = new System.Drawing.Point(742, 15);
-            this.themDiaChi_Button.Name = "themDiaChi_Button";
-            this.themDiaChi_Button.Size = new System.Drawing.Size(189, 42);
-            this.themDiaChi_Button.TabIndex = 18;
-            this.themDiaChi_Button.Text = "Thêm địa chỉ mới";
-            this.themDiaChi_Button.UseVisualStyleBackColor = false;
-            this.themDiaChi_Button.Click += new System.EventHandler(this.themDiaChi_Button_Click);
+            this.doiMK_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.doiMK_Botton.Location = new System.Drawing.Point(122, 275);
+            this.doiMK_Botton.Name = "doiMK_Botton";
+            this.doiMK_Botton.Size = new System.Drawing.Size(200, 31);
+            this.doiMK_Botton.TabIndex = 10;
+            this.doiMK_Botton.Text = "Đổi mật khẩu";
+            this.doiMK_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.doiMK_Botton.UseVisualStyleBackColor = false;
+            this.doiMK_Botton.Click += new System.EventHandler(this.doiMK_Botton_Click);
             // 
-            // label24
+            // diaChiUser_Button
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(25, 25);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(192, 32);
-            this.label24.TabIndex = 17;
-            this.label24.Text = "Địa chỉ của tôi";
+            this.diaChiUser_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.diaChiUser_Button.Location = new System.Drawing.Point(122, 233);
+            this.diaChiUser_Button.Name = "diaChiUser_Button";
+            this.diaChiUser_Button.Size = new System.Drawing.Size(200, 31);
+            this.diaChiUser_Button.TabIndex = 9;
+            this.diaChiUser_Button.Text = "Địa chỉ";
+            this.diaChiUser_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.diaChiUser_Button.UseVisualStyleBackColor = false;
+            this.diaChiUser_Button.Click += new System.EventHandler(this.diaChiUser_Button_Click);
             // 
-            // listDiaChi_FLPanel
+            // userProfile_Botton
             // 
-            this.listDiaChi_FLPanel.AutoScroll = true;
-            this.listDiaChi_FLPanel.Location = new System.Drawing.Point(0, 73);
-            this.listDiaChi_FLPanel.Name = "listDiaChi_FLPanel";
-            this.listDiaChi_FLPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.listDiaChi_FLPanel.Size = new System.Drawing.Size(943, 558);
-            this.listDiaChi_FLPanel.TabIndex = 19;
+            this.userProfile_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.userProfile_Botton.Location = new System.Drawing.Point(122, 189);
+            this.userProfile_Botton.Name = "userProfile_Botton";
+            this.userProfile_Botton.Size = new System.Drawing.Size(200, 31);
+            this.userProfile_Botton.TabIndex = 8;
+            this.userProfile_Botton.Text = "Hồ sơ";
+            this.userProfile_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.userProfile_Botton.UseVisualStyleBackColor = false;
+            this.userProfile_Botton.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // myAccount_Button
+            // 
+            this.myAccount_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.myAccount_Button.Location = new System.Drawing.Point(89, 138);
+            this.myAccount_Button.Name = "myAccount_Button";
+            this.myAccount_Button.Size = new System.Drawing.Size(233, 45);
+            this.myAccount_Button.TabIndex = 7;
+            this.myAccount_Button.Text = "Tài khoản của tôi";
+            this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.myAccount_Button.UseVisualStyleBackColor = false;
+            this.myAccount_Button.Click += new System.EventHandler(this.button6_Click);
             // 
             // profilePanel
             // 
@@ -1715,6 +1745,49 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Đổi mật khẩu";
             // 
+            // diaChiUser_Panel
+            // 
+            this.diaChiUser_Panel.BackColor = System.Drawing.Color.White;
+            this.diaChiUser_Panel.Controls.Add(this.themDiaChi_Button);
+            this.diaChiUser_Panel.Controls.Add(this.label24);
+            this.diaChiUser_Panel.Controls.Add(this.listDiaChi_FLPanel);
+            this.diaChiUser_Panel.Location = new System.Drawing.Point(408, 20);
+            this.diaChiUser_Panel.Name = "diaChiUser_Panel";
+            this.diaChiUser_Panel.Size = new System.Drawing.Size(943, 631);
+            this.diaChiUser_Panel.TabIndex = 13;
+            this.diaChiUser_Panel.Visible = false;
+            // 
+            // themDiaChi_Button
+            // 
+            this.themDiaChi_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.themDiaChi_Button.BackColor = System.Drawing.Color.LightGray;
+            this.themDiaChi_Button.Location = new System.Drawing.Point(742, 15);
+            this.themDiaChi_Button.Name = "themDiaChi_Button";
+            this.themDiaChi_Button.Size = new System.Drawing.Size(189, 42);
+            this.themDiaChi_Button.TabIndex = 18;
+            this.themDiaChi_Button.Text = "Thêm địa chỉ mới";
+            this.themDiaChi_Button.UseVisualStyleBackColor = false;
+            this.themDiaChi_Button.Click += new System.EventHandler(this.themDiaChi_Button_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(25, 25);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(192, 32);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "Địa chỉ của tôi";
+            // 
+            // listDiaChi_FLPanel
+            // 
+            this.listDiaChi_FLPanel.AutoScroll = true;
+            this.listDiaChi_FLPanel.Location = new System.Drawing.Point(0, 73);
+            this.listDiaChi_FLPanel.Name = "listDiaChi_FLPanel";
+            this.listDiaChi_FLPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.listDiaChi_FLPanel.Size = new System.Drawing.Size(943, 558);
+            this.listDiaChi_FLPanel.TabIndex = 19;
+            // 
             // UserPanel
             // 
             this.UserPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1743,17 +1816,6 @@
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
             this.KhachHang_Panel.TabIndex = 14;
             // 
-            // Shop_Panel
-            // 
-            this.Shop_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Shop_Panel.Location = new System.Drawing.Point(0, 0);
-            this.Shop_Panel.Name = "Shop_Panel";
-            this.Shop_Panel.Size = new System.Drawing.Size(1384, 813);
-            this.Shop_Panel.TabIndex = 15;
-            this.Shop_Panel.Visible = false;
-            // 
             // KhachHangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -1762,7 +1824,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1392, 819);
             this.Controls.Add(this.KhachHang_Panel);
-            this.Controls.Add(this.Shop_Panel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1787,8 +1848,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.diaChiUser_Panel.ResumeLayout(false);
-            this.diaChiUser_Panel.PerformLayout();
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -1797,6 +1856,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.doiMatKhauPanel.ResumeLayout(false);
             this.doiMatKhauPanel.PerformLayout();
+            this.diaChiUser_Panel.ResumeLayout(false);
+            this.diaChiUser_Panel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.KhachHang_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1913,7 +1974,6 @@
         private System.Windows.Forms.Button backDiaChi_Button;
         private System.Windows.Forms.FlowLayoutPanel listDiaChi_FLPanel;
         private System.Windows.Forms.Panel KhachHang_Panel;
-        private System.Windows.Forms.Panel Shop_Panel;
         private System.Windows.Forms.Button SignUp_Button;
         private System.Windows.Forms.Button dangNhap_Button;
         private System.Windows.Forms.Button user_DangXuat_Button;
@@ -1921,6 +1981,9 @@
         private System.Windows.Forms.Label indexOfDiaChi;
         private System.Windows.Forms.Label soDTKhongHopLe_Label;
         private System.Windows.Forms.Label SDTKhongHopLe_Label;
+        private System.Windows.Forms.Button KenhNguoiBan_button;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

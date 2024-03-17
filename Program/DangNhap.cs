@@ -20,7 +20,7 @@ namespace Program
             state(dangNhapState);
         }
 
-        public void state(bool dangNhapState)
+        private void state(bool dangNhapState)
         {
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -74,7 +74,6 @@ namespace Program
             matKhauKhongKhop_DK_Text.Visible = false;
             hienMK_DK_Check.Checked = false;
             cauHoi_CB.SelectedIndex = 0;
-
         }
 
         private void dangNhap_DN_Button_Click(object sender, EventArgs e)
@@ -89,6 +88,7 @@ namespace Program
                 send(taiKhoan, matKhau);
                 this.Hide();
                 KHForm.Show();
+                Dispose();
             }
             else
             {
@@ -132,6 +132,7 @@ namespace Program
             KhachHangForm KHForm = new KhachHangForm();
             this.Hide();
             KHForm.Show();
+            Dispose();
         }
 
         private void dangKy_Botton_Click(object sender, EventArgs e)
@@ -222,6 +223,7 @@ namespace Program
                 KhachHangForm KHForm = new KhachHangForm();
                 this.Hide();
                 KHForm.Show();
+                Dispose();
             }
 
         }

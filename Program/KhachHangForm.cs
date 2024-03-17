@@ -17,8 +17,8 @@ namespace Program
     public delegate void sendData(string taiKhoan, string matKhau);
     public partial class KhachHangForm : Form
     {
-        private User user;
-        private KhachHang khachHang;
+        private User user = null;
+        private KhachHang khachHang = null;
 
         public KhachHangForm(bool nonStart = true)
         {
@@ -45,7 +45,6 @@ namespace Program
             SignUp_Button.Visible = false;
             userProfile_Button.Visible = true;
             user_DangXuat_Button.Visible = true;
-            
         }
 
         private void refreshThemDiaChi_Panel()
@@ -64,7 +63,6 @@ namespace Program
 
         private void refreshCapNhatDiaChi_Panel(DiaChi diaChi)
         {
-           
             hoVaTen_Box.Text = diaChi.ten;
             soDienThoai_Box.Text = diaChi.soDT;
             TTP_ComboBox.SelectedIndex = diaChi.maT_TP;
@@ -105,24 +103,6 @@ namespace Program
 
                 khachHang = HeThong.DangNhap(user);
             }
-        }
-
-        private bool kiemTraSoDT(string soDT)
-        {
-            if (soDT.Length != 10 || soDT[0] != '0')
-            {
-                return false;
-            }
-
-            foreach(char i in soDT)
-            {
-                if (!char.IsDigit(i))
-                {
-                    return false;
-                }
-            }
-            return true;
-            
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -350,7 +330,7 @@ namespace Program
 
         private void QH_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (QH_ComboBox.SelectedIndex != 0)//937, 208
+            if (QH_ComboBox.SelectedIndex != 0)
             {
                 PX_ComboBox.Enabled = true;
                 PX_ComboBox.DataSource = HeThong.LoadPhuong_Xa(TTP_ComboBox.SelectedIndex, QH_ComboBox.SelectedIndex);
@@ -385,8 +365,8 @@ namespace Program
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
             int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
-            DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
-            HeThong.ThemDiaChi(khachHang, diaChi);
+                DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
+                HeThong.ThemDiaChi(khachHang, diaChi);
 
             if (datDCMacDinh_check.Checked)
             {
@@ -445,6 +425,7 @@ namespace Program
             TextBox txt = new TextBox
             {
                 Multiline = true,
+                ReadOnly = true,
                 Text = khachHang.diaChi.ToString(),
                 Size = new Size(606, 60),
                 Location = new System.Drawing.Point(11, 27),
@@ -490,6 +471,7 @@ namespace Program
             TextBox txt = new TextBox
             {
                 Multiline = true,
+                ReadOnly = true,
                 Text = diaChi.ToString(),
                 Size = new Size(606, 83),
                 Location = new System.Drawing.Point(11, 27),
@@ -615,6 +597,8 @@ namespace Program
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
         {
+            khachHang = null;
+            user = null;
             dangNhap_Button.Visible = true;
             SignUp_Button.Visible = true;
             user_DangXuat_Button.Visible = false;
@@ -629,7 +613,7 @@ namespace Program
             if (soDienThoai_Box.Text == "...")
                 return;
 
-            if (!kiemTraSoDT(soDienThoai_Box.Text))
+            if (!HeThong.KiemTraSoDT(soDienThoai_Box.Text))
             {
                 soDTKhongHopLe_Label.Visible = true;
                 HTCapNhatDC_Button.Enabled = false;
@@ -650,7 +634,7 @@ namespace Program
             if (soDT_UP_Box.Text == "")
                 return;
 
-            if (!kiemTraSoDT(soDT_UP_Box.Text))
+            if (!HeThong.KiemTraSoDT(soDT_UP_Box.Text))
             {
                 SDTKhongHopLe_Label.Visible = true;
                 luu_UP_Button.Enabled = false;
@@ -666,6 +650,22 @@ namespace Program
             }
         }
 
+        private void KenhNguoiBan_button_Click(object sender, EventArgs e)
+        {
+            if (user == null)
+                return;
+
+            if (khachHang.daTaoShop())
+                MessageBox.Show("datao");
+            else
+            {
+                this.Hide();
+                BanHang_Form BHForm = new BanHang_Form();
+                sendData send = new sendData(BHForm.setData);
+                send(user.taiKhoan, user.matKhau);
+                BHForm.ShowDialog();
+            }
+        }
 
     }
 }
