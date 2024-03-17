@@ -17,49 +17,23 @@ namespace Program
     public partial class MainForm : Form
     {
         private User user = null;
+        private User matkhau = null;
         private KhachHang khachHang = null;
         public MainForm()
         {
             InitializeComponent();
             tuDongDangNhap();
         }
-        private void refreshDangNhap_Panel()
+        /*
+        public MainForm(User user, User mk)
         {
-            taiKhoan_DN_Box.Text = "Tài Khoản";
-            matKhau_DN_Box.Text = "Mật khẩu";
-            matKhau_DN_Box.UseSystemPasswordChar = false;
-            hienMK_DN_Check.Checked = false;
+            InitializeComponent();
+            this.user = user;
+            this.matkhau = mk;
         }
 
-        private void refreshDangKy_Panel()
-        {
-            if (cauHoi_CB.Items.Count == 0)
-                this.setCauHoi(cauHoi_CB);
-            taiKhoan_DK_Box.Text = "Tài khoản";
-            cauTraLoi_Box.Text = "Câu trả lời";
-            matKhau1_DK_Box.Text = "Mật khẩu";
-            matKhau2_DK_Box.Text = "Nhập lại mật khẩu";
-            matKhau1_DK_Box.UseSystemPasswordChar = false;
-            matKhau2_DK_Box.UseSystemPasswordChar = false;
-            taiKhoanSai_DK_Text.Visible = false;
-            matKhauKhongKhop_DK_Text.Visible = false;
-            hienMK_DK_Check.Checked = false;
-            cauHoi_CB.SelectedIndex = 0;
-        }
+        */
 
-        private void refreshQuenMatKhau_Panel()
-        {
-            taiKhoan_QMK_Box.Text = "Tài khoản";
-            cauTraLoi_QML_Box.Text = "Câu trả lời";
-            matKhau1_QMK_Box.Text = "Mật khẩu";
-            matKhau2_QMK_Box.Text = "Nhập lại mật khẩu";
-            matKhau1_QMK_Box.UseSystemPasswordChar = false;
-            matKhau2_QMK_Box.UseSystemPasswordChar = false;
-            cauHoiQMK_CB.SelectedIndex = 0;
-            saiMK_Text.Visible = false;
-            thongBao_Text.Visible = false;
-            hienMK_QMK_Check.Checked = false;
-        }
 
         private void refreshThemDiaChi_Panel()
         {
@@ -101,10 +75,7 @@ namespace Program
         }
 
 
-        private void hienMKCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            this.hienMatKhau(hienMK_DN_Check, matKhau_DN_Box);
-        }
+
             
         private void setCauHoi(ComboBox comboBox)
         {
@@ -112,32 +83,11 @@ namespace Program
             comboBox.DataSource = listCauHoi;
         }
 
-        private void dangKyBox_Click(object sender, EventArgs e)
-        {
-            this.refreshDangKy_Panel();
-            LoginPanel.Visible = false;
-            Signup_Panel.Visible = true;
 
-        }
 
-        private void hienMK_DK_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            this.hienMatKhau(hienMK_DK_Check, matKhau1_DK_Box);
-            this.hienMatKhau(hienMK_DK_Check, matKhau2_DK_Box);
-        }
 
-        private void troVe_DK_Button_Click(object sender, EventArgs e)
-        {
 
-            Signup_Panel.Visible = false;
-            KhachHang_Panel.Visible = true;
-        }
 
-        private void matKhau_DN_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (matKhau_DN_Box.Text.Length <= 1 && !hienMK_DN_Check.Checked)
-                matKhau_DN_Box.UseSystemPasswordChar = true;
-        }
 
         private void writeCache(User user)
         {
@@ -155,7 +105,7 @@ namespace Program
                 user = new User();
                 user.dangNhap(list[0], list[1]);
 
-                LoginPanel.Visible = false;
+                //LoginPanel.Visible = false;
                 KhachHang_Panel.Visible = true;
                 HomePanel.Visible = true;
                 HeaderPannel.Visible = true;
@@ -168,58 +118,8 @@ namespace Program
             }
         }
 
-        private void dangNhap_DN_Button_Click(object sender, EventArgs e)
-        {
-            string taiKhoan = taiKhoan_DN_Box.Text;
-            string matKhau = matKhau_DN_Box.Text;
-            if (HeThong.DangNhap(taiKhoan, matKhau))
-            {
-                LoginError.Visible = false;
-                user = new User();
-                user.dangNhap(taiKhoan, matKhau);
 
-                LoginPanel.Visible = false;
-                dangNhap_Button.Visible = false;
-                SignUp_Button.Visible = false;
-                KhachHang_Panel.Visible = true;
-                HomePanel.Visible = true;
-                HeaderPannel.Visible = true;
-                userProfile_Button.Visible = true;
-                user_DangXuat_Button.Visible = true;
 
-                khachHang = HeThong.DangNhap(user);
-                HeThong.WriteAccoutCache(user);
-            }
-            else
-            {
-                LoginError.Visible = true;
-            }
-        }
-
-        private void dangKy_Botton_Click(object sender, EventArgs e)
-        {
-            if (matKhauKhongKhop_DK_Text.Visible)
-                return;
-
-            string taiKhoan = taiKhoan_DK_Box.Text;
-            bool canCreate = HeThong.KiemTraTaiKhoan(taiKhoan);
-
-            if (!canCreate)
-                taiKhoanSai_DK_Text.Visible = true;
-
-            if (!matKhauKhongKhop_DK_Text.Visible && canCreate)
-            {
-                string matKhau = matKhau1_DK_Box.Text;
-                int maCH = cauHoi_CB.SelectedIndex - 1;
-                string cauTraLoi = cauTraLoi_Box.Text;
-
-                HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
-                MessageBox.Show("Đăng ký thành công!!!");
-
-                Signup_Panel.Visible = false;
-                LoginPanel.Visible = true;
-            }
-        }
 
         private bool kiemTraSoDT(string soDT)
         {
@@ -237,17 +137,6 @@ namespace Program
             }
             return true;
             
-        }
-        private void matKhau1_DK_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (matKhau1_DK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
-                matKhau1_DK_Box.UseSystemPasswordChar = true;
-        }
-
-        private void matKhau2_DK_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (matKhau2_DK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
-                matKhau2_DK_Box.UseSystemPasswordChar = true;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -307,16 +196,7 @@ namespace Program
             }  
         }
 
-        private void matKhau2_DK_Box_TextChanged_1(object sender, EventArgs e)
-        {
-            if (matKhau2_DK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
-                matKhau2_DK_Box.UseSystemPasswordChar = true;
 
-            if (matKhau1_DK_Box.Text != matKhau2_DK_Box.Text && !matKhauKhongKhop_DK_Text.Visible)
-                matKhauKhongKhop_DK_Text.Visible = true;
-            else if (matKhau1_DK_Box.Text == matKhau2_DK_Box.Text && matKhauKhongKhop_DK_Text.Visible)
-                matKhauKhongKhop_DK_Text.Visible = false;
-        }
 
         private void home_Button_Click(object sender, EventArgs e)
         {
@@ -332,79 +212,6 @@ namespace Program
             profilePanel.Visible = true;
         }
 
-        private void quenMK_Button_Click(object sender, EventArgs e)
-        {
-            if (cauHoiQMK_CB.Items.Count == 0)
-                this.setCauHoi(cauHoiQMK_CB);
-            this.refreshQuenMatKhau_Panel();
-
-            LoginPanel.Visible = false;
-            quenMK_Panel.Visible = true;
-        }
-
-        private void hienMK_QMK_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            this.hienMatKhau(hienMK_QMK_Check, matKhau1_QMK_Box);
-            this.hienMatKhau(hienMK_QMK_Check, matKhau2_QMK_Box);
-        }
-
-        private void matKhau1_QMK_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (matKhau1_QMK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
-                matKhau1_QMK_Box.UseSystemPasswordChar = true;
-
-        }
-
-        private void matKhau2_QMK_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (matKhau2_QMK_Box.Text.Length <= 1 && !hienMK_DK_Check.Checked)
-                matKhau2_QMK_Box.UseSystemPasswordChar = true;
-
-            if (matKhau1_QMK_Box.Text != matKhau2_QMK_Box.Text && !saiMK_Text.Visible)
-                saiMK_Text.Visible = true;
-            else if (matKhau1_QMK_Box.Text == matKhau2_QMK_Box.Text && saiMK_Text.Visible)
-                saiMK_Text.Visible = false;
-        }
-
-        private void troVe_QMK_Button_Click(object sender, EventArgs e)
-        {
-            this.refreshDangNhap_Panel();
-            quenMK_Panel.Visible = false;
-            LoginPanel.Visible = true;
-        }
-
-        private void xacNhan_QMK_Button_Click(object sender, EventArgs e)
-        {
-            if (saiMK_Text.Visible)
-                return;
-
-            if (HeThong.KiemTraTaiKhoan(taiKhoan_QMK_Box.Text))
-            {
-                thongBao_Text.Text = "Tài khoản không tồn tại";
-                thongBao_Text.Visible = true;
-                return;
-            }
-            else if (thongBao_Text.Visible)
-            {
-                thongBao_Text.Visible = false;
-            }
-
-            if (HeThong.KiemTraCauHoi(taiKhoan_QMK_Box.Text, cauHoiQMK_CB.SelectedIndex - 1, cauTraLoi_QML_Box.Text))
-            {
-                HeThong.CapNhatMatKhau(taiKhoan_QMK_Box.Text, matKhau1_QMK_Box.Text);
-
-                MessageBox.Show("Đổi mật khẩu thành công");
-
-                this.refreshDangNhap_Panel();
-                quenMK_Panel.Visible = false;
-                LoginPanel.Visible = true;
-            }
-            else
-            {
-                thongBao_Text.Text = "Câu hỏi hoặc câu trả lời không chính xác";
-                thongBao_Text.Visible = true;
-            }
-        }
 
         private void suaTen_Button_Click(object sender, EventArgs e)
         {
@@ -619,21 +426,21 @@ namespace Program
 
         private void dangNhap_Button_Click(object sender, EventArgs e)
         {
-            KhachHang_Panel.Visible = false;
-            LoginPanel.Visible = true;
-            Signup_Panel.Visible = false;
+            this.Hide();
+            DangNhap_Form dangNhap = new DangNhap_Form(true);
+            DialogResult result = dangNhap.ShowDialog();
         }
 
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
-            refreshDangKy_Panel();
-            KhachHang_Panel.Visible = false;
-            Signup_Panel.Visible = true;
+            this.Hide();
+            DangNhap_Form dangKy = new DangNhap_Form(false);
+            DialogResult result = dangKy.ShowDialog();
         }
 
         private void troVe_button_Click(object sender, EventArgs e)
         {
-            LoginPanel.Visible = false;
+            //LoginPanel.Visible = false;
             KhachHang_Panel.Visible = true;
         }
         private void veLai_DiaChi()
@@ -872,5 +679,7 @@ namespace Program
                     suaSDT_button.Enabled = true;
             }
         }
+
+
     }
 }
