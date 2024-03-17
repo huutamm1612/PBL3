@@ -415,10 +415,22 @@ namespace Program
             SqlDataReader reader = sqlCmd.ExecuteReader();
             reader.Read();
 
-            Shop shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
+            Shop shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), null, reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
 
             reader.Close();
             shop.capNhatDiaChi(LoadDiaChi(shop.maSo));
+
+            noiDung = $"SELECT BaiDang_Shop.maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
+            sqlCmd = TruyVan(noiDung);
+            reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read()) { }
+                shop.themBaiDang(new BaiDang(reader.GetString(0)));
+
+            reader.Close();
+
+            foreach (BaiDang baiDang in shop.list)
+                shop.capNhatBaiDang(LoadBaiDang(baiDang.maBD));
 
             return shop;
         }
@@ -433,6 +445,57 @@ namespace Program
         public static void ThemSanPham(SanPham sanPham)
         {
             string noiDung = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', {sanPham.luocBan}, null)";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static void ThemBaiDang(BaiDang baiDang)
+        {
+            foreach (SanPham sanPham in baiDang.list)
+                ThemSanPham(sanPham);
+
+            string noiDung = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia})";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static BaiDang LoadBaiDang(string maBD)
+        {
+            string noiDung = $"SELECT * FROM BaiDang WHERE maBD = '{maBD}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+            reader.Read();
+
+            BaiDang baiDang = new BaiDang(reader.GetString(0), new List<SanPham>(), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
+
+            reader.Close();
+
+            noiDung = $"SELECT SanPham.* FROM SanPham INNER JOIN SanPham_BaiDang ON SanPham.maSP = SanPham_BaiDang.maSP WHERE SanPham_BaiDang.maBD = '{baiDang.maBD}'";
+            sqlCmd = TruyVan(noiDung);
+            reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                SanPham sanPham = new SanPham(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(13), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetInt32(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12));
+                baiDang.themSanPham(sanPham);
+            }
+
+            reader.Close();
+            return baiDang;
+        }
+        public static void CapNhatSanPham(SanPham sanPham)
+        {
+            string noiDung = $"UPDATE SanPham SET maLoaiSP = '{sanPham.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
+            SqlCommand sqlCmd = TruyVan(noiDung);
+            sqlCmd.ExecuteNonQuery();
+        }
+
+        public static void CapNhatBaiDang(BaiDang baiDang)
+        {
+            foreach (SanPham sanPham in baiDang.list)
+                CapNhatSanPham(sanPham);
+
+            string noiDung = $"UPDATE BaiDang SET tieuDe = '{baiDang.tieuDe}', moTa = '{baiDang.moTa}', luocThich = {baiDang.luocThich}, giamGia = {baiDang.giamGia} WHERE maBD = '{baiDang.maBD}'";
             SqlCommand sqlCmd = TruyVan(noiDung);
             sqlCmd.ExecuteNonQuery();
         }

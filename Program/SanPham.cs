@@ -22,7 +22,7 @@ namespace Program
         public int namXuatBan { get; private set; }
         public string nhaXuatBan { get; private set; }
         public string loaiBia { get; private set; }
-        SanPham()
+        public SanPham()
         {
             maSP = "";
             maLoaiSP = "";
@@ -40,13 +40,12 @@ namespace Program
             moTa = "";
         }
 
-        SanPham(string maSP)
+        public SanPham(string maSP)
         {
             this.maSP = maSP;
         }
 
-
-        SanPham(string maSP, string maLoaiSP, string ten, int gia, int soLuong, int luocBan, string tacGia, string dichGia, string ngonNgu, int soTrang, int namXuatBan, string nhaXuatBan, string loaiBia, string moTa)
+        public SanPham(string maSP, string maLoaiSP, string ten, int gia, int soLuong, int luocBan, string tacGia, string dichGia, string ngonNgu, int soTrang, int namXuatBan, string nhaXuatBan, string loaiBia, string moTa)
         {
             this.maSP = maSP;
             this.maLoaiSP = maLoaiSP;
@@ -64,7 +63,7 @@ namespace Program
             this.moTa = moTa;
         }
 
-        SanPham(SanPham sanPham)
+        public SanPham(SanPham sanPham)
         {
             maSP = sanPham.maSP;
             maLoaiSP = sanPham.maLoaiSP;
