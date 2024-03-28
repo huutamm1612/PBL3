@@ -729,7 +729,6 @@
             // accountPanel
             // 
             this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.button10);
             this.accountPanel.Controls.Add(this.doiMK_Botton);
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
@@ -737,6 +736,7 @@
             this.accountPanel.Controls.Add(this.myAccount_Button);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
+            this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
@@ -902,7 +902,7 @@
             // 
             // soDT_UP_Box
             // 
-            this.soDT_UP_Box.BackColor = System.Drawing.Color.White;
+            this.soDT_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.soDT_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.soDT_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
             this.soDT_UP_Box.Location = new System.Drawing.Point(286, 317);
@@ -914,7 +914,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox8.Location = new System.Drawing.Point(275, 310);
             this.pictureBox8.Name = "pictureBox8";
@@ -924,7 +924,7 @@
             // 
             // email_UP_Box
             // 
-            this.email_UP_Box.BackColor = System.Drawing.Color.White;
+            this.email_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.email_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.email_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
             this.email_UP_Box.Location = new System.Drawing.Point(286, 249);
@@ -935,7 +935,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox7.Location = new System.Drawing.Point(275, 242);
             this.pictureBox7.Name = "pictureBox7";
@@ -945,7 +945,7 @@
             // 
             // ten_UP_Box
             // 
-            this.ten_UP_Box.BackColor = System.Drawing.Color.White;
+            this.ten_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.ten_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ten_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
             this.ten_UP_Box.Location = new System.Drawing.Point(286, 177);
@@ -956,7 +956,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox6.Location = new System.Drawing.Point(275, 170);
             this.pictureBox6.Name = "pictureBox6";

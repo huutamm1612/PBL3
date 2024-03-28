@@ -482,6 +482,7 @@
             this.matKhau_DN_Box.TabIndex = 1;
             this.matKhau_DN_Box.UseSystemPasswordChar = true;
             this.matKhau_DN_Box.TextChanged += new System.EventHandler(this.matKhau_DN_Box_TextChanged);
+            this.matKhau_DN_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_DangNhap);
             // 
             // label1
             // 
