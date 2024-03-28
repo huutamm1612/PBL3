@@ -222,5 +222,10 @@ namespace Program
             dangKyPanel.Visible = false;
             refreshHomePanel();
         }
+
+        private void banHang_treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            
+        }
     }
 }
