@@ -14,7 +14,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -451,7 +451,7 @@ namespace Program
 
             ThemDiaChi(shop, shop.diaChi, false);
 
-            query = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES('{shop.maSo}', N'{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}', '{shop.ngaySinh}')";
+            query = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao, tinhTrang) VALUES('{shop.maSo}', N'{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}', '{shop.ngaySinh.Date:MM/dd/yyyy}', 1)";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO KhachHang_Shop VALUES ('{maKH}', '{shop.maSo}')";
