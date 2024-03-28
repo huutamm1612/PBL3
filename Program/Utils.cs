@@ -29,6 +29,11 @@ namespace Program
 
         }
 
+        public static void BSearch<T>(List<T> list, Compare cmp, Equal eql)
+        {
+
+        }
+
         public static void Sort<T>(List<T> list, int left, int right, Compare cmp, Equal eql)
         {
             if (left >= right)

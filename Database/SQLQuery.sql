@@ -1,4 +1,4 @@
-	CREATE DATABASE PBL3_Database
+CREATE DATABASE PBL3_Database
 USE PBL3_Database
 
 CREATE TABLE Tinh_ThanhPho (
@@ -156,4 +156,18 @@ CREATE TABLE BaiDang_Shop(
 
 	CONSTRAINT FK_BaiDang_Shop_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
 	CONSTRAINT FK_BaiDang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
-)	
+)
+
+CREATE TABLE DonHang(
+	maDH varchar(10) PRIMARY KEY,
+	maKH varchar(10),
+	maDC varchar(10),
+	tongTien int,
+	tinhTrang int,
+	ptThanhToan int,
+	ngayDatHang date,
+	ngayGiaoHang date,
+
+	CONSTRAINT FK_DonHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_DonHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
+)

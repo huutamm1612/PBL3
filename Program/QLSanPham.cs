@@ -11,6 +11,18 @@ namespace Program
     {
         public List<SanPham> list { get; set; }
 
+        public QLSanPham() { }
+
+        public QLSanPham(List<SanPham> list)
+        {
+            this.list = list;
+        }
+        
+        public QLSanPham(QLSanPham sanPham)
+        {
+            this.list = sanPham.list;
+        }
+
         public int IndexOf(SanPham sanPham)
         {
             for(int index = 0; index < list.Count ; index++)
@@ -50,7 +62,14 @@ namespace Program
             }
         }
 
-        public void Add(SanPham sanPham) => list.Add(sanPham);
+        public void Add(SanPham sanPham)
+        {
+            /*foreach(SanPham sp in list)
+            {
+
+            }*/
+            list.Add(sanPham);
+        }
 
         public void Update(SanPham sanPham)
         {
@@ -64,6 +83,18 @@ namespace Program
         public QLSanPham GetAllSP()
         {
             return this;
+        }
+
+        public int tinhTongTien()
+        {
+            int tongTien = 0;
+
+            foreach(SanPham sanPham in list)
+            {
+                tongTien += sanPham.gia * sanPham.soLuong;
+            }
+
+            return tongTien;
         }
     }
 }

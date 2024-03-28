@@ -231,6 +231,7 @@ namespace Program
                     taiKhoan = reader.GetString(1)
                 };
 
+                reader.Close();
                 return khachHang;
             }
 
@@ -505,8 +506,16 @@ namespace Program
                 query = $"SELECT BaiDang_Shop.maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
                 reader = ExecuteQuery(query);
 
-                while (reader.Read()) { }
+                if (!reader.Read())
+                {
+                    reader.Close();
+                    return shop;
+                }
+
+                do 
+                {
                     shop.Add(new BaiDang(reader.GetString(0)));
+                }while(reader.Read());
 
                 reader.Close();
 

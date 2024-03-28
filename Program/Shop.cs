@@ -13,12 +13,15 @@ namespace Program
         public int nFollower { get; set; }
         public int tinhTrang { get; set; }
         public int doanhThu { get; set; }
+        public QLDonHang donHang { get; set; }
 
         public Shop() : base()
         {
+            list = null;
             nFollower = 0;
             doanhThu = 0;
             tinhTrang = 1;
+            donHang = null;
         }
 
         public Shop(string soDT, string email) : base()
@@ -29,6 +32,7 @@ namespace Program
             tinhTrang = 1;
             this.soDT = soDT;
             this.email = email;
+            donHang = null;
         }
 
         public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, int _, DateTime ngaySinh, List<BaiDang> list, int nFollower, int tinhTrang, int doanhThu) : base(maSo, ten, soDT, email, diaChi, _, ngaySinh)
@@ -47,6 +51,7 @@ namespace Program
             this.nFollower = shop.nFollower;
             this.tinhTrang = shop.tinhTrang;
             this.doanhThu = shop.doanhThu;
+            this.donHang = shop.donHang;
         }
 
         public void setMaSo(string maSo)
@@ -108,6 +113,20 @@ namespace Program
             }
 
             return qlSP;
+        }
+
+        public void giaoHang()
+        {
+
+        }
+
+        public void giaoHangThanhCong(params SanPham[] list)
+        {
+            foreach(SanPham sanPham in list)
+            {
+                doanhThu += sanPham.soLuong * sanPham.gia;
+                sanPham.luocBan += sanPham.soLuong;
+            }
         }
 
         public void setNgayTaoShop() => ngaySinh = DateTime.Now;

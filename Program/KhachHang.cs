@@ -14,6 +14,7 @@ namespace Program
         public int xu { get; set; }
         public string avt { get; set; }
         public List<DiaChi> diaChis { get; set; }
+        public QLDonHang donHang { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -26,6 +27,7 @@ namespace Program
             this.nFollow = 0;
             this.xu = 0;
             this.chiTieu = 0;
+            this.donHang = null;
         }
         public KhachHang(string maSo, string taiKhoan) : base(maSo)
         {
@@ -44,6 +46,7 @@ namespace Program
             this.nFollow = khachHang.nFollow;
             this.xu = khachHang.xu;
             this.chiTieu = khachHang.chiTieu;
+            this.donHang = khachHang.donHang;
         }
 
         public override void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh)
@@ -100,6 +103,15 @@ namespace Program
         public bool daTaoShop() // trả về true nếu khách hàng đã tạo shop
         {
             return HeThong.KiemTraTaoShop(this);
+        }
+
+        public void datHang(QLSanPham list, DiaChi diaChi, int ptThanhToan)
+        {
+            DonHang donHang = new DonHang(list);
+            donHang.datHang(this, diaChi, ptThanhToan);
+            this.donHang.Add(donHang);
+
+
         }
     }
 }
