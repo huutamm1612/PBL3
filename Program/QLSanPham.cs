@@ -1,39 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Program
 {
-    internal abstract class QLSanPham
+    internal class QLSanPham
     {
-        public List<SanPham> list { get; protected set; }
+        public List<SanPham> list { get; set; }
 
-        public void themSanPham(SanPham sanPham)
+        public int IndexOf(SanPham sanPham)
         {
-            list.Add(sanPham);
+            for(int index = 0; index < list.Count ; index++)
+            {
+                if (SanPham.EqualMaSP(list[index], sanPham))
+                    return index;
+            }
+
+            return -1;
         }
 
-        public void themSanPham(int index, SanPham sanPham)
+        public void RemoveSer(List<string> maSPs)
         {
-            list.Insert(index, sanPham);
+            Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaSP, SanPham.EqualMaSP);
+            Utils.RemoveSer(list, maSPs);
         }
 
-        public void xoaSanPham(SanPham sanPham)
+        public void RemoveAt(int index) => list.RemoveAt(index);
+
+        public void Remove(SanPham sanPham)
         {
-            list.Remove(sanPham);
+            foreach(SanPham sp in list)
+            {
+                if (SanPham.EqualMaSP(sp, sanPham))
+                {
+                    list.Remove(sp);
+                    return;
+                }
+            }
         }
 
-        public void xoaSanPham(int index)
+        public void AddRange(QLSanPham QLSP)
         {
-            list.RemoveAt(index);
+            foreach(SanPham sanPham in QLSP.list)
+            {
+                Add(sanPham);
+            }
         }
 
-        public void capNhatSanPham(SanPham sanPham)
+        public void Add(SanPham sanPham) => list.Add(sanPham);
+
+        public void Update(SanPham sanPham)
         {
-            int index = list.IndexOf(sanPham);
-            list[index] = sanPham;
+            for (int index = 0; index < list.Count; index++)
+            {
+                if (SanPham.EqualMaSP(list[index], sanPham))
+                    list[index] = sanPham;
+            }
+        }
+
+        public QLSanPham GetAllSP()
+        {
+            return this;
         }
     }
 }

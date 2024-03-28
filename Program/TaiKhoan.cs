@@ -8,8 +8,8 @@ namespace Program
 {
     internal abstract class TaiKhoan
     {
-        public string taiKhoan { get; protected set; }
-        public string matKhau { get; protected set; }
+        public string taiKhoan { get; set; }
+        public string matKhau { get; set; }
         public abstract void dangNhap(string taiKhoan, string matKhau);
         public abstract void doiMatKhau(string matKhauMoi);
     }

@@ -247,7 +247,7 @@ namespace Program
             else if (khachHang.gioiTinh == 2)
                 khac_RB.Checked = true;
 
-            if (khachHang.ngaySinh.Year != 1899)
+            if (khachHang.ngaySinh.Year >= 1899)
             {
                 ngaySinh_CB.SelectedIndex = khachHang.ngaySinh.Day - 1;
                 thangSinh_CB.SelectedIndex = khachHang.ngaySinh.Month - 1;
@@ -613,7 +613,7 @@ namespace Program
             if (soDienThoai_Box.Text == "...")
                 return;
 
-            if (!HeThong.KiemTraSoDT(soDienThoai_Box.Text))
+            if (!Utils.KiemTraSoDT(soDienThoai_Box.Text))
             {
                 soDTKhongHopLe_Label.Visible = true;
                 HTCapNhatDC_Button.Enabled = false;
@@ -634,7 +634,7 @@ namespace Program
             if (soDT_UP_Box.Text == "")
                 return;
 
-            if (!HeThong.KiemTraSoDT(soDT_UP_Box.Text))
+            if (!Utils.KiemTraSoDT(soDT_UP_Box.Text))
             {
                 SDTKhongHopLe_Label.Visible = true;
                 luu_UP_Button.Enabled = false;
@@ -655,16 +655,11 @@ namespace Program
             if (user == null)
                 return;
 
-            if (khachHang.daTaoShop())
-                MessageBox.Show("datao");
-            else
-            {
-                this.Hide();
-                BanHang_Form BHForm = new BanHang_Form();
-                sendData send = new sendData(BHForm.setData);
-                send(user.taiKhoan, user.matKhau);
-                BHForm.ShowDialog();
-            }
+            Hide();
+            BanHang_Form BHForm = new BanHang_Form(khachHang.daTaoShop());
+            sendData send = new sendData(BHForm.setData);
+            send(user.taiKhoan, user.matKhau);
+            BHForm.ShowDialog();
         }
 
     }

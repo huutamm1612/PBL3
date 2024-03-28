@@ -13,28 +13,70 @@ namespace Program
     public partial class BanHang_Form : Form
     {
         private User user;
-        private Shop shop;
-        public BanHang_Form(bool daTaoShop = false)
+        private Shop shop = null;
+        public BanHang_Form()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
-            if(daTaoShop )
-            {
-
-            }
-            else
+        }
+        public BanHang_Form(bool daTaoShop)
+        {
+            InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
+            if(daTaoShop)
             {
                 shop = new Shop();
             }
         }
 
+        private void refreshHomePanel()
+        {
+            choice_Panel.Visible = true;
+            screen_Panel.Visible = true;
+        }
+
+        private void refreshDangKyShopPanel()
+        {
+            soDT_DK_Text.Text = shop.soDT;
+            email_DK_Text.Text = shop.email;
+            dangKyPanel.Visible = true;
+
+            if (soDT_DK_Text.Text == "")
+            {
+                soDT_DK_Text.ReadOnly = false;
+                borderSoDT.BackColor = Color.White;
+            }
+            if (email_DK_Text.Text == "")
+            {
+                email_DK_Text.ReadOnly = false;
+                borderEmail.BackColor = Color.White;
+            }
+
+        }
+
         public void setData(string taiKhoan, string matKhau)
         {
+            bool daTaoShop = shop != null ? true : false;
+            
             user = new User();
             user.dangNhap(taiKhoan, matKhau);
+            shop = HeThong.LoadShop(user);
+
+            if (daTaoShop)
+            {
+                refreshHomePanel();
+            }
+            else
+            {
+                refreshDangKyShopPanel();
+            }
         }
 
         private void taoDiaChi_button_Click(object sender, EventArgs e)
@@ -50,7 +92,7 @@ namespace Program
             if (soDienThoai_Box.Text == "...")
                 return;
 
-            if (!HeThong.KiemTraSoDT(soDienThoai_Box.Text))
+            if (!Utils.KiemTraSoDT(soDienThoai_Box.Text))
             {
                 soDTKhongHopLe_Label.Visible = true;
                 HTCapNhatDC_Button.Enabled = false;
@@ -111,13 +153,12 @@ namespace Program
 
         private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
         {
-            string maDC = HeThong.MaMoi("maDC");
             int maT_TP = TTP_ComboBox.SelectedIndex;
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
             int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
-            DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
+            DiaChi diaChi = new DiaChi("", hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
 
-            this.shop.capNhatDiaChi(diaChi);
+            shop.capNhatDiaChi(diaChi);
             diaChi_Text.Text = shop.diaChi.ToString();
             diaChi_Text.ReadOnly = true;
             taoDiaChi_button.Visible = false;
@@ -157,6 +198,29 @@ namespace Program
         {
             refreshCapNhatDiaChi_Panel(shop.diaChi);
             themDiaChi_Panel.Visible = true;
+        }
+
+        private void soDT_DK_Text_TextChanged(object sender, EventArgs e)
+        {
+            if (Utils.KiemTraSoDT(soDT_DK_Text.Text))
+            {
+                saiSDT_label.Visible = false;
+            }
+            else
+            {
+                saiSDT_label.Visible = true;
+            }
+            
+        }
+
+        private void HTTaoShop_Click(object sender, EventArgs e)
+        {
+            shop.diaChi.setMaDC(HeThong.MaMoi("maDC"));
+            shop = new Shop(HeThong.MaMoi("maS"), tenShop_DK_Text.Text, soDT_DK_Text.Text, email_DK_Text.Text, shop.diaChi, -1, DateTime.Now, new List<BaiDang>(), 0, 1, 0);
+            HeThong.DangKy(user, shop);
+
+            dangKyPanel.Visible = false;
+            refreshHomePanel();
         }
     }
 }

@@ -8,12 +8,12 @@ namespace Program
 {
     internal class KhachHang : Nguoi
     {
-        public string taiKhoan { get; private set; }
-        public int nFollow { get; private set; }
-        public int chiTieu { get; private set; }
-        public int xu { get; private set; }
-        public string avt { get; private set; }
-        public List<DiaChi> diaChis { get; private set; }
+        public string taiKhoan { get; set; }
+        public int nFollow { get; set; }
+        public int chiTieu { get; set; }
+        public int xu { get; set; }
+        public string avt { get; set; }
+        public List<DiaChi> diaChis { get; set; }
 
         public override bool Equals(object obj)
         {

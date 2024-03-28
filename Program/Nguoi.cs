@@ -8,12 +8,12 @@ namespace Program
 {
     internal abstract class Nguoi
     {
-        public string maSo { get; protected set; }
-        public string ten { get; protected set; }
-        public string soDT { get; protected set; }
-        public string email { get; protected set; }
-        public DiaChi diaChi { get; protected set; }
-        public int gioiTinh { get; protected set; }
+        public string maSo { get; set; }
+        public string ten { get; set; }
+        public string soDT { get; set; }
+        public string email { get; set; }
+        public DiaChi diaChi { get; set; }
+        public int gioiTinh { get; set; }
         public DateTime ngaySinh { get; set; }
 
         public Nguoi()

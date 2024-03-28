@@ -76,6 +76,7 @@
     <Compile Include="Shop.cs" />
     <Compile Include="TaiKhoan.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>

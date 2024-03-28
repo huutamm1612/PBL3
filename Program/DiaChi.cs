@@ -8,13 +8,23 @@ namespace Program
 {
     internal class DiaChi
     {
-        public string maDC { get; private set; }
-        public string ten { get; private set; }
-        public string soDT { get; private set; }
-        public int maT_TP { get; private set; }
-        public int maQH { get; private set; }
-        public int maPX { get; private set; }
-        public string diaChiCuThe { get; private set; }
+        public string maDC { get; set; }
+        public string ten { get; set; }
+        public string soDT { get; set; }
+        public int maT_TP { get; set; }
+        public int maQH { get; set; }
+        public int maPX { get; set; }
+        public string diaChiCuThe { get; set; }
+        public DiaChi()
+        {
+            maDC = "";
+            ten = "";
+            soDT = "";
+            maT_TP = -1;
+            maQH = -1;
+            maPX = -1;
+            diaChiCuThe = "";
+        }
         public DiaChi(string maDC, string ten, string soDT, int maT_TP, int maQH, int maPX, string diaChiCuThe)
         {
             this.maDC = maDC;
@@ -33,6 +43,11 @@ namespace Program
             this.maQH = maQH;
             this.maPX = maPX;
             this.diaChiCuThe = diaChiCuThe;
+        }
+
+        public void setMaDC(string maDC)
+        {
+            this.maDC = maDC;
         }
         public override bool Equals(object obj)
         {

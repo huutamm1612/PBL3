@@ -28,8 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode(" Tất Cả");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode(" Đơn Hủy");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode(" Trả Hàng/Hoàn Tiền");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode(" Cài Đặt Vận Chuyển");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("     Quản Lý Đơn Hàng", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("     Quản Lý Sản Phẩm");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("     Quản Lý Shop");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("     Dữ Liệu");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("     Thiết Lập Shop");
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.dangKyPanel = new System.Windows.Forms.Panel();
             this.themDiaChi_Panel = new System.Windows.Forms.Panel();
             this.soDTKhongHopLe_Label = new System.Windows.Forms.Label();
             this.indexOfDiaChi = new System.Windows.Forms.Label();
@@ -51,31 +64,37 @@
             this.hoVaTen_Box = new System.Windows.Forms.TextBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.txtDiaChi = new System.Windows.Forms.Label();
+            this.HTTaoShop = new System.Windows.Forms.Button();
+            this.diaChiT_panel = new System.Windows.Forms.Panel();
+            this.suaDiaChi_button = new System.Windows.Forms.Button();
+            this.diaChi_Text = new System.Windows.Forms.TextBox();
             this.taoDiaChi_button = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.diaChi_Text = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.email_DK_Text = new System.Windows.Forms.TextBox();
+            this.borderEmail = new System.Windows.Forms.PictureBox();
+            this.soDT_DK_Text = new System.Windows.Forms.TextBox();
+            this.borderSoDT = new System.Windows.Forms.PictureBox();
+            this.tenShop_DK_Text = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.suaDiaChi_button = new System.Windows.Forms.Button();
-            this.diaChiT_panel = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.saiSDT_label = new System.Windows.Forms.Label();
+            this.choice_Panel = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.screen_Panel = new System.Windows.Forms.Panel();
+            this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.diaChiT_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.borderEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderSoDT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.choice_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -89,31 +108,34 @@
             this.headerPanel.Size = new System.Drawing.Size(1415, 64);
             this.headerPanel.TabIndex = 0;
             // 
-            // panel1
+            // dangKyPanel
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dangKyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.themDiaChi_Panel);
-            this.panel1.Controls.Add(this.diaChiT_panel);
-            this.panel1.Controls.Add(this.taoDiaChi_button);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(249, 78);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(918, 659);
-            this.panel1.TabIndex = 1;
+            this.dangKyPanel.BackColor = System.Drawing.Color.White;
+            this.dangKyPanel.Controls.Add(this.themDiaChi_Panel);
+            this.dangKyPanel.Controls.Add(this.HTTaoShop);
+            this.dangKyPanel.Controls.Add(this.diaChiT_panel);
+            this.dangKyPanel.Controls.Add(this.taoDiaChi_button);
+            this.dangKyPanel.Controls.Add(this.label2);
+            this.dangKyPanel.Controls.Add(this.email_DK_Text);
+            this.dangKyPanel.Controls.Add(this.borderEmail);
+            this.dangKyPanel.Controls.Add(this.soDT_DK_Text);
+            this.dangKyPanel.Controls.Add(this.borderSoDT);
+            this.dangKyPanel.Controls.Add(this.tenShop_DK_Text);
+            this.dangKyPanel.Controls.Add(this.pictureBox1);
+            this.dangKyPanel.Controls.Add(this.textBox4);
+            this.dangKyPanel.Controls.Add(this.textBox3);
+            this.dangKyPanel.Controls.Add(this.textBox2);
+            this.dangKyPanel.Controls.Add(this.textBox1);
+            this.dangKyPanel.Controls.Add(this.label1);
+            this.dangKyPanel.Controls.Add(this.saiSDT_label);
+            this.dangKyPanel.Location = new System.Drawing.Point(249, 78);
+            this.dangKyPanel.Name = "dangKyPanel";
+            this.dangKyPanel.Size = new System.Drawing.Size(918, 659);
+            this.dangKyPanel.TabIndex = 1;
+            this.dangKyPanel.Visible = false;
             // 
             // themDiaChi_Panel
             // 
@@ -139,7 +161,7 @@
             this.themDiaChi_Panel.Controls.Add(this.hoVaTen_Box);
             this.themDiaChi_Panel.Controls.Add(this.pictureBox9);
             this.themDiaChi_Panel.Controls.Add(this.txtDiaChi);
-            this.themDiaChi_Panel.Location = new System.Drawing.Point(322, 64);
+            this.themDiaChi_Panel.Location = new System.Drawing.Point(504, 155);
             this.themDiaChi_Panel.Name = "themDiaChi_Panel";
             this.themDiaChi_Panel.Size = new System.Drawing.Size(559, 483);
             this.themDiaChi_Panel.TabIndex = 14;
@@ -152,9 +174,9 @@
             this.soDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
             this.soDTKhongHopLe_Label.Location = new System.Drawing.Point(294, 123);
             this.soDTKhongHopLe_Label.Name = "soDTKhongHopLe_Label";
-            this.soDTKhongHopLe_Label.Size = new System.Drawing.Size(162, 16);
+            this.soDTKhongHopLe_Label.Size = new System.Drawing.Size(165, 16);
             this.soDTKhongHopLe_Label.TabIndex = 19;
-            this.soDTKhongHopLe_Label.Text = "Số điện thọa không hợp lệ";
+            this.soDTKhongHopLe_Label.Text = "Số điện thoại không hợp lệ";
             this.soDTKhongHopLe_Label.Visible = false;
             // 
             // indexOfDiaChi
@@ -368,152 +390,28 @@
             this.txtDiaChi.TabIndex = 0;
             this.txtDiaChi.Text = "Địa chỉ mới";
             // 
-            // taoDiaChi_button
+            // HTTaoShop
             // 
-            this.taoDiaChi_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.taoDiaChi_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taoDiaChi_button.Location = new System.Drawing.Point(270, 248);
-            this.taoDiaChi_button.Name = "taoDiaChi_button";
-            this.taoDiaChi_button.Size = new System.Drawing.Size(248, 41);
-            this.taoDiaChi_button.TabIndex = 13;
-            this.taoDiaChi_button.Text = "Tạo địa chỉ";
-            this.taoDiaChi_button.UseVisualStyleBackColor = true;
-            this.taoDiaChi_button.Click += new System.EventHandler(this.taoDiaChi_button_Click);
+            this.HTTaoShop.BackColor = System.Drawing.Color.Gainsboro;
+            this.HTTaoShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HTTaoShop.Location = new System.Drawing.Point(464, 578);
+            this.HTTaoShop.Name = "HTTaoShop";
+            this.HTTaoShop.Size = new System.Drawing.Size(147, 41);
+            this.HTTaoShop.TabIndex = 20;
+            this.HTTaoShop.Text = "Hoàn thành";
+            this.HTTaoShop.UseVisualStyleBackColor = false;
+            this.HTTaoShop.Click += new System.EventHandler(this.HTTaoShop_Click);
             // 
-            // label2
+            // diaChiT_panel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
-            this.label2.TabIndex = 0;
-            // 
-            // diaChi_Text
-            // 
-            this.diaChi_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.diaChi_Text.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.diaChi_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diaChi_Text.Location = new System.Drawing.Point(10, 14);
-            this.diaChi_Text.Multiline = true;
-            this.diaChi_Text.Name = "diaChi_Text";
-            this.diaChi_Text.Size = new System.Drawing.Size(588, 87);
-            this.diaChi_Text.TabIndex = 11;
-            // 
-            // textBox7
-            // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(280, 437);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(562, 23);
-            this.textBox7.TabIndex = 9;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(271, 427);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(631, 47);
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(280, 367);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(562, 23);
-            this.textBox6.TabIndex = 7;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(271, 357);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(631, 47);
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(280, 150);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(562, 23);
-            this.textBox5.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(271, 140);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(631, 47);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(89, 437);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(122, 23);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Email";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(92, 367);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(119, 23);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Số điện thoại";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(92, 256);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(119, 23);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Địa chỉ";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(92, 150);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(119, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Tên shop";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Thiết lập kênh bán hàng";
+            this.diaChiT_panel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.diaChiT_panel.Controls.Add(this.suaDiaChi_button);
+            this.diaChiT_panel.Controls.Add(this.diaChi_Text);
+            this.diaChiT_panel.Location = new System.Drawing.Point(465, 297);
+            this.diaChiT_panel.Name = "diaChiT_panel";
+            this.diaChiT_panel.Size = new System.Drawing.Size(631, 116);
+            this.diaChiT_panel.TabIndex = 16;
+            this.diaChiT_panel.Visible = false;
             // 
             // suaDiaChi_button
             // 
@@ -533,38 +431,245 @@
             this.suaDiaChi_button.UseVisualStyleBackColor = false;
             this.suaDiaChi_button.Click += new System.EventHandler(this.suaDiaChi_button_Click);
             // 
-            // diaChiT_panel
+            // diaChi_Text
             // 
-            this.diaChiT_panel.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.diaChiT_panel.Controls.Add(this.suaDiaChi_button);
-            this.diaChiT_panel.Controls.Add(this.diaChi_Text);
-            this.diaChiT_panel.Location = new System.Drawing.Point(271, 213);
-            this.diaChiT_panel.Name = "diaChiT_panel";
-            this.diaChiT_panel.Size = new System.Drawing.Size(631, 116);
-            this.diaChiT_panel.TabIndex = 16;
-            this.diaChiT_panel.Visible = false;
+            this.diaChi_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.diaChi_Text.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.diaChi_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diaChi_Text.Location = new System.Drawing.Point(10, 14);
+            this.diaChi_Text.Multiline = true;
+            this.diaChi_Text.Name = "diaChi_Text";
+            this.diaChi_Text.Size = new System.Drawing.Size(588, 87);
+            this.diaChi_Text.TabIndex = 11;
+            // 
+            // taoDiaChi_button
+            // 
+            this.taoDiaChi_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.taoDiaChi_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.taoDiaChi_button.Location = new System.Drawing.Point(464, 332);
+            this.taoDiaChi_button.Name = "taoDiaChi_button";
+            this.taoDiaChi_button.Size = new System.Drawing.Size(248, 41);
+            this.taoDiaChi_button.TabIndex = 13;
+            this.taoDiaChi_button.Text = "Tạo địa chỉ";
+            this.taoDiaChi_button.UseVisualStyleBackColor = true;
+            this.taoDiaChi_button.Click += new System.EventHandler(this.taoDiaChi_button_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(240, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.TabIndex = 0;
+            // 
+            // email_DK_Text
+            // 
+            this.email_DK_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.email_DK_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_DK_Text.Location = new System.Drawing.Point(474, 521);
+            this.email_DK_Text.Name = "email_DK_Text";
+            this.email_DK_Text.ReadOnly = true;
+            this.email_DK_Text.Size = new System.Drawing.Size(562, 23);
+            this.email_DK_Text.TabIndex = 9;
+            // 
+            // borderEmail
+            // 
+            this.borderEmail.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.borderEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.borderEmail.Location = new System.Drawing.Point(465, 511);
+            this.borderEmail.Name = "borderEmail";
+            this.borderEmail.Size = new System.Drawing.Size(631, 47);
+            this.borderEmail.TabIndex = 10;
+            this.borderEmail.TabStop = false;
+            // 
+            // soDT_DK_Text
+            // 
+            this.soDT_DK_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.soDT_DK_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soDT_DK_Text.Location = new System.Drawing.Point(474, 451);
+            this.soDT_DK_Text.Name = "soDT_DK_Text";
+            this.soDT_DK_Text.ReadOnly = true;
+            this.soDT_DK_Text.Size = new System.Drawing.Size(562, 23);
+            this.soDT_DK_Text.TabIndex = 7;
+            this.soDT_DK_Text.TextChanged += new System.EventHandler(this.soDT_DK_Text_TextChanged);
+            // 
+            // borderSoDT
+            // 
+            this.borderSoDT.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.borderSoDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.borderSoDT.Location = new System.Drawing.Point(465, 441);
+            this.borderSoDT.Name = "borderSoDT";
+            this.borderSoDT.Size = new System.Drawing.Size(631, 47);
+            this.borderSoDT.TabIndex = 8;
+            this.borderSoDT.TabStop = false;
+            // 
+            // tenShop_DK_Text
+            // 
+            this.tenShop_DK_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tenShop_DK_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tenShop_DK_Text.Location = new System.Drawing.Point(474, 234);
+            this.tenShop_DK_Text.Name = "tenShop_DK_Text";
+            this.tenShop_DK_Text.Size = new System.Drawing.Size(562, 23);
+            this.tenShop_DK_Text.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(465, 224);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(631, 47);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(283, 521);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(122, 23);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.Text = "Email";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(254, 451);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(151, 23);
+            this.textBox3.TabIndex = 3;
+            this.textBox3.Text = "Số điện thoại";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(286, 340);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(119, 23);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "Địa chỉ";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(286, 234);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(119, 23);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Tên shop";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(319, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Thiết lập kênh bán hàng";
+            // 
+            // saiSDT_label
+            // 
+            this.saiSDT_label.AutoSize = true;
+            this.saiSDT_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saiSDT_label.ForeColor = System.Drawing.Color.Red;
+            this.saiSDT_label.Location = new System.Drawing.Point(467, 491);
+            this.saiSDT_label.Name = "saiSDT_label";
+            this.saiSDT_label.Size = new System.Drawing.Size(165, 16);
+            this.saiSDT_label.TabIndex = 20;
+            this.saiSDT_label.Text = "Số điện thoại không hợp lệ";
+            this.saiSDT_label.Visible = false;
+            // 
+            // choice_Panel
+            // 
+            this.choice_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.choice_Panel.BackColor = System.Drawing.Color.White;
+            this.choice_Panel.Controls.Add(this.treeView1);
+            this.choice_Panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choice_Panel.Location = new System.Drawing.Point(0, 60);
+            this.choice_Panel.Name = "choice_Panel";
+            this.choice_Panel.Size = new System.Drawing.Size(320, 761);
+            this.choice_Panel.TabIndex = 2;
+            this.choice_Panel.Visible = false;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(-25, 3);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Node5";
+            treeNode1.Text = " Tất Cả";
+            treeNode2.Name = "Node6";
+            treeNode2.Text = " Đơn Hủy";
+            treeNode3.Name = "Node7";
+            treeNode3.Text = " Trả Hàng/Hoàn Tiền";
+            treeNode4.Name = "Node8";
+            treeNode4.Text = " Cài Đặt Vận Chuyển";
+            treeNode5.Name = "Node0";
+            treeNode5.Text = "     Quản Lý Đơn Hàng";
+            treeNode6.Name = "Node1";
+            treeNode6.Text = "     Quản Lý Sản Phẩm";
+            treeNode7.Name = "Node2";
+            treeNode7.Text = "     Quản Lý Shop";
+            treeNode8.Name = "Node3";
+            treeNode8.Text = "     Dữ Liệu";
+            treeNode9.Name = "Node4";
+            treeNode9.Text = "     Thiết Lập Shop";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            this.treeView1.Size = new System.Drawing.Size(339, 734);
+            this.treeView1.TabIndex = 0;
+            // 
+            // screen_Panel
+            // 
+            this.screen_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.screen_Panel.BackColor = System.Drawing.SystemColors.Control;
+            this.screen_Panel.Location = new System.Drawing.Point(320, 60);
+            this.screen_Panel.Name = "screen_Panel";
+            this.screen_Panel.Size = new System.Drawing.Size(1072, 761);
+            this.screen_Panel.TabIndex = 3;
+            this.screen_Panel.Visible = false;
             // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1392, 819);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.choice_Panel);
+            this.Controls.Add(this.dangKyPanel);
             this.Controls.Add(this.headerPanel);
+            this.Controls.Add(this.screen_Panel);
             this.Name = "BanHang_Form";
             this.Text = "Kênh bán hàng";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.dangKyPanel.ResumeLayout(false);
+            this.dangKyPanel.PerformLayout();
             this.themDiaChi_Panel.ResumeLayout(false);
             this.themDiaChi_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.diaChiT_panel.ResumeLayout(false);
             this.diaChiT_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.borderEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderSoDT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.choice_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -572,14 +677,14 @@
         #endregion
 
         private System.Windows.Forms.Panel headerPanel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel dangKyPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox email_DK_Text;
+        private System.Windows.Forms.PictureBox borderEmail;
+        private System.Windows.Forms.TextBox soDT_DK_Text;
+        private System.Windows.Forms.PictureBox borderSoDT;
+        private System.Windows.Forms.TextBox tenShop_DK_Text;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
@@ -610,5 +715,10 @@
         private System.Windows.Forms.Label txtDiaChi;
         private System.Windows.Forms.Button suaDiaChi_button;
         private System.Windows.Forms.Panel diaChiT_panel;
+        private System.Windows.Forms.Label saiSDT_label;
+        private System.Windows.Forms.Button HTTaoShop;
+        private System.Windows.Forms.Panel choice_Panel;
+        private System.Windows.Forms.Panel screen_Panel;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

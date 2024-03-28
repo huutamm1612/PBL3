@@ -34,7 +34,7 @@ namespace Program
             sqlCon = null;
         }
 
-        public static SqlCommand TruyVan(string noiDung)
+        private static SqlCommand Query(string noiDung)
         {
             if (sqlCon == null)
                 sqlCon = new SqlConnection(strCon);
@@ -50,57 +50,17 @@ namespace Program
             };
             return sqlCmd;
         }
-        public static bool KiemTraSoDT(string soDT)
-        {
-            if (soDT.Length != 10 || soDT[0] != '0')
-            {
-                return false;
-            }
 
-            foreach (char i in soDT)
-            {
-                if (!char.IsDigit(i))
-                {
-                    return false;
-                }
-            }
-            return true;
+        public static void ExecuteNonQuery(string query)
+        {
+            Query(query).ExecuteNonQuery();
         }
 
-        public static string MaMoi(string loaiMa)
+        public static SqlDataReader ExecuteQuery(string query)
         {
-            string noiDung = $"SELECT {loaiMa} FROM maHienTai";
-
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-
-            reader.Read();
-            string ma = reader.GetString(0);
-            string maMoi = (int.Parse(ma) + 1).ToString("D10");
-            reader.Close();
-
-            noiDung = $"UPDATE maHienTai SET {loaiMa} = '{maMoi}'";
-            sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
-
-            return maMoi;
+            return Query(query).ExecuteReader();
         }
 
-        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
-        {
-            string table = userState ? "UserAccount" : "Admin"; 
-            string noiDung = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
-
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-
-            bool ketQua = false;
-            if (reader.Read() && matKhau == reader.GetString(1))
-                ketQua = true;
-
-            reader.Close();
-            return ketQua;
-        }
         public static void WriteAccoutCache(User user) // Lưu lại user đăng nhập hiện tại khi đăng nhập
         {
             StreamWriter writer = new StreamWriter(@"Cache.txt");
@@ -129,28 +89,59 @@ namespace Program
             if (KiemTraTaiKhoan(taiKhoan))
                 return null;
 
-            List<string> list = new List<string>();
-            list.Add(taiKhoan);
-            list.Add(reader.ReadLine());
+            List<string> list = new List<string>
+            {
+                taiKhoan,
+                reader.ReadLine()
+            };
 
             reader.Close();
             return list;
         }
 
+        public static string MaMoi(string loaiMa)
+        {
+            string query = $"SELECT {loaiMa} FROM maHienTai";
+
+            SqlDataReader reader = ExecuteQuery(query);
+
+            reader.Read();
+            string ma = reader.GetString(0);
+            string maMoi = (int.Parse(ma) + 1).ToString("D10");
+            reader.Close();
+
+            query = $"UPDATE maHienTai SET {loaiMa} = '{maMoi}'";
+            ExecuteNonQuery(query);
+
+            return maMoi;
+        }
+
+        public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
+        {
+            string table = userState ? "UserAccount" : "Admin"; 
+            string query = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
+
+            SqlDataReader reader = ExecuteQuery(query);
+
+            bool ketQua = false;
+            if (reader.Read() && matKhau == reader.GetString(1))
+                ketQua = true;
+
+            reader.Close();
+            return ketQua;
+        }
+
         public static void DangKy(string taiKhoan, string matKhau, int maCH, string cauTraLoi)
         {
-            string noiDung = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
-
+            string query = $"INSERT INTO UserAccount VALUES('{taiKhoan}', '{matKhau}', '{maCH}', N'{cauTraLoi}', 0)";
+            ExecuteNonQuery(query);
             TaoKhachHangMoi(taiKhoan);
         }
 
         public static void TaoKhachHangMoi(string taiKhoan)
         {
-            string noiDung = $"INSERT INTO KhachHang(maKH, taiKhoan) VALUES('{MaMoi("maKH")}', '{taiKhoan}')";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"INSERT INTO KhachHang(maKH, taiKhoan) VALUES('{MaMoi("maKH")}', '{taiKhoan}')";
+            ExecuteNonQuery(query);
         }
 
         public static bool KiemTraMatKhau(TaiKhoan account, string matKhau)
@@ -160,9 +151,8 @@ namespace Program
 
         public static bool KiemTraTaiKhoan(string taiKhoan) // trả về false nếu taiKhoan đã tồn tại
         {
-            string noiDung = $"SELECT * FROM UserAccount WHERE taiKhoan = '{taiKhoan}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM UserAccount WHERE taiKhoan = '{taiKhoan}'";
+            SqlDataReader reader =  ExecuteQuery(query);
 
             bool result = true;
             if (reader.Read())
@@ -173,9 +163,8 @@ namespace Program
 
         public static bool KiemTraTaoShop(string taiKhoan) // trả về true nếu khách hàng đã tạo shop
         {
-            string noiDung = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
+            SqlDataReader reader = ExecuteQuery(query);
 
             bool result = false;
             if (reader.Read())
@@ -187,24 +176,21 @@ namespace Program
         public static void CapNhatMatKhau(TaiKhoan account, bool userState = true)
         {
             string table = userState ? "UserAccount" : "Admin";
-            string noiDung = $"UPDATE {table} SET matKhau = '{account.matKhau}' WHERE taiKhoan = '{account.taiKhoan}'";
+            string query = $"UPDATE {table} SET matKhau = '{account.matKhau}' WHERE taiKhoan = '{account.taiKhoan}'";
 
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            ExecuteNonQuery(query);
         }
 
         public static void CapNhatMatKhau(string taiKhoan, string matKhauMoi)
         {
-            string noiDung = $"UPDATE UserAccount SET matKhau = '{matKhauMoi}' WHERE taiKhoan = '{taiKhoan}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE UserAccount SET matKhau = '{matKhauMoi}' WHERE taiKhoan = '{taiKhoan}'";
+            ExecuteNonQuery(query);
         }
 
         private static void SetDiaChis(KhachHang khachHang)
         {
-            string noiDung = $"SELECT * FROM DiaChi WHERE maSo = '{khachHang.maSo}' and diaChiKH = 1";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM DiaChi WHERE maSo = '{khachHang.maSo}' and diaChiKH = 1";
+            SqlDataReader reader = ExecuteQuery(query);
 
             List<DiaChi> diaChis = new List<DiaChi>();
             while (reader.Read())
@@ -212,7 +198,18 @@ namespace Program
                 if (reader.GetString(0) == khachHang.diaChi.maDC)
                     continue;
 
-                diaChis.Add(new DiaChi(reader.GetString(0), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7)));
+                DiaChi diaChi = new DiaChi
+                {
+                    maDC = reader.GetString(0),
+                    ten = reader.GetString(2),
+                    soDT = reader.GetString(3),
+                    maT_TP = reader.GetInt32(4),
+                    maQH = reader.GetInt32(5),
+                    maPX = reader.GetInt32(6),
+                    diaChiCuThe = reader.GetString(7)
+                };
+
+                diaChis.Add(diaChi);
             }
             reader.Close();
             khachHang.setDiaChis(diaChis);
@@ -220,27 +217,46 @@ namespace Program
 
         public static KhachHang DangNhap(User user)
         {
-            string noiDung = $"SELECT * FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
+            SqlDataReader reader = ExecuteQuery(query);
             reader.Read();
 
             KhachHang khachHang;
 
             if (reader.IsDBNull(6))
-                khachHang = new KhachHang(reader.GetString(0), reader.GetString(1));
-            else if (reader.IsDBNull(5))
-                khachHang = new KhachHang(reader.GetString(0), reader.GetString(2), reader.GetString(3), reader.GetString(4), null, reader.GetInt32(6), reader.GetDateTime(7), reader.GetString(1), reader.GetInt32(8), reader.GetInt32(9), reader.GetInt32(10));
-            else
             {
-                khachHang = new KhachHang(reader.GetString(0), reader.GetString(2), reader.GetString(3), reader.GetString(4), null, reader.GetInt32(6), reader.GetDateTime(7), reader.GetString(1), reader.GetInt32(8), reader.GetInt32(9), reader.GetInt32(10));
+                khachHang = new KhachHang
+                {
+                    maSo = reader.GetString(0),
+                    taiKhoan = reader.GetString(1)
+                };
 
+                return khachHang;
+            }
+
+            khachHang = new KhachHang
+            {
+                maSo = reader.GetString(0),
+                taiKhoan = reader.GetString(1),
+                ten = reader.GetString(2),
+                soDT = reader.GetString(3),
+                email = reader.GetString(4),
+                gioiTinh = reader.GetInt32(6),
+                ngaySinh = reader.GetDateTime(7),
+                nFollow = reader.GetInt32(8),
+                chiTieu = reader.GetInt32(9),
+                xu = reader.GetInt32(10)
+            };
+
+            if (!reader.IsDBNull(5))
+            {
                 string maDC = reader.GetString(5);
                 reader.Close();
 
                 khachHang.capNhatDiaChi(LoadDiaChi(maDC));
                 SetDiaChis(khachHang);
             }
+
             if (!reader.IsClosed)
                 reader.Close();
             return khachHang;
@@ -248,13 +264,14 @@ namespace Program
 
         public static List<string> LoadCauHoi()
         {
-            string noiDung = $"SELECT cauHoi FROM CauHoi";
+            string query = $"SELECT cauHoi FROM CauHoi";
 
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> cauHoi = new List<string>();
-            cauHoi.Add("Câu hỏi bảo mật");
+            List<string> cauHoi = new List<string>
+            {
+                "Câu hỏi bảo mật"
+            };
             while (reader.Read())
             {
                 cauHoi.Add(reader.GetString(0));
@@ -266,9 +283,8 @@ namespace Program
 
         public static bool KiemTraCauHoi(string taiKhoan, int maCH, string cauTraLoi)
         {
-            string noiDung = $"SELECT maCH, cauTraLoi FROM UserAccount WHERE taiKhoan = '{taiKhoan}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT maCH, cauTraLoi FROM UserAccount WHERE taiKhoan = '{taiKhoan}'";
+            SqlDataReader reader = ExecuteQuery(query);
 
             reader.Read();
 
@@ -283,29 +299,29 @@ namespace Program
         public static void CapNhatThongTinCaNhan(Nguoi nguoi, string bang = "KhachHang")
         {
             string loaiMa = bang == "KhachHang" ? "maKH" : "maS";
-            string noiDung;
+            string query;
 
             if (bang == "KhachHang")
             {
-                noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date:MM/dd/yyyy}' WHERE {loaiMa} = '{nguoi.maSo}'";
+                query = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', gioiTinh = '{nguoi.gioiTinh}', ngaySinh = '{nguoi.ngaySinh.Date:MM/dd/yyyy}' WHERE {loaiMa} = '{nguoi.maSo}'";
             }
             else
             {
-                noiDung = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}' WHERE {loaiMa} = '{nguoi.maSo}'";
+                query = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}' WHERE {loaiMa} = '{nguoi.maSo}'";
             }
             
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            ExecuteNonQuery(query);
         }
 
         public static List<string> LoadTinh_ThanhPho()
         {
-            string noiDung = $"SELECT ten FROM Tinh_ThanhPho";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT ten FROM Tinh_ThanhPho";
+            SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> list = new List<string>();
-            list.Add("Tỉnh/Thành Phố");
+            List<string> list = new List<string>
+            {
+                "Tỉnh/Thành Phố"
+            };
             while (reader.Read())
             {
                 list.Add(reader.GetString(0));
@@ -317,12 +333,13 @@ namespace Program
 
         public static List<string> LoadQuan_Huyen(int maT_TP)
         {
-            string noiDung = $"SELECT ten FROM Quan_Huyen WHERE maT_TP = {maT_TP}";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT ten FROM Quan_Huyen WHERE maT_TP = {maT_TP}";
+            SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> list = new List<string>();
-            list.Add("Quận/Huyện");
+            List<string> list = new List<string>
+            {
+                "Quận/Huyện"
+            };
             while (reader.Read())
             {
                 list.Add(reader.GetString(0));
@@ -335,12 +352,13 @@ namespace Program
         public static List<string> LoadPhuong_Xa(int maT_TP, int indexQ_H)
         {
             string maQH = maT_TP.ToString() + indexQ_H.ToString("D2");
-            string noiDung = $"SELECT ten FROM Phuong_Xa WHERE maQH = {maQH}";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT ten FROM Phuong_Xa WHERE maQH = {maQH}";
+            SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> list = new List<string>();
-            list.Add("Phường/Xã");
+            List<string> list = new List<string>
+            {
+                "Phường/Xã"
+            };
             while (reader.Read())
             {
                 list.Add(reader.GetString(0));
@@ -352,9 +370,8 @@ namespace Program
         
         public static string MoTaDiaChi(int maPX)
         {
-            string noiDung = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
+            SqlDataReader reader = ExecuteQuery(query);
 
             reader.Read();
             string s = $"{reader.GetString(0)}, {reader.GetString(1)}, {reader.GetString(2)}";
@@ -366,32 +383,39 @@ namespace Program
         public static void ThemDiaChi(Nguoi obj, DiaChi diaChi, bool dcKhachHang = true)
         {
             int state = dcKhachHang == true ? 1 : 0;
-            string noiDung = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
+            ExecuteNonQuery(query);
         }
         public static void XoaDiaChi(DiaChi diaChi)
         {
-            string noiDung = $"Delete FROM DiaChi WHERE maDC = {diaChi.maDC}";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"Delete FROM DiaChi WHERE maDC = {diaChi.maDC}";
+            ExecuteNonQuery(query);
         }
 
         public static void CapNhatDiaChi(DiaChi diaChi)
         {
-            string noiDung = $"UPDATE DiaChi SET ten = N'{diaChi.ten}', soDT = '{diaChi.soDT}', maT_TP = {diaChi.maT_TP}, maQH = {diaChi.maQH}, maPX = {diaChi.maPX}, diaChiCuThe = N'{diaChi.diaChiCuThe}' WHERE maDC = '{diaChi.maDC}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE DiaChi SET ten = N'{diaChi.ten}', soDT = '{diaChi.soDT}', maT_TP = {diaChi.maT_TP}, maQH = {diaChi.maQH}, maPX = {diaChi.maPX}, diaChiCuThe = N'{diaChi.diaChiCuThe}' WHERE maDC = '{diaChi.maDC}'";
+            ExecuteNonQuery(query);
         }
       
         public static DiaChi LoadDiaChi(string maDC)
         {
-            string noiDung = $"SELECT * FROM DiaChi WHERE maDC = '{maDC}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM DiaChi WHERE maDC = '{maDC}'";
+            SqlDataReader reader = ExecuteQuery(query);
 
             reader.Read();
-            DiaChi diaChi = new DiaChi(reader.GetString(0), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7));
+
+            DiaChi diaChi = new DiaChi
+            {
+                maDC = reader.GetString(0),
+                ten = reader.GetString(2),
+                soDT = reader.GetString(3),
+                maT_TP = reader.GetInt32(4),
+                maQH = reader.GetInt32(5),
+                maPX = reader.GetInt32(6),
+                diaChiCuThe = reader.GetString(7)
+            };
+
             reader.Close();
 
             return diaChi;
@@ -399,113 +423,187 @@ namespace Program
 
         public static void CapNhatDiaChiMacDinh(KhachHang khachHang)
         {
-            string noiDung = $"UPDATE KhachHang SET maDC = '{khachHang.diaChi.maDC}' WHERE maKH = '{khachHang.maSo}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE KhachHang SET maDC = '{khachHang.diaChi.maDC}' WHERE maKH = '{khachHang.maSo}'";
+            ExecuteNonQuery(query);
         }
 
         public static bool KiemTraTaoShop(KhachHang khachHang) // trả về true nếu khách hàng đã tạo shop
         {
-            string noiDung = $"SELECT * FROM KhachHang_Shop WHERE maKH = '{khachHang.maSo}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM KhachHang_Shop WHERE maKH = '{khachHang.maSo}'";
+            SqlDataReader reader = ExecuteQuery(query);
 
-            bool result = true;
+            bool result = false;
             if (reader.Read())
-                result = false;
+                result = true;
             reader.Close();
             return result;
         }
 
-        public static void DangKy(KhachHang khachHang, string tenShop, DiaChi diachiShop) // khách hàng tạo shop
+        public static void DangKy(User user, Shop shop)
         {
-            string maS = MaMoi("maS");
+            string query = $"SELECT maKH FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
+            SqlDataReader reader = ExecuteQuery(query);
 
-            // insert thông tin của shop mới tạo vào table Shop
-            string noiDung = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES ('{maS}', N'{tenShop}', '{khachHang.soDT}', '{khachHang.email}', '{diachiShop.maDC}', {DateTime.Now:MM/dd/yyyy})";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            reader.Read();
+            string maKH = reader.GetString(0);
+            reader.Close();
 
-            // Thêm địa chỉ của shop vào table DiaChi
-            ThemDiaChi(new Shop(maS), diachiShop);
+            ThemDiaChi(shop, shop.diaChi, false);
 
-            // insert liên kết giữa khách hàng và shop vào table KhachHang_Shop
-            noiDung = $"INSERT INTO KhachHang_Shop VALUES('{khachHang.maSo}, '{maS}')";
-            sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            query = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao) VALUES('{shop.maSo}', N'{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}', '{shop.ngaySinh}')";
+            ExecuteNonQuery(query);
+
+            query = $"INSERT INTO KhachHang_Shop VALUES ('{maKH}', '{shop.maSo}')";
+            ExecuteNonQuery(query);
+
+            query = $"UPDATE KhachHang SET soDT = '{shop.soDT}', email = '{shop.email}' WHERE maKH = '{maKH}'";
+            ExecuteNonQuery(query);
         }
 
-        public static Shop LoadShop(KhachHang khachHang)
+        public static bool KiemTraTaoShop(User user) //trả về true nếu user đã tạo shop
         {
-            string noiDung = $"SELECT Shop.* FROM Shop INNER JOIN KhachHang_Shop on KhachHang_Shop.maS = Shop.maS INNER JOIN KhachHang on KhachHang_Shop.maKH = KhachHang.maKH WHERE KhachHang.maKH = '{khachHang.maSo}'";
+            string query = $"SELECT KhachHang_Shop.* FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang.maKH = KhachHang_Shop.maKH WHERE KhachHang.taiKhoan = '{user.taiKhoan}'";
 
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-            reader.Read();
+            SqlDataReader reader = ExecuteQuery(query);
 
-            Shop shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), null, reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
-
+            bool result = false;
+            if (reader.Read())
+                result = true;
             reader.Close();
-            shop.capNhatDiaChi(LoadDiaChi(shop.maSo));
+            return result;
+        }
 
-            noiDung = $"SELECT BaiDang_Shop.maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
-            sqlCmd = TruyVan(noiDung);
-            reader = sqlCmd.ExecuteReader();
+        public static Shop LoadShop(User user)
+        {
+            Shop shop;
 
-            while (reader.Read()) { }
-                shop.themBaiDang(new BaiDang(reader.GetString(0)));
+            if (KiemTraTaoShop(user))
+            {
+                string query = $"SELECT Shop.* FROM Shop INNER JOIN KhachHang_Shop on KhachHang_Shop.maS = Shop.maS INNER JOIN KhachHang on KhachHang_Shop.maKH = KhachHang.maKH WHERE KhachHang.taiKhoan = '{user.taiKhoan}'";
 
-            reader.Close();
+                SqlDataReader reader = ExecuteQuery(query);
+                reader.Read();
 
-            foreach (BaiDang baiDang in shop.list)
-                shop.capNhatBaiDang(LoadBaiDang(baiDang.maBD));
+                shop = new Shop
+                {
+                    maSo = reader.GetString(0),
+                    ten = reader.GetString(1),
+                    soDT = reader.GetString(2),
+                    email = reader.GetString(3),
+                    nFollower = reader.GetInt32(5),
+                    ngaySinh = reader.GetDateTime(6),
+                    tinhTrang = reader.GetInt32(7),
+                    doanhThu = reader.GetInt32(8),
+                };
+
+                //shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), null, reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
+
+                reader.Close();
+
+                shop.capNhatDiaChi(LoadDiaChi(shop.maSo));
+
+                query = $"SELECT BaiDang_Shop.maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
+                reader = ExecuteQuery(query);
+
+                while (reader.Read()) { }
+                    shop.Add(new BaiDang(reader.GetString(0)));
+
+                reader.Close();
+
+                foreach (BaiDang baiDang in shop.list)
+                    shop.Add(LoadBaiDang(baiDang.maBD));
+            }
+            else
+            {
+                string query = $"SELECT * FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
+                SqlDataReader reader = ExecuteQuery(query);
+
+                reader.Read();
+
+                string soDT = "", email = "";
+                if(!reader.IsDBNull(3))
+                    soDT = reader.GetString(3);
+                if(!reader.IsDBNull(4))
+                    email = reader.GetString(4);
+
+                shop = new Shop
+                {
+                    soDT = soDT,
+                    email = email
+                };
+                reader.Close();
+            }
 
             return shop;
         }
 
         public static void CapNhatTinhTrangShop(Shop shop)
         {
-            string noiDung = $"UPDATE Shop SET tinhTrang = {shop.tinhTrang} WHERE maS = '{shop.maSo}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE Shop SET tinhTrang = {shop.tinhTrang} WHERE maS = '{shop.maSo}'";
+            ExecuteNonQuery(query);
         }
         
-        public static void ThemSanPham(SanPham sanPham)
+        public static void ThemSanPham(string maBD, SanPham sanPham)
         {
-            string noiDung = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', {sanPham.luocBan}, null)";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', {sanPham.luocBan}, null)";
+            ExecuteNonQuery(query);
+
+            query = $"INSERT INTO SanPham_BaiDang VALUES('{sanPham.maSP}', '{maBD}')";
+            ExecuteNonQuery(query);
         }
 
-        public static void ThemBaiDang(BaiDang baiDang)
+        public static void ThemBaiDang(string maS, BaiDang baiDang)
         {
             foreach (SanPham sanPham in baiDang.list)
-                ThemSanPham(sanPham);
+                ThemSanPham(baiDang.maBD, sanPham);
 
-            string noiDung = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia})";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia})";
+            ExecuteNonQuery(query);
         }
 
         public static BaiDang LoadBaiDang(string maBD)
         {
-            string noiDung = $"SELECT * FROM BaiDang WHERE maBD = '{maBD}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
+            string query = $"SELECT * FROM BaiDang WHERE maBD = '{maBD}'";
+            SqlDataReader reader = ExecuteQuery(query);
             reader.Read();
 
-            BaiDang baiDang = new BaiDang(reader.GetString(0), new List<SanPham>(), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
+            BaiDang baiDang = new BaiDang
+            {
+                maBD = reader.GetString(0),
+                tieuDe = reader.GetString(1),
+                moTa = reader.GetString(2),
+                luocThich = reader.GetInt32(3),
+                giamGia = reader.GetInt32(4)
+            };
+
+            //BaiDang baiDang = new BaiDang(reader.GetString(0), new List<SanPham>(), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
 
             reader.Close();
 
-            noiDung = $"SELECT SanPham.* FROM SanPham INNER JOIN SanPham_BaiDang ON SanPham.maSP = SanPham_BaiDang.maSP WHERE SanPham_BaiDang.maBD = '{baiDang.maBD}'";
-            sqlCmd = TruyVan(noiDung);
-            reader = sqlCmd.ExecuteReader();
+            query = $"SELECT SanPham.* FROM SanPham INNER JOIN SanPham_BaiDang ON SanPham.maSP = SanPham_BaiDang.maSP WHERE SanPham_BaiDang.maBD = '{baiDang.maBD}'";
+            reader = ExecuteQuery(query);
 
             while (reader.Read())
             {
-                SanPham sanPham = new SanPham(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(13), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetInt32(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12));
-                baiDang.themSanPham(sanPham);
+                SanPham sanPham = new SanPham
+                {
+                    maSP = reader.GetString(0),
+                    maLoaiSP = reader.GetString(1),
+                    ten = reader.GetString(2),
+                    gia = reader.GetInt32(3),
+                    soLuong = reader.GetInt32(4),
+                    tacGia = reader.GetString(5),
+                    dichGia = reader.GetString(6),
+                    ngonNgu = reader.GetString(7),
+                    soTrang = reader.GetInt32(8),
+                    namXuatBan = reader.GetInt32(9),
+                    nhaXuatBan = reader.GetString(10),
+                    loaiBia = reader.GetString(11),
+                    moTa = reader.GetString(12),
+                    luocBan = reader.GetInt32(13)
+                };
+                //SanPham sanPham = new SanPham(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(13), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetInt32(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12));
+                baiDang.Add(sanPham);
             }
 
             reader.Close();
@@ -513,9 +611,8 @@ namespace Program
         }
         public static void CapNhatSanPham(SanPham sanPham)
         {
-            string noiDung = $"UPDATE SanPham SET maLoaiSP = '{sanPham.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE SanPham SET maLoaiSP = '{sanPham.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
+            ExecuteNonQuery(query);
         }
 
         public static void CapNhatBaiDang(BaiDang baiDang)
@@ -523,9 +620,8 @@ namespace Program
             foreach (SanPham sanPham in baiDang.list)
                 CapNhatSanPham(sanPham);
 
-            string noiDung = $"UPDATE BaiDang SET tieuDe = '{baiDang.tieuDe}', moTa = '{baiDang.moTa}', luocThich = {baiDang.luocThich}, giamGia = {baiDang.giamGia} WHERE maBD = '{baiDang.maBD}'";
-            SqlCommand sqlCmd = TruyVan(noiDung);
-            sqlCmd.ExecuteNonQuery();
+            string query = $"UPDATE BaiDang SET tieuDe = '{baiDang.tieuDe}', moTa = '{baiDang.moTa}', luocThich = {baiDang.luocThich}, giamGia = {baiDang.giamGia} WHERE maBD = '{baiDang.maBD}'";
+            ExecuteNonQuery(query);
         }
     }
 }
