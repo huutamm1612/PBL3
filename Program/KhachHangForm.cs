@@ -118,6 +118,7 @@ namespace Program
             doiMatKhauPanel.Visible = false;
             diaChiUser_Panel.Visible = false;
             profilePanel.Visible = true;
+
         }
 
         private void hienMK_UP_Check_CheckedChanged(object sender, EventArgs e)
@@ -179,14 +180,27 @@ namespace Program
 
         private void suaTen_Button_Click(object sender, EventArgs e)
         {
+            
             if (ten_UP_Box.ReadOnly)
             {
+                pictureBox6.BackColor = Color.White;
+                ten_UP_Box.BackColor = Color.White;
                 suaTen_Button.Text = "Lưu";
                 ten_UP_Box.ReadOnly = false;
                 ten_UP_Box.Cursor = Cursors.IBeam;
             }
             else
             {
+                if (ten_UP_Box.Text != "")
+                {
+                    pictureBox6.BackColor = Color.Gainsboro;
+                    ten_UP_Box.BackColor = Color.Gainsboro;
+                }
+                else
+                {
+                    pictureBox6.BackColor = Color.White;
+                    ten_UP_Box.BackColor = Color.White;
+                }
                 suaTen_Button.Text = "Sửa";
                 ten_UP_Box.ReadOnly = true;
                 ten_UP_Box.Cursor = Cursors.Default;
@@ -195,14 +209,28 @@ namespace Program
 
         private void suaEmail_button_Click(object sender, EventArgs e)
         {
+
+
             if (email_UP_Box.ReadOnly)
             {
+                pictureBox7.BackColor = Color.White;
+                email_UP_Box.BackColor = Color.White;
                 suaEmail_button.Text = "Lưu";
                 email_UP_Box.ReadOnly = false;
                 email_UP_Box.Cursor = Cursors.IBeam;
             }
             else
             {
+                if (email_UP_Box.Text != "")
+                {
+                    pictureBox7.BackColor = Color.Gainsboro;
+                    email_UP_Box.BackColor = Color.Gainsboro;
+                }
+                else
+                {
+                    pictureBox7.BackColor = Color.White;
+                    email_UP_Box.BackColor = Color.White;
+                }
                 suaEmail_button.Text = "Sửa";
                 email_UP_Box.ReadOnly = true;
                 email_UP_Box.Cursor = Cursors.Default;
@@ -211,14 +239,29 @@ namespace Program
 
         private void suaSDT_button_Click(object sender, EventArgs e)
         {
+
+
             if (soDT_UP_Box.ReadOnly)
             {
+                pictureBox8.BackColor = Color.White;
+                soDT_UP_Box.BackColor = Color.White;
                 suaSDT_button.Text = "Lưu";
                 soDT_UP_Box.ReadOnly = false;
                 soDT_UP_Box.Cursor = Cursors.IBeam;
+                
             }
             else
             {
+                if (soDT_UP_Box.Text != "")
+                {
+                    pictureBox8.BackColor = Color.Gainsboro;
+                    soDT_UP_Box.BackColor = Color.Gainsboro;
+                }
+                else
+                {
+                    pictureBox8.BackColor = Color.White;
+                    soDT_UP_Box.BackColor = Color.White;
+                }
                 suaSDT_button.Text = "Sửa";
                 soDT_UP_Box.ReadOnly = true;
                 soDT_UP_Box.Cursor = Cursors.Default;
@@ -227,6 +270,7 @@ namespace Program
 
         private void refreshUserProfile_Panel()
         {
+
             suaTen_Button.Text = "Sửa";
             suaEmail_button.Text = "Sửa";
             suaSDT_button.Text = "Sửa";
@@ -246,13 +290,29 @@ namespace Program
                 nu_RB.Checked = true;
             else if (khachHang.gioiTinh == 2)
                 khac_RB.Checked = true;
+            if (ten_UP_Box.Text == "")
+            {
+                pictureBox6.BackColor = Color.White;
+                ten_UP_Box.BackColor = Color.White;
+            }
+            if (email_UP_Box.Text == "")
+            {
+                pictureBox7.BackColor = Color.White;
+                email_UP_Box.BackColor = Color.White;
+            }
+            if (email_UP_Box.Text == "")
 
+            {
+                pictureBox7.BackColor = Color.White;
+                email_UP_Box.BackColor = Color.White;
+            }
             if (khachHang.ngaySinh.Year >= 1899)
             {
                 ngaySinh_CB.SelectedIndex = khachHang.ngaySinh.Day - 1;
                 thangSinh_CB.SelectedIndex = khachHang.ngaySinh.Month - 1;
                 namSinh_CB.SelectedIndex = DateTime.Now.Year - khachHang.ngaySinh.Year;
             }
+
         }
         private void luu_UP_Button_Click(object sender, EventArgs e)
         {
@@ -661,6 +721,7 @@ namespace Program
             send(user.taiKhoan, user.matKhau);
             BHForm.ShowDialog();
         }
+
 
     }
 }

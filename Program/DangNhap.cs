@@ -68,6 +68,10 @@ namespace Program
         {
             if (cauHoi_CB.Items.Count == 0)
                 setCauHoi(cauHoi_CB);
+            taiKhoan_DK_Box.Text = "";
+            matKhau1_DK_Box.Text = "";
+            matKhau2_DK_Box.Text = "";
+            cauTraLoi_Box.Text = "";
             matKhau1_DK_Box.UseSystemPasswordChar = false;
             matKhau2_DK_Box.UseSystemPasswordChar = false;
             taiKhoanSai_DK_Text.Visible = false;
@@ -158,11 +162,12 @@ namespace Program
 
                 HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
                 MessageBox.Show("Đăng ký thành công!!!");
-
+                refreshDangKy_Panel();
                 Signup_Panel.Visible = false;
                 LoginPanel.Visible = true;
-                
+                this.Size = new System.Drawing.Size(510, 570);
             }
+            
         }
 
         private void refreshDangNhap_Panel()
@@ -174,7 +179,6 @@ namespace Program
         }
         private void xacNhan_QMK_Button_Click(object sender, EventArgs e)
         {
-
             if (HeThong.KiemTraTaiKhoan(taiKhoan_QMK_Box.Text))
             {
                 thongBao_Text.Text = "Tài khoản không tồn tại";
@@ -195,6 +199,7 @@ namespace Program
                 this.refreshDangNhap_Panel();
                 quenMK_Panel.Visible = false;
                 LoginPanel.Visible = true;
+                this.Size = new System.Drawing.Size(510, 570);
             }
             else
             {
@@ -399,6 +404,15 @@ namespace Program
             else
             {
                 saiMK_Text.Visible = false;
+                xacNhan_QMK_Button.Enabled = true;
+            }
+        }
+
+        private void Enter_DangNhap(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dangNhap_DN_Button_Click(sender, e);
             }
         }
     }
