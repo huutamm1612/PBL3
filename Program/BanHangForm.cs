@@ -14,6 +14,8 @@ namespace Program
     {
         private User user;
         private Shop shop = null;
+        private Button currTab = null;
+        private Panel currPanel = null;
         public BanHang_Form()
         {
             InitializeComponent();
@@ -36,10 +38,19 @@ namespace Program
             }
         }
 
+        private void SwitchPanel(Panel newPanel)
+        {
+            currPanel.Visible = false;
+            currPanel = newPanel;
+            currPanel.Visible = true;
+        }
+
         private void refreshHomePanel()
         {
             choice_Panel.Visible = true;
             screen_Panel.Visible = true;
+            currPanel = HomePanel;
+            currPanel.Visible = true;
         }
 
         private void refreshDangKyShopPanel()
@@ -223,9 +234,52 @@ namespace Program
             refreshHomePanel();
         }
 
-        private void banHang_treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void hoverMouse(object sender, EventArgs e)
         {
-            
+            if (!((Button)sender).Font.Bold)
+                ((Button)sender).ForeColor = Color.Salmon;
+        }
+
+        private void leaveMouse(object sender, EventArgs e)
+        {
+            if(!((Button)sender).Font.Bold)
+                ((Button)sender).ForeColor = Color.Black;
+        }
+
+        private void tabClick(object sender, EventArgs e)
+        {
+            if(currTab != null && currTab != trangChuButton)
+            {
+                currTab.Font = new Font(currTab.Font, FontStyle.Regular);
+                currTab.ForeColor = Color.Black;
+            }
+
+            currTab = (Button)sender;
+
+            switch (currTab.Name)
+            {
+                case "trangChuButton":
+                    SwitchPanel(HomePanel);
+                    break;
+
+                case "tatCaButton":
+                    SwitchPanel(tatCaPanel);
+                    break;
+            }
+
+            if (currTab == trangChuButton)
+            {
+                cloneButton.Text = "";
+                cloneButton.Visible = false;
+                arrowLabel.Visible = false;
+                return;
+            }
+
+            cloneButton.Text = currTab.Text;
+            cloneButton.Visible = true;
+            arrowLabel.Visible = true;
+            currTab.Font = new Font(currTab.Font, FontStyle.Bold);
+            currTab.ForeColor = Color.OrangeRed;
         }
     }
 }
