@@ -49,7 +49,7 @@ namespace Program
         {
             choice_Panel.Visible = true;
             screen_Panel.Visible = true;
-            currPanel = HomePanel;
+            currPanel = trangChuPanel;
             currPanel.Visible = true;
         }
 
@@ -221,7 +221,6 @@ namespace Program
             {
                 saiSDT_label.Visible = true;
             }
-            
         }
 
         private void HTTaoShop_Click(object sender, EventArgs e)
@@ -236,14 +235,16 @@ namespace Program
 
         private void hoverMouse(object sender, EventArgs e)
         {
-            if (!((Button)sender).Font.Bold)
-                ((Button)sender).ForeColor = Color.Salmon;
+            Button button = sender as Button;
+            if (!button.Font.Bold)
+                button.ForeColor = Color.Salmon;
         }
 
         private void leaveMouse(object sender, EventArgs e)
         {
-            if(!((Button)sender).Font.Bold)
-                ((Button)sender).ForeColor = Color.Black;
+            Button button = sender as Button;
+            if (!button.Font.Bold)
+                button.ForeColor = Color.Black;
         }
 
         private void tabClick(object sender, EventArgs e)
@@ -254,16 +255,24 @@ namespace Program
                 currTab.ForeColor = Color.Black;
             }
 
-            currTab = (Button)sender;
+            currTab = sender as Button;
 
-            switch (currTab.Name)
+            switch (currTab.Text)
             {
-                case "trangChuButton":
-                    SwitchPanel(HomePanel);
+                case "Trang Chủ":
+                    SwitchPanel(trangChuPanel);
                     break;
 
-                case "tatCaButton":
+                case "Tất Cả":
                     SwitchPanel(tatCaPanel);
+                    break;
+
+                case "Thêm Sản Phẩm":
+                    SwitchPanel(themSanPhamPanel);
+                    break;
+
+                case "Tất Cả Sản Phẩm":
+                    SwitchPanel(tatCaSanPhamPanel);
                     break;
             }
 
@@ -280,6 +289,39 @@ namespace Program
             arrowLabel.Visible = true;
             currTab.Font = new Font(currTab.Font, FontStyle.Bold);
             currTab.ForeColor = Color.OrangeRed;
+        }
+
+        private void spreadOutClick(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            int index = funcFLPanel.Controls.IndexOf(button) + 1;
+
+            bool spread = button.Text[0] == '▶';
+            button.Text = (spread == true ? "◢" : "▶") + button.Text.Substring(1);
+
+            while (funcFLPanel.Controls[index].Text != "")
+            {
+                funcFLPanel.Controls[index].Visible = spread;
+                index++;
+            }
+
+        }
+
+        private void themSPButton_Click(object sender, EventArgs e)//1575, 140
+        {
+            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
+            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
+            formThemSPPanel.Location = themSPButton.Location;
+            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
+            formThemSPPanel.Visible = true;
+        }
+
+        private void huyThemSPButton_Click(object sender, EventArgs e)
+        {
+            themSPButton.Location = formThemSPPanel.Location;
+            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height - (formThemSPPanel.Size.Height + 20));
+            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y - (formThemSPPanel.Size.Height + 20));
+            formThemSPPanel.Visible = false;
         }
     }
 }
