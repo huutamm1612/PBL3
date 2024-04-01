@@ -16,6 +16,7 @@ namespace Program
         private Shop shop = null;
         private Button currTab = null;
         private Panel currPanel = null;
+        private QLSanPham QLSP = null;
         public BanHang_Form()
         {
             InitializeComponent();
@@ -322,6 +323,24 @@ namespace Program
             TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height - (formThemSPPanel.Size.Height + 20));
             panel8.Location = new Point(panel8.Location.X, panel8.Location.Y - (formThemSPPanel.Size.Height + 20));
             formThemSPPanel.Visible = false;
+        }
+
+        private void luuSPButton_Click(object sender, EventArgs e)
+        {
+            // kiem tra hop le
+
+            // dua du lieu vao QLSP
+
+            // copy roi them vao FlowLayoutPanel listSP_FLPanel
+
+            // chinh sua lai kich thuoc
+
+            // lam moi va an panel
+        }
+
+        private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
+        {
+            // refresh form
         }
     }
 }
