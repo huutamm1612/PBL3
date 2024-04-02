@@ -63,6 +63,9 @@
             this.hienMK_DN_Check = new System.Windows.Forms.CheckBox();
             this.taiKhoan_DN_Box = new System.Windows.Forms.TextBox();
             this.Signup_Panel = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -75,9 +78,6 @@
             this.dangKy_Botton = new System.Windows.Forms.Button();
             this.matKhau1_DK_Box = new System.Windows.Forms.TextBox();
             this.taiKhoan_DK_Box = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.quenMK_Panel.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
@@ -109,7 +109,7 @@
             this.quenMK_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.quenMK_Panel.Location = new System.Drawing.Point(0, 0);
             this.quenMK_Panel.Name = "quenMK_Panel";
-            this.quenMK_Panel.Size = new System.Drawing.Size(890, 561);
+            this.quenMK_Panel.Size = new System.Drawing.Size(892, 563);
             this.quenMK_Panel.TabIndex = 14;
             this.quenMK_Panel.Visible = false;
             // 
@@ -572,7 +572,6 @@
             // 
             this.Signup_Panel.BackColor = System.Drawing.Color.White;
             this.Signup_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Signup_Panel.Controls.Add(this.quenMK_Panel);
             this.Signup_Panel.Controls.Add(this.textBox3);
             this.Signup_Panel.Controls.Add(this.textBox4);
             this.Signup_Panel.Controls.Add(this.label2);
@@ -595,6 +594,46 @@
             this.Signup_Panel.TabIndex = 12;
             this.Signup_Panel.Visible = false;
             this.Signup_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Signup_Panel_Paint);
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.White;
+            this.textBox3.Location = new System.Drawing.Point(15, 178);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(420, 49);
+            this.textBox3.TabIndex = 33;
+            this.textBox3.Text = "Welcome Back!";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.White;
+            this.textBox4.Location = new System.Drawing.Point(15, 242);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(420, 67);
+            this.textBox4.TabIndex = 32;
+            this.textBox4.Text = "Enter your personal details to use all of\r\nfeatures\r\n";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(540, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(336, 46);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Create Account";
             // 
             // label30
             // 
@@ -766,51 +805,12 @@
             this.taiKhoan_DK_Box.TabIndex = 0;
             this.taiKhoan_DK_Box.TextChanged += new System.EventHandler(this.taiKhoan_DK_Box_TextChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(540, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 46);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Create Account";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(15, 178);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(420, 49);
-            this.textBox3.TabIndex = 33;
-            this.textBox3.Text = "Welcome Back!";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(15, 242);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(420, 67);
-            this.textBox4.TabIndex = 32;
-            this.textBox4.Text = "Enter your personal details to use all of\r\nfeatures\r\n";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // DangNhap_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
+            this.Controls.Add(this.quenMK_Panel);
             this.Controls.Add(this.Signup_Panel);
             this.Controls.Add(this.LoginPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
