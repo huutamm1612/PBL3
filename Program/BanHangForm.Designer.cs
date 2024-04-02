@@ -102,8 +102,10 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.TTBH_Panel = new System.Windows.Forms.Panel();
             this.themSPButton = new System.Windows.Forms.Button();
+            this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
+            this.textBox28 = new System.Windows.Forms.TextBox();
             this.huyThemSPButton = new System.Windows.Forms.Button();
             this.refreshThemSPForm_Button = new System.Windows.Forms.Button();
             this.luuSPButton = new System.Windows.Forms.Button();
@@ -170,8 +172,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -1325,6 +1325,14 @@
             this.themSPButton.UseVisualStyleBackColor = true;
             this.themSPButton.Click += new System.EventHandler(this.themSPButton_Click);
             // 
+            // listSP_FLPanel
+            // 
+            this.listSP_FLPanel.Location = new System.Drawing.Point(70, 60);
+            this.listSP_FLPanel.Name = "listSP_FLPanel";
+            this.listSP_FLPanel.Size = new System.Drawing.Size(1420, 10);
+            this.listSP_FLPanel.TabIndex = 5;
+            this.listSP_FLPanel.Visible = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -1385,6 +1393,20 @@
             this.formThemSPPanel.Size = new System.Drawing.Size(1420, 800);
             this.formThemSPPanel.TabIndex = 4;
             this.formThemSPPanel.Visible = false;
+            // 
+            // textBox28
+            // 
+            this.textBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox28.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox28.Location = new System.Drawing.Point(54, 75);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.ReadOnly = true;
+            this.textBox28.Size = new System.Drawing.Size(122, 19);
+            this.textBox28.TabIndex = 51;
+            this.textBox28.Text = "Ảnh sản phẩm";
+            this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // huyThemSPButton
             // 
@@ -2166,28 +2188,6 @@
             this.label6.Size = new System.Drawing.Size(150, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
-            // 
-            // textBox28
-            // 
-            this.textBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox28.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox28.Location = new System.Drawing.Point(54, 75);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.ReadOnly = true;
-            this.textBox28.Size = new System.Drawing.Size(122, 19);
-            this.textBox28.TabIndex = 51;
-            this.textBox28.Text = "Ảnh sản phẩm";
-            this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // listSP_FLPanel
-            // 
-            this.listSP_FLPanel.Location = new System.Drawing.Point(70, 60);
-            this.listSP_FLPanel.Name = "listSP_FLPanel";
-            this.listSP_FLPanel.Size = new System.Drawing.Size(1420, 10);
-            this.listSP_FLPanel.TabIndex = 5;
-            this.listSP_FLPanel.Visible = false;
             // 
             // BanHang_Form
             // 

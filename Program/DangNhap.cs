@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,6 @@ namespace Program
             Signup_Panel.Visible = true;
             quenMK_Panel.Visible = false;
             LoginPanel.Visible = false;
-            this.Size = new System.Drawing.Size(510, 729);
             this.Show();
         }
 
@@ -48,7 +48,6 @@ namespace Program
         {
             dangNhapF = true;
             LoginPanel.Visible = true;
-            this.Size = new System.Drawing.Size(510, 570);
             Signup_Panel.Visible = false;
             quenMK_Panel.Visible = false;
             this.Show();
@@ -70,18 +69,36 @@ namespace Program
                 setCauHoi(cauHoi_CB);
             taiKhoan_DK_Box.Text = "";
             matKhau1_DK_Box.Text = "";
-            matKhau2_DK_Box.Text = "";
             cauTraLoi_Box.Text = "";
             matKhau1_DK_Box.UseSystemPasswordChar = false;
-            matKhau2_DK_Box.UseSystemPasswordChar = false;
             taiKhoanSai_DK_Text.Visible = false;
-            matKhauKhongKhop_DK_Text.Visible = false;
             hienMK_DK_Check.Checked = false;
             cauHoi_CB.SelectedIndex = 0;
         }
 
         private void dangNhap_DN_Button_Click(object sender, EventArgs e)
         {
+            if(taiKhoan_DN_Box.Text == "" || matKhau_DN_Box.Text == "")
+            {
+                Graphics g = LoginPanel.CreateGraphics();
+                Color color = Color.FromArgb(255, 153, 153);
+                if (taiKhoan_DN_Box.Text == "")
+                {
+                    Utils.DrawRectangle(g, new RectangleF(40, 210, 350, 50), color, 7);
+                    taiKhoan_DN_Box.BackColor = color;
+                }
+
+                if (matKhau_DN_Box.Text == "")
+                {
+                    Utils.DrawRectangle(g, new RectangleF(40, 290, 350, 50), color, 7);
+                    matKhau_DN_Box.BackColor = color;
+                }
+
+                LoginError.Text = "You must fill out all box!!!";
+                LoginError.Visible = true;
+                return;
+            }
+
             string taiKhoan = taiKhoan_DN_Box.Text;
             string matKhau = matKhau_DN_Box.Text;
             if (HeThong.DangNhap(taiKhoan, matKhau))
@@ -96,6 +113,7 @@ namespace Program
             }
             else
             {
+                LoginError.Text = "Username or passwork is not correct!!";
                 LoginError.Visible = true;
             }
         }
@@ -126,7 +144,6 @@ namespace Program
             this.refreshDangKy_Panel();
             LoginPanel.Visible = false;
             Signup_Panel.Visible = true;
-            this.Size = new System.Drawing.Size(510, 729); 
         }
 
         private void troVe_button_Click(object sender, EventArgs e)
@@ -141,33 +158,25 @@ namespace Program
 
         private void dangKy_Botton_Click(object sender, EventArgs e)
         {
-            
-            if (matKhauKhongKhop_DK_Text.Visible)
-                return;
-
             string taiKhoan = taiKhoan_DK_Box.Text;
             bool canCreate = HeThong.KiemTraTaiKhoan(taiKhoan);
 
             if (!canCreate)
             {
                 taiKhoanSai_DK_Text.Visible = true;
-             
+                return;
             }
 
-            if (!matKhauKhongKhop_DK_Text.Visible && canCreate)
-            {
-                string matKhau = matKhau1_DK_Box.Text;
-                int maCH = cauHoi_CB.SelectedIndex - 1;
-                string cauTraLoi = cauTraLoi_Box.Text;
 
-                HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
-                MessageBox.Show("Đăng ký thành công!!!");
-                refreshDangKy_Panel();
-                Signup_Panel.Visible = false;
-                LoginPanel.Visible = true;
-                this.Size = new System.Drawing.Size(510, 570);
-            }
-            
+            string matKhau = matKhau1_DK_Box.Text;
+            int maCH = cauHoi_CB.SelectedIndex - 1;
+            string cauTraLoi = cauTraLoi_Box.Text;
+
+            HeThong.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
+            MessageBox.Show("Đăng ký thành công!!!");
+            refreshDangKy_Panel();
+            Signup_Panel.Visible = false;
+            LoginPanel.Visible = true;
         }
 
         private void refreshDangNhap_Panel()
@@ -212,7 +221,6 @@ namespace Program
         {
             LoginPanel.Visible = true;
             Signup_Panel.Visible = false;
-            this.Size = new System.Drawing.Size(510, 570);
         }
 
         private void troVe_DK_Button_Click(object sender, EventArgs e)
@@ -221,7 +229,6 @@ namespace Program
             {
                 LoginPanel.Visible = true;
                 Signup_Panel.Visible = false;
-                this.Size = new System.Drawing.Size(510, 570);
             }
             else
             {
@@ -236,7 +243,6 @@ namespace Program
         private void hienMK_QMK_Check_CheckedChanged(object sender, EventArgs e)
         {
             this.hienMatKhau(hienMK_DK_Check, matKhau1_DK_Box);
-            this.hienMatKhau(hienMK_DK_Check, matKhau2_DK_Box);
         }
 
         private void hienMatKhau(CheckBox hienMK, TextBox box)
@@ -253,10 +259,17 @@ namespace Program
 
         private void matKhau_DN_Box_TextChanged(object sender, EventArgs e)
         {
-            if (taiKhoan_DN_Box.Text == "" || matKhau_DN_Box.Text == "")
-                dangNhap_DN_Button.Enabled = false;
-            else
-                dangNhap_DN_Button.Enabled = true;
+            if (matKhau_DN_Box.BackColor != Color.FromArgb(236, 230, 255))
+            {
+                Graphics g = LoginPanel.CreateGraphics();
+                matKhau_DN_Box.BackColor = Color.FromArgb(236, 230, 255);
+                Utils.DrawRectangle(g, new RectangleF(40, 290, 350, 50), Color.FromArgb(236, 230, 255), 7);
+            }
+
+            if (LoginError.Text == "You must fill out all box!!!" && taiKhoan_DN_Box.Text != "")
+            {
+                LoginError.Visible = false;
+            }
         }
 
         private void hienMK_DN_Check_CheckedChanged(object sender, EventArgs e)
@@ -269,8 +282,7 @@ namespace Program
 
         private bool kiemTra()
         {
-            
-            return !(taiKhoan_DK_Box.Text == "" || matKhau1_DK_Box.Text == "" || matKhau2_DK_Box.Text == "" || cauHoi_CB.SelectedIndex == 0 || cauTraLoi_Box.Text == "" || matKhauKhongKhop_DK_Text.Visible == true);
+            return !(taiKhoan_DK_Box.Text == "" || matKhau1_DK_Box.Text == "" || cauHoi_CB.SelectedIndex == 0 || cauTraLoi_Box.Text == "");
         }
 
         private void taiKhoan_DK_Box_TextChanged(object sender, EventArgs e)
@@ -280,34 +292,7 @@ namespace Program
 
         private void matKhau1_DK_Box_TextChanged(object sender, EventArgs e)
         {
-           
             dangKy_Botton.Enabled = kiemTra();
-
-            if (matKhau2_DK_Box.Text != matKhau1_DK_Box.Text)
-            {
-                matKhauKhongKhop_DK_Text.Visible = true;
-                dangKy_Botton.Enabled = false;
-            }
-            else
-            {
-                matKhauKhongKhop_DK_Text.Visible = false;
-            }
-
-        }
-
-        private void matKhau2_DK_Box_TextChanged(object sender, EventArgs e)
-        {
-            dangKy_Botton.Enabled = kiemTra();
-            if (matKhau2_DK_Box.Text != matKhau1_DK_Box.Text)
-            {
-                matKhauKhongKhop_DK_Text.Visible = true;
-                dangKy_Botton.Enabled = false;
-            }
-            else
-            {
-                matKhauKhongKhop_DK_Text.Visible = false;
-            }
-                
         }
 
         private void cauHoi_CB_SelectedIndexChanged(object sender, EventArgs e)
@@ -339,21 +324,26 @@ namespace Program
             if (hienMK_DK_Check.Checked == true)
             {
                 matKhau1_DK_Box.UseSystemPasswordChar = false;
-                matKhau2_DK_Box.UseSystemPasswordChar = false;
             }
             else
             {
                 matKhau1_DK_Box.UseSystemPasswordChar = true;
-                matKhau2_DK_Box.UseSystemPasswordChar = true;
             }
         }
 
         private void taiKhoan_DN_Box_TextChanged(object sender, EventArgs e)
         {
-           if (taiKhoan_DN_Box.Text == "" || matKhau_DN_Box.Text == "")
-                dangNhap_DN_Button.Enabled = false;
-           else
-                dangNhap_DN_Button.Enabled = true;
+            if(taiKhoan_DN_Box.BackColor != Color.FromArgb(236, 230, 255))
+            {
+                Graphics g = LoginPanel.CreateGraphics();
+                taiKhoan_DN_Box.BackColor = Color.FromArgb(236, 230, 255);
+                Utils.DrawRectangle(g, new RectangleF(40, 210, 350, 50), Color.FromArgb(236, 230, 255), 7);
+            }
+
+            if (LoginError.Text == "You must fill out all box!!!" && matKhau_DN_Box.Text != "")
+            {
+                LoginError.Visible = false;
+            }
         }
 
         public bool KTra_QuenMK()
@@ -414,6 +404,27 @@ namespace Program
             {
                 dangNhap_DN_Button_Click(sender, e);
             }
+        }
+
+        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;//910, 610
+
+            Utils.DrawRectangle(g, new RectangleF(430, 0, 1000, 570), Color.FromArgb(107, 0, 227), 170);
+            Utils.DrawRectangle(g, new RectangleF(140, 425, 180, 40), Color.FromArgb(107, 0, 227), 7);
+            Utils.DrawRectangle(g, new RectangleF(40, 210, 350, 50), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(40, 290, 350, 50), Color.FromArgb(236, 230, 255), 7);
+        }
+
+        private void Signup_Panel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            Utils.DrawRectangle(g, new RectangleF(-540, 0, 1000, 570), Color.FromArgb(107, 0, 227), 170);
+            Utils.DrawRectangle(g, new RectangleF(580, 440, 180, 40), Color.FromArgb(107, 0, 227), 7);
+            Utils.DrawRectangle(g, new RectangleF(500, 130, 350, 50), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(500, 200, 350, 50), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(500, 360, 350, 50), Color.FromArgb(236, 230, 255), 7);    
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +81,38 @@ namespace Program
                 }
             }
             return true;
+        }
+
+        public static void DrawRectangle(Graphics g, RectangleF rect, Color color, float radius = 0, Pen pen = null)
+        {
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.CompositingMode = CompositingMode.SourceOver;
+            Brush brush = new SolidBrush(color);
+
+            if (radius == 0)
+                g.FillRectangle(brush, rect);
+
+            else
+            {
+                GraphicsPath path = new GraphicsPath();
+                path.StartFigure();
+
+                path.AddArc(rect.X, rect.Y, radius * 2, radius * 2, 180, 90);
+                path.AddArc(rect.X + rect.Width - radius * 2, rect.Y, radius * 2, radius * 2, 270, 90);
+                path.AddArc(rect.X + rect.Width - radius * 2, rect.Y + rect.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+                path.AddArc(rect.X, rect.Y + rect.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+                path.CloseFigure();
+
+                g.FillPath(brush, path);
+                if (pen == null)
+                    pen = new Pen(brush);
+                g.DrawPath(pen, path);
+
+            }
         }
     }
 }
