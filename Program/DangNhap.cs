@@ -210,12 +210,6 @@ namespace Program
                 LoginPanel.Visible = true;
                 this.Size = new System.Drawing.Size(510, 570);
             }
-            else
-            {
-                thongBao_Text.Text = "Câu hỏi hoặc câu trả lời không chính xác";
-                thongBao_Text.Visible = true;
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
