@@ -721,7 +721,5 @@ namespace Program
             send(user.taiKhoan, user.matKhau);
             BHForm.ShowDialog();
         }
-
-
     }
 }

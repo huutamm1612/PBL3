@@ -32,8 +32,8 @@ namespace Program
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
-            
-            if(daTaoShop)
+
+            if (daTaoShop)
             {
                 shop = new Shop();
             }
@@ -76,7 +76,7 @@ namespace Program
         public void setData(string taiKhoan, string matKhau)
         {
             bool daTaoShop = shop != null ? true : false;
-            
+
             user = new User();
             user.dangNhap(taiKhoan, matKhau);
             shop = HeThong.LoadShop(user);
@@ -250,7 +250,7 @@ namespace Program
 
         private void tabClick(object sender, EventArgs e)
         {
-            if(currTab != null && currTab != trangChuButton)
+            if (currTab != null && currTab != trangChuButton)
             {
                 currTab.Font = new Font(currTab.Font, FontStyle.Regular);
                 currTab.ForeColor = Color.Black;
@@ -329,6 +329,11 @@ namespace Program
         {
             // kiem tra hop le
 
+            if (tenSP_Text.Text == "" || tenTacGia_Text.Text == "" || theLoai_CBBox.SelectedIndex == 0 || gia_Text.Text == "")
+            {
+
+            }
+
             // dua du lieu vao QLSP
 
             // copy roi them vao FlowLayoutPanel listSP_FLPanel
@@ -341,6 +346,100 @@ namespace Program
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
         {
             // refresh form
+        }
+
+        private void tenSP_Text_TextChanged(object sender, EventArgs e)
+        {
+            Count(tenSP_Text, Count_SP, 50);
+            if (tenSP_Text.Text == "")
+                tenSP_Check.Visible = true;
+        }
+
+        private void tenTacGia_Text_TextChanged(object sender, EventArgs e)
+        {
+            Count(tenTacGia_Text, Count_TG, 50);
+            if (tenTacGia_Text.Text == "")
+                tacGia_Check.Visible = true;
+        }
+
+        private void tenDichGia_Text_TextChanged(object sender, EventArgs e)
+        {
+            Count(tenDichGia_Text, Count_Dichgia, 50);
+            if (tenDichGia_Text.Text == "")
+                dichGia_check.Visible = true;
+        }
+
+        private void nhaXuatBan_Text_TextChanged(object sender, EventArgs e)
+        {
+            Count(nhaXuatBan_Text, Count_NXB, 50);
+            if (nhaXuatBan_Text.Text == "")
+                NXB_Check.Visible = true;
+        }
+
+        private void moTaSP_Text_TextChanged(object sender, EventArgs e)
+        {
+            Count(moTaSP_Text, Count_MoTa, 1000);
+        }
+
+        private void moTaTT_txt_TextChanged(object sender, EventArgs e)
+        {
+            Count(moTaTT_txt, Count_MoTaTT, 2000);
+        }
+        private void tieuDe_txt_TextChanged(object sender, EventArgs e)
+        {
+            Count(tieuDe_txt, Count_Tieude, 120);
+        }
+        void Count(TextBox txt, TextBox dem, int max)
+        {
+            if (txt.Text.Length > max)
+            {
+                txt.Text = txt.Text.Substring(0, max);
+                txt.SelectionStart = max;
+                txt.SelectionLength = 0;
+            }
+            dem.Text = txt.Text.Length + "/" + max;
+        }
+
+        private void namXuatBan_Text_TextChanged(object sender, EventArgs e)
+        {
+            if (namXuatBan_Text.Text == "")
+                nam_Check.Visible = true;
+        }
+
+        private void soLuong_Text_TextChanged(object sender, EventArgs e)
+        {
+            if (soLuong_Text.Text == "")
+                soLuong_check.Visible = true;
+        }
+
+        private void gia_Text_TextChanged(object sender, EventArgs e)
+        {
+            if (gia_Text.Text == "")
+                Price_Check.Visible = true;
+        }
+
+        private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ngonNgu_CBBox.SelectedIndex != -1)
+                language_Check.Visible = true;
+        }
+
+        private void theLoai_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (theLoai_CBBox.SelectedIndex != -1)
+                theLoai_check.Visible = true;
+        }
+
+        private void loaiBia_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (loaiBia_CBBox.SelectedIndex != -1)
+                bia_Check.Visible = true;
+        }
+
+        private void soTrang_Text_TextChanged(object sender, EventArgs e)
+        {
+            if (soTrang_Text.Text == "")
+                soTrang_Check.Visible = true;
         }
     }
 }
