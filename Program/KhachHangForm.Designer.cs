@@ -734,10 +734,10 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
-            this.accountPanel.Controls.Add(this.profilePanel);
-            this.accountPanel.Controls.Add(this.doiMatKhauPanel);
             this.accountPanel.Controls.Add(this.themDiaChi_Panel);
             this.accountPanel.Controls.Add(this.diaChiUser_Panel);
+            this.accountPanel.Controls.Add(this.profilePanel);
+            this.accountPanel.Controls.Add(this.doiMatKhauPanel);
             this.accountPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";

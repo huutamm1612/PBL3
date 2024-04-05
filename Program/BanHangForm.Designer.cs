@@ -104,6 +104,13 @@
             this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
+            this.NXB_Check = new System.Windows.Forms.Label();
+            this.bia_Check = new System.Windows.Forms.Label();
+            this.soTrang_Check = new System.Windows.Forms.Label();
+            this.nam_Check = new System.Windows.Forms.Label();
+            this.language_Check = new System.Windows.Forms.Label();
+            this.dichGia_check = new System.Windows.Forms.Label();
+            this.tacGia_Check = new System.Windows.Forms.Label();
             this.soLuong_check = new System.Windows.Forms.Label();
             this.Price_Check = new System.Windows.Forms.Label();
             this.theLoai_check = new System.Windows.Forms.Label();
@@ -176,13 +183,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.tacGia_Check = new System.Windows.Forms.Label();
-            this.dichGia_check = new System.Windows.Forms.Label();
-            this.language_Check = new System.Windows.Forms.Label();
-            this.nam_Check = new System.Windows.Forms.Label();
-            this.soTrang_Check = new System.Windows.Forms.Label();
-            this.bia_Check = new System.Windows.Forms.Label();
-            this.NXB_Check = new System.Windows.Forms.Label();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -1408,6 +1408,90 @@
             this.formThemSPPanel.TabIndex = 4;
             this.formThemSPPanel.Visible = false;
             // 
+            // NXB_Check
+            // 
+            this.NXB_Check.AutoSize = true;
+            this.NXB_Check.BackColor = System.Drawing.Color.White;
+            this.NXB_Check.ForeColor = System.Drawing.Color.Red;
+            this.NXB_Check.Location = new System.Drawing.Point(524, 412);
+            this.NXB_Check.Name = "NXB_Check";
+            this.NXB_Check.Size = new System.Drawing.Size(192, 16);
+            this.NXB_Check.TabIndex = 62;
+            this.NXB_Check.Text = "Bạn cần phải điền nhà xuất bản";
+            this.NXB_Check.Visible = false;
+            // 
+            // bia_Check
+            // 
+            this.bia_Check.AutoSize = true;
+            this.bia_Check.BackColor = System.Drawing.Color.White;
+            this.bia_Check.ForeColor = System.Drawing.Color.Red;
+            this.bia_Check.Location = new System.Drawing.Point(1166, 273);
+            this.bia_Check.Name = "bia_Check";
+            this.bia_Check.Size = new System.Drawing.Size(135, 16);
+            this.bia_Check.TabIndex = 61;
+            this.bia_Check.Text = "Bạn cần chọn loại bìa";
+            this.bia_Check.Visible = false;
+            // 
+            // soTrang_Check
+            // 
+            this.soTrang_Check.AutoSize = true;
+            this.soTrang_Check.BackColor = System.Drawing.Color.White;
+            this.soTrang_Check.ForeColor = System.Drawing.Color.Red;
+            this.soTrang_Check.Location = new System.Drawing.Point(1132, 483);
+            this.soTrang_Check.Name = "soTrang_Check";
+            this.soTrang_Check.Size = new System.Drawing.Size(169, 16);
+            this.soTrang_Check.TabIndex = 60;
+            this.soTrang_Check.Text = "Bạn cần phải nhập số trang";
+            this.soTrang_Check.Visible = false;
+            // 
+            // nam_Check
+            // 
+            this.nam_Check.AutoSize = true;
+            this.nam_Check.BackColor = System.Drawing.Color.White;
+            this.nam_Check.ForeColor = System.Drawing.Color.Red;
+            this.nam_Check.Location = new System.Drawing.Point(524, 483);
+            this.nam_Check.Name = "nam_Check";
+            this.nam_Check.Size = new System.Drawing.Size(196, 16);
+            this.nam_Check.TabIndex = 59;
+            this.nam_Check.Text = "Bạn cần phải điền năm xuất bản";
+            this.nam_Check.Visible = false;
+            // 
+            // language_Check
+            // 
+            this.language_Check.AutoSize = true;
+            this.language_Check.BackColor = System.Drawing.Color.White;
+            this.language_Check.ForeColor = System.Drawing.Color.Red;
+            this.language_Check.Location = new System.Drawing.Point(1128, 341);
+            this.language_Check.Name = "language_Check";
+            this.language_Check.Size = new System.Drawing.Size(175, 16);
+            this.language_Check.TabIndex = 58;
+            this.language_Check.Text = "Bạn cần phải chọn ngôn ngữ";
+            this.language_Check.Visible = false;
+            // 
+            // dichGia_check
+            // 
+            this.dichGia_check.AutoSize = true;
+            this.dichGia_check.BackColor = System.Drawing.Color.White;
+            this.dichGia_check.ForeColor = System.Drawing.Color.Red;
+            this.dichGia_check.Location = new System.Drawing.Point(530, 345);
+            this.dichGia_check.Name = "dichGia_check";
+            this.dichGia_check.Size = new System.Drawing.Size(185, 16);
+            this.dichGia_check.TabIndex = 57;
+            this.dichGia_check.Text = "Bạn cần phải điền tên dịch giả";
+            this.dichGia_check.Visible = false;
+            // 
+            // tacGia_Check
+            // 
+            this.tacGia_Check.AutoSize = true;
+            this.tacGia_Check.BackColor = System.Drawing.Color.White;
+            this.tacGia_Check.ForeColor = System.Drawing.Color.Red;
+            this.tacGia_Check.Location = new System.Drawing.Point(538, 273);
+            this.tacGia_Check.Name = "tacGia_Check";
+            this.tacGia_Check.Size = new System.Drawing.Size(178, 16);
+            this.tacGia_Check.TabIndex = 56;
+            this.tacGia_Check.Text = "Bạn cần phải điền tên tác giả";
+            this.tacGia_Check.Visible = false;
+            // 
             // soLuong_check
             // 
             this.soLuong_check.AutoSize = true;
@@ -1508,6 +1592,7 @@
             // 
             this.luuSPButton.BackColor = System.Drawing.Color.OrangeRed;
             this.luuSPButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.luuSPButton.Enabled = false;
             this.luuSPButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.luuSPButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.luuSPButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
@@ -2272,90 +2357,6 @@
             this.label6.Size = new System.Drawing.Size(150, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
-            // 
-            // tacGia_Check
-            // 
-            this.tacGia_Check.AutoSize = true;
-            this.tacGia_Check.BackColor = System.Drawing.Color.White;
-            this.tacGia_Check.ForeColor = System.Drawing.Color.Red;
-            this.tacGia_Check.Location = new System.Drawing.Point(538, 273);
-            this.tacGia_Check.Name = "tacGia_Check";
-            this.tacGia_Check.Size = new System.Drawing.Size(178, 16);
-            this.tacGia_Check.TabIndex = 56;
-            this.tacGia_Check.Text = "Bạn cần phải điền tên tác giả";
-            this.tacGia_Check.Visible = false;
-            // 
-            // dichGia_check
-            // 
-            this.dichGia_check.AutoSize = true;
-            this.dichGia_check.BackColor = System.Drawing.Color.White;
-            this.dichGia_check.ForeColor = System.Drawing.Color.Red;
-            this.dichGia_check.Location = new System.Drawing.Point(530, 345);
-            this.dichGia_check.Name = "dichGia_check";
-            this.dichGia_check.Size = new System.Drawing.Size(185, 16);
-            this.dichGia_check.TabIndex = 57;
-            this.dichGia_check.Text = "Bạn cần phải điền tên dịch giả";
-            this.dichGia_check.Visible = false;
-            // 
-            // language_Check
-            // 
-            this.language_Check.AutoSize = true;
-            this.language_Check.BackColor = System.Drawing.Color.White;
-            this.language_Check.ForeColor = System.Drawing.Color.Red;
-            this.language_Check.Location = new System.Drawing.Point(1128, 341);
-            this.language_Check.Name = "language_Check";
-            this.language_Check.Size = new System.Drawing.Size(175, 16);
-            this.language_Check.TabIndex = 58;
-            this.language_Check.Text = "Bạn cần phải chọn ngôn ngữ";
-            this.language_Check.Visible = false;
-            // 
-            // nam_Check
-            // 
-            this.nam_Check.AutoSize = true;
-            this.nam_Check.BackColor = System.Drawing.Color.White;
-            this.nam_Check.ForeColor = System.Drawing.Color.Red;
-            this.nam_Check.Location = new System.Drawing.Point(524, 483);
-            this.nam_Check.Name = "nam_Check";
-            this.nam_Check.Size = new System.Drawing.Size(196, 16);
-            this.nam_Check.TabIndex = 59;
-            this.nam_Check.Text = "Bạn cần phải điền năm xuất bản";
-            this.nam_Check.Visible = false;
-            // 
-            // soTrang_Check
-            // 
-            this.soTrang_Check.AutoSize = true;
-            this.soTrang_Check.BackColor = System.Drawing.Color.White;
-            this.soTrang_Check.ForeColor = System.Drawing.Color.Red;
-            this.soTrang_Check.Location = new System.Drawing.Point(1132, 483);
-            this.soTrang_Check.Name = "soTrang_Check";
-            this.soTrang_Check.Size = new System.Drawing.Size(169, 16);
-            this.soTrang_Check.TabIndex = 60;
-            this.soTrang_Check.Text = "Bạn cần phải nhập số trang";
-            this.soTrang_Check.Visible = false;
-            // 
-            // bia_Check
-            // 
-            this.bia_Check.AutoSize = true;
-            this.bia_Check.BackColor = System.Drawing.Color.White;
-            this.bia_Check.ForeColor = System.Drawing.Color.Red;
-            this.bia_Check.Location = new System.Drawing.Point(1166, 273);
-            this.bia_Check.Name = "bia_Check";
-            this.bia_Check.Size = new System.Drawing.Size(135, 16);
-            this.bia_Check.TabIndex = 61;
-            this.bia_Check.Text = "Bạn cần chọn loại bìa";
-            this.bia_Check.Visible = false;
-            // 
-            // NXB_Check
-            // 
-            this.NXB_Check.AutoSize = true;
-            this.NXB_Check.BackColor = System.Drawing.Color.White;
-            this.NXB_Check.ForeColor = System.Drawing.Color.Red;
-            this.NXB_Check.Location = new System.Drawing.Point(524, 412);
-            this.NXB_Check.Name = "NXB_Check";
-            this.NXB_Check.Size = new System.Drawing.Size(192, 16);
-            this.NXB_Check.TabIndex = 62;
-            this.NXB_Check.Text = "Bạn cần phải điền nhà xuất bản";
-            this.NXB_Check.Visible = false;
             // 
             // BanHang_Form
             // 

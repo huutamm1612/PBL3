@@ -328,13 +328,17 @@ namespace Program
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-
-            if (tenSP_Text.Text == "" || tenTacGia_Text.Text == "" || theLoai_CBBox.SelectedIndex == 0 || gia_Text.Text == "")
+            if (tenSP_Check.Visible == true || dichGia_check.Visible == true || tacGia_Check.Visible == true || NXB_Check.Visible == true || nam_Check.Visible == true || soTrang_Check.Visible == true
+                || theLoai_check.Visible == true || bia_Check.Visible == true  || language_Check.Visible == true || Price_Check.Visible == true || soLuong_check.Visible == true )
             {
-
+                luuSPButton.Enabled = false;
+            }
+            else
+            {
+                luuSPButton.Enabled = true;
             }
 
-            // dua du lieu vao QLSP
+            // dua du lieu vao QLSP     
 
             // copy roi them vao FlowLayoutPanel listSP_FLPanel
 
@@ -346,7 +350,31 @@ namespace Program
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
         {
             // refresh form
-        }
+            tenSP_Text.Text = "";
+            theLoai_CBBox.SelectedIndex = -1;
+            tenTacGia_Text.Text = "";
+            tenDichGia_Text.Text = "";
+            nhaXuatBan_Text.Text = "";
+            namXuatBan_Text.Text = "";
+            loaiBia_CBBox.SelectedIndex = -1;
+            ngonNgu_CBBox.SelectedIndex = -1;
+            gia_Text.Text = "";
+            soLuong_Text.Text = "";
+            soTrang_Text.Text = "";
+            tenSP_Check.Visible = false;
+            dichGia_check.Visible = false;
+            tacGia_Check.Visible = false;
+            NXB_Check.Visible = false;
+            soTrang_Check.Visible = false;
+            theLoai_check.Visible = false;
+            bia_Check.Visible = false;
+            language_Check.Visible = false;
+            Price_Check.Visible = false;
+            soLuong_check.Visible = false;
+            nam_Check.Visible = false;  
+
+
+        } 
 
         private void tenSP_Text_TextChanged(object sender, EventArgs e)
         {
@@ -421,18 +449,24 @@ namespace Program
         private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ngonNgu_CBBox.SelectedIndex != -1)
+                language_Check.Visible = false;
+            else
                 language_Check.Visible = true;
         }
 
         private void theLoai_CBBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (theLoai_CBBox.SelectedIndex != -1)
+                theLoai_check.Visible = false;
+            else
                 theLoai_check.Visible = true;
         }
 
         private void loaiBia_CBBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (loaiBia_CBBox.SelectedIndex != -1)
+                bia_Check.Visible = false;
+            else 
                 bia_Check.Visible = true;
         }
 
