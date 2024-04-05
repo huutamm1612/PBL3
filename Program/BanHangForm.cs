@@ -315,6 +315,7 @@ namespace Program
             formThemSPPanel.Location = themSPButton.Location;
             themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
             formThemSPPanel.Visible = true;
+            themSPButton.Visible = false;
         }
 
         private void huyThemSPButton_Click(object sender, EventArgs e)
@@ -323,6 +324,7 @@ namespace Program
             TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height - (formThemSPPanel.Size.Height + 20));
             panel8.Location = new Point(panel8.Location.X, panel8.Location.Y - (formThemSPPanel.Size.Height + 20));
             formThemSPPanel.Visible = false;
+            themSPButton.Visible = true;
         }
 
         private void luuSPButton_Click(object sender, EventArgs e)
