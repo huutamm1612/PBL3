@@ -810,9 +810,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
-            this.Controls.Add(this.quenMK_Panel);
             this.Controls.Add(this.Signup_Panel);
             this.Controls.Add(this.LoginPanel);
+            this.Controls.Add(this.quenMK_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";
