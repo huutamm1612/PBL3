@@ -28,26 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.quenMK_Panel = new System.Windows.Forms.Panel();
-            this.label36 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.saiMK_Text = new System.Windows.Forms.TextBox();
             this.hienMK_QMK_Check = new System.Windows.Forms.CheckBox();
-            this.troVe_QMK_Button = new System.Windows.Forms.Button();
-            this.matKhau2_QMK_Box = new System.Windows.Forms.TextBox();
-            this.xacNhan_QMK_Button = new System.Windows.Forms.Button();
             this.cauTraLoi_QML_Box = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.cauHoiQMK_CB = new System.Windows.Forms.ComboBox();
             this.matKhau1_QMK_Box = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.thongBao_Text = new System.Windows.Forms.Label();
             this.taiKhoan_QMK_Box = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.troVe_QMK_Button = new System.Windows.Forms.Button();
+            this.xacNhan_QMK_Button = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -78,6 +76,7 @@
             this.dangKy_Botton = new System.Windows.Forms.Button();
             this.matKhau1_DK_Box = new System.Windows.Forms.TextBox();
             this.taiKhoan_DK_Box = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.quenMK_Panel.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
@@ -87,52 +86,97 @@
             // 
             this.quenMK_Panel.BackColor = System.Drawing.Color.White;
             this.quenMK_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.quenMK_Panel.Controls.Add(this.label36);
+            this.quenMK_Panel.Controls.Add(this.button4);
+            this.quenMK_Panel.Controls.Add(this.button2);
+            this.quenMK_Panel.Controls.Add(this.button3);
+            this.quenMK_Panel.Controls.Add(this.label3);
             this.quenMK_Panel.Controls.Add(this.label35);
             this.quenMK_Panel.Controls.Add(this.label34);
             this.quenMK_Panel.Controls.Add(this.label33);
-            this.quenMK_Panel.Controls.Add(this.saiMK_Text);
             this.quenMK_Panel.Controls.Add(this.hienMK_QMK_Check);
-            this.quenMK_Panel.Controls.Add(this.troVe_QMK_Button);
-            this.quenMK_Panel.Controls.Add(this.matKhau2_QMK_Box);
-            this.quenMK_Panel.Controls.Add(this.xacNhan_QMK_Button);
             this.quenMK_Panel.Controls.Add(this.cauTraLoi_QML_Box);
-            this.quenMK_Panel.Controls.Add(this.label16);
             this.quenMK_Panel.Controls.Add(this.cauHoiQMK_CB);
             this.quenMK_Panel.Controls.Add(this.matKhau1_QMK_Box);
-            this.quenMK_Panel.Controls.Add(this.label17);
-            this.quenMK_Panel.Controls.Add(this.label15);
             this.quenMK_Panel.Controls.Add(this.thongBao_Text);
             this.quenMK_Panel.Controls.Add(this.taiKhoan_QMK_Box);
-            this.quenMK_Panel.Controls.Add(this.label12);
-            this.quenMK_Panel.Controls.Add(this.label13);
+            this.quenMK_Panel.Controls.Add(this.textBox5);
+            this.quenMK_Panel.Controls.Add(this.troVe_QMK_Button);
+            this.quenMK_Panel.Controls.Add(this.xacNhan_QMK_Button);
             this.quenMK_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.quenMK_Panel.Location = new System.Drawing.Point(0, 0);
             this.quenMK_Panel.Name = "quenMK_Panel";
             this.quenMK_Panel.Size = new System.Drawing.Size(892, 563);
             this.quenMK_Panel.TabIndex = 14;
             this.quenMK_Panel.Visible = false;
+            this.quenMK_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.QMK_Panel_Paint);
             // 
-            // label36
+            // button4
             // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label36.Location = new System.Drawing.Point(48, 404);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(126, 18);
-            this.label36.TabIndex = 32;
-            this.label36.Text = "Nhập lại mật khẩu";
+            this.button4.AutoEllipsis = true;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(65, 55);
+            this.button4.TabIndex = 57;
+            this.button4.Text = "←";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.troVe_DK_Button_Click);
+            // 
+            // button2
+            // 
+            this.button2.AutoEllipsis = true;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(62, 249);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(325, 49);
+            this.button2.TabIndex = 56;
+            this.button2.Text = "Did you remember password ?";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.AutoEllipsis = true;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(129, 305);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(180, 40);
+            this.button3.TabIndex = 55;
+            this.button3.Text = "SIGN IN";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(469, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(363, 46);
+            this.label3.TabIndex = 53;
+            this.label3.Text = "Forget Password";
             // 
             // label35
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label35.Location = new System.Drawing.Point(48, 331);
+            this.label35.Location = new System.Drawing.Point(482, 351);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(69, 18);
-            this.label35.TabIndex = 31;
+            this.label35.TabIndex = 51;
             this.label35.Text = "Mật khẩu";
             // 
             // label34
@@ -140,10 +184,10 @@
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label34.Location = new System.Drawing.Point(48, 251);
+            this.label34.Location = new System.Drawing.Point(482, 271);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(75, 18);
-            this.label34.TabIndex = 30;
+            this.label34.TabIndex = 50;
             this.label34.Text = "Câu trả lời";
             // 
             // label33
@@ -151,155 +195,57 @@
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label33.Location = new System.Drawing.Point(48, 131);
+            this.label33.Location = new System.Drawing.Point(482, 151);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(73, 18);
-            this.label33.TabIndex = 29;
+            this.label33.TabIndex = 49;
             this.label33.Text = "Tài khoản";
-            // 
-            // saiMK_Text
-            // 
-            this.saiMK_Text.BackColor = System.Drawing.Color.MistyRose;
-            this.saiMK_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.saiMK_Text.Cursor = System.Windows.Forms.Cursors.Default;
-            this.saiMK_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saiMK_Text.ForeColor = System.Drawing.Color.Red;
-            this.saiMK_Text.Location = new System.Drawing.Point(283, 479);
-            this.saiMK_Text.Name = "saiMK_Text";
-            this.saiMK_Text.ReadOnly = true;
-            this.saiMK_Text.Size = new System.Drawing.Size(167, 20);
-            this.saiMK_Text.TabIndex = 26;
-            this.saiMK_Text.Text = "Mật khẩu không khớp";
-            this.saiMK_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.saiMK_Text.Visible = false;
             // 
             // hienMK_QMK_Check
             // 
             this.hienMK_QMK_Check.AutoSize = true;
             this.hienMK_QMK_Check.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hienMK_QMK_Check.Location = new System.Drawing.Point(38, 477);
+            this.hienMK_QMK_Check.Location = new System.Drawing.Point(474, 410);
             this.hienMK_QMK_Check.Name = "hienMK_QMK_Check";
-            this.hienMK_QMK_Check.Size = new System.Drawing.Size(125, 22);
-            this.hienMK_QMK_Check.TabIndex = 25;
-            this.hienMK_QMK_Check.Text = "Hiện mật khẩu";
+            this.hienMK_QMK_Check.Size = new System.Drawing.Size(137, 22);
+            this.hienMK_QMK_Check.TabIndex = 45;
+            this.hienMK_QMK_Check.Text = "Show password";
             this.hienMK_QMK_Check.UseVisualStyleBackColor = true;
-            this.hienMK_QMK_Check.CheckedChanged += new System.EventHandler(this.hienMK_QMK_Check_CheckedChanged);
-            // 
-            // troVe_QMK_Button
-            // 
-            this.troVe_QMK_Button.AutoEllipsis = true;
-            this.troVe_QMK_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.troVe_QMK_Button.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.troVe_QMK_Button.Location = new System.Drawing.Point(641, 138);
-            this.troVe_QMK_Button.Name = "troVe_QMK_Button";
-            this.troVe_QMK_Button.Size = new System.Drawing.Size(134, 28);
-            this.troVe_QMK_Button.TabIndex = 26;
-            this.troVe_QMK_Button.Text = "Trở về";
-            this.troVe_QMK_Button.UseVisualStyleBackColor = true;
-            this.troVe_QMK_Button.Click += new System.EventHandler(this.troVe_QMK_Button_Click);
-            // 
-            // matKhau2_QMK_Box
-            // 
-            this.matKhau2_QMK_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.matKhau2_QMK_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.matKhau2_QMK_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.matKhau2_QMK_Box.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.matKhau2_QMK_Box.Location = new System.Drawing.Point(43, 423);
-            this.matKhau2_QMK_Box.Name = "matKhau2_QMK_Box";
-            this.matKhau2_QMK_Box.Size = new System.Drawing.Size(392, 21);
-            this.matKhau2_QMK_Box.TabIndex = 4;
-            this.matKhau2_QMK_Box.TextChanged += new System.EventHandler(this.matKhau2_QMK_Box_TextChanged);
-            // 
-            // xacNhan_QMK_Button
-            // 
-            this.xacNhan_QMK_Button.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.xacNhan_QMK_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.xacNhan_QMK_Button.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.xacNhan_QMK_Button.Location = new System.Drawing.Point(365, 41);
-            this.xacNhan_QMK_Button.Name = "xacNhan_QMK_Button";
-            this.xacNhan_QMK_Button.Size = new System.Drawing.Size(410, 78);
-            this.xacNhan_QMK_Button.TabIndex = 5;
-            this.xacNhan_QMK_Button.Text = "Xác nhận";
-            this.xacNhan_QMK_Button.UseCompatibleTextRendering = true;
-            this.xacNhan_QMK_Button.UseVisualStyleBackColor = false;
-            this.xacNhan_QMK_Button.Click += new System.EventHandler(this.xacNhan_QMK_Button_Click);
+            this.hienMK_QMK_Check.CheckedChanged += new System.EventHandler(this.hienMK_QMK_Check_CheckedChanged_1);
             // 
             // cauTraLoi_QML_Box
             // 
+            this.cauTraLoi_QML_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.cauTraLoi_QML_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cauTraLoi_QML_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cauTraLoi_QML_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cauTraLoi_QML_Box.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.cauTraLoi_QML_Box.Location = new System.Drawing.Point(43, 271);
+            this.cauTraLoi_QML_Box.Location = new System.Drawing.Point(477, 291);
             this.cauTraLoi_QML_Box.Name = "cauTraLoi_QML_Box";
             this.cauTraLoi_QML_Box.Size = new System.Drawing.Size(392, 21);
-            this.cauTraLoi_QML_Box.TabIndex = 2;
-            this.cauTraLoi_QML_Box.TextChanged += new System.EventHandler(this.cauTraLoi_QML_Box_TextChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(38, 414);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(410, 0, 0, 0);
-            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label16.Size = new System.Drawing.Size(412, 48);
-            this.label16.TabIndex = 28;
-            this.label16.UseMnemonic = false;
+            this.cauTraLoi_QML_Box.TabIndex = 39;
             // 
             // cauHoiQMK_CB
             // 
             this.cauHoiQMK_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cauHoiQMK_CB.FormattingEnabled = true;
-            this.cauHoiQMK_CB.Location = new System.Drawing.Point(38, 210);
+            this.cauHoiQMK_CB.Location = new System.Drawing.Point(472, 230);
             this.cauHoiQMK_CB.Name = "cauHoiQMK_CB";
             this.cauHoiQMK_CB.Size = new System.Drawing.Size(414, 30);
-            this.cauHoiQMK_CB.TabIndex = 1;
-            this.cauHoiQMK_CB.SelectedIndexChanged += new System.EventHandler(this.cauHoiQMK_CB_SelectedIndexChanged);
+            this.cauHoiQMK_CB.TabIndex = 38;
             // 
             // matKhau1_QMK_Box
             // 
+            this.matKhau1_QMK_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.matKhau1_QMK_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.matKhau1_QMK_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.matKhau1_QMK_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matKhau1_QMK_Box.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.matKhau1_QMK_Box.Location = new System.Drawing.Point(43, 348);
+            this.matKhau1_QMK_Box.Location = new System.Drawing.Point(477, 368);
             this.matKhau1_QMK_Box.Name = "matKhau1_QMK_Box";
             this.matKhau1_QMK_Box.Size = new System.Drawing.Size(392, 21);
-            this.matKhau1_QMK_Box.TabIndex = 3;
-            this.matKhau1_QMK_Box.TextChanged += new System.EventHandler(this.matKhau1_QMK_Box_TextChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(38, 339);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(410, 0, 0, 0);
-            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label17.Size = new System.Drawing.Size(412, 48);
-            this.label17.TabIndex = 27;
-            this.label17.UseMnemonic = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(38, 261);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(410, 0, 0, 0);
-            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label15.Size = new System.Drawing.Size(412, 48);
-            this.label15.TabIndex = 25;
-            this.label15.UseMnemonic = false;
+            this.matKhau1_QMK_Box.TabIndex = 40;
+            this.matKhau1_QMK_Box.TextChanged += new System.EventHandler(this.matKhau1_QMK_Box_TextChanged_1);
             // 
             // thongBao_Text
             // 
@@ -308,48 +254,76 @@
             this.thongBao_Text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.thongBao_Text.Cursor = System.Windows.Forms.Cursors.Default;
             this.thongBao_Text.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.thongBao_Text.Location = new System.Drawing.Point(38, 104);
+            this.thongBao_Text.Location = new System.Drawing.Point(472, 124);
             this.thongBao_Text.Name = "thongBao_Text";
             this.thongBao_Text.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.thongBao_Text.Size = new System.Drawing.Size(4, 24);
-            this.thongBao_Text.TabIndex = 22;
+            this.thongBao_Text.TabIndex = 42;
             this.thongBao_Text.Visible = false;
             // 
             // taiKhoan_QMK_Box
             // 
+            this.taiKhoan_QMK_Box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.taiKhoan_QMK_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.taiKhoan_QMK_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.taiKhoan_QMK_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.taiKhoan_QMK_Box.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.taiKhoan_QMK_Box.Location = new System.Drawing.Point(43, 152);
+            this.taiKhoan_QMK_Box.Location = new System.Drawing.Point(477, 172);
             this.taiKhoan_QMK_Box.Name = "taiKhoan_QMK_Box";
             this.taiKhoan_QMK_Box.Size = new System.Drawing.Size(394, 21);
-            this.taiKhoan_QMK_Box.TabIndex = 0;
-            this.taiKhoan_QMK_Box.TextChanged += new System.EventHandler(this.taiKhoan_QMK_Box_TextChanged);
+            this.taiKhoan_QMK_Box.TabIndex = 37;
             // 
-            // label12
+            // textBox5
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(32, 30);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(215, 36);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Quên mật khẩu";
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Tai Le", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.White;
+            this.textBox5.Location = new System.Drawing.Point(11, 182);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(420, 49);
+            this.textBox5.TabIndex = 35;
+            this.textBox5.Text = "Hi, Friend!";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // troVe_QMK_Button
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(38, 140);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(410, 0, 0, 0);
-            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label13.Size = new System.Drawing.Size(412, 48);
-            this.label13.TabIndex = 23;
-            this.label13.UseMnemonic = false;
+            this.troVe_QMK_Button.AutoEllipsis = true;
+            this.troVe_QMK_Button.BackColor = System.Drawing.Color.Transparent;
+            this.troVe_QMK_Button.FlatAppearance.BorderSize = 0;
+            this.troVe_QMK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.troVe_QMK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.troVe_QMK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.troVe_QMK_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.troVe_QMK_Button.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.troVe_QMK_Button.Location = new System.Drawing.Point(150, 349);
+            this.troVe_QMK_Button.Name = "troVe_QMK_Button";
+            this.troVe_QMK_Button.Size = new System.Drawing.Size(134, 28);
+            this.troVe_QMK_Button.TabIndex = 26;
+            this.troVe_QMK_Button.Text = "Back";
+            this.troVe_QMK_Button.UseVisualStyleBackColor = false;
+            this.troVe_QMK_Button.Click += new System.EventHandler(this.troVe_QMK_Button_Click);
+            // 
+            // xacNhan_QMK_Button
+            // 
+            this.xacNhan_QMK_Button.BackColor = System.Drawing.Color.Transparent;
+            this.xacNhan_QMK_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.xacNhan_QMK_Button.FlatAppearance.BorderSize = 0;
+            this.xacNhan_QMK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.xacNhan_QMK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.xacNhan_QMK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.xacNhan_QMK_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xacNhan_QMK_Button.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.xacNhan_QMK_Button.Location = new System.Drawing.Point(518, 462);
+            this.xacNhan_QMK_Button.Name = "xacNhan_QMK_Button";
+            this.xacNhan_QMK_Button.Size = new System.Drawing.Size(314, 60);
+            this.xacNhan_QMK_Button.TabIndex = 5;
+            this.xacNhan_QMK_Button.Text = "Confirm";
+            this.xacNhan_QMK_Button.UseCompatibleTextRendering = true;
+            this.xacNhan_QMK_Button.UseVisualStyleBackColor = false;
+            this.xacNhan_QMK_Button.Click += new System.EventHandler(this.xacNhan_QMK_Button_Click_1);
             // 
             // LoginPanel
             // 
@@ -374,6 +348,7 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(892, 563);
             this.LoginPanel.TabIndex = 31;
+            this.LoginPanel.Click += new System.EventHandler(this.troVe_DK_Button_Click);
             this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
             // 
             // textBox2
@@ -552,7 +527,6 @@
             this.hienMK_DN_Check.TabIndex = 3;
             this.hienMK_DN_Check.Text = "Show password";
             this.hienMK_DN_Check.UseVisualStyleBackColor = true;
-            this.hienMK_DN_Check.CheckedChanged += new System.EventHandler(this.hienMK_DN_Check_CheckedChanged);
             // 
             // taiKhoan_DN_Box
             // 
@@ -601,7 +575,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(15, 178);
+            this.textBox3.Location = new System.Drawing.Point(17, 170);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -805,6 +779,12 @@
             this.taiKhoan_DK_Box.TabIndex = 0;
             this.taiKhoan_DK_Box.TextChanged += new System.EventHandler(this.taiKhoan_DK_Box_TextChanged);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // DangNhap_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -830,25 +810,8 @@
         #endregion
 
         private System.Windows.Forms.Panel quenMK_Panel;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox saiMK_Text;
-        private System.Windows.Forms.CheckBox hienMK_QMK_Check;
         private System.Windows.Forms.Button troVe_QMK_Button;
-        private System.Windows.Forms.TextBox matKhau2_QMK_Box;
         private System.Windows.Forms.Button xacNhan_QMK_Button;
-        private System.Windows.Forms.TextBox cauTraLoi_QML_Box;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox cauHoiQMK_CB;
-        private System.Windows.Forms.TextBox matKhau1_QMK_Box;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label thongBao_Text;
-        private System.Windows.Forms.TextBox taiKhoan_QMK_Box;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
@@ -879,5 +842,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.CheckBox hienMK_QMK_Check;
+        private System.Windows.Forms.TextBox cauTraLoi_QML_Box;
+        private System.Windows.Forms.ComboBox cauHoiQMK_CB;
+        private System.Windows.Forms.TextBox matKhau1_QMK_Box;
+        private System.Windows.Forms.Label thongBao_Text;
+        private System.Windows.Forms.TextBox taiKhoan_QMK_Box;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
     }
 }

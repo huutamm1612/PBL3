@@ -126,15 +126,13 @@ namespace Program
 
             LoginPanel.Visible = false;
             quenMK_Panel.Visible = true;
-            this.Size = new System.Drawing.Size(510, 692);
         }
         
         private void refreshQuenMatKhau_Panel()
         {
             matKhau1_QMK_Box.UseSystemPasswordChar = false;
-            matKhau2_QMK_Box.UseSystemPasswordChar = false;
+        
             cauHoiQMK_CB.SelectedIndex = 0;
-            saiMK_Text.Visible = false;
             thongBao_Text.Visible = false;
             hienMK_QMK_Check.Checked = false;
         }
@@ -186,36 +184,6 @@ namespace Program
             matKhau_DN_Box.UseSystemPasswordChar = false;
             hienMK_DN_Check.Checked = false;
         }
-        private void xacNhan_QMK_Button_Click(object sender, EventArgs e)
-        {
-            if (HeThong.KiemTraTaiKhoan(taiKhoan_QMK_Box.Text))
-            {
-                thongBao_Text.Text = "Tài khoản không tồn tại";
-                thongBao_Text.Visible = true;
-                return;
-            }
-            else if (thongBao_Text.Visible)
-            {
-                thongBao_Text.Visible = false;
-            }
-
-            if (HeThong.KiemTraCauHoi(taiKhoan_QMK_Box.Text, cauHoiQMK_CB.SelectedIndex - 1, cauTraLoi_QML_Box.Text))
-            {
-                HeThong.CapNhatMatKhau(taiKhoan_QMK_Box.Text, matKhau1_QMK_Box.Text);
-
-                MessageBox.Show("Đổi mật khẩu thành công");
-
-                this.refreshDangNhap_Panel();
-                quenMK_Panel.Visible = false;
-                LoginPanel.Visible = true;
-                this.Size = new System.Drawing.Size(510, 570);
-            }
-            else
-            {
-                thongBao_Text.Text = "Câu hỏi hoặc câu trả lời không chính xác";
-                thongBao_Text.Visible = true;
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -229,6 +197,7 @@ namespace Program
             {
                 LoginPanel.Visible = true;
                 Signup_Panel.Visible = false;
+                quenMK_Panel.Visible = false;
             }
             else
             {
@@ -272,13 +241,6 @@ namespace Program
             }
         }
 
-        private void hienMK_DN_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            if (hienMK_DN_Check.Checked)
-                matKhau_DN_Box.UseSystemPasswordChar = false;
-            else
-                matKhau_DN_Box.UseSystemPasswordChar = true;
-        }
 
         private bool kiemTra()
         {
@@ -316,7 +278,7 @@ namespace Program
         {
             LoginPanel.Visible = true;
             quenMK_Panel.Visible = false;
-            this.Size = new System.Drawing.Size(510, 570);
+            this.Size = new System.Drawing.Size(892, 563);
         }
 
         private void hienMK_DK_Check_CheckedChanged(object sender, EventArgs e)
@@ -348,7 +310,7 @@ namespace Program
 
         public bool KTra_QuenMK()
         {
-            return !(taiKhoan_QMK_Box.Text == "" || cauHoiQMK_CB.SelectedIndex == 0 || cauTraLoi_QML_Box.Text == "" || matKhau1_QMK_Box.Text == "" || matKhau2_QMK_Box.Text == "" || saiMK_Text.Visible == true);
+            return !(taiKhoan_QMK_Box.Text == "" || cauHoiQMK_CB.SelectedIndex == 0 || cauTraLoi_QML_Box.Text == "" || matKhau1_QMK_Box.Text == "" );
         }
         private void taiKhoan_QMK_Box_TextChanged(object sender, EventArgs e)
         {
@@ -372,31 +334,8 @@ namespace Program
         private void matKhau1_QMK_Box_TextChanged(object sender, EventArgs e)
         {
             xacNhan_QMK_Button.Enabled = KTra_QuenMK();
-            if (matKhau1_QMK_Box.Text != matKhau2_QMK_Box.Text)
-            {
-                saiMK_Text.Visible = true;
-                xacNhan_QMK_Button.Enabled = false;
-            }
-            else
-            {
-                saiMK_Text.Visible = false;
-            }
         }
 
-        private void matKhau2_QMK_Box_TextChanged(object sender, EventArgs e)
-        {
-            xacNhan_QMK_Button.Enabled = KTra_QuenMK();
-            if (matKhau1_QMK_Box.Text != matKhau2_QMK_Box.Text)
-            {
-                saiMK_Text.Visible = true;
-                xacNhan_QMK_Button.Enabled = false;
-            }
-            else
-            {
-                saiMK_Text.Visible = false;
-                xacNhan_QMK_Button.Enabled = true;
-            }
-        }
 
         private void Enter_DangNhap(object sender, KeyEventArgs e)
         {
@@ -426,5 +365,68 @@ namespace Program
             Utils.DrawRectangle(g, new RectangleF(500, 200, 350, 50), Color.FromArgb(236, 230, 255), 7);
             Utils.DrawRectangle(g, new RectangleF(500, 360, 350, 50), Color.FromArgb(236, 230, 255), 7);    
         }
+
+        private void QMK_Panel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Utils.DrawRectangle(g, new RectangleF(-540, 0, 1000, 570), Color.FromArgb(107, 0, 227), 170);
+            Utils.DrawRectangle(g, new RectangleF(472, 160, 412, 48), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(472, 281, 412, 48), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(472, 359, 412, 48), Color.FromArgb(236, 230, 255), 7);
+            Utils.DrawRectangle(g, new RectangleF(518, 462, 314, 60), Color.FromArgb(107, 0, 227), 7);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoginPanel.Visible = true;
+            Signup_Panel.Visible = false;
+        }
+
+        private void matKhau1_QMK_Box_TextChanged_1(object sender, EventArgs e)
+        {
+            if (hienMK_DN_Check.Checked)
+                matKhau_DN_Box.UseSystemPasswordChar = false;
+            else
+                matKhau_DN_Box.UseSystemPasswordChar = true;
+        }
+
+        private void xacNhan_QMK_Button_Click_1(object sender, EventArgs e)
+        {
+            if (HeThong.KiemTraTaiKhoan(taiKhoan_QMK_Box.Text))
+            {
+                thongBao_Text.Text = "Tài khoản không tồn tại";
+                thongBao_Text.Visible = true;
+                return;
+            }
+            else if (thongBao_Text.Visible)
+            {
+                thongBao_Text.Visible = false;
+            }
+
+            if (HeThong.KiemTraCauHoi(taiKhoan_QMK_Box.Text, cauHoiQMK_CB.SelectedIndex - 1, cauTraLoi_QML_Box.Text))
+            {
+                HeThong.CapNhatMatKhau(taiKhoan_QMK_Box.Text, matKhau1_QMK_Box.Text);
+
+                MessageBox.Show("Đổi mật khẩu thành công");
+
+                this.refreshDangNhap_Panel();
+                quenMK_Panel.Visible = false;
+                LoginPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Sai câu hỏi bảo mật,vui lòng thử lại");  
+            }
+        }
+
+        private void hienMK_QMK_Check_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (hienMK_DN_Check.Checked)
+                matKhau_DN_Box.UseSystemPasswordChar = false;
+            else
+                matKhau_DN_Box.UseSystemPasswordChar = true;
+        }
+
+
     }
 }

@@ -99,12 +99,22 @@
             this.button2 = new System.Windows.Forms.Button();
             this.screen_Panel = new System.Windows.Forms.Panel();
             this.themSanPhamPanel = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.TTBH_Panel = new System.Windows.Forms.Panel();
             this.themSPButton = new System.Windows.Forms.Button();
             this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
+            this.NXB_Check = new System.Windows.Forms.Label();
+            this.bia_Check = new System.Windows.Forms.Label();
+            this.soTrang_Check = new System.Windows.Forms.Label();
+            this.nam_Check = new System.Windows.Forms.Label();
+            this.language_Check = new System.Windows.Forms.Label();
+            this.dichGia_check = new System.Windows.Forms.Label();
+            this.tacGia_Check = new System.Windows.Forms.Label();
+            this.soLuong_check = new System.Windows.Forms.Label();
+            this.Price_Check = new System.Windows.Forms.Label();
+            this.theLoai_check = new System.Windows.Forms.Label();
+            this.tenSP_Check = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.huyThemSPButton = new System.Windows.Forms.Button();
             this.refreshThemSPForm_Button = new System.Windows.Forms.Button();
@@ -113,7 +123,7 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.soLuong_Text = new System.Windows.Forms.TextBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.Count_MoTa = new System.Windows.Forms.TextBox();
             this.moTaSP_Text = new System.Windows.Forms.TextBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.textBox38 = new System.Windows.Forms.TextBox();
@@ -125,16 +135,16 @@
             this.namXuatBan_Text = new System.Windows.Forms.TextBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.Count_NXB = new System.Windows.Forms.TextBox();
             this.nhaXuatBan_Text = new System.Windows.Forms.TextBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.ngonNgu_CBBox = new System.Windows.Forms.ComboBox();
             this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.Count_Dichgia = new System.Windows.Forms.TextBox();
             this.tenDichGia_Text = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.Count_TG = new System.Windows.Forms.TextBox();
             this.tenTacGia_Text = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
@@ -143,23 +153,24 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.theLoai_CBBox = new System.Windows.Forms.ComboBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.Count_SP = new System.Windows.Forms.TextBox();
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.Count_MoTaTT = new System.Windows.Forms.TextBox();
+            this.moTaTT_txt = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.Count_Tieude = new System.Windows.Forms.TextBox();
+            this.tieuDe_txt = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tatCaPanel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.trangChuPanel = new System.Windows.Forms.Panel();
@@ -1278,23 +1289,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.themSanPhamPanel.AutoScroll = true;
             this.themSanPhamPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.themSanPhamPanel.Controls.Add(this.panel8);
             this.themSanPhamPanel.Controls.Add(this.TTBH_Panel);
-            this.themSanPhamPanel.Controls.Add(this.panel6);
+            this.themSanPhamPanel.Controls.Add(this.panel8);
             this.themSanPhamPanel.Controls.Add(this.label4);
+            this.themSanPhamPanel.Controls.Add(this.panel6);
             this.themSanPhamPanel.Location = new System.Drawing.Point(10, 0);
             this.themSanPhamPanel.Name = "themSanPhamPanel";
             this.themSanPhamPanel.Size = new System.Drawing.Size(1062, 761);
             this.themSanPhamPanel.TabIndex = 6;
             this.themSanPhamPanel.Visible = false;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Location = new System.Drawing.Point(61, 1762);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1419, 233);
-            this.panel8.TabIndex = 5;
             // 
             // TTBH_Panel
             // 
@@ -1346,6 +1349,17 @@
             // formThemSPPanel
             // 
             this.formThemSPPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.formThemSPPanel.Controls.Add(this.NXB_Check);
+            this.formThemSPPanel.Controls.Add(this.bia_Check);
+            this.formThemSPPanel.Controls.Add(this.soTrang_Check);
+            this.formThemSPPanel.Controls.Add(this.nam_Check);
+            this.formThemSPPanel.Controls.Add(this.language_Check);
+            this.formThemSPPanel.Controls.Add(this.dichGia_check);
+            this.formThemSPPanel.Controls.Add(this.tacGia_Check);
+            this.formThemSPPanel.Controls.Add(this.soLuong_check);
+            this.formThemSPPanel.Controls.Add(this.Price_Check);
+            this.formThemSPPanel.Controls.Add(this.theLoai_check);
+            this.formThemSPPanel.Controls.Add(this.tenSP_Check);
             this.formThemSPPanel.Controls.Add(this.textBox28);
             this.formThemSPPanel.Controls.Add(this.huyThemSPButton);
             this.formThemSPPanel.Controls.Add(this.refreshThemSPForm_Button);
@@ -1354,7 +1368,7 @@
             this.formThemSPPanel.Controls.Add(this.pictureBox16);
             this.formThemSPPanel.Controls.Add(this.soLuong_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox14);
-            this.formThemSPPanel.Controls.Add(this.textBox32);
+            this.formThemSPPanel.Controls.Add(this.Count_MoTa);
             this.formThemSPPanel.Controls.Add(this.moTaSP_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox15);
             this.formThemSPPanel.Controls.Add(this.textBox38);
@@ -1366,16 +1380,16 @@
             this.formThemSPPanel.Controls.Add(this.namXuatBan_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox8);
             this.formThemSPPanel.Controls.Add(this.textBox30);
-            this.formThemSPPanel.Controls.Add(this.textBox25);
+            this.formThemSPPanel.Controls.Add(this.Count_NXB);
             this.formThemSPPanel.Controls.Add(this.nhaXuatBan_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox7);
             this.formThemSPPanel.Controls.Add(this.textBox27);
             this.formThemSPPanel.Controls.Add(this.ngonNgu_CBBox);
             this.formThemSPPanel.Controls.Add(this.textBox24);
-            this.formThemSPPanel.Controls.Add(this.textBox22);
+            this.formThemSPPanel.Controls.Add(this.Count_Dichgia);
             this.formThemSPPanel.Controls.Add(this.tenDichGia_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox6);
-            this.formThemSPPanel.Controls.Add(this.textBox20);
+            this.formThemSPPanel.Controls.Add(this.Count_TG);
             this.formThemSPPanel.Controls.Add(this.tenTacGia_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox5);
             this.formThemSPPanel.Controls.Add(this.textBox19);
@@ -1384,15 +1398,147 @@
             this.formThemSPPanel.Controls.Add(this.textBox17);
             this.formThemSPPanel.Controls.Add(this.theLoai_CBBox);
             this.formThemSPPanel.Controls.Add(this.textBox16);
-            this.formThemSPPanel.Controls.Add(this.textBox14);
+            this.formThemSPPanel.Controls.Add(this.Count_SP);
             this.formThemSPPanel.Controls.Add(this.tenSP_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox4);
             this.formThemSPPanel.Controls.Add(this.textBox13);
             this.formThemSPPanel.Location = new System.Drawing.Point(70, 163);
             this.formThemSPPanel.Name = "formThemSPPanel";
-            this.formThemSPPanel.Size = new System.Drawing.Size(1420, 800);
+            this.formThemSPPanel.Size = new System.Drawing.Size(1420, 806);
             this.formThemSPPanel.TabIndex = 4;
             this.formThemSPPanel.Visible = false;
+            // 
+            // NXB_Check
+            // 
+            this.NXB_Check.AutoSize = true;
+            this.NXB_Check.BackColor = System.Drawing.Color.White;
+            this.NXB_Check.ForeColor = System.Drawing.Color.Red;
+            this.NXB_Check.Location = new System.Drawing.Point(524, 412);
+            this.NXB_Check.Name = "NXB_Check";
+            this.NXB_Check.Size = new System.Drawing.Size(192, 16);
+            this.NXB_Check.TabIndex = 62;
+            this.NXB_Check.Text = "Bạn cần phải điền nhà xuất bản";
+            this.NXB_Check.Visible = false;
+            // 
+            // bia_Check
+            // 
+            this.bia_Check.AutoSize = true;
+            this.bia_Check.BackColor = System.Drawing.Color.White;
+            this.bia_Check.ForeColor = System.Drawing.Color.Red;
+            this.bia_Check.Location = new System.Drawing.Point(1166, 273);
+            this.bia_Check.Name = "bia_Check";
+            this.bia_Check.Size = new System.Drawing.Size(135, 16);
+            this.bia_Check.TabIndex = 61;
+            this.bia_Check.Text = "Bạn cần chọn loại bìa";
+            this.bia_Check.Visible = false;
+            // 
+            // soTrang_Check
+            // 
+            this.soTrang_Check.AutoSize = true;
+            this.soTrang_Check.BackColor = System.Drawing.Color.White;
+            this.soTrang_Check.ForeColor = System.Drawing.Color.Red;
+            this.soTrang_Check.Location = new System.Drawing.Point(1132, 483);
+            this.soTrang_Check.Name = "soTrang_Check";
+            this.soTrang_Check.Size = new System.Drawing.Size(169, 16);
+            this.soTrang_Check.TabIndex = 60;
+            this.soTrang_Check.Text = "Bạn cần phải nhập số trang";
+            this.soTrang_Check.Visible = false;
+            // 
+            // nam_Check
+            // 
+            this.nam_Check.AutoSize = true;
+            this.nam_Check.BackColor = System.Drawing.Color.White;
+            this.nam_Check.ForeColor = System.Drawing.Color.Red;
+            this.nam_Check.Location = new System.Drawing.Point(524, 483);
+            this.nam_Check.Name = "nam_Check";
+            this.nam_Check.Size = new System.Drawing.Size(196, 16);
+            this.nam_Check.TabIndex = 59;
+            this.nam_Check.Text = "Bạn cần phải điền năm xuất bản";
+            this.nam_Check.Visible = false;
+            // 
+            // language_Check
+            // 
+            this.language_Check.AutoSize = true;
+            this.language_Check.BackColor = System.Drawing.Color.White;
+            this.language_Check.ForeColor = System.Drawing.Color.Red;
+            this.language_Check.Location = new System.Drawing.Point(1128, 341);
+            this.language_Check.Name = "language_Check";
+            this.language_Check.Size = new System.Drawing.Size(175, 16);
+            this.language_Check.TabIndex = 58;
+            this.language_Check.Text = "Bạn cần phải chọn ngôn ngữ";
+            this.language_Check.Visible = false;
+            // 
+            // dichGia_check
+            // 
+            this.dichGia_check.AutoSize = true;
+            this.dichGia_check.BackColor = System.Drawing.Color.White;
+            this.dichGia_check.ForeColor = System.Drawing.Color.Red;
+            this.dichGia_check.Location = new System.Drawing.Point(530, 345);
+            this.dichGia_check.Name = "dichGia_check";
+            this.dichGia_check.Size = new System.Drawing.Size(185, 16);
+            this.dichGia_check.TabIndex = 57;
+            this.dichGia_check.Text = "Bạn cần phải điền tên dịch giả";
+            this.dichGia_check.Visible = false;
+            // 
+            // tacGia_Check
+            // 
+            this.tacGia_Check.AutoSize = true;
+            this.tacGia_Check.BackColor = System.Drawing.Color.White;
+            this.tacGia_Check.ForeColor = System.Drawing.Color.Red;
+            this.tacGia_Check.Location = new System.Drawing.Point(538, 273);
+            this.tacGia_Check.Name = "tacGia_Check";
+            this.tacGia_Check.Size = new System.Drawing.Size(178, 16);
+            this.tacGia_Check.TabIndex = 56;
+            this.tacGia_Check.Text = "Bạn cần phải điền tên tác giả";
+            this.tacGia_Check.Visible = false;
+            // 
+            // soLuong_check
+            // 
+            this.soLuong_check.AutoSize = true;
+            this.soLuong_check.BackColor = System.Drawing.Color.White;
+            this.soLuong_check.ForeColor = System.Drawing.Color.Red;
+            this.soLuong_check.Location = new System.Drawing.Point(865, 485);
+            this.soLuong_check.Name = "soLuong_check";
+            this.soLuong_check.Size = new System.Drawing.Size(172, 16);
+            this.soLuong_check.TabIndex = 55;
+            this.soLuong_check.Text = "Bạn cần phải nhập số lượng";
+            this.soLuong_check.Visible = false;
+            // 
+            // Price_Check
+            // 
+            this.Price_Check.AutoSize = true;
+            this.Price_Check.BackColor = System.Drawing.Color.White;
+            this.Price_Check.ForeColor = System.Drawing.Color.Red;
+            this.Price_Check.Location = new System.Drawing.Point(1161, 413);
+            this.Price_Check.Name = "Price_Check";
+            this.Price_Check.Size = new System.Drawing.Size(140, 16);
+            this.Price_Check.TabIndex = 54;
+            this.Price_Check.Text = "Bạn cần phải nhập giá";
+            this.Price_Check.Visible = false;
+            // 
+            // theLoai_check
+            // 
+            this.theLoai_check.AutoSize = true;
+            this.theLoai_check.BackColor = System.Drawing.Color.White;
+            this.theLoai_check.ForeColor = System.Drawing.Color.Red;
+            this.theLoai_check.Location = new System.Drawing.Point(1128, 204);
+            this.theLoai_check.Name = "theLoai_check";
+            this.theLoai_check.Size = new System.Drawing.Size(173, 16);
+            this.theLoai_check.TabIndex = 53;
+            this.theLoai_check.Text = "Bạn cần phải chọn 1 thể loại";
+            this.theLoai_check.Visible = false;
+            // 
+            // tenSP_Check
+            // 
+            this.tenSP_Check.AutoSize = true;
+            this.tenSP_Check.BackColor = System.Drawing.Color.White;
+            this.tenSP_Check.ForeColor = System.Drawing.Color.Red;
+            this.tenSP_Check.Location = new System.Drawing.Point(519, 204);
+            this.tenSP_Check.Name = "tenSP_Check";
+            this.tenSP_Check.Size = new System.Drawing.Size(197, 16);
+            this.tenSP_Check.TabIndex = 52;
+            this.tenSP_Check.Text = "Bạn cần phải điền tên sản phẩm";
+            this.tenSP_Check.Visible = false;
             // 
             // textBox28
             // 
@@ -1446,6 +1592,7 @@
             // 
             this.luuSPButton.BackColor = System.Drawing.Color.OrangeRed;
             this.luuSPButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.luuSPButton.Enabled = false;
             this.luuSPButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.luuSPButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.luuSPButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
@@ -1469,6 +1616,7 @@
             this.soTrang_Text.Name = "soTrang_Text";
             this.soTrang_Text.Size = new System.Drawing.Size(105, 21);
             this.soTrang_Text.TabIndex = 48;
+            this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
             // 
             // pictureBox16
             // 
@@ -1489,6 +1637,7 @@
             this.soLuong_Text.Name = "soLuong_Text";
             this.soLuong_Text.Size = new System.Drawing.Size(105, 21);
             this.soLuong_Text.TabIndex = 46;
+            this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
             // 
             // pictureBox14
             // 
@@ -1500,18 +1649,18 @@
             this.pictureBox14.TabIndex = 45;
             this.pictureBox14.TabStop = false;
             // 
-            // textBox32
+            // Count_MoTa
             // 
-            this.textBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox32.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox32.Location = new System.Drawing.Point(1197, 695);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(104, 21);
-            this.textBox32.TabIndex = 44;
-            this.textBox32.Text = "1000/1000";
-            this.textBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Count_MoTa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.Count_MoTa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_MoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_MoTa.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_MoTa.Location = new System.Drawing.Point(1197, 695);
+            this.Count_MoTa.Name = "Count_MoTa";
+            this.Count_MoTa.Size = new System.Drawing.Size(104, 21);
+            this.Count_MoTa.TabIndex = 44;
+            this.Count_MoTa.Text = "1000/1000";
+            this.Count_MoTa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // moTaSP_Text
             // 
@@ -1523,6 +1672,7 @@
             this.moTaSP_Text.Name = "moTaSP_Text";
             this.moTaSP_Text.Size = new System.Drawing.Size(1072, 163);
             this.moTaSP_Text.TabIndex = 43;
+            this.moTaSP_Text.TextChanged += new System.EventHandler(this.moTaSP_Text_TextChanged);
             // 
             // pictureBox15
             // 
@@ -1571,6 +1721,7 @@
             this.gia_Text.Name = "gia_Text";
             this.gia_Text.Size = new System.Drawing.Size(399, 21);
             this.gia_Text.TabIndex = 36;
+            this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
             // 
             // pictureBox13
             // 
@@ -1619,6 +1770,7 @@
             this.namXuatBan_Text.Name = "namXuatBan_Text";
             this.namXuatBan_Text.Size = new System.Drawing.Size(472, 21);
             this.namXuatBan_Text.TabIndex = 30;
+            this.namXuatBan_Text.TextChanged += new System.EventHandler(this.namXuatBan_Text_TextChanged);
             // 
             // pictureBox8
             // 
@@ -1644,17 +1796,17 @@
             this.textBox30.Text = "Năm xuất bản";
             this.textBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox25
+            // Count_NXB
             // 
-            this.textBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox25.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox25.Location = new System.Drawing.Point(622, 378);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(82, 21);
-            this.textBox25.TabIndex = 27;
-            this.textBox25.Text = "50/50";
-            this.textBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_NXB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_NXB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_NXB.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_NXB.Location = new System.Drawing.Point(622, 378);
+            this.Count_NXB.Name = "Count_NXB";
+            this.Count_NXB.Size = new System.Drawing.Size(82, 21);
+            this.Count_NXB.TabIndex = 27;
+            this.Count_NXB.Text = "50/50";
+            this.Count_NXB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // nhaXuatBan_Text
             // 
@@ -1665,6 +1817,7 @@
             this.nhaXuatBan_Text.Name = "nhaXuatBan_Text";
             this.nhaXuatBan_Text.Size = new System.Drawing.Size(399, 21);
             this.nhaXuatBan_Text.TabIndex = 26;
+            this.nhaXuatBan_Text.TextChanged += new System.EventHandler(this.nhaXuatBan_Text_TextChanged);
             // 
             // pictureBox7
             // 
@@ -1704,6 +1857,7 @@
             this.ngonNgu_CBBox.Name = "ngonNgu_CBBox";
             this.ngonNgu_CBBox.Size = new System.Drawing.Size(433, 28);
             this.ngonNgu_CBBox.TabIndex = 23;
+            this.ngonNgu_CBBox.SelectedIndexChanged += new System.EventHandler(this.ngonNgu_CBBox_SelectedIndexChanged);
             // 
             // textBox24
             // 
@@ -1719,17 +1873,17 @@
             this.textBox24.Text = "Ngôn ngữ";
             this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox22
+            // Count_Dichgia
             // 
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox22.Location = new System.Drawing.Point(622, 308);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(82, 21);
-            this.textBox22.TabIndex = 21;
-            this.textBox22.Text = "50/50";
-            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_Dichgia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_Dichgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_Dichgia.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_Dichgia.Location = new System.Drawing.Point(622, 308);
+            this.Count_Dichgia.Name = "Count_Dichgia";
+            this.Count_Dichgia.Size = new System.Drawing.Size(82, 21);
+            this.Count_Dichgia.TabIndex = 21;
+            this.Count_Dichgia.Text = "50/50";
+            this.Count_Dichgia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tenDichGia_Text
             // 
@@ -1740,6 +1894,7 @@
             this.tenDichGia_Text.Name = "tenDichGia_Text";
             this.tenDichGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenDichGia_Text.TabIndex = 20;
+            this.tenDichGia_Text.TextChanged += new System.EventHandler(this.tenDichGia_Text_TextChanged);
             // 
             // pictureBox6
             // 
@@ -1751,17 +1906,17 @@
             this.pictureBox6.TabIndex = 19;
             this.pictureBox6.TabStop = false;
             // 
-            // textBox20
+            // Count_TG
             // 
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox20.Location = new System.Drawing.Point(622, 238);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(82, 21);
-            this.textBox20.TabIndex = 18;
-            this.textBox20.Text = "50/50";
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_TG.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_TG.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_TG.Location = new System.Drawing.Point(622, 238);
+            this.Count_TG.Name = "Count_TG";
+            this.Count_TG.Size = new System.Drawing.Size(82, 21);
+            this.Count_TG.TabIndex = 18;
+            this.Count_TG.Text = "50/50";
+            this.Count_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tenTacGia_Text
             // 
@@ -1772,6 +1927,7 @@
             this.tenTacGia_Text.Name = "tenTacGia_Text";
             this.tenTacGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenTacGia_Text.TabIndex = 17;
+            this.tenTacGia_Text.TextChanged += new System.EventHandler(this.tenTacGia_Text_TextChanged);
             // 
             // pictureBox5
             // 
@@ -1825,6 +1981,7 @@
             this.loaiBia_CBBox.Name = "loaiBia_CBBox";
             this.loaiBia_CBBox.Size = new System.Drawing.Size(433, 28);
             this.loaiBia_CBBox.TabIndex = 13;
+            this.loaiBia_CBBox.SelectedIndexChanged += new System.EventHandler(this.loaiBia_CBBox_SelectedIndexChanged);
             // 
             // textBox17
             // 
@@ -1851,6 +2008,7 @@
             this.theLoai_CBBox.Name = "theLoai_CBBox";
             this.theLoai_CBBox.Size = new System.Drawing.Size(433, 28);
             this.theLoai_CBBox.TabIndex = 11;
+            this.theLoai_CBBox.SelectedIndexChanged += new System.EventHandler(this.theLoai_CBBox_SelectedIndexChanged);
             // 
             // textBox16
             // 
@@ -1866,17 +2024,17 @@
             this.textBox16.Text = "Thể loại";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox14
+            // Count_SP
             // 
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox14.Location = new System.Drawing.Point(622, 168);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(82, 21);
-            this.textBox14.TabIndex = 9;
-            this.textBox14.Text = "50/50";
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_SP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_SP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_SP.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_SP.Location = new System.Drawing.Point(622, 168);
+            this.Count_SP.Name = "Count_SP";
+            this.Count_SP.Size = new System.Drawing.Size(82, 21);
+            this.Count_SP.TabIndex = 9;
+            this.Count_SP.Text = "50/50";
+            this.Count_SP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tenSP_Text
             // 
@@ -1887,6 +2045,7 @@
             this.tenSP_Text.Name = "tenSP_Text";
             this.tenSP_Text.Size = new System.Drawing.Size(399, 21);
             this.tenSP_Text.TabIndex = 8;
+            this.tenSP_Text.TextChanged += new System.EventHandler(this.tenSP_Text_TextChanged);
             // 
             // pictureBox4
             // 
@@ -1912,15 +2071,32 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Location = new System.Drawing.Point(61, 1762);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1419, 233);
+            this.panel8.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Thêm Sản Phẩm Panel";
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.textBox12);
-            this.panel6.Controls.Add(this.textBox11);
+            this.panel6.Controls.Add(this.Count_MoTaTT);
+            this.panel6.Controls.Add(this.moTaTT_txt);
             this.panel6.Controls.Add(this.pictureBox3);
-            this.panel6.Controls.Add(this.textBox10);
-            this.panel6.Controls.Add(this.textBox9);
+            this.panel6.Controls.Add(this.Count_Tieude);
+            this.panel6.Controls.Add(this.tieuDe_txt);
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.textBox8);
             this.panel6.Controls.Add(this.textBox7);
@@ -1941,27 +2117,28 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Thông tin cơ bản";
             // 
-            // textBox12
+            // Count_MoTaTT
             // 
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox12.Location = new System.Drawing.Point(1359, 613);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(116, 21);
-            this.textBox12.TabIndex = 9;
-            this.textBox12.Text = "2000/2000";
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_MoTaTT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_MoTaTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_MoTaTT.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_MoTaTT.Location = new System.Drawing.Point(1359, 613);
+            this.Count_MoTaTT.Name = "Count_MoTaTT";
+            this.Count_MoTaTT.Size = new System.Drawing.Size(116, 21);
+            this.Count_MoTaTT.TabIndex = 9;
+            this.Count_MoTaTT.Text = "2000/2000";
+            this.Count_MoTaTT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox11
+            // moTaTT_txt
             // 
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(235, 341);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(1226, 245);
-            this.textBox11.TabIndex = 8;
+            this.moTaTT_txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.moTaTT_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moTaTT_txt.Location = new System.Drawing.Point(235, 341);
+            this.moTaTT_txt.Multiline = true;
+            this.moTaTT_txt.Name = "moTaTT_txt";
+            this.moTaTT_txt.Size = new System.Drawing.Size(1226, 245);
+            this.moTaTT_txt.TabIndex = 8;
+            this.moTaTT_txt.TextChanged += new System.EventHandler(this.moTaTT_txt_TextChanged);
             // 
             // pictureBox3
             // 
@@ -1972,26 +2149,27 @@
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
-            // textBox10
+            // Count_Tieude
             // 
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox10.Location = new System.Drawing.Point(1376, 262);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(85, 21);
-            this.textBox10.TabIndex = 6;
-            this.textBox10.Text = "120/120";
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_Tieude.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Count_Tieude.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Count_Tieude.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Count_Tieude.Location = new System.Drawing.Point(1376, 262);
+            this.Count_Tieude.Name = "Count_Tieude";
+            this.Count_Tieude.Size = new System.Drawing.Size(85, 21);
+            this.Count_Tieude.TabIndex = 6;
+            this.Count_Tieude.Text = "120/120";
+            this.Count_Tieude.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox9
+            // tieuDe_txt
             // 
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(238, 263);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(1126, 21);
-            this.textBox9.TabIndex = 5;
+            this.tieuDe_txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tieuDe_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tieuDe_txt.Location = new System.Drawing.Point(238, 263);
+            this.tieuDe_txt.Name = "tieuDe_txt";
+            this.tieuDe_txt.Size = new System.Drawing.Size(1126, 21);
+            this.tieuDe_txt.TabIndex = 5;
+            this.tieuDe_txt.TextChanged += new System.EventHandler(this.tieuDe_txt_TextChanged);
             // 
             // pictureBox2
             // 
@@ -2057,15 +2235,6 @@
             this.textBox5.TabIndex = 0;
             this.textBox5.Text = "Hình ảnh";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Thêm Sản Phẩm Panel";
             // 
             // tatCaPanel
             // 
@@ -2340,11 +2509,11 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox Count_Tieude;
+        private System.Windows.Forms.TextBox tieuDe_txt;
+        private System.Windows.Forms.TextBox moTaTT_txt;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox Count_MoTaTT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel TTBH_Panel;
         private System.Windows.Forms.Label label9;
@@ -2352,17 +2521,17 @@
         private System.Windows.Forms.Panel formThemSPPanel;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox Count_SP;
         private System.Windows.Forms.TextBox tenSP_Text;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.ComboBox theLoai_CBBox;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.ComboBox loaiBia_CBBox;
         private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox Count_Dichgia;
         private System.Windows.Forms.TextBox tenDichGia_Text;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox Count_TG;
         private System.Windows.Forms.TextBox tenTacGia_Text;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox textBox19;
@@ -2375,8 +2544,8 @@
         private System.Windows.Forms.TextBox nhaXuatBan_Text;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox Count_NXB;
+        private System.Windows.Forms.TextBox Count_MoTa;
         private System.Windows.Forms.TextBox moTaSP_Text;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.TextBox textBox38;
@@ -2394,5 +2563,16 @@
         private System.Windows.Forms.Button luuSPButton;
         private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.FlowLayoutPanel listSP_FLPanel;
+        private System.Windows.Forms.Label theLoai_check;
+        private System.Windows.Forms.Label tenSP_Check;
+        private System.Windows.Forms.Label Price_Check;
+        private System.Windows.Forms.Label soLuong_check;
+        private System.Windows.Forms.Label tacGia_Check;
+        private System.Windows.Forms.Label dichGia_check;
+        private System.Windows.Forms.Label nam_Check;
+        private System.Windows.Forms.Label language_Check;
+        private System.Windows.Forms.Label soTrang_Check;
+        private System.Windows.Forms.Label bia_Check;
+        private System.Windows.Forms.Label NXB_Check;
     }
 }
