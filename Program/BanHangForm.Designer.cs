@@ -1659,7 +1659,7 @@
             this.Count_MoTa.Name = "Count_MoTa";
             this.Count_MoTa.Size = new System.Drawing.Size(104, 21);
             this.Count_MoTa.TabIndex = 44;
-            this.Count_MoTa.Text = "1000/1000";
+            this.Count_MoTa.Text = "0/1000";
             this.Count_MoTa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // moTaSP_Text
@@ -1803,10 +1803,10 @@
             this.Count_NXB.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Count_NXB.Location = new System.Drawing.Point(622, 378);
             this.Count_NXB.Name = "Count_NXB";
-            this.Count_NXB.Size = new System.Drawing.Size(82, 21);
+            this.Count_NXB.Size = new System.Drawing.Size(60, 21);
             this.Count_NXB.TabIndex = 27;
-            this.Count_NXB.Text = "50/50";
-            this.Count_NXB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_NXB.Text = "0/50";
+            this.Count_NXB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nhaXuatBan_Text
             // 
@@ -1880,10 +1880,10 @@
             this.Count_Dichgia.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Count_Dichgia.Location = new System.Drawing.Point(622, 308);
             this.Count_Dichgia.Name = "Count_Dichgia";
-            this.Count_Dichgia.Size = new System.Drawing.Size(82, 21);
+            this.Count_Dichgia.Size = new System.Drawing.Size(60, 21);
             this.Count_Dichgia.TabIndex = 21;
-            this.Count_Dichgia.Text = "50/50";
-            this.Count_Dichgia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_Dichgia.Text = "0/50";
+            this.Count_Dichgia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tenDichGia_Text
             // 
@@ -1913,10 +1913,10 @@
             this.Count_TG.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Count_TG.Location = new System.Drawing.Point(622, 238);
             this.Count_TG.Name = "Count_TG";
-            this.Count_TG.Size = new System.Drawing.Size(82, 21);
+            this.Count_TG.Size = new System.Drawing.Size(60, 21);
             this.Count_TG.TabIndex = 18;
-            this.Count_TG.Text = "50/50";
-            this.Count_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_TG.Text = "0/50";
+            this.Count_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tenTacGia_Text
             // 
@@ -2031,10 +2031,10 @@
             this.Count_SP.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Count_SP.Location = new System.Drawing.Point(622, 168);
             this.Count_SP.Name = "Count_SP";
-            this.Count_SP.Size = new System.Drawing.Size(82, 21);
+            this.Count_SP.Size = new System.Drawing.Size(60, 21);
             this.Count_SP.TabIndex = 9;
-            this.Count_SP.Text = "50/50";
-            this.Count_SP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Count_SP.Text = "0/50";
+            this.Count_SP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tenSP_Text
             // 

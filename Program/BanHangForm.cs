@@ -373,9 +373,7 @@ namespace Program
             language_Check.Visible = false;
             Price_Check.Visible = false;
             soLuong_check.Visible = false;
-            nam_Check.Visible = false;  
-
-
+            nam_Check.Visible = false;
         } 
 
         private void tenSP_Text_TextChanged(object sender, EventArgs e)
@@ -419,7 +417,7 @@ namespace Program
         {
             Count(tieuDe_txt, Count_Tieude, 120);
         }
-        void Count(TextBox txt, TextBox dem, int max)
+        private void Count(TextBox txt, TextBox dem, int max)
         {
             if (txt.Text.Length > max)
             {
