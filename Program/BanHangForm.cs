@@ -381,6 +381,8 @@ namespace Program
             Count(tenSP_Text, Count_SP, 50);
             if (tenSP_Text.Text == "")
                 tenSP_Check.Visible = true;
+            else 
+                tenSP_Check.Visible = false;    
         }
 
         private void tenTacGia_Text_TextChanged(object sender, EventArgs e)
@@ -388,6 +390,8 @@ namespace Program
             Count(tenTacGia_Text, Count_TG, 50);
             if (tenTacGia_Text.Text == "")
                 tacGia_Check.Visible = true;
+            else
+                tacGia_Check.Visible = false;
         }
 
         private void tenDichGia_Text_TextChanged(object sender, EventArgs e)
@@ -395,6 +399,8 @@ namespace Program
             Count(tenDichGia_Text, Count_Dichgia, 50);
             if (tenDichGia_Text.Text == "")
                 dichGia_check.Visible = true;
+            else 
+                dichGia_check.Visible = false;
         }
 
         private void nhaXuatBan_Text_TextChanged(object sender, EventArgs e)
@@ -402,6 +408,8 @@ namespace Program
             Count(nhaXuatBan_Text, Count_NXB, 50);
             if (nhaXuatBan_Text.Text == "")
                 NXB_Check.Visible = true;
+            else
+                NXB_Check.Visible = false;  
         }
 
         private void moTaSP_Text_TextChanged(object sender, EventArgs e)
@@ -432,18 +440,26 @@ namespace Program
         {
             if (namXuatBan_Text.Text == "")
                 nam_Check.Visible = true;
+            else
+            {
+                nam_Check.Visible = false;
+            }
         }
 
         private void soLuong_Text_TextChanged(object sender, EventArgs e)
         {
             if (soLuong_Text.Text == "")
                 soLuong_check.Visible = true;
+            else
+                soLuong_check.Visible = false;
         }
 
         private void gia_Text_TextChanged(object sender, EventArgs e)
         {
             if (gia_Text.Text == "")
                 Price_Check.Visible = true;
+            else 
+                Price_Check.Visible = false;
         }
 
         private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -474,6 +490,8 @@ namespace Program
         {
             if (soTrang_Text.Text == "")
                 soTrang_Check.Visible = true;
+            else
+                soTrang_Check.Visible = false;
         }
     }
 }
