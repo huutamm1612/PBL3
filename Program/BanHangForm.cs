@@ -320,6 +320,7 @@ namespace Program
 
         private void huyThemSPButton_Click(object sender, EventArgs e)
         {
+            refreshThemSPForm(sender, e);
             themSPButton.Location = formThemSPPanel.Location;
             TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height - (formThemSPPanel.Size.Height + 20));
             panel8.Location = new Point(panel8.Location.X, panel8.Location.Y - (formThemSPPanel.Size.Height + 20));
@@ -330,15 +331,7 @@ namespace Program
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-            if (tenSP_Check.Visible == true || dichGia_check.Visible == true || tacGia_Check.Visible == true || NXB_Check.Visible == true || nam_Check.Visible == true || soTrang_Check.Visible == true
-                || theLoai_check.Visible == true || bia_Check.Visible == true  || language_Check.Visible == true || Price_Check.Visible == true || soLuong_check.Visible == true )
-            {
-                luuSPButton.Enabled = false;
-            }
-            else
-            {
-                luuSPButton.Enabled = true;
-            }
+        
 
             // dua du lieu vao QLSP     
 
@@ -352,64 +345,31 @@ namespace Program
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
         {
             // refresh form
-            tenSP_Text.Text = "";
-            theLoai_CBBox.SelectedIndex = -1;
-            tenTacGia_Text.Text = "";
-            tenDichGia_Text.Text = "";
-            nhaXuatBan_Text.Text = "";
-            namXuatBan_Text.Text = "";
-            loaiBia_CBBox.SelectedIndex = -1;
-            ngonNgu_CBBox.SelectedIndex = -1;
-            gia_Text.Text = "";
-            soLuong_Text.Text = "";
-            soTrang_Text.Text = "";
-            tenSP_Check.Visible = false;
-            dichGia_check.Visible = false;
-            tacGia_Check.Visible = false;
-            NXB_Check.Visible = false;
-            soTrang_Check.Visible = false;
-            theLoai_check.Visible = false;
-            bia_Check.Visible = false;
-            language_Check.Visible = false;
-            Price_Check.Visible = false;
-            soLuong_check.Visible = false;
-            nam_Check.Visible = false;
+            refreshThemSPForm(sender, e);   
         } 
 
         private void tenSP_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenSP_Text, Count_SP, 50);
-            if (tenSP_Text.Text == "")
-                tenSP_Check.Visible = true;
-            else 
-                tenSP_Check.Visible = false;    
+            Check(tenSP_Text, SP_Pic);
         }
 
         private void tenTacGia_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenTacGia_Text, Count_TG, 50);
-            if (tenTacGia_Text.Text == "")
-                tacGia_Check.Visible = true;
-            else
-                tacGia_Check.Visible = false;
+            Check(tenTacGia_Text, TG_Pic);
         }
 
         private void tenDichGia_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenDichGia_Text, Count_Dichgia, 50);
-            if (tenDichGia_Text.Text == "")
-                dichGia_check.Visible = true;
-            else 
-                dichGia_check.Visible = false;
+            Check(tenDichGia_Text, DichGia_Pic);
         }
 
         private void nhaXuatBan_Text_TextChanged(object sender, EventArgs e)
         {
             Count(nhaXuatBan_Text, Count_NXB, 50);
-            if (nhaXuatBan_Text.Text == "")
-                NXB_Check.Visible = true;
-            else
-                NXB_Check.Visible = false;  
+            Check(nhaXuatBan_Text, NXB_Pic);
         }
 
         private void moTaSP_Text_TextChanged(object sender, EventArgs e)
@@ -438,28 +398,17 @@ namespace Program
 
         private void namXuatBan_Text_TextChanged(object sender, EventArgs e)
         {
-            if (namXuatBan_Text.Text == "")
-                nam_Check.Visible = true;
-            else
-            {
-                nam_Check.Visible = false;
-            }
+            Check(namXuatBan_Text, Nam_Pic);
         }
 
         private void soLuong_Text_TextChanged(object sender, EventArgs e)
         {
-            if (soLuong_Text.Text == "")
-                soLuong_check.Visible = true;
-            else
-                soLuong_check.Visible = false;
+            Check(soLuong_Text, SoLuong_Pic);
         }
 
         private void gia_Text_TextChanged(object sender, EventArgs e)
         {
-            if (gia_Text.Text == "")
-                Price_Check.Visible = true;
-            else 
-                Price_Check.Visible = false;
+            Check(gia_Text, Gia_Pic);
         }
 
         private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -488,10 +437,71 @@ namespace Program
 
         private void soTrang_Text_TextChanged(object sender, EventArgs e)
         {
-            if (soTrang_Text.Text == "")
-                soTrang_Check.Visible = true;
-            else
-                soTrang_Check.Visible = false;
+;           Check(soTrang_Text, SoTrang_Pic);
         }
+        private void AddBorderToPictureBox(PictureBox pictureBox, Color color)
+        {
+            Pen pen = new Pen(color, 2); // Độ dày của viền là 3 pixel
+
+            // Đặt thuộc tính SizeMode của PictureBox về AutoSize để nó có thể thay đổi kích thước tự động
+            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+
+            // Vẽ một hình chữ nhật bao quanh toàn bộ PictureBox để tạo viền
+            using (Graphics g = pictureBox.Parent.CreateGraphics())
+            {
+                g.DrawRectangle(pen, new Rectangle(pictureBox.Location, pictureBox.Size));
+            }
+        }
+        private void Check(TextBox txt, PictureBox pic)
+        {
+           // pic.BorderStyle = BorderStyle.FixedSingle;
+            if (txt.Text == "")
+            {
+                pic.BorderStyle = BorderStyle.None;
+                AddBorderToPictureBox(pic, Color.Red);
+            }
+            else
+            {
+                pic.BorderStyle = BorderStyle.FixedSingle;
+                AddBorderToPictureBox(pic, Color.White);
+            }
+        }
+        private void refreshThemSPForm(object sender, EventArgs e)
+        {
+            // refresh form
+            tenSP_Text.Text = "";
+            theLoai_CBBox.SelectedIndex = -1;
+            tenTacGia_Text.Text = "";
+            tenDichGia_Text.Text = "";
+            nhaXuatBan_Text.Text = "";
+            namXuatBan_Text.Text = "";
+            loaiBia_CBBox.SelectedIndex = -1;
+            ngonNgu_CBBox.SelectedIndex = -1;
+            gia_Text.Text = "";
+            soLuong_Text.Text = "";
+            soTrang_Text.Text = "";
+            theLoai_check.Visible = false;
+            bia_Check.Visible = false;
+            language_Check.Visible = false;
+            AddBorderToPictureBox(SP_Pic, Color.White);
+            SP_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(TG_Pic, Color.White);
+            TG_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(DichGia_Pic, Color.White);
+            DichGia_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(DichGia_Pic, Color.White);
+            DichGia_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(NXB_Pic, Color.White);
+            NXB_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(Nam_Pic, Color.White);
+            Nam_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(SoTrang_Pic, Color.White);
+            SoTrang_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(SoLuong_Pic, Color.White);
+            SoLuong_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(Gia_Pic, Color.White);
+            Gia_Pic.BorderStyle = BorderStyle.FixedSingle;
+        }
+
     }
 }

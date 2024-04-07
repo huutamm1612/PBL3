@@ -104,49 +104,41 @@
             this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
-            this.NXB_Check = new System.Windows.Forms.Label();
             this.bia_Check = new System.Windows.Forms.Label();
-            this.soTrang_Check = new System.Windows.Forms.Label();
-            this.nam_Check = new System.Windows.Forms.Label();
             this.language_Check = new System.Windows.Forms.Label();
-            this.dichGia_check = new System.Windows.Forms.Label();
-            this.tacGia_Check = new System.Windows.Forms.Label();
-            this.soLuong_check = new System.Windows.Forms.Label();
-            this.Price_Check = new System.Windows.Forms.Label();
             this.theLoai_check = new System.Windows.Forms.Label();
-            this.tenSP_Check = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.huyThemSPButton = new System.Windows.Forms.Button();
             this.refreshThemSPForm_Button = new System.Windows.Forms.Button();
             this.luuSPButton = new System.Windows.Forms.Button();
             this.soTrang_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.SoTrang_Pic = new System.Windows.Forms.PictureBox();
             this.soLuong_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.SoLuong_Pic = new System.Windows.Forms.PictureBox();
             this.Count_MoTa = new System.Windows.Forms.TextBox();
             this.moTaSP_Text = new System.Windows.Forms.TextBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.textBox38 = new System.Windows.Forms.TextBox();
             this.textBox37 = new System.Windows.Forms.TextBox();
             this.gia_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.Gia_Pic = new System.Windows.Forms.PictureBox();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.textBox31 = new System.Windows.Forms.TextBox();
             this.namXuatBan_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.Nam_Pic = new System.Windows.Forms.PictureBox();
             this.textBox30 = new System.Windows.Forms.TextBox();
             this.Count_NXB = new System.Windows.Forms.TextBox();
             this.nhaXuatBan_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.NXB_Pic = new System.Windows.Forms.PictureBox();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.ngonNgu_CBBox = new System.Windows.Forms.ComboBox();
             this.textBox24 = new System.Windows.Forms.TextBox();
             this.Count_Dichgia = new System.Windows.Forms.TextBox();
             this.tenDichGia_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.DichGia_Pic = new System.Windows.Forms.PictureBox();
             this.Count_TG = new System.Windows.Forms.TextBox();
             this.tenTacGia_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.TG_Pic = new System.Windows.Forms.PictureBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.loaiBia_CBBox = new System.Windows.Forms.ComboBox();
@@ -155,7 +147,7 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.Count_SP = new System.Windows.Forms.TextBox();
             this.tenSP_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -199,15 +191,15 @@
             this.themSanPhamPanel.SuspendLayout();
             this.TTBH_Panel.SuspendLayout();
             this.formThemSPPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gia_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nam_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NXB_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -1349,49 +1341,41 @@
             // formThemSPPanel
             // 
             this.formThemSPPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.formThemSPPanel.Controls.Add(this.NXB_Check);
             this.formThemSPPanel.Controls.Add(this.bia_Check);
-            this.formThemSPPanel.Controls.Add(this.soTrang_Check);
-            this.formThemSPPanel.Controls.Add(this.nam_Check);
             this.formThemSPPanel.Controls.Add(this.language_Check);
-            this.formThemSPPanel.Controls.Add(this.dichGia_check);
-            this.formThemSPPanel.Controls.Add(this.tacGia_Check);
-            this.formThemSPPanel.Controls.Add(this.soLuong_check);
-            this.formThemSPPanel.Controls.Add(this.Price_Check);
             this.formThemSPPanel.Controls.Add(this.theLoai_check);
-            this.formThemSPPanel.Controls.Add(this.tenSP_Check);
             this.formThemSPPanel.Controls.Add(this.textBox28);
             this.formThemSPPanel.Controls.Add(this.huyThemSPButton);
             this.formThemSPPanel.Controls.Add(this.refreshThemSPForm_Button);
             this.formThemSPPanel.Controls.Add(this.luuSPButton);
             this.formThemSPPanel.Controls.Add(this.soTrang_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox16);
+            this.formThemSPPanel.Controls.Add(this.SoTrang_Pic);
             this.formThemSPPanel.Controls.Add(this.soLuong_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox14);
+            this.formThemSPPanel.Controls.Add(this.SoLuong_Pic);
             this.formThemSPPanel.Controls.Add(this.Count_MoTa);
             this.formThemSPPanel.Controls.Add(this.moTaSP_Text);
             this.formThemSPPanel.Controls.Add(this.pictureBox15);
             this.formThemSPPanel.Controls.Add(this.textBox38);
             this.formThemSPPanel.Controls.Add(this.textBox37);
             this.formThemSPPanel.Controls.Add(this.gia_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox13);
+            this.formThemSPPanel.Controls.Add(this.Gia_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox34);
             this.formThemSPPanel.Controls.Add(this.textBox31);
             this.formThemSPPanel.Controls.Add(this.namXuatBan_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox8);
+            this.formThemSPPanel.Controls.Add(this.Nam_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox30);
             this.formThemSPPanel.Controls.Add(this.Count_NXB);
             this.formThemSPPanel.Controls.Add(this.nhaXuatBan_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox7);
+            this.formThemSPPanel.Controls.Add(this.NXB_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox27);
             this.formThemSPPanel.Controls.Add(this.ngonNgu_CBBox);
             this.formThemSPPanel.Controls.Add(this.textBox24);
             this.formThemSPPanel.Controls.Add(this.Count_Dichgia);
             this.formThemSPPanel.Controls.Add(this.tenDichGia_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox6);
+            this.formThemSPPanel.Controls.Add(this.DichGia_Pic);
             this.formThemSPPanel.Controls.Add(this.Count_TG);
             this.formThemSPPanel.Controls.Add(this.tenTacGia_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox5);
+            this.formThemSPPanel.Controls.Add(this.TG_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox19);
             this.formThemSPPanel.Controls.Add(this.textBox18);
             this.formThemSPPanel.Controls.Add(this.loaiBia_CBBox);
@@ -1400,25 +1384,13 @@
             this.formThemSPPanel.Controls.Add(this.textBox16);
             this.formThemSPPanel.Controls.Add(this.Count_SP);
             this.formThemSPPanel.Controls.Add(this.tenSP_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox4);
+            this.formThemSPPanel.Controls.Add(this.SP_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox13);
             this.formThemSPPanel.Location = new System.Drawing.Point(70, 163);
             this.formThemSPPanel.Name = "formThemSPPanel";
             this.formThemSPPanel.Size = new System.Drawing.Size(1420, 806);
             this.formThemSPPanel.TabIndex = 4;
             this.formThemSPPanel.Visible = false;
-            // 
-            // NXB_Check
-            // 
-            this.NXB_Check.AutoSize = true;
-            this.NXB_Check.BackColor = System.Drawing.Color.White;
-            this.NXB_Check.ForeColor = System.Drawing.Color.Red;
-            this.NXB_Check.Location = new System.Drawing.Point(524, 412);
-            this.NXB_Check.Name = "NXB_Check";
-            this.NXB_Check.Size = new System.Drawing.Size(192, 16);
-            this.NXB_Check.TabIndex = 62;
-            this.NXB_Check.Text = "Bạn cần phải điền nhà xuất bản";
-            this.NXB_Check.Visible = false;
             // 
             // bia_Check
             // 
@@ -1432,30 +1404,6 @@
             this.bia_Check.Text = "Bạn cần chọn loại bìa";
             this.bia_Check.Visible = false;
             // 
-            // soTrang_Check
-            // 
-            this.soTrang_Check.AutoSize = true;
-            this.soTrang_Check.BackColor = System.Drawing.Color.White;
-            this.soTrang_Check.ForeColor = System.Drawing.Color.Red;
-            this.soTrang_Check.Location = new System.Drawing.Point(1132, 483);
-            this.soTrang_Check.Name = "soTrang_Check";
-            this.soTrang_Check.Size = new System.Drawing.Size(169, 16);
-            this.soTrang_Check.TabIndex = 60;
-            this.soTrang_Check.Text = "Bạn cần phải nhập số trang";
-            this.soTrang_Check.Visible = false;
-            // 
-            // nam_Check
-            // 
-            this.nam_Check.AutoSize = true;
-            this.nam_Check.BackColor = System.Drawing.Color.White;
-            this.nam_Check.ForeColor = System.Drawing.Color.Red;
-            this.nam_Check.Location = new System.Drawing.Point(524, 483);
-            this.nam_Check.Name = "nam_Check";
-            this.nam_Check.Size = new System.Drawing.Size(196, 16);
-            this.nam_Check.TabIndex = 59;
-            this.nam_Check.Text = "Bạn cần phải điền năm xuất bản";
-            this.nam_Check.Visible = false;
-            // 
             // language_Check
             // 
             this.language_Check.AutoSize = true;
@@ -1468,54 +1416,6 @@
             this.language_Check.Text = "Bạn cần phải chọn ngôn ngữ";
             this.language_Check.Visible = false;
             // 
-            // dichGia_check
-            // 
-            this.dichGia_check.AutoSize = true;
-            this.dichGia_check.BackColor = System.Drawing.Color.White;
-            this.dichGia_check.ForeColor = System.Drawing.Color.Red;
-            this.dichGia_check.Location = new System.Drawing.Point(530, 345);
-            this.dichGia_check.Name = "dichGia_check";
-            this.dichGia_check.Size = new System.Drawing.Size(185, 16);
-            this.dichGia_check.TabIndex = 57;
-            this.dichGia_check.Text = "Bạn cần phải điền tên dịch giả";
-            this.dichGia_check.Visible = false;
-            // 
-            // tacGia_Check
-            // 
-            this.tacGia_Check.AutoSize = true;
-            this.tacGia_Check.BackColor = System.Drawing.Color.White;
-            this.tacGia_Check.ForeColor = System.Drawing.Color.Red;
-            this.tacGia_Check.Location = new System.Drawing.Point(538, 273);
-            this.tacGia_Check.Name = "tacGia_Check";
-            this.tacGia_Check.Size = new System.Drawing.Size(178, 16);
-            this.tacGia_Check.TabIndex = 56;
-            this.tacGia_Check.Text = "Bạn cần phải điền tên tác giả";
-            this.tacGia_Check.Visible = false;
-            // 
-            // soLuong_check
-            // 
-            this.soLuong_check.AutoSize = true;
-            this.soLuong_check.BackColor = System.Drawing.Color.White;
-            this.soLuong_check.ForeColor = System.Drawing.Color.Red;
-            this.soLuong_check.Location = new System.Drawing.Point(865, 485);
-            this.soLuong_check.Name = "soLuong_check";
-            this.soLuong_check.Size = new System.Drawing.Size(172, 16);
-            this.soLuong_check.TabIndex = 55;
-            this.soLuong_check.Text = "Bạn cần phải nhập số lượng";
-            this.soLuong_check.Visible = false;
-            // 
-            // Price_Check
-            // 
-            this.Price_Check.AutoSize = true;
-            this.Price_Check.BackColor = System.Drawing.Color.White;
-            this.Price_Check.ForeColor = System.Drawing.Color.Red;
-            this.Price_Check.Location = new System.Drawing.Point(1161, 413);
-            this.Price_Check.Name = "Price_Check";
-            this.Price_Check.Size = new System.Drawing.Size(140, 16);
-            this.Price_Check.TabIndex = 54;
-            this.Price_Check.Text = "Bạn cần phải nhập giá";
-            this.Price_Check.Visible = false;
-            // 
             // theLoai_check
             // 
             this.theLoai_check.AutoSize = true;
@@ -1527,18 +1427,6 @@
             this.theLoai_check.TabIndex = 53;
             this.theLoai_check.Text = "Bạn cần phải chọn 1 thể loại";
             this.theLoai_check.Visible = false;
-            // 
-            // tenSP_Check
-            // 
-            this.tenSP_Check.AutoSize = true;
-            this.tenSP_Check.BackColor = System.Drawing.Color.White;
-            this.tenSP_Check.ForeColor = System.Drawing.Color.Red;
-            this.tenSP_Check.Location = new System.Drawing.Point(519, 204);
-            this.tenSP_Check.Name = "tenSP_Check";
-            this.tenSP_Check.Size = new System.Drawing.Size(197, 16);
-            this.tenSP_Check.TabIndex = 52;
-            this.tenSP_Check.Text = "Bạn cần phải điền tên sản phẩm";
-            this.tenSP_Check.Visible = false;
             // 
             // textBox28
             // 
@@ -1618,15 +1506,15 @@
             this.soTrang_Text.TabIndex = 48;
             this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
             // 
-            // pictureBox16
+            // SoTrang_Pic
             // 
-            this.pictureBox16.BackColor = System.Drawing.Color.White;
-            this.pictureBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox16.Location = new System.Drawing.Point(1148, 440);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(153, 40);
-            this.pictureBox16.TabIndex = 47;
-            this.pictureBox16.TabStop = false;
+            this.SoTrang_Pic.BackColor = System.Drawing.Color.White;
+            this.SoTrang_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SoTrang_Pic.Location = new System.Drawing.Point(1148, 440);
+            this.SoTrang_Pic.Name = "SoTrang_Pic";
+            this.SoTrang_Pic.Size = new System.Drawing.Size(153, 40);
+            this.SoTrang_Pic.TabIndex = 47;
+            this.SoTrang_Pic.TabStop = false;
             // 
             // soLuong_Text
             // 
@@ -1639,15 +1527,15 @@
             this.soLuong_Text.TabIndex = 46;
             this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
             // 
-            // pictureBox14
+            // SoLuong_Pic
             // 
-            this.pictureBox14.BackColor = System.Drawing.Color.White;
-            this.pictureBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox14.Location = new System.Drawing.Point(868, 438);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(153, 40);
-            this.pictureBox14.TabIndex = 45;
-            this.pictureBox14.TabStop = false;
+            this.SoLuong_Pic.BackColor = System.Drawing.Color.White;
+            this.SoLuong_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SoLuong_Pic.Location = new System.Drawing.Point(868, 438);
+            this.SoLuong_Pic.Name = "SoLuong_Pic";
+            this.SoLuong_Pic.Size = new System.Drawing.Size(153, 40);
+            this.SoLuong_Pic.TabIndex = 45;
+            this.SoLuong_Pic.TabStop = false;
             // 
             // Count_MoTa
             // 
@@ -1723,15 +1611,15 @@
             this.gia_Text.TabIndex = 36;
             this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
             // 
-            // pictureBox13
+            // Gia_Pic
             // 
-            this.pictureBox13.BackColor = System.Drawing.Color.White;
-            this.pictureBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox13.Location = new System.Drawing.Point(868, 370);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(433, 40);
-            this.pictureBox13.TabIndex = 35;
-            this.pictureBox13.TabStop = false;
+            this.Gia_Pic.BackColor = System.Drawing.Color.White;
+            this.Gia_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Gia_Pic.Location = new System.Drawing.Point(868, 370);
+            this.Gia_Pic.Name = "Gia_Pic";
+            this.Gia_Pic.Size = new System.Drawing.Size(433, 40);
+            this.Gia_Pic.TabIndex = 35;
+            this.Gia_Pic.TabStop = false;
             // 
             // textBox34
             // 
@@ -1772,15 +1660,15 @@
             this.namXuatBan_Text.TabIndex = 30;
             this.namXuatBan_Text.TextChanged += new System.EventHandler(this.namXuatBan_Text_TextChanged);
             // 
-            // pictureBox8
+            // Nam_Pic
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox8.Location = new System.Drawing.Point(195, 440);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(520, 40);
-            this.pictureBox8.TabIndex = 29;
-            this.pictureBox8.TabStop = false;
+            this.Nam_Pic.BackColor = System.Drawing.Color.White;
+            this.Nam_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Nam_Pic.Location = new System.Drawing.Point(195, 440);
+            this.Nam_Pic.Name = "Nam_Pic";
+            this.Nam_Pic.Size = new System.Drawing.Size(520, 40);
+            this.Nam_Pic.TabIndex = 29;
+            this.Nam_Pic.TabStop = false;
             // 
             // textBox30
             // 
@@ -1819,15 +1707,15 @@
             this.nhaXuatBan_Text.TabIndex = 26;
             this.nhaXuatBan_Text.TextChanged += new System.EventHandler(this.nhaXuatBan_Text_TextChanged);
             // 
-            // pictureBox7
+            // NXB_Pic
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.White;
-            this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox7.Location = new System.Drawing.Point(195, 370);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(520, 40);
-            this.pictureBox7.TabIndex = 25;
-            this.pictureBox7.TabStop = false;
+            this.NXB_Pic.BackColor = System.Drawing.Color.White;
+            this.NXB_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NXB_Pic.Location = new System.Drawing.Point(195, 370);
+            this.NXB_Pic.Name = "NXB_Pic";
+            this.NXB_Pic.Size = new System.Drawing.Size(520, 40);
+            this.NXB_Pic.TabIndex = 25;
+            this.NXB_Pic.TabStop = false;
             // 
             // textBox27
             // 
@@ -1896,15 +1784,15 @@
             this.tenDichGia_Text.TabIndex = 20;
             this.tenDichGia_Text.TextChanged += new System.EventHandler(this.tenDichGia_Text_TextChanged);
             // 
-            // pictureBox6
+            // DichGia_Pic
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox6.Location = new System.Drawing.Point(195, 300);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(520, 40);
-            this.pictureBox6.TabIndex = 19;
-            this.pictureBox6.TabStop = false;
+            this.DichGia_Pic.BackColor = System.Drawing.Color.White;
+            this.DichGia_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DichGia_Pic.Location = new System.Drawing.Point(195, 300);
+            this.DichGia_Pic.Name = "DichGia_Pic";
+            this.DichGia_Pic.Size = new System.Drawing.Size(520, 40);
+            this.DichGia_Pic.TabIndex = 19;
+            this.DichGia_Pic.TabStop = false;
             // 
             // Count_TG
             // 
@@ -1929,15 +1817,15 @@
             this.tenTacGia_Text.TabIndex = 17;
             this.tenTacGia_Text.TextChanged += new System.EventHandler(this.tenTacGia_Text_TextChanged);
             // 
-            // pictureBox5
+            // TG_Pic
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(195, 230);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(520, 40);
-            this.pictureBox5.TabIndex = 16;
-            this.pictureBox5.TabStop = false;
+            this.TG_Pic.BackColor = System.Drawing.Color.White;
+            this.TG_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TG_Pic.Location = new System.Drawing.Point(195, 230);
+            this.TG_Pic.Name = "TG_Pic";
+            this.TG_Pic.Size = new System.Drawing.Size(520, 40);
+            this.TG_Pic.TabIndex = 16;
+            this.TG_Pic.TabStop = false;
             // 
             // textBox19
             // 
@@ -2047,15 +1935,15 @@
             this.tenSP_Text.TabIndex = 8;
             this.tenSP_Text.TextChanged += new System.EventHandler(this.tenSP_Text_TextChanged);
             // 
-            // pictureBox4
+            // SP_Pic
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(195, 160);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(520, 40);
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
+            this.SP_Pic.BackColor = System.Drawing.Color.White;
+            this.SP_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SP_Pic.Location = new System.Drawing.Point(195, 160);
+            this.SP_Pic.Name = "SP_Pic";
+            this.SP_Pic.Size = new System.Drawing.Size(520, 40);
+            this.SP_Pic.TabIndex = 7;
+            this.SP_Pic.TabStop = false;
             // 
             // textBox13
             // 
@@ -2392,15 +2280,15 @@
             this.TTBH_Panel.PerformLayout();
             this.formThemSPPanel.ResumeLayout(false);
             this.formThemSPPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gia_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nam_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NXB_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -2523,26 +2411,26 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox Count_SP;
         private System.Windows.Forms.TextBox tenSP_Text;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox SP_Pic;
         private System.Windows.Forms.ComboBox theLoai_CBBox;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.ComboBox loaiBia_CBBox;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox Count_Dichgia;
         private System.Windows.Forms.TextBox tenDichGia_Text;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox DichGia_Pic;
         private System.Windows.Forms.TextBox Count_TG;
         private System.Windows.Forms.TextBox tenTacGia_Text;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox TG_Pic;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.ComboBox ngonNgu_CBBox;
         private System.Windows.Forms.TextBox textBox24;
         private System.Windows.Forms.TextBox namXuatBan_Text;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox Nam_Pic;
         private System.Windows.Forms.TextBox textBox30;
         private System.Windows.Forms.TextBox nhaXuatBan_Text;
-        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox NXB_Pic;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox Count_NXB;
         private System.Windows.Forms.TextBox Count_MoTa;
@@ -2550,12 +2438,12 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.TextBox textBox38;
         private System.Windows.Forms.TextBox gia_Text;
-        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox Gia_Pic;
         private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.TextBox soTrang_Text;
-        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.PictureBox SoTrang_Pic;
         private System.Windows.Forms.TextBox soLuong_Text;
-        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox SoLuong_Pic;
         private System.Windows.Forms.TextBox textBox37;
         private System.Windows.Forms.TextBox textBox31;
         private System.Windows.Forms.Button huyThemSPButton;
@@ -2564,15 +2452,7 @@
         private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.FlowLayoutPanel listSP_FLPanel;
         private System.Windows.Forms.Label theLoai_check;
-        private System.Windows.Forms.Label tenSP_Check;
-        private System.Windows.Forms.Label Price_Check;
-        private System.Windows.Forms.Label soLuong_check;
-        private System.Windows.Forms.Label tacGia_Check;
-        private System.Windows.Forms.Label dichGia_check;
-        private System.Windows.Forms.Label nam_Check;
         private System.Windows.Forms.Label language_Check;
-        private System.Windows.Forms.Label soTrang_Check;
         private System.Windows.Forms.Label bia_Check;
-        private System.Windows.Forms.Label NXB_Check;
     }
 }
