@@ -117,7 +117,7 @@
             this.SoLuong_Pic = new System.Windows.Forms.PictureBox();
             this.Count_MoTa = new System.Windows.Forms.TextBox();
             this.moTaSP_Text = new System.Windows.Forms.TextBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.moTa_Pic = new System.Windows.Forms.PictureBox();
             this.textBox38 = new System.Windows.Forms.TextBox();
             this.textBox37 = new System.Windows.Forms.TextBox();
             this.gia_Text = new System.Windows.Forms.TextBox();
@@ -236,7 +236,7 @@
             this.formThemSPPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moTa_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Gia_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nam_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NXB_Pic)).BeginInit();
@@ -1409,7 +1409,7 @@
             this.formThemSPPanel.Controls.Add(this.SoLuong_Pic);
             this.formThemSPPanel.Controls.Add(this.Count_MoTa);
             this.formThemSPPanel.Controls.Add(this.moTaSP_Text);
-            this.formThemSPPanel.Controls.Add(this.pictureBox15);
+            this.formThemSPPanel.Controls.Add(this.moTa_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox38);
             this.formThemSPPanel.Controls.Add(this.textBox37);
             this.formThemSPPanel.Controls.Add(this.gia_Text);
@@ -1559,7 +1559,6 @@
             this.soTrang_Text.Name = "soTrang_Text";
             this.soTrang_Text.Size = new System.Drawing.Size(105, 21);
             this.soTrang_Text.TabIndex = 8;
-            this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
             // 
             // SoTrang_Pic
             // 
@@ -1570,6 +1569,7 @@
             this.SoTrang_Pic.Size = new System.Drawing.Size(153, 40);
             this.SoTrang_Pic.TabIndex = 47;
             this.SoTrang_Pic.TabStop = false;
+            this.SoTrang_Pic.Click += new System.EventHandler(this.SoTrang_Pic_Click);
             // 
             // soLuong_Text
             // 
@@ -1580,7 +1580,6 @@
             this.soLuong_Text.Name = "soLuong_Text";
             this.soLuong_Text.Size = new System.Drawing.Size(105, 21);
             this.soLuong_Text.TabIndex = 7;
-            this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
             // 
             // SoLuong_Pic
             // 
@@ -1591,6 +1590,7 @@
             this.SoLuong_Pic.Size = new System.Drawing.Size(153, 40);
             this.SoLuong_Pic.TabIndex = 45;
             this.SoLuong_Pic.TabStop = false;
+            this.SoLuong_Pic.Click += new System.EventHandler(this.SoLuong_Pic_Click);
             // 
             // Count_MoTa
             // 
@@ -1617,15 +1617,15 @@
             this.moTaSP_Text.TabIndex = 9;
             this.moTaSP_Text.TextChanged += new System.EventHandler(this.moTaSP_Text_TextChanged);
             // 
-            // pictureBox15
+            // moTa_Pic
             // 
-            this.pictureBox15.BackColor = System.Drawing.Color.White;
-            this.pictureBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox15.Location = new System.Drawing.Point(195, 510);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(1106, 179);
-            this.pictureBox15.TabIndex = 42;
-            this.pictureBox15.TabStop = false;
+            this.moTa_Pic.BackColor = System.Drawing.Color.White;
+            this.moTa_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.moTa_Pic.Location = new System.Drawing.Point(195, 510);
+            this.moTa_Pic.Name = "moTa_Pic";
+            this.moTa_Pic.Size = new System.Drawing.Size(1106, 179);
+            this.moTa_Pic.TabIndex = 42;
+            this.moTa_Pic.TabStop = false;
             // 
             // textBox38
             // 
@@ -1664,7 +1664,6 @@
             this.gia_Text.Name = "gia_Text";
             this.gia_Text.Size = new System.Drawing.Size(399, 21);
             this.gia_Text.TabIndex = 6;
-            this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
             // 
             // Gia_Pic
             // 
@@ -1675,6 +1674,7 @@
             this.Gia_Pic.Size = new System.Drawing.Size(433, 40);
             this.Gia_Pic.TabIndex = 35;
             this.Gia_Pic.TabStop = false;
+            this.Gia_Pic.Click += new System.EventHandler(this.Gia_Pic_Click);
             // 
             // textBox34
             // 
@@ -1713,7 +1713,6 @@
             this.namXuatBan_Text.Name = "namXuatBan_Text";
             this.namXuatBan_Text.Size = new System.Drawing.Size(472, 21);
             this.namXuatBan_Text.TabIndex = 5;
-            this.namXuatBan_Text.TextChanged += new System.EventHandler(this.namXuatBan_Text_TextChanged);
             // 
             // Nam_Pic
             // 
@@ -1724,6 +1723,7 @@
             this.Nam_Pic.Size = new System.Drawing.Size(520, 40);
             this.Nam_Pic.TabIndex = 29;
             this.Nam_Pic.TabStop = false;
+            this.Nam_Pic.Click += new System.EventHandler(this.Nam_Pic_Click);
             // 
             // textBox30
             // 
@@ -2913,7 +2913,7 @@
             this.formThemSPPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moTa_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Gia_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nam_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NXB_Pic)).EndInit();
@@ -3079,7 +3079,7 @@
         private System.Windows.Forms.TextBox Count_NXB;
         private System.Windows.Forms.TextBox Count_MoTa;
         private System.Windows.Forms.TextBox moTaSP_Text;
-        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox moTa_Pic;
         private System.Windows.Forms.TextBox textBox38;
         private System.Windows.Forms.TextBox gia_Text;
         private System.Windows.Forms.PictureBox Gia_Pic;

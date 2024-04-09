@@ -483,8 +483,36 @@ namespace Program
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-            if (true /*hop le*/)
+            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != "")
+             //   && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
+            //    && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
+            {
                 listSP_FLPanel.Controls.Add(this.sanPhamForm());
+            }
+            else
+            {
+                Check(tenSP_Text, SP_Pic);
+                Check(tenTacGia_Text, TG_Pic);
+                Check(tenDichGia_Text, DichGia_Pic);
+                Check(nhaXuatBan_Text, NXB_Pic);
+                Check(namXuatBan_Text, Nam_Pic);
+                Check(soLuong_Text, SoLuong_Pic);
+                Check(gia_Text, Gia_Pic);
+                Check(soTrang_Text, SoTrang_Pic);
+                Check(moTaSP_Text, moTa_Pic);
+                if (ngonNgu_CBBox.SelectedIndex != -1)
+                    language_Check.Visible = false;
+                else
+                    language_Check.Visible = true;
+                if (loaiBia_CBBox.SelectedIndex != -1)
+                    bia_Check.Visible = false;
+                else
+                    bia_Check.Visible = true;
+                if (theLoai_CBBox.SelectedIndex != -1)
+                    theLoai_check.Visible = false;
+                else
+                    theLoai_check.Visible = true;
+            }
             // dua du lieu vao QLSP     
 
                 // copy roi them vao FlowLayoutPanel listSP_FLPanel
@@ -503,30 +531,37 @@ namespace Program
         private void tenSP_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenSP_Text, Count_SP, 50);
+           // luuSPButton_Click(sender, e);
             Check(tenSP_Text, SP_Pic);
+
         }
 
         private void tenTacGia_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenTacGia_Text, Count_TG, 50);
+            //luuSPButton_Click(sender, e);
             Check(tenTacGia_Text, TG_Pic);
         }
 
         private void tenDichGia_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenDichGia_Text, Count_Dichgia, 50);
+            //luuSPButton_Click(sender, e); Check(tenDichGia_Text, DichGia_Pic);
             Check(tenDichGia_Text, DichGia_Pic);
         }
 
         private void nhaXuatBan_Text_TextChanged(object sender, EventArgs e)
         {
             Count(nhaXuatBan_Text, Count_NXB, 50);
+            //luuSPButton_Click(sender, e);
             Check(nhaXuatBan_Text, NXB_Pic);
         }
 
         private void moTaSP_Text_TextChanged(object sender, EventArgs e)
         {
             Count(moTaSP_Text, Count_MoTa, 1000);
+            //luuSPButton_Click(sender, e);
+            Check(moTaSP_Text, moTa_Pic);
         }
 
         private void moTaTT_txt_TextChanged(object sender, EventArgs e)
@@ -537,6 +572,29 @@ namespace Program
         {
             Count(tieuDe_txt, Count_Tieude, 120);
         }
+
+        private void Nam_Pic_Click(object sender, EventArgs e)
+        {
+            //luuSPButton_Click(sender, e);
+            Check(namXuatBan_Text, Nam_Pic);
+        }
+
+        private void Gia_Pic_Click(object sender, EventArgs e)
+        {
+            //luuSPButton_Click(sender, e);
+            Check(gia_Text, Gia_Pic);
+        }
+
+        private void SoLuong_Pic_Click(object sender, EventArgs e)
+        {
+            //luuSPButton_Click(sender, e);
+            Check(soLuong_Text, SoLuong_Pic);
+        }
+        private void SoTrang_Pic_Click(object sender, EventArgs e)
+        {
+           // luuSPButton_Click(sender, e);
+            Check(soTrang_Text, SoTrang_Pic);
+        }
         private void Count(TextBox txt, TextBox dem, int max)
         {
             if (txt.Text.Length > max)
@@ -546,21 +604,6 @@ namespace Program
                 txt.SelectionLength = 0;
             }
             dem.Text = txt.Text.Length + "/" + max;
-        }
-
-        private void namXuatBan_Text_TextChanged(object sender, EventArgs e)
-        {
-            Check(namXuatBan_Text, Nam_Pic);
-        }
-
-        private void soLuong_Text_TextChanged(object sender, EventArgs e)
-        {
-            Check(soLuong_Text, SoLuong_Pic);
-        }
-
-        private void gia_Text_TextChanged(object sender, EventArgs e)
-        {
-            Check(gia_Text, Gia_Pic);
         }
 
         private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -585,11 +628,6 @@ namespace Program
                 bia_Check.Visible = false;
             else 
                 bia_Check.Visible = true;
-        }
-
-        private void soTrang_Text_TextChanged(object sender, EventArgs e)
-        {
-;           Check(soTrang_Text, SoTrang_Pic);
         }
         private void AddBorderToPictureBox(PictureBox pictureBox, Color color)
         {
@@ -635,6 +673,7 @@ namespace Program
             theLoai_check.Visible = false;
             bia_Check.Visible = false;
             language_Check.Visible = false;
+
             AddBorderToPictureBox(SP_Pic, Color.White);
             SP_Pic.BorderStyle = BorderStyle.FixedSingle;
             AddBorderToPictureBox(TG_Pic, Color.White);
@@ -653,11 +692,16 @@ namespace Program
             SoLuong_Pic.BorderStyle = BorderStyle.FixedSingle;
             AddBorderToPictureBox(Gia_Pic, Color.White);
             Gia_Pic.BorderStyle = BorderStyle.FixedSingle;
+            AddBorderToPictureBox(moTa_Pic, Color.White);
+            moTa_Pic.BorderStyle = BorderStyle.FixedSingle;
+
         }
 
         private void formThemSPPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+
     }
 }
