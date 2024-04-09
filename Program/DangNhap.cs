@@ -165,7 +165,6 @@ namespace Program
                 return;
             }
 
-
             string matKhau = matKhau1_DK_Box.Text;
             int maCH = cauHoi_CB.SelectedIndex - 1;
             string cauTraLoi = cauTraLoi_Box.Text;

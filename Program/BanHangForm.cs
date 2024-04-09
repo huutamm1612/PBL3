@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -328,18 +329,169 @@ namespace Program
             themSPButton.Visible = true;
         }
 
+        private Panel sanPhamForm()
+        {
+            Color color1 = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            Panel panel = new Panel
+            {
+                Size = new Size(1420, 800),
+            };
+
+            TextBox lbTenSP = new TextBox
+            {
+                Location = new Point(54, 170),
+                Text = "Tên sản phẩm",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbTacGia = new TextBox
+            {
+                Location = new Point(54, 240),
+                Text = "Tác giả",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbDichGia = new TextBox
+            {
+                Location = new Point(54, 310),
+                Text = "Dịch giả",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbNhaXB = new TextBox
+            {
+                Location = new Point(54, 380),
+                Text = "Nhà xuất bản",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbNamXB = new TextBox
+            {
+                Location = new Point(54, 450),
+                Text = "Năm xuất bản",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbMoTa = new TextBox
+            {
+                Location = new Point(54, 520),
+                Text = "Mô tả",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbTheLoai = new TextBox
+            {
+                Location = new Point(727, 170),
+                Text = "Thể loại",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbLoaiBia = new TextBox
+            {
+                Location = new Point(727, 240),
+                Text = "Loại bìa",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbNgonNgu = new TextBox
+            {
+                Location = new Point(727, 310),
+                Text = "Ngôn ngữ",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbGia = new TextBox
+            {
+                Location = new Point(727, 380),
+                Text = "Giá",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+            TextBox lbSoLuong = new TextBox
+            {
+                Location = new Point(727, 450),
+                Text = "Số lượng",
+                Size = new Size(122, 19),
+                Font = font1,
+                BackColor = color1,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                TabIndex = 0,
+            };
+
+
+            panel.Controls.Add(lbTenSP);
+            panel.Controls.Add(lbTacGia);
+            panel.Controls.Add(lbDichGia);
+            panel.Controls.Add(lbNhaXB);
+            panel.Controls.Add(lbNamXB);
+            panel.Controls.Add(lbMoTa);
+            panel.Controls.Add(lbTheLoai);
+            panel.Controls.Add(lbLoaiBia);
+            panel.Controls.Add(lbNgonNgu);
+            panel.Controls.Add(lbGia);
+            panel.Controls.Add(lbSoLuong);
+
+
+
+
+            return panel;
+        }
+
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-        
-
+            if (true /*hop le*/)
+                listSP_FLPanel.Controls.Add(this.sanPhamForm());
             // dua du lieu vao QLSP     
 
-            // copy roi them vao FlowLayoutPanel listSP_FLPanel
+                // copy roi them vao FlowLayoutPanel listSP_FLPanel
 
-            // chinh sua lai kich thuoc
+                // chinh sua lai kich thuoc
 
-            // lam moi va an panel
+                // lam moi va an panel
         }
 
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
@@ -503,5 +655,9 @@ namespace Program
             Gia_Pic.BorderStyle = BorderStyle.FixedSingle;
         }
 
+        private void formThemSPPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.quenMK_Panel = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@
             this.matKhau1_DK_Box = new System.Windows.Forms.TextBox();
             this.taiKhoan_DK_Box = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.quenMK_Panel.SuspendLayout();
             this.LoginPanel.SuspendLayout();
             this.Signup_Panel.SuspendLayout();
@@ -107,6 +107,21 @@
             this.quenMK_Panel.TabIndex = 14;
             this.quenMK_Panel.Visible = false;
             this.quenMK_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.QMK_Panel_Paint);
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.ForeColor = System.Drawing.Color.White;
+            this.textBox6.Location = new System.Drawing.Point(15, 259);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(420, 25);
+            this.textBox6.TabIndex = 58;
+            this.textBox6.Text = "Did you remember password ?";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button4
             // 
@@ -754,29 +769,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(0)))), ((int)(((byte)(227)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.White;
-            this.textBox6.Location = new System.Drawing.Point(15, 259);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(420, 25);
-            this.textBox6.TabIndex = 58;
-            this.textBox6.Text = "Did you remember password ?";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // DangNhap_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
+            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.quenMK_Panel);
             this.Controls.Add(this.Signup_Panel);
-            this.Controls.Add(this.LoginPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";

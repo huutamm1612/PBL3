@@ -14,7 +14,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -261,6 +261,25 @@ namespace Program
             if (!reader.IsClosed)
                 reader.Close();
             return khachHang;
+        }
+
+        public static List<string> LoadListChoice(string table, string mota = "")
+        {
+            string query = $"SELECT cauHoi FROM {table}";
+
+            SqlDataReader reader = ExecuteQuery(query);
+
+            List<string> cauHoi = new List<string>
+            {
+                mota
+            };
+            while (reader.Read())
+            {
+                cauHoi.Add(reader.GetString(0));
+            }
+
+            reader.Close();
+            return cauHoi;
         }
 
         public static List<string> LoadCauHoi()
