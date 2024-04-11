@@ -36,7 +36,7 @@ namespace Program
         {
             dangNhapF = false;
             if (cauHoi_CB.Items.Count == 0)
-                setCauHoi(cauHoi_CB);
+                Utils.SetComboBox(cauHoi_CB, HeThong.LoadCauHoi());
             cauHoi_CB.Cursor = Cursors.Hand;
             Signup_Panel.Visible = true;
             quenMK_Panel.Visible = false;
@@ -58,15 +58,11 @@ namespace Program
             refreshDangKy_Panel();
             Signup_Panel.Visible = true;
         }
-        private void setCauHoi(ComboBox comboBox)
-        {
-            List<string> listCauHoi = HeThong.LoadCauHoi();
-            comboBox.DataSource = listCauHoi;
-        }
+
         private void refreshDangKy_Panel()
         {
             if (cauHoi_CB.Items.Count == 0)
-                setCauHoi(cauHoi_CB);
+                Utils.SetComboBox(cauHoi_CB, HeThong.LoadCauHoi());
             taiKhoan_DK_Box.Text = "";
             matKhau1_DK_Box.Text = "";
             cauTraLoi_Box.Text = "";
@@ -121,7 +117,8 @@ namespace Program
         private void quenMK_Button_Click(object sender, EventArgs e)
         {
             if (cauHoiQMK_CB.Items.Count == 0)
-                this.setCauHoi(cauHoiQMK_CB);
+                Utils.SetComboBox(cauHoiQMK_CB, HeThong.LoadCauHoi());
+
             this.refreshQuenMatKhau_Panel();
 
             LoginPanel.Visible = false;

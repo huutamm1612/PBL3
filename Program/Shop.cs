@@ -9,49 +9,64 @@ namespace Program
 {
     internal class Shop : Nguoi
     {
-        public List<BaiDang> list { get; set; }
+        public List<BaiDang> listBaiDang { get; set; }
         public int nFollower { get; set; }
         public int tinhTrang { get; set; }
         public int doanhThu { get; set; }
-        public QLDonHang donHang { get; set; }
+        public QLDonHang listDonHang { get; set; }
 
         public Shop() : base()
         {
-            list = null;
+            listBaiDang = null;
             nFollower = 0;
             doanhThu = 0;
             tinhTrang = 1;
-            donHang = null;
+            listDonHang = null;
         }
 
         public Shop(string soDT, string email) : base()
         {
-            list = new List<BaiDang>();
+            listBaiDang = new List<BaiDang>();
             nFollower = 0;
             doanhThu = 0;
             tinhTrang = 1;
             this.soDT = soDT;
             this.email = email;
-            donHang = null;
+            listDonHang = null;
         }
 
-        public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, int _, DateTime ngaySinh, List<BaiDang> list, int nFollower, int tinhTrang, int doanhThu) : base(maSo, ten, soDT, email, diaChi, _, ngaySinh)
+        public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, DateTime ngaySinh, List<BaiDang> list, int nFollower, int tinhTrang, int doanhThu)
         {
-            this.list = list;
+            this.maSo = maSo;
+            this.ten = ten;
+            this.soDT = soDT;
+            this.email = email;
+            this.diaChi = diaChi;
+            this.ngaySinh = ngaySinh;
+            this.listBaiDang = listBaiDang;
             this.nFollower = nFollower;
             this.doanhThu = doanhThu;
             this.tinhTrang = tinhTrang;
         }
 
-        public Shop(string maSo) : base(maSo) { }
-
-        public Shop(Shop shop) : base(shop)
+        public Shop(string maSo)
         {
-            this.list = shop.list;
+            this.maSo = maSo;
+        }
+
+        public Shop(Shop shop)
+        {
+            this.maSo = shop.maSo;
+            this.ten = shop.ten;
+            this.soDT = shop.soDT;
+            this.email = shop.email;
+            this.diaChi = shop.diaChi;
+            this.ngaySinh = shop.ngaySinh;
+            this.listBaiDang = shop.listBaiDang;
             this.nFollower = shop.nFollower;
             this.tinhTrang = shop.tinhTrang;
             this.doanhThu = shop.doanhThu;
-            this.donHang = shop.donHang;
+            this.listDonHang = shop.listDonHang;
         }
 
         public void setMaSo(string maSo)
@@ -59,13 +74,13 @@ namespace Program
             this.maSo = maSo;
         }
 
-        public void Add(BaiDang baiDang) => list.Add(baiDang);
-        public void Insert(int index, BaiDang baiDang) => list.Insert(index, baiDang);
+        public void Add(BaiDang baiDang) => Add(baiDang);
+        public void Insert(int index, BaiDang baiDang) => listBaiDang.Insert(index, baiDang);
         public int IndexOf(BaiDang baiDang)
         {
-            for (int index = 0; index < list.Count; index++)
+            for (int index = 0; index < listBaiDang.Count; index++)
             {
-                if (BaiDang.EqualMaBD(list[index], baiDang))
+                if (BaiDang.EqualMaBD(listBaiDang[index], baiDang))
                     return index;
             }
 
@@ -73,11 +88,11 @@ namespace Program
         }
         public void Remove(BaiDang baiDang)
         {
-            foreach (BaiDang bd in list)
+            foreach (BaiDang bd in listBaiDang)
             {
                 if (BaiDang.EqualMaBD(bd, baiDang))
                 {
-                    list.Remove(bd);
+                    listBaiDang.Remove(bd);
                     return;
                 }
             }
@@ -85,19 +100,19 @@ namespace Program
 
         public void RemoveSer(List<string> maBDs)
         {
-            Utils.Sort(list, 0, list.Count - 1, BaiDang.CompareMaBD, BaiDang.EqualMaBD);
-            Utils.RemoveSer(list, maBDs);
+            Utils.Sort(listBaiDang, 0, listBaiDang.Count - 1, BaiDang.CompareMaBD, BaiDang.EqualMaBD);
+            Utils.RemoveSer(listBaiDang, maBDs);
         }
 
-        public void RemoveAt(int index) => list.RemoveAt(index);
+        public void RemoveAt(int index) => listBaiDang.RemoveAt(index);
 
         public void Update(BaiDang baiDang)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < listBaiDang.Count; i++)
             {
-                if (BaiDang.EqualMaBD(list[i], baiDang))
+                if (BaiDang.EqualMaBD(listBaiDang[i], baiDang))
                 {
-                    list[i] = baiDang;
+                    listBaiDang[i] = baiDang;
                     return;
                 }
             }
@@ -107,7 +122,7 @@ namespace Program
         {
             QLSanPham qlSP = new QLSanPham();
 
-            foreach(BaiDang baiDang in list)
+            foreach(BaiDang baiDang in listBaiDang)
             {
                 qlSP.AddRange(baiDang.GetAllSP());
             }
@@ -148,5 +163,7 @@ namespace Program
         }
 
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
+
+        
     }
 }

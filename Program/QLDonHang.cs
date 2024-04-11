@@ -25,5 +25,13 @@ namespace Program
         {
             list.Insert(0, donHang);
         }
+
+        public void AddRange(params DonHang[] listDonHang)
+        {
+            foreach(DonHang donHang in listDonHang)
+            {
+                Add(donHang);
+            }
+        }
     }
 }

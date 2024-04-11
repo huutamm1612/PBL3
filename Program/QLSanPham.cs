@@ -64,10 +64,6 @@ namespace Program
 
         public void Add(SanPham sanPham)
         {
-            /*foreach(SanPham sp in list)
-            {
-
-            }*/
             list.Add(sanPham);
         }
 
@@ -95,6 +91,25 @@ namespace Program
             }
 
             return tongTien;
+        }
+
+        public int soLuongShop()
+        {
+            Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaS, SanPham.EqualMaS);
+
+            int n = 1;
+            string mas = list[0].maS;
+
+            foreach (SanPham sanPham in list)
+            {
+                if (!String.Equals(mas, sanPham.maS))
+                {
+                    n++;
+                    mas = sanPham.maS;
+                }
+            }
+
+            return n;
         }
     }
 }

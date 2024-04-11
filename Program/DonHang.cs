@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,6 +59,45 @@ namespace Program
             ngayGiaoHang = donHang.ngayGiaoHang;
         }
 
+        public List<DonHang> phanRaDonHang(int n)
+        {
+            List<DonHang> listDonHang = new List<DonHang>();
+
+            for(int i = 0; i < n; i++)
+            {
+                listDonHang.Add(new DonHang
+                {
+                    list = new List<SanPham>(),
+                    maDH = HeThong.MaMoi("maDH"),
+                    maKH = maDH,
+                    tinhTrang = tinhTrang,
+                    ptThanhToan = ptThanhToan,
+                    tongTien = 0,
+                    diaChi = diaChi,
+                    ngayDatHang = ngayDatHang,
+                });
+            }
+
+            string mas = list[0].maS;
+            int j = 0;
+
+            foreach(SanPham sanPham in list)
+            {
+                if(!String.Equals(mas, sanPham.maS))
+                {
+                    j++;
+                    mas = sanPham.maS;
+                }
+
+                listDonHang[j].Add(sanPham);
+            }
+
+            foreach(DonHang donHang in listDonHang)
+                donHang.tongTien = donHang.tinhTongTien();
+
+            return listDonHang;
+        }
+
         public void diDon()
         {
             Random random = new Random();
@@ -71,16 +111,26 @@ namespace Program
             ngayGiaoHang = ngayDatHang.Add(new TimeSpan(soNgay, soGio, soPhut, soGiay));
         }
 
-        public void datHang(KhachHang khachHang, DiaChi diaChi, int ptThanhToan)
+        public DonHang[] datHang()
         {
-            maDH = HeThong.MaMoi("MaDH");
-            maKH = khachHang.maSo;
-            tongTien = tinhTongTien();
-            this.diaChi = diaChi;
-            this.ptThanhToan = ptThanhToan;
+            List<DonHang> listDonHang = new List<DonHang>();
 
-            ngayGiaoHang = DateTime.Now;
-            tinhTrang = 0;
+            int n = soLuongShop();
+
+            if(n == 1)
+            {
+                maDH = HeThong.MaMoi("maDH");
+                tongTien = tinhTongTien();
+                listDonHang.Add(this);
+            }
+            else
+            {
+                listDonHang.AddRange(phanRaDonHang(n));
+                
+            }
+
+
+            return listDonHang.ToArray();
         }
 
         public void nhanHang()

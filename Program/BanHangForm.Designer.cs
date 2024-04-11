@@ -1793,8 +1793,12 @@
             this.ngonNgu_CBBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ngonNgu_CBBox.FormattingEnabled = true;
             this.ngonNgu_CBBox.Items.AddRange(new object[] {
-            "Khác",
-            "Trinh Thám"});
+            "Tiếng Việt",
+            "Tiếng Anh",
+            "Tiếng Trung Quốc",
+            "Tiếng Nhật Bản",
+            "Tiếng Nga",
+            "Khác"});
             this.ngonNgu_CBBox.Location = new System.Drawing.Point(868, 306);
             this.ngonNgu_CBBox.MaxDropDownItems = 7;
             this.ngonNgu_CBBox.Name = "ngonNgu_CBBox";

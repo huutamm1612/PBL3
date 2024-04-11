@@ -80,7 +80,7 @@ namespace Program
 
             user = new User();
             user.dangNhap(taiKhoan, matKhau);
-            shop = HeThong.LoadShop(user);
+            shop = HeThong.LoadShop(taiKhoan);
 
             if (daTaoShop)
             {
@@ -228,7 +228,20 @@ namespace Program
         private void HTTaoShop_Click(object sender, EventArgs e)
         {
             shop.diaChi.setMaDC(HeThong.MaMoi("maDC"));
-            shop = new Shop(HeThong.MaMoi("maS"), tenShop_DK_Text.Text, soDT_DK_Text.Text, email_DK_Text.Text, shop.diaChi, -1, DateTime.Now, new List<BaiDang>(), 0, 1, 0);
+            shop = new Shop
+            {
+                maSo = HeThong.MaMoi("maS"),
+                ten = tenShop_DK_Text.Text,
+                soDT = soDT_DK_Text.Text,
+                email = email_DK_Text.Text,
+                diaChi = shop.diaChi,
+                ngaySinh = DateTime.Now,
+                listBaiDang = new List<BaiDang>(),
+                nFollower = 0,
+                tinhTrang = 1,
+                doanhThu = 0,
+            };
+
             HeThong.DangKy(user, shop);
 
             dangKyPanel.Visible = false;
@@ -311,6 +324,9 @@ namespace Program
 
         private void themSPButton_Click(object sender, EventArgs e)//1575, 140
         {
+            if (theLoai_CBBox.Items.Count == 0)
+                Utils.SetComboBox(theLoai_CBBox, HeThong.LoadTheLoai());
+
             TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
             panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
             formThemSPPanel.Location = themSPButton.Location;

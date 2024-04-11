@@ -14,7 +14,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source= DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;";
         private static SqlConnection sqlCon;
 
         private static HeThong _System;
@@ -144,11 +144,6 @@ namespace Program
             ExecuteNonQuery(query);
         }
 
-        public static bool KiemTraMatKhau(TaiKhoan account, string matKhau)
-        {
-            return account.matKhau == matKhau;
-        }
-
         public static bool KiemTraTaiKhoan(string taiKhoan) // trả về false nếu taiKhoan đã tồn tại
         {
             string query = $"SELECT * FROM UserAccount WHERE taiKhoan = '{taiKhoan}'";
@@ -163,7 +158,8 @@ namespace Program
 
         public static bool KiemTraTaoShop(string taiKhoan) // trả về true nếu khách hàng đã tạo shop
         {
-            string query = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
+            //string query = $"SELECT KhachHang_Shop.maKH FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang_Shop.maKH = KhachHang.maKH INNER JOIN UserAccount ON KhachHang.taiKhoan = UserAccount.taiKhoan WHERE UserAccount.taiKhoan = '{taiKhoan}'";
+            string query = $"SELECT KhachHang_Shop.* FROM KhachHang_Shop INNER JOIN KhachHang ON KhachHang.maKH = KhachHang_Shop.maKH WHERE KhachHang.taiKhoan = '{taiKhoan}'";
             SqlDataReader reader = ExecuteQuery(query);
 
             bool result = false;
@@ -263,42 +259,37 @@ namespace Program
             return khachHang;
         }
 
-        public static List<string> LoadListChoice(string table, string mota = "")
+        public static List<string> LoadTheLoai()
         {
-            string query = $"SELECT cauHoi FROM {table}";
-
+            string query = $"SELECT ten FROM LoaiSanPham";
             SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> cauHoi = new List<string>
-            {
-                mota
-            };
+            List<string> list = new List<string>();
             while (reader.Read())
             {
-                cauHoi.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             }
 
             reader.Close();
-            return cauHoi;
+            return list;
         }
 
         public static List<string> LoadCauHoi()
         {
             string query = $"SELECT cauHoi FROM CauHoi";
-
             SqlDataReader reader = ExecuteQuery(query);
 
-            List<string> cauHoi = new List<string>
+            List<string> list = new List<string>
             {
                 "Câu hỏi bảo mật"
             };
             while (reader.Read())
             {
-                cauHoi.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             }
 
             reader.Close();
-            return cauHoi;
+            return list;
         }
 
         public static bool KiemTraCauHoi(string taiKhoan, int maCH, string cauTraLoi)
@@ -400,15 +391,15 @@ namespace Program
             return s;
         }
 
-        public static void ThemDiaChi(Nguoi obj, DiaChi diaChi, bool dcKhachHang = true)
+        public static void ThemDiaChi(string maSo, DiaChi diaChi, bool dcKhachHang = true)
         {
             int state = dcKhachHang == true ? 1 : 0;
-            string query = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{obj.maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
+            string query = $"INSERT INTO DiaChi VALUES('{diaChi.maDC}', '{maSo}', N'{diaChi.ten}', '{diaChi.soDT}',{diaChi.maT_TP}, {diaChi.maQH}, {diaChi.maPX}, N'{diaChi.diaChiCuThe}', {state})";
             ExecuteNonQuery(query);
         }
-        public static void XoaDiaChi(DiaChi diaChi)
+        public static void XoaDiaChi(string maDC)
         {
-            string query = $"Delete FROM DiaChi WHERE maDC = {diaChi.maDC}";
+            string query = $"Delete FROM DiaChi WHERE maDC = {maDC}";
             ExecuteNonQuery(query);
         }
 
@@ -468,7 +459,7 @@ namespace Program
             string maKH = reader.GetString(0);
             reader.Close();
 
-            ThemDiaChi(shop, shop.diaChi, false);
+            ThemDiaChi(shop.maSo, shop.diaChi, false);
 
             query = $"INSERT INTO Shop(maS, ten, soDT, email, maDC, ngayTao, tinhTrang) VALUES('{shop.maSo}', N'{shop.ten}', '{shop.soDT}', '{shop.email}', '{shop.diaChi.maDC}', '{shop.ngaySinh.Date:MM/dd/yyyy}', 1)";
             ExecuteNonQuery(query);
@@ -493,13 +484,13 @@ namespace Program
             return result;
         }
 
-        public static Shop LoadShop(User user)
+        public static Shop LoadShop(string taiKhoan)
         {
             Shop shop;
 
-            if (KiemTraTaoShop(user))
+            if (KiemTraTaoShop(taiKhoan))
             {
-                string query = $"SELECT Shop.* FROM Shop INNER JOIN KhachHang_Shop on KhachHang_Shop.maS = Shop.maS INNER JOIN KhachHang on KhachHang_Shop.maKH = KhachHang.maKH WHERE KhachHang.taiKhoan = '{user.taiKhoan}'";
+                string query = $"SELECT Shop.* FROM Shop INNER JOIN KhachHang_Shop on KhachHang_Shop.maS = Shop.maS INNER JOIN KhachHang on KhachHang_Shop.maKH = KhachHang.maKH WHERE KhachHang.taiKhoan = '{taiKhoan}'";
 
                 SqlDataReader reader = ExecuteQuery(query);
                 reader.Read();
@@ -515,8 +506,6 @@ namespace Program
                     tinhTrang = reader.GetInt32(7),
                     doanhThu = reader.GetInt32(8),
                 };
-
-                //shop = new Shop(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), null, -1, reader.GetDateTime(6), null, reader.GetInt32(5), reader.GetInt32(7), reader.GetInt32(8));
 
                 reader.Close();
 
@@ -538,12 +527,12 @@ namespace Program
 
                 reader.Close();
 
-                foreach (BaiDang baiDang in shop.list)
+                foreach (BaiDang baiDang in shop.listBaiDang)
                     shop.Add(LoadBaiDang(baiDang.maBD));
             }
             else
             {
-                string query = $"SELECT * FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
+                string query = $"SELECT * FROM KhachHang WHERE taiKhoan = '{taiKhoan}'";
                 SqlDataReader reader = ExecuteQuery(query);
 
                 reader.Read();
@@ -564,12 +553,6 @@ namespace Program
 
             return shop;
         }
-
-        public static void CapNhatTinhTrangShop(Shop shop)
-        {
-            string query = $"UPDATE Shop SET tinhTrang = {shop.tinhTrang} WHERE maS = '{shop.maSo}'";
-            ExecuteNonQuery(query);
-        }
         
         public static void ThemSanPham(string maBD, SanPham sanPham)
         {
@@ -587,24 +570,26 @@ namespace Program
 
             string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia})";
             ExecuteNonQuery(query);
+
+            query = $"INSERT INTO BaiDang_Shop VALUES('{baiDang.maBD}', '{maS}')";
+            ExecuteNonQuery(query);
         }
 
         public static BaiDang LoadBaiDang(string maBD)
         {
-            string query = $"SELECT * FROM BaiDang WHERE maBD = '{maBD}'";
+            string query = $"SELECT BaiDang_Shop.maS, BaiDang.* FROM BaiDang, BaiDang_Shop WHERE BaiDang.maBD = '{maBD}' AND BaiDang_Shop.maBD = '{maBD}'";
             SqlDataReader reader = ExecuteQuery(query);
             reader.Read();
 
             BaiDang baiDang = new BaiDang
             {
-                maBD = reader.GetString(0),
-                tieuDe = reader.GetString(1),
-                moTa = reader.GetString(2),
-                luocThich = reader.GetInt32(3),
-                giamGia = reader.GetInt32(4)
+                maBD = reader.GetString(1),
+                maS = reader.GetString(0),
+                tieuDe = reader.GetString(2),
+                moTa = reader.GetString(3),
+                luocThich = reader.GetInt32(4),
+                giamGia = reader.GetInt32(5)
             };
-
-            //BaiDang baiDang = new BaiDang(reader.GetString(0), new List<SanPham>(), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
 
             reader.Close();
 
@@ -628,11 +613,13 @@ namespace Program
                     nhaXuatBan = reader.GetString(10),
                     loaiBia = reader.GetString(11),
                     moTa = reader.GetString(12),
-                    luocBan = reader.GetInt32(13)
+                    luocBan = reader.GetInt32(13),
+                    maS = baiDang.maS,
+                    maBD = baiDang.maBD
                 };
-                //SanPham sanPham = new SanPham(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(13), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetInt32(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12));
                 baiDang.Add(sanPham);
             }
+
 
             reader.Close();
             return baiDang;
@@ -649,6 +636,12 @@ namespace Program
                 CapNhatSanPham(sanPham);
 
             string query = $"UPDATE BaiDang SET tieuDe = '{baiDang.tieuDe}', moTa = '{baiDang.moTa}', luocThich = {baiDang.luocThich}, giamGia = {baiDang.giamGia} WHERE maBD = '{baiDang.maBD}'";
+            ExecuteNonQuery(query);
+        }
+
+        public static void CapNhatTinhTrangShop(string maS, int tinhTrang)
+        {
+            string query = $"UPDATE Shop Set tinhTrang = {tinhTrang} WHERE maS = '{maS}'";
             ExecuteNonQuery(query);
         }
     }

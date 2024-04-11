@@ -145,7 +145,7 @@ namespace Program
 
         private void xacNhan_UP_Button_Click(object sender, EventArgs e)
         {
-            if (!HeThong.KiemTraMatKhau(user, matKhauCu_Box.Text))
+            if (!user.kiemTraMatKhau(matKhauCu_Box.Text))
                 saiMKC_Text.Visible = true;
             else
             {
@@ -426,7 +426,7 @@ namespace Program
             int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
             int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
                 DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
-                HeThong.ThemDiaChi(khachHang, diaChi);
+                HeThong.ThemDiaChi(khachHang.maSo, diaChi);
 
             if (datDCMacDinh_check.Checked)
             {
@@ -473,7 +473,7 @@ namespace Program
             listDiaChi_FLPanel.Controls.Clear();
             veDiaChiMacDinh();
 
-            foreach (DiaChi diachi in khachHang.diaChis)
+            foreach (DiaChi diachi in khachHang.listDiaChi)
             {
                 veDiaChi(diachi);
             }
@@ -589,7 +589,7 @@ namespace Program
             Panel panelToRemove = clickedButton.Parent as Panel;
             int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
 
-            khachHang.thayDoiDiaChiMacDinh(khachHang.diaChis[panelIndex - 1]);
+            khachHang.thayDoiDiaChiMacDinh(khachHang.listDiaChi[panelIndex - 1]);
             HeThong.CapNhatDiaChiMacDinh(khachHang);
 
 
@@ -605,7 +605,7 @@ namespace Program
             if (panelIndex != -1 && panelIndex < listDiaChi_FLPanel.Controls.Count)
             {
                 listDiaChi_FLPanel.Controls.RemoveAt(panelIndex);
-                HeThong.XoaDiaChi(khachHang.diaChis[panelIndex - 1]);
+                HeThong.XoaDiaChi(khachHang.listDiaChi[panelIndex - 1].maDC);
                 khachHang.xoaDiaChi(panelIndex - 1);
             }
             veLai_DiaChi();
@@ -626,7 +626,7 @@ namespace Program
             if (panelIndex == 0)
                 refreshCapNhatDiaChi_Panel(khachHang.diaChi);
             else
-                refreshCapNhatDiaChi_Panel(khachHang.diaChis[panelIndex - 1]);
+                refreshCapNhatDiaChi_Panel(khachHang.listDiaChi[panelIndex - 1]);
         }
 
         private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
@@ -645,7 +645,7 @@ namespace Program
             }
             else
             {
-                diaChi = khachHang.diaChis[index - 1];
+                diaChi = khachHang.listDiaChi[index - 1];
                 diaChi.capNhat(hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
                 khachHang.capNhatDiaChi(index - 1, diaChi);
             }

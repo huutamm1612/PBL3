@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program
 {
@@ -52,8 +53,8 @@ namespace Program
                 if (l <= r)
                 {
                     (list[r], list[l]) = (list[l], list[r]);
-                    l--;
-                    r++;
+                    l++;
+                    r--;
                 }
             }
 
@@ -115,6 +116,13 @@ namespace Program
             }
         }
 
-
+        public static void SetComboBox(ComboBox cbb, List<string> list)
+        {
+            cbb.Items.Clear();
+            foreach (string item in list)
+            {
+                cbb.Items.Add(item);
+            }
+        }
     }
 }

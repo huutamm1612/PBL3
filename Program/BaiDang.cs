@@ -9,6 +9,7 @@ namespace Program
     internal class BaiDang : QLSanPham
     {
         public string maBD { get; set; }
+        public string maS { get; set; }
         public string tieuDe { get; set; }
         public string moTa { get; set; }
         public int luocThich { get; set; }
@@ -22,6 +23,7 @@ namespace Program
         public BaiDang()
         {
             maBD = "";
+            maS = "";
             list = new List<SanPham>();
             tieuDe = "";
             moTa = "";
