@@ -150,7 +150,7 @@
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.addPanel = new System.Windows.Forms.Panel();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button23 = new System.Windows.Forms.Button();
@@ -159,7 +159,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -218,6 +217,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -244,7 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.addPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -2021,62 +2021,62 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Controls.Add(this.panel7);
+            this.panel8.Controls.Add(this.addPanel);
             this.panel8.Location = new System.Drawing.Point(61, 1762);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1575, 848);
             this.panel8.TabIndex = 5;
             // 
-            // panel7
+            // addPanel
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.panel7.Controls.Add(this.pictureBox17);
-            this.panel7.Controls.Add(this.textBox9);
-            this.panel7.Controls.Add(this.button23);
-            this.panel7.Controls.Add(this.button25);
-            this.panel7.Controls.Add(this.textBox10);
-            this.panel7.Controls.Add(this.pictureBox4);
-            this.panel7.Controls.Add(this.textBox11);
-            this.panel7.Controls.Add(this.pictureBox5);
-            this.panel7.Controls.Add(this.textBox12);
-            this.panel7.Controls.Add(this.textBox14);
-            this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Controls.Add(this.textBox15);
-            this.panel7.Controls.Add(this.textBox20);
-            this.panel7.Controls.Add(this.textBox21);
-            this.panel7.Controls.Add(this.pictureBox7);
-            this.panel7.Controls.Add(this.textBox22);
-            this.panel7.Controls.Add(this.textBox23);
-            this.panel7.Controls.Add(this.textBox25);
-            this.panel7.Controls.Add(this.pictureBox8);
-            this.panel7.Controls.Add(this.textBox26);
-            this.panel7.Controls.Add(this.textBox29);
-            this.panel7.Controls.Add(this.textBox32);
-            this.panel7.Controls.Add(this.pictureBox12);
-            this.panel7.Controls.Add(this.textBox33);
-            this.panel7.Controls.Add(this.comboBox1);
-            this.panel7.Controls.Add(this.textBox35);
-            this.panel7.Controls.Add(this.textBox36);
-            this.panel7.Controls.Add(this.textBox39);
-            this.panel7.Controls.Add(this.pictureBox13);
-            this.panel7.Controls.Add(this.textBox40);
-            this.panel7.Controls.Add(this.textBox41);
-            this.panel7.Controls.Add(this.pictureBox14);
-            this.panel7.Controls.Add(this.textBox42);
-            this.panel7.Controls.Add(this.textBox43);
-            this.panel7.Controls.Add(this.comboBox2);
-            this.panel7.Controls.Add(this.textBox44);
-            this.panel7.Controls.Add(this.comboBox3);
-            this.panel7.Controls.Add(this.textBox45);
-            this.panel7.Controls.Add(this.textBox46);
-            this.panel7.Controls.Add(this.textBox47);
-            this.panel7.Controls.Add(this.pictureBox16);
-            this.panel7.Controls.Add(this.textBox48);
-            this.panel7.Location = new System.Drawing.Point(70, 25);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1420, 800);
-            this.panel7.TabIndex = 62;
-            this.panel7.Visible = false;
+            this.addPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.addPanel.Controls.Add(this.pictureBox17);
+            this.addPanel.Controls.Add(this.textBox9);
+            this.addPanel.Controls.Add(this.button23);
+            this.addPanel.Controls.Add(this.button25);
+            this.addPanel.Controls.Add(this.textBox10);
+            this.addPanel.Controls.Add(this.pictureBox4);
+            this.addPanel.Controls.Add(this.textBox11);
+            this.addPanel.Controls.Add(this.pictureBox5);
+            this.addPanel.Controls.Add(this.textBox12);
+            this.addPanel.Controls.Add(this.textBox14);
+            this.addPanel.Controls.Add(this.pictureBox6);
+            this.addPanel.Controls.Add(this.textBox15);
+            this.addPanel.Controls.Add(this.textBox20);
+            this.addPanel.Controls.Add(this.textBox21);
+            this.addPanel.Controls.Add(this.pictureBox7);
+            this.addPanel.Controls.Add(this.textBox22);
+            this.addPanel.Controls.Add(this.textBox23);
+            this.addPanel.Controls.Add(this.textBox25);
+            this.addPanel.Controls.Add(this.pictureBox8);
+            this.addPanel.Controls.Add(this.textBox26);
+            this.addPanel.Controls.Add(this.textBox29);
+            this.addPanel.Controls.Add(this.textBox32);
+            this.addPanel.Controls.Add(this.pictureBox12);
+            this.addPanel.Controls.Add(this.textBox33);
+            this.addPanel.Controls.Add(this.comboBox1);
+            this.addPanel.Controls.Add(this.textBox35);
+            this.addPanel.Controls.Add(this.textBox36);
+            this.addPanel.Controls.Add(this.textBox39);
+            this.addPanel.Controls.Add(this.pictureBox13);
+            this.addPanel.Controls.Add(this.textBox40);
+            this.addPanel.Controls.Add(this.textBox41);
+            this.addPanel.Controls.Add(this.pictureBox14);
+            this.addPanel.Controls.Add(this.textBox42);
+            this.addPanel.Controls.Add(this.textBox43);
+            this.addPanel.Controls.Add(this.comboBox2);
+            this.addPanel.Controls.Add(this.textBox44);
+            this.addPanel.Controls.Add(this.comboBox3);
+            this.addPanel.Controls.Add(this.textBox45);
+            this.addPanel.Controls.Add(this.textBox46);
+            this.addPanel.Controls.Add(this.textBox47);
+            this.addPanel.Controls.Add(this.pictureBox16);
+            this.addPanel.Controls.Add(this.textBox48);
+            this.addPanel.Location = new System.Drawing.Point(70, 25);
+            this.addPanel.Name = "addPanel";
+            this.addPanel.Size = new System.Drawing.Size(1420, 800);
+            this.addPanel.TabIndex = 62;
+            this.addPanel.Visible = false;
             // 
             // pictureBox17
             // 
@@ -2175,19 +2175,6 @@
             this.pictureBox5.Size = new System.Drawing.Size(153, 40);
             this.pictureBox5.TabIndex = 45;
             this.pictureBox5.TabStop = false;
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox12.Location = new System.Drawing.Point(1197, 695);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(104, 21);
-            this.textBox12.TabIndex = 44;
-            this.textBox12.Text = "0/1000";
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox14
             // 
@@ -2328,7 +2315,7 @@
             this.textBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox29.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox29.ForeColor = System.Drawing.Color.Silver;
             this.textBox29.Location = new System.Drawing.Point(622, 378);
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(60, 21);
@@ -2406,7 +2393,7 @@
             this.textBox36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.textBox36.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox36.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox36.ForeColor = System.Drawing.Color.Silver;
             this.textBox36.Location = new System.Drawing.Point(622, 308);
             this.textBox36.Name = "textBox36";
             this.textBox36.Size = new System.Drawing.Size(60, 21);
@@ -2440,7 +2427,7 @@
             this.textBox40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.textBox40.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox40.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox40.ForeColor = System.Drawing.Color.Silver;
             this.textBox40.Location = new System.Drawing.Point(622, 238);
             this.textBox40.Name = "textBox40";
             this.textBox40.Size = new System.Drawing.Size(60, 21);
@@ -2559,7 +2546,7 @@
             this.textBox46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.textBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox46.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox46.ForeColor = System.Drawing.Color.Silver;
             this.textBox46.Location = new System.Drawing.Point(622, 168);
             this.textBox46.Name = "textBox46";
             this.textBox46.Size = new System.Drawing.Size(60, 21);
@@ -2881,6 +2868,19 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
             // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox12.Location = new System.Drawing.Point(1197, 695);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(104, 21);
+            this.textBox12.TabIndex = 44;
+            this.textBox12.Text = "0/1000";
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2925,8 +2925,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.addPanel.ResumeLayout(false);
+            this.addPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -3102,7 +3102,7 @@
         private System.Windows.Forms.Label theLoai_check;
         private System.Windows.Forms.Label language_Check;
         private System.Windows.Forms.Label bia_Check;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel addPanel;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button23;
@@ -3111,7 +3111,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.TextBox textBox15;
@@ -3145,5 +3144,6 @@
         private System.Windows.Forms.TextBox textBox47;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.TextBox textBox12;
     }
 }
