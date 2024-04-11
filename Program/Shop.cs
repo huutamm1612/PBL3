@@ -164,6 +164,10 @@ namespace Program
 
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
 
-        
+        public void diDon(DonHang donHang)
+        {
+            donHang.capNhatTinhTrang(1);
+            donHang.diDon();
+        }
     }
 }

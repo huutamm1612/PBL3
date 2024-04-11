@@ -14,6 +14,7 @@ namespace Program
         public DiaChi diaChi { get; set; }
         public int tongTien { get; set; }
         public int tinhTrang { get; set; }
+        public int xu { get; set; }
         public int ptThanhToan { get; set; }
         public DateTime ngayDatHang { get; set; }
         public DateTime ngayGiaoHang { get; set; }
@@ -26,20 +27,10 @@ namespace Program
             tinhTrang = 0;
             ptThanhToan = 0;
             tongTien = 0;
+            xu = 0;
             diaChi = new DiaChi();
             ngayDatHang = DateTime.Now;
             ngayGiaoHang = DateTime.Now;
-        }
-
-        public DonHang(string maDH, string maKH, int tinhTrang, int ptThanhToan, int tongTien, DiaChi diaChi, DateTime ngayDatHang)
-        {
-            this.maDH = maDH;
-            this.maKH = maKH;
-            this.tinhTrang = tinhTrang;
-            this.ptThanhToan = ptThanhToan;
-            this.tongTien = tongTien;
-            this.diaChi = diaChi;
-            this.ngayDatHang = ngayDatHang;
         }
 
         public DonHang(QLSanPham sanPham)
@@ -54,10 +45,13 @@ namespace Program
             tinhTrang = donHang.tinhTrang;
             ptThanhToan = donHang.ptThanhToan;
             tongTien = donHang.tongTien;
+            xu = donHang.xu;
             diaChi = donHang.diaChi;
             ngayDatHang = donHang.ngayDatHang;
             ngayGiaoHang = donHang.ngayGiaoHang;
         }
+
+        public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
 
         public List<DonHang> phanRaDonHang(int n)
         {
@@ -74,6 +68,7 @@ namespace Program
                     ptThanhToan = ptThanhToan,
                     tongTien = 0,
                     diaChi = diaChi,
+                    xu = (int)(xu/n),
                     ngayDatHang = ngayDatHang,
                 });
             }
@@ -98,19 +93,6 @@ namespace Program
             return listDonHang;
         }
 
-        public void diDon()
-        {
-            Random random = new Random();
-
-            int soNgay = random.Next(3, 7); 
-            int soGio = random.Next(24); 
-            int soPhut = random.Next(60);
-            int soGiay = random.Next(60);
-
-            tinhTrang = 1;
-            ngayGiaoHang = ngayDatHang.Add(new TimeSpan(soNgay, soGio, soPhut, soGiay));
-        }
-
         public DonHang[] datHang()
         {
             List<DonHang> listDonHang = new List<DonHang>();
@@ -126,16 +108,39 @@ namespace Program
             else
             {
                 listDonHang.AddRange(phanRaDonHang(n));
-                
             }
 
+            foreach(DonHang donHang in listDonHang) 
+                HeThong.DatHang(donHang);
 
             return listDonHang.ToArray();
         }
 
-        public void nhanHang()
+        public void diDon()
         {
+            Random random = new Random();
 
+            int soNgay = random.Next(3, 7); 
+            int soGio = random.Next(24); 
+            int soPhut = random.Next(60);
+            int soGiay = random.Next(60);
+
+            tinhTrang = 1;
+            ngayGiaoHang = ngayDatHang.Add(new TimeSpan(soNgay, soGio, soPhut, soGiay));
+
+            HeThong.DiDon(this);
+        }
+
+        public void huyDon()
+        {
+            ngayGiaoHang = DateTime.Now;
+            HeThong.HuyDon(this);
+        }
+
+        public void nhanHang(string maKH)
+        {
+            ngayGiaoHang = DateTime.Now;
+            HeThong.NhanHang(this, maKH);
         }
     }
 }

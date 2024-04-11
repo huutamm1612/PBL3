@@ -619,11 +619,10 @@ namespace Program
                 };
                 baiDang.Add(sanPham);
             }
-
-
             reader.Close();
             return baiDang;
         }
+
         public static void CapNhatSanPham(SanPham sanPham)
         {
             string query = $"UPDATE SanPham SET maLoaiSP = '{sanPham.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
@@ -643,6 +642,151 @@ namespace Program
         {
             string query = $"UPDATE Shop Set tinhTrang = {tinhTrang} WHERE maS = '{maS}'";
             ExecuteNonQuery(query);
+        }
+
+        public static void DatHang(DonHang donHang)
+        {
+            string query = $"INSERT INTO DonHang VALUES('{donHang.maDH}', '{donHang.diaChi.maDC}', {donHang.tongTien}, {donHang.ptThanhToan}, {donHang.xu}, '{donHang.ngayDatHang.Date:MM/dd/yyyy}', '{donHang.ngayGiaoHang.Date:MM/dd/yyyy}')";
+            ExecuteNonQuery(query);
+
+            foreach(SanPham sanPham in donHang.list)
+            {
+                query = $"INSERT INTO DonHang_SanPham VALUES('{donHang.maDH}', '{sanPham.maSP}')";
+                ExecuteNonQuery(query);
+            }
+
+            query = $"INSERT INTO DonHang_KhachHang VALUES('{donHang.maDH}', '{donHang.maKH}')";
+            ExecuteNonQuery(query);
+
+            query = $"INSERT INTO DonHang_Shop VALUES('{donHang.maDH}', '{donHang.list[0].maS}')";
+            ExecuteNonQuery(query);
+        }
+
+        public static void DiDon(DonHang donHang)
+        {
+            string query = $"UPDATE DonHang SET tinhTrang = {donHang.tinhTrang}, ngayGiaoHang = '{donHang.ngayGiaoHang.Date:MM/dd/yyyy}' WHERE maDH = '{donHang.maDH}'";
+            ExecuteNonQuery(query);
+        }
+
+        public static void HuyDon(DonHang donHang)
+        {
+            string query = $"UPDATE DonHang SET tinhTrang = {donHang.tinhTrang}, ngayGiaoHang = '{donHang.ngayGiaoHang.Date:MM/dd/yyyy}' WHERE maDH = '{donHang.maDH}'";
+            ExecuteNonQuery(query);
+        }
+
+        public static void NhanHang(DonHang donHang, string maKH)
+        {
+            string query = $"UPDATE DonHang SET tinhTrang = {donHang.tinhTrang}, ngayGiaoHang = '{donHang.ngayGiaoHang.Date:MM/dd/yyyy}' WHERE maDH = '{donHang.maDH}'";
+            ExecuteNonQuery(query);
+
+            query = $"SELECT chiTieu FROM KhachHang WHERE maKH = '{maKH}'";
+            SqlDataReader reader = ExecuteQuery(query);
+            reader.Read();
+            int chiTieu = reader.GetInt32(0) + donHang.tongTien - donHang.xu;
+            reader.Close();
+            query = $"UPDATE KhachHang SET chiTieu = {chiTieu} WHERE maKH = '{maKH}'";
+            ExecuteNonQuery(query);
+
+            query = $"SELECT doanhThu FROM Shop WHERE maS = '{donHang.list[0].maS}'";
+            reader = ExecuteQuery(query);
+            reader.Read();
+            int doanhThu = reader.GetInt32(0) + donHang.tongTien;
+            reader.Close();
+            query = $"UPDATE Shop SET doanhThu = {doanhThu} WHERE maS = '{donHang.list[0].maS}'";
+            ExecuteNonQuery(query);
+        }
+
+        public static QLDonHang LoadDonHang(string maSo, bool khachHang = true)
+        {
+            QLDonHang listDonHang = new QLDonHang();
+            string query;
+
+            if (khachHang)
+                query = $"SELECT DonHang.* FROM DonHang INNER JOIN DonHang_KhachHang ON DonHang_KhachHang.maDH = DonHang.maDH WHERE DonHang_KhachHang.maKH = '{maSo}'";
+            else
+                query = $"SELECT DonHang.* FROM DonHang INNER JOIN DonHang_Shop ON DonHang_Shop.maDH = DonHang.maDH WHERE DonHang_Shop.maS = '{maSo}'";
+
+            SqlDataReader reader = ExecuteQuery(query);
+            
+            while (reader.Read())
+            {
+                listDonHang.Add(new DonHang
+                {
+                    list = new List<SanPham>(),
+                    maDH = reader.GetString(0),
+                    diaChi = new DiaChi { maDC = reader.GetString(1) },
+                    tongTien = reader.GetInt32(2),
+                    tinhTrang = reader.GetInt32(3),
+                    ptThanhToan = reader.GetInt32(4),
+                    ngayDatHang = reader.GetDateTime(5),
+                    ngayGiaoHang = reader.GetDateTime(6)
+                });
+            }
+            reader.Close();
+
+            foreach(DonHang donHang in listDonHang.list)
+            {
+                query = $"SELECT DonHang_Shop.maS FROM DonHang_Shop WHERE maDH = '{donHang.maDH}'";
+                reader = ExecuteQuery(query);
+
+                reader.Read();
+                string maS = reader.GetString(0);
+                reader.Close();
+
+                query = $"SELECT SanPham.* FROM SanPham INNER JOIN DonHang_SanPham ON DonHang_SanPham.maSP = SanPham.maSP WHERE DonHang_SanPham.maDH = '{donHang.maDH}'";
+                reader = ExecuteQuery(query);
+                
+                while(reader.Read())
+                {
+                    donHang.Add(new SanPham
+                    {
+                        maSP = reader.GetString(0),
+                        maLoaiSP = reader.GetString(1),
+                        ten = reader.GetString(2),
+                        gia = reader.GetInt32(3),
+                        soLuong = reader.GetInt32(4),
+                        tacGia = reader.GetString(5),
+                        dichGia = reader.GetString(6),
+                        ngonNgu = reader.GetString(7),
+                        soTrang = reader.GetInt32(8),
+                        namXuatBan = reader.GetInt32(9),
+                        nhaXuatBan = reader.GetString(10),
+                        loaiBia = reader.GetString(11),
+                        moTa = reader.GetString(12),
+                        luocBan = reader.GetInt32(13),
+                        maS = maS,
+                    });
+                }
+                reader.Close();
+
+                foreach(SanPham sanPham in donHang.list)
+                {
+                    query = $"SELECT maBD FROM SanPham_BaiDang WHERE maSP = '{sanPham.maSP}'";
+                    reader = ExecuteQuery(query);
+
+                    reader.Read();
+                    sanPham.maBD = reader.GetString(0);
+                    reader.Close();
+                }
+
+                query = $"SELECT * FROM DiaChi WHERE maDC = '{donHang.diaChi.maDC}'";
+                reader = ExecuteQuery(query);
+
+                reader.Read();
+                donHang.diaChi = new DiaChi
+                {
+                    maDC = reader.GetString(0),
+                    ten = reader.GetString(2),
+                    soDT = reader.GetString(3),
+                    maT_TP = reader.GetInt32(4),
+                    maQH = reader.GetInt32(5),
+                    maPX = reader.GetInt32(6),
+                    diaChiCuThe = reader.GetString(7)
+                };
+                reader.Close();
+            }
+
+            return listDonHang;
         }
     }
 }

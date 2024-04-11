@@ -120,7 +120,7 @@ namespace Program
             return HeThong.KiemTraTaoShop(this);
         }
 
-        public void datHang(QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan)
+        public void datHang(QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, int xu)
         {
             DonHang donHang = new DonHang
             {
@@ -129,15 +129,24 @@ namespace Program
                 tinhTrang = 0,
                 ptThanhToan = ptThanhToan,
                 diaChi = diaChi,
+                xu = xu,
                 ngayDatHang = DateTime.Now
             };
-
+            this.xu -= xu;
             listDonHang.AddRange(donHang.datHang());
+        }
+
+        public void huyDon(DonHang donHang)
+        {
+            donHang.capNhatTinhTrang(-1);
+            donHang.huyDon();
         }
 
         public void nhanHang(DonHang donHang)
         {
-
+            donHang.capNhatTinhTrang(2);
+            chiTieu += donHang.tongTien - donHang.xu;
+            donHang.nhanHang(maSo);
         }
     }
 }
