@@ -32,7 +32,6 @@ namespace Program
                     sp.ngayThem = sanPham.ngayThem;
                     sp.soLuong += sanPham.soLuong;
 
-                    HeThong.ThemVaoGioHang(sp, maKH, true);
                     return;
                 }
             }

@@ -77,12 +77,10 @@ namespace Program
         public void Add(BaiDang baiDang)
         {
             listBaiDang.Add(baiDang);
-            HeThong.ThemBaiDang(maSo, baiDang);
         }
         public void Insert(int index, BaiDang baiDang)
         {
             listBaiDang.Insert(index, baiDang);
-            HeThong.ThemBaiDang(maSo, baiDang);
         }
 
         public int IndexOf(BaiDang baiDang)
