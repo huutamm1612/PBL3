@@ -15,6 +15,7 @@ namespace Program
         public string avt { get; set; }
         public List<DiaChi> listDiaChi { get; set; }
         public QLDonHang listDonHang { get; set; }
+        public GioHang gioHang { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -27,7 +28,9 @@ namespace Program
             this.nFollow = 0;
             this.xu = 0;
             this.chiTieu = 0;
-            this.listDonHang = null;
+            this.listDiaChi = new List<DiaChi>();
+            this.listDonHang = new QLDonHang();
+            this.gioHang = new GioHang();
         }
         public KhachHang(string maSo, string taiKhoan)
         {

@@ -34,10 +34,10 @@ namespace Program
             return -1;
         }
 
-        public void RemoveSer(List<string> maSPs)
+        public virtual void RemoveRange(params string[] maSPs)
         {
             Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaSP, SanPham.EqualMaSP);
-            Utils.RemoveSer(list, maSPs);
+            Utils.RemoveRange(list, maSPs.ToList());
         }
 
         public void RemoveAt(int index) => list.RemoveAt(index);
@@ -54,15 +54,15 @@ namespace Program
             }
         }
 
-        public void AddRange(QLSanPham QLSP)
+        public void AddRange(params SanPham[] listSanPham)
         {
-            foreach(SanPham sanPham in QLSP.list)
+            foreach(SanPham sanPham in listSanPham)
             {
                 Add(sanPham);
             }
         }
 
-        public void Add(SanPham sanPham)
+        public virtual void Add(SanPham sanPham)
         {
             list.Add(sanPham);
         }
@@ -87,7 +87,7 @@ namespace Program
 
             foreach(SanPham sanPham in list)
             {
-                tongTien += sanPham.gia * sanPham.soLuong;
+                tongTien += (int)(sanPham.gia * sanPham.soLuong * HeThong.GetGiamGia(sanPham.maSP));
             }
 
             return tongTien;
