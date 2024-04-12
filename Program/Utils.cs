@@ -14,7 +14,7 @@ namespace Program
         public delegate bool Compare(object o1, object o2);
         public delegate bool Equal(object o1, object o2);
 
-        public static void RemoveSer<T>(List<T> list, List<string> maSo)
+        public static void RemoveRange<T>(List<T> list, List<string> maSo)
         {
             maSo.Sort();
             int i = 0, j = 0;

@@ -46,6 +46,8 @@ namespace Program
             ngayThem = DateTime.Now;
         }
 
+        
+
         public SanPham(string maSP)
         {
             this.maSP = maSP;

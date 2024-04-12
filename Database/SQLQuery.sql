@@ -92,10 +92,11 @@ CREATE TABLE MaHienTai(
 	maDC varchar(10),
 	maLoaiSP varchar(10),
 	maSP varchar(10),
-	maBD varchar(10)
+	maBD varchar(10),
+	maDH varchar(10)
 )
 
-INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000', '0000000000','0000000000','0000000000')
+INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000', '0000000000','0000000000','0000000000','0000000000')
 
 CREATE TABLE KhachHang_Shop (
 	maKH varchar(10),
@@ -160,14 +161,53 @@ CREATE TABLE BaiDang_Shop(
 
 CREATE TABLE DonHang(
 	maDH varchar(10) PRIMARY KEY,
-	maKH varchar(10),
 	maDC varchar(10),
 	tongTien int,
 	tinhTrang int,
 	ptThanhToan int,
+	xu int,
 	ngayDatHang date,
 	ngayGiaoHang date,
 
-	CONSTRAINT FK_DonHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
 	CONSTRAINT FK_DonHang_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
+)
+
+CREATE TABLE DonHang_SanPham(
+	maDH varchar(10),
+	maSP varchar(10),
+	soLuong int,
+	PRIMARY KEY(maDH, maSP),
+	
+	CONSTRAINT FK_DonHang_SanPham_DonHang FOREIGN KEY (maDH) REFERENCES DonHang(maDH),
+	CONSTRAINT FK_DonHang_SanPham_SanPham FOREIGN KEY (maSP) REFERENCES SanPham(maSP)
+)
+
+CREATE TABLE DonHang_KhachHang(
+	maDH varchar(10),
+	maKH varchar(10),
+	PRIMARY KEY (maKH, maDH),
+
+	CONSTRAINT FK_DonHang_KhachHang_DonHang FOREIGN KEY (maDH) REFERENCES DonHang(maDH),
+	CONSTRAINT FK_DonHang_KhachHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+)
+
+
+CREATE TABLE DonHang_Shop(
+	maDH varchar(10),
+	maS varchar(10),
+	PRIMARY KEY (maS, maDH),
+
+	CONSTRAINT FK_DonHang_Shop_DonHang FOREIGN KEY (maDH) REFERENCES DonHang(maDH),
+	CONSTRAINT FK_DonHang_Shop_Shop FOREIGN KEY (maS) REFERENCES Shop(maS),
+)
+
+CREATE TABLE GioHang(
+	maKH varchar(10),
+	maSP varchar(10),
+	soLuong int,
+	ngayThem date,
+	PRIMARY KEY (maKH, maSP),	
+	
+	CONSTRAINT FK_GioHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_GioHang_SanPham FOREIGN KEY (maSP) REFERENCES SanPham(maSP)
 )
