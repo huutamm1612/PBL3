@@ -159,6 +159,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -217,7 +218,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -2176,6 +2176,19 @@
             this.pictureBox5.TabIndex = 45;
             this.pictureBox5.TabStop = false;
             // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBox12.Location = new System.Drawing.Point(1197, 695);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(104, 21);
+            this.textBox12.TabIndex = 44;
+            this.textBox12.Text = "0/1000";
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // textBox14
             // 
             this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -2867,19 +2880,6 @@
             this.label6.Size = new System.Drawing.Size(150, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox12.Location = new System.Drawing.Point(1197, 695);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(104, 21);
-            this.textBox12.TabIndex = 44;
-            this.textBox12.Text = "0/1000";
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // BanHang_Form
             // 

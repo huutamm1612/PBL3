@@ -352,7 +352,7 @@ namespace Program
 
             Panel panel = new Panel
             {
-                Size = new Size(1420, 800),
+                Size = new Size(1420, 650),
                 BackColor = color1,
             };
             TextBox anhSP = new TextBox
@@ -809,20 +809,20 @@ namespace Program
 
             Button btnCapNhap = new Button
             {
-                Location = new Point(195, 719),
+                Location = button25.Location,
                 Text = "Cập nhật",
                 ForeColor = Color.MistyRose,
-                Size = new Size(256, 45),
+                Size = button25.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
             };
 
             Button btnXoa = new Button
             {
-                Location = new Point(459, 719),
-                Text = "Cập nhật",
-                ForeColor = Color.MistyRose,
-                Size = new Size(256, 45),
+                Location = button23.Location,
+                Text = "Xóa",
+                ForeColor = Color.Black,
+                Size = button23.Size,
                 Font = font1,
                 BackColor = color1,
             };
@@ -887,12 +887,11 @@ namespace Program
             // chinh sua lai kich thuoc
 
             // lam moi va an panel
-            listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + 800);
+            listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
             listSP_FLPanel.Controls.Add(this.sanPhamForm());
             listSP_FLPanel.Visible = true;
             formThemSPPanel.Visible = false;
-            themSPButton.Visible = false;
-
+            themSPButton.Visible = true;
 
         }
 
