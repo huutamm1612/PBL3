@@ -565,7 +565,7 @@ namespace Program
             panel.Controls.Add(txtNXB);
             TextBox txtNam = new TextBox
             {
-                Text = namXuatBan_Text.Text,    
+                Text = namXuatBan_Text.Text,
                 Location = namXuatBan_Text.Location,
                 Size = namXuatBan_Text.Size,
                 Font = font1,
@@ -630,7 +630,7 @@ namespace Program
                 Location = Count_SP.Location,
                 ForeColor = Color.Silver,
                 BorderStyle = BorderStyle.None,
-                Text =Count_SP.Text,
+                Text = Count_SP.Text,
                 Size = Count_SP.Size,
                 Font = font1,
                 BackColor = color1,
@@ -702,7 +702,7 @@ namespace Program
                 Size = SP_Pic.Size,
                 Font = font1,
                 BorderStyle = BorderStyle.FixedSingle,
-                BackColor= color1
+                BackColor = color1
             };
             panel.Controls.Add(picSP);
             PictureBox picTG = new PictureBox
@@ -807,27 +807,27 @@ namespace Program
 
             };
 
-            Button btnCapNhap = new Button
+            Button btnCapNhat = new Button
             {
-                Location = button25.Location,
+                Location = capNhat_Button.Location,
                 Text = "Cập nhật",
                 ForeColor = Color.MistyRose,
-                Size = button25.Size,
+                Size = capNhat_Button.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
             };
 
             Button btnXoa = new Button
             {
-                Location = button23.Location,
+                Location = xoa_Button.Location,
                 Text = "Xóa",
                 ForeColor = Color.Black,
-                Size = button23.Size,
+                Size = xoa_Button.Size,
                 Font = font1,
                 BackColor = color1,
             };
             panel.Controls.Add(btnXoa);
-            panel.Controls.Add(btnCapNhap);
+            panel.Controls.Add(btnCapNhat);
             panel.Controls.Add(cboLanguage);
             panel.Controls.Add(lbTenSP);
             panel.Controls.Add(lbTacGia);
@@ -841,19 +841,37 @@ namespace Program
             panel.Controls.Add(lbGia);
             panel.Controls.Add(lbSoLuong);
 
-
+            btnCapNhat.Click += Update_Button;
+  
             return panel;
+
+        }
+        private void Update_Button(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+
+            listSP_FLPanel.Visible = false;
+            formThemSPPanel.Visible = true;
+            listSP_FLPanel.Controls.Remove(panelToUpdate);
+          
+
         }
 
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-            /*if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
+            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
                && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
                && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
-                
-                
+                listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
+                listSP_FLPanel.Controls.Add(this.sanPhamForm());
+                listSP_FLPanel.Visible = true;  
+                formThemSPPanel.Visible = false;
+                themSPButton.Visible = true;
+               
+                refreshThemSPForm(sender, e);   
             }
 
             else
@@ -879,7 +897,7 @@ namespace Program
                     theLoai_check.Visible = false;
                 else
                     theLoai_check.Visible = true;
-            }*/
+            }
             // dua du lieu vao QLSP     
 
             // copy roi them vao FlowLayoutPanel listSP_FLPanel
@@ -887,11 +905,7 @@ namespace Program
             // chinh sua lai kich thuoc
 
             // lam moi va an panel
-            listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
-            listSP_FLPanel.Controls.Add(this.sanPhamForm());
-            listSP_FLPanel.Visible = true;
-            formThemSPPanel.Visible = false;
-            themSPButton.Visible = true;
+
 
         }
 
@@ -1046,7 +1060,7 @@ namespace Program
             theLoai_check.Visible = false;
             bia_Check.Visible = false;
             language_Check.Visible = false;
-
+            moTaSP_Text.Text = "";
             AddBorderToPictureBox(SP_Pic, Color.White);
             SP_Pic.BorderStyle = BorderStyle.FixedSingle;
             AddBorderToPictureBox(TG_Pic, Color.White);
@@ -1075,6 +1089,9 @@ namespace Program
 
         }
 
+        private void capNhat_Button_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
