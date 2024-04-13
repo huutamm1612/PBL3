@@ -11,7 +11,10 @@ namespace Program
     {
         public List<SanPham> list { get; set; }
 
-        public QLSanPham() { }
+        public QLSanPham()
+        {
+            list = new List<SanPham>();
+        }
 
         public QLSanPham(List<SanPham> list)
         {
@@ -35,6 +38,8 @@ namespace Program
             }
             list.Add((SanPham)item);
         }
+
+        public void Clear() => list.Clear();
 
         public int IndexOf(object item)
         {

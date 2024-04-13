@@ -53,6 +53,7 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhGia.cs" />
     <Compile Include="DiaChi.cs" />
     <Compile Include="BanHangForm.cs">
       <SubType>Form</SubType>
@@ -74,6 +75,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLBaiDang.cs" />
+    <Compile Include="QLDanhGia.cs" />
     <Compile Include="QLDonHang.cs" />
     <Compile Include="QLSanPham.cs" />
     <Compile Include="IQuanLy.cs" />

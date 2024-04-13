@@ -163,17 +163,12 @@ namespace Program
                 
                 foreach(var sanPham in donHang.list)
                 {
-                    searchSanPham(sanPham.maSP, sanPham.maBD).soLuong -= sanPham.soLuong;
-                }
-            }
-        }
+                    SanPham sp = searchSanPham(sanPham.maSP, sanPham.maBD);
+                    sp.soLuong -= sanPham.soLuong;
+                    sp.luocBan += sanPham.soLuong;
 
-        public void giaoHangThanhCong(params SanPham[] list)
-        {
-            foreach(SanPham sanPham in list)
-            {
-                doanhThu += sanPham.soLuong * sanPham.gia;
-                sanPham.luocBan += sanPham.soLuong;
+                    HeThong.CapNhatSanPham(sp);
+                }
             }
         }
 

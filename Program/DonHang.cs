@@ -122,7 +122,7 @@ namespace Program
 
             int soNgay = random.Next(3, 7); 
             int soGio = random.Next(24); 
-            int soPhut = random.Next(60);
+            int soPhut = random.Next(60); 
             int soGiay = random.Next(60);
 
             tinhTrang = 1;
@@ -137,10 +137,42 @@ namespace Program
             HeThong.HuyDon(this);
         }
 
-        public void nhanHang(string maKH)
+        public void nhanHang()
         {
             ngayGiaoHang = DateTime.Now;
-            HeThong.NhanHang(this, maKH);
+            HeThong.NhanHang(this);
+        }
+
+        public DanhGia[] taoDanhGia()
+        {
+            QLDanhGia qLDanhGia = new QLDanhGia();
+            Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaS, SanPham.EqualMaS);
+
+            List<string> tmp = new List<string>();
+            string maBD = list[0].maBD;
+
+            foreach(SanPham sanPham in list)
+            {
+                if(maBD == sanPham.maBD)
+                {
+                    tmp.Add(sanPham.maSP);
+                }
+                else
+                {
+                    qLDanhGia.Add(new DanhGia
+                    {
+                        maSP = tmp
+                    });
+                    tmp.Clear();
+                }
+            }
+
+            qLDanhGia.Add(new DanhGia
+            {
+                maSP = tmp
+            });
+
+            return qLDanhGia.list.ToArray();
         }
 
         public static bool EqualMaDH(object o1, object o2) => String.Equals(((DonHang)o1).maDH, ((DonHang)o2).maDH);

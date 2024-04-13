@@ -211,3 +211,42 @@ CREATE TABLE GioHang(
 	CONSTRAINT FK_GioHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
 	CONSTRAINT FK_GioHang_SanPham FOREIGN KEY (maSP) REFERENCES SanPham(maSP)
 )
+
+CREATE TABLE DanhGia(
+	maDG varchar(10),
+	doiTuong nvarchar(50),
+	thietKeBia nvarchar(50),
+	noiDung nvarchar(200),
+	sao int,
+	luocThich int,
+	ngayThem date,
+
+	PRIMARY KEY(maDG)
+)
+
+CREATE TABLE KhachHang_DanhGia(
+	maKH varchar(10),
+	maDG varchar(10),
+	PRIMARY KEY (maKH, maDG),
+
+	CONSTRAINT FK_KhachHang_DanhGia_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_KhachHang_DanhGia_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+)
+
+CREATE TABLE DanhGia_BaiDang(
+	maDG varchar(10),
+	maBD varchar(10),
+	PRIMARY KEY (maBD, maDG),
+
+	CONSTRAINT FK_DanhGia_BaiDang_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
+	CONSTRAINT FK_DanhGia_BaiDang_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+)
+
+CREATE TABLE DanhGia_SanPham(
+	maDG varchar(10),
+	maSP varchar(10),
+	PRIMARY KEY (maSP, maDG),
+
+	CONSTRAINT FK_DanhGia_SanPham_BaiDang FOREIGN KEY (maSP) REFERENCES SanPham(maSP),
+	CONSTRAINT FK_DanhGia_SanPham_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+)

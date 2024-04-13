@@ -12,5 +12,6 @@ namespace Program
         int IndexOf(object item);
         void RemoveAt(int index);
         void Remove(object item);
+        void Clear();
     }
 }

@@ -53,6 +53,8 @@ namespace Program
             list.RemoveAt(index);
         }
 
+        public void Clear() => list.Clear();
+
         public BaiDang Last() => list.Last();
 
         public void Add(int index, SanPham sanPham)

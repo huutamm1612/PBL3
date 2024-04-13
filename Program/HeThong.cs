@@ -701,17 +701,17 @@ namespace Program
             ExecuteNonQuery(query);
         }
 
-        public static void NhanHang(DonHang donHang, string maKH)
+        public static void NhanHang(DonHang donHang)
         {
             string query = $"UPDATE DonHang SET tinhTrang = {donHang.tinhTrang}, ngayGiaoHang = '{donHang.ngayGiaoHang.Date:MM/dd/yyyy}' WHERE maDH = '{donHang.maDH}'";
             ExecuteNonQuery(query);
 
-            query = $"SELECT chiTieu FROM KhachHang WHERE maKH = '{maKH}'";
+            query = $"SELECT chiTieu FROM KhachHang WHERE maKH = '{donHang.maDH}'";
             SqlDataReader reader = ExecuteQuery(query);
             reader.Read();
             int chiTieu = reader.GetInt32(0) + donHang.tongTien - donHang.xu;
             reader.Close();
-            query = $"UPDATE KhachHang SET chiTieu = {chiTieu} WHERE maKH = '{maKH}'";
+            query = $"UPDATE KhachHang SET chiTieu = {chiTieu} WHERE maKH = '{donHang.maDH}'";
             ExecuteNonQuery(query);
 
             query = $"SELECT doanhThu FROM Shop WHERE maS = '{donHang.list[0].maS}'";
@@ -853,6 +853,68 @@ namespace Program
             reader.Close();
 
             return list;
+        }
+
+        public static QLDanhGia LoadDanhGia(string maBD)
+        {
+            QLDanhGia list = new QLDanhGia();
+
+            string query = $"SELECT DG.* FROM DanhGia DG INNER JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = '{maBD}'";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            while(reader.Read())
+            {
+                
+                query = $"SELECT maSP FROM DanhGia_SanPham WHERE maDG = '{reader.GetString(0)}'";
+                SqlDataReader reader1 = ExecuteQuery(query);
+
+                List<string> maSP = new List<string>();
+
+                while (reader1.Read())
+                {
+                    maSP.Add(reader1.GetString(0));
+                }
+                reader1.Close();
+
+                query = $"SELECT maKH FROM KhachHang_DanhGia WHERE maBD = '{reader.GetString(0)}'";
+                reader1 = ExecuteQuery(query);
+                string maKH = reader1.GetString(0);
+                reader1.Close();
+
+                list.Add(new DanhGia
+                {
+                    maDG = reader.GetString(0),
+                    maBD = maBD,
+                    maKH = maKH,
+                    doiTuong = reader.GetString(1),
+                    thietKeBia = reader.GetString(2),
+                    noiDung = reader.GetString(3),
+                    sao = reader.GetInt32(4),
+                    luocThich = reader.GetInt32(5),
+                    ngayThem = reader.GetDateTime(6),
+                    maSP = maSP
+                });
+            }
+
+            return list;
+        }
+
+        public static void ThemDanhGia(DanhGia danhGia)
+        {
+            string query = $"INSERT INTO DanhGia VALUES('{danhGia.maDG}', '{danhGia.doiTuong}', '{danhGia.thietKeBia}', '{danhGia.noiDung}', {danhGia.sao}, {danhGia.luocThich}, '{danhGia.ngayThem.Date:MM/dd/yyyy}')";
+            ExecuteNonQuery(query);
+
+            query = $"INSERT INTO KhachHang_DanhGia VALUES('{danhGia.maKH}', '{danhGia.maDG}')";
+            ExecuteNonQuery(query);
+
+            query = $"INSERT INTO DanhGia_BaiDang VALUES('{danhGia.maDG}', '{danhGia.maBD}')";
+            ExecuteNonQuery(query);
+
+            foreach(string s in danhGia.maSP)
+            {
+                query = $"INSERT INTO DanhGia_SanPham VALUES('{danhGia.maDG}', '{s}')";
+                ExecuteNonQuery(query);
+            }
         }
     }
 }

@@ -55,6 +55,8 @@ namespace Program
         public override void Add(object item)
         {
             SanPham sanPham = item as SanPham;
+            if (sanPham.maSP == "")
+                sanPham.maSP = HeThong.MaMoi("maSP");
             sanPham.maBD = maBD;
             base.Add(sanPham);
         }

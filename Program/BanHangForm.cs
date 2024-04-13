@@ -45,6 +45,7 @@ namespace Program
             currPanel.Visible = false;
             currPanel = newPanel;
             currPanel.Visible = true;
+            miniConTrolPanel.Visible = false;
         }
 
         private void refreshHomePanel()
@@ -283,7 +284,10 @@ namespace Program
                     break;
 
                 case "Thêm Sản Phẩm":
+                    QLSP = new QLSanPham();
                     SwitchPanel(themSanPhamPanel);
+                    miniConTrolPanel.Visible = true;
+                    miniConTrolPanel.BringToFront();
                     break;
 
                 case "Tất Cả Sản Phẩm":
@@ -324,7 +328,6 @@ namespace Program
 
         private void themSPButton_Click(object sender, EventArgs e)//1575, 140
         {
-            shop.listBaiDang.Add(new BaiDang());
             if (theLoai_CBBox.Items.Count == 0)
                 Utils.SetComboBox(theLoai_CBBox, HeThong.LoadTheLoai());
 
@@ -351,11 +354,20 @@ namespace Program
             Color color1 = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
+            Panel parentPanel = new Panel
+            {
+                Size = formThemSPPanel.Size,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = color1
+            };
+
             Panel panel = new Panel
             {
-                Size = new Size(1420, 650),
-                BackColor = color1,
+                Location = new Point(0, 0),
+                Size = new Size(1420, 585),
+                BackColor = color1
             };
+
             TextBox anhSP = new TextBox
             {
                 Location = textBox28.Location,
@@ -368,8 +380,6 @@ namespace Program
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
             };
-            panel.Controls.Add(anhSP);
-
             TextBox lbTenSP = new TextBox
             {
                 Location = textBox13.Location,
@@ -513,9 +523,7 @@ namespace Program
                 ReadOnly = true,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
-            };
-            panel.Controls.Add(lbSoTrang);
-
+            };           
             TextBox txtSP = new TextBox
             {
                 Location = tenSP_Text.Location,
@@ -523,11 +531,9 @@ namespace Program
                 Size = tenSP_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
             };
-            panel.Controls.Add(txtSP);
             TextBox txtTG = new TextBox
             {
                 Location = tenTacGia_Text.Location,
@@ -535,11 +541,9 @@ namespace Program
                 Size = tenTacGia_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 1,
             };
-            panel.Controls.Add(txtTG);
             TextBox txtDG = new TextBox
             {
                 Location = tenDichGia_Text.Location,
@@ -547,11 +551,9 @@ namespace Program
                 Size = tenDichGia_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 2,
             };
-            panel.Controls.Add(txtDG);
             TextBox txtNXB = new TextBox
             {
                 Text = nhaXuatBan_Text.Text,
@@ -559,11 +561,9 @@ namespace Program
                 Size = nhaXuatBan_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 3,
             };
-            panel.Controls.Add(txtNXB);
             TextBox txtNam = new TextBox
             {
                 Text = namXuatBan_Text.Text,
@@ -571,11 +571,9 @@ namespace Program
                 Size = namXuatBan_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 4,
             };
-            panel.Controls.Add(txtNam);
             TextBox txtPrice = new TextBox
             {
                 Text = gia_Text.Text,
@@ -583,11 +581,9 @@ namespace Program
                 Size = gia_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 5,
             };
-            panel.Controls.Add(txtPrice);
             TextBox txtSL = new TextBox
             {
                 Text = soLuong_Text.Text,
@@ -595,12 +591,9 @@ namespace Program
                 Size = soLuong_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 6,
             };
-
-            panel.Controls.Add(txtSL);
             TextBox txtTrang = new TextBox
             {
                 Text = soTrang_Text.Text,
@@ -608,12 +601,9 @@ namespace Program
                 Size = soTrang_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 7,
             };
-
-            panel.Controls.Add(txtTrang);
             TextBox txtMota = new TextBox
             {
                 Text = moTaSP_Text.Text,
@@ -621,11 +611,9 @@ namespace Program
                 Size = moTaSP_Text.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 8,
             };
-            panel.Controls.Add(txtMota);
             TextBox txt10 = new TextBox
             {
                 Location = Count_SP.Location,
@@ -636,6 +624,7 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
+                Enabled = false,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 8,
             };
@@ -649,11 +638,10 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
+                Enabled = false,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 20,
             };
-            panel.Controls.Add(txt15);
-            panel.Controls.Add(txt10);
             TextBox txt11 = new TextBox
             {
                 Location = Count_TG.Location,
@@ -664,10 +652,10 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
+                Enabled = false,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 17,
             };
-            panel.Controls.Add(txt11);
             TextBox txt12 = new TextBox
             {
                 Location = Count_Dichgia.Location,
@@ -678,10 +666,10 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
+                Enabled = false,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 20,
             };
-            panel.Controls.Add(txt12);
             TextBox txt13 = new TextBox
             {
                 Location = Count_NXB.Location,
@@ -692,11 +680,10 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
+                Enabled = false,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 26,
             };
-
-            panel.Controls.Add(txt13);
             PictureBox picSP = new PictureBox
             {
                 Location = SP_Pic.Location,
@@ -705,7 +692,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(picSP);
             PictureBox picTG = new PictureBox
             {
                 Location = TG_Pic.Location,
@@ -714,7 +700,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(picTG);
             PictureBox pic3 = new PictureBox
             {
                 Location = DichGia_Pic.Location,
@@ -723,7 +708,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(pic3);
             PictureBox pic4 = new PictureBox
             {
                 Location = NXB_Pic.Location,
@@ -732,7 +716,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(pic4);
             PictureBox pic5 = new PictureBox
             {
                 Location = Nam_Pic.Location,
@@ -741,7 +724,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(pic5);
             PictureBox pic6 = new PictureBox
             {
                 Location = Gia_Pic.Location,
@@ -750,7 +732,6 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            panel.Controls.Add(pic6);
             PictureBox pic7 = new PictureBox
             {
                 Location = SoLuong_Pic.Location,
@@ -759,7 +740,6 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            panel.Controls.Add(pic7);
             PictureBox pic8 = new PictureBox
             {
                 Location = SoTrang_Pic.Location,
@@ -768,7 +748,6 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            panel.Controls.Add(pic8);
             PictureBox pic9 = new PictureBox
             {
                 Location = moTa_Pic.Location,
@@ -777,58 +756,76 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            panel.Controls.Add(pic9);
             ComboBox cboTheLoai = new ComboBox
             {
                 Location = theLoai_CBBox.Location,
-                Text = theLoai_CBBox.SelectedItem.ToString(),
                 Size = theLoai_CBBox.Size,
                 Font = font1,
                 BackColor = color1,
 
             };
-            panel.Controls.Add(cboTheLoai);
+            Utils.SetComboBox(cboTheLoai, HeThong.LoadTheLoai());
+            cboTheLoai.SelectedIndex = theLoai_CBBox.SelectedIndex;
+
             ComboBox cboLoaiBia = new ComboBox
             {
+                DataSource = loaiBia_CBBox.DataSource,
                 Location = loaiBia_CBBox.Location,
-                Text = loaiBia_CBBox.SelectedItem.ToString(),
                 Size = loaiBia_CBBox.Size,
                 Font = font1,
                 BackColor = color1,
 
             };
-            panel.Controls.Add(cboLoaiBia);
+            cboLoaiBia.Items.AddRange( new object[] {"Bìa mềm", "Bìa Cứng"} );
+            cboLoaiBia.SelectedIndex = loaiBia_CBBox.SelectedIndex;
+
             ComboBox cboLanguage = new ComboBox
             {
+                DataSource = ngonNgu_CBBox.DataSource,
                 Location = ngonNgu_CBBox.Location,
-                Text = ngonNgu_CBBox.SelectedItem.ToString(),
                 Size = ngonNgu_CBBox.Size,
                 Font = font1,
                 BackColor = color1,
 
             };
-
-            Button btnCapNhat = new Button
+            cboLanguage.Items.AddRange(new object[] 
             {
-                Location = luuSPButton.Location,
-                Text = "Cập nhật",
-                ForeColor = Color.MistyRose,
-                Size = luuSPButton.Size,
-                Font = font1,
-                BackColor = Color.OrangeRed,
-            };
+                "Tiếng Việt",
+                "Tiếng Anh",
+                "Tiếng Trung Quốc",
+                "Tiếng Nhật Bản",
+                "Tiếng Nga",
+                "Khác"
+            });
+            cboLanguage.SelectedIndex = ngonNgu_CBBox.SelectedIndex;
 
-            Button btnXoa = new Button
-            {
-                Location = huyThemSPButton.Location,
-                Text = "Xóa",
-                ForeColor = Color.Black,
-                Size = huyThemSPButton.Size,
-                Font = font1,
-                BackColor = color1,
-            };
-            panel.Controls.Add(btnXoa);
-            panel.Controls.Add(btnCapNhat);
+            panel.Controls.Add(anhSP);
+            panel.Controls.Add(lbSoTrang);
+            panel.Controls.Add(txtSP);
+            panel.Controls.Add(txtTG);
+            panel.Controls.Add(txtDG);
+            panel.Controls.Add(txtNXB);
+            panel.Controls.Add(txtNam);
+            panel.Controls.Add(txtPrice);
+            panel.Controls.Add(txtSL);
+            panel.Controls.Add(txtTrang);
+            panel.Controls.Add(txtMota);
+            panel.Controls.Add(txt15);
+            panel.Controls.Add(txt10);
+            panel.Controls.Add(txt11);
+            panel.Controls.Add(txt12);
+            panel.Controls.Add(txt13);
+            panel.Controls.Add(picSP);
+            panel.Controls.Add(picTG);
+            panel.Controls.Add(pic3);
+            panel.Controls.Add(pic4);
+            panel.Controls.Add(pic5);
+            panel.Controls.Add(pic6);
+            panel.Controls.Add(pic7);
+            panel.Controls.Add(pic8);
+            panel.Controls.Add(pic9);
+            panel.Controls.Add(cboTheLoai);
+            panel.Controls.Add(cboLoaiBia);
             panel.Controls.Add(cboLanguage);
             panel.Controls.Add(lbTenSP);
             panel.Controls.Add(lbTacGia);
@@ -842,11 +839,35 @@ namespace Program
             panel.Controls.Add(lbGia);
             panel.Controls.Add(lbSoLuong);
 
+            Button btnCapNhat = new Button
+            {
+                Location = luuSPButton.Location,
+                Text = "Cập nhật",
+                ForeColor = Color.MistyRose,
+                Size = luuSPButton.Size,
+                Font = font1,
+                BackColor = Color.OrangeRed,
+            };
+            Button btnXoa = new Button
+            {
+                Location = huyThemSPButton.Location,
+                Text = "Xóa",
+                ForeColor = Color.Black,
+                Size = huyThemSPButton.Size,
+                Font = font1,
+                BackColor = color1,
+            };
+
+            panel.Enabled = false;
+
+            parentPanel.Controls.Add(panel);
+            parentPanel.Controls.Add(btnXoa);
+            parentPanel.Controls.Add(btnCapNhat);
+
             btnCapNhat.Click += Update_Button;
             btnXoa.Click += Remove_Button;
-  
-            return panel;
 
+            return parentPanel;
         }
 
         private void Remove_Button(object sender, EventArgs e)
@@ -866,13 +887,9 @@ namespace Program
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
-            
-            formThemSPPanel.Visible = true;
-            formThemSPPanel.BringToFront();
-                    
-            listSP_FLPanel.Controls.Remove(panelToUpdate);
-          
-          
+
+            foreach(Control control in panelToUpdate.Controls)
+                control.Enabled = true;
 
         }
 
@@ -885,8 +902,8 @@ namespace Program
             {
                 SanPham sanPham = new SanPham
                 {
-                    maSP = HeThong.MaMoi("maSP"),
-                    //maLoaiSP = ,
+                    maSP = "",
+                    maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
                     maBD = shop.listBaiDang.list.Last().maBD,
                     ten = tenDichGia_Text.Text,
                     tacGia = tenDichGia_Text.Text,
@@ -897,9 +914,9 @@ namespace Program
                     soLuong = int.Parse(soLuong_Text.Text),
                     ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
                     loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
-                    theLoai = theLoai_CBBox.SelectedItem.ToString(),
                 };
-                shop.listBaiDang.Add(-1, sanPham);
+                QLSP.Add(sanPham);
+
                 listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
                 listSP_FLPanel.Controls.Add(this.sanPhamForm());
                 listSP_FLPanel.Visible = true;  
@@ -933,15 +950,12 @@ namespace Program
                 else
                     theLoai_check.Visible = true;
             }
-            // dua du lieu vao QLSP     
 
             // copy roi them vao FlowLayoutPanel listSP_FLPanel
 
             // chinh sua lai kich thuoc
 
             // lam moi va an panel
-
-
         }
 
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
@@ -988,7 +1002,7 @@ namespace Program
 
         private void moTaTT_txt_TextChanged(object sender, EventArgs e)
         {
-            Count(moTaTT_txt, Count_MoTaTT, 2000);
+            Count(moTa_txt, Count_MoTaTT, 2000);
         }
         private void tieuDe_txt_TextChanged(object sender, EventArgs e)
         {
@@ -1053,12 +1067,10 @@ namespace Program
         }
         private void AddBorderToPictureBox(PictureBox pictureBox, Color color)
         {
-            Pen pen = new Pen(color, 2); // Độ dày của viền là 3 pixel
+            Pen pen = new Pen(color, 2);
 
-            // Đặt thuộc tính SizeMode của PictureBox về AutoSize để nó có thể thay đổi kích thước tự động
             pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
 
-            // Vẽ một hình chữ nhật bao quanh toàn bộ PictureBox để tạo viền
             using (Graphics g = pictureBox.Parent.CreateGraphics())
             {
                 g.DrawRectangle(pen, new Rectangle(pictureBox.Location, pictureBox.Size));
@@ -1127,6 +1139,40 @@ namespace Program
         private void capNhat_Button_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void luuBaiDangButton_Click(object sender, EventArgs e)
+        {
+            // kiem tra hop le
+            if(/*hople*/ true)
+            {
+                BaiDang baiDang = new BaiDang
+                {
+                    maBD = HeThong.MaMoi("MaBD"),
+                    maS = shop.maSo,
+                    tieuDe = tieuDe_txt.Text,
+                    moTa = moTa_txt.Text,
+                    giamGia = int.Parse(giamGia_txt.Text),
+                    luocThich = 0
+                };
+
+                foreach(var sanPham in QLSP.list)
+                {
+                    baiDang.Add(sanPham);
+                }
+
+                QLSP.Clear();
+                shop.Insert(0, baiDang);
+            }
+            else
+            {
+                // bao loi
+            }
+        }
+
+        private void huyThemBaiDang_Click(object sender, EventArgs e)
+        {
+            // refresh va ve trang chu
         }
     }
 }

@@ -16,14 +16,21 @@ namespace Program
         public List<DiaChi> listDiaChi { get; set; }
         public QLDonHang listDonHang { get; set; }
         public GioHang gioHang { get; set; }
+        public QLDanhGia listDanhGia { get; set; }
 
         public override bool Equals(object obj)
         {
             return ((KhachHang)obj).maSo == this.maSo;
         }
 
-        public KhachHang() : base()
+        public KhachHang()
         {
+            this.maSo = maSo;
+            this.ten = ten;
+            this.soDT = soDT;
+            this.email = email;
+            this.diaChi = diaChi;
+            this.ngaySinh = ngaySinh;
             this.taiKhoan = null;
             this.nFollow = 0;
             this.xu = 0;
@@ -31,6 +38,7 @@ namespace Program
             this.listDiaChi = new List<DiaChi>();
             this.listDonHang = new QLDonHang();
             this.gioHang = new GioHang();
+            this.listDanhGia = new QLDanhGia();
         }
         public KhachHang(string maSo, string taiKhoan)
         {
@@ -149,7 +157,9 @@ namespace Program
         {
             donHang.capNhatTinhTrang(2);
             chiTieu += donHang.tongTien - donHang.xu;
-            donHang.nhanHang(maSo);
+            donHang.nhanHang();
+
+            listDanhGia.AddRange(donHang.taoDanhGia());
         }
     }
 }

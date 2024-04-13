@@ -48,6 +48,8 @@ namespace Program
             list.RemoveAt(index);
         }
 
+        public void Clear() => list.Clear();
+
         public QLDonHang(QLDonHang donHang)
         {
             list = donHang.list;
