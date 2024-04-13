@@ -16,8 +16,9 @@ namespace Program
             maKH = "";
         }
 
-        public override void Add(SanPham sanPham)
+        public override void Add(object item)
         {
+            SanPham sanPham = item as SanPham;
             sanPham.ngayThem = DateTime.Now;
 
             foreach(SanPham sp in list)

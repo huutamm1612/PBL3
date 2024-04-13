@@ -46,8 +46,6 @@ namespace Program
             ngayThem = DateTime.Now;
         }
 
-        
-
         public SanPham(string maSP)
         {
             this.maSP = maSP;
@@ -89,5 +87,6 @@ namespace Program
         public static bool EqualLoaiBia(object o1, object o2) => String.Equals(((SanPham)o1).loaiBia, ((SanPham)o2).loaiBia);
         public static bool EqualNgayThem(object o1, object o2) => DateTime.Equals(((SanPham)o1).ngayThem, ((SanPham)o2).ngayThem);
         public static bool EqualMaS(object o1, object o2) => String.Equals(((SanPham)o1).maS, ((SanPham)o2).maS);
+        public override bool Equals(object obj) => ((SanPham)obj).maSP == this.maSP;
     }
 }

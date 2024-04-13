@@ -15,7 +15,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -512,9 +512,9 @@ namespace Program
 
                 reader.Close();
 
-                /*foreach(BaiDang baiDang in shop.listBaiDang)
+                /*foreach (BaiDang baiDang in shop.listBaiDang.list)
                 {
-                    foreach(SanPham sanPham in baiDang.list)
+                    foreach (SanPham sanPham in baiDang.list)
                     {
                         MessageBox.Show(sanPham.maSP);
                     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,13 @@ namespace Program
             moTa = baiDang.moTa;
             luocThich = baiDang.luocThich;
             giamGia = baiDang.giamGia;
+        }
+
+        public override void Add(object item)
+        {
+            SanPham sanPham = item as SanPham;
+            sanPham.maBD = maBD;
+            base.Add(sanPham);
         }
 
         public int luocBan()

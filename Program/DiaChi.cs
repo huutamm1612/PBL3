@@ -51,7 +51,7 @@ namespace Program
         }
         public override bool Equals(object obj)
         {
-            return this.maDC == ((DiaChi)obj).maDC;
+            return maDC == ((DiaChi)obj).maDC;
         }
 
         public override string ToString()

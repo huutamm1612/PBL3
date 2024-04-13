@@ -76,6 +76,7 @@
     <Compile Include="QLBaiDang.cs" />
     <Compile Include="QLDonHang.cs" />
     <Compile Include="QLSanPham.cs" />
+    <Compile Include="IQuanLy.cs" />
     <Compile Include="SanPham.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="TaiKhoan.cs" />

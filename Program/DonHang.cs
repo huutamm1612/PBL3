@@ -142,5 +142,8 @@ namespace Program
             ngayGiaoHang = DateTime.Now;
             HeThong.NhanHang(this, maKH);
         }
+
+        public static bool EqualMaDH(object o1, object o2) => String.Equals(((DonHang)o1).maDH, ((DonHang)o2).maDH);
+        public override bool Equals(object obj) => ((DonHang)obj).maDH == this.maDH;
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class QLSanPham
+    internal class QLSanPham : IQuanLy
     {
         public List<SanPham> list { get; set; }
 
@@ -23,15 +23,41 @@ namespace Program
             this.list = sanPham.list;
         }
 
-        public int IndexOf(SanPham sanPham)
+        public virtual void Add(object item)
         {
-            for(int index = 0; index < list.Count ; index++)
+            foreach(SanPham sanPham in list)
             {
-                if (SanPham.EqualMaSP(list[index], sanPham))
-                    return index;
+                if(SanPham.EqualMaSP(sanPham, item))
+                {
+                    sanPham.soLuong += ((SanPham)item).soLuong;
+                    return;
+                }
             }
+            list.Add((SanPham)item);
+        }
+
+        public int IndexOf(object item)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (SanPham.EqualMaSP(list[i], item))
+                    return i;
 
             return -1;
+        }
+
+        public void Remove(object item)
+        {
+            foreach (var i in list)
+                if (i.Equals(item))
+                    list.Remove(i);
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (index == -1)
+                list.RemoveAt(list.Count - 1);
+
+            list.RemoveAt(index);
         }
 
         public virtual void RemoveRange(params string[] maSPs)
@@ -39,8 +65,6 @@ namespace Program
             Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaSP, SanPham.EqualMaSP);
             Utils.RemoveRange(list, maSPs.ToList());
         }
-
-        public void RemoveAt(int index) => list.RemoveAt(index);
 
         public void Remove(SanPham sanPham)
         {
@@ -62,11 +86,6 @@ namespace Program
             }
         }
 
-        public virtual void Add(SanPham sanPham)
-        {
-            list.Add(sanPham);
-        }
-
         public void Update(SanPham sanPham)
         {
             for (int index = 0; index < list.Count; index++)
@@ -76,9 +95,9 @@ namespace Program
             }
         }
 
-        public QLSanPham GetAllSP()
+        public SanPham[] GetAllSP()
         {
-            return this;
+            return list.ToArray();
         }
 
         public int tinhTongTien()

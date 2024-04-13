@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Program
 {
@@ -69,11 +70,6 @@ namespace Program
             this.listDonHang = shop.listDonHang;
         }
 
-        public void setMaSo(string maSo)
-        {
-            this.maSo = maSo;
-        }
-
         public void Add(BaiDang baiDang)
         {
             listBaiDang.Add(baiDang);
@@ -135,21 +131,27 @@ namespace Program
             }
         }
 
-        public QLSanPham GetAllSP()
+        public SanPham[] GetAllSP()
         {
             QLSanPham qlSP = new QLSanPham();
 
             foreach(BaiDang baiDang in listBaiDang.list)
             {
-                qlSP.AddRange(baiDang.GetAllSP().list.ToArray());
+                qlSP.AddRange(baiDang.GetAllSP());
             }
 
-            return qlSP;
+            return qlSP.list.ToArray();
         }
 
-        public void giaoHang(SanPham sanPham)
+        public SanPham searchSanPham(string maSP, string maBD)
         {
+            foreach(var baiDang in listBaiDang.list)
+                if(baiDang.maBD == maBD)
+                    foreach(var sanPham in baiDang.list)
+                        if (sanPham.maSP == maSP)
+                            return sanPham;
 
+            return null;
         }
 
         public void diDon(params DonHang[] list) 
@@ -159,9 +161,9 @@ namespace Program
                 donHang.capNhatTinhTrang(2);
                 donHang.diDon();
                 
-                foreach(SanPham sanPham in donHang.list)
+                foreach(var sanPham in donHang.list)
                 {
-
+                    searchSanPham(sanPham.maSP, sanPham.maBD).soLuong -= sanPham.soLuong;
                 }
             }
         }
@@ -194,11 +196,5 @@ namespace Program
         }
 
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
-
-        public void diDon(DonHang donHang)
-        {
-            donHang.capNhatTinhTrang(1);
-            donHang.diDon();
-        }
     }
 }
