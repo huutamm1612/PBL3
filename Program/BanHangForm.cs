@@ -236,7 +236,7 @@ namespace Program
                 email = email_DK_Text.Text,
                 diaChi = shop.diaChi,
                 ngaySinh = DateTime.Now,
-                listBaiDang = new List<BaiDang>(),
+                listBaiDang = new QLBaiDang(),
                 nFollower = 0,
                 tinhTrang = 1,
                 doanhThu = 0,

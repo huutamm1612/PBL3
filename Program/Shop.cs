@@ -13,11 +13,11 @@ namespace Program
         public int tinhTrang { get; set; }
         public int doanhThu { get; set; }
         public QLDonHang listDonHang { get; set; }
-        public List<BaiDang> listBaiDang { get; set; }
+        public QLBaiDang listBaiDang { get; set; }
 
         public Shop() : base()
         {
-            listBaiDang = new List<BaiDang>();
+            listBaiDang = new QLBaiDang();
             nFollower = 0;
             doanhThu = 0;
             tinhTrang = 1;
@@ -26,7 +26,7 @@ namespace Program
 
         public Shop(string soDT, string email) : base()
         {
-            listBaiDang = new List<BaiDang>();
+            listBaiDang = new QLBaiDang();
             nFollower = 0;
             doanhThu = 0;
             tinhTrang = 1;
@@ -80,14 +80,14 @@ namespace Program
         }
         public void Insert(int index, BaiDang baiDang)
         {
-            listBaiDang.Insert(index, baiDang);
+            listBaiDang.list.Insert(index, baiDang);
         }
 
         public int IndexOf(BaiDang baiDang)
         {
-            for (int index = 0; index < listBaiDang.Count; index++)
+            for (int index = 0; index < listBaiDang.list.Count; index++)
             {
-                if (BaiDang.EqualMaBD(listBaiDang[index], baiDang))
+                if (BaiDang.EqualMaBD(listBaiDang.list[index], baiDang))
                     return index;
             }
 
@@ -95,11 +95,11 @@ namespace Program
         }
         public void Remove(BaiDang baiDang)
         {
-            foreach (BaiDang bd in listBaiDang)
+            foreach (BaiDang bd in listBaiDang.list)
             {
                 if (BaiDang.EqualMaBD(bd, baiDang))
                 {
-                    listBaiDang.Remove(bd);
+                    listBaiDang.list.Remove(bd);
                     HeThong.XoaBaiDang(baiDang.maBD);
                     return;
                 }
@@ -108,8 +108,8 @@ namespace Program
 
         public void RemoveRange(List<string> maBDs)
         {
-            Utils.Sort(listBaiDang, 0, listBaiDang.Count - 1, BaiDang.CompareMaBD, BaiDang.EqualMaBD);
-            Utils.RemoveRange(listBaiDang, maBDs);
+            Utils.Sort(listBaiDang.list, 0, listBaiDang.list.Count - 1, BaiDang.CompareMaBD, BaiDang.EqualMaBD);
+            Utils.RemoveRange(listBaiDang.list, maBDs);
             foreach(string maBD in maBDs)
             {
                 HeThong.XoaBaiDang(maBD);
@@ -118,17 +118,17 @@ namespace Program
 
         public void RemoveAt(int index)
         {
-            HeThong.XoaBaiDang(listBaiDang[index].maBD);
-            listBaiDang.RemoveAt(index);
+            HeThong.XoaBaiDang(listBaiDang.list[index].maBD);
+            listBaiDang.list.RemoveAt(index);
         }
 
         public void Update(BaiDang baiDang)
         {
-            for (int i = 0; i < listBaiDang.Count; i++)
+            for (int i = 0; i < listBaiDang.list.Count; i++)
             {
-                if (BaiDang.EqualMaBD(listBaiDang[i], baiDang))
+                if (BaiDang.EqualMaBD(listBaiDang.list[i], baiDang))
                 {
-                    listBaiDang[i] = baiDang;
+                    listBaiDang.list[i] = baiDang;
                     HeThong.CapNhatBaiDang(baiDang);
                     return;
                 }
@@ -139,7 +139,7 @@ namespace Program
         {
             QLSanPham qlSP = new QLSanPham();
 
-            foreach(BaiDang baiDang in listBaiDang)
+            foreach(BaiDang baiDang in listBaiDang.list)
             {
                 qlSP.AddRange(baiDang.GetAllSP().list.ToArray());
             }

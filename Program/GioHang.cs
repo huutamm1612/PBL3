@@ -20,11 +20,6 @@ namespace Program
         {
             sanPham.ngayThem = DateTime.Now;
 
-            for(int i = 0; i < list.Count; i++)
-            {
-
-            }
-
             foreach(SanPham sp in list)
             {
                 if(SanPham.EqualMaSP(sanPham, sp))

@@ -497,7 +497,7 @@ namespace Program
                     ngaySinh = reader.GetDateTime(6),
                     tinhTrang = reader.GetInt32(7),
                     doanhThu = reader.GetInt32(8),
-                    listBaiDang = new List<BaiDang>(),
+                    listBaiDang = new QLBaiDang(),
                     listDonHang = LoadDonHang(reader.GetString(0), false)
                 };
                 reader.Close();
@@ -820,6 +820,39 @@ namespace Program
             gioHang.maKH = maKH;
 
             return gioHang;
+        }
+
+        public static QLBaiDang SearchBaiDang(string key)
+        {
+            QLBaiDang list = new QLBaiDang();
+
+            string query = $"SELECT BDS.maS, BD.* FROM BaiDang BD INNER JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.tieuDe LIKE N'%{key}%'";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            while(reader.Read())
+            {
+                list.Add(new BaiDang
+                {
+                    maS = reader.GetString(0),
+                    maBD = reader.GetString(1),
+                    tieuDe = reader.GetString(2),
+                    moTa = reader.GetString(3),
+                    luocThich = reader.GetInt32(4),
+                    giamGia = reader.GetInt32(5)
+                });
+            }
+            reader.Close();
+
+            query = $"SELECT SPBD.maBD FROM SanPham_BaiDang SPBD INNER JOIN SanPham SP ON SP.maSP = SPBD.maBD WHERE SP.ten LIKE N'%{key}%'";
+            reader = ExecuteQuery(query);
+
+            while (reader.Read())
+            {
+                list.Add(LoadBaiDang(reader.GetString(0)));
+            }
+            reader.Close();
+
+            return list;
         }
     }
 }

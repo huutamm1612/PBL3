@@ -721,5 +721,16 @@ namespace Program
             send(user.taiKhoan, user.matKhau);
             BHForm.ShowDialog();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string key = search_Text.Text;
+            QLBaiDang list = HeThong.SearchBaiDang(key);
+
+            foreach(BaiDang baiDang in list.list)
+            {
+                MessageBox.Show($"{baiDang.tieuDe}");
+            }
+        }
     }
 }
