@@ -24,6 +24,7 @@ namespace Program
         public int namXuatBan { get; set; }
         public string nhaXuatBan { get; set; }
         public string loaiBia { get; set; }
+        public string theLoai {  get; set; }
         public DateTime ngayThem { get; set; }
         public SanPham()
         {

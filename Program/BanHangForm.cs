@@ -324,6 +324,7 @@ namespace Program
 
         private void themSPButton_Click(object sender, EventArgs e)//1575, 140
         {
+            shop.listBaiDang.Add(new BaiDang());
             if (theLoai_CBBox.Items.Count == 0)
                 Utils.SetComboBox(theLoai_CBBox, HeThong.LoadTheLoai());
 
@@ -809,20 +810,20 @@ namespace Program
 
             Button btnCapNhat = new Button
             {
-                Location = capNhat_Button.Location,
+                Location = luuSPButton.Location,
                 Text = "Cập nhật",
                 ForeColor = Color.MistyRose,
-                Size = capNhat_Button.Size,
+                Size = luuSPButton.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
             };
 
             Button btnXoa = new Button
             {
-                Location = xoa_Button.Location,
+                Location = huyThemSPButton.Location,
                 Text = "Xóa",
                 ForeColor = Color.Black,
-                Size = xoa_Button.Size,
+                Size = huyThemSPButton.Size,
                 Font = font1,
                 BackColor = color1,
             };
@@ -842,18 +843,35 @@ namespace Program
             panel.Controls.Add(lbSoLuong);
 
             btnCapNhat.Click += Update_Button;
+            btnXoa.Click += Remove_Button;
   
             return panel;
 
         }
+
+        private void Remove_Button(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToRemove = clickedButton.Parent as Panel;
+            int panelIndex = listSP_FLPanel.Controls.IndexOf(panelToRemove);
+
+            if (panelIndex != -1 && panelIndex < listSP_FLPanel.Controls.Count)
+            {
+                listSP_FLPanel.Controls.RemoveAt(panelIndex);
+            }
+            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y - formThemSPPanel.Size.Height + 20);
+        }
+
         private void Update_Button(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
-
-            listSP_FLPanel.Visible = false;
+            
             formThemSPPanel.Visible = true;
+            formThemSPPanel.BringToFront();
+                    
             listSP_FLPanel.Controls.Remove(panelToUpdate);
+          
           
 
         }
@@ -865,12 +883,29 @@ namespace Program
                && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
                && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
+                SanPham sanPham = new SanPham
+                {
+                    maSP = HeThong.MaMoi("maSP"),
+                    //maLoaiSP = ,
+                    maBD = shop.listBaiDang.list.Last().maBD,
+                    ten = tenDichGia_Text.Text,
+                    tacGia = tenDichGia_Text.Text,
+                    dichGia = tenDichGia_Text.Text,
+                    nhaXuatBan = nhaXuatBan_Text.Text,
+                    moTa = moTaSP_Text.Text,
+                    namXuatBan = int.Parse(namXuatBan_Text.Text),
+                    soLuong = int.Parse(soLuong_Text.Text),
+                    ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
+                    loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
+                    theLoai = theLoai_CBBox.SelectedItem.ToString(),
+                };
+                shop.listBaiDang.Add(-1, sanPham);
                 listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
                 listSP_FLPanel.Controls.Add(this.sanPhamForm());
                 listSP_FLPanel.Visible = true;  
                 formThemSPPanel.Visible = false;
                 themSPButton.Visible = true;
-               
+
                 refreshThemSPForm(sender, e);   
             }
 
