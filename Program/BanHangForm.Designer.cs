@@ -153,8 +153,8 @@
             this.addPanel = new System.Windows.Forms.Panel();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
+            this.xoa_Button = new System.Windows.Forms.Button();
+            this.capNhat_Button = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -2032,8 +2032,8 @@
             this.addPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.addPanel.Controls.Add(this.pictureBox17);
             this.addPanel.Controls.Add(this.textBox9);
-            this.addPanel.Controls.Add(this.button23);
-            this.addPanel.Controls.Add(this.button25);
+            this.addPanel.Controls.Add(this.xoa_Button);
+            this.addPanel.Controls.Add(this.capNhat_Button);
             this.addPanel.Controls.Add(this.textBox10);
             this.addPanel.Controls.Add(this.pictureBox4);
             this.addPanel.Controls.Add(this.textBox11);
@@ -2101,38 +2101,39 @@
             this.textBox9.Text = "Ảnh sản phẩm";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // button23
+            // xoa_Button
             // 
-            this.button23.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.button23.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.Color.Black;
-            this.button23.Location = new System.Drawing.Point(459, 719);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(256, 45);
-            this.button23.TabIndex = 50;
-            this.button23.Text = "Xóa";
-            this.button23.UseVisualStyleBackColor = true;
+            this.xoa_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.xoa_Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.xoa_Button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.xoa_Button.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.xoa_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.xoa_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xoa_Button.ForeColor = System.Drawing.Color.Black;
+            this.xoa_Button.Location = new System.Drawing.Point(459, 719);
+            this.xoa_Button.Name = "xoa_Button";
+            this.xoa_Button.Size = new System.Drawing.Size(256, 45);
+            this.xoa_Button.TabIndex = 50;
+            this.xoa_Button.Text = "Xóa";
+            this.xoa_Button.UseVisualStyleBackColor = true;
             // 
-            // button25
+            // capNhat_Button
             // 
-            this.button25.BackColor = System.Drawing.Color.OrangeRed;
-            this.button25.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button25.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.button25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.ForeColor = System.Drawing.Color.MistyRose;
-            this.button25.Location = new System.Drawing.Point(195, 719);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(256, 45);
-            this.button25.TabIndex = 5;
-            this.button25.Text = "Cập nhật";
-            this.button25.UseVisualStyleBackColor = false;
+            this.capNhat_Button.BackColor = System.Drawing.Color.OrangeRed;
+            this.capNhat_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.capNhat_Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.capNhat_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.capNhat_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.capNhat_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.capNhat_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.capNhat_Button.ForeColor = System.Drawing.Color.MistyRose;
+            this.capNhat_Button.Location = new System.Drawing.Point(195, 719);
+            this.capNhat_Button.Name = "capNhat_Button";
+            this.capNhat_Button.Size = new System.Drawing.Size(256, 45);
+            this.capNhat_Button.TabIndex = 5;
+            this.capNhat_Button.Text = "Cập nhật";
+            this.capNhat_Button.UseVisualStyleBackColor = false;
+            this.capNhat_Button.Click += new System.EventHandler(this.capNhat_Button_Click);
             // 
             // textBox10
             // 
@@ -3105,8 +3106,8 @@
         private System.Windows.Forms.Panel addPanel;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button xoa_Button;
+        private System.Windows.Forms.Button capNhat_Button;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox textBox11;
