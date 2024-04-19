@@ -35,7 +35,6 @@ CREATE TABLE UserAccount(
 	CONSTRAINT FK_UserAccount_CauHoi FOREIGN KEY (maCH) REFERENCES CauHoi(maCH)
 )
 
-
 CREATE TABLE DiaChi (
 	maDC varchar(10) PRIMARY KEY,
 	maSo varchar(10),
@@ -61,7 +60,6 @@ CREATE TABLE KhachHang (
 	maDC varchar(10) NULL,
 	gioiTinh int NULL,
 	ngaySinh date NULL,
-	nFollow int DEFAULT 0,
 	xu int DEFAULT 0,
 	chiTieu int DEFAULT 0,
 	avt varchar(255),
@@ -76,7 +74,6 @@ CREATE TABLE Shop (
 	soDT varchar(10),
 	email varchar(50),
 	maDC varchar(10),
-	nFollower int default 0,
 	ngayTao date,
 	tinhTrang int default 1,
 	doanhThu int default 0,
@@ -86,6 +83,15 @@ CREATE TABLE Shop (
 	CONSTRAINT FK_Shop_DiaChi FOREIGN KEY (maDC) REFERENCES DiaChi(maDC)
 )
 
+CREATE TABLE Follow(
+	maKH varchar(10),
+	maS varchar(10),
+	PRIMARY KEY(maKH, maS),
+
+	CONSTRAINT FK_Follow_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_Follow_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
+)
+
 CREATE TABLE MaHienTai(
 	maKH varchar(10),
 	maS varchar(10),
@@ -93,10 +99,12 @@ CREATE TABLE MaHienTai(
 	maLoaiSP varchar(10),
 	maSP varchar(10),
 	maBD varchar(10),
-	maDH varchar(10)
+	maDH varchar(10),
+	maDG varchar(10),
+	maTB varchar(10)
 )
 
-INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000', '0000000000','0000000000','0000000000','0000000000')
+INSERT INTO MaHienTai VAlUES ('0000000000','0000000000','0000000000', '0000000000','0000000000','0000000000','0000000000','0000000000','0000000000')
 
 CREATE TABLE KhachHang_Shop (
 	maKH varchar(10),
@@ -134,8 +142,8 @@ CREATE TABLE SanPham(
 
 CREATE TABLE BaiDang(
 	maBD varchar(10) PRIMARY KEY,
-	tieuDe nvarchar(100),
-	moTa nvarchar(500),
+	tieuDe nvarchar(120),
+	moTa nvarchar(1000),
 	luocThich int DEFAULT 0,
 	giamGia int DEFAULT 0,
 	anh varchar(255) null
@@ -214,6 +222,7 @@ CREATE TABLE GioHang(
 
 CREATE TABLE DanhGia(
 	maDG varchar(10),
+	sanPhamDaMua nvarchar(100),
 	doiTuong nvarchar(50),
 	thietKeBia nvarchar(50),
 	noiDung nvarchar(200),
@@ -224,13 +233,13 @@ CREATE TABLE DanhGia(
 	PRIMARY KEY(maDG)
 )
 
-CREATE TABLE KhachHang_DanhGia(
+CREATE TABLE DanhGia_KhachHang(
 	maKH varchar(10),
 	maDG varchar(10),
 	PRIMARY KEY (maKH, maDG),
 
-	CONSTRAINT FK_KhachHang_DanhGia_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
-	CONSTRAINT FK_KhachHang_DanhGia_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+	CONSTRAINT FK_DanhGia_KhachHang_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_DanhGia_KhachHang_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
 )
 
 CREATE TABLE DanhGia_BaiDang(
@@ -240,13 +249,4 @@ CREATE TABLE DanhGia_BaiDang(
 
 	CONSTRAINT FK_DanhGia_BaiDang_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
 	CONSTRAINT FK_DanhGia_BaiDang_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
-)
-
-CREATE TABLE DanhGia_SanPham(
-	maDG varchar(10),
-	maSP varchar(10),
-	PRIMARY KEY (maSP, maDG),
-
-	CONSTRAINT FK_DanhGia_SanPham_BaiDang FOREIGN KEY (maSP) REFERENCES SanPham(maSP),
-	CONSTRAINT FK_DanhGia_SanPham_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
 )

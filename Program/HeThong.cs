@@ -195,6 +195,49 @@ namespace Program
             khachHang.setDiaChis(listDiaChi);
         }
 
+        public static void Follow(string maKH, string maS)
+        {
+            string query = $"INSERT INTO Follow VALUES('{maKH}', '{maS}')";
+            ExecuteNonQuery(query);
+        }
+
+        public static void UnFollow(string maKH, string maS)
+        {
+            string query = $"DELETE FROM Follow WHERE maKH = '{maKH}' AND maS = '{maS}'";
+            ExecuteNonQuery(query);
+        }
+
+        public static List<string> LoadFollow(string maSo, bool isKhachHang = true)
+        {
+            List<string> list = new List<string>();
+            if (isKhachHang)
+            {
+                string query = $"SELECT maS FROM Follow WHERE maKH = {maSo}";
+                SqlDataReader reader = ExecuteQuery(query);
+
+                while (reader.Read())
+                {
+                    list.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+            else
+            {
+                string query = $"SELECT maKH FROM Follow WHERE maS = {maSo}";
+                SqlDataReader reader = ExecuteQuery(query);
+
+                while (reader.Read())
+                {
+                    list.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+
+            return list;
+        }
+
         public static KhachHang DangNhap(User user)
         {
             string query = $"SELECT * FROM KhachHang WHERE taiKhoan = '{user.taiKhoan}'";
@@ -205,6 +248,8 @@ namespace Program
 
             QLDonHang listDonHang = LoadDonHang(reader.GetString(0));
             GioHang gioHang = LoadGioHang(reader.GetString(0));
+            List<string> follow = LoadFollow(reader.GetString(0));
+
 
             if (reader.IsDBNull(6))
             {
@@ -213,7 +258,8 @@ namespace Program
                     maSo = reader.GetString(0),
                     taiKhoan = reader.GetString(1),
                     gioHang = gioHang,
-                    listDonHang = listDonHang
+                    listDonHang = listDonHang,
+                    listFollow = follow
                 };
 
                 reader.Close();
@@ -229,9 +275,9 @@ namespace Program
                 email = reader.GetString(4),
                 gioiTinh = reader.GetInt32(6),
                 ngaySinh = reader.GetDateTime(7),
-                nFollow = reader.GetInt32(8),
+                xu = reader.GetInt32(8),
                 chiTieu = reader.GetInt32(9),
-                xu = reader.GetInt32(10),
+                listFollow = follow,
                 gioHang = gioHang,
                 listDonHang = listDonHang
             };
@@ -239,14 +285,12 @@ namespace Program
             if (!reader.IsDBNull(5))
             {
                 string maDC = reader.GetString(5);
-                reader.Close();
 
                 khachHang.capNhatDiaChi(LoadDiaChi(maDC));
                 SetDiaChis(khachHang);
             }
 
-            if (!reader.IsClosed)
-                reader.Close();
+            reader.Close();
             return khachHang;
         }
 
@@ -369,17 +413,20 @@ namespace Program
 
             return list;
         }
-        
+
         public static string MoTaDiaChi(int maPX)
         {
             string query = $"SELECT Phuong_Xa.ten, Quan_Huyen.ten, Tinh_ThanhPho.ten FROM Tinh_ThanhPho INNER JOIN Quan_Huyen ON Tinh_ThanhPho.maT_TP = Quan_Huyen.maT_TP INNER JOIN Phuong_Xa ON Phuong_Xa.maQH = Quan_Huyen.maQH WHERE Phuong_Xa.maPX = {maPX}";
             SqlDataReader reader = ExecuteQuery(query);
 
-            reader.Read();
-            string s = $"{reader.GetString(0)}, {reader.GetString(1)}, {reader.GetString(2)}";
-            reader.Close();
+            if (reader.Read())
+            {
+                string s = $"{reader.GetString(0)}, {reader.GetString(1)}, {reader.GetString(2)}";
+                reader.Close();
+                return s;
+            }
 
-            return s;
+            return null;
         }
 
         public static void ThemDiaChi(string maSo, DiaChi diaChi, bool dcKhachHang = true)
@@ -493,10 +540,10 @@ namespace Program
                     soDT = reader.GetString(2),
                     email = reader.GetString(3),
                     diaChi = LoadDiaChi(reader.GetString(4)),
-                    nFollower = reader.GetInt32(5),
-                    ngaySinh = reader.GetDateTime(6),
-                    tinhTrang = reader.GetInt32(7),
-                    doanhThu = reader.GetInt32(8),
+                    ngaySinh = reader.GetDateTime(5),
+                    tinhTrang = reader.GetInt32(6),
+                    doanhThu = reader.GetInt32(7),
+                    listFollower = LoadFollow(reader.GetString(0), false),
                     listBaiDang = new QLBaiDang(),
                     listDonHang = LoadDonHang(reader.GetString(0), false)
                 };
@@ -578,7 +625,8 @@ namespace Program
                 tieuDe = reader.GetString(2),
                 moTa = reader.GetString(3),
                 luocThich = reader.GetInt32(4),
-                giamGia = reader.GetInt32(5)
+                giamGia = reader.GetInt32(5),
+                listDanhGia = LoadDanhGia(maBD)
             };
 
             reader.Close();
@@ -779,10 +827,10 @@ namespace Program
             return giamGia;
         }
 
-        public static void ThemVaoGioHang(SanPham sanPham, string maKH, bool exist = false)
+        public static void ThemVaoGioHang(SanPham sanPham, string maKH, bool isExist)
         {
             string query;
-            if(exist)
+            if(isExist)
             {
                 query = $"UPDATE GioHang SET soLuong = {sanPham.soLuong}, ngayThem = '{sanPham.ngayThem.Date:MM/dd/yyyy}' WHERE maKH = {maKH} AND maSP = {sanPham.maSP}";
             }
@@ -855,53 +903,104 @@ namespace Program
             return list;
         }
 
-        public static QLDanhGia LoadDanhGia(string maBD)
+        public static QLDanhGia LoadDanhGia(string maSo, bool isKhachHang = true)
         {
             QLDanhGia list = new QLDanhGia();
 
-            string query = $"SELECT DG.* FROM DanhGia DG INNER JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = '{maBD}'";
+            string query;
+
+            /*if (isKhachHang)
+            {
+                query = $"SELECT DG.* FROM DanhGia DG INNER JOIN DanhGia_KhachHang DGKH ON DGKH.maDG = DG.maDG WHERE DGKH.maKH = '{maSo}'";
+                SqlDataReader reader = ExecuteQuery(query);
+                while (reader.Read())
+                {
+                    query = $"SELECT maBD FROM DanhGia_BaiDang WHERE maDG = '{reader.GetString(0)}'";
+                    SqlDataReader reader1 = ExecuteQuery(query);
+                    string maBD = reader1.GetString(0);
+                    reader1.Close();
+
+                    list.Add(new DanhGia
+                    {
+                        maDG = reader.GetString(0),
+                        maBD = maBD,
+                        maKH = maSo,
+                        sanPhamDaMua = reader.GetString(1),
+                        doiTuong = reader.GetString(2),
+                        thietKeBia = reader.GetString(3),
+                        noiDung = reader.GetString(4),
+                        sao = reader.GetInt32(5),
+                        luocThich = reader.GetInt32(6),
+                        ngayThem = reader.GetDateTime(7),
+                    });
+                    reader.Close();
+                }
+
+            }
+            else
+            {
+                query = $"SELECT DG.* FROM DanhGia DG INNER JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = '{maSo}'";
+                SqlDataReader reader = ExecuteQuery(query);
+                while (reader.Read())
+                {
+                    query = $"SELECT maKH FROM DanhGia_KhachHang WHERE maDG = '{reader.GetString(0)}'";
+                    SqlDataReader reader1 = ExecuteQuery(query);
+                    string maKH = reader1.GetString(0);
+                    reader1.Close();
+
+                    list.Add(new DanhGia
+                    {
+                        maDG = reader.GetString(0),
+                        maBD = maSo,
+                        maKH = maKH,
+                        sanPhamDaMua = reader.GetString(1),
+                        doiTuong = reader.GetString(2),
+                        thietKeBia = reader.GetString(3),
+                        noiDung = reader.GetString(4),
+                        sao = reader.GetInt32(5),
+                        luocThich = reader.GetInt32(6),
+                        ngayThem = reader.GetDateTime(7),
+                    });
+                    reader.Close();
+                }
+            }*/
+
+            if (isKhachHang)
+            {
+                query = $"SELECT BDDG.maBD, DG.* FROM DanhGia_BaiDang BDDG, DanhGia DG INNER JOIN DanhGia_KhachHang DGKH ON DGKH.maDG = DG.maDG WHERE DGKH.maKH = '{maSo}'";
+            }
+            else
+            {
+                query = $"SELECT KHDG.maKH, DG.* FROM DanhGia_KhachHang KHDG, DanhGia DG INNER JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maDG = '{maSo}'";
+            }
+
             SqlDataReader reader = ExecuteQuery(query);
 
-            while(reader.Read())
+            while (reader.Read())
             {
-                
-                query = $"SELECT maSP FROM DanhGia_SanPham WHERE maDG = '{reader.GetString(0)}'";
-                SqlDataReader reader1 = ExecuteQuery(query);
-
-                List<string> maSP = new List<string>();
-
-                while (reader1.Read())
-                {
-                    maSP.Add(reader1.GetString(0));
-                }
-                reader1.Close();
-
-                query = $"SELECT maKH FROM KhachHang_DanhGia WHERE maBD = '{reader.GetString(0)}'";
-                reader1 = ExecuteQuery(query);
-                string maKH = reader1.GetString(0);
-                reader1.Close();
-
                 list.Add(new DanhGia
                 {
-                    maDG = reader.GetString(0),
-                    maBD = maBD,
-                    maKH = maKH,
-                    doiTuong = reader.GetString(1),
-                    thietKeBia = reader.GetString(2),
-                    noiDung = reader.GetString(3),
-                    sao = reader.GetInt32(4),
-                    luocThich = reader.GetInt32(5),
-                    ngayThem = reader.GetDateTime(6),
-                    maSP = maSP
+                    maDG = reader.GetString(1),
+                    maBD = (isKhachHang ? reader.GetString(0) : maSo),
+                    maKH = (isKhachHang ? maSo : reader.GetString(0)),
+                    sanPhamDaMua = reader.GetString(3),
+                    doiTuong = reader.GetString(4),
+                    thietKeBia = reader.GetString(5),
+                    noiDung = reader.GetString(6),
+                    sao = reader.GetInt32(7),
+                    luocThich = reader.GetInt32(8),
+                    ngayThem = reader.GetDateTime(9),
                 });
             }
+
+            reader.Close();
 
             return list;
         }
 
         public static void ThemDanhGia(DanhGia danhGia)
         {
-            string query = $"INSERT INTO DanhGia VALUES('{danhGia.maDG}', '{danhGia.doiTuong}', '{danhGia.thietKeBia}', '{danhGia.noiDung}', {danhGia.sao}, {danhGia.luocThich}, '{danhGia.ngayThem.Date:MM/dd/yyyy}')";
+            string query = $"INSERT INTO DanhGia VALUES('{danhGia.maDG}', '{danhGia.sanPhamDaMua}', '{danhGia.doiTuong}', '{danhGia.thietKeBia}', '{danhGia.noiDung}', {danhGia.sao}, {danhGia.luocThich}, '{danhGia.ngayThem.Date:MM/dd/yyyy}')";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO KhachHang_DanhGia VALUES('{danhGia.maKH}', '{danhGia.maDG}')";
@@ -909,12 +1008,6 @@ namespace Program
 
             query = $"INSERT INTO DanhGia_BaiDang VALUES('{danhGia.maDG}', '{danhGia.maBD}')";
             ExecuteNonQuery(query);
-
-            foreach(string s in danhGia.maSP)
-            {
-                query = $"INSERT INTO DanhGia_SanPham VALUES('{danhGia.maDG}', '{s}')";
-                ExecuteNonQuery(query);
-            }
         }
     }
 }

@@ -35,10 +35,16 @@ namespace Program
             list.Insert(0, sanPham);
         }
 
+        
+
         public override void RemoveRange(params string[] maSPs)
         {
             base.RemoveRange(maSPs);
             HeThong.XoaSPKhoiGioHang(maKH, maSPs);
         }
+
+        public static bool CompareNgayThem(object o1, object o2) => ((SanPham)o1).ngayThem < ((SanPham)o2).ngayThem;
+
+        public static bool EqualNgayThem(object o1, object o2) => ((SanPham)o1).ngayThem == ((SanPham)o2).ngayThem; 
     }
 }

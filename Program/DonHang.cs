@@ -38,19 +38,6 @@ namespace Program
             list = sanPham.list;
         }
 
-        public DonHang(DonHang donHang)
-        {
-            maDH = donHang.maDH;
-            maKH= donHang.maKH;
-            tinhTrang = donHang.tinhTrang;
-            ptThanhToan = donHang.ptThanhToan;
-            tongTien = donHang.tongTien;
-            xu = donHang.xu;
-            diaChi = donHang.diaChi;
-            ngayDatHang = donHang.ngayDatHang;
-            ngayGiaoHang = donHang.ngayGiaoHang;
-        }
-
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
 
         public List<DonHang> phanRaDonHang(int n)
@@ -145,6 +132,44 @@ namespace Program
 
         public DanhGia[] taoDanhGia()
         {
+            QLDanhGia danhGia = new QLDanhGia();
+            Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaBD, SanPham.EqualMaBD);
+
+            string maBD = list[0].maBD;
+            string text = "";
+
+            foreach (SanPham sanPham in list)
+            {
+                if (maBD.Equals(sanPham.maBD))
+                {
+                    text += sanPham.ten + ", ";
+                }
+                else
+                {
+                    danhGia.Add(new DanhGia
+                    {
+                        maDG = HeThong.MaMoi("maDG"),
+                        maKH = maKH,
+                        maBD = maBD,
+                        sanPhamDaMua = text,
+                    }) ;
+                }
+            }
+
+            danhGia.Add(new DanhGia
+            {
+                maDG = HeThong.MaMoi("maDG"),
+                maKH = maKH,
+                maBD = maBD,
+                sanPhamDaMua = text,
+            });
+
+
+            return danhGia.list.ToArray();
+        }
+
+        /*public DanhGia[] taoDanhGia()
+        {
             QLDanhGia qLDanhGia = new QLDanhGia();
             Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaS, SanPham.EqualMaS);
 
@@ -173,7 +198,7 @@ namespace Program
             });
 
             return qLDanhGia.list.ToArray();
-        }
+        }*/
 
         public static bool EqualMaDH(object o1, object o2) => String.Equals(((DonHang)o1).maDH, ((DonHang)o2).maDH);
         public override bool Equals(object obj) => ((DonHang)obj).maDH == this.maDH;

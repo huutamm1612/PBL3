@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -238,7 +239,7 @@ namespace Program
                 diaChi = shop.diaChi,
                 ngaySinh = DateTime.Now,
                 listBaiDang = new QLBaiDang(),
-                nFollower = 0,
+                listFollower = new List<string>(),
                 tinhTrang = 1,
                 doanhThu = 0,
             };

@@ -39,6 +39,16 @@ namespace Program
             list.Add((SanPham)item);
         }
 
+        public bool IsExist(SanPham sanPham)
+        {
+            foreach (SanPham item in list)
+            {
+                if (SanPham.EqualMaSP(item, sanPham))
+                    return true;
+            }
+            return false;
+        }
+
         public void Clear() => list.Clear();
 
         public int IndexOf(object item)
@@ -52,7 +62,7 @@ namespace Program
 
         public void Remove(object item)
         {
-            foreach (var i in list)
+            foreach (SanPham i in list)
                 if (i.Equals(item))
                     list.Remove(i);
         }
@@ -71,17 +81,7 @@ namespace Program
             Utils.RemoveRange(list, maSPs.ToList());
         }
 
-        public void Remove(SanPham sanPham)
-        {
-            foreach(SanPham sp in list)
-            {
-                if (SanPham.EqualMaSP(sp, sanPham))
-                {
-                    list.Remove(sp);
-                    return;
-                }
-            }
-        }
+        
 
         public void AddRange(params SanPham[] listSanPham)
         {

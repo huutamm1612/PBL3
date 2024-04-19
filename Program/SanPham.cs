@@ -51,23 +51,35 @@ namespace Program
             this.maSP = maSP;
         }
 
-        public SanPham(SanPham sanPham)
+        public SanPham Clone()
         {
-            maSP = sanPham.maSP;
-            maLoaiSP = sanPham.maLoaiSP;
-            ten = sanPham.ten;
-            gia = sanPham.gia;
-            soLuong = sanPham.soLuong;
-            luocBan = sanPham.luocBan;
-            tacGia = sanPham.tacGia;
-            dichGia = sanPham.dichGia;
-            ngonNgu = sanPham.ngonNgu;
-            soTrang = sanPham.soTrang;
-            namXuatBan = sanPham.namXuatBan;
-            nhaXuatBan = sanPham.nhaXuatBan;
-            loaiBia = sanPham.loaiBia;
-            moTa = sanPham.moTa;
-            ngayThem = sanPham.ngayThem;
+            SanPham sanPham = new SanPham
+            {
+                maSP = this.maSP,
+                maLoaiSP = this.maLoaiSP,
+                maBD = this.maBD,
+                maS = this.maS,
+                ten = this.ten,
+                gia = this.gia,
+                soLuong = this.soLuong,
+                luocBan = this.luocBan,
+                tacGia = this.tacGia,
+                dichGia = this.dichGia,
+                ngonNgu = this.ngonNgu,
+                soTrang = this.soTrang,
+                namXuatBan = this.namXuatBan,
+                nhaXuatBan = this.nhaXuatBan,
+                loaiBia = this.loaiBia,
+                moTa = this.moTa,
+                ngayThem = this.ngayThem,
+            };
+            return sanPham;
+        }
+
+        public void themVaoGioHang(int soLuong)
+        {
+            this.soLuong = soLuong;
+            this.ngayThem = DateTime.Now;
         }
 
         public static bool CompareGia(object o1, object o2) => ((SanPham)o1).gia < ((SanPham)o2).gia;
@@ -77,6 +89,7 @@ namespace Program
         public static bool CompareMaSP(object o1, object o2) => String.Compare(((SanPham)o1).maSP, ((SanPham)o2).maSP) < 0;
         public static bool CompareNgayThem(object o1, object o2) => DateTime.Compare(((SanPham)o1).ngayThem, ((SanPham)o2).ngayThem) < 0;
         public static bool CompareMaS(object o1, object o2) => String.Compare(((SanPham)o1).maS, ((SanPham)o2).maS) < 0;
+        public static bool CompareMaBD(object o1, object o2) => String.Compare(((SanPham)o1).maBD, ((SanPham)o2).maBD) < 0;
 
         public static bool EqualGia(object o1, object o2) => ((SanPham) o1).gia == ((SanPham) o2).gia;       
         public static bool EqualTen(object o1, object o2) => String.Equals(((SanPham)o1).ten, ((SanPham)o2).ten);
@@ -87,6 +100,7 @@ namespace Program
         public static bool EqualLoaiBia(object o1, object o2) => String.Equals(((SanPham)o1).loaiBia, ((SanPham)o2).loaiBia);
         public static bool EqualNgayThem(object o1, object o2) => DateTime.Equals(((SanPham)o1).ngayThem, ((SanPham)o2).ngayThem);
         public static bool EqualMaS(object o1, object o2) => String.Equals(((SanPham)o1).maS, ((SanPham)o2).maS);
+        public static bool EqualMaBD(object o1, object o2) => String.Equals(((SanPham)o1).maBD, ((SanPham)o2).maBD);
         public override bool Equals(object obj) => ((SanPham)obj).maSP == this.maSP;
     }
 }

@@ -16,10 +16,7 @@ namespace Program
         public int gioiTinh { get; set; }
         public DateTime ngaySinh { get; set; }
 
-        public void capNhatDiaChi(DiaChi diaChiMoi)
-        {
-            this.diaChi = diaChiMoi;
-        }
+        public abstract void capNhatDiaChi(DiaChi diaChiMoi);
         public abstract void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
         public abstract void sua(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
     }

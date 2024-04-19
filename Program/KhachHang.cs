@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,10 +10,10 @@ namespace Program
     internal class KhachHang : Nguoi
     {
         public string taiKhoan { get; set; }
-        public int nFollow { get; set; }
         public int chiTieu { get; set; }
         public int xu { get; set; }
         public string avt { get; set; }
+        public List<string> listFollow { get; set; }
         public List<DiaChi> listDiaChi { get; set; }
         public QLDonHang listDonHang { get; set; }
         public GioHang gioHang { get; set; }
@@ -25,21 +26,22 @@ namespace Program
 
         public KhachHang()
         {
-            this.maSo = maSo;
-            this.ten = ten;
-            this.soDT = soDT;
-            this.email = email;
-            this.diaChi = diaChi;
+            this.maSo = "";
+            this.ten = "";
+            this.soDT = "";
+            this.email = "";
+            this.diaChi = null;
             this.ngaySinh = ngaySinh;
             this.taiKhoan = null;
-            this.nFollow = 0;
             this.xu = 0;
             this.chiTieu = 0;
+            this.listFollow = new List<string>();
             this.listDiaChi = new List<DiaChi>();
             this.listDonHang = new QLDonHang();
             this.gioHang = new GioHang();
             this.listDanhGia = new QLDanhGia();
         }
+
         public KhachHang(string maSo, string taiKhoan)
         {
             this.maSo = maSo;
@@ -55,24 +57,9 @@ namespace Program
             this.diaChi = diaChi;
             this.gioiTinh = gioiTinh;
             this.ngaySinh = ngaySinh;
-            this.nFollow = nFollow;
+            this.listFollow = listFollow;
             this.chiTieu = chiTieu;
             this.xu = xu;
-        }
-        public KhachHang(KhachHang khachHang)
-        {
-            this.maSo = khachHang.maSo;
-            this.taiKhoan = khachHang.taiKhoan;
-            this.ten = khachHang.ten;
-            this.soDT = khachHang.soDT;
-            this.email = khachHang.email;
-            this.diaChi = khachHang.diaChi;
-            this.ngaySinh = khachHang.ngaySinh;
-            this.nFollow = khachHang.nFollow;
-            this.chiTieu = khachHang.chiTieu;
-            this.xu = khachHang.xu;
-            this.listDiaChi = khachHang.listDiaChi;
-            this.listDonHang = khachHang.listDonHang;
         }
 
         public override void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh)
@@ -131,6 +118,38 @@ namespace Program
             return HeThong.KiemTraTaoShop(this);
         }
 
+        public void themVaoGioHang(SanPham sanPham, int soLuong)
+        {
+            SanPham item = sanPham.Clone();
+            item.themVaoGioHang(soLuong);
+            gioHang.Add(item);
+            HeThong.ThemVaoGioHang(item, maSo, gioHang.IsExist(item));
+        }
+
+        public void xoaKhoiGioHang(string[] list)
+        {
+            gioHang.RemoveRange(list);
+            HeThong.XoaSPKhoiGioHang(maSo, list);
+            Utils.Sort(gioHang.list, 0, gioHang.list.Count - 1, GioHang.CompareNgayThem, GioHang.EqualNgayThem);
+        }
+
+        public void muaHang(string[] list)
+        {
+
+        }
+
+        public void follow(string maS)
+        {
+            listFollow.Insert(0, maS);
+            HeThong.Follow(maSo, maS);
+        }
+
+        public void unFollow(string maS)
+        {
+            listFollow.Remove(maS);
+            HeThong.UnFollow(maSo, maS);
+        }
+
         public void datHang(QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, int xu)
         {
             DonHang donHang = new DonHang
@@ -145,6 +164,8 @@ namespace Program
             };
             this.xu -= xu;
             listDonHang.AddRange(donHang.datHang());
+
+
         }
 
         public void huyDon(DonHang donHang)
@@ -160,6 +181,11 @@ namespace Program
             donHang.nhanHang();
 
             listDanhGia.AddRange(donHang.taoDanhGia());
+        }
+
+        public override void capNhatDiaChi(DiaChi diaChiMoi)
+        {
+            this.diaChi = diaChiMoi;
         }
     }
 }

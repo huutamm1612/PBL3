@@ -15,6 +15,7 @@ namespace Program
         public string moTa { get; set; }
         public int luocThich { get; set; }
         public int giamGia { get; set; }
+        public QLDanhGia listDanhGia { get; set; }
 
         public BaiDang(string maBD)
         {
@@ -30,26 +31,7 @@ namespace Program
             moTa = "";
             luocThich = 0;
             giamGia = 0;
-        }
-
-        public BaiDang(string maBD, List<SanPham> list, string tieuDe, string moTa, int luocThich, int giamGia)
-        {
-            this.maBD = maBD;
-            this.list = list;
-            this.tieuDe = tieuDe;
-            this.moTa = moTa;
-            this.luocThich = luocThich;
-            this.giamGia = giamGia;
-        }
-
-        public BaiDang(BaiDang baiDang)
-        {
-            maBD = baiDang.maBD;
-            list = baiDang.list;
-            tieuDe = baiDang.tieuDe;
-            moTa = baiDang.moTa;
-            luocThich = baiDang.luocThich;
-            giamGia = baiDang.giamGia;
+            listDanhGia = new QLDanhGia();
         }
 
         public override void Add(object item)
@@ -101,7 +83,7 @@ namespace Program
 
         public double tinhSao()
         {
-            return 0.0;
+            return listDanhGia.tinhSao();
         }
 
         public int doanhThu()

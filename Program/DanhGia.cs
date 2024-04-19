@@ -12,7 +12,7 @@ namespace Program
         public string maDG { get; set; }
         public string maKH { get; set; }
         public string maBD { get; set; }
-        public List<string> maSP { get; set; }
+        public string sanPhamDaMua { get; set; }
         public string doiTuong { get; set; }
         public string thietKeBia { get; set; }
         public string noiDung { get; set; }
@@ -25,7 +25,7 @@ namespace Program
             maDG = "";
             maKH = "";
             maBD = "";
-            maSP = new List<string>();
+            sanPhamDaMua = "";
             doiTuong = "";
             thietKeBia = "";
             noiDung = "";

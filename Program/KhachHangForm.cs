@@ -363,8 +363,6 @@ namespace Program
             diaChiUser_Panel.Visible = true;
 
             veLai_DiaChi();
-
-
         }
 
         private void backDiaChi_Button_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace Program
             maSo.Sort();
             int i = 0, j = 0;
 
-            while (j < maSo.Count)
+            while (j < maSo.Count && i < list.Count)
             {
                 if (list[i].Equals(maSo[i]))
                 {

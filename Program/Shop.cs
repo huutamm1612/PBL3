@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,64 +11,46 @@ namespace Program
 {
     internal class Shop : Nguoi
     {
-        public int nFollower { get; set; }
         public int tinhTrang { get; set; }
         public int doanhThu { get; set; }
+        public List<string> listFollower { get; set; }
         public QLDonHang listDonHang { get; set; }
         public QLBaiDang listBaiDang { get; set; }
 
-        public Shop() : base()
+        public Shop()
         {
-            listBaiDang = new QLBaiDang();
-            nFollower = 0;
-            doanhThu = 0;
-            tinhTrang = 1;
-            listDonHang = null;
-        }
 
-        public Shop(string soDT, string email) : base()
-        {
-            listBaiDang = new QLBaiDang();
-            nFollower = 0;
-            doanhThu = 0;
-            tinhTrang = 1;
-            this.soDT = soDT;
-            this.email = email;
-            listDonHang = null;
-        }
-
-        public Shop(string maSo, string ten, string soDT, string email, DiaChi diaChi, DateTime ngaySinh, List<BaiDang> list, int nFollower, int tinhTrang, int doanhThu)
-        {
-            this.maSo = maSo;
-            this.ten = ten;
-            this.soDT = soDT;
-            this.email = email;
-            this.diaChi = diaChi;
+            this.maSo = "";
+            this.ten = "";
+            this.soDT = "";
+            this.email = "";
+            this.diaChi = new DiaChi();
             this.ngaySinh = ngaySinh;
-            this.listBaiDang = listBaiDang;
-            this.nFollower = nFollower;
-            this.doanhThu = doanhThu;
-            this.tinhTrang = tinhTrang;
+            this.listBaiDang = new QLBaiDang();
+            this.doanhThu = 0;
+            this.tinhTrang = 1;
+            this.listFollower = new List<string>();
+            this.listDonHang = null;
+        }
+
+        public Shop(string soDT, string email)
+        {
+            this.maSo = "";
+            this.ten = "";
+            this.soDT = soDT;
+            this.email = email;
+            this.diaChi = new DiaChi();
+            this.ngaySinh = ngaySinh;
+            this.listBaiDang = new QLBaiDang();
+            this.doanhThu = 0;
+            this.tinhTrang = 1;
+            this.listFollower = new List<string>();
+            this.listDonHang = null;
         }
 
         public Shop(string maSo)
         {
             this.maSo = maSo;
-        }
-
-        public Shop(Shop shop)
-        {
-            this.maSo = shop.maSo;
-            this.ten = shop.ten;
-            this.soDT = shop.soDT;
-            this.email = shop.email;
-            this.diaChi = shop.diaChi;
-            this.ngaySinh = shop.ngaySinh;
-            this.listBaiDang = shop.listBaiDang;
-            this.nFollower = shop.nFollower;
-            this.tinhTrang = shop.tinhTrang;
-            this.doanhThu = shop.doanhThu;
-            this.listDonHang = shop.listDonHang;
         }
 
         public void Add(BaiDang baiDang)
@@ -143,6 +126,33 @@ namespace Program
             return qlSP.list.ToArray();
         }
 
+        public double tinhSao()
+        {
+            double total = 0.0;
+            int count = 0;
+
+            foreach(BaiDang baiDang in listBaiDang.list)
+            {
+                foreach(DanhGia danhGia in baiDang.listDanhGia.list)
+                {
+                    total += danhGia.sao;
+                }
+                count += baiDang.listDanhGia.list.Count;
+            }
+
+            return total / count;
+        }
+
+        public SanPham searchSanPham(string maSP)
+        {
+            foreach (var baiDang in listBaiDang.list)
+                foreach (var sanPham in baiDang.list)            
+                    if (sanPham.maSP == maSP)
+                        return sanPham;
+
+            return null;
+        }
+
         public SanPham searchSanPham(string maSP, string maBD)
         {
             foreach(var baiDang in listBaiDang.list)
@@ -158,12 +168,12 @@ namespace Program
         {
             foreach(DonHang donHang in list)
             {
-                donHang.capNhatTinhTrang(2);
+                donHang.capNhatTinhTrang(1);
                 donHang.diDon();
                 
                 foreach(var sanPham in donHang.list)
                 {
-                    SanPham sp = searchSanPham(sanPham.maSP, sanPham.maBD);
+                    SanPham sp = searchSanPham(sanPham.maSP);
                     sp.soLuong -= sanPham.soLuong;
                     sp.luocBan += sanPham.soLuong;
 
@@ -191,5 +201,10 @@ namespace Program
         }
 
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
+
+        public override void capNhatDiaChi(DiaChi diaChiMoi)
+        {
+            this.diaChi = diaChiMoi;
+        }
     }
 }

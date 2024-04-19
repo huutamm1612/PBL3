@@ -43,13 +43,24 @@ namespace Program
         {
             foreach(DanhGia danhGia in item)
             {
-                list.Add(danhGia);
+                list.Insert(0, danhGia);
             }
         }
 
         public void Insert(int index, object item)
         {
             list.Insert(index, item as DanhGia);
+        }
+
+        public double tinhSao()
+        {
+            double total = 0.0;
+            foreach(DanhGia danhGia in list)
+            {
+                total += danhGia.sao;
+            }
+
+            return total / list.Count;
         }
     }
 }
