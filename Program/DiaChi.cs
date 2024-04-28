@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class DiaChi
+    public class DiaChi
     {
         public string maDC { get; set; }
         public string ten { get; set; }

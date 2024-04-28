@@ -14,6 +14,8 @@ namespace Program
         public int xu { get; set; }
         public string avt { get; set; }
         public List<string> listFollow { get; set; }
+        public List<string> listThich { get; set; }
+        public List<string> listDaXem { get; set; }
         public List<DiaChi> listDiaChi { get; set; }
         public QLDonHang listDonHang { get; set; }
         public GioHang gioHang { get; set; }
@@ -36,6 +38,8 @@ namespace Program
             this.xu = 0;
             this.chiTieu = 0;
             this.listFollow = new List<string>();
+            this.listThich = new List<string>();
+            this.listDaXem = new List<string>();
             this.listDiaChi = new List<DiaChi>();
             this.listDonHang = new QLDonHang();
             this.gioHang = new GioHang();
@@ -46,20 +50,6 @@ namespace Program
         {
             this.maSo = maSo;
             this.taiKhoan = taiKhoan;
-        }
-        public KhachHang(string maSo, string ten, string soDT, string email, DiaChi diaChi, int gioiTinh, DateTime ngaySinh, string taiKhoan, int nFollow, int chiTieu, int xu)
-        {
-            this.maSo = maSo;
-            this.taiKhoan = taiKhoan;
-            this.ten = ten;
-            this.soDT = soDT;
-            this.email = email;
-            this.diaChi = diaChi;
-            this.gioiTinh = gioiTinh;
-            this.ngaySinh = ngaySinh;
-            this.listFollow = listFollow;
-            this.chiTieu = chiTieu;
-            this.xu = xu;
         }
 
         public override void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh)
@@ -118,6 +108,17 @@ namespace Program
             return HeThong.KiemTraTaoShop(this);
         }
 
+        public void xemBaiDang(string maBD)
+        {
+            listDaXem.Insert(0, maBD);
+            HeThong.ThemDaXem(maSo, maBD);
+            if (listDaXem.Count == 20)
+            {
+                HeThong.XoaDaXem(maSo, listDaXem.Last());
+                listDaXem.RemoveAt(19);
+            }
+        }
+
         public void themVaoGioHang(SanPham sanPham, int soLuong)
         {
             SanPham item = sanPham.Clone();
@@ -126,16 +127,21 @@ namespace Program
             HeThong.ThemVaoGioHang(item, maSo, gioHang.IsExist(item));
         }
 
-        public void xoaKhoiGioHang(string[] list)
+        public void xoaKhoiGioHang(params string[] list)
         {
             gioHang.RemoveRange(list);
             HeThong.XoaSPKhoiGioHang(maSo, list);
             Utils.Sort(gioHang.list, 0, gioHang.list.Count - 1, GioHang.CompareNgayThem, GioHang.EqualNgayThem);
         }
 
-        public void muaHang(string[] list)
+        public SanPham searchSanPhamTrongGioHang(string tenSanPham)
         {
-
+            foreach(SanPham sanPham in gioHang.list)
+            {
+                if (sanPham.ten.ToLower().Contains(tenSanPham.ToLower()))
+                    return sanPham;
+            }
+            return null;
         }
 
         public void follow(string maS)
@@ -148,6 +154,18 @@ namespace Program
         {
             listFollow.Remove(maS);
             HeThong.UnFollow(maSo, maS);
+        }
+
+        public void thich(string maBD)
+        {
+            listThich.Insert(0, maBD);
+            HeThong.Thich(maSo, maBD);
+        }
+
+        public void huyThich(string maBD)
+        {
+            listThich.Remove(maBD);
+            HeThong.HuyThich(maSo, maBD);
         }
 
         public void datHang(QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, int xu)
@@ -164,8 +182,6 @@ namespace Program
             };
             this.xu -= xu;
             listDonHang.AddRange(donHang.datHang());
-
-
         }
 
         public void huyDon(DonHang donHang)

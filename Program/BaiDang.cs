@@ -40,6 +40,7 @@ namespace Program
             if (sanPham.maSP == "")
                 sanPham.maSP = HeThong.MaMoi("maSP");
             sanPham.maBD = maBD;
+            sanPham.maS = maS;
             base.Add(sanPham);
         }
 

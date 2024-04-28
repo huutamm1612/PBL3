@@ -12,13 +12,18 @@ using System.Windows.Forms;
 
 namespace Program
 {
+
+    public delegate void SendSanPham(SanPham sanPham);
+
     public partial class BanHang_Form : Form
     {
+        private int index = -1;
         private User user;
         private Shop shop = null;
         private Button currTab = null;
         private Panel currPanel = null;
         private QLSanPham QLSP = null;
+        private SanPham currSanPham = null;
         public BanHang_Form()
         {
             InitializeComponent();
@@ -327,19 +332,6 @@ namespace Program
 
         }
 
-        private void themSPButton_Click(object sender, EventArgs e)//1575, 140
-        {
-            if (theLoai_CBBox.Items.Count == 0)
-                Utils.SetComboBox(theLoai_CBBox, HeThong.LoadTheLoai());
-
-            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
-            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
-            formThemSPPanel.Location = themSPButton.Location;
-            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
-            formThemSPPanel.Visible = true;
-            themSPButton.Visible = false;
-        }
-
         private void huyThemSPButton_Click(object sender, EventArgs e)
         {
             refreshThemSPForm(sender, e);
@@ -350,22 +342,29 @@ namespace Program
             themSPButton.Visible = true;
         }
 
-        private Panel sanPhamForm()
+        private void themSanPham(SanPham sanPham)
+        {
+            QLSP.Add(sanPham);
+
+            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
+            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
+            formThemSPPanel.Location = themSPButton.Location;
+            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
+
+            listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
+            listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
+            listSP_FLPanel.Visible = true;
+        }
+
+        private Panel sanPhamForm(SanPham sanPham)
         {
             Color color1 = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
-            Panel parentPanel = new Panel
-            {
-                Size = formThemSPPanel.Size,
-                BorderStyle = BorderStyle.FixedSingle,
-                BackColor = color1
-            };
-
             Panel panel = new Panel
             {
                 Location = new Point(0, 0),
-                Size = new Size(1420, 585),
+                Size = formThemSPPanel.Size,
                 BackColor = color1
             };
 
@@ -377,7 +376,6 @@ namespace Program
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
-                ReadOnly = true,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
             };
@@ -388,7 +386,6 @@ namespace Program
                 Size = textBox13.Size,
                 Font = font1,
                 BackColor = color1,
-                ReadOnly = true,
                 BorderStyle = BorderStyle.None,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
@@ -528,92 +525,104 @@ namespace Program
             TextBox txtSP = new TextBox
             {
                 Location = tenSP_Text.Location,
-                Text = tenSP_Text.Text,
+                Text = sanPham.ten,
                 Size = tenSP_Text.Size,
+                Name = "txtTenSP",
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
+                ReadOnly = true,
             };
             TextBox txtTG = new TextBox
             {
                 Location = tenTacGia_Text.Location,
-                Text = tenTacGia_Text.Text,
+                Text = sanPham.tacGia,
+                Name = "txtTacGia",
                 Size = tenTacGia_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 1,
+                ReadOnly = true,
             };
             TextBox txtDG = new TextBox
             {
                 Location = tenDichGia_Text.Location,
-                Text = tenDichGia_Text.Text,
+                Text = sanPham.dichGia,
+                Name = "txtDichGia",
                 Size = tenDichGia_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 2,
+                ReadOnly = true,
             };
             TextBox txtNXB = new TextBox
             {
-                Text = nhaXuatBan_Text.Text,
                 Location = nhaXuatBan_Text.Location,
+                Text = sanPham.nhaXuatBan,
                 Size = nhaXuatBan_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 3,
+                ReadOnly = true,
             };
             TextBox txtNam = new TextBox
             {
-                Text = namXuatBan_Text.Text,
+                Text = sanPham.namXuatBan.ToString(),
                 Location = namXuatBan_Text.Location,
                 Size = namXuatBan_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 4,
+                ReadOnly = true,
             };
             TextBox txtPrice = new TextBox
             {
-                Text = gia_Text.Text,
+                Text = sanPham.gia.ToString(),
                 Location = gia_Text.Location,
                 Size = gia_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 5,
+                ReadOnly = true,
             };
             TextBox txtSL = new TextBox
             {
-                Text = soLuong_Text.Text,
+                Text = sanPham.soLuong.ToString(),
                 Location = soLuong_Text.Location,
                 Size = soLuong_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 6,
+                ReadOnly = true,
             };
             TextBox txtTrang = new TextBox
             {
-                Text = soTrang_Text.Text,
+                Text = sanPham.soTrang.ToString(),
                 Location = soTrang_Text.Location,
                 Size = soTrang_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 7,
+                ReadOnly = true,
             };
             TextBox txtMota = new TextBox
             {
-                Text = moTaSP_Text.Text,
+                Text = sanPham.moTa,
                 Location = moTaSP_Text.Location,
                 Size = moTaSP_Text.Size,
                 Font = font1,
                 BackColor = color1,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 8,
+                ReadOnly = true,
             };
             TextBox txt10 = new TextBox
             {
@@ -757,7 +766,7 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            ComboBox cboTheLoai = new ComboBox
+            /*ComboBox cboTheLoai = new ComboBox
             {
                 Location = theLoai_CBBox.Location,
                 Size = theLoai_CBBox.Size,
@@ -766,7 +775,7 @@ namespace Program
 
             };
             Utils.SetComboBox(cboTheLoai, HeThong.LoadTheLoai());
-            cboTheLoai.SelectedIndex = theLoai_CBBox.SelectedIndex;
+            cboTheLoai.SelectedIndex = int.Parse(sanPham.maLoaiSP);
 
             ComboBox cboLoaiBia = new ComboBox
             {
@@ -775,10 +784,9 @@ namespace Program
                 Size = loaiBia_CBBox.Size,
                 Font = font1,
                 BackColor = color1,
-
             };
             cboLoaiBia.Items.AddRange( new object[] {"Bìa mềm", "Bìa Cứng"} );
-            cboLoaiBia.SelectedIndex = loaiBia_CBBox.SelectedIndex;
+            cboLoaiBia.SelectedItem = loaiBia_CBBox.SelectedIndex;
 
             ComboBox cboLanguage = new ComboBox
             {
@@ -798,7 +806,7 @@ namespace Program
                 "Tiếng Nga",
                 "Khác"
             });
-            cboLanguage.SelectedIndex = ngonNgu_CBBox.SelectedIndex;
+            cboLanguage.SelectedIndex = ngonNgu_CBBox.SelectedIndex;*/
 
             panel.Controls.Add(anhSP);
             panel.Controls.Add(lbSoTrang);
@@ -825,9 +833,6 @@ namespace Program
             panel.Controls.Add(pic7);
             panel.Controls.Add(pic8);
             panel.Controls.Add(pic9);
-            panel.Controls.Add(cboTheLoai);
-            panel.Controls.Add(cboLoaiBia);
-            panel.Controls.Add(cboLanguage);
             panel.Controls.Add(lbTenSP);
             panel.Controls.Add(lbTacGia);
             panel.Controls.Add(lbDichGia);
@@ -839,6 +844,9 @@ namespace Program
             panel.Controls.Add(lbNgonNgu);
             panel.Controls.Add(lbGia);
             panel.Controls.Add(lbSoLuong);
+            /*panel.Controls.Add(cboTheLoai);
+            panel.Controls.Add(cboLoaiBia);
+            panel.Controls.Add(cboLanguage);*/
 
             Button btnCapNhat = new Button
             {
@@ -859,16 +867,31 @@ namespace Program
                 BackColor = color1,
             };
 
-            panel.Enabled = false;
-
-            parentPanel.Controls.Add(panel);
-            parentPanel.Controls.Add(btnXoa);
-            parentPanel.Controls.Add(btnCapNhat);
+            panel.Controls.Add(btnXoa);
+            panel.Controls.Add(btnCapNhat);
 
             btnCapNhat.Click += Update_Button;
             btnXoa.Click += Remove_Button;
 
-            return parentPanel;
+            return panel;
+        }
+
+        private void themSPButton_Click(object sender, EventArgs e)//1575, 140
+        {
+            /*if (theLoai_CBBox.Items.Count == 0)
+                Utils.SetComboBox(theLoai_CBBox, HeThong.LoadTheLoai());
+
+            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
+            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
+            formThemSPPanel.Location = themSPButton.Location;
+            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
+            formThemSPPanel.Visible = true;
+            themSPButton.Visible = false;*/
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            SanPhamForm form = new SanPhamForm(this.themSanPham);
+            form.ShowDialog();
+            dimForm.Close();
         }
 
         private void Remove_Button(object sender, EventArgs e)
@@ -884,20 +907,38 @@ namespace Program
             themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y - formThemSPPanel.Size.Height + 20);
         }
 
+        private void capNhatSanPham(SanPham sanPham)
+        {
+            QLSP.list[index] = sanPham;
+        }
+
         private void Update_Button(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = listSP_FLPanel.Controls.IndexOf(panelToUpdate);
 
-            foreach(Control control in panelToUpdate.Controls)
-                control.Enabled = true;
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
 
+            SanPhamForm form = new SanPhamForm(this.capNhatSanPham);
+            SendSanPham send = new SendSanPham(form.setSanPham);
+            send(QLSP.list[index]);
+
+            form.ShowDialog();
+            dimForm.Close();
+
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtTacGia")).Text = QLSP.list[index].tacGia;
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtDichGia")).Text = QLSP.list[index].dichGia;
         }
+
+
 
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
+            /*if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
                && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
                && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
@@ -905,7 +946,7 @@ namespace Program
                 {
                     maSP = "",
                     maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
-                    maBD = shop.listBaiDang.list.Last().maBD,
+                    //maBD = shop.listBaiDang.list.Last().maBD,
                     ten = tenDichGia_Text.Text,
                     tacGia = tenDichGia_Text.Text,
                     dichGia = tenDichGia_Text.Text,
@@ -915,6 +956,7 @@ namespace Program
                     soLuong = int.Parse(soLuong_Text.Text),
                     ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
                     loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
+                    ngayThem = DateTime.Now
                 };
                 QLSP.Add(sanPham);
 
@@ -950,7 +992,9 @@ namespace Program
                     theLoai_check.Visible = false;
                 else
                     theLoai_check.Visible = true;
-            }
+            }*/
+
+
 
             // copy roi them vao FlowLayoutPanel listSP_FLPanel
 
@@ -1163,7 +1207,11 @@ namespace Program
                 }
 
                 QLSP.Clear();
+                index = -1;
                 shop.Insert(0, baiDang);
+                // HeThong.ThemBaiDang(baiDang)
+                trangChuPanel.Visible = true;
+                themSanPhamPanel.Visible = false;
             }
             else
             {

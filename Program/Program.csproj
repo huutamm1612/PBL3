@@ -61,6 +61,18 @@
     <Compile Include="BanHangForm.Designer.cs">
       <DependentUpon>BanHangForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiaChiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaChiForm.Designer.cs">
+      <DependentUpon>DiaChiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DimForm.Designer.cs">
+      <DependentUpon>DimForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DonHang.cs" />
     <Compile Include="GioHang.cs" />
     <Compile Include="HeThong.cs" />
@@ -80,6 +92,12 @@
     <Compile Include="QLSanPham.cs" />
     <Compile Include="IQuanLy.cs" />
     <Compile Include="SanPham.cs" />
+    <Compile Include="SanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SanPhamForm.Designer.cs">
+      <DependentUpon>SanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shop.cs" />
     <Compile Include="TaiKhoan.cs" />
     <Compile Include="User.cs" />
@@ -89,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BanHangForm.resx">
       <DependentUpon>BanHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaChiForm.resx">
+      <DependentUpon>DiaChiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhachHangForm.resx">
       <DependentUpon>KhachHangForm.cs</DependentUpon>
@@ -102,6 +123,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SanPhamForm.resx">
+      <DependentUpon>SanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

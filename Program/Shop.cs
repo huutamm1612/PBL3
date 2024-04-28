@@ -79,7 +79,7 @@ namespace Program
                 if (BaiDang.EqualMaBD(bd, baiDang))
                 {
                     listBaiDang.list.Remove(bd);
-                    HeThong.XoaBaiDang(baiDang.maBD);
+                    HeThong.XoaBaiDang(baiDang);
                     return;
                 }
             }
@@ -91,13 +91,13 @@ namespace Program
             Utils.RemoveRange(listBaiDang.list, maBDs);
             foreach(string maBD in maBDs)
             {
-                HeThong.XoaBaiDang(maBD);
+                //HeThong.XoaBaiDang(maBD);
             }
         }
 
         public void RemoveAt(int index)
         {
-            HeThong.XoaBaiDang(listBaiDang.list[index].maBD);
+            HeThong.XoaBaiDang(listBaiDang.list[index]);
             listBaiDang.list.RemoveAt(index);
         }
 

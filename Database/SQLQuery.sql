@@ -149,6 +149,33 @@ CREATE TABLE BaiDang(
 	anh varchar(255) null
 )
 
+CREATE TABLE Thich(
+	maKH varchar(10),
+	maBD varchar(10),
+	PRIMARY KEY (maKH, maBD),
+
+
+	CONSTRAINT FK_Thich_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+	CONSTRAINT FK_Thich_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD)
+)
+
+CREATE TABLE SanPhamDaXoa(
+	maSP varchar(10) PRIMARY KEY,
+	maS varchar(10)
+
+	CONSTRAINT FK_SanPhamDaXoa_SanPham FOREIGN KEY (maSP) REFERENCES SanPham(maSP),
+	CONSTRAINT FK_SanPhamDaXoa_Shop FOREIGN KEY (maS) REFERENCES Shop(maS)
+)
+
+CREATE TABLE DaXemGanDay(
+	maBD varchar(10),
+	maKH varchar(10),
+	PRIMARY KEY (maBD, maKH),
+
+	CONSTRAINT FK_DaXemGanDay_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
+	CONSTRAINT FK_DaXemGanDay_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH)
+)
+
 CREATE TABLE SanPham_BaiDang(
 	maSP varchar(10),
 	maBD varchar(10),

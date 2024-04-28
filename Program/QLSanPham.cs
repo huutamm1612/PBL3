@@ -26,6 +26,11 @@ namespace Program
             this.list = sanPham.list;
         }
 
+        public SanPham[] ToArray()
+        {
+            return list.ToArray();
+        }
+
         public virtual void Add(object item)
         {
             foreach(SanPham sanPham in list)

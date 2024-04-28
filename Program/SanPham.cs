@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class SanPham
+    public class SanPham
     {
         public string maSP { get; set; }
         public string maLoaiSP { get; set; }

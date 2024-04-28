@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace Program
 {
     public delegate void sendData(string taiKhoan, string matKhau);
+    public delegate void sendDiaChi(DiaChi diaChi);
     public partial class KhachHangForm : Form
     {
         private User user = null;
@@ -39,38 +40,11 @@ namespace Program
             HeThong.WriteAccoutCache(user);
 
             KhachHang_Panel.Visible = true;
-            HomePanel.Visible = true;
             HeaderPannel.Visible = true;
             dangNhap_Button.Visible = false;
             SignUp_Button.Visible = false;
             userProfile_Button.Visible = true;
             user_DangXuat_Button.Visible = true;
-        }
-
-        private void refreshThemDiaChi_Panel()
-        {
-            hoVaTen_Box.Text = "...";
-            soDienThoai_Box.Text = "...";
-            TTP_ComboBox.SelectedIndex = 0;
-            QH_ComboBox.DataSource = null;
-            QH_ComboBox.Enabled = false;
-            PX_ComboBox.Enabled = false;
-            PX_ComboBox.DataSource = null;
-            diaChiCuThe_Box.Text = "...";
-            diaChiCuThe_Box.Enabled = false;
-            datDCMacDinh_check.Checked = false;
-        }
-
-        private void refreshCapNhatDiaChi_Panel(DiaChi diaChi)
-        {
-            hoVaTen_Box.Text = diaChi.ten;
-            soDienThoai_Box.Text = diaChi.soDT;
-            TTP_ComboBox.SelectedIndex = diaChi.maT_TP;
-            QH_ComboBox.SelectedIndex = diaChi.maQH % 100;
-            PX_ComboBox.SelectedIndex = diaChi.maPX % 100;
-            diaChiCuThe_Box.Text = diaChi.diaChiCuThe;
-            HTThemDiaChi_Button.Visible = false;
-            HTCapNhatDC_Button.Visible = true;
         }
 
         private void hienMatKhau(CheckBox hienMK, TextBox box)
@@ -176,7 +150,6 @@ namespace Program
             UserPanel.Visible = true;
             profilePanel.Visible = true;
         }
-
 
         private void suaTen_Button_Click(object sender, EventArgs e)
         {
@@ -314,6 +287,7 @@ namespace Program
             }
 
         }
+        
         private void luu_UP_Button_Click(object sender, EventArgs e)
         {
             DateTime ngaySinh;
@@ -341,19 +315,50 @@ namespace Program
             this.refreshUserProfile_Panel();
         }
 
+        public void themDiaChi(DiaChi diaChi)
+        {
+            if(khachHang.diaChi == null)
+            {
+                khachHang.capNhatDiaChi(diaChi);
+                HeThong.CapNhatDiaChiMacDinh(khachHang);
+            }
+            else
+            {
+                khachHang.themDiaChi(diaChi);
+            }
+
+            HeThong.ThemDiaChi(khachHang.maSo, diaChi);
+            veLai_DiaChi();
+        }
+
+        public void capNhatDiaChi(DiaChi diaChi)
+        {
+            if(diaChi.maDC == khachHang.diaChi.maDC)
+            {
+                khachHang.capNhatDiaChi(diaChi);
+            }
+            else
+            {
+                for(int i = 0; i < khachHang.listDiaChi.Count; i++)
+                {
+                    if (khachHang.listDiaChi[i].maDC == diaChi.maDC)
+                    {
+                        khachHang.capNhatDiaChi(i, diaChi);
+                        break;
+                    }
+                }
+            }
+            HeThong.CapNhatDiaChi(diaChi);
+            veLai_DiaChi();
+        }
+
         private void themDiaChi_Button_Click(object sender, EventArgs e)
         {
-            txtDiaChi.Text = "Địa chỉ mới";
-            themDiaChi_Panel.Visible = true;
-            themDiaChi_Panel.BringToFront();
-            if (khachHang.diaChi == null)
-            {
-                datDCMacDinh_check.Checked = true;
-                datDCMacDinh_check.Enabled = false;
-            }
-            if (TTP_ComboBox.Items.Count == 0)
-                TTP_ComboBox.DataSource = HeThong.LoadTinh_ThanhPho();
-
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            DiaChiForm form = new DiaChiForm(themDiaChi);
+            form.ShowDialog();
+            dimForm.Close();
         }
 
         private void diaChiUser_Button_Click(object sender, EventArgs e)
@@ -365,106 +370,22 @@ namespace Program
             veLai_DiaChi();
         }
 
-        private void backDiaChi_Button_Click(object sender, EventArgs e)
-        {
-            themDiaChi_Panel.Visible = false;
-            refreshThemDiaChi_Panel();
-        }
-
-        private void TTP_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (TTP_ComboBox.SelectedIndex != 0)
-            {
-                QH_ComboBox.Enabled = true;
-                QH_ComboBox.DataSource = HeThong.LoadQuan_Huyen(TTP_ComboBox.SelectedIndex);
-            }
-            else
-            {
-                QH_ComboBox.Enabled = false;
-                QH_ComboBox.DataSource = null;
-            }
-
-        }
-
-        private void QH_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (QH_ComboBox.SelectedIndex != 0)
-            {
-                PX_ComboBox.Enabled = true;
-                PX_ComboBox.DataSource = HeThong.LoadPhuong_Xa(TTP_ComboBox.SelectedIndex, QH_ComboBox.SelectedIndex);
-            }
-            else
-            {
-                PX_ComboBox.Enabled = false;
-                PX_ComboBox.DataSource = null;
-            }
-        }
-
-        private void PX_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PX_ComboBox.SelectedIndex == 0 || PX_ComboBox.Enabled == false)
-            {
-                diaChiCuThe_Box.Text = "";
-                diaChiCuThe_Box.Enabled = false;
-                HTCapNhatDC_Button.Enabled = false;
-                HTThemDiaChi_Button.Enabled = false;
-            }
-            else
-            {
-                diaChiCuThe_Box.Enabled = true;
-                HTThemDiaChi_Button.Enabled = true;
-                HTCapNhatDC_Button.Enabled = true;
-            }
-        }
-
-        private void HTThemDiaChi_Button_Click(object sender, EventArgs e)
-        {
-            string maDC = HeThong.MaMoi("maDC");
-            int maT_TP = TTP_ComboBox.SelectedIndex;
-            int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
-            int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
-                DiaChi diaChi = new DiaChi(maDC, hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
-                HeThong.ThemDiaChi(khachHang.maSo, diaChi);
-
-            if (datDCMacDinh_check.Checked)
-            {
-                if (khachHang.diaChi != null)
-                {
-                    khachHang.themDiaChi(khachHang.diaChi);
-                }
-
-                khachHang.capNhatDiaChi(diaChi);
-                HeThong.CapNhatDiaChiMacDinh(khachHang);
-            }
-            else
-            {
-                khachHang.themDiaChi(diaChi);
-            }
-
-            themDiaChi_Panel.Visible = false;
-            refreshThemDiaChi_Panel();
-            veLai_DiaChi();
-        }
-
         private void dangNhap_Button_Click(object sender, EventArgs e)
         {
-            DangNhap_Form DNForm = new DangNhap_Form();
-            DNForm.Show();
-            this.Hide();
+            DangNhap_Form form = new DangNhap_Form(setData);
+            Hide();
+            form.ShowDialog();
+            Show();
         }
 
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
-            DangNhap_Form DNForm = new DangNhap_Form(false);
-            DNForm.Show();
-            this.Hide();
+            DangNhap_Form form = new DangNhap_Form(setData, false);
+            Hide();
+            form.ShowDialog();
+            Show();
         }
-
-        private void troVe_button_Click(object sender, EventArgs e)
-        {
-            //LoginPanel.Visible = false;
-            KhachHang_Panel.Visible = true;
-        }
+        
         private void veLai_DiaChi()
         {
             if (khachHang.diaChi == null) return;
@@ -521,7 +442,6 @@ namespace Program
             panel.Controls.Add(btn1);
             panel.Controls.Add(lb);
             listDiaChi_FLPanel.Controls.Add(panel);
-
         }
 
         private void veDiaChi(DiaChi diaChi)
@@ -590,7 +510,6 @@ namespace Program
             khachHang.thayDoiDiaChiMacDinh(khachHang.listDiaChi[panelIndex - 1]);
             HeThong.CapNhatDiaChiMacDinh(khachHang);
 
-
             veLai_DiaChi();
         }
 
@@ -611,46 +530,22 @@ namespace Program
 
         private void CapNhat_Button(object sender, EventArgs e)
         {
-            themDiaChi_Button_Click(sender, e);
-            txtDiaChi.Text = "Cập nhật địa chỉ";
-
             Button clickedButton = sender as Button;
             Panel panelToRemove = clickedButton.Parent as Panel;
             int panelIndex = listDiaChi_FLPanel.Controls.IndexOf(panelToRemove);
 
-            indexOfDiaChi.Text = panelIndex.ToString();
-            datDCMacDinh_check.Visible = false;
-
-            if (panelIndex == 0)
-                refreshCapNhatDiaChi_Panel(khachHang.diaChi);
-            else
-                refreshCapNhatDiaChi_Panel(khachHang.listDiaChi[panelIndex - 1]);
-        }
-
-        private void HTCapNhatDC_Button_Click(object sender, EventArgs e)
-        {
-            int index = int.Parse(indexOfDiaChi.Text);
-            int maT_TP = TTP_ComboBox.SelectedIndex;
-            int maQH = maT_TP * 100 + QH_ComboBox.SelectedIndex;
-            int maPX = maQH * 100 + PX_ComboBox.SelectedIndex;
             DiaChi diaChi;
 
-            if (index == 0)
-            {
+            if (panelIndex == 0)
                 diaChi = khachHang.diaChi;
-                diaChi.capNhat(hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
-                khachHang.capNhatDiaChi(diaChi);
-            }
             else
-            {
-                diaChi = khachHang.listDiaChi[index - 1];
-                diaChi.capNhat(hoVaTen_Box.Text, soDienThoai_Box.Text, maT_TP, maQH, maPX, diaChiCuThe_Box.Text);
-                khachHang.capNhatDiaChi(index - 1, diaChi);
-            }
-            HeThong.CapNhatDiaChi(diaChi);
-            refreshThemDiaChi_Panel();
-            themDiaChi_Panel.Visible = false;
-            veLai_DiaChi();
+                diaChi = khachHang.listDiaChi[panelIndex - 1];
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            DiaChiForm form = new DiaChiForm(capNhatDiaChi, diaChi);
+            form.ShowDialog();
+            dimForm.Close();
         }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
@@ -664,27 +559,6 @@ namespace Program
             UserPanel.Visible = false;
             userProfile_Button.Visible = false;
             HeThong.ClearAccountCache();
-        }
-
-        private void soDienThoai_Box_TextChanged(object sender, EventArgs e)
-        {
-            if (soDienThoai_Box.Text == "...")
-                return;
-
-            if (!Utils.KiemTraSoDT(soDienThoai_Box.Text))
-            {
-                soDTKhongHopLe_Label.Visible = true;
-                HTCapNhatDC_Button.Enabled = false;
-                HTThemDiaChi_Button.Enabled = false;
-            }
-            else
-            {
-                soDTKhongHopLe_Label.Visible = false;
-                if(diaChiCuThe_Box.Enabled)
-                {
-                    HTCapNhatDC_Button.Enabled = true;
-                }
-            }
         }
 
         private void soDT_UP_Box_TextChanged(object sender, EventArgs e)
@@ -718,6 +592,7 @@ namespace Program
             sendData send = new sendData(BHForm.setData);
             send(user.taiKhoan, user.matKhau);
             BHForm.ShowDialog();
+            Close();
         }
 
         private void searchButton_Click(object sender, EventArgs e)

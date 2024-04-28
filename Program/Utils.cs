@@ -67,6 +67,36 @@ namespace Program
 
         }
 
+        public static Control FindControl(Panel panel, string name)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control.Name == name)
+                    return control;
+
+
+                if (control.HasChildren)
+                {
+                    Control foundControl = FindControl(control as Panel, name);
+                    if (foundControl != null)
+                        return foundControl;
+                }
+            }
+            return null;
+        }
+
+        public static SanPham[] LoadListSanPham(params string[] list)
+        {
+            QLSanPham listSP = new QLSanPham();
+
+            foreach(string maSP in list)
+            {
+                listSP.Add(HeThong.LoadSanPham(maSP));
+            }
+
+            return listSP.ToArray();
+        }
+
         public static bool KiemTraSoDT(string soDT)
         {
             if (soDT.Length != 10 || soDT[0] != '0')

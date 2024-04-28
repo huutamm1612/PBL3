@@ -14,18 +14,30 @@ namespace Program
     public partial class DangNhap_Form : Form
     {
         public bool dangNhapF;
-        
+        public sendData send;
+
         public DangNhap_Form(bool dangNhapState = true)
         {
             InitializeComponent();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
             state(dangNhapState);
+        }
+
+        public DangNhap_Form(sendData sender, bool isDangNhap = true)
+        {
+            InitializeComponent();
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
+            this.send = sender;
+            state(isDangNhap);
         }
 
         private void state(bool dangNhapState)
         {
-            this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.StartPosition = FormStartPosition.CenterScreen;
             if (dangNhapState)
                 dangNhap();
             else
@@ -41,7 +53,6 @@ namespace Program
             Signup_Panel.Visible = true;
             quenMK_Panel.Visible = false;
             LoginPanel.Visible = false;
-            this.Show();
         }
 
         private void dangNhap()
@@ -50,7 +61,6 @@ namespace Program
             LoginPanel.Visible = true;
             Signup_Panel.Visible = false;
             quenMK_Panel.Visible = false;
-            this.Show();
         }
 
         private void SignUp_Button_Click(object sender, EventArgs e)
@@ -100,12 +110,8 @@ namespace Program
             if (HeThong.DangNhap(taiKhoan, matKhau))
             {
                 LoginError.Visible = false;
-                KhachHangForm KHForm = new KhachHangForm();
-                sendData send = new sendData(KHForm.setData);
-                send(taiKhoan, matKhau);
-                this.Hide();
-                KHForm.Show();
-                Dispose();
+                this.send(taiKhoan, matKhau);
+                Close();
             }
             else
             {
