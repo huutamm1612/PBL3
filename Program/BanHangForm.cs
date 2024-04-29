@@ -766,12 +766,12 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            /*ComboBox cboTheLoai = new ComboBox
+            ComboBox cboTheLoai = new ComboBox
             {
-                Location = theLoai_CBBox.Location,
-                Size = theLoai_CBBox.Size,
-                Font = font1,
-                BackColor = color1,
+                 Location = theLoai_CBBox.Location,
+                 Size = theLoai_CBBox.Size,
+                 Font = font1,
+                 BackColor = color1,
 
             };
             Utils.SetComboBox(cboTheLoai, HeThong.LoadTheLoai());
@@ -779,34 +779,34 @@ namespace Program
 
             ComboBox cboLoaiBia = new ComboBox
             {
-                DataSource = loaiBia_CBBox.DataSource,
-                Location = loaiBia_CBBox.Location,
-                Size = loaiBia_CBBox.Size,
-                Font = font1,
-                BackColor = color1,
+                 DataSource = loaiBia_CBBox.DataSource,
+                 Location = loaiBia_CBBox.Location,
+                 Size = loaiBia_CBBox.Size,
+                 Font = font1,
+                 BackColor = color1,
             };
             cboLoaiBia.Items.AddRange( new object[] {"Bìa mềm", "Bìa Cứng"} );
-            cboLoaiBia.SelectedItem = loaiBia_CBBox.SelectedIndex;
+            cboLoaiBia.SelectedItem = loaiBia_CBBox.FindStringExact(sanPham.loaiBia);
 
             ComboBox cboLanguage = new ComboBox
             {
-                DataSource = ngonNgu_CBBox.DataSource,
-                Location = ngonNgu_CBBox.Location,
-                Size = ngonNgu_CBBox.Size,
-                Font = font1,
-                BackColor = color1,
+                 DataSource = ngonNgu_CBBox.DataSource,
+                 Location = ngonNgu_CBBox.Location,
+                 Size = ngonNgu_CBBox.Size,
+                 Font = font1,
+                 BackColor = color1,
 
             };
             cboLanguage.Items.AddRange(new object[] 
             {
-                "Tiếng Việt",
-                "Tiếng Anh",
-                "Tiếng Trung Quốc",
-                "Tiếng Nhật Bản",
-                "Tiếng Nga",
-                "Khác"
+                 "Tiếng Việt",
+                 "Tiếng Anh",
+                 "Tiếng Trung Quốc",
+                 "Tiếng Nhật Bản",
+                 "Tiếng Nga",
+                 "Khác"
             });
-            cboLanguage.SelectedIndex = ngonNgu_CBBox.SelectedIndex;*/
+            cboLanguage.SelectedIndex = ngonNgu_CBBox.FindStringExact(sanPham.ngonNgu); 
 
             panel.Controls.Add(anhSP);
             panel.Controls.Add(lbSoTrang);
@@ -844,9 +844,9 @@ namespace Program
             panel.Controls.Add(lbNgonNgu);
             panel.Controls.Add(lbGia);
             panel.Controls.Add(lbSoLuong);
-            /*panel.Controls.Add(cboTheLoai);
+            panel.Controls.Add(cboTheLoai);
             panel.Controls.Add(cboLoaiBia);
-            panel.Controls.Add(cboLanguage);*/
+            panel.Controls.Add(cboLanguage);
 
             Button btnCapNhat = new Button
             {
@@ -920,7 +920,7 @@ namespace Program
 
             DimForm dimForm = new DimForm();
             dimForm.Show();
-
+            
             SanPhamForm form = new SanPhamForm(this.capNhatSanPham);
             SendSanPham send = new SendSanPham(form.setSanPham);
             send(QLSP.list[index]);
@@ -938,7 +938,7 @@ namespace Program
         private void luuSPButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
-            /*if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
+            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
                && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
                && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
@@ -947,8 +947,8 @@ namespace Program
                     maSP = "",
                     maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
                     //maBD = shop.listBaiDang.list.Last().maBD,
-                    ten = tenDichGia_Text.Text,
-                    tacGia = tenDichGia_Text.Text,
+                    ten = tenSP_Text.Text,
+                    tacGia = tenTacGia_Text.Text,
                     dichGia = tenDichGia_Text.Text,
                     nhaXuatBan = nhaXuatBan_Text.Text,
                     moTa = moTaSP_Text.Text,
@@ -961,7 +961,7 @@ namespace Program
                 QLSP.Add(sanPham);
 
                 listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
-                listSP_FLPanel.Controls.Add(this.sanPhamForm());
+                listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
                 listSP_FLPanel.Visible = true;  
                 formThemSPPanel.Visible = false;
                 themSPButton.Visible = true;
@@ -992,7 +992,7 @@ namespace Program
                     theLoai_check.Visible = false;
                 else
                     theLoai_check.Visible = true;
-            }*/
+            }
 
 
 
@@ -1000,7 +1000,7 @@ namespace Program
 
             // chinh sua lai kich thuoc
 
-            // lam moi va an panel
+            // lam moi va an panel*/
         }
 
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
@@ -1052,29 +1052,6 @@ namespace Program
         private void tieuDe_txt_TextChanged(object sender, EventArgs e)
         {
             Count(tieuDe_txt, Count_Tieude, 120);
-        }
-
-        private void Nam_Pic_Click(object sender, EventArgs e)
-        {
-            //luuSPButton_Click(sender, e);
-            Check(namXuatBan_Text, Nam_Pic);
-        }
-
-        private void Gia_Pic_Click(object sender, EventArgs e)
-        {
-            //luuSPButton_Click(sender, e);
-            Check(gia_Text, Gia_Pic);
-        }
-
-        private void SoLuong_Pic_Click(object sender, EventArgs e)
-        {
-            //luuSPButton_Click(sender, e);
-            Check(soLuong_Text, SoLuong_Pic);
-        }
-        private void SoTrang_Pic_Click(object sender, EventArgs e)
-        {
-           // luuSPButton_Click(sender, e);
-            Check(soTrang_Text, SoTrang_Pic);
         }
         private void Count(TextBox txt, TextBox dem, int max)
         {
@@ -1176,16 +1153,6 @@ namespace Program
 
         }
 
-        private void formThemSPPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void capNhat_Button_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void luuBaiDangButton_Click(object sender, EventArgs e)
         {
             // kiem tra hop le
@@ -1223,5 +1190,6 @@ namespace Program
         {
             // refresh va ve trang chu
         }
+
     }
 }

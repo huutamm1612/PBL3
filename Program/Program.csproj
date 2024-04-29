@@ -111,6 +111,9 @@
     <EmbeddedResource Include="DiaChiForm.resx">
       <DependentUpon>DiaChiForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DimForm.resx">
+      <DependentUpon>DimForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KhachHangForm.resx">
       <DependentUpon>KhachHangForm.cs</DependentUpon>
     </EmbeddedResource>

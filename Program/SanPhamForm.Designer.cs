@@ -166,6 +166,7 @@
             this.refreshThemSPForm_Button.TabIndex = 101;
             this.refreshThemSPForm_Button.Text = "Làm mới";
             this.refreshThemSPForm_Button.UseVisualStyleBackColor = true;
+            this.refreshThemSPForm_Button.Click += new System.EventHandler(this.refreshThemSPForm_Button_Click);
             // 
             // luuButton
             // 
@@ -194,6 +195,7 @@
             this.soTrang_Text.Name = "soTrang_Text";
             this.soTrang_Text.Size = new System.Drawing.Size(105, 21);
             this.soTrang_Text.TabIndex = 83;
+            this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
             // 
             // SoTrang_Pic
             // 
@@ -214,6 +216,7 @@
             this.soLuong_Text.Name = "soLuong_Text";
             this.soLuong_Text.Size = new System.Drawing.Size(105, 21);
             this.soLuong_Text.TabIndex = 81;
+            this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
             // 
             // SoLuong_Pic
             // 
@@ -248,6 +251,7 @@
             this.moTaSP_Text.Name = "moTaSP_Text";
             this.moTaSP_Text.Size = new System.Drawing.Size(1072, 163);
             this.moTaSP_Text.TabIndex = 84;
+            this.moTaSP_Text.TextChanged += new System.EventHandler(this.moTaSP_Text_TextChanged);
             // 
             // moTa_Pic
             // 
@@ -296,6 +300,7 @@
             this.gia_Text.Name = "gia_Text";
             this.gia_Text.Size = new System.Drawing.Size(399, 21);
             this.gia_Text.TabIndex = 80;
+            this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
             // 
             // Gia_Pic
             // 
@@ -344,6 +349,7 @@
             this.namXuatBan_Text.Name = "namXuatBan_Text";
             this.namXuatBan_Text.Size = new System.Drawing.Size(472, 21);
             this.namXuatBan_Text.TabIndex = 78;
+            this.namXuatBan_Text.TextChanged += new System.EventHandler(this.namXuatBan_Text_TextChanged);
             // 
             // Nam_Pic
             // 
@@ -390,6 +396,7 @@
             this.nhaXuatBan_Text.Name = "nhaXuatBan_Text";
             this.nhaXuatBan_Text.Size = new System.Drawing.Size(399, 21);
             this.nhaXuatBan_Text.TabIndex = 77;
+            this.nhaXuatBan_Text.TextChanged += new System.EventHandler(this.nhaXuatBan_Text_TextChanged);
             // 
             // NXB_Pic
             // 
@@ -469,6 +476,7 @@
             this.tenDichGia_Text.Name = "tenDichGia_Text";
             this.tenDichGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenDichGia_Text.TabIndex = 76;
+            this.tenDichGia_Text.TextChanged += new System.EventHandler(this.tenDichGia_Text_TextChanged);
             // 
             // DichGia_Pic
             // 
@@ -501,6 +509,7 @@
             this.tenTacGia_Text.Name = "tenTacGia_Text";
             this.tenTacGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenTacGia_Text.TabIndex = 75;
+            this.tenTacGia_Text.TextChanged += new System.EventHandler(this.tenTacGia_Text_TextChanged);
             // 
             // TG_Pic
             // 
@@ -616,6 +625,7 @@
             this.tenSP_Text.Name = "tenSP_Text";
             this.tenSP_Text.Size = new System.Drawing.Size(399, 21);
             this.tenSP_Text.TabIndex = 74;
+            this.tenSP_Text.TextChanged += new System.EventHandler(this.tenSP_Text_TextChanged);
             // 
             // SP_Pic
             // 
@@ -626,6 +636,7 @@
             this.SP_Pic.Size = new System.Drawing.Size(520, 40);
             this.SP_Pic.TabIndex = 82;
             this.SP_Pic.TabStop = false;
+            this.SP_Pic.Click += new System.EventHandler(this.SP_Pic_Click);
             // 
             // textBox13
             // 

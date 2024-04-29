@@ -98,6 +98,9 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.screen_Panel = new System.Windows.Forms.Panel();
+            this.miniConTrolPanel = new System.Windows.Forms.Panel();
+            this.huyThemBaiDang = new System.Windows.Forms.Button();
+            this.luuBaiDangButton = new System.Windows.Forms.Button();
             this.themSanPhamPanel = new System.Windows.Forms.Panel();
             this.TTBH_Panel = new System.Windows.Forms.Panel();
             this.themSPButton = new System.Windows.Forms.Button();
@@ -222,9 +225,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.miniConTrolPanel = new System.Windows.Forms.Panel();
-            this.huyThemBaiDang = new System.Windows.Forms.Button();
-            this.luuBaiDangButton = new System.Windows.Forms.Button();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -238,6 +238,7 @@
             this.choice_Panel.SuspendLayout();
             this.funcFLPanel.SuspendLayout();
             this.screen_Panel.SuspendLayout();
+            this.miniConTrolPanel.SuspendLayout();
             this.themSanPhamPanel.SuspendLayout();
             this.TTBH_Panel.SuspendLayout();
             this.formThemSPPanel.SuspendLayout();
@@ -270,7 +271,6 @@
             this.trangChuPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tatCaSanPhamPanel.SuspendLayout();
-            this.miniConTrolPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -1339,6 +1339,57 @@
             this.screen_Panel.TabIndex = 3;
             this.screen_Panel.Visible = false;
             // 
+            // miniConTrolPanel
+            // 
+            this.miniConTrolPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.miniConTrolPanel.BackColor = System.Drawing.Color.White;
+            this.miniConTrolPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.miniConTrolPanel.Controls.Add(this.huyThemBaiDang);
+            this.miniConTrolPanel.Controls.Add(this.luuBaiDangButton);
+            this.miniConTrolPanel.Location = new System.Drawing.Point(71, 683);
+            this.miniConTrolPanel.Name = "miniConTrolPanel";
+            this.miniConTrolPanel.Size = new System.Drawing.Size(919, 75);
+            this.miniConTrolPanel.TabIndex = 63;
+            this.miniConTrolPanel.Visible = false;
+            // 
+            // huyThemBaiDang
+            // 
+            this.huyThemBaiDang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.huyThemBaiDang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.huyThemBaiDang.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.huyThemBaiDang.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.huyThemBaiDang.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.huyThemBaiDang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.huyThemBaiDang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.huyThemBaiDang.ForeColor = System.Drawing.Color.Black;
+            this.huyThemBaiDang.Location = new System.Drawing.Point(645, 12);
+            this.huyThemBaiDang.Name = "huyThemBaiDang";
+            this.huyThemBaiDang.Size = new System.Drawing.Size(256, 45);
+            this.huyThemBaiDang.TabIndex = 62;
+            this.huyThemBaiDang.Text = "Hủy bỏ";
+            this.huyThemBaiDang.UseVisualStyleBackColor = true;
+            this.huyThemBaiDang.Click += new System.EventHandler(this.huyThemBaiDang_Click);
+            // 
+            // luuBaiDangButton
+            // 
+            this.luuBaiDangButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.luuBaiDangButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.luuBaiDangButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.luuBaiDangButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.luuBaiDangButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.luuBaiDangButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.luuBaiDangButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.luuBaiDangButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.luuBaiDangButton.ForeColor = System.Drawing.Color.MistyRose;
+            this.luuBaiDangButton.Location = new System.Drawing.Point(366, 12);
+            this.luuBaiDangButton.Name = "luuBaiDangButton";
+            this.luuBaiDangButton.Size = new System.Drawing.Size(256, 45);
+            this.luuBaiDangButton.TabIndex = 62;
+            this.luuBaiDangButton.Text = "Lưu";
+            this.luuBaiDangButton.UseVisualStyleBackColor = false;
+            this.luuBaiDangButton.Click += new System.EventHandler(this.luuBaiDangButton_Click);
+            // 
             // themSanPhamPanel
             // 
             this.themSanPhamPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1457,7 +1508,6 @@
             this.formThemSPPanel.Size = new System.Drawing.Size(1420, 800);
             this.formThemSPPanel.TabIndex = 4;
             this.formThemSPPanel.Visible = false;
-            this.formThemSPPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.formThemSPPanel_Paint);
             // 
             // bia_Check
             // 
@@ -1580,7 +1630,6 @@
             this.SoTrang_Pic.Size = new System.Drawing.Size(153, 40);
             this.SoTrang_Pic.TabIndex = 47;
             this.SoTrang_Pic.TabStop = false;
-            this.SoTrang_Pic.Click += new System.EventHandler(this.SoTrang_Pic_Click);
             // 
             // soLuong_Text
             // 
@@ -1601,7 +1650,6 @@
             this.SoLuong_Pic.Size = new System.Drawing.Size(153, 40);
             this.SoLuong_Pic.TabIndex = 45;
             this.SoLuong_Pic.TabStop = false;
-            this.SoLuong_Pic.Click += new System.EventHandler(this.SoLuong_Pic_Click);
             // 
             // Count_MoTa
             // 
@@ -1685,7 +1733,6 @@
             this.Gia_Pic.Size = new System.Drawing.Size(433, 40);
             this.Gia_Pic.TabIndex = 35;
             this.Gia_Pic.TabStop = false;
-            this.Gia_Pic.Click += new System.EventHandler(this.Gia_Pic_Click);
             // 
             // textBox34
             // 
@@ -1734,7 +1781,6 @@
             this.Nam_Pic.Size = new System.Drawing.Size(520, 40);
             this.Nam_Pic.TabIndex = 29;
             this.Nam_Pic.TabStop = false;
-            this.Nam_Pic.Click += new System.EventHandler(this.Nam_Pic_Click);
             // 
             // textBox30
             // 
@@ -2144,7 +2190,6 @@
             this.capNhat_Button.TabIndex = 5;
             this.capNhat_Button.Text = "Cập nhật";
             this.capNhat_Button.UseVisualStyleBackColor = false;
-            this.capNhat_Button.Click += new System.EventHandler(this.capNhat_Button_Click);
             // 
             // textBox10
             // 
@@ -2594,7 +2639,7 @@
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.pictureBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox16.Location = new System.Drawing.Point(195, 160);
+            this.pictureBox16.Location = new System.Drawing.Point(253, 153);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(520, 40);
             this.pictureBox16.TabIndex = 7;
@@ -2941,57 +2986,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
             // 
-            // miniConTrolPanel
-            // 
-            this.miniConTrolPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.miniConTrolPanel.BackColor = System.Drawing.Color.White;
-            this.miniConTrolPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.miniConTrolPanel.Controls.Add(this.huyThemBaiDang);
-            this.miniConTrolPanel.Controls.Add(this.luuBaiDangButton);
-            this.miniConTrolPanel.Location = new System.Drawing.Point(71, 683);
-            this.miniConTrolPanel.Name = "miniConTrolPanel";
-            this.miniConTrolPanel.Size = new System.Drawing.Size(919, 75);
-            this.miniConTrolPanel.TabIndex = 63;
-            this.miniConTrolPanel.Visible = false;
-            // 
-            // huyThemBaiDang
-            // 
-            this.huyThemBaiDang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.huyThemBaiDang.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.huyThemBaiDang.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.huyThemBaiDang.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-            this.huyThemBaiDang.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
-            this.huyThemBaiDang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.huyThemBaiDang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.huyThemBaiDang.ForeColor = System.Drawing.Color.Black;
-            this.huyThemBaiDang.Location = new System.Drawing.Point(645, 12);
-            this.huyThemBaiDang.Name = "huyThemBaiDang";
-            this.huyThemBaiDang.Size = new System.Drawing.Size(256, 45);
-            this.huyThemBaiDang.TabIndex = 62;
-            this.huyThemBaiDang.Text = "Hủy bỏ";
-            this.huyThemBaiDang.UseVisualStyleBackColor = true;
-            this.huyThemBaiDang.Click += new System.EventHandler(this.huyThemBaiDang_Click);
-            // 
-            // luuBaiDangButton
-            // 
-            this.luuBaiDangButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.luuBaiDangButton.BackColor = System.Drawing.Color.OrangeRed;
-            this.luuBaiDangButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.luuBaiDangButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.luuBaiDangButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.luuBaiDangButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.luuBaiDangButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.luuBaiDangButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.luuBaiDangButton.ForeColor = System.Drawing.Color.MistyRose;
-            this.luuBaiDangButton.Location = new System.Drawing.Point(366, 12);
-            this.luuBaiDangButton.Name = "luuBaiDangButton";
-            this.luuBaiDangButton.Size = new System.Drawing.Size(256, 45);
-            this.luuBaiDangButton.TabIndex = 62;
-            this.luuBaiDangButton.Text = "Lưu";
-            this.luuBaiDangButton.UseVisualStyleBackColor = false;
-            this.luuBaiDangButton.Click += new System.EventHandler(this.luuBaiDangButton_Click);
-            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3020,6 +3014,7 @@
             this.choice_Panel.ResumeLayout(false);
             this.funcFLPanel.ResumeLayout(false);
             this.screen_Panel.ResumeLayout(false);
+            this.miniConTrolPanel.ResumeLayout(false);
             this.themSanPhamPanel.ResumeLayout(false);
             this.themSanPhamPanel.PerformLayout();
             this.TTBH_Panel.ResumeLayout(false);
@@ -3061,7 +3056,6 @@
             this.panel4.PerformLayout();
             this.tatCaSanPhamPanel.ResumeLayout(false);
             this.tatCaSanPhamPanel.PerformLayout();
-            this.miniConTrolPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

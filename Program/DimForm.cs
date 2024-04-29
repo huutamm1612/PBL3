@@ -23,5 +23,10 @@ namespace Program
             this.BackColor = Color.Black;
             this.Opacity = 0.5;
         }
+
+        private void DimForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
