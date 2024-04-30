@@ -12,6 +12,7 @@ namespace Program
 {
     public partial class SanPhamForm : Form
     {
+        private QLSanPham QLSP = null;
         public SendSanPham send;
         public SanPhamForm()
         {
@@ -39,7 +40,7 @@ namespace Program
             nhaXuatBan_Text.Text = sanPham.nhaXuatBan;
             namXuatBan_Text.Text = sanPham.namXuatBan.ToString();
             moTaSP_Text.Text = sanPham.moTa;
-            theLoai_CBBox.SelectedItem = sanPham.maLoaiSP;
+            theLoai_CBBox.SelectedIndex = int.Parse(sanPham.maLoaiSP);
             loaiBia_CBBox.SelectedItem = sanPham.loaiBia;
             ngonNgu_CBBox.SelectedItem = sanPham.ngonNgu;
             gia_Text.Text = sanPham.gia.ToString();
@@ -77,6 +78,7 @@ namespace Program
                     luocBan = 0,
                     ngayThem = DateTime.Now
                 });
+                //QLSP.Add();
                 Close();
             }
             else

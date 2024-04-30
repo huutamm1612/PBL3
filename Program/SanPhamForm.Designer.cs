@@ -609,7 +609,7 @@
             this.Count_SP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Count_SP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Count_SP.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Count_SP.Location = new System.Drawing.Point(645, 124);
+            this.Count_SP.Location = new System.Drawing.Point(645, 129);
             this.Count_SP.Name = "Count_SP";
             this.Count_SP.Size = new System.Drawing.Size(60, 21);
             this.Count_SP.TabIndex = 85;
@@ -631,7 +631,7 @@
             // 
             this.SP_Pic.BackColor = System.Drawing.Color.White;
             this.SP_Pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SP_Pic.Location = new System.Drawing.Point(218, 116);
+            this.SP_Pic.Location = new System.Drawing.Point(218, 122);
             this.SP_Pic.Name = "SP_Pic";
             this.SP_Pic.Size = new System.Drawing.Size(520, 40);
             this.SP_Pic.TabIndex = 82;

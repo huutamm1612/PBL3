@@ -225,6 +225,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.txtTheLoai = new System.Windows.Forms.TextBox();
+            this.txtLoaiBia = new System.Windows.Forms.TextBox();
+            this.txtNgonNgu = new System.Windows.Forms.TextBox();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -271,6 +277,9 @@
             this.trangChuPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tatCaSanPhamPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -1458,6 +1467,12 @@
             // formThemSPPanel
             // 
             this.formThemSPPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.formThemSPPanel.Controls.Add(this.txtNgonNgu);
+            this.formThemSPPanel.Controls.Add(this.txtLoaiBia);
+            this.formThemSPPanel.Controls.Add(this.txtTheLoai);
+            this.formThemSPPanel.Controls.Add(this.pictureBox20);
+            this.formThemSPPanel.Controls.Add(this.pictureBox19);
+            this.formThemSPPanel.Controls.Add(this.pictureBox18);
             this.formThemSPPanel.Controls.Add(this.bia_Check);
             this.formThemSPPanel.Controls.Add(this.language_Check);
             this.formThemSPPanel.Controls.Add(this.theLoai_check);
@@ -2986,6 +3001,66 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
             // 
+            // pictureBox18
+            // 
+            this.pictureBox18.BackColor = System.Drawing.Color.White;
+            this.pictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox18.Location = new System.Drawing.Point(868, 159);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(433, 40);
+            this.pictureBox18.TabIndex = 62;
+            this.pictureBox18.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.BackColor = System.Drawing.Color.White;
+            this.pictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox19.Location = new System.Drawing.Point(868, 230);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(433, 40);
+            this.pictureBox19.TabIndex = 63;
+            this.pictureBox19.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.BackColor = System.Drawing.Color.White;
+            this.pictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox20.Location = new System.Drawing.Point(868, 299);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(433, 40);
+            this.pictureBox20.TabIndex = 64;
+            this.pictureBox20.TabStop = false;
+            // 
+            // txtTheLoai
+            // 
+            this.txtTheLoai.BackColor = System.Drawing.Color.White;
+            this.txtTheLoai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTheLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTheLoai.Location = new System.Drawing.Point(877, 170);
+            this.txtTheLoai.Name = "txtTheLoai";
+            this.txtTheLoai.Size = new System.Drawing.Size(399, 21);
+            this.txtTheLoai.TabIndex = 65;
+            // 
+            // txtLoaiBia
+            // 
+            this.txtLoaiBia.BackColor = System.Drawing.Color.White;
+            this.txtLoaiBia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLoaiBia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoaiBia.Location = new System.Drawing.Point(877, 240);
+            this.txtLoaiBia.Name = "txtLoaiBia";
+            this.txtLoaiBia.Size = new System.Drawing.Size(399, 21);
+            this.txtLoaiBia.TabIndex = 66;
+            // 
+            // txtNgonNgu
+            // 
+            this.txtNgonNgu.BackColor = System.Drawing.Color.White;
+            this.txtNgonNgu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNgonNgu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNgonNgu.Location = new System.Drawing.Point(877, 310);
+            this.txtNgonNgu.Name = "txtNgonNgu";
+            this.txtNgonNgu.Size = new System.Drawing.Size(399, 21);
+            this.txtNgonNgu.TabIndex = 67;
+            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3056,6 +3131,9 @@
             this.panel4.PerformLayout();
             this.tatCaSanPhamPanel.ResumeLayout(false);
             this.tatCaSanPhamPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3259,5 +3337,11 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.TextBox textBox51;
         private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.TextBox txtNgonNgu;
+        private System.Windows.Forms.TextBox txtLoaiBia;
+        private System.Windows.Forms.TextBox txtTheLoai;
     }
 }
