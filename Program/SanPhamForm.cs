@@ -38,6 +38,13 @@ namespace Program
             tenDichGia_Text.Text = sanPham.dichGia;
             nhaXuatBan_Text.Text = sanPham.nhaXuatBan;
             namXuatBan_Text.Text = sanPham.namXuatBan.ToString();
+            moTaSP_Text.Text = sanPham.moTa;
+            theLoai_CBBox.SelectedItem = sanPham.maLoaiSP;
+            loaiBia_CBBox.SelectedItem = sanPham.loaiBia;
+            ngonNgu_CBBox.SelectedItem = sanPham.ngonNgu;
+            gia_Text.Text = sanPham.gia.ToString();
+            soLuong_Text.Text = sanPham.soLuong.ToString();
+            soTrang_Text.Text = sanPham.soTrang.ToString();
         }
 
 
@@ -48,27 +55,54 @@ namespace Program
 
         private void luuButton_Click(object sender, EventArgs e)
         {
-            // kiem tra dieu kien
-            this.send(new SanPham
+            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
+             && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1
+             && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
-                maSP = "",
-                maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
-                ten = tenSP_Text.Text,
-                tacGia = tenTacGia_Text.Text,
-                dichGia = tenDichGia_Text.Text,
-                nhaXuatBan = nhaXuatBan_Text.Text,
-                moTa = moTaSP_Text.Text,
-                gia = int.Parse(gia_Text.Text),
-                namXuatBan = int.Parse(namXuatBan_Text.Text),
-                soLuong = int.Parse(soLuong_Text.Text),
-                soTrang = int.Parse(soTrang_Text.Text),
-                ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
-                loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
-                luocBan = 0,
-                ngayThem = DateTime.Now
-            }) ;
-
-            Close();
+                this.send(new SanPham
+                {
+                    maSP = "",
+                    maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
+                    ten = tenSP_Text.Text,
+                    tacGia = tenTacGia_Text.Text,
+                    dichGia = tenDichGia_Text.Text,
+                    nhaXuatBan = nhaXuatBan_Text.Text,
+                    moTa = moTaSP_Text.Text,
+                    gia = int.Parse(gia_Text.Text),
+                    namXuatBan = int.Parse(namXuatBan_Text.Text),
+                    soLuong = int.Parse(soLuong_Text.Text),
+                    soTrang = int.Parse(soTrang_Text.Text),
+                    ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
+                    loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
+                    luocBan = 0,
+                    ngayThem = DateTime.Now
+                });
+                Close();
+            }
+            else
+            {
+                Check(tenSP_Text, SP_Pic);
+                Check(tenTacGia_Text, TG_Pic);
+                Check(tenDichGia_Text, DichGia_Pic);
+                Check(nhaXuatBan_Text, NXB_Pic);
+                Check(namXuatBan_Text, Nam_Pic);
+                Check(soLuong_Text, SoLuong_Pic);
+                Check(gia_Text, Gia_Pic);
+                Check(soTrang_Text, SoTrang_Pic);
+                Check(moTaSP_Text, moTa_Pic);
+                if (ngonNgu_CBBox.SelectedIndex != -1)
+                    language_Check.Visible = false;
+                else
+                    language_Check.Visible = true;
+                if (loaiBia_CBBox.SelectedIndex != -1)
+                    bia_Check.Visible = false;
+                else
+                    bia_Check.Visible = true;
+                if (theLoai_CBBox.SelectedIndex != -1)
+                    theLoai_check.Visible = false;
+                else
+                    theLoai_check.Visible = true;
+            }       
         }
         private void Check(TextBox txt, PictureBox pic)
         {
