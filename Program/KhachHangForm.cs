@@ -20,6 +20,9 @@ namespace Program
     {
         private User user = null;
         private KhachHang khachHang = null;
+        private QLBaiDang QLBaiDang = null;
+        private BaiDang currBaiDang = null;
+        private SanPham currSanPham = null;
 
         public KhachHangForm(bool nonStart = true)
         {
@@ -28,8 +31,9 @@ namespace Program
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
-            if (!nonStart) 
+            if (!nonStart)
                 tuDongDangNhap();
+            this.Demo();
         }
 
         public void setData(string taiKhoan, string matKhau)
@@ -68,7 +72,6 @@ namespace Program
                 user.dangNhap(list[0], list[1]);
 
                 KhachHang_Panel.Visible = true;
-                HomePanel.Visible = true;
                 HeaderPannel.Visible = true;
                 dangNhap_Button.Visible = false;
                 SignUp_Button.Visible = false;
@@ -134,7 +137,7 @@ namespace Program
                 matKhauCu_Box.Clear();
                 matKhauMoi1_Box.Clear();
                 matKhauMoi2_Box.Clear();
-            }  
+            }
         }
 
         private void home_Button_Click(object sender, EventArgs e)
@@ -153,7 +156,7 @@ namespace Program
 
         private void suaTen_Button_Click(object sender, EventArgs e)
         {
-            
+
             if (ten_UP_Box.ReadOnly)
             {
                 pictureBox6.BackColor = Color.White;
@@ -221,7 +224,7 @@ namespace Program
                 suaSDT_button.Text = "Lưu";
                 soDT_UP_Box.ReadOnly = false;
                 soDT_UP_Box.Cursor = Cursors.IBeam;
-                
+
             }
             else
             {
@@ -287,7 +290,7 @@ namespace Program
             }
 
         }
-        
+
         private void luu_UP_Button_Click(object sender, EventArgs e)
         {
             DateTime ngaySinh;
@@ -317,7 +320,7 @@ namespace Program
 
         public void themDiaChi(DiaChi diaChi)
         {
-            if(khachHang.diaChi == null)
+            if (khachHang.diaChi == null)
             {
                 khachHang.capNhatDiaChi(diaChi);
                 HeThong.CapNhatDiaChiMacDinh(khachHang);
@@ -333,13 +336,13 @@ namespace Program
 
         public void capNhatDiaChi(DiaChi diaChi)
         {
-            if(diaChi.maDC == khachHang.diaChi.maDC)
+            if (diaChi.maDC == khachHang.diaChi.maDC)
             {
                 khachHang.capNhatDiaChi(diaChi);
             }
             else
             {
-                for(int i = 0; i < khachHang.listDiaChi.Count; i++)
+                for (int i = 0; i < khachHang.listDiaChi.Count; i++)
                 {
                     if (khachHang.listDiaChi[i].maDC == diaChi.maDC)
                     {
@@ -385,7 +388,7 @@ namespace Program
             form.ShowDialog();
             Show();
         }
-        
+
         private void veLai_DiaChi()
         {
             if (khachHang.diaChi == null) return;
@@ -570,7 +573,7 @@ namespace Program
             {
                 SDTKhongHopLe_Label.Visible = true;
                 luu_UP_Button.Enabled = false;
-                if(suaSDT_button.Text == "Lưu")
+                if (suaSDT_button.Text == "Lưu")
                     suaSDT_button.Enabled = false;
             }
             else
@@ -600,9 +603,452 @@ namespace Program
             string key = search_Text.Text;
             QLBaiDang list = HeThong.SearchBaiDang(key);
 
-            foreach(BaiDang baiDang in list.list)
+            foreach (BaiDang baiDang in list.list)
             {
                 MessageBox.Show($"{baiDang.tieuDe}");
+            }
+        }
+
+        private void MouseHoverPanel(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void MouseLeavePanel(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            panel.BorderStyle = BorderStyle.None;
+        }
+
+        private void MouseHoverObjInPanel(object sender, EventArgs e)
+        {
+            Control pic = sender as Control;
+            MouseHoverPanel(pic.Parent, e);
+        }
+
+        private void MouseLeaveObjInPanel(object sender, EventArgs e)
+        {
+            Control pic = sender as Control;
+            MouseLeavePanel(pic.Parent, e);
+        }
+
+        private void HomePanel_Load(object sender, PaintEventArgs e)
+        {
+            //...
+
+            //SetPageFLP(PageListFLP, 1, 3);
+
+            //...
+        }
+
+
+        private void SetPageFLP(FlowLayoutPanel flp, int currPageNumber, int numPage)
+        {
+            Font font = new Font("Gadugi", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            List<Button> buttons = new List<Button>();
+
+            foreach (Button button in flp.Controls)
+            {
+                if (button.Text == ">" || button.Text == "<")
+                {
+                    continue;
+                }
+                buttons.Add(button);
+            }
+
+            foreach (Button button in buttons)
+            {
+                flp.Controls.Remove(button);
+            }
+
+            if (numPage < 5)
+            {
+                for (int i = 1; i <= numPage; i++)
+                {
+                    Button button = new Button
+                    {
+                        Font = font,
+                        Cursor = Cursors.Hand,
+                        Text = i.ToString(),
+                        BackColor = flp.BackColor,
+                        Size = new Size(45, 45),
+                        FlatStyle = FlatStyle.Flat,
+                    };
+
+                    button.FlatAppearance.BorderSize = 0;
+
+                    if (i == currPageNumber)
+                    {
+                        button.BackColor = Color.OrangeRed;
+                        button.FlatAppearance.MouseDownBackColor = Color.OrangeRed;
+                        button.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
+                    }
+                    else
+                    {
+                        button.FlatAppearance.MouseDownBackColor = flp.BackColor;
+                        button.FlatAppearance.MouseOverBackColor = flp.BackColor;
+                    }
+
+                    flp.Controls.Add(button);
+                    flp.Controls.SetChildIndex(button, i);
+                }
+            }
+            else
+            {
+                List<string> list;
+
+                if (currPageNumber <= 3)
+                {
+                    list = new List<string> { "1", "2", "3", "4", "..." };
+                }
+                else if (currPageNumber < numPage - 1)
+                {
+                    list = new List<string> { "1", "...", (currPageNumber - 1).ToString(), (currPageNumber).ToString(), (currPageNumber + 1).ToString(), "..." };
+                }
+                else if (currPageNumber == numPage - 1)
+                {
+                    list = new List<string> { "1", "...", (currPageNumber - 1).ToString(), (currPageNumber).ToString(), (currPageNumber + 1).ToString() };
+                }
+                else
+                {
+                    list = new List<string> { "1", "...", (currPageNumber - 1).ToString(), (currPageNumber).ToString() };
+                }
+
+                int index = 1;
+
+                foreach (string i in list)
+                {
+                    Button button = new Button
+                    {
+                        Font = font,
+                        Cursor = Cursors.Hand,
+                        Text = i.ToString(),
+                        BackColor = flp.BackColor,
+                        Size = new Size(45, 45),
+                        FlatStyle = FlatStyle.Flat,
+                    };
+
+                    button.FlatAppearance.BorderSize = 0;
+
+                    if (i == currPageNumber.ToString())
+                    {
+                        button.BackColor = Color.OrangeRed;
+                        button.FlatAppearance.MouseDownBackColor = Color.OrangeRed;
+                        button.FlatAppearance.MouseOverBackColor = Color.OrangeRed;
+                    }
+                    else
+                    {
+                        button.FlatAppearance.MouseDownBackColor = flp.BackColor;
+                        button.FlatAppearance.MouseOverBackColor = flp.BackColor;
+                    }
+
+                    if (i == "...")
+                    {
+
+                    }
+                    flp.Controls.Add(button);
+                    flp.Controls.SetChildIndex(button, index);
+                    index++;
+                }
+            }
+
+            int n = flp.Controls.Count;
+            flp.Size = new Size(51 * n + 6, 51);
+            flp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            int x = 1326 / 2 - flp.Width / 2;
+            int y = 66 / 2 - flp.Height / 2;
+            flp.Location = new Point(x, y);
+        }
+
+        private int CurrPageNumber(FlowLayoutPanel flp)
+        {
+            foreach (Button button in flp.Controls)
+            {
+                if (button.BackColor == Color.OrangeRed)
+                    return Convert.ToInt32(button.Text);
+            }
+
+            return 1;
+        }
+
+        private void ChuyenTrangBaiDang(QLBaiDang qlbd, FlowLayoutPanel flpBaiDang, FlowLayoutPanel flpPage)
+        {
+            Panel titlePanel = flpBaiDang.Controls[0] as Panel;
+            Panel pagePanel = flpBaiDang.Controls[flpBaiDang.Controls.Count - 1] as Panel;
+
+            flpBaiDang.Controls.Clear();
+            flpBaiDang.Controls.Add(titlePanel);
+
+            int currPage = CurrPageNumber(flpPage);
+            int tmp = 0;
+            for (int i = (currPage - 1) * 24; i < currPage * 24; i++)
+            {
+                if (i == qlbd.list.Count)
+                    break;
+                flpBaiDang.Controls.Add(drawBaiDang(qlbd.list[i]));
+                tmp++;
+            }
+
+            flpBaiDang.Size = new Size(1335, 160 + 316 * ((tmp - 1) / 6 + 1));
+            flpBaiDang.Controls.Add(pagePanel);
+        }
+
+        private void Demo()
+        {
+            SanPham sp1 = new SanPham
+            {
+                gia = 100000,
+                luocBan = 100,
+            };
+            SanPham sp2 = new SanPham
+            {
+                gia = 420000,
+                luocBan = 100,
+            };
+            SanPham sp3 = new SanPham
+            {
+                gia = 1200000,
+                luocBan = 100,
+            };
+            SanPham sp4 = new SanPham
+            {
+                gia = 422200,
+                luocBan = 100,
+            };
+            SanPham sp5 = new SanPham
+            {
+                gia = 1211100,
+                luocBan = 100,
+            };
+
+            BaiDang baiDang1 = new BaiDang
+            {
+                list = new List<SanPham> { sp1 },
+                tieuDe = "Tiêu đề sách 1123123",
+                giamGia = 10,
+
+            };
+
+            BaiDang baiDang2 = new BaiDang
+            {
+                list = new List<SanPham> { sp2 },
+                tieuDe = "Tiêu đề 123 1233123 sách",
+                giamGia = 10,
+
+            };
+
+            BaiDang baiDang3 = new BaiDang
+            {
+                list = new List<SanPham> { sp3 },
+                tieuDe = "T13123 123iêu đề sách 1123123",
+                giamGia = 10,
+
+            };
+
+            BaiDang baiDang4 = new BaiDang
+            {
+                list = new List<SanPham> { sp4 },
+                tieuDe = "Tiêu đề 312 123 13sách 1123123",
+                giamGia = 10,
+
+            };
+
+            BaiDang baiDang5 = new BaiDang
+            {
+                list = new List<SanPham> { sp5 },
+                tieuDe = "Tiêu 321 123 1đề sách 1123123",
+                giamGia = 10,
+
+            };
+
+            QLBaiDang = new QLBaiDang();
+
+            for (int i = 0; i < 5; i++)
+            {
+                QLBaiDang.list.Add(baiDang1);
+                QLBaiDang.list.Add(baiDang2);
+                QLBaiDang.list.Add(baiDang3);
+                QLBaiDang.list.Add(baiDang4);
+                QLBaiDang.list.Add(baiDang5);
+            }
+        }
+
+        private void HomePanel_Load(object sender, EventArgs e)
+        {
+            if (HomePanel.Visible == false)
+                return;
+            HomePanel.AutoScrollPosition = new Point(0, 0);
+
+            SetPageFLP(PageListFLP, 1, (QLBaiDang.list.Count - 1) / 24 + 1);
+            ChuyenTrangBaiDang(QLBaiDang, FLPBaiDang1, PageListFLP);
+        }
+
+        private void GoToBaiDang(object sender, EventArgs e)
+        {
+            Control obj = sender as Control;
+            Panel panel = obj.Parent.Parent as Panel;
+            int panelIndex = FLPBaiDang1.Controls.IndexOf(panel);
+            int currPage = CurrPageNumber(PageListFLP);
+
+            currBaiDang = QLBaiDang.list[(currPage - 1) * 24 + panelIndex - 1];
+            BaiDangPanel.Visible = true;
+            HomePanel.Visible = false;
+        }
+
+        private Panel drawBaiDang(BaiDang baiDang)
+        {
+
+            Panel backPanel = new Panel
+            {
+                Name = "backPanel",
+                BackColor = Color.WhiteSmoke,
+                Size = new Size(216, 310),
+                BorderStyle = BorderStyle.None,
+            };
+
+            Panel parentPanel = new Panel
+            {
+                Name = "parentPanel",
+                BackColor = Color.White,
+                Size = new Size(206, 300),
+                Location = new Point(5, 5),
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None
+            };
+            parentPanel.MouseLeave += new EventHandler(MouseLeavePanel);
+            parentPanel.MouseHover += new EventHandler(MouseHoverPanel);
+            backPanel.Controls.Add(parentPanel);
+
+            PictureBox image = new PictureBox
+            {
+                //Image =Image.FromFile(""),
+                BackColor = Color.Gainsboro,
+                Size = new Size(206, 206),
+                Name = "image",
+                Location = new Point(0, 0),
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+            };
+            image.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+            image.MouseHover += new EventHandler(MouseHoverObjInPanel);
+            image.Click += new EventHandler(GoToBaiDang);
+            parentPanel.Controls.Add(image);
+
+            TextBox title = new TextBox
+            {
+                Name = "title",
+                Multiline = true,
+                Text = baiDang.tieuDe,
+                Size = new Size(196, 55),
+                Location = new Point(5, 215),
+                BackColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                ForeColor = Color.Black,
+                ReadOnly = true
+            };
+            title.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+            title.MouseHover += new EventHandler(MouseHoverObjInPanel);
+            title.Click += new EventHandler(GoToBaiDang);
+            parentPanel.Controls.Add(title);
+
+            TextBox price = new TextBox
+            {
+                Name = "price",
+                Text = "₫" + Utils.SetGia(baiDang.giaMin()),
+                Size = new Size(100, 23),
+                Location = new Point(5, 272),
+                BackColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                ForeColor = Color.Red,
+                ReadOnly = true
+            };
+            price.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+            price.MouseHover += new EventHandler(MouseHoverObjInPanel);
+            price.Click += new EventHandler(GoToBaiDang);
+            parentPanel.Controls.Add(price);
+
+            TextBox sold = new TextBox
+            {
+                Name = "sold",
+                Text = "Đã bán " + baiDang.luocBan().ToString(),
+                Size = new Size(90, 17),
+                Location = new Point(110, 273),
+                BackColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                Cursor = Cursors.Hand,
+                ForeColor = Color.Black,
+                BorderStyle = BorderStyle.None,
+                TextAlign = HorizontalAlignment.Right,
+                ReadOnly = true
+            };
+            sold.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+            sold.MouseHover += new EventHandler(MouseHoverObjInPanel);
+            sold.Click += new EventHandler(GoToBaiDang);
+            parentPanel.Controls.Add(sold);
+
+            TextBox discount = new TextBox
+            {
+                Name = "discount",
+                Text = "-" + baiDang.giamGia.ToString() + "%",
+                Size = new Size(38, 17),
+                Location = new Point(168, 0),
+                BackColor = Color.Gold,
+                Font = new Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                Cursor = Cursors.Hand,
+                ForeColor = Color.Red,
+                BorderStyle = BorderStyle.None,
+                TextAlign = HorizontalAlignment.Right,
+                ReadOnly = true
+            };
+            discount.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+            discount.MouseHover += new EventHandler(MouseHoverObjInPanel);
+            discount.Click += new EventHandler(GoToBaiDang);
+            parentPanel.Controls.Add(discount);
+
+            return backPanel;
+        }
+
+        private void nextPageButton_Click(object sender, EventArgs e)
+        {
+            int n = CurrPageNumber(PageListFLP);
+            if (n == 10)
+                return;
+
+            HomePanel.AutoScrollPosition = new Point(39, 790);
+            SetPageFLP(PageListFLP, n + 1, (QLBaiDang.list.Count - 1) / 24 + 1);
+            ChuyenTrangBaiDang(QLBaiDang, FLPBaiDang1, PageListFLP);
+        }
+
+        private void prevPageButton_Click(object sender, EventArgs e)
+        {
+            int n = CurrPageNumber(PageListFLP);
+            if (n == 1)
+                return;
+
+            HomePanel.AutoScrollPosition = new Point(39, 790);
+            SetPageFLP(PageListFLP, n - 1, (QLBaiDang.list.Count - 1) / 24 + 1);
+            ChuyenTrangBaiDang(QLBaiDang, FLPBaiDang1, PageListFLP);
+        }
+
+        private void increaseButton_Click(object sender, EventArgs e)
+        {
+            if (true/**/)
+            {
+                soLuongTxt.Text = (int.Parse(soLuongTxt.Text) + 1).ToString();
+            }
+        }
+
+        private void decreaseButton_Click(object sender, EventArgs e)
+        {
+            if (int.Parse(soLuongTxt.Text) > 1/**/)
+            {
+                soLuongTxt.Text = (int.Parse(soLuongTxt.Text) - 1).ToString();
             }
         }
     }

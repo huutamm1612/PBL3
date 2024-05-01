@@ -37,6 +37,21 @@ namespace Program
 
         }
 
+        public static string SetGia(int gia)
+        {
+            string s = "";
+
+            while(gia / 1000 != 0)
+            {
+                s += ".000";
+                gia /= 1000;
+            }
+
+            s = gia.ToString() + s;
+
+            return s;
+        }
+
         public static void Sort<T>(List<T> list, int left, int right, Compare cmp, Equal eql)
         {
             if (left >= right)
