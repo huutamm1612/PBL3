@@ -15,7 +15,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -106,7 +106,7 @@ namespace Program
         public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
         {
             string table = userState ? "UserAccount" : "Admin";
-            string query = "SELECT * from " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
+            string query = "SELECT * FROM " + table + " WHERE taiKhoan = '" + taiKhoan + "'";
 
             SqlDataReader reader = ExecuteQuery(query);
 
@@ -331,7 +331,7 @@ namespace Program
                 listDaXem = daXemGanDay,
                 listThich = thich,
                 gioHang = gioHang,
-                listDonHang = listDonHang
+                listDonHang = listDonHang,
             };
 
             if (!reader.IsDBNull(5))
@@ -642,13 +642,25 @@ namespace Program
 
             return shop;
         }
+
+        public static string LoadTenTheLoai(int maLoaiSP)
+        {
+            string query = $"SELECT ten FROM LoaiSanPham WHERE maLoaiSP = {maLoaiSP}";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            reader.Read();
+            string theLoai = reader.GetString(0);
+            reader.Close();
+
+            return theLoai;
+        }
         
         public static void ThemSanPham(string maBD, SanPham sanPham)
         {
             string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', {sanPham.luocBan}, null)";
             ExecuteNonQuery(query);
 
-            query = $"INSERT INTO SanPham_BaiDang VALUES('{sanPham.maSP}', '{maBD}')";
+            query = $"INSERT INTO SanPham_BaiDang VALUES('{sanPham.maSP}', '{sanPham.maBD}')";
             ExecuteNonQuery(query);
         }
 

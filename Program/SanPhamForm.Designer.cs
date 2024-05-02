@@ -621,7 +621,7 @@
             this.tenSP_Text.BackColor = System.Drawing.Color.White;
             this.tenSP_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tenSP_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tenSP_Text.Location = new System.Drawing.Point(240, 124);
+            this.tenSP_Text.Location = new System.Drawing.Point(240, 131);
             this.tenSP_Text.Name = "tenSP_Text";
             this.tenSP_Text.Size = new System.Drawing.Size(399, 21);
             this.tenSP_Text.TabIndex = 74;

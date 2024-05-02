@@ -477,9 +477,9 @@ namespace Program
             TextBox lbNgonNgu = new TextBox
             {
                 BorderStyle = BorderStyle.None,
-                Location = textBox35.Location,
+                Location = textBox24.Location,
                 Text = "Ngôn ngữ",
-                Size = textBox35.Size,
+                Size = textBox24.Size,
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
@@ -513,9 +513,9 @@ namespace Program
             TextBox lbSoTrang = new TextBox
             {
                 BorderStyle = BorderStyle.None,
-                Location = textBox23.Location,
+                Location = textBox31.Location,
                 Text = "Số trang",
-                Size = textBox23.Size,
+                Size = textBox31.Size,
                 Font = font1,
                 BackColor = color1,
                 ReadOnly = true,
@@ -630,76 +630,6 @@ namespace Program
                 TabIndex = 8,
                 ReadOnly = true,
             };
-            TextBox txt10 = new TextBox
-            {
-                Location = Count_SP.Location,
-                ForeColor = Color.Silver,
-                BorderStyle = BorderStyle.None,
-                Text = Count_SP.Text,
-                Size = Count_SP.Size,
-                Font = font1,
-                BackColor = color1,
-                ReadOnly = true,
-                Enabled = false,
-                TextAlign = HorizontalAlignment.Right,
-                TabIndex = 8,
-            };
-            TextBox txt15 = new TextBox
-            {
-                Location = Count_MoTa.Location,
-                ForeColor = Color.Silver,
-                BorderStyle = BorderStyle.None,
-                Text = Count_MoTa.Text,
-                Size = Count_MoTa.Size,
-                Font = font1,
-                BackColor = color1,
-                ReadOnly = true,
-                Enabled = false,
-                TextAlign = HorizontalAlignment.Right,
-                TabIndex = 20,
-            };
-            TextBox txt11 = new TextBox
-            {
-                Location = Count_TG.Location,
-                ForeColor = Color.Silver,
-                BorderStyle = BorderStyle.None,
-                Text = Count_TG.Text,
-                Size = Count_TG.Size,
-                Font = font1,
-                BackColor = color1,
-                ReadOnly = true,
-                Enabled = false,
-                TextAlign = HorizontalAlignment.Right,
-                TabIndex = 17,
-            };
-            TextBox txt12 = new TextBox
-            {
-                Location = Count_Dichgia.Location,
-                BorderStyle = BorderStyle.None,
-                ForeColor = Color.Silver,
-                Text = Count_Dichgia.Text,
-                Size = Count_Dichgia.Size,
-                Font = font1,
-                BackColor = color1,
-                ReadOnly = true,
-                Enabled = false,
-                TextAlign = HorizontalAlignment.Right,
-                TabIndex = 20,
-            };
-            TextBox txt13 = new TextBox
-            {
-                Location = Count_NXB.Location,
-                ForeColor = Color.Silver,
-                BorderStyle = BorderStyle.None,
-                Text = Count_NXB.Text,
-                Size = Count_NXB.Size,
-                Font = font1,
-                BackColor = color1,
-                ReadOnly = true,
-                Enabled = false,
-                TextAlign = HorizontalAlignment.Right,
-                TabIndex = 26,
-            };
             PictureBox picSP = new PictureBox
             {
                 Location = SP_Pic.Location,
@@ -796,36 +726,36 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-            TextBox cboTheLoai = new TextBox
+            TextBox TheLoaitxt = new TextBox
             {
                 Location = txtTheLoai.Location,              
                 BorderStyle = BorderStyle.None,
-                Text = theLoai_CBBox.SelectedIndex.ToString(sanPham.maLoaiSP),
+                Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
                 Size = txtTheLoai.Size,
                 Font = font1,
-                Name = "CBBTheLoai",
+                Name = "txtTheLoai",
                 BackColor = color1,
                 ReadOnly = true
             };
-            TextBox cboLoaiBia = new TextBox
+            TextBox LoaiBiatxt = new TextBox
             {
                 Location = txtLoaiBia.Location,
                 BorderStyle = BorderStyle.None,
                 Text = sanPham.loaiBia,
                 Size = txtLoaiBia.Size,
                 Font = font1,
-                Name = "CBBLoaiBia",
+                Name = "txtLoaiBia",
                 BackColor = color1,
                 ReadOnly = true
             };
-            TextBox cboLanguage = new TextBox
+            TextBox Languagetxt = new TextBox
             {
                 Location = txtNgonNgu.Location,
                 BorderStyle = BorderStyle.None,
                 Size = txtNgonNgu.Size,
                 Text = sanPham.ngonNgu,
                 Font = font1,
-                Name = "CBBLanguage",
+                Name = "txtLanguage",
                 BackColor = color1,
                 ReadOnly = true
             };
@@ -837,53 +767,6 @@ namespace Program
                 Font = font1,
                 BackColor = color1
             };
-            //Utils.SetComboBox(cboTheLoai, HeThong.LoadTheLoai());
-            //cboTheLoai.SelectedIndex = int.Parse(sanPham.maLoaiSP);
-            /*            TextBox txtSP = new TextBox
-                        {
-                            Location = tenSP_Text.Location,
-                            Text = sanPham.ten,
-                            Size = tenSP_Text.Size,
-                            Name = "txtTenSP",
-                            Font = font1,
-                            BackColor = color1,
-                            BorderStyle = BorderStyle.None,
-                            TabIndex = 0,
-                            ReadOnly = true,
-                        };*/
-            /*            ComboBox cboLoaiBia = new ComboBox
-                        {
-                             DataSource = loaiBia_CBBox.DataSource,
-                             Location = loaiBia_CBBox.Location,
-                             Size = loaiBia_CBBox.Size,
-                             Name = "CBBLoaiBia",
-                             Font = font1,
-                             BackColor = color1,
-                        };
-                        cboLoaiBia.Items.AddRange( new object[] {"Bìa mềm", "Bìa Cứng"} );
-                        cboLoaiBia.SelectedItem = loaiBia_CBBox.FindStringExact(sanPham.loaiBia);
-
-                        ComboBox cboLanguage = new ComboBox
-                        {
-                             DataSource = ngonNgu_CBBox.DataSource,
-                             Location = ngonNgu_CBBox.Location,
-                             Size = ngonNgu_CBBox.Size,
-                             Name = "CBBLanguage",
-                             Font = font1,
-                             BackColor = color1,
-
-                        };
-                        cboLanguage.Items.AddRange(new object[] 
-                        {
-                             "Tiếng Việt",
-                             "Tiếng Anh",
-                             "Tiếng Trung Quốc",
-                             "Tiếng Nhật Bản",
-                             "Tiếng Nga",
-                             "Khác"
-                        });
-                        cboLanguage.SelectedIndex = ngonNgu_CBBox.FindStringExact(sanPham.ngonNgu); 
-            */
 
             panel.Controls.Add(anhSP);
             panel.Controls.Add(lbSoTrang);
@@ -896,11 +779,6 @@ namespace Program
             panel.Controls.Add(txtSL);
             panel.Controls.Add(txtTrang);
             panel.Controls.Add(txtMota);
-            panel.Controls.Add(txt15);
-            panel.Controls.Add(txt10);
-            panel.Controls.Add(txt11);
-            panel.Controls.Add(txt12);
-            panel.Controls.Add(txt13);
             panel.Controls.Add(picSP);
             panel.Controls.Add(picTG);
             panel.Controls.Add(pic3);
@@ -921,9 +799,9 @@ namespace Program
             panel.Controls.Add(lbNgonNgu);
             panel.Controls.Add(lbGia);
             panel.Controls.Add(lbSoLuong);
-            panel.Controls.Add(cboTheLoai);
-            panel.Controls.Add(cboLoaiBia);
-            panel.Controls.Add(cboLanguage);
+            panel.Controls.Add(TheLoaitxt);
+            panel.Controls.Add(LoaiBiatxt);
+            panel.Controls.Add(Languagetxt);
             panel.Controls.Add(pic11);
             panel.Controls.Add(pic12);
             panel.Controls.Add(pic13);
@@ -1016,9 +894,9 @@ namespace Program
             ((TextBox)Utils.FindControl(panelToUpdate, "txtGia")).Text = QLSP.list[index].gia.ToString();
             ((TextBox)Utils.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
             ((TextBox)Utils.FindControl(panelToUpdate, "txtSoTrang")).Text = QLSP.list[index].soTrang.ToString();
-            ((TextBox)Utils.FindControl(panelToUpdate, "CBBLoaiBia")).Text = QLSP.list[index].loaiBia.ToString();
-            //((TextBox)Utils.FindControl(panelToUpdate, "CBBTheLoai")).Text = int.Parse(QLSP.list[index].maLoaiSP);
-            ((TextBox)Utils.FindControl(panelToUpdate, "CBBLanguage")).Text = QLSP.list[index].ngonNgu.ToString();
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtLoaiBia")).Text = QLSP.list[index].loaiBia.ToString();
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtTheLoai")).Text = HeThong.LoadTenTheLoai(int.Parse(QLSP.list[index].maLoaiSP));
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtLanguage")).Text = QLSP.list[index].ngonNgu.ToString();
         }
 
 
