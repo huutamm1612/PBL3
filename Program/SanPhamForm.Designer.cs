@@ -31,7 +31,6 @@
             this.bia_Check = new System.Windows.Forms.Label();
             this.language_Check = new System.Windows.Forms.Label();
             this.theLoai_check = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
             this.huyBoButton = new System.Windows.Forms.Button();
             this.refreshThemSPForm_Button = new System.Windows.Forms.Button();
             this.luuButton = new System.Windows.Forms.Button();
@@ -73,6 +72,9 @@
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.picImage = new System.Windows.Forms.PictureBox();
+            this.btnImage = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moTa_Pic)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
             // bia_Check
@@ -119,20 +122,6 @@
             this.theLoai_check.TabIndex = 104;
             this.theLoai_check.Text = "Bạn cần phải chọn 1 thể loại";
             this.theLoai_check.Visible = false;
-            // 
-            // textBox28
-            // 
-            this.textBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox28.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox28.Location = new System.Drawing.Point(77, 31);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.ReadOnly = true;
-            this.textBox28.Size = new System.Drawing.Size(122, 19);
-            this.textBox28.TabIndex = 103;
-            this.textBox28.Text = "Ảnh sản phẩm";
-            this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // huyBoButton
             // 
@@ -652,16 +641,42 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // picImage
+            // 
+            this.picImage.Location = new System.Drawing.Point(267, 12);
+            this.picImage.Name = "picImage";
+            this.picImage.Size = new System.Drawing.Size(176, 99);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImage.TabIndex = 107;
+            this.picImage.TabStop = false;
+            // 
+            // btnImage
+            // 
+            this.btnImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImage.Location = new System.Drawing.Point(80, 37);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(139, 37);
+            this.btnImage.TabIndex = 108;
+            this.btnImage.Text = "Ảnh sản phẩm";
+            this.btnImage.UseVisualStyleBackColor = false;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // SanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.ClientSize = new System.Drawing.Size(1402, 753);
+            this.Controls.Add(this.btnImage);
+            this.Controls.Add(this.picImage);
             this.Controls.Add(this.bia_Check);
             this.Controls.Add(this.language_Check);
             this.Controls.Add(this.theLoai_check);
-            this.Controls.Add(this.textBox28);
             this.Controls.Add(this.huyBoButton);
             this.Controls.Add(this.refreshThemSPForm_Button);
             this.Controls.Add(this.luuButton);
@@ -714,6 +729,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,7 +740,6 @@
         private System.Windows.Forms.Label bia_Check;
         private System.Windows.Forms.Label language_Check;
         private System.Windows.Forms.Label theLoai_check;
-        private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.Button huyBoButton;
         private System.Windows.Forms.Button refreshThemSPForm_Button;
         private System.Windows.Forms.Button luuButton;
@@ -766,5 +781,8 @@
         private System.Windows.Forms.TextBox tenSP_Text;
         private System.Windows.Forms.PictureBox SP_Pic;
         private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.PictureBox picImage;
+        private System.Windows.Forms.Button btnImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

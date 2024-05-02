@@ -247,5 +247,15 @@ namespace Program
         {
             refreshThemSPForm();
         }
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picImage.Image = Image.FromFile(openFile.FileName);
+            }
+        }
     }
 }
