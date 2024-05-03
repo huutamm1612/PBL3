@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Program
 {
     public class SanPham
     {
+        public Image anhSanPham { get; set; }
         public string maSP { get; set; }
         public string maLoaiSP { get; set; }
         public string maS { get; set; }
@@ -27,6 +29,7 @@ namespace Program
         public DateTime ngayThem { get; set; }
         public SanPham()
         {
+            anhSanPham = null;
             maSP = "";
             maLoaiSP = "";
             maS = "";
@@ -55,6 +58,7 @@ namespace Program
         {
             SanPham sanPham = new SanPham
             {
+                anhSanPham = this.anhSanPham,
                 maSP = this.maSP,
                 maLoaiSP = this.maLoaiSP,
                 maBD = this.maBD,

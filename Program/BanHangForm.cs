@@ -379,6 +379,16 @@ namespace Program
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
             };
+            PictureBox picImage = new PictureBox
+            {
+                Location = new System.Drawing.Point(240, 12),
+                Size = new Size(176, 99),
+                Font = font1,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = color1,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+            };
+            picImage.Image = sanPham.anhSanPham;
             TextBox lbTenSP = new TextBox
             {
                 Location = textBox13.Location,
@@ -726,11 +736,13 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
+  
             TextBox TheLoaitxt = new TextBox
             {
                 Location = txtTheLoai.Location,              
                 BorderStyle = BorderStyle.None,
-                Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
+               // Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
+                Text = sanPham.maLoaiSP,
                 Size = txtTheLoai.Size,
                 Font = font1,
                 Name = "txtTheLoai",
@@ -769,6 +781,7 @@ namespace Program
             };
 
             panel.Controls.Add(anhSP);
+            panel.Controls.Add(picImage);
             panel.Controls.Add(lbSoTrang);
             panel.Controls.Add(txtSP);
             panel.Controls.Add(txtTG);
@@ -805,6 +818,7 @@ namespace Program
             panel.Controls.Add(pic11);
             panel.Controls.Add(pic12);
             panel.Controls.Add(pic13);
+
             Button btnCapNhat = new Button
             {
                 Location = luuSPButton.Location,

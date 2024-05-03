@@ -649,6 +649,7 @@
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picImage.TabIndex = 107;
             this.picImage.TabStop = false;
+            this.picImage.Click += new System.EventHandler(this.picImage_Click);
             // 
             // btnImage
             // 
@@ -658,7 +659,7 @@
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(139, 37);
             this.btnImage.TabIndex = 108;
-            this.btnImage.Text = "Ảnh sản phẩm";
+            this.btnImage.Text = "Ảnh";
             this.btnImage.UseVisualStyleBackColor = false;
             this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
             // 

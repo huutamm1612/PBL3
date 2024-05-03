@@ -76,7 +76,8 @@ namespace Program
                     ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
                     loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
                     luocBan = 0,
-                    ngayThem = DateTime.Now
+                    ngayThem = DateTime.Now,
+                    anhSanPham = picImage.Image,
                 });
                 //QLSP.Add();
                 Close();
@@ -256,6 +257,11 @@ namespace Program
             {
                 picImage.Image = Image.FromFile(openFile.FileName);
             }
+        }
+
+        private void picImage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

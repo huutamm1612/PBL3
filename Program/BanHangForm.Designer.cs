@@ -158,6 +158,7 @@
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.textBox52 = new System.Windows.Forms.TextBox();
@@ -187,7 +188,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -1352,9 +1352,9 @@
             this.themSanPhamPanel.AutoScroll = true;
             this.themSanPhamPanel.BackColor = System.Drawing.SystemColors.Control;
             this.themSanPhamPanel.Controls.Add(this.TTBH_Panel);
-            this.themSanPhamPanel.Controls.Add(this.panel8);
             this.themSanPhamPanel.Controls.Add(this.label4);
             this.themSanPhamPanel.Controls.Add(this.panel6);
+            this.themSanPhamPanel.Controls.Add(this.panel8);
             this.themSanPhamPanel.Location = new System.Drawing.Point(10, 0);
             this.themSanPhamPanel.Name = "themSanPhamPanel";
             this.themSanPhamPanel.Size = new System.Drawing.Size(1062, 761);
@@ -2095,6 +2095,14 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.Control;
+            this.panel8.Location = new System.Drawing.Point(33, 841);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1575, 80);
+            this.panel8.TabIndex = 5;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -2421,14 +2429,6 @@
             this.label6.Size = new System.Drawing.Size(150, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.Control;
-            this.panel8.Location = new System.Drawing.Point(33, 941);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1575, 80);
-            this.panel8.TabIndex = 5;
             // 
             // BanHang_Form
             // 
