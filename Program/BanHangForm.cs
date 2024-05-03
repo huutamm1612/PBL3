@@ -9,6 +9,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Program
 {
@@ -384,6 +385,7 @@ namespace Program
                 Location = new System.Drawing.Point(240, 12),
                 Size = new Size(176, 99),
                 Font = font1,
+                Name = "picImage",
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
@@ -741,7 +743,7 @@ namespace Program
             {
                 Location = txtTheLoai.Location,              
                 BorderStyle = BorderStyle.None,
-               // Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
+                //Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
                 Text = sanPham.maLoaiSP,
                 Size = txtTheLoai.Size,
                 Font = font1,
@@ -898,7 +900,8 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
-
+   
+            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).BackgroundImage = QLSP.list[index].anhSanPham;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTacGia")).Text = QLSP.list[index].tacGia;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtDichGia")).Text = QLSP.list[index].dichGia;
@@ -1156,7 +1159,7 @@ namespace Program
                 QLSP.Clear();
                 index = -1;
                 shop.Insert(0, baiDang);
-                // HeThong.ThemBaiDang(baiDang)
+                HeThong.ThemBaiDang(baiDang);
                 trangChuPanel.Visible = true;
                 themSanPhamPanel.Visible = false;
             }
@@ -1171,5 +1174,24 @@ namespace Program
             // refresh va ve trang chu
         }
 
+        private void btnMainImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picMainImage.Image = System.Drawing.Image.FromFile(openFile.FileName);
+            }
+        }
+
+        private void btnCoverImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picCoverImage.Image = System.Drawing.Image.FromFile(openFile.FileName);
+            }
+        }
     }
 }

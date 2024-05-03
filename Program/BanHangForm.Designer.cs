@@ -158,9 +158,11 @@
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnMainImage = new System.Windows.Forms.Button();
+            this.picCoverImage = new System.Windows.Forms.PictureBox();
+            this.picMainImage = new System.Windows.Forms.PictureBox();
             this.textBox52 = new System.Windows.Forms.TextBox();
             this.giamGia_txt = new System.Windows.Forms.TextBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
@@ -174,8 +176,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.tatCaPanel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.trangChuPanel = new System.Windows.Forms.Panel();
@@ -188,6 +189,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnCoverImage = new System.Windows.Forms.Button();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -218,6 +221,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -2095,14 +2100,6 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.Control;
-            this.panel8.Location = new System.Drawing.Point(33, 841);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1575, 80);
-            this.panel8.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -2115,6 +2112,10 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.btnCoverImage);
+            this.panel6.Controls.Add(this.btnMainImage);
+            this.panel6.Controls.Add(this.picCoverImage);
+            this.panel6.Controls.Add(this.picMainImage);
             this.panel6.Controls.Add(this.textBox52);
             this.panel6.Controls.Add(this.giamGia_txt);
             this.panel6.Controls.Add(this.pictureBox15);
@@ -2128,12 +2129,42 @@
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.textBox8);
             this.panel6.Controls.Add(this.textBox7);
-            this.panel6.Controls.Add(this.textBox6);
-            this.panel6.Controls.Add(this.textBox5);
             this.panel6.Location = new System.Drawing.Point(61, 24);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1574, 730);
             this.panel6.TabIndex = 1;
+            // 
+            // btnMainImage
+            // 
+            this.btnMainImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainImage.Location = new System.Drawing.Point(101, 73);
+            this.btnMainImage.Name = "btnMainImage";
+            this.btnMainImage.Size = new System.Drawing.Size(101, 45);
+            this.btnMainImage.TabIndex = 17;
+            this.btnMainImage.Text = "Hình ảnh";
+            this.btnMainImage.UseVisualStyleBackColor = true;
+            this.btnMainImage.Click += new System.EventHandler(this.btnMainImage_Click);
+            // 
+            // picCoverImage
+            // 
+            this.picCoverImage.BackColor = System.Drawing.SystemColors.Window;
+            this.picCoverImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picCoverImage.Location = new System.Drawing.Point(215, 153);
+            this.picCoverImage.Name = "picCoverImage";
+            this.picCoverImage.Size = new System.Drawing.Size(306, 77);
+            this.picCoverImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picCoverImage.TabIndex = 16;
+            this.picCoverImage.TabStop = false;
+            // 
+            // picMainImage
+            // 
+            this.picMainImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMainImage.Location = new System.Drawing.Point(232, 45);
+            this.picMainImage.Name = "picMainImage";
+            this.picMainImage.Size = new System.Drawing.Size(258, 98);
+            this.picMainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMainImage.TabIndex = 15;
+            this.picMainImage.TabStop = false;
             // 
             // textBox52
             // 
@@ -2280,33 +2311,13 @@
             this.textBox7.Text = "Tiêu đề";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox6
+            // panel8
             // 
-            this.textBox6.BackColor = System.Drawing.Color.White;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(33, 172);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(154, 19);
-            this.textBox6.TabIndex = 1;
-            this.textBox6.Text = "Ảnh bìa";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(33, 90);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(154, 19);
-            this.textBox5.TabIndex = 0;
-            this.textBox5.Text = "Hình ảnh";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.panel8.BackColor = System.Drawing.SystemColors.Control;
+            this.panel8.Location = new System.Drawing.Point(33, 841);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1575, 80);
+            this.panel8.TabIndex = 5;
             // 
             // tatCaPanel
             // 
@@ -2430,6 +2441,21 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Tất Cả Sản Phẩm Panel";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnCoverImage
+            // 
+            this.btnCoverImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCoverImage.Location = new System.Drawing.Point(104, 178);
+            this.btnCoverImage.Name = "btnCoverImage";
+            this.btnCoverImage.Size = new System.Drawing.Size(97, 39);
+            this.btnCoverImage.TabIndex = 18;
+            this.btnCoverImage.Text = "Ảnh bìa";
+            this.btnCoverImage.UseVisualStyleBackColor = true;
+            this.btnCoverImage.Click += new System.EventHandler(this.btnCoverImage_Click);
+            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2479,6 +2505,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -2580,18 +2608,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox Count_Tieude;
-        private System.Windows.Forms.TextBox tieuDe_txt;
-        private System.Windows.Forms.TextBox moTa_txt;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox Count_MoTaTT;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel TTBH_Panel;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button themSPButton;
@@ -2645,10 +2661,6 @@
         private System.Windows.Forms.Panel miniConTrolPanel;
         private System.Windows.Forms.Button huyThemBaiDang;
         private System.Windows.Forms.Button luuBaiDangButton;
-        private System.Windows.Forms.TextBox giamGia_txt;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.TextBox textBox51;
-        private System.Windows.Forms.TextBox textBox52;
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.PictureBox pictureBox18;
@@ -2656,5 +2668,24 @@
         private System.Windows.Forms.TextBox txtLoaiBia;
         private System.Windows.Forms.TextBox txtTheLoai;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox picCoverImage;
+        private System.Windows.Forms.PictureBox picMainImage;
+        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.TextBox giamGia_txt;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox Count_MoTaTT;
+        private System.Windows.Forms.TextBox moTa_txt;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox Count_Tieude;
+        private System.Windows.Forms.TextBox tieuDe_txt;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button btnMainImage;
+        private System.Windows.Forms.Button btnCoverImage;
     }
 }
