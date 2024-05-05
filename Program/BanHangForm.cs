@@ -330,7 +330,6 @@ namespace Program
                 funcFLPanel.Controls[index].Visible = spread;
                 index++;
             }
-
         }
 
         private void huyThemSPButton_Click(object sender, EventArgs e)
@@ -345,7 +344,7 @@ namespace Program
 
         private void themSanPham(SanPham sanPham)
         {
-            QLSP.Add(sanPham);
+            QLSP.list.Add(sanPham);
 
             TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
             panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
@@ -744,7 +743,7 @@ namespace Program
                 Location = txtTheLoai.Location,              
                 BorderStyle = BorderStyle.None,
                 //Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
-                Text = sanPham.maLoaiSP,
+                Text = sanPham.loaiSP.tenLoaiSP,
                 Size = txtTheLoai.Size,
                 Font = font1,
                 Name = "txtTheLoai",
@@ -912,78 +911,8 @@ namespace Program
             ((TextBox)Utils.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
             ((TextBox)Utils.FindControl(panelToUpdate, "txtSoTrang")).Text = QLSP.list[index].soTrang.ToString();
             ((TextBox)Utils.FindControl(panelToUpdate, "txtLoaiBia")).Text = QLSP.list[index].loaiBia.ToString();
-            ((TextBox)Utils.FindControl(panelToUpdate, "txtTheLoai")).Text = HeThong.LoadTenTheLoai(int.Parse(QLSP.list[index].maLoaiSP));
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtTheLoai")).Text = QLSP.list[index].loaiSP.tenLoaiSP.ToString();
             ((TextBox)Utils.FindControl(panelToUpdate, "txtLanguage")).Text = QLSP.list[index].ngonNgu.ToString();
-        }
-
-
-
-        private void luuSPButton_Click(object sender, EventArgs e)
-        {
-            // kiem tra hop le
-            if (tenSP_Text.Text != "" && tenTacGia_Text.Text != "" && tenDichGia_Text.Text != "" && nhaXuatBan_Text.Text != ""
-               && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1 
-               && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
-            {
-                SanPham sanPham = new SanPham
-                {
-                    maSP = "",
-                    maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
-                    //maBD = shop.listBaiDang.list.Last().maBD,
-                    ten = tenSP_Text.Text,
-                    tacGia = tenTacGia_Text.Text,
-                    dichGia = tenDichGia_Text.Text,
-                    nhaXuatBan = nhaXuatBan_Text.Text,
-                    moTa = moTaSP_Text.Text,
-                    namXuatBan = int.Parse(namXuatBan_Text.Text),
-                    soLuong = int.Parse(soLuong_Text.Text),
-                    ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
-                    loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
-                    ngayThem = DateTime.Now
-                };
-                QLSP.Add(sanPham);
-
-                listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
-                listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
-                listSP_FLPanel.Visible = true;  
-                formThemSPPanel.Visible = false;
-                themSPButton.Visible = true;
-
-                refreshThemSPForm(sender, e);   
-            }
-
-            else
-            {
-                Check(tenSP_Text, SP_Pic);
-                Check(tenTacGia_Text, TG_Pic);
-                Check(tenDichGia_Text, DichGia_Pic);
-                Check(nhaXuatBan_Text, NXB_Pic);
-                Check(namXuatBan_Text, Nam_Pic);
-                Check(soLuong_Text, SoLuong_Pic);
-                Check(gia_Text, Gia_Pic);
-                Check(soTrang_Text, SoTrang_Pic);
-                Check(moTaSP_Text, moTa_Pic);
-                if (ngonNgu_CBBox.SelectedIndex != -1)
-                    language_Check.Visible = false;
-                else
-                    language_Check.Visible = true;
-                if (loaiBia_CBBox.SelectedIndex != -1)
-                    bia_Check.Visible = false;
-                else
-                    bia_Check.Visible = true;
-                if (theLoai_CBBox.SelectedIndex != -1)
-                    theLoai_check.Visible = false;
-                else
-                    theLoai_check.Visible = true;
-            }
-
-
-
-            // copy roi them vao FlowLayoutPanel listSP_FLPanel
-
-            // chinh sua lai kich thuoc
-
-            // lam moi va an panel*/
         }
 
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)

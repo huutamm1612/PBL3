@@ -15,7 +15,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -38,7 +38,7 @@ namespace Program
 
         public static void ExecuteNonQuery(string query)
         {
-            Query(query).ExecuteNonQuery();
+            Query(query).ExecuteNonQuery(); //
             sqlCon.Close();
         }
 
@@ -654,10 +654,10 @@ namespace Program
 
             return theLoai;
         }
-        
-        public static void ThemSanPham(string maBD, SanPham sanPham)
+        // 
+        public static void ThemSanPham(SanPham sanPham)
         {
-            string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', {sanPham.luocBan}, null)";
+            string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.loaiSP.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', 0, null)";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO SanPham_BaiDang VALUES('{sanPham.maSP}', '{sanPham.maBD}')";
@@ -666,14 +666,14 @@ namespace Program
 
         public static void ThemBaiDang(BaiDang baiDang)
         {
-            foreach (SanPham sanPham in baiDang.list)
-                ThemSanPham(baiDang.maBD, sanPham);
-
-            string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia})";
+            string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia}, null)";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO BaiDang_Shop VALUES('{baiDang.maBD}', '{baiDang.maS}')";
             ExecuteNonQuery(query);
+
+            foreach (SanPham sanPham in baiDang.list)
+                ThemSanPham(sanPham);
         }
 
         public static BaiDang LoadBaiDang(string maBD)
@@ -722,14 +722,14 @@ namespace Program
             string maS = reader.GetString(0);
             reader.Close();
 
-            query = $"SELECT * FROM SanPham WHERE maSP = '{maSP}'";
+            query = $"SELECT SP.*, LoaiSanPham.ten FROM SanPham LSP INNER JOIN LoaiSanPham LSP ON SP.maLoaiSP = LSP.maLoaiSP WHERE maSP = '{maSP}'";
             reader = ExecuteQuery(query);
 
             reader.Read();
-            SanPham sanPham = new SanPham
+             SanPham sanPham = new SanPham
             {
                 maSP = reader.GetString(0),
-                maLoaiSP = reader.GetString(1),
+                loaiSP = new LoaiSanPham { maLoaiSP = reader.GetString(1), tenLoaiSP = reader.GetString(14)},
                 ten = reader.GetString(2),
                 gia = reader.GetInt32(3),
                 soLuong = reader.GetInt32(4),
@@ -745,14 +745,34 @@ namespace Program
                 maS = maS,
                 maBD = maBD
             };
-            reader.Close();
+             
+            /*SanPham sanPham = new SanPham
+            {
+                maSP = reader["maSP"].ToString(),
+                loaiSP = new LoaiSanPham { maLoaiSP = reader["maLoaiSP"].ToString(), tenLoaiSP = reader["tenLoaiSP"].ToString()},
+                ten = reader["ten"].ToString(),
+                gia = Convert.ToInt32(reader["gia"].ToString()),
+                soLuong = Convert.ToInt32(reader["soLuong"].ToString()),
+                tacGia = reader["tacGia"].ToString(),
+                dichGia = reader["dichGia"].ToString(),
+                ngonNgu = reader["ngonNgu"].ToString(),
+                soTrang = Convert.ToInt32(reader["soTrang"].ToString()),
+                namXuatBan = Convert.ToInt32(reader["namXuatBan"].ToString()),
+                nhaXuatBan = reader["nhaXuatBan"].ToString(),
+                loaiBia = reader["loaiBia"].ToString(),
+                moTa = reader["moTa"].ToString(),
+                luocBan = Convert.ToInt32(reader["luocBan"].ToString()),
+                maS = maS,
+                maBD = maBD
+            };
+            reader.Close();*/
 
             return sanPham;
         }
 
         public static void CapNhatSanPham(SanPham sanPham)
         {
-            string query = $"UPDATE SanPham SET maLoaiSP = '{sanPham.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
+            string query = $"UPDATE SanPham SET maLoaiSP = '{sanPham.loaiSP.maLoaiSP}', ten = N'{sanPham.ten}', gia = {sanPham.gia}, soLuong = {sanPham.soLuong}, tacGia = N'{sanPham.tacGia}', ngonNgu = N'{sanPham.ngonNgu}', soTrang = {sanPham.soTrang}, namXuaBan = {sanPham.namXuatBan}, nhaXuatBan = N'{sanPham.nhaXuatBan}', loaiBia = N'{sanPham.loaiBia}', moTa = N'{sanPham.moTa}', luocBan = {sanPham.luocBan} WHERE maSP = '{sanPham.maSP}'";
             ExecuteNonQuery(query);
         }
 

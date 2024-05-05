@@ -11,7 +11,7 @@ namespace Program
     {
         public Image anhSanPham { get; set; }
         public string maSP { get; set; }
-        public string maLoaiSP { get; set; }
+        public LoaiSanPham loaiSP { get; set; }
         public string maS { get; set; }
         public string maBD { get; set; }
         public string ten { get; set; }
@@ -31,7 +31,7 @@ namespace Program
         {
             anhSanPham = null;
             maSP = "";
-            maLoaiSP = "";
+            loaiSP = new LoaiSanPham();
             maS = "";
             maBD = "";
             ten = "";
@@ -60,7 +60,7 @@ namespace Program
             {
                 anhSanPham = this.anhSanPham,
                 maSP = this.maSP,
-                maLoaiSP = this.maLoaiSP,
+                loaiSP = this.loaiSP,
                 maBD = this.maBD,
                 maS = this.maS,
                 ten = this.ten,
@@ -100,7 +100,7 @@ namespace Program
         public static bool EqualSoLuong(object o1, object o2) => ((SanPham)o1).soLuong == ((SanPham)o2).soLuong;
         public static bool EqualLuocBan(object o1, object o2) => ((SanPham)o1).luocBan == ((SanPham)o2).luocBan;
         public static bool EqualMaSP(object o1, object o2) => String.Equals(((SanPham)o1).maSP, ((SanPham)o2).maSP);
-        public static bool EqualMaLoaiSP(object o1, object o2) => String.Equals(((SanPham)o1).maLoaiSP, ((SanPham)o2).maLoaiSP);
+        public static bool EqualMaLoaiSP(object o1, object o2) => String.Equals(((SanPham)o1).loaiSP.maLoaiSP, ((SanPham)o2).loaiSP.maLoaiSP);
         public static bool EqualLoaiBia(object o1, object o2) => String.Equals(((SanPham)o1).loaiBia, ((SanPham)o2).loaiBia);
         public static bool EqualNgayThem(object o1, object o2) => DateTime.Equals(((SanPham)o1).ngayThem, ((SanPham)o2).ngayThem);
         public static bool EqualMaS(object o1, object o2) => String.Equals(((SanPham)o1).maS, ((SanPham)o2).maS);

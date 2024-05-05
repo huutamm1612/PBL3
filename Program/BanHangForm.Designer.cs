@@ -102,10 +102,6 @@
             this.huyThemBaiDang = new System.Windows.Forms.Button();
             this.luuBaiDangButton = new System.Windows.Forms.Button();
             this.themSanPhamPanel = new System.Windows.Forms.Panel();
-            this.TTBH_Panel = new System.Windows.Forms.Panel();
-            this.themSPButton = new System.Windows.Forms.Button();
-            this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
             this.txtNgonNgu = new System.Windows.Forms.TextBox();
             this.txtLoaiBia = new System.Windows.Forms.TextBox();
@@ -158,8 +154,13 @@
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.TTBH_Panel = new System.Windows.Forms.Panel();
+            this.themSPButton = new System.Windows.Forms.Button();
+            this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnCoverImage = new System.Windows.Forms.Button();
             this.btnMainImage = new System.Windows.Forms.Button();
             this.picCoverImage = new System.Windows.Forms.PictureBox();
             this.picMainImage = new System.Windows.Forms.PictureBox();
@@ -190,7 +191,6 @@
             this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnCoverImage = new System.Windows.Forms.Button();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             this.themDiaChi_Panel.SuspendLayout();
@@ -206,7 +206,6 @@
             this.screen_Panel.SuspendLayout();
             this.miniConTrolPanel.SuspendLayout();
             this.themSanPhamPanel.SuspendLayout();
-            this.TTBH_Panel.SuspendLayout();
             this.formThemSPPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -220,6 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
+            this.TTBH_Panel.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).BeginInit();
@@ -1366,54 +1366,6 @@
             this.themSanPhamPanel.TabIndex = 6;
             this.themSanPhamPanel.Visible = false;
             // 
-            // TTBH_Panel
-            // 
-            this.TTBH_Panel.BackColor = System.Drawing.Color.White;
-            this.TTBH_Panel.Controls.Add(this.themSPButton);
-            this.TTBH_Panel.Controls.Add(this.listSP_FLPanel);
-            this.TTBH_Panel.Controls.Add(this.label9);
-            this.TTBH_Panel.Controls.Add(this.formThemSPPanel);
-            this.TTBH_Panel.Location = new System.Drawing.Point(61, 770);
-            this.TTBH_Panel.Name = "TTBH_Panel";
-            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 151);
-            this.TTBH_Panel.TabIndex = 10;
-            // 
-            // themSPButton
-            // 
-            this.themSPButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.themSPButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.themSPButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSalmon;
-            this.themSPButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MistyRose;
-            this.themSPButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.themSPButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.themSPButton.ForeColor = System.Drawing.Color.OrangeRed;
-            this.themSPButton.Location = new System.Drawing.Point(70, 60);
-            this.themSPButton.Name = "themSPButton";
-            this.themSPButton.Size = new System.Drawing.Size(194, 40);
-            this.themSPButton.TabIndex = 3;
-            this.themSPButton.Text = "Thêm sản phẩm";
-            this.themSPButton.UseVisualStyleBackColor = true;
-            this.themSPButton.Click += new System.EventHandler(this.themSPButton_Click);
-            // 
-            // listSP_FLPanel
-            // 
-            this.listSP_FLPanel.BackColor = System.Drawing.Color.Transparent;
-            this.listSP_FLPanel.Location = new System.Drawing.Point(70, 60);
-            this.listSP_FLPanel.Name = "listSP_FLPanel";
-            this.listSP_FLPanel.Size = new System.Drawing.Size(1427, 10);
-            this.listSP_FLPanel.TabIndex = 5;
-            this.listSP_FLPanel.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(251, 36);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Thông tin bán hàng";
-            // 
             // formThemSPPanel
             // 
             this.formThemSPPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -1468,7 +1420,7 @@
             this.formThemSPPanel.Controls.Add(this.tenSP_Text);
             this.formThemSPPanel.Controls.Add(this.SP_Pic);
             this.formThemSPPanel.Controls.Add(this.textBox13);
-            this.formThemSPPanel.Location = new System.Drawing.Point(70, 163);
+            this.formThemSPPanel.Location = new System.Drawing.Point(70, 167);
             this.formThemSPPanel.Name = "formThemSPPanel";
             this.formThemSPPanel.Size = new System.Drawing.Size(1420, 800);
             this.formThemSPPanel.TabIndex = 4;
@@ -1634,7 +1586,6 @@
             this.luuSPButton.TabIndex = 5;
             this.luuSPButton.Text = "Lưu";
             this.luuSPButton.UseVisualStyleBackColor = false;
-            this.luuSPButton.Click += new System.EventHandler(this.luuSPButton_Click);
             // 
             // soTrang_Text
             // 
@@ -2100,6 +2051,54 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // TTBH_Panel
+            // 
+            this.TTBH_Panel.BackColor = System.Drawing.Color.White;
+            this.TTBH_Panel.Controls.Add(this.formThemSPPanel);
+            this.TTBH_Panel.Controls.Add(this.themSPButton);
+            this.TTBH_Panel.Controls.Add(this.listSP_FLPanel);
+            this.TTBH_Panel.Controls.Add(this.label9);
+            this.TTBH_Panel.Location = new System.Drawing.Point(61, 770);
+            this.TTBH_Panel.Name = "TTBH_Panel";
+            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 143);
+            this.TTBH_Panel.TabIndex = 10;
+            // 
+            // themSPButton
+            // 
+            this.themSPButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.themSPButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.themSPButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSalmon;
+            this.themSPButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MistyRose;
+            this.themSPButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.themSPButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.themSPButton.ForeColor = System.Drawing.Color.OrangeRed;
+            this.themSPButton.Location = new System.Drawing.Point(70, 60);
+            this.themSPButton.Name = "themSPButton";
+            this.themSPButton.Size = new System.Drawing.Size(194, 40);
+            this.themSPButton.TabIndex = 3;
+            this.themSPButton.Text = "Thêm sản phẩm";
+            this.themSPButton.UseVisualStyleBackColor = true;
+            this.themSPButton.Click += new System.EventHandler(this.themSPButton_Click);
+            // 
+            // listSP_FLPanel
+            // 
+            this.listSP_FLPanel.BackColor = System.Drawing.Color.Transparent;
+            this.listSP_FLPanel.Location = new System.Drawing.Point(70, 60);
+            this.listSP_FLPanel.Name = "listSP_FLPanel";
+            this.listSP_FLPanel.Size = new System.Drawing.Size(1427, 10);
+            this.listSP_FLPanel.TabIndex = 5;
+            this.listSP_FLPanel.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(251, 36);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Thông tin bán hàng";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -2134,6 +2133,17 @@
             this.panel6.Size = new System.Drawing.Size(1574, 730);
             this.panel6.TabIndex = 1;
             // 
+            // btnCoverImage
+            // 
+            this.btnCoverImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCoverImage.Location = new System.Drawing.Point(104, 178);
+            this.btnCoverImage.Name = "btnCoverImage";
+            this.btnCoverImage.Size = new System.Drawing.Size(97, 39);
+            this.btnCoverImage.TabIndex = 18;
+            this.btnCoverImage.Text = "Ảnh bìa";
+            this.btnCoverImage.UseVisualStyleBackColor = true;
+            this.btnCoverImage.Click += new System.EventHandler(this.btnCoverImage_Click);
+            // 
             // btnMainImage
             // 
             this.btnMainImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2159,7 +2169,7 @@
             // picMainImage
             // 
             this.picMainImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMainImage.Location = new System.Drawing.Point(232, 45);
+            this.picMainImage.Location = new System.Drawing.Point(216, 45);
             this.picMainImage.Name = "picMainImage";
             this.picMainImage.Size = new System.Drawing.Size(258, 98);
             this.picMainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2314,7 +2324,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.Control;
-            this.panel8.Location = new System.Drawing.Point(33, 841);
+            this.panel8.Location = new System.Drawing.Point(35, 926);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1575, 80);
             this.panel8.TabIndex = 5;
@@ -2445,17 +2455,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnCoverImage
-            // 
-            this.btnCoverImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCoverImage.Location = new System.Drawing.Point(104, 178);
-            this.btnCoverImage.Name = "btnCoverImage";
-            this.btnCoverImage.Size = new System.Drawing.Size(97, 39);
-            this.btnCoverImage.TabIndex = 18;
-            this.btnCoverImage.Text = "Ảnh bìa";
-            this.btnCoverImage.UseVisualStyleBackColor = true;
-            this.btnCoverImage.Click += new System.EventHandler(this.btnCoverImage_Click);
-            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2487,8 +2486,6 @@
             this.miniConTrolPanel.ResumeLayout(false);
             this.themSanPhamPanel.ResumeLayout(false);
             this.themSanPhamPanel.PerformLayout();
-            this.TTBH_Panel.ResumeLayout(false);
-            this.TTBH_Panel.PerformLayout();
             this.formThemSPPanel.ResumeLayout(false);
             this.formThemSPPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
@@ -2503,6 +2500,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
+            this.TTBH_Panel.ResumeLayout(false);
+            this.TTBH_Panel.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).EndInit();

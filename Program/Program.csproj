@@ -83,6 +83,7 @@
     <Compile Include="KhachHangForm.Designer.cs">
       <DependentUpon>KhachHangForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoaiSanPham.cs" />
     <Compile Include="Nguoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

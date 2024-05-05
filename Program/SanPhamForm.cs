@@ -40,7 +40,7 @@ namespace Program
             nhaXuatBan_Text.Text = sanPham.nhaXuatBan;
             namXuatBan_Text.Text = sanPham.namXuatBan.ToString();
             moTaSP_Text.Text = sanPham.moTa;
-            theLoai_CBBox.SelectedIndex = int.Parse(sanPham.maLoaiSP);
+            theLoai_CBBox.SelectedIndex = int.Parse(sanPham.loaiSP.maLoaiSP);
             loaiBia_CBBox.SelectedItem = sanPham.loaiBia;
             ngonNgu_CBBox.SelectedItem = sanPham.ngonNgu;
             gia_Text.Text = sanPham.gia.ToString();
@@ -63,7 +63,8 @@ namespace Program
                 this.send(new SanPham
                 {
                     maSP = "",
-                    maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
+                    //maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
+                    loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
                     ten = tenSP_Text.Text,
                     tacGia = tenTacGia_Text.Text,
                     dichGia = tenDichGia_Text.Text,
