@@ -722,14 +722,21 @@ namespace Program
             string maS = reader.GetString(0);
             reader.Close();
 
-            query = $"SELECT SP.*, LoaiSanPham.ten FROM SanPham LSP INNER JOIN LoaiSanPham LSP ON SP.maLoaiSP = LSP.maLoaiSP WHERE maSP = '{maSP}'";
+            query = $"SELECT LSP.ten FROM LoaiSanPham LSP INNER JOIN SanPham SP ON LSP.maLoaiSP = SP.maLoaiSP WHERE SP.maSP = '0000000006'";
             reader = ExecuteQuery(query);
 
             reader.Read();
-             SanPham sanPham = new SanPham
+            string tenLoaiSP = reader.GetString(0);
+            reader.Close();
+
+            query = $"SELECT * FROM SanPham WHERE maSP = '{maSP}'";
+            reader = ExecuteQuery(query);
+
+            reader.Read();
+            /* SanPham sanPham = new SanPham
             {
                 maSP = reader.GetString(0),
-                loaiSP = new LoaiSanPham { maLoaiSP = reader.GetString(1), tenLoaiSP = reader.GetString(14)},
+                loaiSP = new LoaiSanPham { maLoaiSP = reader.GetString(1), tenLoaiSP = tenLoaiSP },
                 ten = reader.GetString(2),
                 gia = reader.GetInt32(3),
                 soLuong = reader.GetInt32(4),
@@ -744,12 +751,12 @@ namespace Program
                 luocBan = reader.GetInt32(13),
                 maS = maS,
                 maBD = maBD
-            };
-             
-            /*SanPham sanPham = new SanPham
+            };*/
+
+            SanPham sanPham = new SanPham
             {
                 maSP = reader["maSP"].ToString(),
-                loaiSP = new LoaiSanPham { maLoaiSP = reader["maLoaiSP"].ToString(), tenLoaiSP = reader["tenLoaiSP"].ToString()},
+                loaiSP = new LoaiSanPham { maLoaiSP = reader["maLoaiSP"].ToString(), tenLoaiSP = tenLoaiSP },
                 ten = reader["ten"].ToString(),
                 gia = Convert.ToInt32(reader["gia"].ToString()),
                 soLuong = Convert.ToInt32(reader["soLuong"].ToString()),
@@ -757,7 +764,7 @@ namespace Program
                 dichGia = reader["dichGia"].ToString(),
                 ngonNgu = reader["ngonNgu"].ToString(),
                 soTrang = Convert.ToInt32(reader["soTrang"].ToString()),
-                namXuatBan = Convert.ToInt32(reader["namXuatBan"].ToString()),
+                namXuatBan = Convert.ToInt32(reader["namXuaBan"].ToString()),
                 nhaXuatBan = reader["nhaXuatBan"].ToString(),
                 loaiBia = reader["loaiBia"].ToString(),
                 moTa = reader["moTa"].ToString(),
@@ -765,7 +772,7 @@ namespace Program
                 maS = maS,
                 maBD = maBD
             };
-            reader.Close();*/
+            reader.Close();
 
             return sanPham;
         }

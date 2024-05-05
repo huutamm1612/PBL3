@@ -130,7 +130,7 @@ CREATE TABLE SanPham(
 	dichGia nvarchar(50),
 	ngonNgu nvarchar(20),
 	soTrang int,
-	namXuaBan int,
+	namXuatBan int,
 	nhaXuatBan nvarchar(50),
 	loaiBia nvarchar(5),
 	moTa nvarchar(500),
