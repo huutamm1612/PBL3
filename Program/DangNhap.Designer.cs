@@ -247,7 +247,9 @@
             this.matKhau1_QMK_Box.Name = "matKhau1_QMK_Box";
             this.matKhau1_QMK_Box.Size = new System.Drawing.Size(392, 21);
             this.matKhau1_QMK_Box.TabIndex = 40;
+            this.matKhau1_QMK_Box.UseSystemPasswordChar = true;
             this.matKhau1_QMK_Box.TextChanged += new System.EventHandler(this.matKhau1_QMK_Box_TextChanged_1);
+            this.matKhau1_QMK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.matKhau1_QMK_Box_KeyDown);
             // 
             // thongBao_Text
             // 
@@ -511,6 +513,7 @@
             this.hienMK_DN_Check.TabIndex = 3;
             this.hienMK_DN_Check.Text = "Show password";
             this.hienMK_DN_Check.UseVisualStyleBackColor = true;
+            this.hienMK_DN_Check.CheckedChanged += new System.EventHandler(this.hienMK_DN_Check_CheckedChanged);
             // 
             // taiKhoan_DN_Box
             // 
@@ -657,6 +660,7 @@
             this.cauTraLoi_Box.Size = new System.Drawing.Size(322, 21);
             this.cauTraLoi_Box.TabIndex = 24;
             this.cauTraLoi_Box.TextChanged += new System.EventHandler(this.cauTraLoi_Box_TextChanged);
+            this.cauTraLoi_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // cauHoi_CB
             // 
@@ -774,9 +778,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
-            this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.quenMK_Panel);
             this.Controls.Add(this.Signup_Panel);
+            this.Controls.Add(this.LoginPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";

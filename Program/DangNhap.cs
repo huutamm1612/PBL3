@@ -97,7 +97,7 @@ namespace Program
                 if (matKhau_DN_Box.Text == "")
                 {
                     Utils.DrawRectangle(g, new RectangleF(40, 290, 350, 50), color, 7);
-                    matKhau_DN_Box.BackColor = color;
+                    matKhau_DN_Box.BackColor = color;   
                 }
 
                 LoginError.Text = "You must fill out all box!!!";
@@ -344,6 +344,7 @@ namespace Program
             if (e.KeyCode == Keys.Enter)
             {
                 dangNhap_DN_Button_Click(sender, e);
+                
             }
         }
 
@@ -424,11 +425,29 @@ namespace Program
         private void hienMK_QMK_Check_CheckedChanged_1(object sender, EventArgs e)
         {
             if (hienMK_DN_Check.Checked)
+                matKhau1_QMK_Box.UseSystemPasswordChar = false;
+            else
+                matKhau1_QMK_Box.UseSystemPasswordChar = true;
+        }
+
+        private void hienMK_DN_Check_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hienMK_DN_Check.Checked)
                 matKhau_DN_Box.UseSystemPasswordChar = false;
             else
                 matKhau_DN_Box.UseSystemPasswordChar = true;
         }
 
+        private void matKhau1_QMK_Box_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                xacNhan_QMK_Button_Click_1(sender, e);
+        }
 
+        private void cauTraLoi_Box_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                dangKy_Botton_Click(sender, e);
+        }
     }
 }

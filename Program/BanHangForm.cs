@@ -381,15 +381,16 @@ namespace Program
             };
             PictureBox picImage = new PictureBox
             {
-                Location = new System.Drawing.Point(240, 12),
+                Location = new System.Drawing.Point(220, 12),
                 Size = new Size(176, 99),
                 Font = font1,
                 Name = "picImage",
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                Image =sanPham.anhSanPham,
             };
-            picImage.Image = sanPham.anhSanPham;
+
             TextBox lbTenSP = new TextBox
             {
                 Location = textBox13.Location,
@@ -899,8 +900,8 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
-   
-            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).BackgroundImage = QLSP.list[index].anhSanPham;
+
+            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).Image = QLSP.list[index].anhSanPham;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTacGia")).Text = QLSP.list[index].tacGia;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtDichGia")).Text = QLSP.list[index].dichGia;
@@ -1067,8 +1068,8 @@ namespace Program
 
         private void luuBaiDangButton_Click(object sender, EventArgs e)
         {
-            // kiem tra hop le
-            if(/*hople*/ true)
+            
+            if(picMainImage != null && picCoverImage != null && tieuDe_txt.Text != ""  && giamGia_txt.Text != "" && moTa_txt.Text != "")
             {
                 BaiDang baiDang = new BaiDang
                 {
@@ -1088,19 +1089,29 @@ namespace Program
                 QLSP.Clear();
                 index = -1;
                 shop.Insert(0, baiDang);
+                shop.Add(baiDang);
                 HeThong.ThemBaiDang(baiDang);
+
                 trangChuPanel.Visible = true;
                 themSanPhamPanel.Visible = false;
             }
             else
             {
-                // bao loi
+                MessageBox.Show("Thêm sản phẩm không thành công, vui lòng kiểm tra lại.");
             }
         }
 
         private void huyThemBaiDang_Click(object sender, EventArgs e)
         {
-            // refresh va ve trang chu
+            picMainImage.Image = null;
+            picCoverImage.Image = null;
+            tieuDe_txt.Text = "";
+            giamGia_txt.Text = "";
+            moTa_txt.Text = "";
+            this.Close();
+            KhachHangForm f = new KhachHangForm();
+            f.ShowDialog();
+            
         }
 
         private void btnMainImage_Click(object sender, EventArgs e)

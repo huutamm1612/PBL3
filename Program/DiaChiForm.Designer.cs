@@ -121,7 +121,7 @@
             this.PX_ComboBox.Location = new System.Drawing.Point(23, 245);
             this.PX_ComboBox.Name = "PX_ComboBox";
             this.PX_ComboBox.Size = new System.Drawing.Size(511, 28);
-            this.PX_ComboBox.TabIndex = 26;
+            this.PX_ComboBox.TabIndex = 25;
             this.PX_ComboBox.SelectedIndexChanged += new System.EventHandler(this.PX_ComboBox_SelectedIndexChanged);
             // 
             // label22
@@ -147,7 +147,7 @@
             this.QH_ComboBox.Location = new System.Drawing.Point(295, 167);
             this.QH_ComboBox.Name = "QH_ComboBox";
             this.QH_ComboBox.Size = new System.Drawing.Size(239, 28);
-            this.QH_ComboBox.TabIndex = 25;
+            this.QH_ComboBox.TabIndex = 24;
             this.QH_ComboBox.SelectedIndexChanged += new System.EventHandler(this.QH_ComboBox_SelectedIndexChanged);
             // 
             // label21
@@ -172,7 +172,7 @@
             this.TTP_ComboBox.Location = new System.Drawing.Point(23, 167);
             this.TTP_ComboBox.Name = "TTP_ComboBox";
             this.TTP_ComboBox.Size = new System.Drawing.Size(236, 28);
-            this.TTP_ComboBox.TabIndex = 24;
+            this.TTP_ComboBox.TabIndex = 23;
             this.TTP_ComboBox.Tag = "";
             this.TTP_ComboBox.SelectedIndexChanged += new System.EventHandler(this.TTP_ComboBox_SelectedIndexChanged);
             // 
@@ -195,7 +195,8 @@
             this.diaChiCuThe_Box.Location = new System.Drawing.Point(35, 338);
             this.diaChiCuThe_Box.Name = "diaChiCuThe_Box";
             this.diaChiCuThe_Box.Size = new System.Drawing.Size(482, 19);
-            this.diaChiCuThe_Box.TabIndex = 28;
+            this.diaChiCuThe_Box.TabIndex = 26;
+            this.diaChiCuThe_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diaChiCuThe_Box_KeyDown);
             // 
             // pictureBox11
             // 

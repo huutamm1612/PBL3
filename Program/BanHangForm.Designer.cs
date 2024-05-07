@@ -102,6 +102,7 @@
             this.huyThemBaiDang = new System.Windows.Forms.Button();
             this.luuBaiDangButton = new System.Windows.Forms.Button();
             this.themSanPhamPanel = new System.Windows.Forms.Panel();
+            this.TTBH_Panel = new System.Windows.Forms.Panel();
             this.formThemSPPanel = new System.Windows.Forms.Panel();
             this.txtNgonNgu = new System.Windows.Forms.TextBox();
             this.txtLoaiBia = new System.Windows.Forms.TextBox();
@@ -154,7 +155,6 @@
             this.tenSP_Text = new System.Windows.Forms.TextBox();
             this.SP_Pic = new System.Windows.Forms.PictureBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
-            this.TTBH_Panel = new System.Windows.Forms.Panel();
             this.themSPButton = new System.Windows.Forms.Button();
             this.listSP_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -166,15 +166,15 @@
             this.picMainImage = new System.Windows.Forms.PictureBox();
             this.textBox52 = new System.Windows.Forms.TextBox();
             this.giamGia_txt = new System.Windows.Forms.TextBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.picGiamGia = new System.Windows.Forms.PictureBox();
             this.textBox51 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Count_MoTaTT = new System.Windows.Forms.TextBox();
             this.moTa_txt = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.picDescription = new System.Windows.Forms.PictureBox();
             this.Count_Tieude = new System.Windows.Forms.TextBox();
             this.tieuDe_txt = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picTitle = new System.Windows.Forms.PictureBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -206,6 +206,7 @@
             this.screen_Panel.SuspendLayout();
             this.miniConTrolPanel.SuspendLayout();
             this.themSanPhamPanel.SuspendLayout();
+            this.TTBH_Panel.SuspendLayout();
             this.formThemSPPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -219,13 +220,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).BeginInit();
-            this.TTBH_Panel.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGiamGia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitle)).BeginInit();
             this.tatCaPanel.SuspendLayout();
             this.trangChuPanel.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1366,6 +1366,18 @@
             this.themSanPhamPanel.TabIndex = 6;
             this.themSanPhamPanel.Visible = false;
             // 
+            // TTBH_Panel
+            // 
+            this.TTBH_Panel.BackColor = System.Drawing.Color.White;
+            this.TTBH_Panel.Controls.Add(this.formThemSPPanel);
+            this.TTBH_Panel.Controls.Add(this.themSPButton);
+            this.TTBH_Panel.Controls.Add(this.listSP_FLPanel);
+            this.TTBH_Panel.Controls.Add(this.label9);
+            this.TTBH_Panel.Location = new System.Drawing.Point(61, 770);
+            this.TTBH_Panel.Name = "TTBH_Panel";
+            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 143);
+            this.TTBH_Panel.TabIndex = 10;
+            // 
             // formThemSPPanel
             // 
             this.formThemSPPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -2051,18 +2063,6 @@
             this.textBox13.Text = "Tên sản phẩm";
             this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // TTBH_Panel
-            // 
-            this.TTBH_Panel.BackColor = System.Drawing.Color.White;
-            this.TTBH_Panel.Controls.Add(this.formThemSPPanel);
-            this.TTBH_Panel.Controls.Add(this.themSPButton);
-            this.TTBH_Panel.Controls.Add(this.listSP_FLPanel);
-            this.TTBH_Panel.Controls.Add(this.label9);
-            this.TTBH_Panel.Location = new System.Drawing.Point(61, 770);
-            this.TTBH_Panel.Name = "TTBH_Panel";
-            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 143);
-            this.TTBH_Panel.TabIndex = 10;
-            // 
             // themSPButton
             // 
             this.themSPButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2075,7 +2075,7 @@
             this.themSPButton.Location = new System.Drawing.Point(70, 60);
             this.themSPButton.Name = "themSPButton";
             this.themSPButton.Size = new System.Drawing.Size(194, 40);
-            this.themSPButton.TabIndex = 3;
+            this.themSPButton.TabIndex = 8;
             this.themSPButton.Text = "Thêm sản phẩm";
             this.themSPButton.UseVisualStyleBackColor = true;
             this.themSPButton.Click += new System.EventHandler(this.themSPButton_Click);
@@ -2117,15 +2117,15 @@
             this.panel6.Controls.Add(this.picMainImage);
             this.panel6.Controls.Add(this.textBox52);
             this.panel6.Controls.Add(this.giamGia_txt);
-            this.panel6.Controls.Add(this.pictureBox15);
+            this.panel6.Controls.Add(this.picGiamGia);
             this.panel6.Controls.Add(this.textBox51);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.Count_MoTaTT);
             this.panel6.Controls.Add(this.moTa_txt);
-            this.panel6.Controls.Add(this.pictureBox3);
+            this.panel6.Controls.Add(this.picDescription);
             this.panel6.Controls.Add(this.Count_Tieude);
             this.panel6.Controls.Add(this.tieuDe_txt);
-            this.panel6.Controls.Add(this.pictureBox2);
+            this.panel6.Controls.Add(this.picTitle);
             this.panel6.Controls.Add(this.textBox8);
             this.panel6.Controls.Add(this.textBox7);
             this.panel6.Location = new System.Drawing.Point(61, 24);
@@ -2195,16 +2195,16 @@
             this.giamGia_txt.Location = new System.Drawing.Point(238, 345);
             this.giamGia_txt.Name = "giamGia_txt";
             this.giamGia_txt.Size = new System.Drawing.Size(147, 21);
-            this.giamGia_txt.TabIndex = 12;
+            this.giamGia_txt.TabIndex = 6;
             // 
-            // pictureBox15
+            // picGiamGia
             // 
-            this.pictureBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox15.Location = new System.Drawing.Point(216, 329);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(248, 53);
-            this.pictureBox15.TabIndex = 11;
-            this.pictureBox15.TabStop = false;
+            this.picGiamGia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picGiamGia.Location = new System.Drawing.Point(216, 329);
+            this.picGiamGia.Name = "picGiamGia";
+            this.picGiamGia.Size = new System.Drawing.Size(248, 53);
+            this.picGiamGia.TabIndex = 11;
+            this.picGiamGia.TabStop = false;
             // 
             // textBox51
             // 
@@ -2250,17 +2250,17 @@
             this.moTa_txt.Multiline = true;
             this.moTa_txt.Name = "moTa_txt";
             this.moTa_txt.Size = new System.Drawing.Size(1226, 245);
-            this.moTa_txt.TabIndex = 8;
+            this.moTa_txt.TabIndex = 7;
             this.moTa_txt.TextChanged += new System.EventHandler(this.moTaTT_txt_TextChanged);
             // 
-            // pictureBox3
+            // picDescription
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(216, 410);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1259, 278);
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
+            this.picDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picDescription.Location = new System.Drawing.Point(216, 410);
+            this.picDescription.Name = "picDescription";
+            this.picDescription.Size = new System.Drawing.Size(1259, 278);
+            this.picDescription.TabIndex = 7;
+            this.picDescription.TabStop = false;
             // 
             // Count_Tieude
             // 
@@ -2284,14 +2284,14 @@
             this.tieuDe_txt.TabIndex = 5;
             this.tieuDe_txt.TextChanged += new System.EventHandler(this.tieuDe_txt_TextChanged);
             // 
-            // pictureBox2
+            // picTitle
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(216, 247);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1259, 53);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.picTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picTitle.Location = new System.Drawing.Point(216, 247);
+            this.picTitle.Name = "picTitle";
+            this.picTitle.Size = new System.Drawing.Size(1259, 53);
+            this.picTitle.TabIndex = 4;
+            this.picTitle.TabStop = false;
             // 
             // textBox8
             // 
@@ -2486,6 +2486,8 @@
             this.miniConTrolPanel.ResumeLayout(false);
             this.themSanPhamPanel.ResumeLayout(false);
             this.themSanPhamPanel.PerformLayout();
+            this.TTBH_Panel.ResumeLayout(false);
+            this.TTBH_Panel.PerformLayout();
             this.formThemSPPanel.ResumeLayout(false);
             this.formThemSPPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
@@ -2500,15 +2502,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DichGia_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TG_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SP_Pic)).EndInit();
-            this.TTBH_Panel.ResumeLayout(false);
-            this.TTBH_Panel.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCoverImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGiamGia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitle)).EndInit();
             this.tatCaPanel.ResumeLayout(false);
             this.tatCaPanel.PerformLayout();
             this.trangChuPanel.ResumeLayout(false);
@@ -2673,15 +2673,15 @@
         private System.Windows.Forms.PictureBox picMainImage;
         private System.Windows.Forms.TextBox textBox52;
         private System.Windows.Forms.TextBox giamGia_txt;
-        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox picGiamGia;
         private System.Windows.Forms.TextBox textBox51;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Count_MoTaTT;
         private System.Windows.Forms.TextBox moTa_txt;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox picDescription;
         private System.Windows.Forms.TextBox Count_Tieude;
         private System.Windows.Forms.TextBox tieuDe_txt;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picTitle;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button btnMainImage;

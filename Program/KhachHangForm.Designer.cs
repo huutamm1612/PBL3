@@ -154,11 +154,11 @@
             this.soLuongTxt = new System.Windows.Forms.TextBox();
             this.increaseButton = new System.Windows.Forms.Button();
             this.decreaseButton = new System.Windows.Forms.Button();
+            this.textBox21 = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
             this.HeaderPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -1617,9 +1617,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KhachHang_Panel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.KhachHang_Panel.Controls.Add(this.HeaderPannel);
-            this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Controls.Add(this.UserPanel);
+            this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
@@ -1642,8 +1642,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.flowLayoutPanel1);
             this.panel4.Controls.Add(this.pictureBox9);
+            this.panel4.Controls.Add(this.flowLayoutPanel1);
             this.panel4.Location = new System.Drawing.Point(110, 18);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1280, 594);
@@ -1946,11 +1946,25 @@
             this.decreaseButton.UseVisualStyleBackColor = true;
             this.decreaseButton.Click += new System.EventHandler(this.decreaseButton_Click);
             // 
+            // textBox21
+            // 
+            this.textBox21.BackColor = System.Drawing.Color.White;
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox21.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox21.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox21.Location = new System.Drawing.Point(161, 14);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
+            this.textBox21.Size = new System.Drawing.Size(269, 21);
+            this.textBox21.TabIndex = 23;
+            this.textBox21.Text = "123 sản phẩm có sẳn";
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.button4);
             this.panel9.Controls.Add(this.button1);
+            this.panel9.Controls.Add(this.button4);
             this.panel9.Location = new System.Drawing.Point(3, 493);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(777, 64);
@@ -1998,20 +2012,6 @@
             this.pictureBox9.Size = new System.Drawing.Size(450, 450);
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
-            // 
-            // textBox21
-            // 
-            this.textBox21.BackColor = System.Drawing.Color.White;
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox21.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox21.Location = new System.Drawing.Point(161, 14);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(269, 21);
-            this.textBox21.TabIndex = 23;
-            this.textBox21.Text = "123 sản phẩm có sẳn";
             // 
             // KhachHangForm
             // 

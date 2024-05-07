@@ -135,7 +135,7 @@
             this.huyBoButton.Location = new System.Drawing.Point(482, 676);
             this.huyBoButton.Name = "huyBoButton";
             this.huyBoButton.Size = new System.Drawing.Size(256, 45);
-            this.huyBoButton.TabIndex = 102;
+            this.huyBoButton.TabIndex = 87;
             this.huyBoButton.Text = "Hủy bỏ";
             this.huyBoButton.UseVisualStyleBackColor = true;
             this.huyBoButton.Click += new System.EventHandler(this.huyBoButton_Click);
@@ -152,7 +152,7 @@
             this.refreshThemSPForm_Button.Location = new System.Drawing.Point(747, 676);
             this.refreshThemSPForm_Button.Name = "refreshThemSPForm_Button";
             this.refreshThemSPForm_Button.Size = new System.Drawing.Size(256, 45);
-            this.refreshThemSPForm_Button.TabIndex = 101;
+            this.refreshThemSPForm_Button.TabIndex = 88;
             this.refreshThemSPForm_Button.Text = "Làm mới";
             this.refreshThemSPForm_Button.UseVisualStyleBackColor = true;
             this.refreshThemSPForm_Button.Click += new System.EventHandler(this.refreshThemSPForm_Button_Click);
@@ -170,7 +170,7 @@
             this.luuButton.Location = new System.Drawing.Point(218, 676);
             this.luuButton.Name = "luuButton";
             this.luuButton.Size = new System.Drawing.Size(256, 45);
-            this.luuButton.TabIndex = 79;
+            this.luuButton.TabIndex = 86;
             this.luuButton.Text = "Lưu";
             this.luuButton.UseVisualStyleBackColor = false;
             this.luuButton.Click += new System.EventHandler(this.luuButton_Click);
@@ -183,7 +183,7 @@
             this.soTrang_Text.Location = new System.Drawing.Point(1193, 404);
             this.soTrang_Text.Name = "soTrang_Text";
             this.soTrang_Text.Size = new System.Drawing.Size(105, 21);
-            this.soTrang_Text.TabIndex = 83;
+            this.soTrang_Text.TabIndex = 84;
             this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
             // 
             // SoTrang_Pic
@@ -204,7 +204,7 @@
             this.soLuong_Text.Location = new System.Drawing.Point(913, 402);
             this.soLuong_Text.Name = "soLuong_Text";
             this.soLuong_Text.Size = new System.Drawing.Size(105, 21);
-            this.soLuong_Text.TabIndex = 81;
+            this.soLuong_Text.TabIndex = 83;
             this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
             // 
             // SoLuong_Pic
@@ -239,7 +239,7 @@
             this.moTaSP_Text.Multiline = true;
             this.moTaSP_Text.Name = "moTaSP_Text";
             this.moTaSP_Text.Size = new System.Drawing.Size(1072, 163);
-            this.moTaSP_Text.TabIndex = 84;
+            this.moTaSP_Text.TabIndex = 85;
             this.moTaSP_Text.TextChanged += new System.EventHandler(this.moTaSP_Text_TextChanged);
             // 
             // moTa_Pic
@@ -288,7 +288,7 @@
             this.gia_Text.Location = new System.Drawing.Point(913, 334);
             this.gia_Text.Name = "gia_Text";
             this.gia_Text.Size = new System.Drawing.Size(399, 21);
-            this.gia_Text.TabIndex = 80;
+            this.gia_Text.TabIndex = 82;
             this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
             // 
             // Gia_Pic
@@ -428,7 +428,7 @@
             this.ngonNgu_CBBox.MaxDropDownItems = 7;
             this.ngonNgu_CBBox.Name = "ngonNgu_CBBox";
             this.ngonNgu_CBBox.Size = new System.Drawing.Size(433, 28);
-            this.ngonNgu_CBBox.TabIndex = 92;
+            this.ngonNgu_CBBox.TabIndex = 81;
             // 
             // textBox24
             // 
@@ -545,13 +545,13 @@
             this.loaiBia_CBBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loaiBia_CBBox.FormattingEnabled = true;
             this.loaiBia_CBBox.Items.AddRange(new object[] {
-            "Bìa mềm",
-            "Bìa cứng"});
+            "Bìa cứng",
+            "Bìa mềm"});
             this.loaiBia_CBBox.Location = new System.Drawing.Point(891, 192);
             this.loaiBia_CBBox.MaxDropDownItems = 7;
             this.loaiBia_CBBox.Name = "loaiBia_CBBox";
             this.loaiBia_CBBox.Size = new System.Drawing.Size(433, 28);
-            this.loaiBia_CBBox.TabIndex = 87;
+            this.loaiBia_CBBox.TabIndex = 80;
             // 
             // textBox17
             // 
@@ -577,7 +577,7 @@
             this.theLoai_CBBox.MaxDropDownItems = 7;
             this.theLoai_CBBox.Name = "theLoai_CBBox";
             this.theLoai_CBBox.Size = new System.Drawing.Size(433, 28);
-            this.theLoai_CBBox.TabIndex = 86;
+            this.theLoai_CBBox.TabIndex = 79;
             // 
             // textBox16
             // 

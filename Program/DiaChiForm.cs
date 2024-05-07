@@ -123,5 +123,13 @@ namespace Program
                 HTThemDiaChi_Button.Enabled = true;
             }
         }
+
+        private void diaChiCuThe_Box_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                HTThemDiaChi_Button_Click(sender, e);
+            }
+        }
     }
 }
