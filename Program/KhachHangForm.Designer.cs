@@ -130,22 +130,26 @@
             this.UserPanel = new System.Windows.Forms.Panel();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.BaiDangPanel = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.BaiDangSubPanel = new System.Windows.Forms.Panel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.titleTxt = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.daBanTxt = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.giaTxt = new System.Windows.Forms.TextBox();
+            this.giamGiaTxt = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.vanChuyenTxt = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.listItemFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -154,11 +158,16 @@
             this.soLuongTxt = new System.Windows.Forms.TextBox();
             this.increaseButton = new System.Windows.Forms.Button();
             this.decreaseButton = new System.Windows.Forms.Button();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.soLuongSanCoTxt = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.giaGocTxt = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.HeaderPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -183,15 +192,21 @@
             this.UserPanel.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
             this.BaiDangPanel.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.BaiDangSubPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // HeaderPannel
@@ -1617,9 +1632,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KhachHang_Panel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.KhachHang_Panel.Controls.Add(this.HeaderPannel);
+            this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Controls.Add(this.UserPanel);
-            this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
@@ -1632,55 +1647,67 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BaiDangPanel.AutoScroll = true;
             this.BaiDangPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BaiDangPanel.Controls.Add(this.panel12);
             this.BaiDangPanel.Controls.Add(this.panel4);
+            this.BaiDangPanel.Controls.Add(this.BaiDangSubPanel);
             this.BaiDangPanel.Location = new System.Drawing.Point(0, 135);
             this.BaiDangPanel.Name = "BaiDangPanel";
             this.BaiDangPanel.Size = new System.Drawing.Size(1390, 684);
             this.BaiDangPanel.TabIndex = 13;
             this.BaiDangPanel.Visible = false;
             // 
-            // panel4
+            // BaiDangSubPanel
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.pictureBox9);
-            this.panel4.Controls.Add(this.flowLayoutPanel1);
-            this.panel4.Location = new System.Drawing.Point(110, 18);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1280, 594);
-            this.panel4.TabIndex = 0;
+            this.BaiDangSubPanel.BackColor = System.Drawing.Color.White;
+            this.BaiDangSubPanel.Controls.Add(this.pictureBox9);
+            this.BaiDangSubPanel.Controls.Add(this.flowLayoutPanel1);
+            this.BaiDangSubPanel.Location = new System.Drawing.Point(110, 18);
+            this.BaiDangSubPanel.Name = "BaiDangSubPanel";
+            this.BaiDangSubPanel.Size = new System.Drawing.Size(1280, 594);
+            this.BaiDangSubPanel.TabIndex = 0;
+            this.BaiDangSubPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BaiDangSubPanel_Paint);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Tomato;
+            this.pictureBox9.Location = new System.Drawing.Point(8, 8);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(450, 450);
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Controls.Add(this.titleTxt);
             this.flowLayoutPanel1.Controls.Add(this.textBox11);
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.textBox12);
             this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.textBox13);
+            this.flowLayoutPanel1.Controls.Add(this.daBanTxt);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
             this.flowLayoutPanel1.Controls.Add(this.textBox17);
             this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Controls.Add(this.textBox18);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Controls.Add(this.listItemFLP);
             this.flowLayoutPanel1.Controls.Add(this.panel7);
             this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Controls.Add(this.panel9);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(484, 15);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(786, 565);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(786, 576);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
-            // textBox1
+            // titleTxt
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(709, 87);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Sách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H" +
+            this.titleTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.titleTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.titleTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleTxt.Location = new System.Drawing.Point(3, 3);
+            this.titleTxt.Multiline = true;
+            this.titleTxt.Name = "titleTxt";
+            this.titleTxt.Size = new System.Drawing.Size(750, 87);
+            this.titleTxt.TabIndex = 1;
+            this.titleTxt.Text = "Sách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H" +
     " BooksSách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản " +
     "đồ - 2H Books";
             // 
@@ -1738,71 +1765,56 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "|";
             // 
-            // textBox13
+            // daBanTxt
             // 
-            this.textBox13.BackColor = System.Drawing.Color.White;
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox13.Location = new System.Drawing.Point(339, 96);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(139, 21);
-            this.textBox13.TabIndex = 16;
-            this.textBox13.Text = "Đã bán";
+            this.daBanTxt.BackColor = System.Drawing.Color.White;
+            this.daBanTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.daBanTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.daBanTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.daBanTxt.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.daBanTxt.Location = new System.Drawing.Point(339, 96);
+            this.daBanTxt.Name = "daBanTxt";
+            this.daBanTxt.ReadOnly = true;
+            this.daBanTxt.Size = new System.Drawing.Size(139, 21);
+            this.daBanTxt.TabIndex = 16;
+            this.daBanTxt.Text = "Đã bán";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.panel5.Controls.Add(this.textBox14);
-            this.panel5.Controls.Add(this.textBox15);
-            this.panel5.Controls.Add(this.textBox16);
+            this.panel5.Controls.Add(this.flowLayoutPanel3);
             this.panel5.Location = new System.Drawing.Point(3, 123);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(778, 77);
             this.panel5.TabIndex = 1;
             // 
-            // textBox14
+            // giaTxt
             // 
-            this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(13, 29);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(85, 17);
-            this.textBox14.TabIndex = 17;
-            this.textBox14.Text = "₫103.000";
+            this.giaTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.giaTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.giaTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.giaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giaTxt.ForeColor = System.Drawing.Color.OrangeRed;
+            this.giaTxt.Location = new System.Drawing.Point(101, 3);
+            this.giaTxt.Name = "giaTxt";
+            this.giaTxt.ReadOnly = true;
+            this.giaTxt.Size = new System.Drawing.Size(174, 38);
+            this.giaTxt.TabIndex = 17;
+            this.giaTxt.Text = "₫82.400";
             // 
-            // textBox15
+            // giamGiaTxt
             // 
-            this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox15.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.ForeColor = System.Drawing.Color.OrangeRed;
-            this.textBox15.Location = new System.Drawing.Point(104, 21);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(174, 38);
-            this.textBox15.TabIndex = 17;
-            this.textBox15.Text = "₫82.400";
-            // 
-            // textBox16
-            // 
-            this.textBox16.BackColor = System.Drawing.Color.OrangeRed;
-            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox16.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox16.Location = new System.Drawing.Point(299, 29);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(90, 21);
-            this.textBox16.TabIndex = 17;
-            this.textBox16.Text = " GIẢM 20% ";
+            this.giamGiaTxt.BackColor = System.Drawing.Color.OrangeRed;
+            this.giamGiaTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.giamGiaTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.giamGiaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giamGiaTxt.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.giamGiaTxt.Location = new System.Drawing.Point(281, 3);
+            this.giamGiaTxt.Name = "giamGiaTxt";
+            this.giamGiaTxt.ReadOnly = true;
+            this.giamGiaTxt.Size = new System.Drawing.Size(90, 21);
+            this.giamGiaTxt.TabIndex = 17;
+            this.giamGiaTxt.Text = " GIẢM 20% ";
             // 
             // textBox17
             // 
@@ -1821,10 +1833,69 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.button5);
+            this.panel6.Controls.Add(this.textBox22);
+            this.panel6.Controls.Add(this.vanChuyenTxt);
+            this.panel6.Controls.Add(this.textBox20);
             this.panel6.Location = new System.Drawing.Point(132, 206);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(648, 91);
+            this.panel6.Size = new System.Drawing.Size(649, 69);
             this.panel6.TabIndex = 18;
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(536, 1);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(34, 31);
+            this.button5.TabIndex = 26;
+            this.button5.Text = "v";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBox22
+            // 
+            this.textBox22.BackColor = System.Drawing.Color.White;
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox22.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox22.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox22.Location = new System.Drawing.Point(3, 39);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
+            this.textBox22.Size = new System.Drawing.Size(123, 21);
+            this.textBox22.TabIndex = 25;
+            this.textBox22.Text = "Phí vận chuyển";
+            // 
+            // vanChuyenTxt
+            // 
+            this.vanChuyenTxt.BackColor = System.Drawing.Color.White;
+            this.vanChuyenTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.vanChuyenTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.vanChuyenTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vanChuyenTxt.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.vanChuyenTxt.Location = new System.Drawing.Point(124, 7);
+            this.vanChuyenTxt.Name = "vanChuyenTxt";
+            this.vanChuyenTxt.ReadOnly = true;
+            this.vanChuyenTxt.Size = new System.Drawing.Size(400, 21);
+            this.vanChuyenTxt.TabIndex = 24;
+            // 
+            // textBox20
+            // 
+            this.textBox20.BackColor = System.Drawing.Color.White;
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox20.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox20.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox20.Location = new System.Drawing.Point(1, 7);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(123, 21);
+            this.textBox20.TabIndex = 23;
+            this.textBox20.Text = "Vận chuyển tới";
             // 
             // textBox18
             // 
@@ -1833,26 +1904,26 @@
             this.textBox18.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox18.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox18.Location = new System.Drawing.Point(3, 303);
+            this.textBox18.Location = new System.Drawing.Point(3, 281);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(123, 21);
             this.textBox18.TabIndex = 19;
             this.textBox18.Text = "Sản Phẩm";
             // 
-            // flowLayoutPanel2
+            // listItemFLP
             // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(132, 303);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(649, 129);
-            this.flowLayoutPanel2.TabIndex = 1;
+            this.listItemFLP.AutoScroll = true;
+            this.listItemFLP.Location = new System.Drawing.Point(132, 281);
+            this.listItemFLP.Name = "listItemFLP";
+            this.listItemFLP.Size = new System.Drawing.Size(649, 158);
+            this.listItemFLP.TabIndex = 1;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.textBox19);
-            this.panel7.Location = new System.Drawing.Point(3, 438);
+            this.panel7.Location = new System.Drawing.Point(3, 445);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(123, 49);
             this.panel7.TabIndex = 19;
@@ -1875,10 +1946,10 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.panel10);
-            this.panel8.Controls.Add(this.textBox21);
-            this.panel8.Location = new System.Drawing.Point(132, 438);
+            this.panel8.Controls.Add(this.soLuongSanCoTxt);
+            this.panel8.Location = new System.Drawing.Point(132, 445);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(649, 49);
+            this.panel8.Size = new System.Drawing.Size(608, 49);
             this.panel8.TabIndex = 21;
             // 
             // panel10
@@ -1914,6 +1985,7 @@
             this.soLuongTxt.TabIndex = 25;
             this.soLuongTxt.Text = "1";
             this.soLuongTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.soLuongTxt.TextChanged += new System.EventHandler(this.soLuongTxt_TextChanged);
             // 
             // increaseButton
             // 
@@ -1946,46 +2018,29 @@
             this.decreaseButton.UseVisualStyleBackColor = true;
             this.decreaseButton.Click += new System.EventHandler(this.decreaseButton_Click);
             // 
-            // textBox21
+            // soLuongSanCoTxt
             // 
-            this.textBox21.BackColor = System.Drawing.Color.White;
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox21.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox21.Location = new System.Drawing.Point(161, 14);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(269, 21);
-            this.textBox21.TabIndex = 23;
-            this.textBox21.Text = "123 sản phẩm có sẳn";
+            this.soLuongSanCoTxt.BackColor = System.Drawing.Color.White;
+            this.soLuongSanCoTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.soLuongSanCoTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.soLuongSanCoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soLuongSanCoTxt.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.soLuongSanCoTxt.Location = new System.Drawing.Point(161, 14);
+            this.soLuongSanCoTxt.Name = "soLuongSanCoTxt";
+            this.soLuongSanCoTxt.ReadOnly = true;
+            this.soLuongSanCoTxt.Size = new System.Drawing.Size(269, 21);
+            this.soLuongSanCoTxt.TabIndex = 23;
+            this.soLuongSanCoTxt.Text = "123 sản phẩm có sẳn";
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.button1);
             this.panel9.Controls.Add(this.button4);
-            this.panel9.Location = new System.Drawing.Point(3, 493);
+            this.panel9.Location = new System.Drawing.Point(3, 500);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(777, 64);
             this.panel9.TabIndex = 22;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.OrangeRed;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(253, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(235, 51);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Mua Ngay";
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -2004,14 +2059,79 @@
             this.button1.Text = "Thêm Vào Giỏ Hàng";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // pictureBox9
+            // button4
             // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Tomato;
-            this.pictureBox9.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(450, 450);
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
+            this.button4.BackColor = System.Drawing.Color.OrangeRed;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(253, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(235, 51);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Mua Ngay";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.giaGocTxt);
+            this.flowLayoutPanel3.Controls.Add(this.giaTxt);
+            this.flowLayoutPanel3.Controls.Add(this.giamGiaTxt);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(9, 15);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(756, 44);
+            this.flowLayoutPanel3.TabIndex = 18;
+            // 
+            // giaGocTxt
+            // 
+            this.giaGocTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.giaGocTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.giaGocTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.giaGocTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giaGocTxt.Location = new System.Drawing.Point(3, 3);
+            this.giaGocTxt.Name = "giaGocTxt";
+            this.giaGocTxt.ReadOnly = true;
+            this.giaGocTxt.Size = new System.Drawing.Size(92, 17);
+            this.giaGocTxt.TabIndex = 17;
+            this.giaGocTxt.Text = "₫103.000";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.pictureBox10);
+            this.panel4.Location = new System.Drawing.Point(110, 647);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1280, 142);
+            this.panel4.TabIndex = 1;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Location = new System.Drawing.Point(24, 22);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox10.TabIndex = 0;
+            this.pictureBox10.TabStop = false;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.White;
+            this.panel12.Controls.Add(this.pictureBox11);
+            this.panel12.Location = new System.Drawing.Point(110, 827);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1280, 128);
+            this.panel12.TabIndex = 2;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Location = new System.Drawing.Point(45, 37);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(106, 84);
+            this.pictureBox11.TabIndex = 0;
+            this.pictureBox11.TabStop = false;
             // 
             // KhachHangForm
             // 
@@ -2056,11 +2176,13 @@
             this.UserPanel.ResumeLayout(false);
             this.KhachHang_Panel.ResumeLayout(false);
             this.BaiDangPanel.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.BaiDangSubPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -2069,7 +2191,12 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2179,20 +2306,19 @@
         private System.Windows.Forms.Panel BaiDangPanel;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox titleTxt;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox daBanTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox giaTxt;
+        private System.Windows.Forms.TextBox giamGiaTxt;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel listItemFLP;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
@@ -2203,9 +2329,19 @@
         private System.Windows.Forms.TextBox soLuongTxt;
         private System.Windows.Forms.Button increaseButton;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox soLuongSanCoTxt;
+        private System.Windows.Forms.Panel BaiDangSubPanel;
         private System.Windows.Forms.Button decreaseButton;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox vanChuyenTxt;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.TextBox giaGocTxt;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }
 

@@ -1287,11 +1287,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.screen_Panel.Controls.Add(this.miniConTrolPanel);
             this.screen_Panel.Controls.Add(this.themSanPhamPanel);
             this.screen_Panel.Controls.Add(this.tatCaPanel);
             this.screen_Panel.Controls.Add(this.trangChuPanel);
             this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
+            this.screen_Panel.Controls.Add(this.miniConTrolPanel);
             this.screen_Panel.Location = new System.Drawing.Point(320, 60);
             this.screen_Panel.Name = "screen_Panel";
             this.screen_Panel.Size = new System.Drawing.Size(1072, 761);
@@ -1375,7 +1375,7 @@
             this.TTBH_Panel.Controls.Add(this.label9);
             this.TTBH_Panel.Location = new System.Drawing.Point(61, 770);
             this.TTBH_Panel.Name = "TTBH_Panel";
-            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 143);
+            this.TTBH_Panel.Size = new System.Drawing.Size(1575, 148);
             this.TTBH_Panel.TabIndex = 10;
             // 
             // formThemSPPanel

@@ -44,6 +44,15 @@ namespace Program
             this.send = sender;
         }
 
+        public DiaChiForm(params DiaChi [] list)
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterParent;
+
+
+        }
+
         private void init(DiaChi diaChi)
         {
             hoVaTen_Box.Text = diaChi.ten;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -64,8 +65,8 @@ namespace Program
             {
                 if (sanPham.gia < min)
                     min = sanPham.gia;
+                System.Console.WriteLine(sanPham.gia);
             }
-
             return min;
         }
 
@@ -95,6 +96,17 @@ namespace Program
                 doanhThu += sanPham.luocBan * sanPham.gia;
             }
             return doanhThu;
+        }
+
+        public int tongSoLuong()
+        {
+            int sum = 0;
+            foreach(SanPham sanPham in list)
+            {
+                sum += sanPham.soLuong;
+            }
+
+            return sum;
         }
 
         public static bool CompareLuocBan(object o1 ,object o2) => ((BaiDang)o1).luocBan() < ((BaiDang)o2).luocBan();

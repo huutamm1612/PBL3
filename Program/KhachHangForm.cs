@@ -23,6 +23,7 @@ namespace Program
         private QLBaiDang QLBaiDang = null;
         private BaiDang currBaiDang = null;
         private SanPham currSanPham = null;
+        private Shop currShop = null;
 
         public KhachHangForm(bool nonStart = true)
         {
@@ -33,7 +34,7 @@ namespace Program
             this.StartPosition = FormStartPosition.CenterScreen;
             if (!nonStart)
                 tuDongDangNhap();
-            this.Demo();
+            this.getBaiDang();
         }
 
         public void setData(string taiKhoan, string matKhau)
@@ -143,7 +144,9 @@ namespace Program
         private void home_Button_Click(object sender, EventArgs e)
         {
             UserPanel.Visible = false;
+            BaiDangPanel.Visible = false;
             HomePanel.Visible = true;
+            HomePanel.AutoScrollPosition = new Point(0, 0);
         }
 
         private void userProfile_Button_Click(object sender, EventArgs e)
@@ -320,6 +323,7 @@ namespace Program
 
         public void themDiaChi(DiaChi diaChi)
         {
+            HeThong.ThemDiaChi(khachHang.maSo, diaChi);
             if (khachHang.diaChi == null)
             {
                 khachHang.capNhatDiaChi(diaChi);
@@ -329,8 +333,6 @@ namespace Program
             {
                 khachHang.themDiaChi(diaChi);
             }
-
-            HeThong.ThemDiaChi(khachHang.maSo, diaChi);
             veLai_DiaChi();
         }
 
@@ -795,6 +797,11 @@ namespace Program
             flpBaiDang.Controls.Add(pagePanel);
         }
 
+        private void getBaiDang()
+        {
+            QLBaiDang = HeThong.GetBaiDang();
+        }
+
         private void Demo()
         {
             SanPham sp1 = new SanPham
@@ -893,7 +900,9 @@ namespace Program
             int currPage = CurrPageNumber(PageListFLP);
 
             currBaiDang = QLBaiDang.list[(currPage - 1) * 24 + panelIndex - 1];
+            currShop = HeThong.LoadShopInKhachHang(currBaiDang.maS);
             BaiDangPanel.Visible = true;
+            RefreshBaiDangPabel();
             HomePanel.Visible = false;
         }
 
@@ -1038,7 +1047,7 @@ namespace Program
 
         private void increaseButton_Click(object sender, EventArgs e)
         {
-            if (true/**/)
+            if (currSanPham != null && int.Parse(soLuongTxt.Text) < currSanPham.soLuong)
             {
                 soLuongTxt.Text = (int.Parse(soLuongTxt.Text) + 1).ToString();
             }
@@ -1049,6 +1058,128 @@ namespace Program
             if (int.Parse(soLuongTxt.Text) > 1/**/)
             {
                 soLuongTxt.Text = (int.Parse(soLuongTxt.Text) - 1).ToString();
+            }
+        }
+
+        private void RefreshSanPhamInBaiDang(SanPham sanPham)
+        {
+            giaGocTxt.Text = "₫" + Utils.SetGia(sanPham.gia);
+            giaTxt.Text = "₫" + Utils.SetGia(Utils.GiamGia(sanPham.gia, currBaiDang.giamGia));
+            Utils.FitTextBox(giaGocTxt, 20);
+            Utils.FitTextBox(giaTxt, 20);
+            soLuongSanCoTxt.Text = sanPham.soLuong.ToString() + " sản phẩm có sẵn";
+            soLuongTxt.Text = "1";
+        }
+
+        private void RefreshBaiDangPabel()
+        {
+            vanChuyenTxt.Text = HeThong.MoTaDiaChi(khachHang.diaChi.maPX);
+            daBanTxt.Text = "Đã bán " + currBaiDang.luocBan().ToString();
+            titleTxt.Text = currBaiDang.tieuDe;
+            Utils.FitTextBox(titleTxt, 20, 10);
+            titleTxt.Size = new Size(750, titleTxt.Height);
+            giamGiaTxt.Text = "GIẢM " + currBaiDang.giamGia.ToString() + "%";
+            Utils.FitTextBox(giamGiaTxt, 0, 0);
+
+            if (currBaiDang.giaMin() != currBaiDang.giaMax())
+            {
+                giaGocTxt.Text = "₫" + Utils.SetGia(currBaiDang.giaMin()) + " - ₫" + Utils.SetGia(currBaiDang.giaMax());
+                giaTxt.Text = "₫" + Utils.SetGia(Utils.GiamGia(currBaiDang.giaMin(), currBaiDang.giamGia)) + " - ₫" + Utils.SetGia(Utils.GiamGia(currBaiDang.giaMax(), currBaiDang.giamGia));
+            }
+            else
+            {
+                giaGocTxt.Text = "₫" + Utils.SetGia(currBaiDang.giaMin());
+                giaTxt.Text = "₫" + Utils.SetGia(Utils.GiamGia(currBaiDang.giaMin(), currBaiDang.giamGia));
+            }
+
+            listItemFLP.Controls.Clear();
+            Utils.FitTextBox(giaGocTxt, 20);
+            Utils.FitTextBox(giaTxt, 20);
+
+            Font font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+
+            foreach (SanPham item in currBaiDang.list)
+            {
+                Size textSize = TextRenderer.MeasureText(item.ten, font);
+
+                Button button = new Button
+                {
+                    Font = font,
+                    Size = new Size(textSize.Width + 50, textSize.Height + 20),
+                    Text = item.ten,
+                    FlatStyle = FlatStyle.Flat,
+                    Cursor = Cursors.Hand
+                };
+
+                button.Click += new EventHandler(SanPham_Click);
+
+                listItemFLP.Controls.Add(button);
+            }
+
+            soLuongSanCoTxt.Text = currBaiDang.tongSoLuong().ToString() + " sản phẩm có sẵn";
+        }
+
+        public void SanPham_Click(object sender, EventArgs e)
+        {
+            Button obj = sender as Button;
+            
+            foreach (Button button in listItemFLP.Controls)
+            {
+                button.FlatAppearance.BorderColor = Color.Black;
+                button.ForeColor = Color.Black;
+            }
+
+            if (obj.ForeColor != Color.OrangeRed)
+            {
+                obj.FlatAppearance.BorderColor = Color.OrangeRed;
+                obj.ForeColor = Color.OrangeRed;
+
+                foreach (SanPham item in currBaiDang.list)
+                {
+                    if (item.ten == obj.Text)
+                    {
+                        RefreshSanPhamInBaiDang(item);
+                        currSanPham = item;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                RefreshBaiDangPabel();
+            }
+        }
+
+        private void BaiDangSubPanel_Paint(object sender, PaintEventArgs e)
+        {
+            vanChuyenTxt.Text = HeThong.MoTaDiaChi(khachHang.diaChi.maPX);
+        }
+
+        private void soLuongTxt_TextChanged(object sender, EventArgs e)
+        {
+            int soLuong;
+            if (!int.TryParse(soLuongTxt.Text, out soLuong))
+            {
+                soLuongTxt.Text = soLuongTxt.Text.Substring(0, soLuongTxt.Text.Length - 1);
+                soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
+                return;
+            }
+
+            try
+            {
+                if(currSanPham != null && soLuong > currSanPham.soLuong)
+                {
+                    soLuongTxt.Text = currSanPham.soLuong.ToString();
+                }
+                if(soLuong < 0)
+                {
+                    soLuongTxt.Text = "0";
+                }
+                soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
+            }
+            catch
+            {
+
             }
         }
     }

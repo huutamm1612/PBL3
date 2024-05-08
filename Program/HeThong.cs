@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Security.Cryptography;
+using System.Net.Http.Headers;
 
 namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -575,6 +576,29 @@ namespace Program
             return result;
         }
 
+        public static Shop LoadShopInKhachHang(string maS)
+        {
+            string query = $"SELECT * FROM Shop WHERE maS = {maS}";
+            SqlDataReader reader = ExecuteQuery(query);
+            reader.Read();
+
+            Shop shop = new Shop
+            {
+                maSo = maS,
+                ten = reader["ten"].ToString(),
+                soDT = reader["soDT"].ToString(),
+                email = reader["email"].ToString(),
+                diaChi = LoadDiaChi(reader["maDC"].ToString()),
+                tinhTrang = Convert.ToInt32(reader["tinhTrang"].ToString()),
+                ngaySinh = Convert.ToDateTime(reader["ngayTao"].ToString()),
+                listFollower = LoadFollow(maS, false),
+                listBaiDang = LoadListBaiDang(maS),
+            };
+
+            reader.Close();
+            return shop;
+        }
+
         public static Shop LoadShop(string taiKhoan)
         {
             Shop shop;
@@ -587,21 +611,21 @@ namespace Program
                 reader.Read();
                 shop = new Shop
                 {
-                    maSo = reader.GetString(0),
-                    ten = reader.GetString(1),
-                    soDT = reader.GetString(2),
-                    email = reader.GetString(3),
-                    diaChi = LoadDiaChi(reader.GetString(4)),
-                    ngaySinh = reader.GetDateTime(5),
-                    tinhTrang = reader.GetInt32(6),
-                    doanhThu = reader.GetInt32(7),
-                    listFollower = LoadFollow(reader.GetString(0), false),
-                    listBaiDang = new QLBaiDang(),
-                    listDonHang = LoadDonHang(reader.GetString(0), false)
+                    maSo = reader["maS"].ToString(),
+                    ten = reader["ten"].ToString(),
+                    soDT = reader["soDT"].ToString(),
+                    email = reader["email"].ToString(),
+                    diaChi = LoadDiaChi(reader["maDC"].ToString()),
+                    tinhTrang = Convert.ToInt32(reader["tinhTrang"].ToString()),
+                    ngaySinh = Convert.ToDateTime(reader["ngayTao"].ToString()),
+                    doanhThu = Convert.ToInt32(reader["doanhThu"].ToString()),
+                    listFollower = LoadFollow(reader["maS"].ToString(), false),
+                    listBaiDang = LoadListBaiDang(reader["maS"].ToString()),
+                    listDonHang = LoadDonHang(reader["maS"].ToString(), false)
                 };
                 reader.Close();
 
-                query = $"SELECT maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
+                /*query = $"SELECT maBD FROM BaiDang_Shop WHERE maS = '{shop.maSo}'";
                 reader = ExecuteQuery(query);
 
                 while (reader.Read())
@@ -609,7 +633,7 @@ namespace Program
                     shop.Add(LoadBaiDang(reader.GetString(0)));
                 }
 
-                reader.Close();
+                reader.Close();*/
 
                 /*foreach (BaiDang baiDang in shop.listBaiDang.list)
                 {
@@ -706,6 +730,22 @@ namespace Program
             return baiDang;
         }
 
+        public static QLBaiDang LoadListBaiDang(string maS)
+        {
+            QLBaiDang qLBaiDang = new QLBaiDang();
+
+            string query = $"SELECT BD.maBD FROM BaiDang BD INNER JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BDS.maS = {maS}";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            while (reader.Read())
+            {
+                qLBaiDang.Add(LoadBaiDang(reader.GetString(0)));
+            }
+
+            return qLBaiDang;
+        }
+
+
         public static SanPham LoadSanPham(string maSP)
         {
             string query = $"SELECT maBD FROM SanPham_BaiDang WHERE maSP = '{maSP}'";
@@ -733,25 +773,6 @@ namespace Program
             reader = ExecuteQuery(query);
 
             reader.Read();
-            /* SanPham sanPham = new SanPham
-            {
-                maSP = reader.GetString(0),
-                loaiSP = new LoaiSanPham { maLoaiSP = reader.GetString(1), tenLoaiSP = tenLoaiSP },
-                ten = reader.GetString(2),
-                gia = reader.GetInt32(3),
-                soLuong = reader.GetInt32(4),
-                tacGia = reader.GetString(5),
-                dichGia = reader.GetString(6),
-                ngonNgu = reader.GetString(7),
-                soTrang = reader.GetInt32(8),
-                namXuatBan = reader.GetInt32(9),
-                nhaXuatBan = reader.GetString(10),
-                loaiBia = reader.GetString(11),
-                moTa = reader.GetString(12),
-                luocBan = reader.GetInt32(13),
-                maS = maS,
-                maBD = maBD
-            };*/
 
             SanPham sanPham = new SanPham
             {
@@ -811,6 +832,22 @@ namespace Program
                 query = $"INSERT INTO SanPhamDaXoa VALUES('{sanPham.maSP}', '{baiDang.maS}')";
                 ExecuteNonQuery(query);
             }
+        }
+
+        public static QLBaiDang GetBaiDang()
+        {
+            QLBaiDang qLBaiDang = new QLBaiDang();
+
+            string query = $"SELECT maBD FROM BaiDang";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            while (reader.Read())
+            {
+                qLBaiDang.Add(LoadBaiDang(reader.GetString(0)));
+            }
+
+            reader.Close();
+            return qLBaiDang;
         }
 
         public static void CapNhatTinhTrangShop(string maS, int tinhTrang)

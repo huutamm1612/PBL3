@@ -132,7 +132,7 @@ CREATE TABLE SanPham(
 	soTrang int,
 	namXuatBan int,
 	nhaXuatBan nvarchar(50),
-	loaiBia nvarchar(5),
+	loaiBia nvarchar(10),
 	moTa nvarchar(500),
 	luocBan int DEFAULT 0,
 	anh varchar(255) NULL,
