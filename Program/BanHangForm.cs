@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -270,6 +272,17 @@ namespace Program
                 button.ForeColor = Color.Black;
         }
 
+        private void layTCSP()
+        {
+           foreach(BaiDang baiDang in shop.listBaiDang.list)
+            {
+                foreach(SanPham sanPham in baiDang.GetAllSP())
+                {
+                    ThemThongTinSanPham(sanPham);
+                }
+            }
+        }
+
         private void tabClick(object sender, EventArgs e)
         {
             if (currTab != null && currTab != trangChuButton)
@@ -288,6 +301,7 @@ namespace Program
 
                 case "Tất Cả":
                     SwitchPanel(tatCaPanel);
+                    layTCSP();
                     break;
 
                 case "Thêm Sản Phẩm":
@@ -388,7 +402,7 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image =sanPham.anhSanPham,
+                Image = sanPham.anhSanPham,
             };
 
             TextBox lbTenSP = new TextBox
@@ -533,7 +547,7 @@ namespace Program
                 ReadOnly = true,
                 TextAlign = HorizontalAlignment.Right,
                 TabIndex = 0,
-            };           
+            };
             TextBox txtSP = new TextBox
             {
                 Location = tenSP_Text.Location,
@@ -738,10 +752,10 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1
             };
-  
+
             TextBox TheLoaitxt = new TextBox
             {
-                Location = txtTheLoai.Location,              
+                Location = txtTheLoai.Location,
                 BorderStyle = BorderStyle.None,
                 //Text = theLoai_CBBox.Items[int.Parse(sanPham.maLoaiSP)].ToString(),
                 Text = sanPham.loaiSP.tenLoaiSP,
@@ -893,7 +907,7 @@ namespace Program
 
             DimForm dimForm = new DimForm();
             dimForm.Show();
-            
+
             SanPhamForm form = new SanPhamForm(this.capNhatSanPham);
             SendSanPham send = new SendSanPham(form.setSanPham);
             send(QLSP.list[index]);
@@ -919,13 +933,13 @@ namespace Program
         private void refreshThemSPForm_Button_Click(object sender, EventArgs e)
         {
             // refresh form
-            refreshThemSPForm(sender, e);   
-        } 
+            refreshThemSPForm(sender, e);
+        }
 
         private void tenSP_Text_TextChanged(object sender, EventArgs e)
         {
             Count(tenSP_Text, Count_SP, 50);
-           // luuSPButton_Click(sender, e);
+            // luuSPButton_Click(sender, e);
             Check(tenSP_Text, SP_Pic);
 
         }
@@ -997,7 +1011,7 @@ namespace Program
         {
             if (loaiBia_CBBox.SelectedIndex != -1)
                 bia_Check.Visible = false;
-            else 
+            else
                 bia_Check.Visible = true;
         }
         private void AddBorderToPictureBox(PictureBox pictureBox, Color color)
@@ -1013,7 +1027,7 @@ namespace Program
         }
         private void Check(TextBox txt, PictureBox pic)
         {
-           // pic.BorderStyle = BorderStyle.FixedSingle;
+            // pic.BorderStyle = BorderStyle.FixedSingle;
             if (txt.Text == "")
             {
                 pic.BorderStyle = BorderStyle.None;
@@ -1068,8 +1082,8 @@ namespace Program
 
         private void luuBaiDangButton_Click(object sender, EventArgs e)
         {
-            
-            if(picMainImage != null && picCoverImage != null && tieuDe_txt.Text != ""  && giamGia_txt.Text != "" && moTa_txt.Text != "")
+
+            if (picMainImage != null && picCoverImage != null && tieuDe_txt.Text != "" && giamGia_txt.Text != "" && moTa_txt.Text != "")
             {
                 BaiDang baiDang = new BaiDang
                 {
@@ -1081,7 +1095,7 @@ namespace Program
                     luocThich = 0
                 };
 
-                foreach(var sanPham in QLSP.list)
+                foreach (var sanPham in QLSP.list)
                 {
                     baiDang.Add(sanPham);
                 }
@@ -1111,7 +1125,7 @@ namespace Program
             this.Close();
             KhachHangForm f = new KhachHangForm();
             f.ShowDialog();
-            
+
         }
 
         private void btnMainImage_Click(object sender, EventArgs e)
@@ -1120,8 +1134,21 @@ namespace Program
             openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                picMainImage.Image = System.Drawing.Image.FromFile(openFile.FileName);
+                PictureBox newPic = new PictureBox
+                {
+                    Location = new Point(btnMainImage.Location.X, btnMainImage.Location.Y),
+                    Size = picMainImage.Size,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    BackColor = Color.White,
+                    Image = System.Drawing.Image.FromFile(openFile.FileName)
+                };
+                newPic.MouseHover += new EventHandler(Edit_Image);
+                newPic.MouseLeave += new EventHandler(Leave_Image);
+                btnMainImage.Location = new Point(btnMainImage.Location.X + 90, btnMainImage.Location.Y);
+                ttCBPanel.Controls.Add(newPic);
             }
+
         }
 
         private void btnCoverImage_Click(object sender, EventArgs e)
@@ -1132,6 +1159,151 @@ namespace Program
             {
                 picCoverImage.Image = System.Drawing.Image.FromFile(openFile.FileName);
             }
+            btnCoverImage.Visible = false;
         }
+
+        private void Edit_Image(object sender, EventArgs e)
+        {
+            PictureBox pic = sender as PictureBox;
+            btnSuaImage.Visible = true;
+            btnXoaImage.Visible = true;
+            btnXoaImage.Location = new Point(40 + pic.Location.X, pic.Location.Y + 55);
+            btnSuaImage.Location = new Point(5 + pic.Location.X, pic.Location.Y + 55);
+        }
+
+        private void Leave_Image(object sender, EventArgs e)
+        {
+            PictureBox pic = sender as PictureBox;
+            Point mousePosition = Cursor.Position;
+            if ((mousePosition.X <= pic.Location.X) && (mousePosition.X >= 328) && (mousePosition.Y <= pic.Location.Y) && (mousePosition.Y >= 143))
+            {
+                btnSuaImage.Visible = false;
+                btnXoaImage.Visible = false;
+            }
+
+        }
+
+        private void btnSuaImage_Click(object sender, EventArgs e)
+        {
+            PictureBox pic = sender as PictureBox;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                pic.Image = System.Drawing.Image.FromFile(openFile.FileName);
+            }
+        }
+
+        private void btnXoaImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private Panel themCTSP(SanPham sanPham)
+        {
+
+            Color color1 = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Panel p = new Panel
+            {
+                Location = new Point(0,0),
+                Size = chiTietSP_Panel.Size,
+                BackColor = color1
+            };
+            PictureBox picImage = new PictureBox
+            {
+                Location = picAnhTCSP.Location,
+                Size = picAnhTCSP.Size,
+                Font = font1,
+                Name = "picImage",
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = color1,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = sanPham.anhSanPham,
+            };
+
+            TextBox txtTenSP = new TextBox
+            {
+                Location = txtTenTCSP.Location,
+                Text = sanPham.ten,
+                Size = txtTenTCSP.Size,
+                Name = "txtTenSP",
+                Font = font1,
+                BackColor = color1,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                Multiline = true,
+                ReadOnly = true,
+            };
+            TextBox txtDonGia = new TextBox
+            {
+                Location = txtDonGiaTCSP.Location,
+                Text = sanPham.gia.ToString(),
+                Size = txtDonGiaTCSP.Size,
+                Name = "txtTenSP",
+                Font = font1,
+                BackColor = color1,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            TextBox txtSoLuong = new TextBox
+            {
+                Location = txtSoLuongTCSP.Location,
+                Text = sanPham.soLuong.ToString(),
+                Size = txtSoLuongTCSP.Size,
+                Name = "txtTenSP",
+                Font = font1,
+                BackColor = color1,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            TextBox txtLuocBan = new TextBox
+            {
+                Location = txtLuocBanTCSP.Location,
+                Text = sanPham.luocBan.ToString(),
+                Size = txtLuocBanTCSP.Size,
+                Name = "txtTenSP",
+                Font = font1,
+                BackColor = color1,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            Button btnTTSP = new Button
+            {
+                Location = btnThongTinSanPham.Location,
+                Text = "Thông tin sản phẩm",
+                ForeColor = Color.MistyRose,
+                Size = btnThongTinSanPham.Size,
+                Font = font1,
+                BackColor = Color.OrangeRed,
+            };
+            p.Controls.Add(picImage);
+            p.Controls.Add(txtTenSP);
+            p.Controls.Add(txtDonGia);
+            p.Controls.Add(txtSoLuong);
+            p.Controls.Add(txtLuocBan);
+            p.Controls.Add(btnTTSP);
+            return p;
+        }
+        private void ThemThongTinSanPham(SanPham sanPham)
+        {
+            QLSP.list.Add(sanPham);
+
+/*                        TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
+                        panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
+                        formThemSPPanel.Location = themSPButton.Location;
+                        themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
+
+                        listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
+                        listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
+                        listSP_FLPanel.Visible = true;*/        
+            flowLayoutPanel.Size = new Size(flowLayoutPanel.Size.Width, flowLayoutPanel.Size.Height + chiTietSP_Panel.Size.Height + 20);
+            flowLayoutPanel.Controls.Add(this.themCTSP(sanPham));
+            flowLayoutPanel.Visible = true;
+        }
+
     }
 }

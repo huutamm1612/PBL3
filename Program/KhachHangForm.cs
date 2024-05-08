@@ -216,7 +216,6 @@ namespace Program
         private void suaSDT_button_Click(object sender, EventArgs e)
         {
 
-
             if (soDT_UP_Box.ReadOnly)
             {
                 pictureBox8.BackColor = Color.White;
@@ -1051,5 +1050,6 @@ namespace Program
                 soLuongTxt.Text = (int.Parse(soLuongTxt.Text) - 1).ToString();
             }
         }
+
     }
 }
