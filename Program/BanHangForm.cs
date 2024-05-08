@@ -274,7 +274,8 @@ namespace Program
 
         private void layTCSP()
         {
-           foreach(BaiDang baiDang in shop.listBaiDang.list)
+            flowLayoutPanel.Controls.Clear();
+            foreach(BaiDang baiDang in shop.listBaiDang.list)
             {
                 foreach(SanPham sanPham in baiDang.GetAllSP())
                 {
@@ -301,7 +302,7 @@ namespace Program
 
                 case "Tất Cả":
                     SwitchPanel(tatCaPanel);
-                    layTCSP();
+                  
                     break;
 
                 case "Thêm Sản Phẩm":
@@ -312,6 +313,8 @@ namespace Program
                     break;
 
                 case "Tất Cả Sản Phẩm":
+                    QLSP = new QLSanPham();
+                    layTCSP();
                     SwitchPanel(tatCaSanPhamPanel);
                     break;
             }
@@ -1235,6 +1238,9 @@ namespace Program
                 Multiline = true,
                 ReadOnly = true,
             };
+            Utils.FitTextBox(txtTenSP);
+            while(txtTenSP.Text.Length > 25);
+            txtTenSP.Location = new Point(156, 62);
             TextBox txtDonGia = new TextBox
             {
                 Location = txtDonGiaTCSP.Location,
@@ -1286,24 +1292,32 @@ namespace Program
             p.Controls.Add(txtSoLuong);
             p.Controls.Add(txtLuocBan);
             p.Controls.Add(btnTTSP);
+            btnTTSP.Click += TTSP_Button;
             return p;
+        }
+
+        private void TTSP_Button(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = flowLayoutPanel.Controls.IndexOf(panelToUpdate);
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+
+            SanPhamForm form = new SanPhamForm(this.capNhatSanPham);
+            SendSanPham send = new SendSanPham(form.setSanPham);
+            send(QLSP.list[index]);
+
+            form.ShowDialog();
+            dimForm.Close();
         }
         private void ThemThongTinSanPham(SanPham sanPham)
         {
             QLSP.list.Add(sanPham);
-
-/*                        TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
-                        panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
-                        formThemSPPanel.Location = themSPButton.Location;
-                        themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
-
-                        listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
-                        listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
-                        listSP_FLPanel.Visible = true;*/        
             flowLayoutPanel.Size = new Size(flowLayoutPanel.Size.Width, flowLayoutPanel.Size.Height + chiTietSP_Panel.Size.Height + 20);
             flowLayoutPanel.Controls.Add(this.themCTSP(sanPham));
             flowLayoutPanel.Visible = true;
         }
-
     }
 }
