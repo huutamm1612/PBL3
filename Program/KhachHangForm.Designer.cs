@@ -832,9 +832,9 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
-            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
+            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
@@ -844,17 +844,21 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Location = new System.Drawing.Point(89, 315);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(233, 45);
             this.button10.TabIndex = 11;
-            this.button10.Text = "Đơn mua";
+            this.button10.Text = "◢ Đơn mua";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = false;
             // 
             // doiMK_Botton
             // 
             this.doiMK_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.doiMK_Botton.FlatAppearance.BorderSize = 0;
+            this.doiMK_Botton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.doiMK_Botton.Location = new System.Drawing.Point(122, 275);
             this.doiMK_Botton.Name = "doiMK_Botton";
             this.doiMK_Botton.Size = new System.Drawing.Size(200, 31);
@@ -867,6 +871,8 @@
             // diaChiUser_Button
             // 
             this.diaChiUser_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.diaChiUser_Button.FlatAppearance.BorderSize = 0;
+            this.diaChiUser_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.diaChiUser_Button.Location = new System.Drawing.Point(122, 233);
             this.diaChiUser_Button.Name = "diaChiUser_Button";
             this.diaChiUser_Button.Size = new System.Drawing.Size(200, 31);
@@ -879,6 +885,8 @@
             // userProfile_Botton
             // 
             this.userProfile_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.userProfile_Botton.FlatAppearance.BorderSize = 0;
+            this.userProfile_Botton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userProfile_Botton.Location = new System.Drawing.Point(122, 189);
             this.userProfile_Botton.Name = "userProfile_Botton";
             this.userProfile_Botton.Size = new System.Drawing.Size(200, 31);
@@ -891,11 +899,13 @@
             // myAccount_Button
             // 
             this.myAccount_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.myAccount_Button.FlatAppearance.BorderSize = 0;
+            this.myAccount_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myAccount_Button.Location = new System.Drawing.Point(89, 138);
             this.myAccount_Button.Name = "myAccount_Button";
             this.myAccount_Button.Size = new System.Drawing.Size(233, 45);
             this.myAccount_Button.TabIndex = 7;
-            this.myAccount_Button.Text = "Tài khoản của tôi";
+            this.myAccount_Button.Text = "◢ Tài khoản của tôi";
             this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.myAccount_Button.UseVisualStyleBackColor = false;
             this.myAccount_Button.Click += new System.EventHandler(this.button6_Click);
