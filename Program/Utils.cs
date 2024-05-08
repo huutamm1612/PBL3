@@ -39,9 +39,10 @@ namespace Program
 
         public static void FitTextBox(TextBox textBox, int w = 10, int h = 10)
         {
+            MessageBox.Show(textBox.Lines.Length.ToString());
             Size textSize = TextRenderer.MeasureText(textBox.Text, textBox.Font);
             textBox.Width = textSize.Width + w;
-            textBox.Height = textSize.Height + h;
+            textBox.Height = textSize.Height * textBox.Lines.Length + h;
         }
         public static void BSearch<T>(List<T> list, Compare cmp, Equal eql)
         {

@@ -8,7 +8,12 @@ namespace Program
 {
     internal class QLDanhGia : IQuanLy
     {
-        public List<DanhGia> list;
+        public List<DanhGia> list { get; set; }
+
+        public QLDanhGia()
+        {
+            list = new List<DanhGia>();
+        }
 
         public void Add(object item)
         {

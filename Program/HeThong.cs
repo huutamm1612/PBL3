@@ -762,7 +762,7 @@ namespace Program
             string maS = reader.GetString(0);
             reader.Close();
 
-            query = $"SELECT LSP.ten FROM LoaiSanPham LSP INNER JOIN SanPham SP ON LSP.maLoaiSP = SP.maLoaiSP WHERE SP.maSP = '0000000006'";
+            query = $"SELECT LSP.ten FROM LoaiSanPham LSP INNER JOIN SanPham SP ON LSP.maLoaiSP = SP.maLoaiSP WHERE SP.maSP = '{maSP}'";
             reader = ExecuteQuery(query);
 
             reader.Read();
@@ -785,7 +785,7 @@ namespace Program
                 dichGia = reader["dichGia"].ToString(),
                 ngonNgu = reader["ngonNgu"].ToString(),
                 soTrang = Convert.ToInt32(reader["soTrang"].ToString()),
-                namXuatBan = Convert.ToInt32(reader["namXuaBan"].ToString()),
+                namXuatBan = Convert.ToInt32(reader["namXuatBan"].ToString()),
                 nhaXuatBan = reader["nhaXuatBan"].ToString(),
                 loaiBia = reader["loaiBia"].ToString(),
                 moTa = reader["moTa"].ToString(),

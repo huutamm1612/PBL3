@@ -1074,7 +1074,7 @@ namespace Program
         {
             vanChuyenTxt.Text = HeThong.MoTaDiaChi(khachHang.diaChi.maPX);
             daBanTxt.Text = "Đã bán " + currBaiDang.luocBan().ToString();
-            titleTxt.Text = currBaiDang.tieuDe;
+            titleTxt.Text = "Sách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H BooksSách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H Books";
             Utils.FitTextBox(titleTxt, 20, 10);
             titleTxt.Size = new Size(750, titleTxt.Height);
             giamGiaTxt.Text = "GIẢM " + currBaiDang.giamGia.ToString() + "%";
@@ -1116,6 +1116,21 @@ namespace Program
             }
 
             soLuongSanCoTxt.Text = currBaiDang.tongSoLuong().ToString() + " sản phẩm có sẵn";
+            tenShopTxt.Text = currShop.ten;
+            Utils.FitTextBox(tenShopTxt);
+
+            nDanhGiaTxt.Text = currShop.listBaiDang.SoLuongDanhGia().ToString();
+            nSanPhamTxt.Text = currShop.listBaiDang.SoLuongSanPham().ToString();
+            nTheoDoiTxt.Text = currShop.listFollower.Count.ToString();
+
+            if (khachHang.listFollow.Contains(currShop.maSo))
+            {
+                followButton.Text = "Hủy heo dõi";
+            }
+            else
+            {
+                followButton.Text = "Theo dõi";
+            }
         }
 
         public void SanPham_Click(object sender, EventArgs e)
@@ -1156,29 +1171,35 @@ namespace Program
 
         private void soLuongTxt_TextChanged(object sender, EventArgs e)
         {
-            int soLuong;
-            if (!int.TryParse(soLuongTxt.Text, out soLuong))
+            if (!int.TryParse(soLuongTxt.Text, out int soLuong) && soLuongTxt.Text.Length != 0)
             {
                 soLuongTxt.Text = soLuongTxt.Text.Substring(0, soLuongTxt.Text.Length - 1);
                 soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
                 return;
             }
 
-            try
+            if (currSanPham != null && soLuong > currSanPham.soLuong)
             {
-                if(currSanPham != null && soLuong > currSanPham.soLuong)
-                {
-                    soLuongTxt.Text = currSanPham.soLuong.ToString();
-                }
-                if(soLuong < 0)
-                {
-                    soLuongTxt.Text = "0";
-                }
-                soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
+                soLuongTxt.Text = currSanPham.soLuong.ToString();
             }
-            catch
+            if (soLuong < 0)
             {
+                soLuongTxt.Text = "0";
+            }
+            soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
+        }
 
+        private void followButton_Click(object sender, EventArgs e)
+        {
+            if(followButton.Text == "Theo dõi")
+            {
+                khachHang.follow(currShop.maSo);
+                followButton.Text = "Hủy theo dõi";
+            }
+            else
+            {
+                khachHang.unFollow(currShop.maSo);
+                followButton.Text = "Theo dõi";
             }
         }
     }

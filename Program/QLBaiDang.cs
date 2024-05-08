@@ -64,6 +64,24 @@ namespace Program
             else
                 list[index].Add(sanPham);
         }
+        public int SoLuongSanPham()
+        {
+            int n = 0;
+            foreach (BaiDang baiDang in list)
+            {
+                n += baiDang.list.Count;
+            }
+            return n;
+        }
 
+        public int SoLuongDanhGia()
+        {
+            int n = 0;
+            foreach(BaiDang baiDang in list)
+            {
+                n += baiDang.listDanhGia.list.Count;
+            }
+            return n;
+        }
     }
 }
