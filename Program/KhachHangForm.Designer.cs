@@ -2117,7 +2117,7 @@
             this.listItemFLP.AutoScroll = true;
             this.listItemFLP.Location = new System.Drawing.Point(132, 281);
             this.listItemFLP.Name = "listItemFLP";
-            this.listItemFLP.Size = new System.Drawing.Size(649, 158);
+            this.listItemFLP.Size = new System.Drawing.Size(636, 158);
             this.listItemFLP.TabIndex = 1;
             // 
             // panel7

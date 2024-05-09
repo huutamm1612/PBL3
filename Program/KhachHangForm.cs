@@ -1074,7 +1074,7 @@ namespace Program
         {
             vanChuyenTxt.Text = HeThong.MoTaDiaChi(khachHang.diaChi.maPX);
             daBanTxt.Text = "Đã bán " + currBaiDang.luocBan().ToString();
-            titleTxt.Text = "Sách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H BooksSách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H Books";
+            titleTxt.Text = currBaiDang.tieuDe;
             Utils.FitTextBox(titleTxt, 20, 10);
             titleTxt.Size = new Size(750, titleTxt.Height);
             giamGiaTxt.Text = "GIẢM " + currBaiDang.giamGia.ToString() + "%";
