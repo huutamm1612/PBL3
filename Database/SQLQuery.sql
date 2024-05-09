@@ -123,7 +123,7 @@ CREATE TABLE LoaiSanPham (
 CREATE TABLE SanPham(
 	maSP varchar(10) PRIMARY KEY,
 	maLoaiSP varchar(10),
-	ten nvarchar(150),
+	ten nvarchar(100),
 	gia int,
 	soLuong int,
 	tacGia nvarchar(50),
