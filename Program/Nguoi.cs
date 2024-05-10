@@ -17,6 +17,8 @@ namespace Program
         public DateTime ngaySinh { get; set; }
 
         public abstract void capNhatDiaChi(DiaChi diaChiMoi);
+        public abstract void follow(string maSo);
+        public abstract void unFollow(string maSo);
         public abstract void nhap(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
         public abstract void sua(string ten, string email, string soDT, int gioiTinh, DateTime ngaySinh);
     }

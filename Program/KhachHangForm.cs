@@ -1188,19 +1188,22 @@ namespace Program
             }
             soLuongTxt.SelectionStart = soLuongTxt.Text.Length;
         }
-
+         
         private void followButton_Click(object sender, EventArgs e)
         {
             if(followButton.Text == "Theo dõi")
             {
                 khachHang.follow(currShop.maSo);
+                currShop.follow(khachHang.maSo);
                 followButton.Text = "Hủy theo dõi";
             }
             else
             {
                 khachHang.unFollow(currShop.maSo);
+                currShop.unFollow(khachHang.maSo);
                 followButton.Text = "Theo dõi";
             }
+            nTheoDoiTxt.Text = currShop.listFollower.Count.ToString();
         }
     }
 }

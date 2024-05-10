@@ -144,13 +144,13 @@ namespace Program
             return null;
         }
 
-        public void follow(string maS)
+        public override void follow(string maS)
         {
             listFollow.Insert(0, maS);
             HeThong.Follow(maSo, maS);
         }
 
-        public void unFollow(string maS)
+        public override void unFollow(string maS)
         {
             listFollow.Remove(maS);
             HeThong.UnFollow(maSo, maS);

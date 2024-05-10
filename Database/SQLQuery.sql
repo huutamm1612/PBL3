@@ -149,6 +149,14 @@ CREATE TABLE BaiDang(
 	anh varchar(255) null
 )
 
+CREATE TABLE BaiDang_Anh(
+	maBD varchar(10),
+	anh varchar(255),
+	PRIMARY KEY (maBD, anh),
+
+	CONSTRAINT FK_BaiDang_Anh_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD)
+)
+
 CREATE TABLE Thich(
 	maKH varchar(10),
 	maBD varchar(10),

@@ -206,5 +206,15 @@ namespace Program
         {
             this.diaChi = diaChiMoi;
         }
+
+        public override void follow(string maSo)
+        {
+            listFollower.Insert(0, maSo);
+        }
+
+        public override void unFollow(string maSo)
+        {
+            listFollower.Remove(maSo);
+        }
     }
 }
