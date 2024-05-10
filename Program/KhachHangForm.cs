@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Program.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1131,6 +1132,15 @@ namespace Program
             {
                 followButton.Text = "Theo dõi";
             }
+
+            if (khachHang.listThich.Contains(currBaiDang.maBD))
+            {
+                thichButton.Image = Resources.heart2;
+            }
+            else
+            {
+                thichButton.Image = Resources.heart1;
+            }
         }
 
         public void SanPham_Click(object sender, EventArgs e)
@@ -1204,6 +1214,24 @@ namespace Program
                 followButton.Text = "Theo dõi";
             }
             nTheoDoiTxt.Text = currShop.listFollower.Count.ToString();
+        }
+
+        private void thichButton_Click(object sender, EventArgs e)
+        {
+            Button obj = sender as Button;
+            if (!khachHang.listThich.Contains(currBaiDang.maBD))
+            {
+                khachHang.thich(currBaiDang.maBD);
+                currBaiDang.luocThich++;
+                obj.Image = Resources.heart2;
+            }
+            else
+            {
+                khachHang.huyThich(currBaiDang.maBD);
+                currBaiDang.luocThich--;
+                obj.Image = Resources.heart1;
+            }
+            obj.Text = "Đã thích (" + currBaiDang.luocThich.ToString() + ")";
         }
     }
 }

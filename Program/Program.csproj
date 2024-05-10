@@ -87,6 +87,11 @@
     <Compile Include="Nguoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QLBaiDang.cs" />
     <Compile Include="QLDanhGia.cs" />
     <Compile Include="QLDonHang.cs" />
@@ -120,13 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="SanPhamForm.resx">
       <DependentUpon>SanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
