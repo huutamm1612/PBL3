@@ -307,11 +307,11 @@ namespace Program
                 pictureBox7.BackColor = Color.White;
                 email_UP_Box.BackColor = Color.White;
             }
-            if (email_UP_Box.Text == "")
+            if (soDT_UP_Box.Text == "")
 
             {
-                pictureBox7.BackColor = Color.White;
-                email_UP_Box.BackColor = Color.White;
+                pictureBox8.BackColor = Color.White;
+                soDT_UP_Box.BackColor = Color.White;
             }
             if (khachHang.ngaySinh.Year >= 1899)
             {
@@ -1626,5 +1626,7 @@ namespace Program
             textBox.SelectionStart = textBox.Text.Length;
             khachHang.gioHang.UpdateSoLuongSP(khachHang.gioHang.list[index].maSP, soLuong);
         }
+
+
     }
 }
