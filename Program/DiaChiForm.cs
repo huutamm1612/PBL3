@@ -133,13 +133,16 @@ namespace Program
             }
         }
 
-        private void diaChiCuThe_Box_KeyDown(object sender, KeyEventArgs e)
+        private void Thoat_ESC(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 HTThemDiaChi_Button_Click(sender, e);
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
-
     }
 }

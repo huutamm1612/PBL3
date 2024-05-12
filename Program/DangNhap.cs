@@ -319,15 +319,6 @@ namespace Program
             xacNhan_QMK_Button.Enabled = KTra_QuenMK();
         }
 
-        private void cauHoiQMK_CB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            xacNhan_QMK_Button.Enabled = KTra_QuenMK();
-            if (cauHoiQMK_CB.SelectedIndex == 0)
-                cauTraLoi_QML_Box.Enabled = false;           
-            else
-                cauTraLoi_QML_Box.Enabled = true;
-        }
-
         private void cauTraLoi_QML_Box_TextChanged(object sender, EventArgs e)
         {
             xacNhan_QMK_Button.Enabled = KTra_QuenMK();
@@ -442,6 +433,7 @@ namespace Program
         {
             if (e.KeyCode == Keys.Enter)
                 xacNhan_QMK_Button_Click_1(sender, e);
+
         }
 
         private void cauTraLoi_Box_KeyDown(object sender, KeyEventArgs e)

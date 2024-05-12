@@ -35,6 +35,7 @@ namespace Program
 
         public void setSanPham(SanPham sanPham)
         {
+            url = sanPham.anh;
             picImage.Image = Utils.Resize(Image.FromFile(sanPham.anh), picImage.Size);
             tenSP_Text.Text = sanPham.ten;
             tenTacGia_Text.Text = sanPham.tacGia;
@@ -179,12 +180,6 @@ namespace Program
             demKyTu(moTaSP_Text, 1000, Count_MoTa);
             Check(moTaSP_Text, moTa_Pic);
         }
-
-        private void SP_Pic_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void namXuatBan_Text_TextChanged(object sender, EventArgs e)
         {
             Check(namXuatBan_Text, Nam_Pic);
@@ -265,6 +260,54 @@ namespace Program
         private void picImage_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Enter_Esc_SanPham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                luuButton_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void theLoai_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (theLoai_CBBox.SelectedIndex != -1)
+            {
+                theLoai_check.Visible = false;
+            }
+            else
+            {
+                theLoai_CBBox.Visible = true;
+            }
+        }
+
+        private void loaiBia_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (loaiBia_CBBox.SelectedIndex != -1)
+            {
+                bia_Check.Visible = false;
+            }
+            else
+            {
+                bia_Check.Visible = true;
+            }
+        }
+
+        private void ngonNgu_CBBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ngonNgu_CBBox.SelectedIndex != -1)
+            {
+                language_Check.Visible = false;
+            }
+            else
+            {
+                language_Check.Visible = true;
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Program
             this.ten = "";
             this.soDT = "";
             this.email = "";
+            this.avt = "";
             this.diaChi = new DiaChi();
             this.ngaySinh = ngaySinh;
             this.listBaiDang = new QLBaiDang();
@@ -37,6 +38,7 @@ namespace Program
         {
             this.maSo = "";
             this.ten = "";
+            this.avt = "";
             this.soDT = soDT;
             this.email = email;
             this.diaChi = new DiaChi();

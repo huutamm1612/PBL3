@@ -870,9 +870,9 @@
             this.accountPanel.Controls.Add(this.diaChiUser_Button);
             this.accountPanel.Controls.Add(this.userProfile_Botton);
             this.accountPanel.Controls.Add(this.myAccount_Button);
+            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Controls.Add(this.profilePanel);
             this.accountPanel.Controls.Add(this.doiMatKhauPanel);
-            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
             this.accountPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.accountPanel.Location = new System.Drawing.Point(12, 6);
             this.accountPanel.Name = "accountPanel";
@@ -1056,6 +1056,7 @@
             this.soDT_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.soDT_UP_Box.TabIndex = 3;
             this.soDT_UP_Box.TextChanged += new System.EventHandler(this.soDT_UP_Box_TextChanged);
+            this.soDT_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // email_UP_Box
             // 
@@ -1067,6 +1068,7 @@
             this.email_UP_Box.ReadOnly = true;
             this.email_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.email_UP_Box.TabIndex = 2;
+            this.email_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // pictureBox7
             // 
@@ -1088,6 +1090,7 @@
             this.ten_UP_Box.ReadOnly = true;
             this.ten_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.ten_UP_Box.TabIndex = 1;
+            this.ten_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // pictureBox6
             // 
@@ -1110,6 +1113,7 @@
             this.taiKhoan_UP_Text.ReadOnly = true;
             this.taiKhoan_UP_Text.Size = new System.Drawing.Size(490, 23);
             this.taiKhoan_UP_Text.TabIndex = 0;
+            this.taiKhoan_UP_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // pictureBox5
             // 
@@ -1258,6 +1262,7 @@
             this.namSinh_CB.Name = "namSinh_CB";
             this.namSinh_CB.Size = new System.Drawing.Size(147, 33);
             this.namSinh_CB.TabIndex = 9;
+            this.namSinh_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // thangSinh_CB
             // 
@@ -1283,6 +1288,7 @@
             this.thangSinh_CB.Name = "thangSinh_CB";
             this.thangSinh_CB.Size = new System.Drawing.Size(158, 33);
             this.thangSinh_CB.TabIndex = 8;
+            this.thangSinh_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // ngaySinh_CB
             // 
@@ -1328,6 +1334,7 @@
             this.ngaySinh_CB.Name = "ngaySinh_CB";
             this.ngaySinh_CB.Size = new System.Drawing.Size(147, 33);
             this.ngaySinh_CB.TabIndex = 7;
+            this.ngaySinh_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // textBox8
             // 
@@ -1373,6 +1380,7 @@
             this.nam_RB.TabStop = true;
             this.nam_RB.Text = "Nam";
             this.nam_RB.UseVisualStyleBackColor = false;
+            this.nam_RB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // textBox6
             // 
@@ -1396,6 +1404,7 @@
             this.nu_RB.TabStop = true;
             this.nu_RB.Text = "Nữ";
             this.nu_RB.UseVisualStyleBackColor = true;
+            this.nu_RB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // textBox5
             // 
@@ -1419,6 +1428,7 @@
             this.khac_RB.TabStop = true;
             this.khac_RB.Text = "Khác";
             this.khac_RB.UseVisualStyleBackColor = true;
+            this.khac_RB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // textBox3
             // 
@@ -1548,6 +1558,7 @@
             this.matKhauMoi2_Box.TabIndex = 6;
             this.matKhauMoi2_Box.UseSystemPasswordChar = true;
             this.matKhauMoi2_Box.TextChanged += new System.EventHandler(this.matKhauMoi2_Box_TextChanged);
+            this.matKhauMoi2_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_DoiMK_KeyDown);
             // 
             // matKhauMoi1_Box
             // 
@@ -1557,6 +1568,7 @@
             this.matKhauMoi1_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauMoi1_Box.TabIndex = 5;
             this.matKhauMoi1_Box.UseSystemPasswordChar = true;
+            this.matKhauMoi1_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_DoiMK_KeyDown);
             // 
             // matKhauCu_Box
             // 
@@ -1566,6 +1578,7 @@
             this.matKhauCu_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauCu_Box.TabIndex = 4;
             this.matKhauCu_Box.UseSystemPasswordChar = true;
+            this.matKhauCu_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_DoiMK_KeyDown);
             // 
             // textBox10
             // 

@@ -12,7 +12,6 @@ namespace Program
         public string taiKhoan { get; set; }
         public int chiTieu { get; set; }
         public int xu { get; set; }
-        public string avt { get; set; }
         public List<string> listFollow { get; set; }
         public List<string> listThich { get; set; }
         public List<string> listDaXem { get; set; }

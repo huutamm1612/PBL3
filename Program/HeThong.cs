@@ -17,7 +17,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS ;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -266,7 +266,7 @@ namespace Program
             string query = $"INSERT INTO Thich VALUES('{maKH}', '{maBD}')";
             ExecuteNonQuery(query);
         }
-
+        
         public static void HuyThich(string maKH, string maBD)
         {
             string query = $"DELETE FROM Thich WHERE maKH = '{maKH}' AND maBD = '{maBD}'";
