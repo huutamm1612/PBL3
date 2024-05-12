@@ -118,7 +118,7 @@ namespace Program
 
         public static string URLImage(Image image)
         {
-            FileInfo sourceFile = new FileInfo(Utils.SetPath() + "CurrImageID.txt");
+            FileInfo sourceFile = new FileInfo("CurrImageID.txt");
             StreamReader reader = sourceFile.OpenText();
             int ID = int.Parse(reader.ReadLine());
             reader.Close();
@@ -127,7 +127,7 @@ namespace Program
             Bitmap bitmap = new Bitmap(image);
             bitmap.Save(url, System.Drawing.Imaging.ImageFormat.Png);
 
-            StreamWriter writer = new StreamWriter(Utils.SetPath() + "CurrImageID.txt");
+            StreamWriter writer = new StreamWriter("CurrImageID.txt");
             writer.WriteLine(ID + 1);
             writer.Close();
             return url;
