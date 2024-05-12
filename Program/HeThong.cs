@@ -16,7 +16,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -706,8 +706,7 @@ namespace Program
             SqlDataReader reader = ExecuteQuery(query);
             reader.Read();
 
-            BaiDang baiDang = new BaiDang
-            {
+            BaiDang baiDang = new BaiDang            {
                 maBD = maBD,
                 maS = reader.GetString(0),
                 tieuDe = reader.GetString(2),

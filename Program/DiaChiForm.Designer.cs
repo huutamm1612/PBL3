@@ -60,9 +60,9 @@
             this.soDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
             this.soDTKhongHopLe_Label.Location = new System.Drawing.Point(292, 116);
             this.soDTKhongHopLe_Label.Name = "soDTKhongHopLe_Label";
-            this.soDTKhongHopLe_Label.Size = new System.Drawing.Size(162, 16);
+            this.soDTKhongHopLe_Label.Size = new System.Drawing.Size(165, 16);
             this.soDTKhongHopLe_Label.TabIndex = 41;
-            this.soDTKhongHopLe_Label.Text = "Số điện thọa không hợp lệ";
+            this.soDTKhongHopLe_Label.Text = "Số điện thoại không hợp lệ";
             this.soDTKhongHopLe_Label.Visible = false;
             // 
             // indexOfDiaChi
