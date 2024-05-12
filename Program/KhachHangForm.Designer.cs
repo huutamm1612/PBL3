@@ -91,7 +91,6 @@
             this.suaEmail_button = new System.Windows.Forms.Button();
             this.suaTen_Button = new System.Windows.Forms.Button();
             this.soDT_UP_Box = new System.Windows.Forms.TextBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.email_UP_Box = new System.Windows.Forms.TextBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.ten_UP_Box = new System.Windows.Forms.TextBox();
@@ -196,6 +195,7 @@
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listSPTrongGHFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.HeaderPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -211,7 +211,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.accountPanel.SuspendLayout();
             this.profilePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -238,6 +237,7 @@
             this.panel13.SuspendLayout();
             this.spPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // HeaderPannel
@@ -957,7 +957,6 @@
             this.profilePanel.Controls.Add(this.suaEmail_button);
             this.profilePanel.Controls.Add(this.suaTen_Button);
             this.profilePanel.Controls.Add(this.soDT_UP_Box);
-            this.profilePanel.Controls.Add(this.pictureBox8);
             this.profilePanel.Controls.Add(this.email_UP_Box);
             this.profilePanel.Controls.Add(this.pictureBox7);
             this.profilePanel.Controls.Add(this.ten_UP_Box);
@@ -978,6 +977,7 @@
             this.profilePanel.Controls.Add(this.textBox3);
             this.profilePanel.Controls.Add(this.luu_UP_Button);
             this.profilePanel.Controls.Add(this.textBox2);
+            this.profilePanel.Controls.Add(this.pictureBox8);
             this.profilePanel.Location = new System.Drawing.Point(408, 20);
             this.profilePanel.Name = "profilePanel";
             this.profilePanel.Size = new System.Drawing.Size(943, 631);
@@ -991,9 +991,9 @@
             this.SDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
             this.SDTKhongHopLe_Label.Location = new System.Drawing.Point(274, 352);
             this.SDTKhongHopLe_Label.Name = "SDTKhongHopLe_Label";
-            this.SDTKhongHopLe_Label.Size = new System.Drawing.Size(162, 16);
+            this.SDTKhongHopLe_Label.Size = new System.Drawing.Size(165, 16);
             this.SDTKhongHopLe_Label.TabIndex = 20;
-            this.SDTKhongHopLe_Label.Text = "Số điện thọa không hợp lệ";
+            this.SDTKhongHopLe_Label.Text = "Số điện thoại không hợp lệ";
             this.SDTKhongHopLe_Label.Visible = false;
             // 
             // loiNgaySinh_Text
@@ -1056,16 +1056,6 @@
             this.soDT_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.soDT_UP_Box.TabIndex = 3;
             this.soDT_UP_Box.TextChanged += new System.EventHandler(this.soDT_UP_Box_TextChanged);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox8.Location = new System.Drawing.Point(275, 310);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(511, 40);
-            this.pictureBox8.TabIndex = 27;
-            this.pictureBox8.TabStop = false;
             // 
             // email_UP_Box
             // 
@@ -1680,11 +1670,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KhachHang_Panel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.KhachHang_Panel.Controls.Add(this.HeaderPannel);
-            this.KhachHang_Panel.Controls.Add(this.gioHangPanel);
             this.KhachHang_Panel.Controls.Add(this.UserPanel);
             this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Controls.Add(this.littleMenuPanel);
+            this.KhachHang_Panel.Controls.Add(this.gioHangPanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
@@ -2583,6 +2573,16 @@
             this.listSPTrongGHFLP.Size = new System.Drawing.Size(1250, 21);
             this.listSPTrongGHFLP.TabIndex = 0;
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox8.Location = new System.Drawing.Point(275, 304);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(511, 45);
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
+            // 
             // KhachHangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2615,7 +2615,6 @@
             this.accountPanel.ResumeLayout(false);
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -2652,6 +2651,7 @@
             this.spPanel.ResumeLayout(false);
             this.spPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2705,7 +2705,6 @@
         private System.Windows.Forms.Button suaEmail_button;
         private System.Windows.Forms.Button suaTen_Button;
         private System.Windows.Forms.TextBox soDT_UP_Box;
-        private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.TextBox ten_UP_Box;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -2824,6 +2823,7 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
 
