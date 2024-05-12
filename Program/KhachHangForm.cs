@@ -1904,5 +1904,19 @@ namespace Program
             
             }
         }
+        private void Enter_Luu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                luu_UP_Button_Click(sender, e);
+            }
+        }
+        private void Enter_DoiMK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                xacNhan_UP_Button_Click(sender, e);
+            }
+        }
     }
 }

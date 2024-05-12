@@ -1057,7 +1057,6 @@
             this.soDT_UP_Box.Size = new System.Drawing.Size(490, 23);
             this.soDT_UP_Box.TabIndex = 3;
             this.soDT_UP_Box.TextChanged += new System.EventHandler(this.soDT_UP_Box_TextChanged);
-            this.soDT_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
             // email_UP_Box
             // 
