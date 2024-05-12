@@ -1161,6 +1161,7 @@ namespace Program
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 picCoverImage.Image = Utils.Resize(System.Drawing.Image.FromFile(openFile.FileName), picCoverImage.Size);

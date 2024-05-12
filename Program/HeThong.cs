@@ -367,7 +367,6 @@ namespace Program
             if (!reader.IsDBNull(5))
             {
                 string maDC = reader["maDC"].ToString();
-
                 khachHang.capNhatDiaChi(LoadDiaChi(maDC));
                 SetDiaChis(khachHang);
             }
