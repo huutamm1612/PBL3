@@ -17,7 +17,7 @@ namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -93,7 +93,6 @@ namespace Program
             using (StreamWriter writer = new StreamWriter("DBCache.txt", true))
             {
                 writer.WriteLine(query);
-                MessageBox.Show(query);
                 writer.Close();
             }
             
@@ -119,7 +118,7 @@ namespace Program
 
         public static string URLImage(Image image)
         {
-            FileInfo sourceFile = new FileInfo(Utils.SetPath());
+            FileInfo sourceFile = new FileInfo(Utils.SetPath() + "CurrImageID.txt");
             StreamReader reader = sourceFile.OpenText();
             int ID = int.Parse(reader.ReadLine());
             reader.Close();
@@ -128,7 +127,7 @@ namespace Program
             Bitmap bitmap = new Bitmap(image);
             bitmap.Save(url, System.Drawing.Imaging.ImageFormat.Png);
 
-            StreamWriter writer = new StreamWriter(Utils.SetPath());
+            StreamWriter writer = new StreamWriter(Utils.SetPath() + "CurrImageID.txt");
             writer.WriteLine(ID + 1);
             writer.Close();
             return url;

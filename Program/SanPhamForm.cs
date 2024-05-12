@@ -35,6 +35,7 @@ namespace Program
 
         public void setSanPham(SanPham sanPham)
         {
+            picImage.Image = Utils.Resize(Image.FromFile(sanPham.anh), picImage.Size);
             tenSP_Text.Text = sanPham.ten;
             tenTacGia_Text.Text = sanPham.tacGia;
             tenDichGia_Text.Text = sanPham.dichGia;
@@ -256,7 +257,7 @@ namespace Program
             openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                picImage.Image = Image.FromFile(openFile.FileName);
+                picImage.Image = Utils.Resize(Image.FromFile(openFile.FileName), picImage.Size);
                 url = openFile.FileName;
             }
         }
