@@ -41,6 +41,7 @@ namespace Program
         public static void ExecuteNonQuery(string query)
         {
             Query(query).ExecuteNonQuery(); //
+            WriteCache(query);
             sqlCon.Close();
         }
 
@@ -85,6 +86,17 @@ namespace Program
 
             reader.Close();
             return list;
+        }
+
+        public static void WriteCache(string query)
+        {
+            using (StreamWriter writer = new StreamWriter("DBCache.txt", true))
+            {
+                writer.WriteLine(query);
+                MessageBox.Show(query);
+                writer.Close();
+            }
+            
         }
 
         public static string MaMoi(string loaiMa)

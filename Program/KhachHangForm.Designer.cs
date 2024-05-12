@@ -277,7 +277,6 @@
             this.cartButton.Name = "cartButton";
             this.cartButton.Size = new System.Drawing.Size(73, 47);
             this.cartButton.TabIndex = 13;
-            this.cartButton.Text = "   99+";
             this.cartButton.UseVisualStyleBackColor = false;
             this.cartButton.Click += new System.EventHandler(this.cartButton_Click);
             // 

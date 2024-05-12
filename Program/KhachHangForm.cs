@@ -38,7 +38,6 @@ namespace Program
             if (!nonStart)
                 tuDongDangNhap();
             this.getBaiDang();
-            this.setHeaderPanel();
         }
 
         public void setData(string taiKhoan, string matKhau)
@@ -85,12 +84,14 @@ namespace Program
                 label.Visible = false;
 
                 khachHang = HeThong.DangNhap(user);
+                this.setHeaderPanel();
             }
         }
 
         private void RefreshCartButton()
         {
             int n = khachHang.gioHang.list.Count;
+            MessageBox.Show(n.ToString());
 
             if (n > 99)
             {
