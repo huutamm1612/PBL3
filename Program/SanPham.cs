@@ -27,6 +27,7 @@ namespace Program
         public string nhaXuatBan { get; set; }
         public string loaiBia { get; set; }
         public DateTime ngayThem { get; set; }
+        public string anh { get; set; }
         public SanPham()
         {
             anhSanPham = null;
@@ -46,6 +47,7 @@ namespace Program
             nhaXuatBan = "";
             loaiBia = "";
             moTa = "";
+            anh = "";
             ngayThem = DateTime.Now;
         }
 
@@ -76,6 +78,7 @@ namespace Program
                 loaiBia = this.loaiBia,
                 moTa = this.moTa,
                 ngayThem = this.ngayThem,
+                anh = this.anh
             };
             return sanPham;
         }

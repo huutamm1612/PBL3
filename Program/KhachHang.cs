@@ -123,8 +123,8 @@ namespace Program
         {
             SanPham item = sanPham.Clone();
             item.themVaoGioHang(soLuong);
-            gioHang.Add(item);
             HeThong.ThemVaoGioHang(item, maSo, gioHang.IsExist(item));
+            gioHang.Add(item);
         }
 
         public void xoaKhoiGioHang(params string[] list)

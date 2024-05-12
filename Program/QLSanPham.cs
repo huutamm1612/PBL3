@@ -86,8 +86,6 @@ namespace Program
             Utils.RemoveRange(list, maSPs.ToList());
         }
 
-        
-
         public void AddRange(params SanPham[] listSanPham)
         {
             foreach(SanPham sanPham in listSanPham)

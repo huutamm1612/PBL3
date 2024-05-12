@@ -16,6 +16,7 @@ namespace Program
         public string moTa { get; set; }
         public int luocThich { get; set; }
         public int giamGia { get; set; }
+        public string anhBia { get; set; }
         public QLDanhGia listDanhGia { get; set; }
 
         public BaiDang(string maBD)
@@ -32,6 +33,7 @@ namespace Program
             moTa = "";
             luocThich = 0;
             giamGia = 0;
+            anhBia = "";
             listDanhGia = new QLDanhGia();
         }
 

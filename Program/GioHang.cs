@@ -35,7 +35,18 @@ namespace Program
             list.Insert(0, sanPham);
         }
 
-        
+        public void UpdateSoLuongSP(string maSP, int soLuong)
+        {
+            foreach(SanPham sp in list)
+            {
+                if(sp.maSP.Equals(maSP))
+                {
+                    sp.soLuong = soLuong;
+                    HeThong.CapNhatSanPhamTrongGioHang(sp, maKH);
+                    return;
+                }
+            }
+        }
 
         public override void RemoveRange(params string[] maSPs)
         {

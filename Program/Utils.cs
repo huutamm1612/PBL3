@@ -32,6 +32,33 @@ namespace Program
 
         }
 
+        public static string SetPath()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            path = path.Substring(0, path.Length - ("Program\\bin\\Debug\\").Length) + "Images\\";
+            return path;
+        }
+
+        public static Image Resize(Image image, Size newSize)
+        {
+            int nw = newSize.Width; int nh = newSize.Height;
+            int iw = image.Width; int ih = image.Height;
+
+            if(iw > ih)
+            {
+                nh = (int)(ih * (double) nw / (double) iw);
+            }
+            else
+            {
+                nw = (int)(iw * (double) nh / (double) ih);
+            }
+
+            Bitmap resizedBitmap = new Bitmap(image, new Size(nw, nh));
+            Image resizedImage = (Image)resizedBitmap;
+
+            return resizedImage;
+        }
+
         public static int GiamGia(int gia, int giam)
         {
             return gia - gia * giam / 100;

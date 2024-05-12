@@ -714,7 +714,8 @@ namespace Program
                 moTa = reader.GetString(3),
                 luocThich = reader.GetInt32(4),
                 giamGia = reader.GetInt32(5),
-                listDanhGia = LoadDanhGia(maBD)
+                listDanhGia = LoadDanhGia(maBD),
+                anhBia = reader["anh"].ToString(),
             };
 
             reader.Close();
@@ -790,12 +791,47 @@ namespace Program
                 loaiBia = reader["loaiBia"].ToString(),
                 moTa = reader["moTa"].ToString(),
                 luocBan = Convert.ToInt32(reader["luocBan"].ToString()),
+                anh = reader["anh"].ToString(),
                 maS = maS,
                 maBD = maBD
             };
             reader.Close();
 
             return sanPham;
+        }
+
+        public static int GetGiamGia(string maSP)
+        {
+            int giamGia = 0;
+
+            string query = $"SELECT giamGia FROM BaiDang BD INNER JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD WHERE maSP = '{maSP}'";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            if (reader.Read())
+            {
+                giamGia = Convert.ToInt32(reader["giamGia"].ToString());
+            }
+
+            reader.Close ();
+
+            return giamGia;
+        }
+
+        public static int GetSoLuongSP(string maSP)
+        {
+            int soLuong = 0;
+
+            string query = $"SELECT soLuong FROM SanPham WHERE maSP = '{maSP}'";
+            SqlDataReader reader = ExecuteQuery(query);
+
+            if (reader.Read())
+            {
+                soLuong = Convert.ToInt32(reader["soLuong"].ToString());
+            }
+
+            reader.Close();
+
+            return soLuong;
         }
 
         public static void CapNhatSanPham(SanPham sanPham)
@@ -952,18 +988,6 @@ namespace Program
             return listDonHang;
         }
 
-        public static double GetGiamGia(string maSP)
-        {
-            string query = $"SELECT BD.giamGia FROM BaiDang BD INNER JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD WHERE SPBD.maSP = '{maSP}'";
-            SqlDataReader reader = ExecuteQuery(query);
-
-            reader.Read();
-            double giamGia = reader.GetInt32(0) / 100;
-            reader.Close();
-
-            return giamGia;
-        }
-
         public static void ThemVaoGioHang(SanPham sanPham, string maKH, bool isExist)
         {
             string query;
@@ -975,6 +999,12 @@ namespace Program
             {
                 query = $"INSERT INTO GioHang VALUES('{maKH}', '{sanPham.maSP}', {sanPham.soLuong}, '{sanPham.ngayThem.Date:MM/dd/yyyy}')";
             }
+            ExecuteNonQuery(query);
+        }
+
+        public static void CapNhatSanPhamTrongGioHang(SanPham sanPham, string maKH)
+        {
+            string query = $"UPDATE GioHang SET soLuong = {sanPham.soLuong} WHERE maKH = {maKH} AND maSP = {sanPham.maSP}";
             ExecuteNonQuery(query);
         }
 
@@ -997,8 +1027,8 @@ namespace Program
             while (reader.Read())
             {
                 gioHang.Add(LoadSanPham(reader.GetString(0)));
-                gioHang.list.Last().soLuong = reader.GetInt32(1);
-                gioHang.list.Last().ngayThem = reader.GetDateTime(2);
+                gioHang.list.First().soLuong = reader.GetInt32(1);
+                gioHang.list.First().ngayThem = reader.GetDateTime(2);
             }
             reader.Close();
 
