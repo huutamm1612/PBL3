@@ -2207,7 +2207,7 @@
             this.thichButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.thichButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.thichButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.thichButton.Image = global::Program.Properties.Resources.icons8_heart_50__1_;
+           // this.thichButton.Image = global::Program.Properties.Resources.icons8_heart_50__1_;
             this.thichButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.thichButton.Location = new System.Drawing.Point(8, 540);
             this.thichButton.Name = "thichButton";
