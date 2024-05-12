@@ -256,7 +256,7 @@ namespace Program
             openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                picImage.Image = Image.FromFile(openFile.FileName);
+                picImage.Image = Utils.Resize(Image.FromFile(openFile.FileName), picImage.Size);
                 url = openFile.FileName;
             }
         }

@@ -111,6 +111,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.luu_UP_Button = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.doiMatKhauPanel = new System.Windows.Forms.Panel();
             this.xacNhan_UP_Button = new System.Windows.Forms.Button();
             this.hienMK_UP_Check = new System.Windows.Forms.CheckBox();
@@ -195,7 +196,6 @@
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listSPTrongGHFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.HeaderPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -214,6 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.doiMatKhauPanel.SuspendLayout();
             this.diaChiUser_Panel.SuspendLayout();
             this.UserPanel.SuspendLayout();
@@ -237,7 +238,6 @@
             this.panel13.SuspendLayout();
             this.spPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // HeaderPannel
@@ -1101,7 +1101,7 @@
             // 
             // taiKhoan_UP_Text
             // 
-            this.taiKhoan_UP_Text.BackColor = System.Drawing.Color.White;
+            this.taiKhoan_UP_Text.BackColor = System.Drawing.Color.Gainsboro;
             this.taiKhoan_UP_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.taiKhoan_UP_Text.Cursor = System.Windows.Forms.Cursors.Default;
             this.taiKhoan_UP_Text.Enabled = false;
@@ -1113,7 +1113,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pictureBox5.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox5.Location = new System.Drawing.Point(275, 99);
             this.pictureBox5.Name = "pictureBox5";
@@ -1453,6 +1453,16 @@
             this.textBox2.TabIndex = 11;
             this.textBox2.Text = "Tên đăng nhập";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox8.Location = new System.Drawing.Point(275, 304);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(511, 45);
+            this.pictureBox8.TabIndex = 32;
+            this.pictureBox8.TabStop = false;
             // 
             // doiMatKhauPanel
             // 
@@ -2573,16 +2583,6 @@
             this.listSPTrongGHFLP.Size = new System.Drawing.Size(1250, 21);
             this.listSPTrongGHFLP.TabIndex = 0;
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox8.Location = new System.Drawing.Point(275, 304);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(511, 45);
-            this.pictureBox8.TabIndex = 32;
-            this.pictureBox8.TabStop = false;
-            // 
             // KhachHangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -2618,6 +2618,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.doiMatKhauPanel.ResumeLayout(false);
             this.doiMatKhauPanel.PerformLayout();
             this.diaChiUser_Panel.ResumeLayout(false);
@@ -2651,7 +2652,6 @@
             this.spPanel.ResumeLayout(false);
             this.spPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -399,13 +399,13 @@ namespace Program
             PictureBox picImage = new PictureBox
             {
                 Location = new System.Drawing.Point(220, 12),
-                Size = new Size(176, 99),
+                Size = new Size(100, 100),
                 Font = font1,
                 Name = "picImage",
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = System.Drawing.Image.FromFile(sanPham.anh)
+                Image = Utils.Resize(System.Drawing.Image.FromFile(sanPham.anh), new Size(100, 100))
             };
 
             TextBox lbTenSP = new TextBox
@@ -1161,9 +1161,10 @@ namespace Program
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                picCoverImage.Image = System.Drawing.Image.FromFile(openFile.FileName);
+                picCoverImage.Image = Utils.Resize(System.Drawing.Image.FromFile(openFile.FileName), picCoverImage.Size);
             }
             btnCoverImage.Visible = false;
         }

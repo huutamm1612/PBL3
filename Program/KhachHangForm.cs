@@ -91,7 +91,6 @@ namespace Program
         private void RefreshCartButton()
         {
             int n = khachHang.gioHang.list.Count;
-            MessageBox.Show(n.ToString());
 
             if (n > 99)
             {

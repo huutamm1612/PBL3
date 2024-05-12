@@ -93,7 +93,6 @@ namespace Program
             using (StreamWriter writer = new StreamWriter("DBCache.txt", true))
             {
                 writer.WriteLine(query);
-                MessageBox.Show(query);
                 writer.Close();
             }
             
@@ -119,7 +118,7 @@ namespace Program
 
         public static string URLImage(Image image)
         {
-            FileInfo sourceFile = new FileInfo(Utils.SetPath());
+            FileInfo sourceFile = new FileInfo(Utils.SetPath() + "currImageID.txt");
             StreamReader reader = sourceFile.OpenText();
             int ID = int.Parse(reader.ReadLine());
             reader.Close();
@@ -128,7 +127,7 @@ namespace Program
             Bitmap bitmap = new Bitmap(image);
             bitmap.Save(url, System.Drawing.Imaging.ImageFormat.Png);
 
-            StreamWriter writer = new StreamWriter(Utils.SetPath());
+            StreamWriter writer = new StreamWriter(Utils.SetPath() + "currImageID.txt");
             writer.WriteLine(ID + 1);
             writer.Close();
             return url;
@@ -368,7 +367,6 @@ namespace Program
             if (!reader.IsDBNull(5))
             {
                 string maDC = reader["maDC"].ToString();
-
                 khachHang.capNhatDiaChi(LoadDiaChi(maDC));
                 SetDiaChis(khachHang);
             }
