@@ -1340,7 +1340,7 @@
             // 
             this.flowLayoutPanel.Location = new System.Drawing.Point(46, 103);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1217, 220);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1600, 220);
             this.flowLayoutPanel.TabIndex = 3;
             // 
             // panel7
@@ -1352,14 +1352,14 @@
             this.panel7.Controls.Add(this.textBox9);
             this.panel7.Location = new System.Drawing.Point(46, 35);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1217, 53);
+            this.panel7.Size = new System.Drawing.Size(1600, 53);
             this.panel7.TabIndex = 2;
             // 
             // textBox12
             // 
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(177, 14);
+            this.textBox12.Location = new System.Drawing.Point(270, 14);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(71, 19);
@@ -1370,10 +1370,10 @@
             // 
             this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(720, 14);
+            this.textBox14.Location = new System.Drawing.Point(1051, 14);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(71, 19);
+            this.textBox14.Size = new System.Drawing.Size(111, 19);
             this.textBox14.TabIndex = 5;
             this.textBox14.Text = "Lược bán";
             // 
@@ -1381,7 +1381,7 @@
             // 
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(348, 13);
+            this.textBox11.Location = new System.Drawing.Point(544, 14);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(71, 19);
@@ -1392,7 +1392,7 @@
             // 
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(531, 14);
+            this.textBox10.Location = new System.Drawing.Point(810, 14);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(71, 19);
@@ -1420,14 +1420,14 @@
             this.chiTietSP_Panel.Controls.Add(this.picAnhTCSP);
             this.chiTietSP_Panel.Location = new System.Drawing.Point(46, 387);
             this.chiTietSP_Panel.Name = "chiTietSP_Panel";
-            this.chiTietSP_Panel.Size = new System.Drawing.Size(1217, 171);
+            this.chiTietSP_Panel.Size = new System.Drawing.Size(1600, 171);
             this.chiTietSP_Panel.TabIndex = 1;
             this.chiTietSP_Panel.Visible = false;
             // 
             // btnThongTinSanPham
             // 
             this.btnThongTinSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinSanPham.Location = new System.Drawing.Point(931, 57);
+            this.btnThongTinSanPham.Location = new System.Drawing.Point(1295, 57);
             this.btnThongTinSanPham.Name = "btnThongTinSanPham";
             this.btnThongTinSanPham.Size = new System.Drawing.Size(196, 56);
             this.btnThongTinSanPham.TabIndex = 5;
@@ -1437,27 +1437,29 @@
             // txtLuocBanTCSP
             // 
             this.txtLuocBanTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLuocBanTCSP.Location = new System.Drawing.Point(723, 76);
+            this.txtLuocBanTCSP.Location = new System.Drawing.Point(1085, 72);
             this.txtLuocBanTCSP.Name = "txtLuocBanTCSP";
             this.txtLuocBanTCSP.ReadOnly = true;
             this.txtLuocBanTCSP.Size = new System.Drawing.Size(77, 15);
             this.txtLuocBanTCSP.TabIndex = 4;
             this.txtLuocBanTCSP.Text = "0";
+            this.txtLuocBanTCSP.TextChanged += new System.EventHandler(this.txtLuocBanTCSP_TextChanged);
             // 
             // txtSoLuongTCSP
             // 
             this.txtSoLuongTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSoLuongTCSP.Location = new System.Drawing.Point(531, 78);
+            this.txtSoLuongTCSP.Location = new System.Drawing.Point(829, 67);
             this.txtSoLuongTCSP.Name = "txtSoLuongTCSP";
             this.txtSoLuongTCSP.ReadOnly = true;
             this.txtSoLuongTCSP.Size = new System.Drawing.Size(122, 15);
             this.txtSoLuongTCSP.TabIndex = 3;
             this.txtSoLuongTCSP.Text = "10000000";
+            this.txtSoLuongTCSP.TextChanged += new System.EventHandler(this.txtSoLuongTCSP_TextChanged);
             // 
             // txtDonGiaTCSP
             // 
             this.txtDonGiaTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDonGiaTCSP.Location = new System.Drawing.Point(348, 78);
+            this.txtDonGiaTCSP.Location = new System.Drawing.Point(561, 66);
             this.txtDonGiaTCSP.Name = "txtDonGiaTCSP";
             this.txtDonGiaTCSP.ReadOnly = true;
             this.txtDonGiaTCSP.Size = new System.Drawing.Size(122, 15);
@@ -1467,11 +1469,11 @@
             // txtTenTCSP
             // 
             this.txtTenTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTenTCSP.Location = new System.Drawing.Point(156, 43);
+            this.txtTenTCSP.Location = new System.Drawing.Point(179, 66);
             this.txtTenTCSP.Multiline = true;
             this.txtTenTCSP.Name = "txtTenTCSP";
             this.txtTenTCSP.ReadOnly = true;
-            this.txtTenTCSP.Size = new System.Drawing.Size(153, 85);
+            this.txtTenTCSP.Size = new System.Drawing.Size(316, 47);
             this.txtTenTCSP.TabIndex = 1;
             this.txtTenTCSP.Text = "Chiec quan que than thien";
             // 

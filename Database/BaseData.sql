@@ -10,9 +10,9 @@ INSERT INTO SanPham_BaiDang VALUES	('1000000000', '1000000000')
 INSERT INTO SanPham VALUES			('1000000001', '0000000002', N'Tập 2', 119000, 100, N'Masaya Yamaguchi ', N'Võ Phương Ngân', N'Tiếng Việt', 320, 2023, N'AZ Việt Nam', N'Bìa mềm', '', 0, null)
 INSERT INTO SanPham_BaiDang VALUES	('1000000001', '1000000000')
 
-UPDATE BaiDang SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img0.png' WHERE maBD = '1000000000'
-UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img1.png' WHERE maSP = '1000000000'
-UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img2.png' WHERE maSP = '1000000001'
+UPDATE BaiDang SET anh = 'D:\PBL3\Images\img0.png' WHERE maBD = '1000000000'
+UPDATE SanPham SET anh = 'D:\PBL3\Images\img1.png' WHERE maSP = '1000000000'
+UPDATE SanPham SET anh = 'D:\PBL3\Images\img2.png' WHERE maSP = '1000000001'
 
 INSERT INTO BaiDang	VALUES		('1000000001', N'Combo 2 Cuốn: Thế Giới Bên Trong Cái Ác + Hai Mươi Dáng Hình Tội Ác', '', 0, 18, null)
 INSERT INTO BaiDang_Shop VALUES	('1000000001', '1000000000')

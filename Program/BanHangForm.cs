@@ -314,8 +314,8 @@ namespace Program
 
                 case "Tất Cả Sản Phẩm":
                     QLSP = new QLSanPham();
-                    layTCSP();
                     SwitchPanel(tatCaSanPhamPanel);
+                    layTCSP();
                     break;
             }
 
@@ -1241,9 +1241,7 @@ namespace Program
                 Multiline = true,
                 ReadOnly = true,
             };
-            Utils.FitTextBox(txtTenSP);
-            while(txtTenSP.Text.Length > 25);
-            txtTenSP.Location = new Point(156, 62);
+         
             TextBox txtDonGia = new TextBox
             {
                 Location = txtDonGiaTCSP.Location,
@@ -1289,12 +1287,14 @@ namespace Program
                 Font = font1,
                 BackColor = Color.OrangeRed,
             };
-            p.Controls.Add(picImage);
+          
             p.Controls.Add(txtTenSP);
             p.Controls.Add(txtDonGia);
             p.Controls.Add(txtSoLuong);
             p.Controls.Add(txtLuocBan);
             p.Controls.Add(btnTTSP);
+
+            p.Controls.Add(picImage);
             btnTTSP.Click += TTSP_Button;
             return p;
         }
@@ -1321,6 +1321,16 @@ namespace Program
             flowLayoutPanel.Size = new Size(flowLayoutPanel.Size.Width, flowLayoutPanel.Size.Height + chiTietSP_Panel.Size.Height + 20);
             flowLayoutPanel.Controls.Add(this.themCTSP(sanPham));
             flowLayoutPanel.Visible = true;
+        }
+
+        private void txtSoLuongTCSP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLuocBanTCSP_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
