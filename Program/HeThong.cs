@@ -11,12 +11,13 @@ using System.Windows.Forms;
 using System.IO;
 using System.Security.Cryptography;
 using System.Net.Http.Headers;
+using System.Drawing;
 
 namespace Program
 {
     internal class HeThong
     {
-        private static readonly string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+        private static readonly string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
         private static SqlConnection sqlCon;
 
         private static SqlCommand Query(string noiDung)
@@ -102,6 +103,23 @@ namespace Program
 
             sqlCon.Close();
             return maMoi;
+        }
+
+        public static string URLImage(Image image)
+        {
+            FileInfo sourceFile = new FileInfo(Utils.SetPath());
+            StreamReader reader = sourceFile.OpenText();
+            int ID = int.Parse(reader.ReadLine());
+            reader.Close();
+
+            string url = Utils.SetPath() + $"img{ID}.png";
+            Bitmap bitmap = new Bitmap(image);
+            bitmap.Save(url, System.Drawing.Imaging.ImageFormat.Png);
+
+            StreamWriter writer = new StreamWriter(Utils.SetPath());
+            writer.WriteLine(ID + 1);
+            writer.Close();
+            return url;
         }
 
         public static bool DangNhap(string taiKhoan, string matKhau, bool userState = true)
@@ -681,7 +699,7 @@ namespace Program
         // 
         public static void ThemSanPham(SanPham sanPham)
         {
-            string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.loaiSP.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', 0, null)";
+            string query = $"INSERT INTO SanPham VALUES('{sanPham.maSP}', '{sanPham.loaiSP.maLoaiSP}', N'{sanPham.ten}', {sanPham.gia}, {sanPham.soLuong}, N'{sanPham.tacGia}', N'{sanPham.dichGia}', N'{sanPham.ngonNgu}', {sanPham.soTrang}, {sanPham.namXuatBan}, N'{sanPham.nhaXuatBan}', N'{sanPham.loaiBia}', N'{sanPham.moTa}', 0, '{sanPham.anh}')";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO SanPham_BaiDang VALUES('{sanPham.maSP}', '{sanPham.maBD}')";
@@ -690,7 +708,7 @@ namespace Program
 
         public static void ThemBaiDang(BaiDang baiDang)
         {
-            string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia}, null)";
+            string query = $"INSERT INTO BaiDang VALUES('{baiDang.maBD}', N'{baiDang.tieuDe}', N'{baiDang.moTa}', {baiDang.luocThich}, {baiDang.giamGia}, '{baiDang.anhBia}')";
             ExecuteNonQuery(query);
 
             query = $"INSERT INTO BaiDang_Shop VALUES('{baiDang.maBD}', '{baiDang.maS}')";

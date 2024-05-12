@@ -13,6 +13,7 @@ namespace Program
     public partial class SanPhamForm : Form
     {
         private QLSanPham QLSP = null;
+        private string url = null;
         public SendSanPham send;
         public SanPhamForm()
         {
@@ -63,7 +64,6 @@ namespace Program
                 this.send(new SanPham
                 {
                     maSP = "",
-                    //maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"),
                     loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
                     ten = tenSP_Text.Text,
                     tacGia = tenTacGia_Text.Text,
@@ -78,7 +78,7 @@ namespace Program
                     loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
                     luocBan = 0,
                     ngayThem = DateTime.Now,
-                    anhSanPham = picImage.Image,
+                    anh = url
                 });
                 //QLSP.Add();
                 Close();
@@ -257,6 +257,7 @@ namespace Program
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 picImage.Image = Image.FromFile(openFile.FileName);
+                url = openFile.FileName;
             }
         }
 

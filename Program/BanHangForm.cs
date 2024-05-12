@@ -405,7 +405,7 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = sanPham.anhSanPham,
+                Image = System.Drawing.Image.FromFile(sanPham.anh)
             };
 
             TextBox lbTenSP = new TextBox
@@ -918,7 +918,7 @@ namespace Program
             form.ShowDialog();
             dimForm.Close();
 
-            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).Image = QLSP.list[index].anhSanPham;
+            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtTacGia")).Text = QLSP.list[index].tacGia;
             ((TextBox)Utils.FindControl(panelToUpdate, "txtDichGia")).Text = QLSP.list[index].dichGia;
@@ -1095,11 +1095,13 @@ namespace Program
                     tieuDe = tieuDe_txt.Text,
                     moTa = moTa_txt.Text,
                     giamGia = int.Parse(giamGia_txt.Text),
-                    luocThich = 0
+                    luocThich = 0,
+                    anhBia = HeThong.URLImage(picCoverImage.Image)
                 };
 
                 foreach (var sanPham in QLSP.list)
                 {
+                    sanPham.anh = HeThong.URLImage(System.Drawing.Image.FromFile(sanPham.anh));
                     baiDang.Add(sanPham);
                 }
 
@@ -1150,6 +1152,7 @@ namespace Program
                 newPic.MouseLeave += new EventHandler(Leave_Image);
                 btnMainImage.Location = new Point(btnMainImage.Location.X + 90, btnMainImage.Location.Y);
                 ttCBPanel.Controls.Add(newPic);
+                
             }
 
         }
@@ -1222,7 +1225,7 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = color1,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = sanPham.anhSanPham,
+                Image = System.Drawing.Image.FromFile(sanPham.anh)
             };
 
             TextBox txtTenSP = new TextBox

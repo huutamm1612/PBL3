@@ -1308,11 +1308,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
             this.screen_Panel.Controls.Add(this.miniConTrolPanel);
             this.screen_Panel.Controls.Add(this.themSanPhamPanel);
             this.screen_Panel.Controls.Add(this.tatCaPanel);
             this.screen_Panel.Controls.Add(this.trangChuPanel);
+            this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
             this.screen_Panel.Location = new System.Drawing.Point(320, 60);
             this.screen_Panel.Name = "screen_Panel";
             this.screen_Panel.Size = new System.Drawing.Size(1072, 761);

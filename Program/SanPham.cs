@@ -9,7 +9,6 @@ namespace Program
 {
     public class SanPham
     {
-        public Image anhSanPham { get; set; }
         public string maSP { get; set; }
         public LoaiSanPham loaiSP { get; set; }
         public string maS { get; set; }
@@ -30,7 +29,6 @@ namespace Program
         public string anh { get; set; }
         public SanPham()
         {
-            anhSanPham = null;
             maSP = "";
             loaiSP = new LoaiSanPham();
             maS = "";
@@ -60,7 +58,6 @@ namespace Program
         {
             SanPham sanPham = new SanPham
             {
-                anhSanPham = this.anhSanPham,
                 maSP = this.maSP,
                 loaiSP = this.loaiSP,
                 maBD = this.maBD,

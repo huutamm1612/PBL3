@@ -1377,6 +1377,7 @@ namespace Program
             gioHangPanel.Visible = true;
             gioHangPanel.BringToFront();
             listSPTrongGHFLP.Controls.Clear();
+            listSPTrongGHFLP.Size = new Size(listSPTrongGHFLP.Width, 20);
 
             foreach(SanPham sanPham in khachHang.gioHang.list)
             {
