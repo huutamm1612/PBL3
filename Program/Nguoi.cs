@@ -13,7 +13,8 @@ namespace Program
         public string soDT { get; set; }
         public string email { get; set; }
         public DiaChi diaChi { get; set; }
-        public int gioiTinh { get; set; }
+        public int gioiTinh { get; set; } 
+        public string avt {  get; set; }
         public DateTime ngaySinh { get; set; }
 
         public abstract void capNhatDiaChi(DiaChi diaChiMoi);

@@ -185,6 +185,7 @@
             this.soTrang_Text.Size = new System.Drawing.Size(105, 21);
             this.soTrang_Text.TabIndex = 84;
             this.soTrang_Text.TextChanged += new System.EventHandler(this.soTrang_Text_TextChanged);
+            this.soTrang_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // SoTrang_Pic
             // 
@@ -206,6 +207,7 @@
             this.soLuong_Text.Size = new System.Drawing.Size(105, 21);
             this.soLuong_Text.TabIndex = 83;
             this.soLuong_Text.TextChanged += new System.EventHandler(this.soLuong_Text_TextChanged);
+            this.soLuong_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // SoLuong_Pic
             // 
@@ -241,6 +243,7 @@
             this.moTaSP_Text.Size = new System.Drawing.Size(1072, 163);
             this.moTaSP_Text.TabIndex = 85;
             this.moTaSP_Text.TextChanged += new System.EventHandler(this.moTaSP_Text_TextChanged);
+            this.moTaSP_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // moTa_Pic
             // 
@@ -290,6 +293,7 @@
             this.gia_Text.Size = new System.Drawing.Size(399, 21);
             this.gia_Text.TabIndex = 82;
             this.gia_Text.TextChanged += new System.EventHandler(this.gia_Text_TextChanged);
+            this.gia_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // Gia_Pic
             // 
@@ -339,6 +343,7 @@
             this.namXuatBan_Text.Size = new System.Drawing.Size(472, 21);
             this.namXuatBan_Text.TabIndex = 78;
             this.namXuatBan_Text.TextChanged += new System.EventHandler(this.namXuatBan_Text_TextChanged);
+            this.namXuatBan_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // Nam_Pic
             // 
@@ -386,6 +391,7 @@
             this.nhaXuatBan_Text.Size = new System.Drawing.Size(399, 21);
             this.nhaXuatBan_Text.TabIndex = 77;
             this.nhaXuatBan_Text.TextChanged += new System.EventHandler(this.nhaXuatBan_Text_TextChanged);
+            this.nhaXuatBan_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // NXB_Pic
             // 
@@ -429,6 +435,8 @@
             this.ngonNgu_CBBox.Name = "ngonNgu_CBBox";
             this.ngonNgu_CBBox.Size = new System.Drawing.Size(433, 28);
             this.ngonNgu_CBBox.TabIndex = 81;
+            this.ngonNgu_CBBox.SelectedIndexChanged += new System.EventHandler(this.ngonNgu_CBBox_SelectedIndexChanged);
+            this.ngonNgu_CBBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // textBox24
             // 
@@ -466,6 +474,7 @@
             this.tenDichGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenDichGia_Text.TabIndex = 76;
             this.tenDichGia_Text.TextChanged += new System.EventHandler(this.tenDichGia_Text_TextChanged);
+            this.tenDichGia_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // DichGia_Pic
             // 
@@ -499,6 +508,7 @@
             this.tenTacGia_Text.Size = new System.Drawing.Size(399, 21);
             this.tenTacGia_Text.TabIndex = 75;
             this.tenTacGia_Text.TextChanged += new System.EventHandler(this.tenTacGia_Text_TextChanged);
+            this.tenTacGia_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // TG_Pic
             // 
@@ -552,6 +562,8 @@
             this.loaiBia_CBBox.Name = "loaiBia_CBBox";
             this.loaiBia_CBBox.Size = new System.Drawing.Size(433, 28);
             this.loaiBia_CBBox.TabIndex = 80;
+            this.loaiBia_CBBox.SelectedIndexChanged += new System.EventHandler(this.loaiBia_CBBox_SelectedIndexChanged);
+            this.loaiBia_CBBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // textBox17
             // 
@@ -578,6 +590,8 @@
             this.theLoai_CBBox.Name = "theLoai_CBBox";
             this.theLoai_CBBox.Size = new System.Drawing.Size(433, 28);
             this.theLoai_CBBox.TabIndex = 79;
+            this.theLoai_CBBox.SelectedIndexChanged += new System.EventHandler(this.theLoai_CBBox_SelectedIndexChanged);
+            this.theLoai_CBBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // textBox16
             // 
@@ -615,6 +629,7 @@
             this.tenSP_Text.Size = new System.Drawing.Size(399, 21);
             this.tenSP_Text.TabIndex = 74;
             this.tenSP_Text.TextChanged += new System.EventHandler(this.tenSP_Text_TextChanged);
+            this.tenSP_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // SP_Pic
             // 
@@ -625,7 +640,6 @@
             this.SP_Pic.Size = new System.Drawing.Size(520, 40);
             this.SP_Pic.TabIndex = 82;
             this.SP_Pic.TabStop = false;
-            this.SP_Pic.Click += new System.EventHandler(this.SP_Pic_Click);
             // 
             // textBox13
             // 
@@ -662,6 +676,7 @@
             this.btnImage.Text = "Ảnh";
             this.btnImage.UseVisualStyleBackColor = false;
             this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            this.btnImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             // 
             // openFileDialog1
             // 
@@ -721,6 +736,7 @@
             this.Controls.Add(this.textBox13);
             this.Name = "SanPhamForm";
             this.Text = "SanPhamForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Esc_SanPham_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.SoTrang_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SoLuong_Pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moTa_Pic)).EndInit();

@@ -317,6 +317,10 @@ namespace Program
                     SwitchPanel(tatCaSanPhamPanel);
                     layTCSP();
                     break;
+                case "Hồ Sơ Shop":
+                    SwitchPanel(hoSoShop_Panel);
+                    hoSoShop();
+                    break;
             }
 
             if (currTab == trangChuButton)
@@ -1166,6 +1170,8 @@ namespace Program
             {
                 picCoverImage.Image = Utils.Resize(System.Drawing.Image.FromFile(openFile.FileName), picCoverImage.Size);
             }
+            picCoverImage.MouseHover += new EventHandler(Edit_Image);
+            picCoverImage.MouseLeave += new EventHandler(Leave_Image);
             btnCoverImage.Visible = false;
         }
 
@@ -1208,14 +1214,12 @@ namespace Program
 
         private Panel themCTSP(SanPham sanPham)
         {
-
-            Color color1 = Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Panel p = new Panel
             {
                 Location = new Point(0,0),
                 Size = chiTietSP_Panel.Size,
-                BackColor = color1
+                BackColor = Color.White
             };
             PictureBox picImage = new PictureBox
             {
@@ -1224,7 +1228,7 @@ namespace Program
                 Font = font1,
                 Name = "picImage",
                 BorderStyle = BorderStyle.FixedSingle,
-                BackColor = color1,
+                BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Image = System.Drawing.Image.FromFile(sanPham.anh)
             };
@@ -1236,7 +1240,7 @@ namespace Program
                 Size = txtTenTCSP.Size,
                 Name = "txtTenSP",
                 Font = font1,
-                BackColor = color1,
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
                 Multiline = true,
@@ -1248,9 +1252,9 @@ namespace Program
                 Location = txtDonGiaTCSP.Location,
                 Text = sanPham.gia.ToString(),
                 Size = txtDonGiaTCSP.Size,
-                Name = "txtTenSP",
+                Name = "txtDonGia",
                 Font = font1,
-                BackColor = color1,
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
                 ReadOnly = true,
@@ -1260,9 +1264,9 @@ namespace Program
                 Location = txtSoLuongTCSP.Location,
                 Text = sanPham.soLuong.ToString(),
                 Size = txtSoLuongTCSP.Size,
-                Name = "txtTenSP",
+                Name = "txtSoLuong",
                 Font = font1,
-                BackColor = color1,
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
                 ReadOnly = true,
@@ -1272,9 +1276,9 @@ namespace Program
                 Location = txtLuocBanTCSP.Location,
                 Text = sanPham.luocBan.ToString(),
                 Size = txtLuocBanTCSP.Size,
-                Name = "txtTenSP",
+                Name = "txtLuocBan",
                 Font = font1,
-                BackColor = color1,
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.None,
                 TabIndex = 0,
                 ReadOnly = true,
@@ -1315,6 +1319,11 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
+            ((PictureBox)Utils.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtDonGia")).Text = QLSP.list[index].gia.ToString();
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
+            ((TextBox)Utils.FindControl(panelToUpdate, "txtLuocBan")).Text = QLSP.list[index].luocBan.ToString();
         }
         private void ThemThongTinSanPham(SanPham sanPham)
         {
@@ -1324,14 +1333,97 @@ namespace Program
             flowLayoutPanel.Visible = true;
         }
 
-        private void txtSoLuongTCSP_TextChanged(object sender, EventArgs e)
+        private void hoSoShop()
         {
-
+            txtTenShop.Text = shop.ten;
+            txtEmailShop.Text = shop.email;
+            txtSdtShop.Text = shop.soDT;
+            if (shop.avt != "")
+                picLogo.Image = System.Drawing.Image.FromFile(shop.avt);
         }
 
-        private void txtLuocBanTCSP_TextChanged(object sender, EventArgs e)
+        private void btnEditShop_Click(object sender, EventArgs e)
         {
+            txtTenShop.ReadOnly = false;
+            txtTenShop.BackColor = Color.White;
+            picTenShop.BackColor = Color.White;
+            txtEmailShop.ReadOnly = false;
+            txtEmailShop.BackColor = Color.White;
+            picEmailShop.BackColor = Color.White;
+            txtSdtShop.ReadOnly = false;
+            txtSdtShop.BackColor = Color.White;
+            picSdtShop.BackColor = Color.White;
+            txtMoTaShop.ReadOnly = false;
+            txtMoTaShop.BackColor = Color.White;
+            picMotaShop.BackColor = Color.White;
+            if (shop.avt != "")
+            {
+                picLogo.Image = System.Drawing.Image.FromFile(shop.avt);
+            }
+            btnLuuShop.Visible = true;
+            btnThoatShop.Visible = true;
+            btnXemShop.Visible = false;
+            btnEditShop.Visible = false;
+            btnThemAnhShop.Visible = true;
+        }
 
+        private void btnLuuShop_Click(object sender, EventArgs e)
+        {
+            shop.ten = txtTenShop.Text;
+            shop.email = txtEmailShop.Text;
+            shop.soDT = txtSdtShop.Text;
+            shop.avt = HeThong.URLImage(System.Drawing.Image.FromFile(shop.avt));
+            HeThong.CapNhatThongTinCaNhan(shop, "Shop");
+            txtTenShop.ReadOnly = true;
+            txtTenShop.BackColor = Color.Gainsboro;
+            picTenShop.BackColor = Color.Gainsboro;
+            txtEmailShop.ReadOnly = true;
+            txtEmailShop.BackColor = Color.Gainsboro;
+            picEmailShop.BackColor = Color.Gainsboro;
+            txtSdtShop.ReadOnly = true;
+            txtSdtShop.BackColor = Color.Gainsboro;
+            picSdtShop.BackColor = Color.Gainsboro;
+            txtMoTaShop.ReadOnly = true;
+            txtMoTaShop.BackColor = Color.Gainsboro;
+            picMotaShop.BackColor = Color.Gainsboro;
+            btnLuuShop.Visible = false;
+            btnThoatShop.Visible = false;
+            btnXemShop.Visible = true;
+            btnEditShop.Visible = true;
+            btnThemAnhShop.Visible = false;
+        }
+        private void btnThemAnhShop_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picLogo.Image = Utils.Resize(System.Drawing.Image.FromFile(openFile.FileName), picLogo.Size);
+                shop.avt = openFile.FileName;
+            }
+            picLogo.Visible = true;
+        }
+
+        private void btnThoatShop_Click(object sender, EventArgs e)
+        {
+            txtTenShop.ReadOnly = true;
+            txtTenShop.BackColor = Color.Gainsboro;
+            picTenShop.BackColor = Color.Gainsboro;
+            txtEmailShop.ReadOnly = true;
+            txtEmailShop.BackColor = Color.Gainsboro;
+            picEmailShop.BackColor = Color.Gainsboro;
+            txtSdtShop.ReadOnly = true;
+            txtSdtShop.BackColor = Color.Gainsboro;
+            picSdtShop.BackColor = Color.Gainsboro;
+            txtMoTaShop.ReadOnly = true;
+            txtMoTaShop.BackColor = Color.Gainsboro;
+            picMotaShop.BackColor = Color.Gainsboro;
+            btnLuuShop.Visible = false;
+            btnThoatShop.Visible = false;
+            btnXemShop.Visible = true;
+            btnEditShop.Visible = true;
+            btnThemAnhShop.Visible = false;
         }
     }
 }

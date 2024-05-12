@@ -226,6 +226,7 @@
             this.cauTraLoi_QML_Box.Name = "cauTraLoi_QML_Box";
             this.cauTraLoi_QML_Box.Size = new System.Drawing.Size(392, 21);
             this.cauTraLoi_QML_Box.TabIndex = 39;
+            this.cauTraLoi_QML_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.matKhau1_QMK_Box_KeyDown);
             // 
             // cauHoiQMK_CB
             // 
@@ -235,6 +236,7 @@
             this.cauHoiQMK_CB.Name = "cauHoiQMK_CB";
             this.cauHoiQMK_CB.Size = new System.Drawing.Size(414, 30);
             this.cauHoiQMK_CB.TabIndex = 38;
+            this.cauHoiQMK_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.matKhau1_QMK_Box_KeyDown);
             // 
             // matKhau1_QMK_Box
             // 
@@ -276,6 +278,7 @@
             this.taiKhoan_QMK_Box.Name = "taiKhoan_QMK_Box";
             this.taiKhoan_QMK_Box.Size = new System.Drawing.Size(394, 21);
             this.taiKhoan_QMK_Box.TabIndex = 37;
+            this.taiKhoan_QMK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.matKhau1_QMK_Box_KeyDown);
             // 
             // textBox5
             // 
@@ -753,6 +756,7 @@
             this.matKhau1_DK_Box.TabIndex = 2;
             this.matKhau1_DK_Box.UseSystemPasswordChar = true;
             this.matKhau1_DK_Box.TextChanged += new System.EventHandler(this.matKhau1_DK_Box_TextChanged);
+            this.matKhau1_DK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // taiKhoan_DK_Box
             // 
@@ -766,6 +770,7 @@
             this.taiKhoan_DK_Box.Size = new System.Drawing.Size(322, 21);
             this.taiKhoan_DK_Box.TabIndex = 0;
             this.taiKhoan_DK_Box.TextChanged += new System.EventHandler(this.taiKhoan_DK_Box_TextChanged);
+            this.taiKhoan_DK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // contextMenuStrip1
             // 

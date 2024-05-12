@@ -123,6 +123,7 @@
             this.PX_ComboBox.Size = new System.Drawing.Size(511, 28);
             this.PX_ComboBox.TabIndex = 25;
             this.PX_ComboBox.SelectedIndexChanged += new System.EventHandler(this.PX_ComboBox_SelectedIndexChanged);
+            this.PX_ComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // label22
             // 
@@ -149,6 +150,7 @@
             this.QH_ComboBox.Size = new System.Drawing.Size(239, 28);
             this.QH_ComboBox.TabIndex = 24;
             this.QH_ComboBox.SelectedIndexChanged += new System.EventHandler(this.QH_ComboBox_SelectedIndexChanged);
+            this.QH_ComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // label21
             // 
@@ -175,6 +177,7 @@
             this.TTP_ComboBox.TabIndex = 23;
             this.TTP_ComboBox.Tag = "";
             this.TTP_ComboBox.SelectedIndexChanged += new System.EventHandler(this.TTP_ComboBox_SelectedIndexChanged);
+            this.TTP_ComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // label20
             // 
@@ -196,7 +199,7 @@
             this.diaChiCuThe_Box.Name = "diaChiCuThe_Box";
             this.diaChiCuThe_Box.Size = new System.Drawing.Size(482, 19);
             this.diaChiCuThe_Box.TabIndex = 26;
-            this.diaChiCuThe_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diaChiCuThe_Box_KeyDown);
+            this.diaChiCuThe_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // pictureBox11
             // 
@@ -239,6 +242,7 @@
             this.soDienThoai_Box.Size = new System.Drawing.Size(207, 19);
             this.soDienThoai_Box.TabIndex = 22;
             this.soDienThoai_Box.Text = "...";
+            this.soDienThoai_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // pictureBox10
             // 
@@ -257,6 +261,7 @@
             this.hoVaTen_Box.Name = "hoVaTen_Box";
             this.hoVaTen_Box.Size = new System.Drawing.Size(207, 19);
             this.hoVaTen_Box.TabIndex = 21;
+            this.hoVaTen_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             // 
             // pictureBox9
             // 
@@ -304,6 +309,7 @@
             this.Controls.Add(this.txtDiaChi);
             this.Name = "DiaChiForm";
             this.Text = "DiaChiForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Thoat_ESC);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
