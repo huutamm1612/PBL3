@@ -961,7 +961,6 @@ namespace Program
 
             PictureBox image = new PictureBox
             {
-                //Image = Utils.Resize(System.Drawing.Image.FromFile(imageRoot + "img1.png"), new Size(206, 206)),
                 Image = Utils.Resize(System.Drawing.Image.FromFile(baiDang.anhBia), new Size(206, 206)),
                 BackColor = Color.White,
                 Size = new Size(206, 206),
