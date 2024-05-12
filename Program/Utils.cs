@@ -61,7 +61,7 @@ namespace Program
 
         public static int GiamGia(int gia, int giam)
         {
-            return gia - gia * giam / 100;
+            return (int)(gia - gia * (giam / 100.0));
         }
 
         public static void FitTextBox(TextBox textBox, int w = 10, int h = 10)
@@ -79,10 +79,9 @@ namespace Program
         public static string SetGia(int gia)
         {
             string s = "";
-
-            while(gia / 1000 != 0)
+            while (gia / 1000 != 0)
             {
-                s += ".000";
+                s = "." + (gia % 1000).ToString("D3") + s;
                 gia /= 1000;
             }
 

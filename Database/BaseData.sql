@@ -112,13 +112,3 @@ UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img
 UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img27.png' WHERE maSP = '1100000013'
 UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img28.png' WHERE maSP = '1100000014'
 UPDATE SanPham SET anh = 'D:\_DUT\Nam 2(2023 - 2024)\PBL3\Code\dotnet\Images\img29.png' WHERE maSP = '1100000015'
-
-select * from LoaiSanPham
-
-select * from SanPham
-select * from SanPham_BaiDang
-
-delete from SanPham_BaiDang where maBD = '1100000000'
-delete from SanPham where maSP like '11%'
-
-select * from GioHang

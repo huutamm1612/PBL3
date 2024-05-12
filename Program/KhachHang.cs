@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -132,6 +133,13 @@ namespace Program
             gioHang.RemoveRange(list);
             HeThong.XoaSPKhoiGioHang(maSo, list);
             Utils.Sort(gioHang.list, 0, gioHang.list.Count - 1, GioHang.CompareNgayThem, GioHang.EqualNgayThem);
+        }
+
+        public void xoaKhoiGioHang(int index)
+        {
+            HeThong.XoaSPKhoiGioHang(maSo, gioHang.list[index].maSP);
+            gioHang.RemoveAt(index);
+
         }
 
         public SanPham searchSanPhamTrongGioHang(string tenSanPham)

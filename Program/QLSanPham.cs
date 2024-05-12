@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program
 {
@@ -68,8 +69,13 @@ namespace Program
         public void Remove(object item)
         {
             foreach (SanPham i in list)
+            {
                 if (i.Equals(item))
+                {
                     list.Remove(i);
+                    return;
+                }
+            }
         }
 
         public void RemoveAt(int index)
@@ -99,7 +105,10 @@ namespace Program
             for (int index = 0; index < list.Count; index++)
             {
                 if (SanPham.EqualMaSP(list[index], sanPham))
+                {
                     list[index] = sanPham;
+                    return;
+                }
             }
         }
 
@@ -108,13 +117,16 @@ namespace Program
             return list.ToArray();
         }
 
-        public int tinhTongTien()
+        public int tinhTongTien(bool isGiamGia = true)
         {
             int tongTien = 0;
 
             foreach(SanPham sanPham in list)
             {
-                tongTien += (int)(sanPham.gia * sanPham.soLuong * HeThong.GetGiamGia(sanPham.maSP));
+                if (isGiamGia)
+                    tongTien += Utils.GiamGia(sanPham.gia, HeThong.GetGiamGia(sanPham.maSP)) * sanPham.soLuong;
+                else
+                    tongTien += sanPham.soLuong * sanPham.gia;
             }
 
             return tongTien;
@@ -137,6 +149,32 @@ namespace Program
             }
 
             return n;
+        }
+        
+        public List<QLSanPham> phanRa()
+        {
+            List<QLSanPham> listQLSP = new List<QLSanPham> ();
+            for (int i = 0; i < soLuongShop(); i++)
+                listQLSP.Add(new QLSanPham());
+
+            foreach (SanPham item in list)
+            {
+                foreach(QLSanPham qLSanPham in listQLSP)
+                {
+                    if (qLSanPham.list.Count == 0)
+                    {
+                        qLSanPham.Add(item);
+                        break;
+                    }
+                    else if (SanPham.EqualMaS(qLSanPham.list[0], item))
+                    {
+                        qLSanPham.Add(item);
+                        break;
+                    }
+                }
+            }
+
+            return listQLSP;
         }
     }
 }

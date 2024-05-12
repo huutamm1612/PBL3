@@ -604,6 +604,23 @@ namespace Program
             return result;
         }
 
+        public static string GetTenShop(string maSP)
+        {
+            string tenShop = "";
+
+            string query = $"SELECT S.ten FROM Shop S INNER JOIN BaiDang_Shop BDS ON BDS.maS = S.maS INNER JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BDS.maBD WHERE maSP = '{maSP}'";
+
+            SqlDataReader reader = ExecuteQuery(query);
+            if (reader.Read())
+            {
+                tenShop = reader.GetString(0);
+            }
+
+            reader.Close();
+
+            return tenShop;
+        }
+
         public static Shop LoadShopInKhachHang(string maS)
         {
             string query = $"SELECT * FROM Shop WHERE maS = {maS}";
