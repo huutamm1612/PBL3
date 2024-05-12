@@ -434,7 +434,7 @@ namespace Program
             }
             else
             {
-                query = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}' WHERE {loaiMa} = '{nguoi.maSo}'";
+                query = $"UPDATE {bang} SET ten = N'{nguoi.ten}', soDT = '{nguoi.soDT}', email = '{nguoi.email}', avt = '{nguoi.avt}' WHERE {loaiMa} = '{nguoi.maSo}'";
             }
             
             ExecuteNonQuery(query);
