@@ -86,6 +86,11 @@ namespace Program
             this.ngayThem = DateTime.Now;
         }
 
+        public override string ToString()
+        {
+            return ten + "\r\nTác giả: " + tacGia + "\r\nNgười dịch: " + dichGia + "\r\nNhà xuất bản: " + nhaXuatBan + "\r\nNăm xuất bản: " + namXuatBan + "\r\nNgôn ngữ: " + ngonNgu + "\r\nLoại bìa: " + loaiBia + "\r\nMô tả sản phẩm: " + moTa + "\r\n";
+        }
+
         public static bool CompareGia(object o1, object o2) => ((SanPham)o1).gia < ((SanPham)o2).gia;
         public static bool CompareTen(object o1, object o2) => String.Compare(((SanPham)o1).ten, ((SanPham)o2).ten) < 0;
         public static bool CompareSoLuong(object o1, object o2) => ((SanPham) o1).soLuong < ((SanPham) o2).soLuong;

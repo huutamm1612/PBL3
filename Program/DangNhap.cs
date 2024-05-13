@@ -83,7 +83,7 @@ namespace Program
         }
 
         private void dangNhap_DN_Button_Click(object sender, EventArgs e)
-        {
+        { 
             if(taiKhoan_DN_Box.Text == "" || matKhau_DN_Box.Text == "")
             {
                 Graphics g = LoginPanel.CreateGraphics();
