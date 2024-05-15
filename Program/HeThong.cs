@@ -106,7 +106,7 @@ namespace Program
 
             reader.Read();
             string ma = reader.GetString(0);
-            string maMoi = (int.Parse(ma) + 1).ToString("D10");
+            string maMoi = (long.Parse(ma) + 1).ToString("D10");
             reader.Close();
 
             query = $"UPDATE maHienTai SET {loaiMa} = '{maMoi}'";

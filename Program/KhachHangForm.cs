@@ -25,9 +25,13 @@ namespace Program
         private QLSanPham qlSanPham = null;
         private KhachHang khachHang = null;
         private QLBaiDang qlBaiDang = null;
+        private QLBaiDang qlBaiDang1 = null;
         private BaiDang currBaiDang = null;
         private SanPham currSanPham = null;
+        private DiaChi currDiaChi = null;
         private Shop currShop = null;
+
+        private delegate void GoToBaiDang(object sender, EventArgs e);
 
         public KhachHangForm(bool nonStart = true)
         {
@@ -92,7 +96,7 @@ namespace Program
 
         private void RefreshCartButton()
         {
-            if(khachHang == null)
+            if (khachHang == null)
             {
                 cartButton.Text = "";
                 return;
@@ -112,7 +116,7 @@ namespace Program
         private void setHeaderPanel()
         {
             RefreshCartButton();
-            if(user != null)
+            if (user != null)
             {
                 userProfile_Button.Text = user.taiKhoan + "◀";
             }
@@ -178,6 +182,7 @@ namespace Program
 
         private void home_Button_Click(object sender, EventArgs e)
         {
+            getBaiDang();
             UserPanel.Visible = false;
             BaiDangPanel.Visible = false;
             HomePanel.Visible = true;
@@ -189,9 +194,11 @@ namespace Program
         {
             refreshUserProfile_Panel();
             HomePanel.Visible = false;
+            BaiDangPanel.Visible = false;
             UserPanel.Visible = true;
             profilePanel.Visible = true;
             profilePanel.BringToFront();
+            profilePanel.AutoScrollPosition = new Point(0, 0);
         }
 
         private void suaTen_Button_Click(object sender, EventArgs e)
@@ -369,7 +376,6 @@ namespace Program
             {
                 khachHang.themDiaChi(diaChi);
             }
-            veLai_DiaChi();
         }
 
         public void capNhatDiaChi(DiaChi diaChi)
@@ -390,7 +396,6 @@ namespace Program
                 }
             }
             HeThong.CapNhatDiaChi(diaChi);
-            veLai_DiaChi();
         }
 
         private void themDiaChi_Button_Click(object sender, EventArgs e)
@@ -400,6 +405,7 @@ namespace Program
             DiaChiForm form = new DiaChiForm(themDiaChi);
             form.ShowDialog();
             dimForm.Close();
+            veLai_DiaChi();
         }
 
         private void diaChiUser_Button_Click(object sender, EventArgs e)
@@ -587,6 +593,7 @@ namespace Program
             DiaChiForm form = new DiaChiForm(capNhatDiaChi, diaChi);
             form.ShowDialog();
             dimForm.Close();
+            veLai_DiaChi();
         }
 
         private void user_DangXuat_Button_Click(object sender, EventArgs e)
@@ -812,9 +819,9 @@ namespace Program
             return 1;
         }
 
-        private void ChuyenTrangBaiDang(QLBaiDang qlbd, FlowLayoutPanel flpBaiDang, FlowLayoutPanel flpPage)
+        private void ChuyenTrangBaiDang(QLBaiDang qlbd, FlowLayoutPanel flpBaiDang, FlowLayoutPanel flpPage, GoToBaiDang func)
         {
-            Panel titlePanel = flpBaiDang.Controls[0] as Panel;
+            Control titlePanel = flpBaiDang.Controls[0];
             Panel pagePanel = flpBaiDang.Controls[flpBaiDang.Controls.Count - 1] as Panel;
 
             flpBaiDang.Controls.Clear();
@@ -826,12 +833,13 @@ namespace Program
             {
                 if (i == qlbd.list.Count)
                     break;
-                flpBaiDang.Controls.Add(drawBaiDang(qlbd.list[i]));
+                flpBaiDang.Controls.Add(drawBaiDang(qlbd.list[i], func));
                 tmp++;
             }
 
             flpBaiDang.Size = new Size(1335, 160 + 316 * ((tmp - 1) / 6 + 1));
             flpBaiDang.Controls.Add(pagePanel);
+            flpBaiDang.Controls.SetChildIndex(pagePanel, flpBaiDang.Controls.Count - 1);
         }
 
         private void getBaiDang()
@@ -846,10 +854,10 @@ namespace Program
             HomePanel.AutoScrollPosition = new Point(0, 0);
 
             SetPageFLP(PageListFLP, 1, (qlBaiDang.list.Count - 1) / 24 + 1);
-            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP);
+            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP, DenBaiDangTuHome);
         }
 
-        private void GoToBaiDang(object sender, EventArgs e)
+        private void DenBaiDangTuHome(object sender, EventArgs e)
         {
             Control obj = sender as Control;
             Panel panel = obj.Parent.Parent as Panel;
@@ -861,10 +869,9 @@ namespace Program
             BaiDangPanel.Visible = true;
             BaiDangPanel.BringToFront();
             RefreshBaiDangPabel();
-            HomePanel.Visible = false;
         }
 
-        private Panel drawBaiDang(BaiDang baiDang)
+        private Panel drawBaiDang(BaiDang baiDang, GoToBaiDang func)
         {
 
             Panel backPanel = new Panel
@@ -898,11 +905,11 @@ namespace Program
                 Cursor = Cursors.Hand,
                 BorderStyle = BorderStyle.None,
                 SizeMode = PictureBoxSizeMode.Zoom
-                
+
             };
             image.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
             image.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            image.Click += new EventHandler(GoToBaiDang);
+            image.Click += new EventHandler(func);
             parentPanel.Controls.Add(image);
 
             TextBox title = new TextBox
@@ -921,7 +928,7 @@ namespace Program
             };
             title.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
             title.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            title.Click += new EventHandler(GoToBaiDang);
+            title.Click += new EventHandler(func);
             parentPanel.Controls.Add(title);
 
             TextBox price = new TextBox
@@ -939,7 +946,7 @@ namespace Program
             };
             price.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
             price.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            price.Click += new EventHandler(GoToBaiDang);
+            price.Click += new EventHandler(func);
             parentPanel.Controls.Add(price);
 
             TextBox sold = new TextBox
@@ -958,7 +965,7 @@ namespace Program
             };
             sold.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
             sold.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            sold.Click += new EventHandler(GoToBaiDang);
+            sold.Click += new EventHandler(func);
             parentPanel.Controls.Add(sold);
 
             TextBox discount = new TextBox
@@ -977,7 +984,7 @@ namespace Program
             };
             discount.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
             discount.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            discount.Click += new EventHandler(GoToBaiDang);
+            discount.Click += new EventHandler(func);
             parentPanel.Controls.Add(discount);
 
             return backPanel;
@@ -991,7 +998,7 @@ namespace Program
 
             HomePanel.AutoScrollPosition = new Point(39, 790);
             SetPageFLP(PageListFLP, n + 1, (qlBaiDang.list.Count - 1) / 24 + 1);
-            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP);
+            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP, DenBaiDangTuHome);
         }
 
         private void prevPageButton_Click(object sender, EventArgs e)
@@ -1002,7 +1009,7 @@ namespace Program
 
             HomePanel.AutoScrollPosition = new Point(39, 790);
             SetPageFLP(PageListFLP, n - 1, (qlBaiDang.list.Count - 1) / 24 + 1);
-            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP);
+            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP, DenBaiDangTuHome);
         }
 
         private void increaseButton_Click(object sender, EventArgs e)
@@ -1033,9 +1040,14 @@ namespace Program
 
         private void RefreshBaiDangPabel()
         {
-            if(khachHang != null)
+            BaiDangPanel.Visible = false;
+            waittingForm.Visible = true;
+            waittingForm.BringToFront();
+            if (khachHang != null)
             {
-                vanChuyenTxt.Text = HeThong.MoTaDiaChi(khachHang.diaChi.maPX);
+                currDiaChi = khachHang.diaChi;
+                vanChuyenTxt.Text = HeThong.MoTaDiaChi(currDiaChi.maPX);
+                Utils.FitTextBox(vanChuyenTxt);
 
                 if (khachHang.listFollow.Contains(currShop.maSo))
                 {
@@ -1059,6 +1071,7 @@ namespace Program
             {
 
             }
+            BaiDangPanel.AutoScrollPosition = new Point(0, 0);
             currImage.Image = Utils.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), new Size(450, 450));
             daBanTxt.Text = "Đã bán " + currBaiDang.luocBan().ToString();
             titleTxt.Text = currBaiDang.tieuDe;
@@ -1101,7 +1114,7 @@ namespace Program
                     ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
                 };
 
-                if(item.soLuong == 0)
+                if (item.soLuong == 0)
                 {
                     button.Enabled = false;
                     button.Cursor = Cursors.No;
@@ -1110,9 +1123,17 @@ namespace Program
                 }
                 else
                 {
+                    button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                    button.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                    button.FlatAppearance.BorderColor = Color.LightGray;
                     button.Click += new EventHandler(SanPham_Click);
                     button.MouseHover += new EventHandler(SanPham_MouseHover);
                     button.MouseLeave += new EventHandler(SanPham_MouseLeave);
+                }
+                if (currSanPham != null && SanPham.EqualMaSP(item, currSanPham))
+                {
+                    currSanPham = null;
+                    SanPham_Click(button, null);
                 }
 
                 listItemFLP.Controls.Add(button);
@@ -1132,7 +1153,6 @@ namespace Program
             nSanPhamTxt.Text = currShop.listBaiDang.SoLuongSanPham().ToString();
             nTheoDoiTxt.Text = currShop.listFollower.Count.ToString();
 
-
             try
             {
                 shopAvtInBaiDang.Image = Utils.Resize(System.Drawing.Image.FromFile(currShop.avt), shopAvtInBaiDang.Size);
@@ -1142,36 +1162,76 @@ namespace Program
                 shopAvtInBaiDang.Image = Utils.Resize(Resources.noPicture, shopAvtInBaiDang.Size);
             }
 
+            qlBaiDang = new QLBaiDang();
+            spKhacCuaShopFLP.Controls.Clear();
+            foreach (BaiDang baiDang in currShop.listBaiDang.list)
+            {
+                if (!BaiDang.EqualMaBD(baiDang, currBaiDang))
+                {
+                    spKhacCuaShopFLP.Controls.Add(drawBaiDang(baiDang, DenBaiDangTuBDShop));
+                    qlBaiDang.Add(baiDang);
+                }
+            }
+            qlBaiDang1 = HeThong.GetBaiDang();
+            SetPageFLP(PageListBDFLP, 1, (qlBaiDang1.list.Count - 1) / 24 + 1);
+            ChuyenTrangBaiDang(qlBaiDang1, coTheBanCungThichFLP, PageListBDFLP, DenBaiDangTuBD);
+
             int height = 0;
-            foreach(Control control in baiDangFLP.Controls)
+            foreach (Control control in baiDangFLP.Controls)
             {
                 height += control.Height + 20;
             }
             baiDangFLP.Size = new Size(baiDangFLP.Width, height);
+
+            BaiDangPanel.Visible = true;
+            BaiDangPanel.BringToFront();
+            waittingForm.Visible = false;
+        }
+
+        private void DenBaiDangTuBD(object sender, EventArgs e)
+        {
+            int index = coTheBanCungThichFLP.Controls.IndexOf(((Control)sender).Parent.Parent) - 1;
+            currBaiDang = qlBaiDang1.list[index];
+            currShop = HeThong.LoadShopInKhachHang(currBaiDang.maS);
+            currSanPham = null;
+            RefreshBaiDangPabel();
+        }
+
+        private void DenBaiDangTuBDShop(object sender, EventArgs e)
+        {
+            int index = spKhacCuaShopFLP.Controls.IndexOf(((Control)sender).Parent.Parent);
+            currBaiDang = qlBaiDang.list[index];
+            currSanPham = null;
+            RefreshBaiDangPabel();
         }
 
         public void SanPham_MouseHover(object sender, EventArgs e)
         {
             Button obj = sender as Button;
-            foreach (SanPham item in currBaiDang.list)
-            {
-                if (item.ten == obj.Text)
-                {
-                    currImage.Image = Utils.Resize(System.Drawing.Image.FromFile(item.anh), new Size(450, 450));
-                    break;
-                }
-            }
+            int index = listItemFLP.Controls.IndexOf(obj);
+
+            currImage.Image = Utils.Resize(System.Drawing.Image.FromFile(currBaiDang.list[index].anh), new Size(450, 450));
+            obj.FlatAppearance.BorderColor = Color.OrangeRed;
+            obj.ForeColor = Color.OrangeRed;
         }
 
         public void SanPham_MouseLeave(object sender, EventArgs e)
         {
-            if(currSanPham != null)
+            Button obj = sender as Button;
+            if (currSanPham != null)
             {
                 currImage.Image = Utils.Resize(System.Drawing.Image.FromFile(currSanPham.anh), new Size(450, 450));
+                if (currSanPham.ten != obj.Text)
+                {
+                    obj.FlatAppearance.BorderColor = Color.LightGray;
+                    obj.ForeColor = Color.Black;
+                }
             }
             else
             {
                 currImage.Image = Utils.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), new Size(450, 450));
+                obj.FlatAppearance.BorderColor = Color.LightGray;
+                obj.ForeColor = Color.Black;
             }
         }
 
@@ -1183,7 +1243,7 @@ namespace Program
             {
                 if (button.Enabled == false)
                     continue;
-                button.FlatAppearance.BorderColor = Color.Black;
+                button.FlatAppearance.BorderColor = Color.LightGray;
                 button.ForeColor = Color.Black;
             }
 
@@ -1365,28 +1425,36 @@ namespace Program
 
         private void cartButton_Click(object sender, EventArgs e)
         {
-            if(khachHang == null)
+            while ((khachHang == null))
             {
                 GoToLoginForm();
                 setHeaderPanel();
                 Show();
             }
 
+            waittingForm.Visible = true;
+            waittingForm.BringToFront();
+
+            currDiaChi = khachHang.diaChi;
             qlSanPham = new QLSanPham();
-            gioHangPanel.Visible = true;
-            gioHangPanel.BringToFront();
             listSPTrongGHFLP.Controls.Clear();
             listSPTrongGHFLP.Size = new Size(listSPTrongGHFLP.Width, 20);
             chooseAllButton.Checked = false;
 
-            foreach(SanPham sanPham in khachHang.gioHang.list)
+            foreach (SanPham sanPham in khachHang.gioHang.list)
             {
-                listSPTrongGHFLP.Size = new Size(listSPTrongGHFLP.Width, listSPTrongGHFLP.Height + spPanel.Height);
                 listSPTrongGHFLP.Controls.Add(DrawSPTrongGioHang(sanPham));
-                panel13.Location = new Point(panel13.Location.X, panel13.Location.Y + spPanel.Height);
             }
 
-            if(panel13.Top < 596)
+            int height = 0;
+            foreach (Control control in listSPTrongGHFLP.Controls)
+            {
+                height += control.Height;
+            }
+            listSPTrongGHFLP.Size = new Size(listSPTrongGHFLP.Width, 20 + height);
+            panel13.Location = new Point(panel13.Location.X, listSPTrongGHFLP.Bottom + 10);
+
+            if (panel13.Top < 596)
             {
                 noiDungPanel.Top = panel13.Top;
             }
@@ -1394,6 +1462,11 @@ namespace Program
             {
                 noiDungPanel.Top = 596;
             }
+
+            gioHangPanel.AutoScrollPosition = new Point(0, 0);
+            gioHangPanel.Visible = true;
+            gioHangPanel.BringToFront();
+            waittingForm.Visible = false;
         }
 
         private void DrawPanelBorder(object sender, PaintEventArgs e)
@@ -1404,6 +1477,16 @@ namespace Program
             {
                 e.Graphics.DrawRectangle(pen, new Rectangle(-1, -1, panel.Width + 2, panel.Height));
             }
+        }
+
+        private void DenBaiDangTuGioHang (object sender, EventArgs e)
+        {
+            int index = listSPTrongGHFLP.Controls.IndexOf(((Control)sender).Parent);
+            currBaiDang = HeThong.LoadBaiDang(khachHang.gioHang.list[index].maBD);
+            currShop = HeThong.LoadShopInKhachHang(currBaiDang.maS);
+            currSanPham = khachHang.gioHang.list[index];
+            gioHangPanel.Visible = false;
+            RefreshBaiDangPabel();
         }
 
         private Panel DrawSPTrongGioHang(SanPham sanPham)
@@ -1439,8 +1522,10 @@ namespace Program
                 Image = Utils.Resize(System.Drawing.Image.FromFile(sanPham.anh), pictureBox9.Size),
                 BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.Zoom,
+                Cursor = Cursors.Hand,
                 Parent = panel
             };
+            pictureBox.Click += DenBaiDangTuGioHang;
             panel.Controls.Add(pictureBox);
 
             TextBox tenSP = new TextBox
@@ -1453,9 +1538,11 @@ namespace Program
                 Location = textBox15.Location,
                 Font = textBox15.Font,
                 BorderStyle = BorderStyle.None,
+                Cursor = Cursors.Hand,
                 ReadOnly = true,
                 Parent = panel
             };
+            tenSP.Click += DenBaiDangTuGioHang;
             panel.Controls.Add(tenSP);
 
             TextBox giaGoc = new TextBox
@@ -1696,7 +1783,6 @@ namespace Program
 
         private void chooseAllButton_CheckedChanged(object sender, EventArgs e)
         {
-            
             foreach(Panel panel in listSPTrongGHFLP.Controls)
             {
                 ((CheckBox)Utils.FindControl(panel, "ChoseCheckBox")).Checked = chooseAllButton.Checked;
@@ -1943,13 +2029,10 @@ namespace Program
         {
             if(qlSanPham.list.Count > 0)
             {
-                thanhToanPanel.Visible = true;
-                thanhToanPanel.BringToFront();
-
                 xuHienCoTxt.Text = $"Hiện có {Utils.SetGia(khachHang.xu)} xu";
 
-                diaChiNhanHangTxt.Text = $"{khachHang.diaChi.ten} | {khachHang.diaChi.soDT}   |   {khachHang.diaChi.diaChiCuThe}, {HeThong.MoTaDiaChi(khachHang.diaChi.maPX)}";
-
+                diaChiNhanHangTxt.Text = $"{currDiaChi.ten} | {currDiaChi.soDT}   |   {currDiaChi.diaChiCuThe}, {HeThong.MoTaDiaChi(currDiaChi.maPX)}";
+                Utils.FitTextBox(diaChiNhanHangTxt);
                 List<QLSanPham> listQLSP = qlSanPham.phanRa();
 
                 listDonHangFLP.Controls.Clear();
@@ -1958,9 +2041,11 @@ namespace Program
                     listDonHangFLP.Controls.Add(DrawFLPDonHang(qlSP));
                 }
 
+                int phiVanChuyen = 30000 * listQLSP.Count;
                 int tongTien = qlSanPham.tinhTongTien();
                 tongTienHangTxt.Text = "₫" + Utils.SetGia(tongTien);
-                phiVanChuyenTxt.Text = "₫" + "0";
+                phiVanChuyenTxt.Text = "₫" + Utils.SetGia(phiVanChuyen);
+                tongTien += phiVanChuyen;
                 if (dungXuCB.Checked)
                 {
                     daDungXuTxt.Text = "₫" + Utils.SetGia(khachHang.xu);
@@ -1976,10 +2061,27 @@ namespace Program
                     height += control.Height + 20;
                 }
                 listDonHangFLP.Size = new Size(listDonHangFLP.Width, height);
-                
-            
+
+
+                thanhToanPanel.Visible = true;
+                thanhToanPanel.AutoScrollPosition = new Point(0, 0);
+                thanhToanPanel.BringToFront();
             }
         }
+
+        private void chonPTTT_Click(object sender, EventArgs e)
+        {
+            foreach(Button button in listPTTTFLP.Controls)
+            {
+                button.FlatAppearance.BorderColor = Color.DarkGray;
+                button.ForeColor = Color.Black;
+            }
+
+            Button obj = sender as Button;
+            obj.FlatAppearance.BorderColor = Color.OrangeRed;
+            obj.ForeColor = Color.OrangeRed;
+        }
+
         private void Enter_Luu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1987,6 +2089,7 @@ namespace Program
                 luu_UP_Button_Click(sender, e);
             }
         }
+
         private void Enter_DoiMK_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -2004,6 +2107,40 @@ namespace Program
                 setHeaderPanel();
                 Show();
             }
+
+            if(currSanPham != null)
+            {
+                qlSanPham = new QLSanPham();
+                qlSanPham.Add(currSanPham.Clone());
+                qlSanPham.list[0].soLuong = int.Parse(soLuongTxt.Text);
+                muaHangButton_Click(sender, e);
+            }
+        }
+
+        public void ThayDoiDiaChiGiaoHang(DiaChi diaChi)
+        {
+            currDiaChi = diaChi;
+        }
+
+        private void DCNhanHangButton_Click(object sender, EventArgs e)
+        {
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            DiaChiForm form = new DiaChiForm(themDiaChi, ThayDoiDiaChiGiaoHang, khachHang.diaChi, khachHang.listDiaChi.ToArray());
+            form.ShowDialog();
+            dimForm.Close();
+            TextBox textBox = ((Control)sender).Parent.Controls[0] as TextBox;
+
+            if (textBox.Name == "vanChuyenTxt")
+                textBox.Text = HeThong.MoTaDiaChi(currDiaChi.maPX);
+            else
+                textBox.Text = currDiaChi.ToString();
+
+            Utils.FitTextBox(textBox);
+        }
+
+        private void datHangButton_Click(object sender, EventArgs e)
+        {
         }
     }
 }

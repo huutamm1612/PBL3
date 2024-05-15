@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program
 {
@@ -43,39 +44,21 @@ namespace Program
         public List<DonHang> phanRaDonHang(int n)
         {
             List<DonHang> listDonHang = new List<DonHang>();
-
-            for(int i = 0; i < n; i++)
+            foreach(QLSanPham qlSP in phanRa())
             {
                 listDonHang.Add(new DonHang
                 {
-                    list = new List<SanPham>(),
+                    list = qlSP.list,
                     maDH = HeThong.MaMoi("maDH"),
                     maKH = maDH,
                     tinhTrang = tinhTrang,
                     ptThanhToan = ptThanhToan,
-                    tongTien = 0,
+                    tongTien = qlSP.tinhTongTien() + 30000,
                     diaChi = diaChi,
-                    xu = (int)(xu/n),
+                    xu = xu / n,
                     ngayDatHang = ngayDatHang,
                 });
             }
-
-            string mas = list[0].maS;
-            int j = 0;
-
-            foreach(SanPham sanPham in list)
-            {
-                if(!String.Equals(mas, sanPham.maS))
-                {
-                    j++;
-                    mas = sanPham.maS;
-                }
-
-                listDonHang[j].Add(sanPham);
-            }
-
-            foreach(DonHang donHang in listDonHang)
-                donHang.tongTien = donHang.tinhTongTien();
 
             return listDonHang;
         }
@@ -97,8 +80,8 @@ namespace Program
                 listDonHang.AddRange(phanRaDonHang(n));
             }
 
-            foreach(DonHang donHang in listDonHang) 
-                HeThong.DatHang(donHang);
+            /*foreach(DonHang donHang in listDonHang) 
+                HeThong.DatHang(donHang);*/
 
             return listDonHang.ToArray();
         }
