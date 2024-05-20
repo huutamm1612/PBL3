@@ -1,4 +1,6 @@
-﻿namespace Program
+﻿using Program.GUI;
+
+namespace Program
 {
     partial class KhachHangForm
     {
@@ -30,13 +32,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhachHangForm));
             this.HeaderPannel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.userProfile_Button = new System.Windows.Forms.Button();
+            this.miniAvt = new System.Windows.Forms.PictureBox();
             this.cartButton = new System.Windows.Forms.Button();
             this.KenhNguoiBan_button = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.search_Text = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.home_Button = new System.Windows.Forms.Button();
-            this.userProfile_Button = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
             this.dangNhap_Button = new System.Windows.Forms.Button();
             this.SignUp_Button = new System.Windows.Forms.Button();
@@ -78,17 +82,26 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.accountPanel = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.doiMK_Botton = new System.Windows.Forms.Button();
-            this.diaChiUser_Button = new System.Windows.Forms.Button();
-            this.userProfile_Botton = new System.Windows.Forms.Button();
+            this.userNameTxt = new System.Windows.Forms.TextBox();
+            this.userImagePB = new System.Windows.Forms.PictureBox();
+            this.funcFLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.myAccount_Button = new System.Windows.Forms.Button();
+            this.userProfile_Botton = new System.Windows.Forms.Button();
+            this.diaChiUser_Button = new System.Windows.Forms.Button();
+            this.doiMK_Botton = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.DonMuaButton = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button31 = new System.Windows.Forms.Button();
             this.diaChiUser_Panel = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
             this.themDiaChi_Button = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.listDiaChi_FLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.profilePanel = new System.Windows.Forms.Panel();
+            this.ChonAnhButton = new System.Windows.Forms.Button();
+            this.avtInUserProfile = new System.Windows.Forms.PictureBox();
             this.SDTKhongHopLe_Label = new System.Windows.Forms.Label();
             this.loiNgaySinh_Text = new System.Windows.Forms.Label();
             this.suaSDT_button = new System.Windows.Forms.Button();
@@ -130,9 +143,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
-            this.littleMenuPanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.waittingForm = new System.Windows.Forms.Panel();
             this.BaiDangPanel = new System.Windows.Forms.Panel();
             this.baiDangFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.BaiDangSubPanel = new System.Windows.Forms.Panel();
@@ -273,8 +284,13 @@
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listSPTrongGHFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.waittingForm = new System.Windows.Forms.Panel();
+            this.littleMenuPanel = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.HeaderPannel.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniAvt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.HomePanel.SuspendLayout();
@@ -287,9 +303,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.accountPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).BeginInit();
+            this.funcFLPanel.SuspendLayout();
             this.diaChiUser_Panel.SuspendLayout();
+            this.panel21.SuspendLayout();
             this.profilePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avtInUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -297,7 +316,6 @@
             this.doiMatKhauPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
-            this.littleMenuPanel.SuspendLayout();
             this.BaiDangPanel.SuspendLayout();
             this.baiDangFLP.SuspendLayout();
             this.BaiDangSubPanel.SuspendLayout();
@@ -346,6 +364,7 @@
             this.panel13.SuspendLayout();
             this.spPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.littleMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderPannel
@@ -353,13 +372,13 @@
             this.HeaderPannel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeaderPannel.BackColor = System.Drawing.Color.OrangeRed;
+            this.HeaderPannel.Controls.Add(this.flowLayoutPanel6);
             this.HeaderPannel.Controls.Add(this.cartButton);
             this.HeaderPannel.Controls.Add(this.KenhNguoiBan_button);
             this.HeaderPannel.Controls.Add(this.searchButton);
             this.HeaderPannel.Controls.Add(this.search_Text);
             this.HeaderPannel.Controls.Add(this.pictureBox1);
             this.HeaderPannel.Controls.Add(this.home_Button);
-            this.HeaderPannel.Controls.Add(this.userProfile_Button);
             this.HeaderPannel.Controls.Add(this.label);
             this.HeaderPannel.Controls.Add(this.dangNhap_Button);
             this.HeaderPannel.Controls.Add(this.SignUp_Button);
@@ -368,6 +387,57 @@
             this.HeaderPannel.Name = "HeaderPannel";
             this.HeaderPannel.Size = new System.Drawing.Size(1390, 137);
             this.HeaderPannel.TabIndex = 3;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel6.Controls.Add(this.userProfile_Button);
+            this.flowLayoutPanel6.Controls.Add(this.miniAvt);
+            this.flowLayoutPanel6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(1098, 3);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(197, 38);
+            this.flowLayoutPanel6.TabIndex = 14;
+            this.flowLayoutPanel6.Click += new System.EventHandler(this.userProfile_Button_Click);
+            this.flowLayoutPanel6.MouseLeave += new System.EventHandler(this.userProfile_Button_MouseLeave);
+            this.flowLayoutPanel6.MouseHover += new System.EventHandler(this.userProfile_Button_MouseHover);
+            // 
+            // userProfile_Button
+            // 
+            this.userProfile_Button.BackColor = System.Drawing.Color.OrangeRed;
+            this.userProfile_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userProfile_Button.FlatAppearance.BorderSize = 0;
+            this.userProfile_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.OrangeRed;
+            this.userProfile_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.userProfile_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userProfile_Button.ForeColor = System.Drawing.Color.White;
+            this.userProfile_Button.Location = new System.Drawing.Point(77, 0);
+            this.userProfile_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.userProfile_Button.Name = "userProfile_Button";
+            this.userProfile_Button.Size = new System.Drawing.Size(120, 35);
+            this.userProfile_Button.TabIndex = 6;
+            this.userProfile_Button.Text = "Cá nhân◀";
+            this.userProfile_Button.UseVisualStyleBackColor = false;
+            this.userProfile_Button.Visible = false;
+            this.userProfile_Button.Click += new System.EventHandler(this.userProfile_Button_Click);
+            this.userProfile_Button.Paint += new System.Windows.Forms.PaintEventHandler(this.userProfile_Button_Paint);
+            this.userProfile_Button.MouseLeave += new System.EventHandler(this.userProfile_Button_MouseLeave);
+            this.userProfile_Button.MouseHover += new System.EventHandler(this.userProfile_Button_MouseHover);
+            // 
+            // miniAvt
+            // 
+            this.miniAvt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.miniAvt.Location = new System.Drawing.Point(50, 3);
+            this.miniAvt.Name = "miniAvt";
+            this.miniAvt.Size = new System.Drawing.Size(24, 24);
+            this.miniAvt.TabIndex = 7;
+            this.miniAvt.TabStop = false;
+            this.miniAvt.Click += new System.EventHandler(this.userProfile_Button_Click);
+            this.miniAvt.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
+            this.miniAvt.MouseLeave += new System.EventHandler(this.userProfile_Button_MouseLeave);
+            this.miniAvt.MouseHover += new System.EventHandler(this.userProfile_Button_MouseHover);
             // 
             // cartButton
             // 
@@ -462,29 +532,6 @@
             this.home_Button.Text = "Book world";
             this.home_Button.UseVisualStyleBackColor = false;
             this.home_Button.Click += new System.EventHandler(this.home_Button_Click);
-            // 
-            // userProfile_Button
-            // 
-            this.userProfile_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.userProfile_Button.BackColor = System.Drawing.Color.OrangeRed;
-            this.userProfile_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userProfile_Button.FlatAppearance.BorderSize = 0;
-            this.userProfile_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.OrangeRed;
-            this.userProfile_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
-            this.userProfile_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userProfile_Button.ForeColor = System.Drawing.Color.White;
-            this.userProfile_Button.Location = new System.Drawing.Point(1119, 3);
-            this.userProfile_Button.Name = "userProfile_Button";
-            this.userProfile_Button.Size = new System.Drawing.Size(177, 38);
-            this.userProfile_Button.TabIndex = 6;
-            this.userProfile_Button.Text = "Cá nhân◀";
-            this.userProfile_Button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.userProfile_Button.UseVisualStyleBackColor = false;
-            this.userProfile_Button.Visible = false;
-            this.userProfile_Button.Click += new System.EventHandler(this.userProfile_Button_Click);
-            this.userProfile_Button.MouseLeave += new System.EventHandler(this.userProfile_Button_MouseLeave);
-            this.userProfile_Button.MouseHover += new System.EventHandler(this.userProfile_Button_MouseHover);
             // 
             // label
             // 
@@ -970,109 +1017,260 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // accountPanel
+            // userNameTxt
             // 
-            this.accountPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.accountPanel.Controls.Add(this.button10);
-            this.accountPanel.Controls.Add(this.doiMK_Botton);
-            this.accountPanel.Controls.Add(this.diaChiUser_Button);
-            this.accountPanel.Controls.Add(this.userProfile_Botton);
-            this.accountPanel.Controls.Add(this.myAccount_Button);
-            this.accountPanel.Controls.Add(this.diaChiUser_Panel);
-            this.accountPanel.Controls.Add(this.profilePanel);
-            this.accountPanel.Controls.Add(this.doiMatKhauPanel);
-            this.accountPanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.accountPanel.Location = new System.Drawing.Point(12, 6);
-            this.accountPanel.Name = "accountPanel";
-            this.accountPanel.Size = new System.Drawing.Size(1363, 663);
-            this.accountPanel.TabIndex = 7;
+            this.userNameTxt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.userNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.userNameTxt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.userNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameTxt.Location = new System.Drawing.Point(138, 67);
+            this.userNameTxt.Name = "userNameTxt";
+            this.userNameTxt.Size = new System.Drawing.Size(153, 21);
+            this.userNameTxt.TabIndex = 35;
+            this.userNameTxt.Text = "Tên đăng nhập";
             // 
-            // button10
+            // userImagePB
             // 
-            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(89, 315);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(233, 45);
-            this.button10.TabIndex = 11;
-            this.button10.Text = "◢ Đơn mua";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.UseVisualStyleBackColor = false;
+            this.userImagePB.ImageLocation = "";
+            this.userImagePB.Location = new System.Drawing.Point(68, 46);
+            this.userImagePB.Name = "userImagePB";
+            this.userImagePB.Size = new System.Drawing.Size(64, 64);
+            this.userImagePB.TabIndex = 35;
+            this.userImagePB.TabStop = false;
+            this.userImagePB.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
             // 
-            // doiMK_Botton
+            // funcFLPanel
             // 
-            this.doiMK_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.doiMK_Botton.FlatAppearance.BorderSize = 0;
-            this.doiMK_Botton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doiMK_Botton.Location = new System.Drawing.Point(122, 275);
-            this.doiMK_Botton.Name = "doiMK_Botton";
-            this.doiMK_Botton.Size = new System.Drawing.Size(200, 31);
-            this.doiMK_Botton.TabIndex = 10;
-            this.doiMK_Botton.Text = "Đổi mật khẩu";
-            this.doiMK_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.doiMK_Botton.UseVisualStyleBackColor = false;
-            this.doiMK_Botton.Click += new System.EventHandler(this.doiMK_Botton_Click);
+            this.funcFLPanel.Controls.Add(this.myAccount_Button);
+            this.funcFLPanel.Controls.Add(this.userProfile_Botton);
+            this.funcFLPanel.Controls.Add(this.diaChiUser_Button);
+            this.funcFLPanel.Controls.Add(this.doiMK_Botton);
+            this.funcFLPanel.Controls.Add(this.button27);
+            this.funcFLPanel.Controls.Add(this.DonMuaButton);
+            this.funcFLPanel.Controls.Add(this.button29);
+            this.funcFLPanel.Controls.Add(this.button30);
+            this.funcFLPanel.Controls.Add(this.button31);
+            this.funcFLPanel.Location = new System.Drawing.Point(56, 130);
+            this.funcFLPanel.Name = "funcFLPanel";
+            this.funcFLPanel.Size = new System.Drawing.Size(256, 513);
+            this.funcFLPanel.TabIndex = 14;
             // 
-            // diaChiUser_Button
+            // myAccount_Button
             // 
-            this.diaChiUser_Button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.diaChiUser_Button.FlatAppearance.BorderSize = 0;
-            this.diaChiUser_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.diaChiUser_Button.Location = new System.Drawing.Point(122, 233);
-            this.diaChiUser_Button.Name = "diaChiUser_Button";
-            this.diaChiUser_Button.Size = new System.Drawing.Size(200, 31);
-            this.diaChiUser_Button.TabIndex = 9;
-            this.diaChiUser_Button.Text = "Địa chỉ";
-            this.diaChiUser_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.diaChiUser_Button.UseVisualStyleBackColor = false;
-            this.diaChiUser_Button.Click += new System.EventHandler(this.diaChiUser_Button_Click);
+            this.myAccount_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.myAccount_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.myAccount_Button.FlatAppearance.BorderSize = 0;
+            this.myAccount_Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.myAccount_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.myAccount_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.myAccount_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myAccount_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myAccount_Button.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.myAccount_Button.Image = global::Program.Properties.Resources.user;
+            this.myAccount_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.myAccount_Button.Location = new System.Drawing.Point(3, 3);
+            this.myAccount_Button.Name = "myAccount_Button";
+            this.myAccount_Button.Size = new System.Drawing.Size(221, 32);
+            this.myAccount_Button.TabIndex = 7;
+            this.myAccount_Button.Text = "        Tài Khoản Của Tôi";
+            this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.myAccount_Button.UseVisualStyleBackColor = false;
+            this.myAccount_Button.Click += new System.EventHandler(this.SpreadOutClick);
             // 
             // userProfile_Botton
             // 
             this.userProfile_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.userProfile_Botton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userProfile_Botton.FlatAppearance.BorderSize = 0;
+            this.userProfile_Botton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.userProfile_Botton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.userProfile_Botton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.userProfile_Botton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userProfile_Botton.Location = new System.Drawing.Point(122, 189);
+            this.userProfile_Botton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userProfile_Botton.Location = new System.Drawing.Point(3, 41);
             this.userProfile_Botton.Name = "userProfile_Botton";
-            this.userProfile_Botton.Size = new System.Drawing.Size(200, 31);
+            this.userProfile_Botton.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.userProfile_Botton.Size = new System.Drawing.Size(221, 26);
             this.userProfile_Botton.TabIndex = 8;
             this.userProfile_Botton.Text = "Hồ sơ";
             this.userProfile_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.userProfile_Botton.UseVisualStyleBackColor = false;
             this.userProfile_Botton.Click += new System.EventHandler(this.userProfile_Botton_Click);
+            this.userProfile_Botton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.userProfile_Botton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.userProfile_Botton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
             // 
-            // myAccount_Button
+            // diaChiUser_Button
             // 
-            this.myAccount_Button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.myAccount_Button.FlatAppearance.BorderSize = 0;
-            this.myAccount_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myAccount_Button.Location = new System.Drawing.Point(89, 138);
-            this.myAccount_Button.Name = "myAccount_Button";
-            this.myAccount_Button.Size = new System.Drawing.Size(233, 45);
-            this.myAccount_Button.TabIndex = 7;
-            this.myAccount_Button.Text = "◢ Tài khoản của tôi";
-            this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.myAccount_Button.UseVisualStyleBackColor = false;
-            this.myAccount_Button.Click += new System.EventHandler(this.myAccount_Button_Click);
+            this.diaChiUser_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.diaChiUser_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.diaChiUser_Button.FlatAppearance.BorderSize = 0;
+            this.diaChiUser_Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.diaChiUser_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.diaChiUser_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.diaChiUser_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.diaChiUser_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diaChiUser_Button.Location = new System.Drawing.Point(3, 73);
+            this.diaChiUser_Button.Name = "diaChiUser_Button";
+            this.diaChiUser_Button.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.diaChiUser_Button.Size = new System.Drawing.Size(221, 26);
+            this.diaChiUser_Button.TabIndex = 9;
+            this.diaChiUser_Button.Text = "Địa chỉ";
+            this.diaChiUser_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.diaChiUser_Button.UseVisualStyleBackColor = false;
+            this.diaChiUser_Button.Click += new System.EventHandler(this.diaChiUser_Button_Click);
+            this.diaChiUser_Button.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.diaChiUser_Button.MouseHover += new System.EventHandler(this.MouseIn);
+            this.diaChiUser_Button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // doiMK_Botton
+            // 
+            this.doiMK_Botton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.doiMK_Botton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.doiMK_Botton.FlatAppearance.BorderSize = 0;
+            this.doiMK_Botton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.doiMK_Botton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.doiMK_Botton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.doiMK_Botton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doiMK_Botton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doiMK_Botton.Location = new System.Drawing.Point(3, 105);
+            this.doiMK_Botton.Name = "doiMK_Botton";
+            this.doiMK_Botton.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.doiMK_Botton.Size = new System.Drawing.Size(221, 26);
+            this.doiMK_Botton.TabIndex = 10;
+            this.doiMK_Botton.Text = "Đổi mật khẩu";
+            this.doiMK_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.doiMK_Botton.UseVisualStyleBackColor = false;
+            this.doiMK_Botton.Click += new System.EventHandler(this.doiMK_Botton_Click);
+            this.doiMK_Botton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.doiMK_Botton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.doiMK_Botton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button27
+            // 
+            this.button27.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button27.FlatAppearance.BorderSize = 0;
+            this.button27.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button27.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button27.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button27.Location = new System.Drawing.Point(3, 137);
+            this.button27.Name = "button27";
+            this.button27.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button27.Size = new System.Drawing.Size(277, 5);
+            this.button27.TabIndex = 18;
+            this.button27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button27.UseVisualStyleBackColor = true;
+            // 
+            // DonMuaButton
+            // 
+            this.DonMuaButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.DonMuaButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DonMuaButton.FlatAppearance.BorderSize = 0;
+            this.DonMuaButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.DonMuaButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DonMuaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DonMuaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonMuaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonMuaButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DonMuaButton.Image = global::Program.Properties.Resources.purchase;
+            this.DonMuaButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DonMuaButton.Location = new System.Drawing.Point(3, 148);
+            this.DonMuaButton.Name = "DonMuaButton";
+            this.DonMuaButton.Size = new System.Drawing.Size(221, 32);
+            this.DonMuaButton.TabIndex = 11;
+            this.DonMuaButton.Text = "        Đơn Mua";
+            this.DonMuaButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DonMuaButton.UseVisualStyleBackColor = false;
+            this.DonMuaButton.Click += new System.EventHandler(this.SpreadOutClick);
+            // 
+            // button29
+            // 
+            this.button29.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button29.FlatAppearance.BorderSize = 0;
+            this.button29.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button29.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button29.Location = new System.Drawing.Point(3, 186);
+            this.button29.Name = "button29";
+            this.button29.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button29.Size = new System.Drawing.Size(277, 5);
+            this.button29.TabIndex = 19;
+            this.button29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button29.UseVisualStyleBackColor = true;
+            // 
+            // button30
+            // 
+            this.button30.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button30.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button30.FlatAppearance.BorderSize = 0;
+            this.button30.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button30.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button30.Image = global::Program.Properties.Resources.bell;
+            this.button30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button30.Location = new System.Drawing.Point(3, 197);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(221, 32);
+            this.button30.TabIndex = 20;
+            this.button30.Text = "        Thông Báo";
+            this.button30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button30.UseVisualStyleBackColor = false;
+            // 
+            // button31
+            // 
+            this.button31.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button31.FlatAppearance.BorderSize = 0;
+            this.button31.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button31.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button31.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button31.Location = new System.Drawing.Point(3, 235);
+            this.button31.Name = "button31";
+            this.button31.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button31.Size = new System.Drawing.Size(277, 12);
+            this.button31.TabIndex = 21;
+            this.button31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button31.UseVisualStyleBackColor = true;
             // 
             // diaChiUser_Panel
             // 
-            this.diaChiUser_Panel.BackColor = System.Drawing.Color.White;
-            this.diaChiUser_Panel.Controls.Add(this.themDiaChi_Button);
-            this.diaChiUser_Panel.Controls.Add(this.label24);
+            this.diaChiUser_Panel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.diaChiUser_Panel.Controls.Add(this.panel21);
             this.diaChiUser_Panel.Controls.Add(this.listDiaChi_FLPanel);
-            this.diaChiUser_Panel.Location = new System.Drawing.Point(408, 20);
+            this.diaChiUser_Panel.Location = new System.Drawing.Point(318, 26);
             this.diaChiUser_Panel.Name = "diaChiUser_Panel";
             this.diaChiUser_Panel.Size = new System.Drawing.Size(943, 631);
             this.diaChiUser_Panel.TabIndex = 13;
             this.diaChiUser_Panel.Visible = false;
+            this.diaChiUser_Panel.VisibleChanged += new System.EventHandler(this.diaChiUser_Panel_VisibleChanged);
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.White;
+            this.panel21.Controls.Add(this.themDiaChi_Button);
+            this.panel21.Controls.Add(this.label24);
+            this.panel21.Location = new System.Drawing.Point(0, 0);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(943, 67);
+            this.panel21.TabIndex = 20;
             // 
             // themDiaChi_Button
             // 
             this.themDiaChi_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.themDiaChi_Button.BackColor = System.Drawing.Color.LightGray;
-            this.themDiaChi_Button.Location = new System.Drawing.Point(742, 15);
+            this.themDiaChi_Button.FlatAppearance.BorderSize = 0;
+            this.themDiaChi_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.themDiaChi_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.themDiaChi_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.themDiaChi_Button.Location = new System.Drawing.Point(743, 12);
             this.themDiaChi_Button.Name = "themDiaChi_Button";
             this.themDiaChi_Button.Size = new System.Drawing.Size(189, 42);
             this.themDiaChi_Button.TabIndex = 18;
@@ -1084,7 +1282,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(25, 25);
+            this.label24.Location = new System.Drawing.Point(22, 17);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(192, 32);
             this.label24.TabIndex = 17;
@@ -1093,15 +1291,18 @@
             // listDiaChi_FLPanel
             // 
             this.listDiaChi_FLPanel.AutoScroll = true;
-            this.listDiaChi_FLPanel.Location = new System.Drawing.Point(0, 73);
+            this.listDiaChi_FLPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.listDiaChi_FLPanel.Location = new System.Drawing.Point(0, 72);
             this.listDiaChi_FLPanel.Name = "listDiaChi_FLPanel";
             this.listDiaChi_FLPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.listDiaChi_FLPanel.Size = new System.Drawing.Size(943, 558);
+            this.listDiaChi_FLPanel.Size = new System.Drawing.Size(943, 225);
             this.listDiaChi_FLPanel.TabIndex = 19;
             // 
             // profilePanel
             // 
             this.profilePanel.BackColor = System.Drawing.Color.White;
+            this.profilePanel.Controls.Add(this.ChonAnhButton);
+            this.profilePanel.Controls.Add(this.avtInUserProfile);
             this.profilePanel.Controls.Add(this.SDTKhongHopLe_Label);
             this.profilePanel.Controls.Add(this.loiNgaySinh_Text);
             this.profilePanel.Controls.Add(this.suaSDT_button);
@@ -1129,18 +1330,45 @@
             this.profilePanel.Controls.Add(this.luu_UP_Button);
             this.profilePanel.Controls.Add(this.textBox2);
             this.profilePanel.Controls.Add(this.pictureBox8);
-            this.profilePanel.Location = new System.Drawing.Point(408, 20);
+            this.profilePanel.Location = new System.Drawing.Point(318, 26);
             this.profilePanel.Name = "profilePanel";
-            this.profilePanel.Size = new System.Drawing.Size(943, 631);
+            this.profilePanel.Size = new System.Drawing.Size(1023, 631);
             this.profilePanel.TabIndex = 6;
-            this.profilePanel.Visible = false;
+            this.profilePanel.VisibleChanged += new System.EventHandler(this.profilePanel_VisibleChanged);
+            // 
+            // ChonAnhButton
+            // 
+            this.ChonAnhButton.BackColor = System.Drawing.Color.Transparent;
+            this.ChonAnhButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ChonAnhButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.ChonAnhButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.ChonAnhButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.ChonAnhButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChonAnhButton.ForeColor = System.Drawing.Color.DarkGray;
+            this.ChonAnhButton.Location = new System.Drawing.Point(802, 256);
+            this.ChonAnhButton.Name = "ChonAnhButton";
+            this.ChonAnhButton.Size = new System.Drawing.Size(128, 47);
+            this.ChonAnhButton.TabIndex = 34;
+            this.ChonAnhButton.Text = "Chọn ảnh";
+            this.ChonAnhButton.UseVisualStyleBackColor = false;
+            this.ChonAnhButton.Click += new System.EventHandler(this.ChonAnhButton_Click);
+            // 
+            // avtInUserProfile
+            // 
+            this.avtInUserProfile.ImageLocation = "";
+            this.avtInUserProfile.Location = new System.Drawing.Point(802, 96);
+            this.avtInUserProfile.Name = "avtInUserProfile";
+            this.avtInUserProfile.Size = new System.Drawing.Size(128, 128);
+            this.avtInUserProfile.TabIndex = 33;
+            this.avtInUserProfile.TabStop = false;
+            this.avtInUserProfile.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
             // 
             // SDTKhongHopLe_Label
             // 
             this.SDTKhongHopLe_Label.AutoSize = true;
             this.SDTKhongHopLe_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SDTKhongHopLe_Label.ForeColor = System.Drawing.Color.Red;
-            this.SDTKhongHopLe_Label.Location = new System.Drawing.Point(274, 352);
+            this.SDTKhongHopLe_Label.Location = new System.Drawing.Point(241, 349);
             this.SDTKhongHopLe_Label.Name = "SDTKhongHopLe_Label";
             this.SDTKhongHopLe_Label.Size = new System.Drawing.Size(165, 16);
             this.SDTKhongHopLe_Label.TabIndex = 20;
@@ -1153,7 +1381,7 @@
             this.loiNgaySinh_Text.BackColor = System.Drawing.Color.LightCoral;
             this.loiNgaySinh_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loiNgaySinh_Text.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.loiNgaySinh_Text.Location = new System.Drawing.Point(292, 431);
+            this.loiNgaySinh_Text.Location = new System.Drawing.Point(246, 491);
             this.loiNgaySinh_Text.Name = "loiNgaySinh_Text";
             this.loiNgaySinh_Text.Size = new System.Drawing.Size(182, 20);
             this.loiNgaySinh_Text.TabIndex = 31;
@@ -1162,38 +1390,56 @@
             // 
             // suaSDT_button
             // 
+            this.suaSDT_button.BackColor = System.Drawing.Color.Transparent;
             this.suaSDT_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suaSDT_button.FlatAppearance.BorderSize = 0;
+            this.suaSDT_button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.suaSDT_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.suaSDT_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.suaSDT_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.suaSDT_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suaSDT_button.Location = new System.Drawing.Point(798, 317);
+            this.suaSDT_button.Location = new System.Drawing.Point(659, 309);
             this.suaSDT_button.Name = "suaSDT_button";
             this.suaSDT_button.Size = new System.Drawing.Size(39, 28);
             this.suaSDT_button.TabIndex = 30;
             this.suaSDT_button.Text = "sửa";
-            this.suaSDT_button.UseVisualStyleBackColor = true;
+            this.suaSDT_button.UseVisualStyleBackColor = false;
             this.suaSDT_button.Click += new System.EventHandler(this.suaSDT_button_Click);
             // 
             // suaEmail_button
             // 
+            this.suaEmail_button.BackColor = System.Drawing.Color.Transparent;
             this.suaEmail_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suaEmail_button.FlatAppearance.BorderSize = 0;
+            this.suaEmail_button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.suaEmail_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.suaEmail_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.suaEmail_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.suaEmail_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suaEmail_button.Location = new System.Drawing.Point(798, 248);
+            this.suaEmail_button.Location = new System.Drawing.Point(659, 241);
             this.suaEmail_button.Name = "suaEmail_button";
             this.suaEmail_button.Size = new System.Drawing.Size(39, 28);
             this.suaEmail_button.TabIndex = 29;
             this.suaEmail_button.Text = "sửa";
-            this.suaEmail_button.UseVisualStyleBackColor = true;
+            this.suaEmail_button.UseVisualStyleBackColor = false;
             this.suaEmail_button.Click += new System.EventHandler(this.suaEmail_button_Click);
             // 
             // suaTen_Button
             // 
+            this.suaTen_Button.BackColor = System.Drawing.Color.Transparent;
             this.suaTen_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suaTen_Button.FlatAppearance.BorderSize = 0;
+            this.suaTen_Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.suaTen_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.suaTen_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.suaTen_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.suaTen_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suaTen_Button.Location = new System.Drawing.Point(798, 176);
+            this.suaTen_Button.Location = new System.Drawing.Point(659, 171);
             this.suaTen_Button.Name = "suaTen_Button";
             this.suaTen_Button.Size = new System.Drawing.Size(39, 28);
             this.suaTen_Button.TabIndex = 28;
             this.suaTen_Button.Text = "sửa";
-            this.suaTen_Button.UseVisualStyleBackColor = true;
+            this.suaTen_Button.UseVisualStyleBackColor = false;
             this.suaTen_Button.Click += new System.EventHandler(this.suaTen_Button_Click);
             // 
             // soDT_UP_Box
@@ -1201,10 +1447,10 @@
             this.soDT_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.soDT_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.soDT_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
-            this.soDT_UP_Box.Location = new System.Drawing.Point(286, 317);
+            this.soDT_UP_Box.Location = new System.Drawing.Point(253, 314);
             this.soDT_UP_Box.Name = "soDT_UP_Box";
             this.soDT_UP_Box.ReadOnly = true;
-            this.soDT_UP_Box.Size = new System.Drawing.Size(490, 23);
+            this.soDT_UP_Box.Size = new System.Drawing.Size(388, 23);
             this.soDT_UP_Box.TabIndex = 3;
             this.soDT_UP_Box.TextChanged += new System.EventHandler(this.soDT_UP_Box_TextChanged);
             // 
@@ -1213,10 +1459,10 @@
             this.email_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.email_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.email_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
-            this.email_UP_Box.Location = new System.Drawing.Point(286, 249);
+            this.email_UP_Box.Location = new System.Drawing.Point(253, 242);
             this.email_UP_Box.Name = "email_UP_Box";
             this.email_UP_Box.ReadOnly = true;
-            this.email_UP_Box.Size = new System.Drawing.Size(490, 23);
+            this.email_UP_Box.Size = new System.Drawing.Size(388, 23);
             this.email_UP_Box.TabIndex = 2;
             this.email_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
@@ -1224,9 +1470,9 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox7.Location = new System.Drawing.Point(275, 242);
+            this.pictureBox7.Location = new System.Drawing.Point(242, 235);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(511, 40);
+            this.pictureBox7.Size = new System.Drawing.Size(463, 40);
             this.pictureBox7.TabIndex = 25;
             this.pictureBox7.TabStop = false;
             // 
@@ -1235,10 +1481,10 @@
             this.ten_UP_Box.BackColor = System.Drawing.Color.Gainsboro;
             this.ten_UP_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ten_UP_Box.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ten_UP_Box.Location = new System.Drawing.Point(286, 177);
+            this.ten_UP_Box.Location = new System.Drawing.Point(253, 174);
             this.ten_UP_Box.Name = "ten_UP_Box";
             this.ten_UP_Box.ReadOnly = true;
-            this.ten_UP_Box.Size = new System.Drawing.Size(490, 23);
+            this.ten_UP_Box.Size = new System.Drawing.Size(397, 23);
             this.ten_UP_Box.TabIndex = 1;
             this.ten_UP_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
@@ -1246,9 +1492,9 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox6.Location = new System.Drawing.Point(275, 170);
+            this.pictureBox6.Location = new System.Drawing.Point(242, 167);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(511, 40);
+            this.pictureBox6.Size = new System.Drawing.Size(463, 40);
             this.pictureBox6.TabIndex = 23;
             this.pictureBox6.TabStop = false;
             // 
@@ -1258,10 +1504,10 @@
             this.taiKhoan_UP_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.taiKhoan_UP_Text.Cursor = System.Windows.Forms.Cursors.Default;
             this.taiKhoan_UP_Text.Enabled = false;
-            this.taiKhoan_UP_Text.Location = new System.Drawing.Point(286, 107);
+            this.taiKhoan_UP_Text.Location = new System.Drawing.Point(253, 104);
             this.taiKhoan_UP_Text.Name = "taiKhoan_UP_Text";
             this.taiKhoan_UP_Text.ReadOnly = true;
-            this.taiKhoan_UP_Text.Size = new System.Drawing.Size(490, 23);
+            this.taiKhoan_UP_Text.Size = new System.Drawing.Size(388, 23);
             this.taiKhoan_UP_Text.TabIndex = 0;
             this.taiKhoan_UP_Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
@@ -1269,9 +1515,9 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(275, 99);
+            this.pictureBox5.Location = new System.Drawing.Point(242, 96);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(511, 40);
+            this.pictureBox5.Size = new System.Drawing.Size(463, 40);
             this.pictureBox5.TabIndex = 21;
             this.pictureBox5.TabStop = false;
             // 
@@ -1407,7 +1653,7 @@
             "1903",
             "1902",
             "1901"});
-            this.namSinh_CB.Location = new System.Drawing.Point(639, 457);
+            this.namSinh_CB.Location = new System.Drawing.Point(558, 452);
             this.namSinh_CB.MaxDropDownItems = 5;
             this.namSinh_CB.Name = "namSinh_CB";
             this.namSinh_CB.Size = new System.Drawing.Size(147, 33);
@@ -1433,10 +1679,10 @@
             "Tháng 10",
             "Tháng 11",
             "Tháng 12"});
-            this.thangSinh_CB.Location = new System.Drawing.Point(457, 457);
+            this.thangSinh_CB.Location = new System.Drawing.Point(399, 452);
             this.thangSinh_CB.MaxDropDownItems = 5;
             this.thangSinh_CB.Name = "thangSinh_CB";
-            this.thangSinh_CB.Size = new System.Drawing.Size(158, 33);
+            this.thangSinh_CB.Size = new System.Drawing.Size(151, 33);
             this.thangSinh_CB.TabIndex = 8;
             this.thangSinh_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
@@ -1479,10 +1725,10 @@
             "29",
             "30",
             "31"});
-            this.ngaySinh_CB.Location = new System.Drawing.Point(290, 457);
+            this.ngaySinh_CB.Location = new System.Drawing.Point(242, 452);
             this.ngaySinh_CB.MaxDropDownItems = 5;
             this.ngaySinh_CB.Name = "ngaySinh_CB";
-            this.ngaySinh_CB.Size = new System.Drawing.Size(147, 33);
+            this.ngaySinh_CB.Size = new System.Drawing.Size(149, 33);
             this.ngaySinh_CB.TabIndex = 7;
             this.ngaySinh_CB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Luu_KeyDown);
             // 
@@ -1490,9 +1736,9 @@
             // 
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox8.Location = new System.Drawing.Point(43, 457);
+            this.textBox8.Location = new System.Drawing.Point(52, 454);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(186, 23);
+            this.textBox8.Size = new System.Drawing.Size(144, 23);
             this.textBox8.TabIndex = 17;
             this.textBox8.Text = "Ngày sinh";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1511,9 +1757,9 @@
             // 
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox7.Location = new System.Drawing.Point(43, 387);
+            this.textBox7.Location = new System.Drawing.Point(52, 384);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(186, 23);
+            this.textBox7.Size = new System.Drawing.Size(144, 23);
             this.textBox7.TabIndex = 16;
             this.textBox7.Text = "Giới tính";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1523,7 +1769,7 @@
             this.nam_RB.AutoSize = true;
             this.nam_RB.BackColor = System.Drawing.Color.White;
             this.nam_RB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nam_RB.Location = new System.Drawing.Point(290, 385);
+            this.nam_RB.Location = new System.Drawing.Point(257, 382);
             this.nam_RB.Name = "nam_RB";
             this.nam_RB.Size = new System.Drawing.Size(74, 29);
             this.nam_RB.TabIndex = 4;
@@ -1536,9 +1782,9 @@
             // 
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox6.Location = new System.Drawing.Point(43, 317);
+            this.textBox6.Location = new System.Drawing.Point(52, 314);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(186, 23);
+            this.textBox6.Size = new System.Drawing.Size(144, 23);
             this.textBox6.TabIndex = 15;
             this.textBox6.Text = "Số điện thoại";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1547,7 +1793,7 @@
             // 
             this.nu_RB.AutoSize = true;
             this.nu_RB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nu_RB.Location = new System.Drawing.Point(406, 385);
+            this.nu_RB.Location = new System.Drawing.Point(373, 382);
             this.nu_RB.Name = "nu_RB";
             this.nu_RB.Size = new System.Drawing.Size(58, 29);
             this.nu_RB.TabIndex = 5;
@@ -1560,9 +1806,9 @@
             // 
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox5.Location = new System.Drawing.Point(43, 247);
+            this.textBox5.Location = new System.Drawing.Point(52, 240);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(186, 23);
+            this.textBox5.Size = new System.Drawing.Size(144, 23);
             this.textBox5.TabIndex = 14;
             this.textBox5.Text = "Email";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1571,7 +1817,7 @@
             // 
             this.khac_RB.AutoSize = true;
             this.khac_RB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.khac_RB.Location = new System.Drawing.Point(502, 385);
+            this.khac_RB.Location = new System.Drawing.Point(469, 382);
             this.khac_RB.Name = "khac_RB";
             this.khac_RB.Size = new System.Drawing.Size(79, 29);
             this.khac_RB.TabIndex = 6;
@@ -1584,18 +1830,22 @@
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox3.Location = new System.Drawing.Point(43, 177);
+            this.textBox3.Location = new System.Drawing.Point(52, 174);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 23);
+            this.textBox3.Size = new System.Drawing.Size(144, 23);
             this.textBox3.TabIndex = 12;
             this.textBox3.Text = "Tên";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // luu_UP_Button
             // 
-            this.luu_UP_Button.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.luu_UP_Button.BackColor = System.Drawing.Color.Tomato;
             this.luu_UP_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.luu_UP_Button.Location = new System.Drawing.Point(230, 517);
+            this.luu_UP_Button.FlatAppearance.BorderSize = 0;
+            this.luu_UP_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Salmon;
+            this.luu_UP_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Salmon;
+            this.luu_UP_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.luu_UP_Button.Location = new System.Drawing.Point(413, 533);
             this.luu_UP_Button.Name = "luu_UP_Button";
             this.luu_UP_Button.Size = new System.Drawing.Size(118, 47);
             this.luu_UP_Button.TabIndex = 10;
@@ -1607,9 +1857,9 @@
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox2.Location = new System.Drawing.Point(43, 107);
+            this.textBox2.Location = new System.Drawing.Point(52, 104);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(186, 23);
+            this.textBox2.Size = new System.Drawing.Size(144, 23);
             this.textBox2.TabIndex = 11;
             this.textBox2.Text = "Tên đăng nhập";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1618,9 +1868,9 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox8.Location = new System.Drawing.Point(275, 304);
+            this.pictureBox8.Location = new System.Drawing.Point(242, 301);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(511, 45);
+            this.pictureBox8.Size = new System.Drawing.Size(463, 45);
             this.pictureBox8.TabIndex = 32;
             this.pictureBox8.TabStop = false;
             // 
@@ -1638,16 +1888,16 @@
             this.doiMatKhauPanel.Controls.Add(this.textBox9);
             this.doiMatKhauPanel.Controls.Add(this.textBox4);
             this.doiMatKhauPanel.Controls.Add(this.label9);
-            this.doiMatKhauPanel.Location = new System.Drawing.Point(408, 20);
+            this.doiMatKhauPanel.Location = new System.Drawing.Point(318, 26);
             this.doiMatKhauPanel.Name = "doiMatKhauPanel";
-            this.doiMatKhauPanel.Size = new System.Drawing.Size(943, 631);
+            this.doiMatKhauPanel.Size = new System.Drawing.Size(1023, 631);
             this.doiMatKhauPanel.TabIndex = 12;
             this.doiMatKhauPanel.Visible = false;
             // 
             // xacNhan_UP_Button
             // 
             this.xacNhan_UP_Button.BackColor = System.Drawing.Color.Silver;
-            this.xacNhan_UP_Button.Location = new System.Drawing.Point(207, 381);
+            this.xacNhan_UP_Button.Location = new System.Drawing.Point(281, 381);
             this.xacNhan_UP_Button.Name = "xacNhan_UP_Button";
             this.xacNhan_UP_Button.Size = new System.Drawing.Size(445, 58);
             this.xacNhan_UP_Button.TabIndex = 11;
@@ -1659,7 +1909,7 @@
             // 
             this.hienMK_UP_Check.AutoSize = true;
             this.hienMK_UP_Check.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hienMK_UP_Check.Location = new System.Drawing.Point(421, 181);
+            this.hienMK_UP_Check.Location = new System.Drawing.Point(495, 181);
             this.hienMK_UP_Check.Name = "hienMK_UP_Check";
             this.hienMK_UP_Check.Size = new System.Drawing.Size(139, 24);
             this.hienMK_UP_Check.TabIndex = 10;
@@ -1674,7 +1924,7 @@
             this.saiMKC_Text.Cursor = System.Windows.Forms.Cursors.Default;
             this.saiMKC_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saiMKC_Text.ForeColor = System.Drawing.Color.Red;
-            this.saiMKC_Text.Location = new System.Drawing.Point(436, 111);
+            this.saiMKC_Text.Location = new System.Drawing.Point(510, 111);
             this.saiMKC_Text.Name = "saiMKC_Text";
             this.saiMKC_Text.ReadOnly = true;
             this.saiMKC_Text.Size = new System.Drawing.Size(216, 20);
@@ -1690,7 +1940,7 @@
             this.matKhauKhongKhop_UP_Text.Cursor = System.Windows.Forms.Cursors.Default;
             this.matKhauKhongKhop_UP_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matKhauKhongKhop_UP_Text.ForeColor = System.Drawing.Color.Red;
-            this.matKhauKhongKhop_UP_Text.Location = new System.Drawing.Point(457, 333);
+            this.matKhauKhongKhop_UP_Text.Location = new System.Drawing.Point(531, 333);
             this.matKhauKhongKhop_UP_Text.Name = "matKhauKhongKhop_UP_Text";
             this.matKhauKhongKhop_UP_Text.ReadOnly = true;
             this.matKhauKhongKhop_UP_Text.Size = new System.Drawing.Size(195, 20);
@@ -1702,7 +1952,7 @@
             // matKhauMoi2_Box
             // 
             this.matKhauMoi2_Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.matKhauMoi2_Box.Location = new System.Drawing.Point(421, 295);
+            this.matKhauMoi2_Box.Location = new System.Drawing.Point(495, 295);
             this.matKhauMoi2_Box.Name = "matKhauMoi2_Box";
             this.matKhauMoi2_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauMoi2_Box.TabIndex = 6;
@@ -1713,7 +1963,7 @@
             // matKhauMoi1_Box
             // 
             this.matKhauMoi1_Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.matKhauMoi1_Box.Location = new System.Drawing.Point(421, 230);
+            this.matKhauMoi1_Box.Location = new System.Drawing.Point(495, 230);
             this.matKhauMoi1_Box.Name = "matKhauMoi1_Box";
             this.matKhauMoi1_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauMoi1_Box.TabIndex = 5;
@@ -1723,7 +1973,7 @@
             // matKhauCu_Box
             // 
             this.matKhauCu_Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.matKhauCu_Box.Location = new System.Drawing.Point(421, 145);
+            this.matKhauCu_Box.Location = new System.Drawing.Point(495, 145);
             this.matKhauCu_Box.Name = "matKhauCu_Box";
             this.matKhauCu_Box.Size = new System.Drawing.Size(231, 30);
             this.matKhauCu_Box.TabIndex = 4;
@@ -1735,7 +1985,7 @@
             this.textBox10.BackColor = System.Drawing.Color.White;
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox10.Location = new System.Drawing.Point(106, 295);
+            this.textBox10.Location = new System.Drawing.Point(180, 295);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(258, 23);
@@ -1748,7 +1998,7 @@
             this.textBox9.BackColor = System.Drawing.Color.White;
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox9.Location = new System.Drawing.Point(106, 230);
+            this.textBox9.Location = new System.Drawing.Point(180, 230);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(258, 23);
@@ -1761,7 +2011,7 @@
             this.textBox4.BackColor = System.Drawing.Color.White;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox4.Location = new System.Drawing.Point(106, 145);
+            this.textBox4.Location = new System.Drawing.Point(180, 145);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(258, 23);
@@ -1784,14 +2034,21 @@
             this.UserPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserPanel.AutoScroll = true;
             this.UserPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.UserPanel.Controls.Add(this.accountPanel);
+            this.UserPanel.Controls.Add(this.profilePanel);
+            this.UserPanel.Controls.Add(this.userNameTxt);
+            this.UserPanel.Controls.Add(this.userImagePB);
+            this.UserPanel.Controls.Add(this.funcFLPanel);
+            this.UserPanel.Controls.Add(this.diaChiUser_Panel);
+            this.UserPanel.Controls.Add(this.doiMatKhauPanel);
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 135);
             this.UserPanel.Name = "UserPanel";
             this.UserPanel.Size = new System.Drawing.Size(1390, 700);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
+            this.UserPanel.VisibleChanged += new System.EventHandler(this.UserPanel_VisibleChanged);
             // 
             // KhachHang_Panel
             // 
@@ -1804,63 +2061,25 @@
             this.KhachHang_Panel.Controls.Add(this.waittingForm);
             this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
             this.KhachHang_Panel.Controls.Add(this.HomePanel);
-            this.KhachHang_Panel.Controls.Add(this.littleMenuPanel);
             this.KhachHang_Panel.Controls.Add(this.thanhToanPanel);
             this.KhachHang_Panel.Controls.Add(this.gioHangPanel);
+            this.KhachHang_Panel.Controls.Add(this.littleMenuPanel);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
             this.KhachHang_Panel.TabIndex = 14;
             // 
-            // littleMenuPanel
+            // waittingForm
             // 
-            this.littleMenuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.littleMenuPanel.BackColor = System.Drawing.Color.White;
-            this.littleMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.littleMenuPanel.Controls.Add(this.button6);
-            this.littleMenuPanel.Controls.Add(this.button1);
-            this.littleMenuPanel.Controls.Add(this.user_DangXuat_Button);
-            this.littleMenuPanel.Location = new System.Drawing.Point(1130, 35);
-            this.littleMenuPanel.Name = "littleMenuPanel";
-            this.littleMenuPanel.Size = new System.Drawing.Size(180, 130);
-            this.littleMenuPanel.TabIndex = 19;
-            this.littleMenuPanel.Visible = false;
-            this.littleMenuPanel.MouseLeave += new System.EventHandler(this.littleMenuPanel_MouseLeave);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(9, 43);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(166, 38);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Đơn Mua";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(8, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 36);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Tài Khoản Của Tôi";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.userProfile_Button_Click);
+            this.waittingForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.waittingForm.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.waittingForm.Location = new System.Drawing.Point(0, 135);
+            this.waittingForm.Name = "waittingForm";
+            this.waittingForm.Size = new System.Drawing.Size(1390, 684);
+            this.waittingForm.TabIndex = 5;
+            this.waittingForm.Visible = false;
             // 
             // BaiDangPanel
             // 
@@ -1875,6 +2094,7 @@
             this.BaiDangPanel.Size = new System.Drawing.Size(1390, 684);
             this.BaiDangPanel.TabIndex = 13;
             this.BaiDangPanel.Visible = false;
+            this.BaiDangPanel.VisibleChanged += new System.EventHandler(this.BaiDangPanel_VisibleChanged);
             // 
             // baiDangFLP
             // 
@@ -2527,6 +2747,7 @@
             this.shopAvtInBaiDang.Size = new System.Drawing.Size(100, 100);
             this.shopAvtInBaiDang.TabIndex = 0;
             this.shopAvtInBaiDang.TabStop = false;
+            this.shopAvtInBaiDang.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
             // 
             // moTaPanel
             // 
@@ -2729,6 +2950,7 @@
             this.thanhToanPanel.Size = new System.Drawing.Size(1390, 678);
             this.thanhToanPanel.TabIndex = 21;
             this.thanhToanPanel.Visible = false;
+            this.thanhToanPanel.VisibleChanged += new System.EventHandler(this.thanhToanPanel_VisibleChanged);
             // 
             // flowLayoutPanel4
             // 
@@ -3356,6 +3578,7 @@
             this.gioHangPanel.TabIndex = 20;
             this.gioHangPanel.Visible = false;
             this.gioHangPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.gioHangPanel_Scroll);
+            this.gioHangPanel.VisibleChanged += new System.EventHandler(this.gioHangPanel_VisibleChanged);
             // 
             // panel14
             // 
@@ -3711,17 +3934,59 @@
             this.listSPTrongGHFLP.Size = new System.Drawing.Size(1250, 10);
             this.listSPTrongGHFLP.TabIndex = 0;
             // 
-            // waittingForm
+            // littleMenuPanel
             // 
-            this.waittingForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.waittingForm.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.waittingForm.Location = new System.Drawing.Point(0, 135);
-            this.waittingForm.Name = "waittingForm";
-            this.waittingForm.Size = new System.Drawing.Size(1390, 684);
-            this.waittingForm.TabIndex = 5;
-            this.waittingForm.Visible = false;
+            this.littleMenuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.littleMenuPanel.BackColor = System.Drawing.Color.White;
+            this.littleMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.littleMenuPanel.Controls.Add(this.button6);
+            this.littleMenuPanel.Controls.Add(this.button1);
+            this.littleMenuPanel.Controls.Add(this.user_DangXuat_Button);
+            this.littleMenuPanel.Location = new System.Drawing.Point(1130, 35);
+            this.littleMenuPanel.Name = "littleMenuPanel";
+            this.littleMenuPanel.Size = new System.Drawing.Size(180, 130);
+            this.littleMenuPanel.TabIndex = 19;
+            this.littleMenuPanel.Visible = false;
+            this.littleMenuPanel.MouseLeave += new System.EventHandler(this.littleMenuPanel_MouseLeave);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.Location = new System.Drawing.Point(9, 43);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(166, 38);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Đơn Mua";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(8, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 36);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Tài Khoản Của Tôi";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.userProfile_Button_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // KhachHangForm
             // 
@@ -3738,6 +4003,8 @@
             this.Text = "Book World";
             this.HeaderPannel.ResumeLayout(false);
             this.HeaderPannel.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.miniAvt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.HomePanel.ResumeLayout(false);
@@ -3752,11 +4019,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.accountPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).EndInit();
+            this.funcFLPanel.ResumeLayout(false);
             this.diaChiUser_Panel.ResumeLayout(false);
-            this.diaChiUser_Panel.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avtInUserProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -3764,8 +4034,8 @@
             this.doiMatKhauPanel.ResumeLayout(false);
             this.doiMatKhauPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
+            this.UserPanel.PerformLayout();
             this.KhachHang_Panel.ResumeLayout(false);
-            this.littleMenuPanel.ResumeLayout(false);
             this.BaiDangPanel.ResumeLayout(false);
             this.baiDangFLP.ResumeLayout(false);
             this.baiDangFLP.PerformLayout();
@@ -3837,6 +4107,7 @@
             this.spPanel.ResumeLayout(false);
             this.spPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.littleMenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3879,8 +4150,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel accountPanel;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button DonMuaButton;
         private System.Windows.Forms.Button doiMK_Botton;
         private System.Windows.Forms.Button diaChiUser_Button;
         private System.Windows.Forms.Button userProfile_Botton;
@@ -4087,6 +4357,19 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.FlowLayoutPanel funcFLPanel;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button ChonAnhButton;
+        private System.Windows.Forms.PictureBox avtInUserProfile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.TextBox userNameTxt;
+        private System.Windows.Forms.PictureBox userImagePB;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.PictureBox miniAvt;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Panel panel21;
     }
 }
 

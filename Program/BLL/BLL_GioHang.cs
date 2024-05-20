@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,24 +29,38 @@ namespace Program.BLL
             
         }
 
-        public void XoaSPKhoiGioHang(KhachHang khachHang, int index)
+        public void XoaSPKhoiGioHang(GioHang gioHang, params SanPham[] list)
         {
-            DAL_GioHang.Instance.XoaSanPham(khachHang.maSo, khachHang.gioHang.list[index].maSP);
-            khachHang.XoaSPKhoiGioHang(index);
+            foreach(SanPham sanPham in list)
+            {
+                XoaSPKhoiGioHang(gioHang, sanPham);
+            }
         }
 
-        public void ThemSPVaoGioHang(KhachHang khachHang, SanPham sanPham, int soLuong)
+        public void XoaSPKhoiGioHang(GioHang gioHang, SanPham sanPham)
+        {
+            DAL_GioHang.Instance.XoaSanPham(gioHang.maKH, sanPham.maSP);
+            gioHang.Remove(sanPham);
+        }
+
+        public void XoaSPKhoiGioHang(GioHang gioHang, int index)
+        {
+            DAL_GioHang.Instance.XoaSanPham(gioHang.maKH, gioHang.list[index].maSP);
+            gioHang.RemoveAt(index);
+        }
+
+        public void ThemSPVaoGioHang(GioHang gioHang, SanPham sanPham, int soLuong)
         {
             SanPham item = sanPham.Clone();
             item.soLuong = soLuong;
             item.ngayThem = DateTime.Now;
 
-            if (khachHang.gioHang.IsExist(sanPham))
-                DAL_GioHang.Instance.CapNhatSanPham(khachHang.maSo, item.maSP, item.soLuong);
+            if (gioHang.IsExist(sanPham))
+                DAL_GioHang.Instance.CapNhatSanPham(gioHang.maKH, item.maSP, item.soLuong);
             else
-                DAL_GioHang.Instance.ThemSanPham(khachHang.maSo, item.maSP, item.soLuong);
+                DAL_GioHang.Instance.ThemSanPham(gioHang.maKH, item.maSP, item.soLuong);
 
-            khachHang.ThemVaoGioHang(item);
+            gioHang.Add(item);
         }
 
         public string GetSoInGioHangIcon(GioHang gioHang)

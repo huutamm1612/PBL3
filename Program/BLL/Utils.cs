@@ -31,6 +31,11 @@ namespace Program
         public delegate bool Compare(object o1, object o2);
         public delegate bool Equal(object o1, object o2);
 
+        public string MoTaThoiGian(DateTime dateTime)
+        {
+            return $"{dateTime: HH}:{dateTime: mm}, ngày{dateTime: dd} tháng{dateTime: MM} năm{dateTime: yyyy}";
+        }
+
         public void RemoveRange<T>(List<T> list, List<string> maSo)
         {
             maSo.Sort();

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program.DAL
 {
@@ -83,6 +84,7 @@ namespace Program.DAL
                 ten = row["ten"].ToString(),
                 soDT = row["soDT"].ToString(),
                 email = row["email"].ToString(),
+                avt = row["avt"].ToString(),
                 diaChi = DAL_DiaChi.Instance.LoadDiaChiFromMaS(row["maDC"].ToString()),
                 tinhTrang = Convert.ToInt32(row["tinhTrang"].ToString()),
                 ngaySinh = Convert.ToDateTime(row["ngayTao"].ToString()),
@@ -102,20 +104,21 @@ namespace Program.DAL
         {
             string query = $"SELECT * FROM Shop S JOIN KhachHang_Shop KHS ON KHS.maS = S.maS JOIN KhachHang KH ON KH.maKH = KHS.maKH WHERE KH.taiKhoan = '{taiKhoan}'";
             DataRow row = Database.Instance.ExecuteQuery(query).Rows[0];
-
             return new Shop
             {
                 maSo = row["maS"].ToString(),
                 ten = row["ten"].ToString(),
                 soDT = row["soDT"].ToString(),
                 email = row["email"].ToString(),
-                diaChi = DAL_DiaChi.Instance.LoadDiaChiFromMaS(row["maDC"].ToString()),
+                avt = row["avt"].ToString(),
+                diaChi = DAL_DiaChi.Instance.LoadDiaChiFromMaS(row["maS"].ToString()),
                 tinhTrang = Convert.ToInt32(row["tinhTrang"].ToString()),
                 ngaySinh = Convert.ToDateTime(row["ngayTao"].ToString()),
                 doanhThu = Convert.ToInt32(row["doanhThu"].ToString()),
                 listFollower = LoadListFollowFromMaS(row["maS"].ToString()),
                 listBaiDang = DAL_BaiDang.Instance.LoadAllBaiDangFromMaS(row["maS"].ToString()),
-                listDonHang = DAL_DonHang.Instance.LoadAllDonHangFromMaS(row["maS"].ToString())
+                listDonHang = DAL_DonHang.Instance.LoadAllDonHangFromMaS(row["maS"].ToString()),
+                listThongBao = DAL_ThongBao.Instance.LoadAllThongBaoFromMaS(row["maS"].ToString())
             };
         }
     }

@@ -28,7 +28,7 @@ namespace Program.GUI
 
         }
 
-        public void FitTextBox(TextBox textBox, int w = 10, int h = 10)
+        public void FitTextBox(Control textBox, int w = 10, int h = 10)
         {
             Size textSize = TextRenderer.MeasureText(textBox.Text, textBox.Font);
             //MessageBox.Show(textBox.Width.ToString());
@@ -102,6 +102,29 @@ namespace Program.GUI
                 g.DrawPath(pen, path);
 
             }
+        }
+
+        public void PictureBoxToCircle_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pic = sender as PictureBox;
+
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, pic.Width, pic.Height);
+
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+            e.Graphics.CompositingMode = CompositingMode.SourceOver;
+
+
+            using (Pen pen = new Pen(pic.Parent.BackColor, 2))
+            {
+                e.Graphics.DrawEllipse(pen, 1, 1, pic.Width - 1, pic.Height - 1);
+            }
+
+            pic.Region = new Region(path);
         }
     }
 }

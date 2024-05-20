@@ -36,12 +36,13 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, param1, param2);
         }
 
-        public void DatHang(string maSP, string maDH)
+        public void DatHang(string maSP, string maDH, int soLuong)
         {
-            string query = "INSERT INTO DonHang_SanPham VALUES(@maDH, @maSP)";
+            string query = "INSERT INTO DonHang_SanPham VALUES(@maDH, @maSP, @soLuong)";
             SqlParameter param1 = new SqlParameter("@maDH", maDH);
             SqlParameter param2 = new SqlParameter("@maSP", maSP);
-            Database.Instance.ExecuteNonQuery(query, param1, param2);
+            SqlParameter param3 = new SqlParameter("@soLuong", soLuong);
+            Database.Instance.ExecuteNonQuery(query, param1, param2, param3);
         }
 
         public int LoadSoLuongFromMaSP(string maSP)
@@ -104,7 +105,7 @@ namespace Program.DAL
         {
             List<SanPham> list = new List<SanPham>();
 
-            string query = "SELECT * FROM DonHang_SanPha WHERE maDH = @maDH";
+            string query = "SELECT * FROM DonHang_SanPham WHERE maDH = @maDH";
             SqlParameter param = new SqlParameter("@maDH", maDH);
 
             DataTable table = Database.Instance.ExecuteQuery(query, param);

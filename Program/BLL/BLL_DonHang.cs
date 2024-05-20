@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program.BLL
 {
@@ -30,6 +31,25 @@ namespace Program.BLL
             return Database.Instance.MaMoi("maDH");
         }
 
+        public List<DonHang> PhanRaDonHang(QLSanPham qLSanPham)
+        {
+            List<DonHang> list = new List<DonHang>();
+
+            foreach(QLSanPham listSP in  qLSanPham.phanRa())
+            {
+                list.Add(new DonHang
+                {
+                    list = listSP.list,
+                    tongTien = listSP.tinhTongTien() + 30000,
+                    tinhTrang = 0,
+                    ngayDatHang = DateTime.Now,
+                    ngayGiaoHang = DateTime.Now
+                });
+            }
+
+            return list;
+        }
+
         public void DatHang(DonHang donHang)
         {
             DAL_DonHang.Instance.DatHang(donHang);
@@ -38,7 +58,7 @@ namespace Program.BLL
 
             foreach(SanPham sanPham in donHang.list)
             {
-                DAL_SanPham.Instance.DatHang(sanPham.maSP, donHang.maDH);
+                DAL_SanPham.Instance.DatHang(sanPham.maSP, donHang.maDH, sanPham.soLuong);
             }
         }
 

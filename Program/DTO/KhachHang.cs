@@ -182,20 +182,9 @@ namespace Program
             listThich.Remove(maBD);
         }
 
-        public void datHang(QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, int xu)
+        public void DatHang(DonHang donHang)
         {
-            DonHang donHang = new DonHang
-            {
-                list = listSanPham.list,
-                maKH = maSo,
-                tinhTrang = 0,
-                ptThanhToan = ptThanhToan,
-                diaChi = diaChi,
-                xu = xu,
-                ngayDatHang = DateTime.Now
-            };
-            this.xu -= xu;
-            listDonHang.AddRange(donHang.datHang());
+            listDonHang.Add(donHang);
         }
 
         public void huyDon(DonHang donHang)

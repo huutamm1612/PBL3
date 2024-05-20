@@ -1,5 +1,6 @@
 ﻿using Program.BLL;
 using Program.DAL;
+using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -19,6 +20,7 @@ namespace Program
         public List<string> listFollower { get; set; }
         public QLDonHang listDonHang { get; set; }
         public QLBaiDang listBaiDang { get; set; }
+        public QLThongBao listThongBao { get; set; }
 
         public Shop()
         {
@@ -29,8 +31,9 @@ namespace Program
             this.email = "";
             this.avt = "";
             this.diaChi = null;
-            this.ngaySinh = ngaySinh;
+            this.ngaySinh = ngaySinh; 
             this.listBaiDang = new QLBaiDang();
+            this.listThongBao = new QLThongBao();
             this.doanhThu = 0;
             this.tinhTrang = 1;
             this.listFollower = new List<string>();
@@ -49,7 +52,6 @@ namespace Program
                 new SqlParameter("@avt", avt),
                 new SqlParameter("@maDC", diaChi.maDC),
                 new SqlParameter("@tinhTrang", tinhTrang)
-
             };
         }
         public Shop(string soDT, string email)

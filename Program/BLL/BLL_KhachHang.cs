@@ -1,4 +1,5 @@
 ﻿using Program.DAL;
+using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +66,48 @@ namespace Program.BLL
             DAL_KhachHang.Instance.XoaFollow(khachHang.maSo, shop.maSo);
             shop.UnFollow(khachHang.maSo);
             khachHang.UnFollow(shop.maSo);
+        }
+
+        public void DatHang(KhachHang khachHang, QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, bool dungXu)
+        {
+            int soLuongShop = listSanPham.soLuongShop();
+            int xu = 0;
+            if (dungXu)
+            {
+                xu = khachHang.xu;
+                khachHang.xu = 0;
+                DAL_KhachHang.Instance.DungXu(khachHang.maSo);
+            }
+
+            foreach(DonHang donHang in BLL_DonHang.Instance.PhanRaDonHang(listSanPham))
+            {
+                string maS = donHang.list[0].maS;
+
+                donHang.maDH = BLL_DonHang.Instance.GetMaMoi();
+                donHang.maKH = khachHang.maSo;
+                donHang.ptThanhToan = ptThanhToan;
+                donHang.xu = xu / soLuongShop;
+                donHang.maS = maS;
+                donHang.diaChi = diaChi;
+
+                khachHang.listDonHang.Add(donHang);
+                BLL_DonHang.Instance.DatHang(donHang);
+
+                ThongBao thongBao = new ThongBao
+                {
+                    maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                    from = "KH" + khachHang.maSo,
+                    to = "S" + maS,
+                    dinhKem = "DH" + donHang.maDH,
+                    noiDung = $"Khách hàng {khachHang.taiKhoan} đã đặt đơn hàng DH{donHang.maDH} vào lúc {Utils.Instance.MoTaThoiGian(DateTime.Now)}",
+                    ngayGui = DateTime.Now,
+                    tinhTrang = 0
+                };
+
+                BLL_ThongBao.Instance.ThemThongBao(thongBao);
+            }
+
+            BLL_GioHang.Instance.XoaSPKhoiGioHang(khachHang.gioHang, listSanPham.ToArray());
         }
 
         public void HuyDonHang(DonHang donHang)

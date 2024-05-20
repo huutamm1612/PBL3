@@ -30,7 +30,7 @@ namespace Program.DAL
         {
             QLDonHang qlDonHang = new QLDonHang();
 
-            string query = "SELECT DH.* FROM DonHang DH JOIN DonHang_KhachHang DHKH ON DH.maDH = DHKH.maDH WHERE DHKH.maKH = @maKH";
+            string query = "SELECT * FROM DonHang DH JOIN DonHang_KhachHang DHKH ON DH.maDH = DHKH.maDH JOIN DonHang_Shop DHS ON DHS.maDH = DH.maDH WHERE DHKH.maKH = @maKH";
             SqlParameter param = new SqlParameter("@maKH", maKH);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -46,7 +46,7 @@ namespace Program.DAL
         {
             QLDonHang qlDonHang = new QLDonHang();
 
-            string query = "SELECT DH.* FROM DonHang DH JOIN DonHang_Shop DHS ON DH.maDH = DHS.maDH WHERE DHS.maS = @maS";
+            string query = "SELECT * FROM DonHang DH JOIN DonHang_KhachHang DHKH ON DH.maDH = DHKH.maDH JOIN DonHang_Shop DHS ON DHS.maDH = DH.maDH WHERE DHS.maS = @maS";
             SqlParameter param = new SqlParameter("@maS", maS);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -79,6 +79,8 @@ namespace Program.DAL
             return new DonHang
             {
                 maDH = row["maDH"].ToString(),
+                maKH = row["maKH"].ToString(),
+                maS = row["maS"].ToString(),
                 diaChi = DAL_DiaChi.Instance.LoadDiaChiFromMaDC(row["maDC"].ToString()),
                 list = DAL_SanPham.Instance.LoadAllSanPhamFromMaDH(row["maDH"].ToString()),
                 tongTien = Convert.ToInt32(row["tongTien"]),

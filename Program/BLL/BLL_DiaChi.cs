@@ -75,7 +75,7 @@ namespace Program.BLL
             return list;
         }
 
-        public List<CBBItem> GetAllQuanHuyenFromMa_TTP(int maT_TP)
+        public List<CBBItem> GetAllQuanHuyenFromMa_TTP(int maT_TP) 
         {
             List<CBBItem> list = new List<CBBItem>();
             foreach (int maQH in DAL_DiaChi.Instance.LoadAllMaQHFromMaT_TP(maT_TP))

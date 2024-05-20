@@ -52,6 +52,13 @@ namespace Program.DAL
             return row["taiKhoan"].ToString();
         }
 
+        public void DungXu(string maKH)
+        {
+            string query = "UPDATE KhachHang SET xu = 0 WHERE maKH = @maKH";
+            SqlParameter param = new SqlParameter("@maKH", maKH);
+            Database.Instance.ExecuteNonQuery(query, param);   
+        }
+
         public void DangKyTaoShop(string maKH, string maS)
         {
             string query = "INSERT INTO KhachHang_Shop VALUES(@maKH, @maS)";
@@ -190,6 +197,7 @@ namespace Program.DAL
         {
             DiaChi diaChi = null;
             int gioiTinh = 2;
+            string avt = "";
             DateTime ngaySinh = new DateTime();
 
             if (!row.IsNull("maDC"))
@@ -198,6 +206,8 @@ namespace Program.DAL
                 gioiTinh = Convert.ToInt32(row["gioiTinh"]);
             if (!row.IsNull("ngaySinh"))
                 ngaySinh = Convert.ToDateTime(row["ngaySinh"]);
+            if (!row.IsNull("avt"))
+                avt = row["avt"].ToString();
 
             return new KhachHang
             {
@@ -211,7 +221,7 @@ namespace Program.DAL
                 ngaySinh = ngaySinh,
                 xu = Convert.ToInt32(row["xu"]),
                 chiTieu = Convert.ToInt32(row["chiTieu"]),
-                //avt = 
+                avt = avt,
                 gioHang = DAL_GioHang.Instance.LoadGioHangFromMaKH(row["maKH"].ToString()),
                 listDiaChi = DAL_DiaChi.Instance.LoadAllDiaChiFromMaKH(row["maKH"].ToString()),
                 listDonHang = DAL_DonHang.Instance.LoadAllDonHangFromMaKH(row["maKH"].ToString()),

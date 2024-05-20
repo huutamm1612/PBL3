@@ -14,6 +14,7 @@ namespace Program
     {
         public string maDH { get; set; }
         public string maKH { get; set; }
+        public string maS { get; set; }
         public DiaChi diaChi { get; set; }
         public int tongTien { get; set; }
         public int tinhTrang { get; set; }
@@ -27,6 +28,7 @@ namespace Program
             list = null;
             maDH = "";
             maKH = "";
+            maS = "";
             tinhTrang = 0;
             ptThanhToan = 0;
             tongTien = 0;
@@ -45,6 +47,7 @@ namespace Program
                 new SqlParameter("@tongTien", tongTien),
                 new SqlParameter("@tinhTrang", tinhTrang),
                 new SqlParameter("@xu", xu),
+                new SqlParameter("@ptThanhToan", ptThanhToan),
                 new SqlParameter("@ngayDatHang", ngayDatHang),
                 new SqlParameter("@ngayGiaoHang", ngayGiaoHang)
             };
@@ -74,32 +77,9 @@ namespace Program
                     xu = xu / n,
                     ngayDatHang = ngayDatHang,
                 });
-            }
+            }   
 
             return listDonHang;
-        }
-
-        public DonHang[] datHang()
-        {
-            List<DonHang> listDonHang = new List<DonHang>();
-
-            int n = soLuongShop();
-
-            if(n == 1)
-            {
-                maDH = BLL_DonHang.Instance.GetMaMoi();
-                tongTien = tinhTongTien();
-                listDonHang.Add(this);
-            }
-            else
-            {
-                listDonHang.AddRange(phanRaDonHang(n));
-            }
-
-            /*foreach(DonHang donHang in listDonHang) 
-                HeThong.DatHang(donHang);*/
-
-            return listDonHang.ToArray();
         }
 
         public void diDon()

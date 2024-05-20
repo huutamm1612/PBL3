@@ -54,10 +54,12 @@
     <Compile Include="BLL\BLL_KhachHang.cs" />
     <Compile Include="BLL\BLL_SanPham.cs" />
     <Compile Include="BLL\BLL_Shop.cs" />
+    <Compile Include="BLL\BLL_ThongBao.cs" />
     <Compile Include="BLL\BLL_User.cs" />
     <Compile Include="DAL\DAL_BaiDang.cs" />
     <Compile Include="DAL\DAL_DanhGia.cs" />
     <Compile Include="DAL\DAL_DonHang.cs" />
+    <Compile Include="DAL\DAL_ThongBao.cs" />
     <Compile Include="DAL\DAL_User.cs" />
     <Compile Include="DTO\BaiDang.cs" />
     <Compile Include="DAL\DAL_DiaChi.cs" />
@@ -66,6 +68,8 @@
     <Compile Include="DAL\DAL_QLSanPham.cs" />
     <Compile Include="DAL\DAL_SanPham.cs" />
     <Compile Include="DAL\DAL_Shop.cs" />
+    <Compile Include="DTO\QLThongBao.cs" />
+    <Compile Include="DTO\ThongBao.cs" />
     <Compile Include="GUI\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +214,14 @@
   <ItemGroup>
     <None Include="Resources\arrowdown.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purchase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bell.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

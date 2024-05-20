@@ -1107,14 +1107,17 @@ namespace Program
         }
         private void btnThemAnhShop_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*"
+            };
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 picLogo.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(openFile.FileName), picLogo.Size);
                 shop.avt = openFile.FileName;
             }
+
             picLogo.Visible = true;
         }
 
