@@ -117,7 +117,7 @@ CREATE TABLE KhachHang_Shop (
 
 CREATE TABLE LoaiSanPham (
 	maLoaiSP varchar(10) PRIMARY KEY,
-	ten nvarchar(50)
+	tenLoaiSP nvarchar(50)
 )
 
 CREATE TABLE SanPham(
@@ -284,4 +284,15 @@ CREATE TABLE DanhGia_BaiDang(
 
 	CONSTRAINT FK_DanhGia_BaiDang_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD),
 	CONSTRAINT FK_DanhGia_BaiDang_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+)
+
+CREATE TABLE ThongBao
+(
+	maTB varchar(10) PRIMARY KEY,
+	_From varchar(12),
+	_To varchar(12),
+	dinhKem varchar(12) null,
+	noiDung nvarchar(500),
+	tinhTrang int,
+	ngayGui datetime
 )

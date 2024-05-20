@@ -395,10 +395,11 @@ namespace Program
             this.flowLayoutPanel6.Controls.Add(this.miniAvt);
             this.flowLayoutPanel6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(1098, 3);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(1130, 3);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(197, 38);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(180, 38);
             this.flowLayoutPanel6.TabIndex = 14;
+            this.flowLayoutPanel6.Visible = false;
             this.flowLayoutPanel6.Click += new System.EventHandler(this.userProfile_Button_Click);
             this.flowLayoutPanel6.MouseLeave += new System.EventHandler(this.userProfile_Button_MouseLeave);
             this.flowLayoutPanel6.MouseHover += new System.EventHandler(this.userProfile_Button_MouseHover);
@@ -413,7 +414,7 @@ namespace Program
             this.userProfile_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userProfile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_Button.ForeColor = System.Drawing.Color.White;
-            this.userProfile_Button.Location = new System.Drawing.Point(77, 0);
+            this.userProfile_Button.Location = new System.Drawing.Point(60, 0);
             this.userProfile_Button.Margin = new System.Windows.Forms.Padding(0);
             this.userProfile_Button.Name = "userProfile_Button";
             this.userProfile_Button.Size = new System.Drawing.Size(120, 35);
@@ -429,7 +430,7 @@ namespace Program
             // miniAvt
             // 
             this.miniAvt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.miniAvt.Location = new System.Drawing.Point(50, 3);
+            this.miniAvt.Location = new System.Drawing.Point(33, 3);
             this.miniAvt.Name = "miniAvt";
             this.miniAvt.Size = new System.Drawing.Size(24, 24);
             this.miniAvt.TabIndex = 7;

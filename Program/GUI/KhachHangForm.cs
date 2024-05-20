@@ -60,6 +60,7 @@ namespace Program
             SignUp_Button.Visible = false;
             userProfile_Button.Visible = true;
             user_DangXuat_Button.Visible = true;
+            flowLayoutPanel6.Visible = true;
 
             try
             {
@@ -584,6 +585,7 @@ namespace Program
             UserPanel.Visible = false;
             userProfile_Button.Visible = false;
             littleMenuPanel.Visible = false;
+            flowLayoutPanel6.Visible = false;
             SetHeaderPanel();
             BLL_User.Instance.ClearCache();
         }
