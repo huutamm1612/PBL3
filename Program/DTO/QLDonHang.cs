@@ -55,6 +55,28 @@ namespace Program
             list = donHang.list;
         }
 
+        public DonHang GetDonHangFromMaDH(string maDH)
+        {
+            foreach(DonHang donHang in list)
+            {
+                if (maDH.Equals(donHang.maDH))
+                    return donHang;
+            }
+
+            return null;
+        }
+
+        public int IndexOf(string maDH)
+        {
+            for(int i = 0; i < list.Count; i++)
+            {
+                if (list[i].maDH.Equals(maDH))
+                    return i;
+            }
+
+            return -1;
+        }
+
         public void AddRange(params DonHang[] listDonHang)
         {
             foreach(DonHang donHang in listDonHang)

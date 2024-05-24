@@ -44,6 +44,7 @@ namespace Program
             this.label = new System.Windows.Forms.Label();
             this.dangNhap_Button = new System.Windows.Forms.Button();
             this.SignUp_Button = new System.Windows.Forms.Button();
+            this.waittingPanel = new System.Windows.Forms.Panel();
             this.user_DangXuat_Button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -142,6 +143,32 @@ namespace Program
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
+            this.DonMuaPanel = new System.Windows.Forms.Panel();
+            this.HeaderDHPanel = new System.Windows.Forms.Panel();
+            this.DHDaHuyButton = new System.Windows.Forms.Button();
+            this.DHDaHTButton = new System.Windows.Forms.Button();
+            this.DHDangVCButton = new System.Windows.Forms.Button();
+            this.DHChoXNButton = new System.Windows.Forms.Button();
+            this.tatCaDHButton = new System.Windows.Forms.Button();
+            this.DonHangFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.textBox58 = new System.Windows.Forms.TextBox();
+            this.textBox57 = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.textBox54 = new System.Windows.Forms.TextBox();
+            this.textBox55 = new System.Windows.Forms.TextBox();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.textBox56 = new System.Windows.Forms.TextBox();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
+            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.textBox65 = new System.Windows.Forms.TextBox();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
             this.waittingForm = new System.Windows.Forms.Panel();
             this.BaiDangPanel = new System.Windows.Forms.Panel();
@@ -315,6 +342,14 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.doiMatKhauPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
+            this.DonMuaPanel.SuspendLayout();
+            this.HeaderDHPanel.SuspendLayout();
+            this.DonHangFLP.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            this.panel26.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
             this.BaiDangPanel.SuspendLayout();
             this.baiDangFLP.SuspendLayout();
@@ -382,10 +417,11 @@ namespace Program
             this.HeaderPannel.Controls.Add(this.label);
             this.HeaderPannel.Controls.Add(this.dangNhap_Button);
             this.HeaderPannel.Controls.Add(this.SignUp_Button);
+            this.HeaderPannel.Controls.Add(this.waittingPanel);
             this.HeaderPannel.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HeaderPannel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPannel.Name = "HeaderPannel";
-            this.HeaderPannel.Size = new System.Drawing.Size(1390, 137);
+            this.HeaderPannel.Size = new System.Drawing.Size(1398, 137);
             this.HeaderPannel.TabIndex = 3;
             // 
             // flowLayoutPanel6
@@ -395,7 +431,7 @@ namespace Program
             this.flowLayoutPanel6.Controls.Add(this.miniAvt);
             this.flowLayoutPanel6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(1130, 3);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(1138, 3);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             this.flowLayoutPanel6.Size = new System.Drawing.Size(180, 38);
             this.flowLayoutPanel6.TabIndex = 14;
@@ -452,7 +488,7 @@ namespace Program
             this.cartButton.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cartButton.ForeColor = System.Drawing.Color.OrangeRed;
             this.cartButton.Image = global::Program.Properties.Resources.cart2;
-            this.cartButton.Location = new System.Drawing.Point(1060, 43);
+            this.cartButton.Location = new System.Drawing.Point(1068, 43);
             this.cartButton.Name = "cartButton";
             this.cartButton.Size = new System.Drawing.Size(73, 47);
             this.cartButton.TabIndex = 13;
@@ -485,7 +521,7 @@ namespace Program
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(963, 43);
+            this.searchButton.Location = new System.Drawing.Point(971, 43);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(86, 47);
             this.searchButton.TabIndex = 4;
@@ -500,7 +536,7 @@ namespace Program
             this.search_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search_Text.Location = new System.Drawing.Point(283, 52);
             this.search_Text.Name = "search_Text";
-            this.search_Text.Size = new System.Drawing.Size(671, 27);
+            this.search_Text.Size = new System.Drawing.Size(679, 27);
             this.search_Text.TabIndex = 3;
             this.search_Text.Text = "Tìm kiếm...";
             // 
@@ -512,7 +548,7 @@ namespace Program
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(267, 39);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(785, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(793, 54);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -540,7 +576,7 @@ namespace Program
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label.Location = new System.Drawing.Point(1198, 7);
+            this.label.Location = new System.Drawing.Point(1206, 7);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(17, 25);
             this.label.TabIndex = 12;
@@ -557,7 +593,7 @@ namespace Program
             this.dangNhap_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dangNhap_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dangNhap_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dangNhap_Button.Location = new System.Drawing.Point(1107, 3);
+            this.dangNhap_Button.Location = new System.Drawing.Point(1115, 3);
             this.dangNhap_Button.Name = "dangNhap_Button";
             this.dangNhap_Button.Size = new System.Drawing.Size(106, 38);
             this.dangNhap_Button.TabIndex = 7;
@@ -576,13 +612,22 @@ namespace Program
             this.SignUp_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignUp_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUp_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SignUp_Button.Location = new System.Drawing.Point(1215, 3);
+            this.SignUp_Button.Location = new System.Drawing.Point(1223, 3);
             this.SignUp_Button.Name = "SignUp_Button";
             this.SignUp_Button.Size = new System.Drawing.Size(81, 38);
             this.SignUp_Button.TabIndex = 8;
             this.SignUp_Button.Text = "Đăng ký";
             this.SignUp_Button.UseVisualStyleBackColor = false;
             this.SignUp_Button.Click += new System.EventHandler(this.SignUp_Button_Click);
+            // 
+            // waittingPanel
+            // 
+            this.waittingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.waittingPanel.Location = new System.Drawing.Point(0, 0);
+            this.waittingPanel.Name = "waittingPanel";
+            this.waittingPanel.Size = new System.Drawing.Size(1398, 109);
+            this.waittingPanel.TabIndex = 15;
             // 
             // user_DangXuat_Button
             // 
@@ -655,6 +700,7 @@ namespace Program
             this.HomePanel.Name = "HomePanel";
             this.HomePanel.Size = new System.Drawing.Size(1398, 684);
             this.HomePanel.TabIndex = 8;
+            this.HomePanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.HomePanel_Scroll);
             this.HomePanel.VisibleChanged += new System.EventHandler(this.HomePanel_Load);
             // 
             // FLPBaiDang1
@@ -662,7 +708,7 @@ namespace Program
             this.FLPBaiDang1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.FLPBaiDang1.Controls.Add(this.titlePanel1);
             this.FLPBaiDang1.Controls.Add(this.PageListP);
-            this.FLPBaiDang1.Location = new System.Drawing.Point(41, 771);
+            this.FLPBaiDang1.Location = new System.Drawing.Point(40, 777);
             this.FLPBaiDang1.Name = "FLPBaiDang1";
             this.FLPBaiDang1.Size = new System.Drawing.Size(1335, 160);
             this.FLPBaiDang1.TabIndex = 9;
@@ -699,7 +745,7 @@ namespace Program
             this.PageListFLP.CausesValidation = false;
             this.PageListFLP.Controls.Add(this.prevPageButton);
             this.PageListFLP.Controls.Add(this.nextPageButton);
-            this.PageListFLP.Location = new System.Drawing.Point(425, 9);
+            this.PageListFLP.Location = new System.Drawing.Point(429, 9);
             this.PageListFLP.Name = "PageListFLP";
             this.PageListFLP.Size = new System.Drawing.Size(457, 51);
             this.PageListFLP.TabIndex = 0;
@@ -761,7 +807,7 @@ namespace Program
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(41, 429);
+            this.panel2.Location = new System.Drawing.Point(40, 435);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1326, 323);
             this.panel2.TabIndex = 4;
@@ -983,7 +1029,7 @@ namespace Program
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(41, 20);
+            this.panel3.Location = new System.Drawing.Point(40, 26);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1326, 392);
             this.panel3.TabIndex = 3;
@@ -1024,7 +1070,7 @@ namespace Program
             this.userNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.userNameTxt.Cursor = System.Windows.Forms.Cursors.Default;
             this.userNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTxt.Location = new System.Drawing.Point(138, 67);
+            this.userNameTxt.Location = new System.Drawing.Point(138, 202);
             this.userNameTxt.Name = "userNameTxt";
             this.userNameTxt.Size = new System.Drawing.Size(153, 21);
             this.userNameTxt.TabIndex = 35;
@@ -1033,7 +1079,7 @@ namespace Program
             // userImagePB
             // 
             this.userImagePB.ImageLocation = "";
-            this.userImagePB.Location = new System.Drawing.Point(68, 46);
+            this.userImagePB.Location = new System.Drawing.Point(68, 181);
             this.userImagePB.Name = "userImagePB";
             this.userImagePB.Size = new System.Drawing.Size(64, 64);
             this.userImagePB.TabIndex = 35;
@@ -1051,7 +1097,7 @@ namespace Program
             this.funcFLPanel.Controls.Add(this.button29);
             this.funcFLPanel.Controls.Add(this.button30);
             this.funcFLPanel.Controls.Add(this.button31);
-            this.funcFLPanel.Location = new System.Drawing.Point(56, 130);
+            this.funcFLPanel.Location = new System.Drawing.Point(56, 265);
             this.funcFLPanel.Name = "funcFLPanel";
             this.funcFLPanel.Size = new System.Drawing.Size(256, 513);
             this.funcFLPanel.TabIndex = 14;
@@ -1184,7 +1230,7 @@ namespace Program
             this.DonMuaButton.Text = "        Đơn Mua";
             this.DonMuaButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DonMuaButton.UseVisualStyleBackColor = false;
-            this.DonMuaButton.Click += new System.EventHandler(this.SpreadOutClick);
+            this.DonMuaButton.Click += new System.EventHandler(this.DonMuaButton_Click);
             // 
             // button29
             // 
@@ -1246,7 +1292,7 @@ namespace Program
             this.diaChiUser_Panel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.diaChiUser_Panel.Controls.Add(this.panel21);
             this.diaChiUser_Panel.Controls.Add(this.listDiaChi_FLPanel);
-            this.diaChiUser_Panel.Location = new System.Drawing.Point(318, 26);
+            this.diaChiUser_Panel.Location = new System.Drawing.Point(318, 161);
             this.diaChiUser_Panel.Name = "diaChiUser_Panel";
             this.diaChiUser_Panel.Size = new System.Drawing.Size(943, 631);
             this.diaChiUser_Panel.TabIndex = 13;
@@ -1331,7 +1377,7 @@ namespace Program
             this.profilePanel.Controls.Add(this.luu_UP_Button);
             this.profilePanel.Controls.Add(this.textBox2);
             this.profilePanel.Controls.Add(this.pictureBox8);
-            this.profilePanel.Location = new System.Drawing.Point(318, 26);
+            this.profilePanel.Location = new System.Drawing.Point(318, 161);
             this.profilePanel.Name = "profilePanel";
             this.profilePanel.Size = new System.Drawing.Size(1023, 631);
             this.profilePanel.TabIndex = 6;
@@ -1889,7 +1935,7 @@ namespace Program
             this.doiMatKhauPanel.Controls.Add(this.textBox9);
             this.doiMatKhauPanel.Controls.Add(this.textBox4);
             this.doiMatKhauPanel.Controls.Add(this.label9);
-            this.doiMatKhauPanel.Location = new System.Drawing.Point(318, 26);
+            this.doiMatKhauPanel.Location = new System.Drawing.Point(318, 161);
             this.doiMatKhauPanel.Name = "doiMatKhauPanel";
             this.doiMatKhauPanel.Size = new System.Drawing.Size(1023, 631);
             this.doiMatKhauPanel.TabIndex = 12;
@@ -2037,6 +2083,7 @@ namespace Program
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UserPanel.AutoScroll = true;
             this.UserPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UserPanel.Controls.Add(this.DonMuaPanel);
             this.UserPanel.Controls.Add(this.profilePanel);
             this.UserPanel.Controls.Add(this.userNameTxt);
             this.UserPanel.Controls.Add(this.userImagePB);
@@ -2044,12 +2091,393 @@ namespace Program
             this.UserPanel.Controls.Add(this.diaChiUser_Panel);
             this.UserPanel.Controls.Add(this.doiMatKhauPanel);
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserPanel.Location = new System.Drawing.Point(0, 135);
+            this.UserPanel.Location = new System.Drawing.Point(0, 0);
             this.UserPanel.Name = "UserPanel";
-            this.UserPanel.Size = new System.Drawing.Size(1390, 700);
+            this.UserPanel.Size = new System.Drawing.Size(1390, 835);
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
             this.UserPanel.VisibleChanged += new System.EventHandler(this.UserPanel_VisibleChanged);
+            // 
+            // DonMuaPanel
+            // 
+            this.DonMuaPanel.Controls.Add(this.HeaderDHPanel);
+            this.DonMuaPanel.Controls.Add(this.DonHangFLP);
+            this.DonMuaPanel.Location = new System.Drawing.Point(318, 161);
+            this.DonMuaPanel.Name = "DonMuaPanel";
+            this.DonMuaPanel.Size = new System.Drawing.Size(1023, 594);
+            this.DonMuaPanel.TabIndex = 37;
+            this.DonMuaPanel.Visible = false;
+            // 
+            // HeaderDHPanel
+            // 
+            this.HeaderDHPanel.BackColor = System.Drawing.Color.White;
+            this.HeaderDHPanel.Controls.Add(this.DHDaHuyButton);
+            this.HeaderDHPanel.Controls.Add(this.DHDaHTButton);
+            this.HeaderDHPanel.Controls.Add(this.DHDangVCButton);
+            this.HeaderDHPanel.Controls.Add(this.DHChoXNButton);
+            this.HeaderDHPanel.Controls.Add(this.tatCaDHButton);
+            this.HeaderDHPanel.Location = new System.Drawing.Point(0, 0);
+            this.HeaderDHPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.HeaderDHPanel.Name = "HeaderDHPanel";
+            this.HeaderDHPanel.Size = new System.Drawing.Size(1023, 60);
+            this.HeaderDHPanel.TabIndex = 0;
+            // 
+            // DHDaHuyButton
+            // 
+            this.DHDaHuyButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DHDaHuyButton.FlatAppearance.BorderSize = 0;
+            this.DHDaHuyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DHDaHuyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DHDaHuyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DHDaHuyButton.Location = new System.Drawing.Point(818, 2);
+            this.DHDaHuyButton.Name = "DHDaHuyButton";
+            this.DHDaHuyButton.Size = new System.Drawing.Size(196, 60);
+            this.DHDaHuyButton.TabIndex = 4;
+            this.DHDaHuyButton.Text = "Đã hủy";
+            this.DHDaHuyButton.UseVisualStyleBackColor = true;
+            this.DHDaHuyButton.Click += new System.EventHandler(this.ChuyenLoaiDH_Click);
+            this.DHDaHuyButton.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.DHDaHuyButton.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.DHDaHuyButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
+            // 
+            // DHDaHTButton
+            // 
+            this.DHDaHTButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DHDaHTButton.FlatAppearance.BorderSize = 0;
+            this.DHDaHTButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DHDaHTButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DHDaHTButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DHDaHTButton.Location = new System.Drawing.Point(614, 2);
+            this.DHDaHTButton.Name = "DHDaHTButton";
+            this.DHDaHTButton.Size = new System.Drawing.Size(204, 60);
+            this.DHDaHTButton.TabIndex = 3;
+            this.DHDaHTButton.Text = "Hoàn thành";
+            this.DHDaHTButton.UseVisualStyleBackColor = true;
+            this.DHDaHTButton.Click += new System.EventHandler(this.ChuyenLoaiDH_Click);
+            this.DHDaHTButton.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.DHDaHTButton.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.DHDaHTButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
+            // 
+            // DHDangVCButton
+            // 
+            this.DHDangVCButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DHDangVCButton.FlatAppearance.BorderSize = 0;
+            this.DHDangVCButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DHDangVCButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DHDangVCButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DHDangVCButton.Location = new System.Drawing.Point(410, 2);
+            this.DHDangVCButton.Name = "DHDangVCButton";
+            this.DHDangVCButton.Size = new System.Drawing.Size(204, 60);
+            this.DHDangVCButton.TabIndex = 2;
+            this.DHDangVCButton.Text = "Vận chuyển";
+            this.DHDangVCButton.UseVisualStyleBackColor = true;
+            this.DHDangVCButton.Click += new System.EventHandler(this.ChuyenLoaiDH_Click);
+            this.DHDangVCButton.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.DHDangVCButton.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.DHDangVCButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
+            // 
+            // DHChoXNButton
+            // 
+            this.DHChoXNButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DHChoXNButton.FlatAppearance.BorderSize = 0;
+            this.DHChoXNButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DHChoXNButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DHChoXNButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DHChoXNButton.Location = new System.Drawing.Point(206, 2);
+            this.DHChoXNButton.Name = "DHChoXNButton";
+            this.DHChoXNButton.Size = new System.Drawing.Size(204, 58);
+            this.DHChoXNButton.TabIndex = 1;
+            this.DHChoXNButton.Text = "Chờ xác nhận";
+            this.DHChoXNButton.UseVisualStyleBackColor = true;
+            this.DHChoXNButton.Click += new System.EventHandler(this.ChuyenLoaiDH_Click);
+            this.DHChoXNButton.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.DHChoXNButton.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.DHChoXNButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
+            // 
+            // tatCaDHButton
+            // 
+            this.tatCaDHButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tatCaDHButton.FlatAppearance.BorderSize = 0;
+            this.tatCaDHButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.tatCaDHButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.tatCaDHButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tatCaDHButton.ForeColor = System.Drawing.Color.Red;
+            this.tatCaDHButton.Location = new System.Drawing.Point(2, 2);
+            this.tatCaDHButton.Name = "tatCaDHButton";
+            this.tatCaDHButton.Size = new System.Drawing.Size(204, 60);
+            this.tatCaDHButton.TabIndex = 0;
+            this.tatCaDHButton.Text = "Tất cả";
+            this.tatCaDHButton.UseVisualStyleBackColor = true;
+            this.tatCaDHButton.Click += new System.EventHandler(this.ChuyenLoaiDH_Click);
+            this.tatCaDHButton.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.tatCaDHButton.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.tatCaDHButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
+            // 
+            // DonHangFLP
+            // 
+            this.DonHangFLP.Controls.Add(this.flowLayoutPanel8);
+            this.DonHangFLP.Location = new System.Drawing.Point(0, 63);
+            this.DonHangFLP.Name = "DonHangFLP";
+            this.DonHangFLP.Size = new System.Drawing.Size(1023, 457);
+            this.DonHangFLP.TabIndex = 36;
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel8.Controls.Add(this.panel22);
+            this.flowLayoutPanel8.Controls.Add(this.panel23);
+            this.flowLayoutPanel8.Controls.Add(this.panel26);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(0, 10);
+            this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(1022, 330);
+            this.flowLayoutPanel8.TabIndex = 1;
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.textBox58);
+            this.panel22.Controls.Add(this.textBox57);
+            this.panel22.Controls.Add(this.button10);
+            this.panel22.Controls.Add(this.textBox52);
+            this.panel22.Location = new System.Drawing.Point(20, 10);
+            this.panel22.Margin = new System.Windows.Forms.Padding(20, 10, 10, 3);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(979, 51);
+            this.panel22.TabIndex = 0;
+            this.panel22.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPanelBorder);
+            // 
+            // textBox58
+            // 
+            this.textBox58.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox58.BackColor = System.Drawing.Color.White;
+            this.textBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox58.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox58.ForeColor = System.Drawing.Color.Black;
+            this.textBox58.Location = new System.Drawing.Point(484, 16);
+            this.textBox58.Name = "textBox58";
+            this.textBox58.ReadOnly = true;
+            this.textBox58.Size = new System.Drawing.Size(257, 21);
+            this.textBox58.TabIndex = 26;
+            this.textBox58.Text = "Mã đơn hàng";
+            this.textBox58.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox57
+            // 
+            this.textBox57.BackColor = System.Drawing.Color.White;
+            this.textBox57.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox57.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox57.ForeColor = System.Drawing.Color.OrangeRed;
+            this.textBox57.Location = new System.Drawing.Point(755, 16);
+            this.textBox57.Name = "textBox57";
+            this.textBox57.ReadOnly = true;
+            this.textBox57.Size = new System.Drawing.Size(212, 21);
+            this.textBox57.TabIndex = 25;
+            this.textBox57.Text = "TÌNH TRẠNG ĐƠN HÀNG";
+            this.textBox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // button10
+            // 
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(10, 12);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(94, 28);
+            this.button10.TabIndex = 5;
+            this.button10.Text = "Xem Shop";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // textBox52
+            // 
+            this.textBox52.BackColor = System.Drawing.Color.White;
+            this.textBox52.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox52.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox52.ForeColor = System.Drawing.Color.Black;
+            this.textBox52.Location = new System.Drawing.Point(122, 16);
+            this.textBox52.Name = "textBox52";
+            this.textBox52.ReadOnly = true;
+            this.textBox52.Size = new System.Drawing.Size(257, 21);
+            this.textBox52.TabIndex = 25;
+            this.textBox52.Text = "Tên shop";
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.White;
+            this.panel23.Controls.Add(this.textBox53);
+            this.panel23.Controls.Add(this.textBox54);
+            this.panel23.Controls.Add(this.textBox55);
+            this.panel23.Controls.Add(this.pictureBox16);
+            this.panel23.Controls.Add(this.textBox56);
+            this.panel23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel23.Location = new System.Drawing.Point(20, 64);
+            this.panel23.Margin = new System.Windows.Forms.Padding(20, 0, 10, 3);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(979, 120);
+            this.panel23.TabIndex = 4;
+            this.panel23.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPanelBorder);
+            // 
+            // textBox53
+            // 
+            this.textBox53.BackColor = System.Drawing.Color.White;
+            this.textBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox53.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox53.ForeColor = System.Drawing.Color.OrangeRed;
+            this.textBox53.Location = new System.Drawing.Point(875, 49);
+            this.textBox53.Name = "textBox53";
+            this.textBox53.ReadOnly = true;
+            this.textBox53.Size = new System.Drawing.Size(92, 19);
+            this.textBox53.TabIndex = 24;
+            this.textBox53.Text = "₫82.400";
+            this.textBox53.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox54
+            // 
+            this.textBox54.BackColor = System.Drawing.Color.White;
+            this.textBox54.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox54.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox54.Location = new System.Drawing.Point(121, 9);
+            this.textBox54.Multiline = true;
+            this.textBox54.Name = "textBox54";
+            this.textBox54.ReadOnly = true;
+            this.textBox54.Size = new System.Drawing.Size(390, 71);
+            this.textBox54.TabIndex = 2;
+            this.textBox54.Text = "Tên sản phẩm";
+            // 
+            // textBox55
+            // 
+            this.textBox55.BackColor = System.Drawing.Color.White;
+            this.textBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox55.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox55.ForeColor = System.Drawing.Color.DarkGray;
+            this.textBox55.Location = new System.Drawing.Point(761, 51);
+            this.textBox55.Name = "textBox55";
+            this.textBox55.ReadOnly = true;
+            this.textBox55.Size = new System.Drawing.Size(109, 17);
+            this.textBox55.TabIndex = 18;
+            this.textBox55.Text = "₫103.000";
+            this.textBox55.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox16.Location = new System.Drawing.Point(10, 9);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox16.TabIndex = 1;
+            this.pictureBox16.TabStop = false;
+            // 
+            // textBox56
+            // 
+            this.textBox56.BackColor = System.Drawing.Color.White;
+            this.textBox56.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox56.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox56.ForeColor = System.Drawing.Color.Black;
+            this.textBox56.Location = new System.Drawing.Point(121, 90);
+            this.textBox56.Name = "textBox56";
+            this.textBox56.ReadOnly = true;
+            this.textBox56.Size = new System.Drawing.Size(92, 19);
+            this.textBox56.TabIndex = 19;
+            this.textBox56.Text = "Số lương";
+            // 
+            // panel26
+            // 
+            this.panel26.BackColor = System.Drawing.Color.White;
+            this.panel26.Controls.Add(this.button33);
+            this.panel26.Controls.Add(this.button32);
+            this.panel26.Controls.Add(this.textBox63);
+            this.panel26.Controls.Add(this.textBox62);
+            this.panel26.Controls.Add(this.textBox65);
+            this.panel26.Location = new System.Drawing.Point(20, 187);
+            this.panel26.Margin = new System.Windows.Forms.Padding(20, 0, 10, 3);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(979, 126);
+            this.panel26.TabIndex = 25;
+            // 
+            // button33
+            // 
+            this.button33.BackColor = System.Drawing.Color.White;
+            this.button33.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button33.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.button33.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.button33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button33.ForeColor = System.Drawing.Color.OrangeRed;
+            this.button33.Location = new System.Drawing.Point(434, 72);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(265, 40);
+            this.button33.TabIndex = 27;
+            this.button33.Text = "Mua lại";
+            this.button33.UseVisualStyleBackColor = false;
+            // 
+            // button32
+            // 
+            this.button32.BackColor = System.Drawing.Color.Tomato;
+            this.button32.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button32.FlatAppearance.BorderSize = 0;
+            this.button32.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Salmon;
+            this.button32.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Salmon;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.ForeColor = System.Drawing.Color.White;
+            this.button32.Location = new System.Drawing.Point(706, 72);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(265, 40);
+            this.button32.TabIndex = 26;
+            this.button32.Text = "Đánh giá";
+            this.button32.UseVisualStyleBackColor = false;
+            // 
+            // textBox63
+            // 
+            this.textBox63.BackColor = System.Drawing.Color.White;
+            this.textBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox63.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox63.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox63.ForeColor = System.Drawing.Color.OrangeRed;
+            this.textBox63.Location = new System.Drawing.Point(797, 29);
+            this.textBox63.Name = "textBox63";
+            this.textBox63.ReadOnly = true;
+            this.textBox63.Size = new System.Drawing.Size(170, 29);
+            this.textBox63.TabIndex = 25;
+            this.textBox63.Text = "₫82.400";
+            this.textBox63.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox62
+            // 
+            this.textBox62.BackColor = System.Drawing.Color.White;
+            this.textBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox62.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox62.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox62.ForeColor = System.Drawing.Color.OrangeRed;
+            this.textBox62.Location = new System.Drawing.Point(10, 90);
+            this.textBox62.Name = "textBox62";
+            this.textBox62.ReadOnly = true;
+            this.textBox62.Size = new System.Drawing.Size(312, 19);
+            this.textBox62.TabIndex = 24;
+            this.textBox62.Text = "Đánh giá và nhận 200 xu";
+            // 
+            // textBox65
+            // 
+            this.textBox65.BackColor = System.Drawing.Color.White;
+            this.textBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox65.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox65.ForeColor = System.Drawing.Color.Black;
+            this.textBox65.Location = new System.Drawing.Point(703, 36);
+            this.textBox65.Name = "textBox65";
+            this.textBox65.ReadOnly = true;
+            this.textBox65.Size = new System.Drawing.Size(92, 19);
+            this.textBox65.TabIndex = 19;
+            this.textBox65.Text = "Thành tiền:";
             // 
             // KhachHang_Panel
             // 
@@ -2090,9 +2518,9 @@ namespace Program
             this.BaiDangPanel.AutoScroll = true;
             this.BaiDangPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BaiDangPanel.Controls.Add(this.baiDangFLP);
-            this.BaiDangPanel.Location = new System.Drawing.Point(0, 135);
+            this.BaiDangPanel.Location = new System.Drawing.Point(0, 0);
             this.BaiDangPanel.Name = "BaiDangPanel";
-            this.BaiDangPanel.Size = new System.Drawing.Size(1390, 684);
+            this.BaiDangPanel.Size = new System.Drawing.Size(1390, 819);
             this.BaiDangPanel.TabIndex = 13;
             this.BaiDangPanel.Visible = false;
             this.BaiDangPanel.VisibleChanged += new System.EventHandler(this.BaiDangPanel_VisibleChanged);
@@ -2106,9 +2534,9 @@ namespace Program
             this.baiDangFLP.Controls.Add(this.textBox49);
             this.baiDangFLP.Controls.Add(this.spKhacCuaShopFLP);
             this.baiDangFLP.Controls.Add(this.coTheBanCungThichFLP);
-            this.baiDangFLP.Location = new System.Drawing.Point(110, 5);
+            this.baiDangFLP.Location = new System.Drawing.Point(110, 143);
             this.baiDangFLP.Name = "baiDangFLP";
-            this.baiDangFLP.Size = new System.Drawing.Size(1326, 1805);
+            this.baiDangFLP.Size = new System.Drawing.Size(1335, 1805);
             this.baiDangFLP.TabIndex = 4;
             // 
             // BaiDangSubPanel
@@ -2852,7 +3280,7 @@ namespace Program
             this.spKhacCuaShopFLP.Location = new System.Drawing.Point(0, 1236);
             this.spKhacCuaShopFLP.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.spKhacCuaShopFLP.Name = "spKhacCuaShopFLP";
-            this.spKhacCuaShopFLP.Size = new System.Drawing.Size(1326, 351);
+            this.spKhacCuaShopFLP.Size = new System.Drawing.Size(1335, 351);
             this.spKhacCuaShopFLP.TabIndex = 0;
             this.spKhacCuaShopFLP.WrapContents = false;
             // 
@@ -2871,7 +3299,7 @@ namespace Program
             this.coTheBanCungThichFLP.Location = new System.Drawing.Point(3, 1607);
             this.coTheBanCungThichFLP.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.coTheBanCungThichFLP.Name = "coTheBanCungThichFLP";
-            this.coTheBanCungThichFLP.Size = new System.Drawing.Size(1320, 118);
+            this.coTheBanCungThichFLP.Size = new System.Drawing.Size(1335, 118);
             this.coTheBanCungThichFLP.TabIndex = 34;
             // 
             // textBox51
@@ -2946,9 +3374,9 @@ namespace Program
             this.thanhToanPanel.Controls.Add(this.flowLayoutPanel4);
             this.thanhToanPanel.Controls.Add(this.listDonHangFLP);
             this.thanhToanPanel.Controls.Add(this.panel15);
-            this.thanhToanPanel.Location = new System.Drawing.Point(0, 135);
+            this.thanhToanPanel.Location = new System.Drawing.Point(0, 0);
             this.thanhToanPanel.Name = "thanhToanPanel";
-            this.thanhToanPanel.Size = new System.Drawing.Size(1390, 678);
+            this.thanhToanPanel.Size = new System.Drawing.Size(1390, 813);
             this.thanhToanPanel.TabIndex = 21;
             this.thanhToanPanel.Visible = false;
             this.thanhToanPanel.VisibleChanged += new System.EventHandler(this.thanhToanPanel_VisibleChanged);
@@ -3185,7 +3613,7 @@ namespace Program
             // 
             this.listDonHangFLP.BackColor = System.Drawing.SystemColors.Control;
             this.listDonHangFLP.Controls.Add(this.thongTinKhacFLP);
-            this.listDonHangFLP.Location = new System.Drawing.Point(110, 160);
+            this.listDonHangFLP.Location = new System.Drawing.Point(110, 281);
             this.listDonHangFLP.Margin = new System.Windows.Forms.Padding(0);
             this.listDonHangFLP.Name = "listDonHangFLP";
             this.listDonHangFLP.Size = new System.Drawing.Size(1250, 497);
@@ -3496,7 +3924,7 @@ namespace Program
             this.panel15.Controls.Add(this.flowLayoutPanel5);
             this.panel15.Controls.Add(this.pictureBox11);
             this.panel15.Controls.Add(this.textBox30);
-            this.panel15.Location = new System.Drawing.Point(110, 24);
+            this.panel15.Location = new System.Drawing.Point(110, 145);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(1250, 114);
             this.panel15.TabIndex = 0;
@@ -3573,9 +4001,9 @@ namespace Program
             this.gioHangPanel.Controls.Add(this.noiDungPanel);
             this.gioHangPanel.Controls.Add(this.panel13);
             this.gioHangPanel.Controls.Add(this.listSPTrongGHFLP);
-            this.gioHangPanel.Location = new System.Drawing.Point(0, 135);
+            this.gioHangPanel.Location = new System.Drawing.Point(0, 0);
             this.gioHangPanel.Name = "gioHangPanel";
-            this.gioHangPanel.Size = new System.Drawing.Size(1390, 678);
+            this.gioHangPanel.Size = new System.Drawing.Size(1390, 813);
             this.gioHangPanel.TabIndex = 20;
             this.gioHangPanel.Visible = false;
             this.gioHangPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.gioHangPanel_Scroll);
@@ -3590,7 +4018,7 @@ namespace Program
             this.panel14.Controls.Add(this.textBox26);
             this.panel14.Controls.Add(this.textBox23);
             this.panel14.Controls.Add(this.chooseAllButton);
-            this.panel14.Location = new System.Drawing.Point(110, 37);
+            this.panel14.Location = new System.Drawing.Point(110, 165);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(1250, 56);
             this.panel14.TabIndex = 3;
@@ -3688,7 +4116,7 @@ namespace Program
             this.noiDungPanel.Controls.Add(this.tietKiemTxt);
             this.noiDungPanel.Controls.Add(this.tongTienTxt);
             this.noiDungPanel.Controls.Add(this.soLuongSPTTTxt);
-            this.noiDungPanel.Location = new System.Drawing.Point(110, 142);
+            this.noiDungPanel.Location = new System.Drawing.Point(110, 270);
             this.noiDungPanel.Name = "noiDungPanel";
             this.noiDungPanel.Size = new System.Drawing.Size(1250, 120);
             this.noiDungPanel.TabIndex = 1;
@@ -3768,7 +4196,7 @@ namespace Program
             // 
             this.panel13.BackColor = System.Drawing.SystemColors.Control;
             this.panel13.Controls.Add(this.spPanel);
-            this.panel13.Location = new System.Drawing.Point(110, 142);
+            this.panel13.Location = new System.Drawing.Point(110, 270);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1251, 120);
             this.panel13.TabIndex = 2;
@@ -3929,7 +4357,7 @@ namespace Program
             // listSPTrongGHFLP
             // 
             this.listSPTrongGHFLP.BackColor = System.Drawing.Color.White;
-            this.listSPTrongGHFLP.Location = new System.Drawing.Point(110, 113);
+            this.listSPTrongGHFLP.Location = new System.Drawing.Point(110, 241);
             this.listSPTrongGHFLP.Margin = new System.Windows.Forms.Padding(0);
             this.listSPTrongGHFLP.Name = "listSPTrongGHFLP";
             this.listSPTrongGHFLP.Size = new System.Drawing.Size(1250, 10);
@@ -3966,6 +4394,7 @@ namespace Program
             this.button6.TabIndex = 11;
             this.button6.Text = "Đơn Mua";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.DonMuaButton_Click);
             // 
             // button1
             // 
@@ -4036,6 +4465,17 @@ namespace Program
             this.doiMatKhauPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.UserPanel.PerformLayout();
+            this.DonMuaPanel.ResumeLayout(false);
+            this.HeaderDHPanel.ResumeLayout(false);
+            this.DonHangFLP.ResumeLayout(false);
+            this.flowLayoutPanel8.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
             this.KhachHang_Panel.ResumeLayout(false);
             this.BaiDangPanel.ResumeLayout(false);
             this.baiDangFLP.ResumeLayout(false);
@@ -4371,6 +4811,33 @@ namespace Program
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.FlowLayoutPanel DonHangFLP;
+        private System.Windows.Forms.Panel HeaderDHPanel;
+        private System.Windows.Forms.Button DHDaHuyButton;
+        private System.Windows.Forms.Button DHDaHTButton;
+        private System.Windows.Forms.Button DHDangVCButton;
+        private System.Windows.Forms.Button DHChoXNButton;
+        private System.Windows.Forms.Button tatCaDHButton;
+        private System.Windows.Forms.Panel DonMuaPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.TextBox textBox57;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.TextBox textBox54;
+        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.TextBox textBox56;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.TextBox textBox62;
+        private System.Windows.Forms.TextBox textBox65;
+        private System.Windows.Forms.TextBox textBox63;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox textBox55;
+        private System.Windows.Forms.Panel waittingPanel;
+        private System.Windows.Forms.TextBox textBox58;
     }
 }
 

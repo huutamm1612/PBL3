@@ -66,6 +66,15 @@ namespace Program.DAL
             return row["ten"].ToString();
         }
 
+        public string LoadTenShopFromMaS(string maS)
+        {
+            string query = "SELECT S.ten FROM Shop S WHERE maS = @maS";
+            SqlParameter param = new SqlParameter("@maS", maS);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return row["ten"].ToString();
+        }
+
         public void TaoShop(Shop shop)
         {
             string query = "INSERT INTO Shop VALUES(@maS, @ten, @soDT, @email, @maDC, @ngayTao, @tinhTrang, 0, 0, null)";

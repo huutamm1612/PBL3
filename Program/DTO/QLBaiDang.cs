@@ -53,6 +53,17 @@ namespace Program
             list.RemoveAt(index);
         }
 
+        public SanPham GetSanPhamFromMaSP(string maSP)
+        {
+            foreach(BaiDang baiDang in list)
+            {
+                if (baiDang.GetSanPhamFromMaSP(maSP) != null)
+                    return baiDang.GetSanPhamFromMaSP(maSP);
+            }
+
+            return null;
+        }
+
         public void Clear() => list.Clear();
 
         public BaiDang Last() => list.Last();

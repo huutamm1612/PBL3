@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Program
 {
-    internal class QLSanPham : IQuanLy
+    public class QLSanPham : IQuanLy
     {
         public List<SanPham> list { get; set; }
 
@@ -116,6 +116,17 @@ namespace Program
         public SanPham[] GetAllSP()
         {
             return list.ToArray();
+        }
+
+        public SanPham GetSanPhamFromMaSP(string maSP)
+        {
+            foreach(SanPham sanPham in list)
+            {
+                if(maSP.Equals(sanPham.maSP))
+                    return sanPham;
+            }
+
+            return null;
         }
 
         public int tinhTongTien(bool isGiamGia = true)

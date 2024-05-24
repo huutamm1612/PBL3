@@ -62,6 +62,11 @@ namespace Program.BLL
             }
         }
 
+        public void GiaoHang(string maDH, DateTime ngayGiaoHang)
+        {
+            DAL_DonHang.Instance.GiaoHang(maDH, ngayGiaoHang);
+        }
+
         public void NhanHang(DonHang donHang)
         {
             DAL_DonHang.Instance.CapNhatTinhTrangDonHang(donHang.maDH, donHang.tinhTrang, donHang.ngayGiaoHang);

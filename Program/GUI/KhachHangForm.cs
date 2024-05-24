@@ -1,4 +1,5 @@
-﻿using Program.BLL;
+﻿using Microsoft.Win32;
+using Program.BLL;
 using Program.DAL;
 using Program.GUI;
 using Program.Properties;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +24,7 @@ namespace Program
 {
     public delegate void sendData(string taiKhoan, string matKhau);
     public delegate void sendDiaChi(DiaChi diaChi);
+    public delegate void SendData(params DanhGia[] danhGia);
     public partial class KhachHangForm : Form
     {
         private User user = null;
@@ -218,6 +221,7 @@ namespace Program
         private void SwitchPanel(ref Panel currPanel, ref Panel newPanel)
         {
             waittingForm.BringToFront();
+            waittingForm.Size = currPanel.Size;
             waittingForm.Visible = true;
 
             currPanel.Visible = false;
@@ -780,6 +784,7 @@ namespace Program
             Panel pagePanel = flpBaiDang.Controls[flpBaiDang.Controls.Count - 1] as Panel;
 
             flpBaiDang.Controls.Clear();
+            GC.Collect();
             flpBaiDang.Controls.Add(titlePanel);
 
             int currPage = CurrPageNumber(flpPage);
@@ -792,7 +797,7 @@ namespace Program
                 tmp++;
             }
 
-            flpBaiDang.Size = new Size(1335, 160 + 316 * ((tmp - 1) / 6 + 1));
+            flpBaiDang.Size = new Size(flpBaiDang.Width, 160 + 316 * ((tmp - 1) / 6 + 1));
             flpBaiDang.Controls.Add(pagePanel);
             flpBaiDang.Controls.SetChildIndex(pagePanel, flpBaiDang.Controls.Count - 1);
         }
@@ -801,7 +806,13 @@ namespace Program
         {
             if (HomePanel.Visible == false)
             {
+                
+                
+                FLPBaiDang1.Controls.Clear();
+                FLPBaiDang1.Controls.Add(titlePanel1);
+                FLPBaiDang1.Controls.Add(PageListP);
 
+                HeaderPannel.Width = Width;
             }
             else
             {
@@ -820,7 +831,7 @@ namespace Program
             int panelIndex = FLPBaiDang1.Controls.IndexOf(panel);
             int currPage = CurrPageNumber(PageListFLP);
 
-            currBaiDang = qlBaiDang.list[(currPage - 1) * 24 + panelIndex - 1];
+            currBaiDang = qlBaiDang.list[(currPage - 1) * 12 + panelIndex - 1];
             currShop = DAL_Shop.Instance.LoadShopFromMaBD(currBaiDang.maBD);
             SwitchPanel(ref currPanel, ref BaiDangPanel);
         }
@@ -849,23 +860,35 @@ namespace Program
             parentPanel.MouseMove += new MouseEventHandler(MouseMovePanel);
             backPanel.Controls.Add(parentPanel);
 
-            PictureBox image = new PictureBox
-            {
-                Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(baiDang.anhBia), new Size(206, 206)),
-                BackColor = Color.White,
-                Size = new Size(206, 206),
-                Name = "image",
-                Location = new Point(0, 0),
-                Cursor = Cursors.Hand,
-                BorderStyle = BorderStyle.None,
-                SizeMode = PictureBoxSizeMode.Zoom
+            //MessageBox.Show(baiDang.anhBia + " " + baiDang.tieuDe);
 
-            };
-            image.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
-            image.MouseHover += new EventHandler(MouseHoverObjInPanel);
-            image.MouseMove += new MouseEventHandler(MouseMoveObjInPanel);
-            image.Click += new EventHandler(func);
-            parentPanel.Controls.Add(image);
+            try
+            {
+                using (Bitmap bmp = new Bitmap(baiDang.anhBia))
+                {
+                    PictureBox image = new PictureBox
+                    {
+                        Image = GUI_Utils.Instance.Resize(bmp, new Size(206, 206)),
+                        BackColor = Color.White,
+                        Size = new Size(206, 206),
+                        Name = "image",
+                        Location = new Point(0, 0),
+                        Cursor = Cursors.Hand,
+                        BorderStyle = BorderStyle.None,
+                        SizeMode = PictureBoxSizeMode.Zoom
+                    };
+
+                    image.MouseLeave += new EventHandler(MouseLeaveObjInPanel);
+                    image.MouseHover += new EventHandler(MouseHoverObjInPanel);
+                    image.MouseMove += new MouseEventHandler(MouseMoveObjInPanel);
+                    image.Click += new EventHandler(func);
+                    parentPanel.Controls.Add(image);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(baiDang.anhBia + " " + baiDang.tieuDe);
+            }
 
             TextBox title = new TextBox
             {
@@ -951,13 +974,14 @@ namespace Program
 
         private void nextPageButton_Click(object sender, EventArgs e)
         {
-            int n = CurrPageNumber(PageListFLP);
-            if (n == 10)
-                return;
+            Button button = sender as Button;
+            FlowLayoutPanel flp = (FlowLayoutPanel)button.Parent;
+
+            int n = CurrPageNumber(flp);
 
             HomePanel.AutoScrollPosition = new Point(39, 790);
-            SetPageFLP(PageListFLP, n + 1, (qlBaiDang.list.Count - 1) / 24 + 1);
-            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, PageListFLP, DenBaiDangTuHome);
+            SetPageFLP(flp, n + 1, (qlBaiDang.list.Count - 1) / 24 + 1);
+            ChuyenTrangBaiDang(qlBaiDang, FLPBaiDang1, flp, DenBaiDangTuHome);
         }
 
         private void prevPageButton_Click(object sender, EventArgs e)
@@ -1232,7 +1256,12 @@ namespace Program
 
         private void gioHangPanel_Scroll(object sender, ScrollEventArgs e)
         {
-            noiDungPanel.Top = 596;
+            noiDungPanel.Top = 715;
+        }
+
+        private void HomePanel_Scroll(object sender, ScrollEventArgs e)
+        {
+            HeaderPannel.Top = 0;
         }
 
         private void GioHangPanel_MouseWheel(object sender, MouseEventArgs e)
@@ -1240,7 +1269,7 @@ namespace Program
             if (noiDungPanel.Top - e.Delta > panel13.Top)
                 noiDungPanel.Top = panel13.Top;
             else
-                noiDungPanel.Top = 596;
+                noiDungPanel.Top = 715;
         }
 
         private void cartButton_Click(object sender, EventArgs e)
@@ -1748,7 +1777,7 @@ namespace Program
                 Name = "tenShop",
                 Font = TxtTenShopDH.Font,
                 Location = TxtTenShopDH.Location,
-                Text = DAL_Shop.Instance.GetTenShopFromMaSP(list.list[0].maSP),
+                Text = BLL_Shop.Instance.GetTenShopFromMaS(list.list[0].maS),
                 Size = TxtTenShopDH.Size,
                 BackColor = Color.White,
                 Cursor = Cursors.IBeam,
@@ -1913,6 +1942,9 @@ namespace Program
         {
             if(gioHangPanel.Visible)
             {
+                waittingPanel.BringToFront();
+                gioHangPanel.Controls.Add(HeaderPannel);
+
                 chooseAllButton.Checked = false;
                 tongTienTxt.Text = "₫0";
                 tietKiemTxt.Text = "₫0";
@@ -1945,12 +1977,17 @@ namespace Program
                 }
                 else
                 {
-                    noiDungPanel.Top = 596;
+                    noiDungPanel.Top = 715;
                 }
+                waittingPanel.SendToBack();
             }
             else
             {
-
+                waittingPanel.BringToFront();
+                this.Controls.Add(HeaderPannel);
+                HeaderPannel.Visible = true;
+                HeaderPannel.BringToFront();
+                waittingPanel.SendToBack();
             }
         }
 
@@ -1958,6 +1995,11 @@ namespace Program
         {
             if (BaiDangPanel.Visible)
             {
+                waittingPanel.BringToFront();
+                BaiDangPanel.Controls.Add(HeaderPannel);
+                HeaderPannel.Location = new Point(0, 0);
+                waittingPanel.SendToBack();
+
                 if (khachHang != null)
                 {
                     currDiaChi = khachHang.diaChi;
@@ -1990,7 +2032,7 @@ namespace Program
                 giamGiaTxt.Text = "GIẢM " + currBaiDang.giamGia.ToString() + "%";
                 GUI_Utils.Instance.FitTextBox(giamGiaTxt, 0, 0);
 
-                if (BLL_BaiDang.Instance.IsSamePrice(currBaiDang))
+                if (!BLL_BaiDang.Instance.IsSamePrice(currBaiDang))
                 {
                     giaGocTxt.Text = "₫" + Utils.Instance.SetGia(currBaiDang.giaMin()) + " - ₫" + Utils.Instance.SetGia(currBaiDang.giaMax());
                     giaTxt.Text = "₫" + Utils.Instance.SetGia(Utils.Instance.GiamGia(currBaiDang.giaMin(), currBaiDang.giamGia)) + " - ₫" + Utils.Instance.SetGia(Utils.Instance.GiamGia(currBaiDang.giaMax(), currBaiDang.giamGia));
@@ -2012,43 +2054,46 @@ namespace Program
                 {
                     Size textSize = TextRenderer.MeasureText(item.ten, font);
 
-                    Button button = new Button
+                    using(Bitmap bmp = new Bitmap(item.anh))
                     {
-                        Font = font,
-                        Size = new Size(textSize.Width + 50, textSize.Height + 20),
-                        Padding = new Padding(3, 3, 10, 3),
-                        Text = item.ten,
-                        FlatStyle = FlatStyle.Flat,
-                        Cursor = Cursors.Hand,
-                        TextAlign = System.Drawing.ContentAlignment.MiddleRight,
-                        Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
-                        ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-                    };
+                        Button button = new Button
+                        {
+                            Font = font,
+                            Size = new Size(textSize.Width + 50, textSize.Height + 20),
+                            Padding = new Padding(3, 3, 10, 3),
+                            Text = item.ten,
+                            FlatStyle = FlatStyle.Flat,
+                            Cursor = Cursors.Hand,
+                            TextAlign = System.Drawing.ContentAlignment.MiddleRight,
+                            Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
+                            ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+                        };
 
-                    if (item.soLuong == 0)
-                    {
-                        button.Enabled = false;
-                        button.Cursor = Cursors.No;
-                        button.BackColor = Color.FromArgb(244, 244, 244);
-                        button.FlatAppearance.BorderColor = Color.LightGray;
-                    }
-                    else
-                    {
-                        button.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                        button.FlatAppearance.MouseDownBackColor = Color.Transparent;
-                        button.FlatAppearance.BorderColor = Color.LightGray;
-                        button.Click += new EventHandler(SanPham_Click);
-                        button.MouseHover += new EventHandler(SanPham_MouseHover);
-                        button.MouseLeave += new EventHandler(SanPham_MouseLeave);
-                        button.MouseMove += new MouseEventHandler(SanPham_MouseMove);
-                    }
-                    if (currSanPham != null && SanPham.EqualMaSP(item, currSanPham))
-                    {
-                        currSanPham = null;
-                        SanPham_Click(button, null);
-                    }
+                        if (item.soLuong == 0)
+                        {
+                            button.Enabled = false;
+                            button.Cursor = Cursors.No;
+                            button.BackColor = Color.FromArgb(244, 244, 244);
+                            button.FlatAppearance.BorderColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                            button.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                            button.FlatAppearance.BorderColor = Color.LightGray;
+                            button.Click += new EventHandler(SanPham_Click);
+                            button.MouseHover += new EventHandler(SanPham_MouseHover);
+                            button.MouseLeave += new EventHandler(SanPham_MouseLeave);
+                            button.MouseMove += new MouseEventHandler(SanPham_MouseMove);
+                        }
+                        if (currSanPham != null && SanPham.EqualMaSP(item, currSanPham))
+                        {
+                            currSanPham = null;
+                            SanPham_Click(button, null);
+                        }
 
-                    listItemFLP.Controls.Add(button);
+                        listItemFLP.Controls.Add(button);
+                    }
 
                     moTaBaiDangTxt.Text += index.ToString() + "." + item.ToString() + "\r\n";
                     index++;
@@ -2076,9 +2121,13 @@ namespace Program
                 }
 
                 spKhacCuaShopFLP.Controls.Clear();
+
+                int i = 0;
+
                 foreach (BaiDang baiDang in currShop.listBaiDang.list)
                 {
-                    spKhacCuaShopFLP.Controls.Add(drawBaiDang(baiDang, DenBaiDangTuBDShop));
+                    if (i++ < 20)
+                        spKhacCuaShopFLP.Controls.Add(drawBaiDang(baiDang, DenBaiDangTuBDShop));
                 }
 
                 qlBaiDang = DAL_BaiDang.Instance.LoadALLBaiDang();
@@ -2098,7 +2147,15 @@ namespace Program
             }
             else
             {
+                coTheBanCungThichFLP.Controls.Clear();
+                coTheBanCungThichFLP.Controls.Add(textBox51);
+                coTheBanCungThichFLP.Controls.Add(PageListBDP);
 
+                waittingPanel.BringToFront();
+                this.Controls.Add(HeaderPannel);
+                HeaderPannel.Visible = true;
+                HeaderPannel.BringToFront();
+                waittingPanel.SendToBack();
             }
         
         }
@@ -2107,6 +2164,10 @@ namespace Program
         {
             if (thanhToanPanel.Visible && qlSanPham.list.Count > 0)
             {
+                waittingPanel.BringToFront();
+                thanhToanPanel.Controls.Add(HeaderPannel);
+                waittingPanel.SendToBack();
+
                 xuHienCoTxt.Text = $"Hiện có {Utils.Instance.SetGia(khachHang.xu)} xu";
 
                 diaChiNhanHangTxt.Text = $"{currDiaChi.ten} | {currDiaChi.soDT}   |   {currDiaChi.diaChiCuThe}, {BLL_DiaChi.Instance.MoTaDiaChi(currDiaChi)}";
@@ -2142,13 +2203,21 @@ namespace Program
             }
             else
             {
-
+                waittingPanel.BringToFront();
+                this.Controls.Add(HeaderPannel);
+                HeaderPannel.Visible = true;
+                HeaderPannel.BringToFront();
+                waittingPanel.SendToBack();
             }
         }
 
         private void UserPanel_VisibleChanged(object sender, EventArgs e)
         {
-            if(UserPanel.Visible)
+            waittingPanel.BringToFront();
+            UserPanel.Controls.Add(HeaderPannel);
+            waittingPanel.SendToBack();
+
+            if (UserPanel.Visible)
             {
                 try
                 {
@@ -2161,6 +2230,7 @@ namespace Program
                     userImagePB.Image = GUI_Utils.Instance.Resize(Resources.noPicture, userImagePB.Size);
                     avtInUserProfile.Image = GUI_Utils.Instance.Resize(Resources.noPicture, avtInUserProfile.Size);
                 }
+
                 userNameTxt.Text = khachHang.taiKhoan;
                 suaTen_Button.Text = "Sửa";
                 suaEmail_button.Text = "Sửa";
@@ -2202,6 +2272,14 @@ namespace Program
                     thangSinh_CB.SelectedIndex = khachHang.ngaySinh.Month - 1;
                     namSinh_CB.SelectedIndex = DateTime.Now.Year - khachHang.ngaySinh.Year;
                 }
+            }
+            else
+            {
+                waittingPanel.BringToFront();
+                this.Controls.Add (HeaderPannel);
+                HeaderPannel.Visible = true;
+                HeaderPannel.BringToFront();
+                waittingPanel.SendToBack();
             }
         }
 
@@ -2276,6 +2354,393 @@ namespace Program
                     namSinh_CB.SelectedIndex = DateTime.Now.Year - khachHang.ngaySinh.Year;
                 }
             }
+        }
+
+        private void DHMouseIn(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.ForeColor != Color.Red)
+                button.ForeColor = Color.OrangeRed;
+        }
+
+        private void DHMouseOut(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            
+            if(button.ForeColor != Color.Red)
+                button.ForeColor = Color.Black;
+        
+        }
+
+        private void DonMuaButton_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref currChildPanel, ref DonMuaPanel);
+            ChuyenLoaiDH_Click(tatCaDHButton, null);
+        }
+
+        private void ChuyenLoaiDH_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in HeaderDHPanel.Controls)
+            {
+                if (control.ForeColor == Color.Red)
+                {
+                    control.ForeColor = Color.Black;
+                    break;
+                }
+            }
+            Button button = sender as Button;
+            button.ForeColor = Color.Red;
+
+            int loaiDH = -2;
+
+            if (button.Text == "Chờ xác nhận")
+                loaiDH = 0;
+            else if (button.Text == "Vận chuyển")
+                loaiDH = 1;
+            else if (button.Text == "Hoàn thành")
+                loaiDH = 2;
+            else if (button.Text == "Đã hủy")
+                loaiDH = -1;
+
+            int height = 10;
+            DonHangFLP.Controls.Clear();
+            foreach (DonHang donHang in khachHang.listDonHang.list)
+            {
+                if(loaiDH == -2 || loaiDH == donHang.tinhTrang)
+                {
+                    Panel panel = DrawDonHangPanel(donHang);
+                    DonHangFLP.Controls.Add(panel);
+                    height += panel.Height + panel.Margin.Bottom + panel.Margin.Top;
+                }
+            }
+            DonHangFLP.Height = height;
+            DonMuaPanel.Height = height + 50 + HeaderDHPanel.Height;   
+        }
+
+        private Panel DrawSPPanelInDHFLP(SanPham sanPham, FlowLayoutPanel parent)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel23.Size,
+                Margin = panel23.Margin,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                Parent = parent
+            };
+            panel.Paint += DrawPanelBorder;
+
+            using (Bitmap bmp = new Bitmap(sanPham.anh))
+            {
+                PictureBox pictureBox = new PictureBox
+                {
+                    Location = pictureBox16.Location,
+                    Size = pictureBox16.Size,
+                    Image = GUI_Utils.Instance.Resize(bmp, pictureBox16.Size),
+                    Cursor = Cursors.Hand,
+                    BorderStyle = BorderStyle.None,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White,
+                    Parent = panel
+                };
+                panel.Controls.Add(pictureBox);
+                // pictureBox.Click += ...
+            }
+
+            TextBox ten = new TextBox
+            {
+                Text = sanPham.ten,
+                Location = textBox54.Location,
+                Size = textBox54.Size,
+                Font = textBox54.Font,
+                Multiline = true,
+                ReadOnly = true,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(ten);
+
+            TextBox soLuong = new TextBox
+            {
+                Text = "x" + sanPham.soLuong.ToString(),
+                Location = textBox56.Location,
+                Size = textBox56.Size,
+                Font = textBox56.Font,
+                ReadOnly = true,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(soLuong);
+
+            TextBox giaGoc = new TextBox
+            {
+                Text = "₫" + Utils.Instance.SetGia(sanPham.soLuong * sanPham.gia),
+                Location = textBox55.Location,
+                Size = textBox55.Size,
+                Font = textBox55.Font,
+                ReadOnly = true,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(giaGoc);
+
+            TextBox gia = new TextBox
+            {
+                Text = "₫" + Utils.Instance.SetGia(Utils.Instance.GiamGia(sanPham.soLuong * sanPham.gia, BLL_BaiDang.Instance.GetGiamGiaFromMaSP(sanPham.maSP))),
+                Location = textBox53.Location,
+                Size = textBox53.Size,
+                Font = textBox53.Font,
+                ReadOnly = true,
+                ForeColor = Color.OrangeRed,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(gia);
+
+
+            return panel;
+        }
+
+        private FlowLayoutPanel DrawDonHangPanel(DonHang donHang)
+        {
+            FlowLayoutPanel flp = new FlowLayoutPanel
+            {
+                Size = flowLayoutPanel8.Size,
+                BackColor = Color.White,
+                Margin = flowLayoutPanel8.Margin,
+                Parent = DonHangFLP
+            };
+
+            Panel headPanel = new Panel
+            {
+                Size = panel22.Size,
+                BackColor = Color.White,
+                Margin = panel22.Margin,
+                Parent = flp
+            };
+            headPanel.Paint += DrawPanelBorder;
+
+            Button xemShop = new Button
+            {
+                Size = button10.Size,
+                BackColor = Color.White,
+                Font = button10.Font,
+                Location = button10.Location,
+                Text = "Xem Shop",
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand,
+                Parent = headPanel
+            };
+            //xemShop.Click += ...
+            xemShop.FlatAppearance.BorderColor = Color.Gainsboro;
+            xemShop.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
+            xemShop.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            headPanel.Controls.Add(xemShop);
+
+            TextBox tenShop = new TextBox
+            {
+                Text = BLL_Shop.Instance.GetTenShopFromMaS(donHang.maS),
+                Font = textBox52.Font,
+                BackColor = Color.White,
+                ReadOnly = true,
+                Location = textBox52.Location,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = headPanel
+            };
+            GUI_Utils.Instance.FitTextBox(tenShop);
+            headPanel.Controls.Add(tenShop);
+
+            TextBox maDonHang = new TextBox
+            {
+                Name = "maDH",
+                Text = "Mã đơn hàng: DH" + donHang.maDH,
+                Font = textBox58.Font,
+                Size = textBox58.Size,
+                BackColor = Color.White,
+                ReadOnly = true,
+                Location = textBox58.Location,
+                Cursor = Cursors.IBeam,
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.None,
+                Parent = headPanel
+            };
+
+            TextBox tinhTrang = new TextBox
+            {
+                Text = donHang.TinhTrang().ToUpper(),
+                Font = textBox57.Font,
+                Size = textBox57.Size,
+                Location = textBox57.Location,
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                ForeColor = Color.OrangeRed,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = headPanel
+            };
+            headPanel.Controls.Add(tinhTrang);
+
+            flp.Controls.Add(headPanel);
+
+            int height = headPanel.Height + headPanel.Margin.Top + headPanel.Margin.Bottom;
+            foreach (SanPham sanPham in donHang.list)
+            {
+                Panel panel = DrawSPPanelInDHFLP(sanPham, flp);
+                flp.Controls.Add(panel);
+                height += panel.Height + panel.Margin.Top + panel.Margin.Bottom;
+            }
+
+            Panel tailPanel = new Panel
+            {
+                Size = panel26.Size,
+                Margin = panel26.Margin,
+                BackColor = Color.White,
+                Parent = flp
+            };
+
+            TextBox thanhTien = new TextBox
+            {
+                Text = "Thành Tiền:",
+                Location = textBox65.Location,
+                Font = textBox65.Font,
+                Size = textBox65.Size,
+                BackColor = Color.White,
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = tailPanel
+            };
+            tailPanel.Controls.Add(thanhTien);
+
+            TextBox tongTien = new TextBox
+            {
+                Text = "₫" + Utils.Instance.SetGia(donHang.tongTien),
+                Location = textBox63.Location,
+                Font = textBox63.Font,
+                Size = textBox63.Size,
+                BackColor = Color.White,
+                ForeColor = Color.OrangeRed,
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = tailPanel
+            };
+            tailPanel.Controls.Add(tongTien);
+
+            Button button = new Button
+            {
+                Size = button32.Size,
+                Location = button32.Location,
+                ForeColor = Color.White,
+                BackColor = Color.OrangeRed,
+                Cursor = Cursors.Hand,
+                FlatStyle = FlatStyle.Flat,
+                Parent = tailPanel
+            };
+            button.FlatAppearance.BorderSize = 0;
+            button.FlatAppearance.MouseOverBackColor = Color.Salmon;
+            button.FlatAppearance.MouseOverBackColor = Color.Salmon;
+
+
+            if (donHang.tinhTrang == 0) // cho xac nhan
+            {
+                button.Text = "Hủy Đơn";
+                //button.Click += ...
+            }
+            else if (donHang.tinhTrang == 1) // van chuyen
+            {
+                if (DateTime.Compare(DateTime.Now, donHang.ngayGiaoHang) >= 0)
+                {
+                    button.Text = "Đã nhận hàng";
+                    button.Click += DaNhanHangButton_Click;
+                }
+                else
+                    button.Text = "Xem tình trạng giao hàng";
+                //button.Click += ...
+            }
+            else if (donHang.tinhTrang == 2)
+            {
+                button.Text = "Đánh giá";
+                button.Click += DanhGiaButton_Click;
+
+                Button muaLaiButton = new Button
+                {
+                    Text = "Mua lại",
+                    Location = button33.Location,
+                    Size = button33.Size,
+                    ForeColor = Color.OrangeRed,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    FlatStyle = FlatStyle.Flat,
+                    Parent = tailPanel
+                };
+                tailPanel.Controls.Add(muaLaiButton);
+                muaLaiButton.FlatAppearance.BorderSize = 1;
+                muaLaiButton.FlatAppearance.BorderColor = Color.DarkGray;
+                muaLaiButton.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                muaLaiButton.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+
+                TextBox textBox = new TextBox
+                {
+                    Text = "Đánh giá ngay để nhận 200 xu",
+                    Location = textBox62.Location,
+                    Size = textBox62.Size,
+                    Font = textBox62.Font,
+                    ForeColor = Color.OrangeRed,
+                    BackColor = Color.White,
+                    ReadOnly = true,
+                    BorderStyle = BorderStyle.None,
+                    Parent = tailPanel
+                };
+                tailPanel.Controls.Add(textBox);
+
+                //button.Click += ...
+            }
+            else if (donHang.tinhTrang == 3 || donHang.tinhTrang == -1)
+            {
+                button.Text = "Mua lại";
+            }
+
+            tailPanel.Controls.Add(button);
+
+            flp.Height = height + tailPanel.Height + tailPanel.Margin.Top + tailPanel.Margin.Bottom;
+
+            return flp;
+        }
+
+        private void DaNhanHangButton_Click(object sender, EventArgs e)
+        {
+            string maDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+
+            MessageBox.Show(maDH);
+            BLL_KhachHang.Instance.NhanHang(khachHang, maDH);
+            MessageBox.Show("Nhận hàng thành công");
+        }
+
+        private void DanhGiaButton_Click(Object sender, EventArgs e)
+        {
+            string maDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            DanhGiaForm form = new DanhGiaForm(SetData, khachHang.listDonHang.GetDonHangFromMaDH(maDH));
+            form.ShowDialog();
+            dimForm.Close();
+
+        }
+
+        private void SetData(params DanhGia[] danhGia)
+        {
+
         }
     }
 }

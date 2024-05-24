@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Program
 {
-    internal class DonHang : QLSanPham
+    public class DonHang : QLSanPham
     {
         public string maDH { get; set; }
         public string maKH { get; set; }
@@ -82,6 +82,20 @@ namespace Program
             return listDonHang;
         }
 
+        public string TinhTrang()
+        {
+            if (tinhTrang == -1)
+                return "Đã hủy";
+            if (tinhTrang == 0)
+                return "Chờ xác nhận";
+            else if (tinhTrang == 1)
+                return "Vận chuyển";
+            else if (tinhTrang >= 2)
+                return "Hoàn thành";
+            else
+                return "";
+        }
+
         public void diDon()
         {
             Random random = new Random();
@@ -94,16 +108,6 @@ namespace Program
             tinhTrang = 1;
             ngayGiaoHang = ngayDatHang.Add(new TimeSpan(soNgay, soGio, soPhut, soGiay));
 
-        }
-
-        public void huyDon()
-        {
-            ngayGiaoHang = DateTime.Now;
-        }
-
-        public void nhanHang()
-        {
-            ngayGiaoHang = DateTime.Now;
         }
 
         public DanhGia[] taoDanhGia()

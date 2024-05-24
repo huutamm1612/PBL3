@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class DanhGia
+    public class DanhGia
     {
         public string maDG { get; set; }
         public string maKH { get; set; }

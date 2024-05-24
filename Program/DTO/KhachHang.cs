@@ -182,26 +182,6 @@ namespace Program
             listThich.Remove(maBD);
         }
 
-        public void DatHang(DonHang donHang)
-        {
-            listDonHang.Add(donHang);
-        }
-
-        public void huyDon(DonHang donHang)
-        {
-            donHang.capNhatTinhTrang(-1);
-            donHang.huyDon();
-        }
-
-        public void nhanHang(DonHang donHang)
-        {
-            donHang.capNhatTinhTrang(2);
-            chiTieu += donHang.tongTien - donHang.xu;
-            donHang.nhanHang();
-
-            listDanhGia.AddRange(donHang.taoDanhGia());
-        }
-
         public override void CapNhatDiaChi(DiaChi diaChiMoi)
         {
             this.diaChi = diaChiMoi;

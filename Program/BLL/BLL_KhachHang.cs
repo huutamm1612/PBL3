@@ -110,6 +110,29 @@ namespace Program.BLL
             BLL_GioHang.Instance.XoaSPKhoiGioHang(khachHang.gioHang, listSanPham.ToArray());
         }
 
+        public void NhanHang(KhachHang khachHang, string maDH)
+        {
+            int index = khachHang.listDonHang.IndexOf(maDH);
+            khachHang.listDonHang.list[index].ngayGiaoHang = DateTime.Now;
+            khachHang.listDonHang.list[index].tinhTrang = 2;
+
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "KH" + khachHang.maSo,
+                to = "S" + khachHang.listDonHang.list[index].maS,
+                dinhKem = "DH" + khachHang.listDonHang.list[index].maDH,
+                noiDung = $"Đơn hàng DH{khachHang.listDonHang.list[index].maDH} đã được giao thành công vào lúc {Utils.Instance.MoTaThoiGian(DateTime.Now)}. Doanh thu của bạn đã tăng thêm ₫{Utils.Instance.SetGia(khachHang.listDonHang.list[index].tongTien + khachHang.listDonHang.list[index].xu)}.",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
+            DAL_DonHang.Instance.CapNhatTinhTrangDonHang(khachHang.listDonHang.list[index].maDH, khachHang.listDonHang.list[index].tinhTrang, khachHang.listDonHang.list[index].ngayGiaoHang);
+            DAL_KhachHang.Instance.NhanHang(khachHang.maSo, khachHang.listDonHang.list[index].tongTien);
+            DAL_Shop.Instance.GiaoHangThanhCong(khachHang.listDonHang.list[index].maS, khachHang.listDonHang.list[index].tongTien + khachHang.listDonHang.list[index].xu);
+        }
+
         public void HuyDonHang(DonHang donHang)
         {
             DAL_DonHang.Instance.CapNhatTinhTrangDonHang(donHang.maDH, donHang.tinhTrang, donHang.ngayGiaoHang);

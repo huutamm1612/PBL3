@@ -1,4 +1,5 @@
 ﻿using Program.DAL;
+using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,54 @@ namespace Program.BLL
                 DAL_DiaChi.Instance.CapNhatDiaChi(diaChi);
 
             shop.CapNhatDiaChi(diaChi);
+        }
+
+        public int GetSoLuongFromMaSP(QLBaiDang listBaiDang, string maSP)
+        {
+            foreach(BaiDang baiDang in listBaiDang.list)
+            {
+                foreach(SanPham sanPham in baiDang.list)
+                {
+                    if (maSP.Equals(sanPham.maSP))
+                    {
+                        return sanPham.soLuong;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public void GiaoHang(Shop shop, string maDH)
+        {
+            int index = shop.listDonHang.IndexOf(maDH);
+            shop.listDonHang.list[index].ngayGiaoHang = DateTime.Now; // another
+            shop.listDonHang.list[index].tinhTrang = 1;
+
+            foreach (SanPham sanPham in shop.listDonHang.list[index].list)
+            {
+                shop.listBaiDang.GetSanPhamFromMaSP(sanPham.maSP).soLuong -= sanPham.soLuong;
+                DAL_SanPham.Instance.GiaoHang(sanPham.maSP, sanPham.soLuong);
+            }
+
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "S" + shop.maSo,
+                to = "KH" + shop.listDonHang.list[index].maKH,
+                dinhKem = "DH" + shop.listDonHang.list[index].maDH,
+                noiDung = $"Đơn hàng (DH{shop.listDonHang.list[index].maDH}) của bạn đã được gửi đi vào lúc {Utils.Instance.MoTaThoiGian(DateTime.Now)} và dự kiến sẽ đến vào lúc {Utils.Instance.MoTaThoiGian(shop.listDonHang.list[index].ngayGiaoHang)}",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            BLL_ThongBao.Instance.ThemThongBao(thongBao);
+            BLL_DonHang.Instance.GiaoHang(shop.listDonHang.list[index].maDH, shop.listDonHang.list[index].ngayDatHang);
+
+        }
+
+        public string GetTenShopFromMaS(string maS)
+        {
+            return DAL_Shop.Instance.LoadTenShopFromMaS(maS);
         }
 
         public void ThemDiaChi(DiaChi diaChi, string maS)

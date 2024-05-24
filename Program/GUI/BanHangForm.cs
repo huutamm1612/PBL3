@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
 
 namespace Program
 {
@@ -25,6 +26,7 @@ namespace Program
     public partial class BanHang_Form : Form
     {
         private int index = -1;
+        private int loaiDH = -2;
         private User user;
         private Shop shop = null;
         private Button currTab = null;
@@ -199,8 +201,8 @@ namespace Program
                     break;
 
                 case "Tất Cả":
-                    SwitchPanel(tatCaPanel);
-                  
+                    SwitchPanel(TatCaDHPanel);
+                    ChuyenLoaiDH_Click(tatCaDHButton, null);
                     break;
 
                 case "Thêm Sản Phẩm":
@@ -216,6 +218,7 @@ namespace Program
                     SwitchPanel(tatCaSanPhamPanel);
                     layTCSP();
                     break;
+
                 case "Hồ Sơ Shop":
                     SwitchPanel(hoSoShop_Panel);
                     hoSoShop();
@@ -1140,6 +1143,287 @@ namespace Program
             btnXemShop.Visible = true;
             btnEditShop.Visible = true;
             btnThemAnhShop.Visible = false;
+        }
+
+        private void DrawPanelBorder(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+
+            using (var pen = new Pen(Color.DarkGray, 1))
+            {
+                e.Graphics.DrawRectangle(pen, new Rectangle(-1, -1, panel.Width + 2, panel.Height));
+            }
+        }
+
+        private void ChuyenLoaiDH_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in HeaderDHPanel.Controls)
+            {
+                if (control.ForeColor == Color.Red)
+                {
+                    control.ForeColor = Color.Black;
+                    break;
+                }
+            }
+            Button button = sender as Button;
+            button.ForeColor = Color.Red;
+
+            if (button.Text == "Tất cả")
+                loaiDH = -2;
+            if (button.Text == "Chờ xác nhận")
+                loaiDH = 0;
+            else if (button.Text == "Đang giao")
+                loaiDH = 1;
+            else if (button.Text == "Hoàn thành")
+                loaiDH = 2;
+            else if (button.Text == "Đơn hủy")
+                loaiDH = -1;
+
+            int n = 0;
+            int height = 10;
+            DonHangFLP.Controls.Clear();
+            foreach (DonHang donHang in shop.listDonHang.list)
+            {
+                if (loaiDH == -2 || loaiDH == donHang.tinhTrang)
+                {
+                    Panel panel = DrawDonHangPanel(donHang);
+                    DonHangFLP.Controls.Add(panel);
+                    height += panel.Height + panel.Margin.Bottom + panel.Margin.Top;
+                    n++;
+                }
+            }
+            soLuongDHTxt.Text = n.ToString() + " Đơn hàng";
+
+            DonHangFLP.Height = height + 200;
+            TatCaDHP.Height = height + 200;
+
+        }
+
+        private Panel DrawSPPanelInDHFLP(SanPham sanPham, FlowLayoutPanel parent)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel23.Size,
+                Margin = panel23.Margin,
+                BackColor = Color.White,
+                Parent = parent
+            };
+            panel.Paint += DrawPanelBorder;
+
+            using (Bitmap bmp = new Bitmap(sanPham.anh))
+            {
+                PictureBox pictureBox = new PictureBox
+                {
+                    Location = pictureBox16.Location,
+                    Size = pictureBox16.Size,
+                    Image = GUI_Utils.Instance.Resize(bmp, pictureBox16.Size),
+                    BorderStyle = BorderStyle.None,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White,
+                    Parent = panel
+                };
+                panel.Controls.Add(pictureBox);
+            }
+
+            TextBox ten = new TextBox
+            {
+                Text = sanPham.ten,
+                Location = textBox54.Location,
+                Size = textBox54.Size,
+                Font = textBox54.Font,
+                Multiline = true,
+                ReadOnly = true,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(ten);
+
+            TextBox soLuong = new TextBox
+            {
+                Text = sanPham.soLuong.ToString(),
+                Location = textBox56.Location,
+                Size = textBox56.Size,
+                Font = textBox56.Font,
+                ReadOnly = true,
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(soLuong);
+
+            TextBox soLuongGoc = new TextBox
+            {
+                Text = BLL_Shop.Instance.GetSoLuongFromMaSP(shop.listBaiDang, sanPham.maSP).ToString(),
+                Location = textBox35.Location,
+                Size = textBox35.Size,
+                Font = textBox35.Font,
+                ReadOnly = true,
+                BackColor = Color.White,
+                TextAlign = HorizontalAlignment.Right,
+                ForeColor = Color.DarkGray,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(soLuong);
+
+            return panel;
+        }
+
+        private FlowLayoutPanel DrawDonHangPanel(DonHang donHang)
+        {
+            FlowLayoutPanel flp = new FlowLayoutPanel
+            {
+                Size = flowLayoutPanel8.Size,
+                BackColor = Color.White,
+                Margin = flowLayoutPanel8.Margin,
+                Parent = DonHangFLP
+            };
+
+            Panel headPanel = new Panel
+            {
+                Size = panel22.Size,
+                BackColor = Color.WhiteSmoke,
+                Margin = panel22.Margin,
+                Parent = flp
+            };
+
+            TextBox maDH = new TextBox
+            {
+                Name = "maDH",
+                Text = "Mã đơn hàng: DH" + donHang.maDH,
+                Font = textBox32.Font,
+                Size = textBox32.Size,
+                BackColor = Color.WhiteSmoke,
+                ReadOnly = true,
+                Location = textBox32.Location,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = headPanel
+            };
+            headPanel.Controls.Add(maDH);
+
+            TextBox tinhTrang = new TextBox
+            {
+                Text = donHang.TinhTrang().ToUpper(),
+                Font = textBox57.Font,
+                Size = textBox57.Size,
+                Location = textBox57.Location,
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.WhiteSmoke,
+                ForeColor = Color.DarkGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = headPanel
+            };
+            headPanel.Controls.Add(tinhTrang);
+            flp.Controls.Add(headPanel);
+
+            int height = headPanel.Height + headPanel.Margin.Top + headPanel.Margin.Bottom;
+            foreach (SanPham sanPham in donHang.list)
+            {
+                Panel panel = DrawSPPanelInDHFLP(sanPham, flp);
+                flp.Controls.Add(panel);
+                height += panel.Height + panel.Margin.Top + panel.Margin.Bottom;
+            }
+
+            Panel tailPanel = new Panel
+            {
+                Size = panel26.Size,
+                Margin = panel26.Margin,
+                BackColor = Color.White,
+                Parent = flp
+            };
+
+            Button button = new Button
+            {
+                Text = "Xem chi tiết đơn hàng",
+                Size = button32.Size,
+                Location = button32.Location,
+                ForeColor = Color.White,
+                BackColor = Color.DarkGray,
+                Cursor = Cursors.Hand,
+                FlatStyle = FlatStyle.Flat,
+                Parent = tailPanel
+            };
+            button.FlatAppearance.BorderSize = 0;
+            button.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button.FlatAppearance.MouseOverBackColor = Color.Silver;
+            tailPanel.Controls.Add(button);
+
+            if(donHang.tinhTrang == 0)
+            {
+                Button button1 = new Button
+                {
+                    Text = "Giao hàng", //button24
+                    Size = button33.Size,
+                    Location = button33.Location,
+                    ForeColor = Color.DarkGray,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    FlatStyle = FlatStyle.Flat,
+                    Parent = tailPanel
+                };
+                button1.Click += GiaoHangButton_Click;
+                button1.FlatAppearance.BorderColor = Color.DarkGray;
+                button1.FlatAppearance.BorderSize = 1;
+                button1.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                button1.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                tailPanel.Controls.Add(button1);
+
+                Button button2 = new Button
+                {
+                    Text = "Hủy đơn", //button24
+                    Size = button24.Size,
+                    Location = button24.Location,
+                    ForeColor = Color.DarkGray,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    FlatStyle = FlatStyle.Flat,
+                    Parent = tailPanel
+                };
+                button2.FlatAppearance.BorderColor = Color.DarkGray;
+                button2.FlatAppearance.BorderSize = 1;
+                button2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                button2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                tailPanel.Controls.Add(button2);
+            }
+            //tailPanel.Paint += DrawPanelBorder;
+            flp.Controls.Add (tailPanel);
+
+            flp.Height = height + tailPanel.Height + tailPanel.Margin.Top + tailPanel.Margin.Bottom;
+            return flp;
+        }
+
+        private void GiaoHangButton_Click(object sender, EventArgs e)
+        {
+            string maDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+
+            BLL_Shop.Instance.GiaoHang(shop, maDH);
+
+            MessageBox.Show("Giao hàng thành công");
+
+            if (loaiDH == -2)
+                ChuyenLoaiDH_Click(tatCaButton, null);
+
+        }
+
+        private void DHMouseIn(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.ForeColor != Color.Red)
+                button.ForeColor = Color.OrangeRed;
+        }
+
+        private void DHMouseOut(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            if (button.ForeColor != Color.Red)
+                button.ForeColor = Color.Black;
+
         }
     }
 }

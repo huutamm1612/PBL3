@@ -28,6 +28,13 @@ namespace Program.GUI
 
         }
 
+        public string GetMaDHByClick(object sender)
+        {
+            Panel headPanel = (FlowLayoutPanel)(((Control)sender).Parent.Parent);
+            string maDH = FindControl(headPanel, "maDH").Text.Substring(15);
+            return maDH;
+        }
+
         public void FitTextBox(Control textBox, int w = 10, int h = 10)
         {
             Size textSize = TextRenderer.MeasureText(textBox.Text, textBox.Font);

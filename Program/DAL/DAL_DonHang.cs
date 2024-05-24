@@ -64,6 +64,14 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, donHang.GetParameters().ToArray());
         }
 
+        public void GiaoHang(string maDH, DateTime ngayGiaoHang)
+        {
+            string query = "UPDATE DonHang SET tinhTrang = 1, ngayGiaoHang = @ngayGiaoHang WHERE maDH = @maDH";
+            SqlParameter param1 = new SqlParameter("@maDH", maDH);
+            SqlParameter param2 = new SqlParameter("@ngayGiaoHang", ngayGiaoHang);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
         public void CapNhatTinhTrangDonHang(string maDH, int tinhTrang, DateTime ngayGiaoHang)
         {
             string query = "UPDATE DonHang SET tinhTrang = @tinhTrang, ngayGiaoHang = @ngayGiaoHang WHERE maDH = @maDH";
