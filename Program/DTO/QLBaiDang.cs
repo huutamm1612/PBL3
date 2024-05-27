@@ -63,6 +63,16 @@ namespace Program
 
             return null;
         }
+        public BaiDang GetBaiDangFromMaBD(string maBD)
+        {
+            foreach(BaiDang baiDang in list)
+            {
+                if (baiDang.maBD == maBD) {
+                    return baiDang;
+                }
+            }
+            return null;
+        }
 
         public void Clear() => list.Clear();
 

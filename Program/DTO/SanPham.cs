@@ -11,6 +11,7 @@ namespace Program
 {
     public class SanPham
     {
+
         public string maSP { get; set; }
         public LoaiSanPham loaiSP { get; set; }
         public string maS { get; set; }
@@ -73,6 +74,27 @@ namespace Program
                 new SqlParameter("@maBD", maBD)
             };
             return list;
+        }
+
+        public void SuaSanPham(SanPham sanPham)
+        {
+            loaiSP = sanPham.loaiSP;
+            maS = sanPham.maS;
+            maBD = sanPham.maBD;
+            ten = sanPham.ten;
+            gia = sanPham.gia;
+            soLuong = sanPham.soLuong;
+            luocBan = sanPham.luocBan;
+            tacGia = sanPham.tacGia;
+            dichGia = sanPham.dichGia;
+            ngonNgu = sanPham.ngonNgu;
+            soTrang = sanPham.soTrang;
+            namXuatBan = sanPham.namXuatBan;
+            nhaXuatBan = sanPham.nhaXuatBan;
+            loaiBia = sanPham.loaiBia;
+            moTa = sanPham.moTa;
+            anh = sanPham.anh;
+            ngayThem = sanPham.ngayThem;
         }
 
         public SanPham(string maSP)

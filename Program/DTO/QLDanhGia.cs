@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class QLDanhGia : IQuanLy
+    public class QLDanhGia : IQuanLy
     {
         public List<DanhGia> list { get; set; }
 

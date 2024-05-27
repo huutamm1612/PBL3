@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal class BaiDang : QLSanPham
+    public class BaiDang : QLSanPham
     {
         public string maBD { get; set; }
         public string maS { get; set; }
@@ -39,7 +39,18 @@ namespace Program
             anhBia = "";
             listDanhGia = new QLDanhGia();
         }
-
+        public void SuaBaiDang(BaiDang baiDang)
+        {
+            maBD = baiDang.maBD;
+            maS = baiDang.maS;
+            list = baiDang.list;
+            tieuDe = baiDang.tieuDe;
+            moTa = baiDang.moTa;
+            luocThich = baiDang.luocThich;
+            giamGia = baiDang.giamGia;
+            anhBia = baiDang.anhBia;
+            listDanhGia = baiDang.listDanhGia;
+        }
         public List<SqlParameter> GetParameters()
         {
             return new List<SqlParameter>
@@ -53,7 +64,6 @@ namespace Program
                 new SqlParameter("@anhBia", anhBia),
             };
         }
-
         public override void Add(object item)
         {
             SanPham sanPham = item as SanPham;
@@ -139,5 +149,6 @@ namespace Program
 
         public bool Equals(string obj) => maBD == obj;
         public override bool Equals(object obj) => ((BaiDang)obj).maBD == this.maBD;
+
     }
 }

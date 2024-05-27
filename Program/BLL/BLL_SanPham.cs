@@ -31,6 +31,7 @@ namespace Program.BLL
             DAL_SanPham.Instance.CapNhatSanPham(sanPham);
         }
 
+
         public string GetMaMoi()
         {
             return Database.Instance.MaMoi("maSP");

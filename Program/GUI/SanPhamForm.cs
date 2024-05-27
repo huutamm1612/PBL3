@@ -17,6 +17,7 @@ namespace Program
         private QLSanPham QLSP = null;
         private string url = null;
         public SendSanPham send;
+        private string maSP = null;
         public SanPhamForm()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Program
 
         public void setSanPham(SanPham sanPham)
         {
+            maSP = sanPham.maSP;
             url = sanPham.anh;
             picImage.Image = GUI_Utils.Instance.Resize(Image.FromFile(sanPham.anh), picImage.Size);
             tenSP_Text.Text = sanPham.ten;
@@ -67,7 +69,7 @@ namespace Program
             {
                 this.send(new SanPham
                 {
-                    maSP = "",
+                    maSP = maSP,
                     loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
                     ten = tenSP_Text.Text,
                     tacGia = tenTacGia_Text.Text,
@@ -84,7 +86,6 @@ namespace Program
                     ngayThem = DateTime.Now,
                     anh = url
                 });
-                //QLSP.Add();
                 Close();
             }
             else
