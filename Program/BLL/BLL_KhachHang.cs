@@ -3,8 +3,10 @@ using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program.BLL
 {
@@ -26,6 +28,43 @@ namespace Program.BLL
         private BLL_KhachHang()
         {
 
+        }
+
+        public void DanhGia(KhachHang khachHang, DanhGia danhGia, string maDH)
+        {
+            khachHang.listDanhGia.Add(danhGia);
+            khachHang.listDonHang.GetDonHangFromMaDH(maDH).tinhTrang = 3;
+            khachHang.xu += 200;
+            danhGia.maDG = BLL_BaiDang.Instance.GetMaMoi();
+
+            ThongBao thongBao1 = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "KH" + khachHang.maSo,
+                to = "S" + DAL_Shop.Instance.LoadMaSFromMaBD(danhGia.maBD),
+                dinhKem = "BD" + danhGia.maBD,
+                noiDung = $"Bài đăng BD{danhGia.maBD} của bạn đã được khách hàng {khachHang.taiKhoan} đánh giá {danhGia.sao} sao vào lúc {Utils.Instance.MoTaThoiGian(danhGia.ngayThem)}.",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            ThongBao thongBao2 = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "HeThongXu",
+                to = "KH" + khachHang.maSo,
+                noiDung = $"Chúc mừng bạn đã nhận được 200 xu từ việc đánh giá sản phẩm đã mua từ đơn hàng DH{maDH}.",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            khachHang.listThongBao.Add(thongBao2);
+            DAL_DanhGia.Instance.ThemDanhGia(danhGia);
+
+            DAL_KhachHang.Instance.ThemXu(khachHang.maSo, 200);
+            DAL_DonHang.Instance.CapNhatTinhTrangDonHang(maDH, 3, khachHang.listDonHang.GetDonHangFromMaDH(maDH).ngayGiaoHang);
+            DAL_ThongBao.Instance.ThemThongBao(thongBao1);
+            DAL_ThongBao.Instance.ThemThongBao(thongBao2);
         }
 
         public void ThemDiaChi(DiaChi diaChi, string maKH)
@@ -70,7 +109,7 @@ namespace Program.BLL
 
         public void DatHang(KhachHang khachHang, QLSanPham listSanPham, DiaChi diaChi, int ptThanhToan, bool dungXu)
         {
-            int soLuongShop = listSanPham.soLuongShop();
+            int soLuongShop = listSanPham.SoLuongShop();
             int xu = 0;
             if (dungXu)
             {
@@ -127,10 +166,25 @@ namespace Program.BLL
                 tinhTrang = 0
             };
 
+            foreach(SanPham sanPham in khachHang.listDonHang.list[index].list)
+            {
+                DAL_SanPham.Instance.NhanHang(sanPham.maSP);
+            }
+
             DAL_ThongBao.Instance.ThemThongBao(thongBao);
             DAL_DonHang.Instance.CapNhatTinhTrangDonHang(khachHang.listDonHang.list[index].maDH, khachHang.listDonHang.list[index].tinhTrang, khachHang.listDonHang.list[index].ngayGiaoHang);
             DAL_KhachHang.Instance.NhanHang(khachHang.maSo, khachHang.listDonHang.list[index].tongTien);
             DAL_Shop.Instance.GiaoHangThanhCong(khachHang.listDonHang.list[index].maS, khachHang.listDonHang.list[index].tongTien + khachHang.listDonHang.list[index].xu);
+        }
+
+        public string GetURLFromMaKH(string maKH)
+        {
+            return DAL_KhachHang.Instance.LoadURLFromMaKH(maKH);
+        }
+
+        public string GetTenFromMaKH(string maKH)
+        {
+            return DAL_KhachHang.Instance.LoadTenFromMaKH(maKH);
         }
 
         public void HuyDonHang(DonHang donHang)

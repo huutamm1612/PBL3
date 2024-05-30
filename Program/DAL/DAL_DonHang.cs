@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Program.BLL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,17 +27,19 @@ namespace Program.DAL
 
         }
 
-        public QLDonHang LoadAllDonHangFromMaKH(string maKH)
+        public QLDonHang LoadAllDonHangFromMaKH(string maKH)    
         {
             QLDonHang qlDonHang = new QLDonHang();
 
-            string query = "SELECT * FROM DonHang DH JOIN DonHang_KhachHang DHKH ON DH.maDH = DHKH.maDH JOIN DonHang_Shop DHS ON DHS.maDH = DH.maDH WHERE DHKH.maKH = @maKH";
+            string query = "SELECT * FROM DonHang DH JOIN DonHang_KhachHang DHKH ON DH.maDH = DHKH.maDH JOIN DonHang_Shop DHS ON DHS.maDH = DH.maDH WHERE DHKH.maKH = @maKH ORDER BY tinhTrang ASC, ngayGiaoHang DESC";
             SqlParameter param = new SqlParameter("@maKH", maKH);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
             foreach(DataRow row in table.Rows)
             {
-                qlDonHang.Add(LoadDonHang(row));
+                DonHang donHang = LoadDonHang(row);
+                qlDonHang.Add(donHang);
+                BLL_DonHang.Instance.KiemTraDHLaDaDen(donHang);
             }
 
             return qlDonHang;

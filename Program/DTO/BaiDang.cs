@@ -104,7 +104,7 @@ namespace Program
 
         public double tinhSao()
         {
-            return listDanhGia.tinhSao();
+            return Math.Ceiling(listDanhGia.tinhSao() * 10) / 10;
         }
 
         public int doanhThu()

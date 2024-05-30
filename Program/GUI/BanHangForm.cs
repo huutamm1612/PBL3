@@ -128,6 +128,7 @@ namespace Program
         private void HTTaoShop_Click(object sender, EventArgs e)
         {
             diaChi.setMaDC(BLL_DiaChi.Instance.GetMaMoi());
+            
             shop = new Shop
             {
                 maSo = BLL_Shop.Instance.GetMaMoi(),
@@ -142,6 +143,7 @@ namespace Program
                 doanhThu = 0,
             };
 
+            BLL_Shop.Instance.ThemDiaChi(diaChi, shop.maSo);
             BLL_Shop.Instance.TaoShopByTaiKhoan(user.taiKhoan, shop);
 
             dangKyPanel.Visible = false;

@@ -66,6 +66,15 @@ namespace Program.DAL
             return row["ten"].ToString();
         }
 
+        public string LoadMaSFromMaBD(string maBD)
+        {
+            string query = "SELECT maS FROM BaiDang_Shop WHERE maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return row["maS"].ToString();
+        }
+
         public string LoadTenShopFromMaS(string maS)
         {
             string query = "SELECT S.ten FROM Shop S WHERE maS = @maS";

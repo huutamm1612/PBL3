@@ -27,6 +27,41 @@ namespace Program.DAL
 
         }
 
+        public string Load1URLFromMaDH(string maDH)
+        {
+            string query = "SELECT BD.anh FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN DonHang_SanPham DHSP ON SPBD.maSP = DHSP.maSP WHERE maDH = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", maDH);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+        
+            return row["anh"].ToString();
+        }
+
+        public void ThemDanhGia(string maDG, string maBD)
+        {
+            string query = "INSERT INTO DanhGia_BaiDang VALUES(@maDG, @maBD)";
+            SqlParameter param1 = new SqlParameter("@maDG", maDG);
+            SqlParameter param2 = new SqlParameter("@maBD", maBD);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
+        public string LoadTieuDeFromMaBD(string maBD)
+        {
+            string query = "SELECT BaiDang.tieuDe FROM BaiDang WHERE maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+            return row["tieuDe"].ToString();
+        }
+
+        public string LoadURLFromMaBD(string maBD)
+        {
+            string query = "SELECT BaiDang.anh FROM BaiDang WHERE maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+            return row["anh"].ToString();
+        }
+
         public void Thich(string maBD)
         {
             string query = "UPDATE BaiDang SET luocThich = luocThich + 1 WHERE maBD = @maBD";

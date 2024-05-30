@@ -60,28 +60,6 @@ namespace Program
 
         public void capNhatTinhTrang(int tinhTrang) => this.tinhTrang = tinhTrang;
 
-        public List<DonHang> phanRaDonHang(int n)
-        {
-            List<DonHang> listDonHang = new List<DonHang>();
-            foreach(QLSanPham qlSP in phanRa())
-            {
-                listDonHang.Add(new DonHang
-                {
-                    list = qlSP.list,
-                    maDH = BLL_DonHang.Instance.GetMaMoi(),
-                    maKH = maDH,
-                    tinhTrang = tinhTrang,
-                    ptThanhToan = ptThanhToan,
-                    tongTien = qlSP.tinhTongTien() + 30000,
-                    diaChi = diaChi,
-                    xu = xu / n,
-                    ngayDatHang = ngayDatHang,
-                });
-            }   
-
-            return listDonHang;
-        }
-
         public string TinhTrang()
         {
             if (tinhTrang == -1)
@@ -148,37 +126,6 @@ namespace Program
             return danhGia.list.ToArray();
         }
 
-        /*public DanhGia[] taoDanhGia()
-        {
-            QLDanhGia qLDanhGia = new QLDanhGia();
-            Utils.Sort(list, 0, list.Count - 1, SanPham.CompareMaS, SanPham.EqualMaS);
-
-            List<string> tmp = new List<string>();
-            string maBD = list[0].maBD;
-
-            foreach(SanPham sanPham in list)
-            {
-                if(maBD == sanPham.maBD)
-                {
-                    tmp.Add(sanPham.maSP);
-                }
-                else
-                {
-                    qLDanhGia.Add(new DanhGia
-                    {
-                        maSP = tmp
-                    });
-                    tmp.Clear();
-                }
-            }
-
-            qLDanhGia.Add(new DanhGia
-            {
-                maSP = tmp
-            });
-
-            return qLDanhGia.list.ToArray();
-        }*/
 
         public static bool EqualMaDH(object o1, object o2) => String.Equals(((DonHang)o1).maDH, ((DonHang)o2).maDH);
         public override bool Equals(object obj) => ((DonHang)obj).maDH == this.maDH;

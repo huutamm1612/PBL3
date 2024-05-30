@@ -1,7 +1,9 @@
 ﻿using Program.DAL;
+using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,7 +37,7 @@ namespace Program.BLL
         {
             List<DonHang> list = new List<DonHang>();
 
-            foreach(QLSanPham listSP in  qLSanPham.phanRa())
+            foreach(QLSanPham listSP in qLSanPham.PhanRaTheoShop())
             {
                 list.Add(new DonHang
                 {
@@ -59,6 +61,25 @@ namespace Program.BLL
             foreach(SanPham sanPham in donHang.list)
             {
                 DAL_SanPham.Instance.DatHang(sanPham.maSP, donHang.maDH, sanPham.soLuong);
+            }
+        }
+
+        public void KiemTraDHLaDaDen(DonHang donHang)
+        {
+            if (donHang.tinhTrang == 1 && DateTime.Compare(DateTime.Now, donHang.ngayGiaoHang) >= 0 && !BLL_ThongBao.Instance.IsVanChuyenDaGui(donHang.maDH))
+            { 
+                ThongBao thongBao = new ThongBao
+                {
+                    maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                    from = "BenVanChuyen",
+                    to = "KH" + donHang.maKH,
+                    dinhKem = "DH" + donHang.maDH,
+                    noiDung = $"Đơn hàng (DH{donHang.maDH}) của bạn được bàn giao cho bên vận chuyển và sẽ được giao trong thời gian sắp tới, hãy chú ý điện thoại từ shipper. Vui lòng bỏ qua thông báo này nếu bạn đã nhận được hàng!",
+                    ngayGui = donHang.ngayGiaoHang,
+                    tinhTrang = 0
+                };
+
+                DAL_ThongBao.Instance.ThemThongBao(thongBao);
             }
         }
 

@@ -31,9 +31,16 @@ namespace Program
         public delegate bool Compare(object o1, object o2);
         public delegate bool Equal(object o1, object o2);
 
+        public string GioiHangKyTu(string s, int n)
+        {
+            if (s.Length > n)
+                s = s.Substring(0, n) + "...";
+            return s;
+        }
+
         public string MoTaThoiGian(DateTime dateTime)
         {
-            return $"{dateTime: HH}:{dateTime: mm}, ngày{dateTime: dd} tháng{dateTime: MM} năm{dateTime: yyyy}";
+            return $"{dateTime: HH}:{dateTime: mm}, {dateTime: dd}/{dateTime: MM}/{dateTime: yyyy}";
         }
 
         public void RemoveRange<T>(List<T> list, List<string> maSo)

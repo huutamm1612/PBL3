@@ -27,11 +27,23 @@ namespace Program.DAL
 
         }
 
+        public bool IsVanChuyenDaGui(string maDH)
+        {
+            string query = "SELECT * FROM ThongBao WHERE _From = 'BenVanChuyen' AND dinhKem = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", "DH" + maDH);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            if (table.Rows.Count == 0)
+                return false;
+
+            return true;
+        }
+
         public QLThongBao LoadAllThongBaoFromMaKH(string maKH)
         {
             QLThongBao list = new QLThongBao();
             
-            string query = "SELECT * FROM ThongBao WHERE _To = @maKH";
+            string query = "SELECT * FROM ThongBao WHERE _To = @maKH ORDER BY ngayGui DESC";
             SqlParameter param = new SqlParameter("@maKH", "KH" + maKH);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -53,7 +65,7 @@ namespace Program.DAL
         {
             QLThongBao list = new QLThongBao();
 
-            string query = "SELECT * FROM ThongBao WHERE _To = @maS";
+            string query = "SELECT * FROM ThongBao WHERE _To = @maS ORDER BY ngayGui DESC";
             SqlParameter param = new SqlParameter("@maS", "S" + maS);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 

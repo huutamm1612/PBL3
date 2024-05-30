@@ -1,5 +1,6 @@
 ﻿using Program.BLL;
 using Program.DAL;
+using Program.DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Program
         public QLDonHang listDonHang { get; set; }
         public GioHang gioHang { get; set; }
         public QLDanhGia listDanhGia { get; set; }
+        public QLThongBao listThongBao { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -48,6 +50,7 @@ namespace Program
             this.listDonHang = new QLDonHang();
             this.gioHang = new GioHang();
             this.listDanhGia = new QLDanhGia();
+            this.listThongBao = new QLThongBao();
         }
 
         public List<SqlParameter> GetParameters()

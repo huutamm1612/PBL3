@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program.DAL
 {
@@ -70,7 +71,8 @@ namespace Program.DAL
 
             query = "INSERT INTO DanhGia_KhachHang VALUES(@maKH, @maDG)";
             SqlParameter param3 = new SqlParameter("@maKH", danhGia.maKH);
-            Database.Instance.ExecuteNonQuery(query, param3, param1);
+            SqlParameter param4 = new SqlParameter("@maDG", danhGia.maDG);
+            Database.Instance.ExecuteNonQuery(query, param3, param4);
         }
 
         public void CapNhatDanhGia(DanhGia danhGia)

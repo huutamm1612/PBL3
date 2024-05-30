@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program
 {
@@ -55,6 +56,24 @@ namespace Program
         public void Insert(int index, object item)
         {
             list.Insert(index, item as DanhGia);
+        }
+
+        public int SoluongDanhGia(int sao)
+        {
+            if (sao == -1)
+                return list.Count;
+
+            int n = 0;
+
+            foreach (DanhGia danhGia in list)
+            {
+                if (danhGia.sao == sao)
+                {
+                    n++;
+                }
+            }
+
+            return n;
         }
 
         public double tinhSao()

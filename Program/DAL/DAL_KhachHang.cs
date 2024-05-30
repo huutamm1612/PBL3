@@ -27,6 +27,22 @@ namespace Program.DAL
 
         }
 
+        public string LoadURLFromMaKH(string maKH)
+        {
+            string query = "SELECT avt FROM KhachHang WHERE maKH = @maKH";
+            SqlParameter param = new SqlParameter("@maKH", maKH);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+            return row["avt"].ToString();
+        }
+
+        public void ThemDanhGia(string maKH, string maDG)
+        {
+            string query = "INSERT INTO DanhGia_KhachHang VALUES(@maKH, @maDG)";
+            SqlParameter param1 = new SqlParameter("@maDG", maDG);
+            SqlParameter param2 = new SqlParameter("@maKH", maKH);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
         public void NhanHang(string maKH, int giaTriDH)
         {
             string query = "UPDATE KhachHang SET chiTieu = chiTieu + @giaTriDH WHERE maKH = @maKH";
@@ -49,7 +65,16 @@ namespace Program.DAL
             SqlParameter param = new SqlParameter("@taiKhoan", taiKhoan);
             DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
 
-            return row["taiKhoan"].ToString();
+            return row["maKH"].ToString();
+        }
+
+        public string LoadTenFromMaKH(string maKH)
+        {
+            string query = "SELECT ten FROM KhachHang WHERE maKH = @maKH";
+            SqlParameter param = new SqlParameter("@maKH", maKH);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return row["ten"].ToString();
         }
 
         public void DungXu(string maKH)
@@ -57,6 +82,14 @@ namespace Program.DAL
             string query = "UPDATE KhachHang SET xu = 0 WHERE maKH = @maKH";
             SqlParameter param = new SqlParameter("@maKH", maKH);
             Database.Instance.ExecuteNonQuery(query, param);   
+        }
+
+        public void ThemXu(string maKH, int xu)
+        {
+            string query = "UPDATE KhachHang SET xu = xu + @xu WHERE maKH = @maKH";
+            SqlParameter param1 = new SqlParameter("@maKH", maKH);
+            SqlParameter param2 = new SqlParameter("@xu", xu);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
         }
 
         public void DangKyTaoShop(string maKH, string maS)
@@ -226,9 +259,10 @@ namespace Program.DAL
                 listDiaChi = DAL_DiaChi.Instance.LoadAllDiaChiFromMaKH(row["maKH"].ToString()),
                 listDonHang = DAL_DonHang.Instance.LoadAllDonHangFromMaKH(row["maKH"].ToString()),
                 listDanhGia = DAL_DanhGia.Instance.LoadAllDanhGiaFromMaKH(row["maKH"].ToString()),
+                listThongBao = DAL_ThongBao.Instance.LoadAllThongBaoFromMaKH(row["maKH"].ToString()),
                 listFollow = LoadListFollowFromMaKH(row["maKH"].ToString()),
                 listThich = LoadListDaThichFromMaKH(row["maKH"].ToString()),
-                listDaXem = LoadListDaXemFromMaKH(row["maKH"].ToString())
+                listDaXem = LoadListDaXemFromMaKH(row["maKH"].ToString()),
             };
         }
     }

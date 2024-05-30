@@ -144,7 +144,25 @@ namespace Program
             return tongTien;
         }
 
-        public int soLuongShop()
+        public int SoLuongBaiDang()
+        {
+            Utils.Instance.Sort(list, 0, list.Count - 1, SanPham.CompareMaBD, SanPham.EqualMaBD);
+            int n = 1;
+            string maBD = list[0].maBD;
+
+            foreach (SanPham sanPham in list)
+            {
+                if (!String.Equals(maBD, sanPham.maBD))
+                {
+                    n++;
+                    maBD = sanPham.maBD;
+                }
+            }
+
+            return n;
+        }
+
+        public int SoLuongShop()
         {
             Utils.Instance.Sort(list, 0, list.Count - 1, SanPham.CompareMaS, SanPham.EqualMaS);
 
@@ -162,11 +180,38 @@ namespace Program
 
             return n;
         }
+
+        public List<QLSanPham> PhanRaTheoBaiDang()
+        {
+
+            List<QLSanPham> listQLSP = new List<QLSanPham>();
+            for (int i = 0; i < SoLuongBaiDang(); i++)
+                listQLSP.Add(new QLSanPham());
+
+            foreach (SanPham item in list)
+            {
+                foreach (QLSanPham qLSanPham in listQLSP)
+                {
+                    if (qLSanPham.list.Count == 0)
+                    {
+                        qLSanPham.Add(item);
+                        break;
+                    }
+                    else if (SanPham.EqualMaBD(qLSanPham.list[0], item))
+                    {
+                        qLSanPham.Add(item);
+                        break;
+                    }
+                }
+            }
+
+            return listQLSP;
+        }
         
-        public List<QLSanPham> phanRa()
+        public List<QLSanPham> PhanRaTheoShop()
         {
             List<QLSanPham> listQLSP = new List<QLSanPham> ();
-            for (int i = 0; i < soLuongShop(); i++)
+            for (int i = 0; i < SoLuongShop(); i++)
                 listQLSP.Add(new QLSanPham());
 
             foreach (SanPham item in list)

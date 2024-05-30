@@ -60,6 +60,7 @@ namespace Program.BLL
             }
         }
 
+
         public string GetMaMoi()
         {
             return Database.Instance.MaMoi("MaDC");
@@ -97,7 +98,9 @@ namespace Program.BLL
 
         public string MoTaDiaChi(DiaChi diaChi)
         {
-            return $"{DAL_DiaChi.Instance.LoadTenPX(diaChi.maPX)}, {DAL_DiaChi.Instance.LoadTenQH(diaChi.maQH)}, {DAL_DiaChi.Instance.LoadTenT_TP(diaChi.maT_TP)}";
+            if(diaChi != null)
+                return $"{DAL_DiaChi.Instance.LoadTenPX(diaChi.maPX)}, {DAL_DiaChi.Instance.LoadTenQH(diaChi.maQH)}, {DAL_DiaChi.Instance.LoadTenT_TP(diaChi.maT_TP)}";
+            return "Vui lòng thêm địa chỉ";
         }
     } 
 }

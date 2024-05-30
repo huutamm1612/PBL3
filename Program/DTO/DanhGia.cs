@@ -30,7 +30,7 @@ namespace Program
             doiTuong = "";
             thietKeBia = "";
             noiDung = "";
-            sao = 0;
+            sao = 5;
             luocThich = 0;
             ngayThem = DateTime.Now;
         }
@@ -39,7 +39,7 @@ namespace Program
         {
             return new List<SqlParameter>
             {
-                new SqlParameter("@maDG", maBD),
+                new SqlParameter("@maDG", maDG),
                 new SqlParameter("@sanPhamDaMua", sanPhamDaMua),
                 new SqlParameter("@doiTuong", doiTuong),
                 new SqlParameter("@thietKeBia", thietKeBia),
@@ -50,10 +50,6 @@ namespace Program
             };
         }
 
-        public bool daDanhGia()
-        {
-            return sao != 0;
-        }
 
         public static bool CompareSao(object o1, object o2) => ((DanhGia)o1).sao < ((DanhGia)o2).sao;
         public static bool EqualMaDH(object o1, object o2) => String.Equals(((DanhGia)o1).maDG, ((DanhGia)o2).maDG);

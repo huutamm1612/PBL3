@@ -35,6 +35,83 @@ namespace Program.GUI
             return maDH;
         }
 
+        public PictureBox CreateStarRatingPictureBox(double rating, int starCount = 5, int starSize = 20, int padding = 5)
+        {
+            int width = (starSize + padding) * starCount;
+            int height = starSize + padding;
+
+            // Tạo PictureBox
+            PictureBox pictureBox = new PictureBox
+            {
+                Width = width,
+                Height = height,
+                Image = new Bitmap(width, height)
+            };
+
+            // Tạo Bitmap để vẽ
+            using (Graphics g = Graphics.FromImage(pictureBox.Image))
+            {
+                g.Clear(Color.White); // Nền trắng
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                int fullStars = (int)Math.Floor(rating);
+                float partialStar = (float)(rating - fullStars);
+
+                for (int i = 0; i < starCount; i++)
+                {
+                    float x = i * (starSize + padding);
+                    if (i < fullStars)
+                    {
+                        DrawStar(g, Brushes.Red, x, 0, starSize);
+                    }
+                    else if (i == fullStars && partialStar > 0)
+                    {
+                        DrawPartialStar(g, Brushes.Red, x, 0, starSize, partialStar);
+                    }
+                    else
+                    {
+                        DrawStar(g, Brushes.Transparent, x, 0, starSize);
+                    }
+
+                    g.DrawPolygon(Pens.Red, CreateStarPoints(x, 0, starSize));
+                }
+            }
+
+            return pictureBox;
+        }
+
+        private void DrawStar(Graphics g, Brush brush, float x, float y, int size)
+        {
+            var starPoints = CreateStarPoints(x, y, size);
+            g.FillPolygon(brush, starPoints);
+        }
+
+        private void DrawPartialStar(Graphics g, Brush brush, float x, float y, int size, float fillPercentage)
+        {
+            var starPoints = CreateStarPoints(x, y, size);
+            Region starRegion = new Region(new GraphicsPath(starPoints, Enumerable.Repeat((byte)PathPointType.Line, starPoints.Length).ToArray()));
+            RectangleF clipRect = new RectangleF(x, y, size * fillPercentage, size);
+            starRegion.Intersect(clipRect);
+            g.FillRegion(brush, starRegion);
+        }
+
+        private PointF[] CreateStarPoints(float x, float y, int size)
+        {
+            PointF[] points = new PointF[10];
+            double angle = -Math.PI / 2;
+            double increment = Math.PI / 5;
+
+            for (int i = 0; i < 10; i++)
+            {
+                float length = i % 2 == 0 ? size / 2f : size / 4f;
+                points[i] = new PointF(
+                    x + (float)(Math.Cos(angle) * length + size / 2),
+                    y + (float)(Math.Sin(angle) * length + size / 2));
+                angle += increment;
+            }
+            return points;
+        }
+
         public void FitTextBox(Control textBox, int w = 10, int h = 10)
         {
             Size textSize = TextRenderer.MeasureText(textBox.Text, textBox.Font);

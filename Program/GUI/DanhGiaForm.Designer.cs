@@ -28,29 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.HTThemDiaChi_Button = new System.Windows.Forms.Button();
+            this.hoanThanhButton = new System.Windows.Forms.Button();
             this.troVeButton = new System.Windows.Forms.Button();
             this.textBox13 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ListDanhGiaFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.star5 = new System.Windows.Forms.Button();
-            this.star4 = new System.Windows.Forms.Button();
-            this.star3 = new System.Windows.Forms.Button();
-            this.star2 = new System.Windows.Forms.Button();
-            this.star1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -61,42 +43,61 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.star5 = new System.Windows.Forms.Button();
+            this.star4 = new System.Windows.Forms.Button();
+            this.star3 = new System.Windows.Forms.Button();
+            this.star2 = new System.Windows.Forms.Button();
+            this.star1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ListDanhGiaFLP.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // HTThemDiaChi_Button
+            // hoanThanhButton
             // 
-            this.HTThemDiaChi_Button.BackColor = System.Drawing.Color.OrangeRed;
-            this.HTThemDiaChi_Button.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
-            this.HTThemDiaChi_Button.FlatAppearance.BorderSize = 0;
-            this.HTThemDiaChi_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
-            this.HTThemDiaChi_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tomato;
-            this.HTThemDiaChi_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HTThemDiaChi_Button.ForeColor = System.Drawing.Color.White;
-            this.HTThemDiaChi_Button.Location = new System.Drawing.Point(554, 634);
-            this.HTThemDiaChi_Button.Margin = new System.Windows.Forms.Padding(4);
-            this.HTThemDiaChi_Button.Name = "HTThemDiaChi_Button";
-            this.HTThemDiaChi_Button.Size = new System.Drawing.Size(184, 40);
-            this.HTThemDiaChi_Button.TabIndex = 34;
-            this.HTThemDiaChi_Button.Text = "Hoàn thành";
-            this.HTThemDiaChi_Button.UseVisualStyleBackColor = false;
+            this.hoanThanhButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.hoanThanhButton.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.hoanThanhButton.FlatAppearance.BorderSize = 0;
+            this.hoanThanhButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
+            this.hoanThanhButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tomato;
+            this.hoanThanhButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hoanThanhButton.ForeColor = System.Drawing.Color.White;
+            this.hoanThanhButton.Location = new System.Drawing.Point(554, 634);
+            this.hoanThanhButton.Margin = new System.Windows.Forms.Padding(4);
+            this.hoanThanhButton.Name = "hoanThanhButton";
+            this.hoanThanhButton.Size = new System.Drawing.Size(184, 40);
+            this.hoanThanhButton.TabIndex = 34;
+            this.hoanThanhButton.Text = "Hoàn thành";
+            this.hoanThanhButton.UseVisualStyleBackColor = false;
+            this.hoanThanhButton.Click += new System.EventHandler(this.hoanThanhButton_Click);
             // 
             // troVeButton
             // 
@@ -123,14 +124,14 @@
             this.textBox13.TabIndex = 74;
             this.textBox13.Text = "Đánh giá sản phẩm";
             // 
-            // flowLayoutPanel1
+            // ListDanhGiaFLP
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(28, 74);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(735, 533);
-            this.flowLayoutPanel1.TabIndex = 75;
+            this.ListDanhGiaFLP.AutoScroll = true;
+            this.ListDanhGiaFLP.Controls.Add(this.panel1);
+            this.ListDanhGiaFLP.Location = new System.Drawing.Point(28, 74);
+            this.ListDanhGiaFLP.Name = "ListDanhGiaFLP";
+            this.ListDanhGiaFLP.Size = new System.Drawing.Size(735, 533);
+            this.ListDanhGiaFLP.TabIndex = 75;
             // 
             // panel1
             // 
@@ -151,216 +152,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(710, 460);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(0, 121);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(710, 326);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBox10);
-            this.panel3.Controls.Add(this.textBox9);
-            this.panel3.Controls.Add(this.textBox8);
-            this.panel3.Controls.Add(this.textBox7);
-            this.panel3.Controls.Add(this.textBox6);
-            this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Location = new System.Drawing.Point(23, 23);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(664, 279);
-            this.panel3.TabIndex = 11;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(3, 17);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(93, 19);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.Text = "Thiết kế bìa:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Goldenrod;
-            this.textBox4.Location = new System.Drawing.Point(405, 87);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(172, 19);
-            this.textBox4.TabIndex = 9;
-            this.textBox4.Text = "Tuyệt vời";
-            // 
-            // star5
-            // 
-            this.star5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.star5.FlatAppearance.BorderSize = 0;
-            this.star5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.star5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.star5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.star5.Image = global::Program.Properties.Resources.star1;
-            this.star5.Location = new System.Drawing.Point(358, 75);
-            this.star5.Name = "star5";
-            this.star5.Size = new System.Drawing.Size(40, 40);
-            this.star5.TabIndex = 8;
-            this.star5.UseVisualStyleBackColor = true;
-            // 
-            // star4
-            // 
-            this.star4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.star4.FlatAppearance.BorderSize = 0;
-            this.star4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.star4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.star4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.star4.Image = global::Program.Properties.Resources.star1;
-            this.star4.Location = new System.Drawing.Point(320, 75);
-            this.star4.Name = "star4";
-            this.star4.Size = new System.Drawing.Size(40, 40);
-            this.star4.TabIndex = 7;
-            this.star4.UseVisualStyleBackColor = true;
-            // 
-            // star3
-            // 
-            this.star3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.star3.FlatAppearance.BorderSize = 0;
-            this.star3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.star3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.star3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.star3.Image = global::Program.Properties.Resources.star1;
-            this.star3.Location = new System.Drawing.Point(280, 75);
-            this.star3.Name = "star3";
-            this.star3.Size = new System.Drawing.Size(40, 40);
-            this.star3.TabIndex = 6;
-            this.star3.UseVisualStyleBackColor = true;
-            // 
-            // star2
-            // 
-            this.star2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.star2.FlatAppearance.BorderSize = 0;
-            this.star2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.star2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.star2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.star2.Image = global::Program.Properties.Resources.star1;
-            this.star2.Location = new System.Drawing.Point(240, 75);
-            this.star2.Name = "star2";
-            this.star2.Size = new System.Drawing.Size(40, 40);
-            this.star2.TabIndex = 5;
-            this.star2.UseVisualStyleBackColor = true;
-            // 
-            // star1
-            // 
-            this.star1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.star1.FlatAppearance.BorderSize = 0;
-            this.star1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.star1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.star1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.star1.Image = global::Program.Properties.Resources.star1;
-            this.star1.Location = new System.Drawing.Point(200, 75);
-            this.star1.Name = "star1";
-            this.star1.Size = new System.Drawing.Size(40, 40);
-            this.star1.TabIndex = 4;
-            this.star1.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(3, 87);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(172, 19);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Chất lượng sản phẩm";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.ForeColor = System.Drawing.Color.DarkGray;
-            this.textBox2.Location = new System.Drawing.Point(73, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(585, 19);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Sản phẩm đã mua";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(73, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(634, 19);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Tên bài đăng";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Location = new System.Drawing.Point(3, 42);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(656, 19);
-            this.textBox6.TabIndex = 12;
-            this.textBox6.Text = "để lại đánh giá";
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.White;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Location = new System.Drawing.Point(3, 76);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(137, 19);
-            this.textBox7.TabIndex = 13;
-            this.textBox7.Text = "Đối tượng đọc giả:\r\n";
-            // 
-            // textBox8
-            // 
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Location = new System.Drawing.Point(3, 101);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(656, 19);
-            this.textBox8.TabIndex = 14;
-            this.textBox8.Text = "để lại đánh giá";
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.White;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Location = new System.Drawing.Point(3, 136);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(137, 19);
-            this.textBox9.TabIndex = 15;
-            this.textBox9.Text = "Nội dung đánh giá:\r\n";
-            // 
-            // textBox10
-            // 
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Location = new System.Drawing.Point(3, 161);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(656, 90);
-            this.textBox10.TabIndex = 16;
-            this.textBox10.Text = "để lại đánh giá";
             // 
             // panel4
             // 
@@ -479,6 +270,181 @@
             this.textBox18.TabIndex = 9;
             this.textBox18.Text = "Tuyệt vời";
             // 
+            // textBox19
+            // 
+            this.textBox19.BackColor = System.Drawing.Color.White;
+            this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox19.Location = new System.Drawing.Point(3, 87);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.ReadOnly = true;
+            this.textBox19.Size = new System.Drawing.Size(172, 19);
+            this.textBox19.TabIndex = 3;
+            this.textBox19.Text = "Chất lượng sản phẩm";
+            // 
+            // textBox20
+            // 
+            this.textBox20.BackColor = System.Drawing.Color.White;
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox20.ForeColor = System.Drawing.Color.DarkGray;
+            this.textBox20.Location = new System.Drawing.Point(73, 28);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(585, 19);
+            this.textBox20.TabIndex = 2;
+            this.textBox20.Text = "Sản phẩm đã mua";
+            // 
+            // textBox21
+            // 
+            this.textBox21.BackColor = System.Drawing.Color.White;
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox21.Location = new System.Drawing.Point(73, 3);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
+            this.textBox21.Size = new System.Drawing.Size(634, 19);
+            this.textBox21.TabIndex = 1;
+            this.textBox21.Text = "Tên bài đăng";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Location = new System.Drawing.Point(0, 121);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(710, 326);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.textBox10);
+            this.panel3.Controls.Add(this.textBox9);
+            this.panel3.Controls.Add(this.textBox8);
+            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.textBox6);
+            this.panel3.Controls.Add(this.textBox5);
+            this.panel3.Location = new System.Drawing.Point(23, 23);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(664, 279);
+            this.panel3.TabIndex = 11;
+            // 
+            // textBox10
+            // 
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(11, 161);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(641, 90);
+            this.textBox10.TabIndex = 16;
+            this.textBox10.Text = "để lại đánh giá";
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.White;
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(11, 136);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(159, 21);
+            this.textBox9.TabIndex = 15;
+            this.textBox9.Text = "Nội dung đánh giá:\r\n";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(11, 101);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(641, 21);
+            this.textBox8.TabIndex = 14;
+            this.textBox8.Text = "để lại đánh giá";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.White;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(11, 76);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(159, 21);
+            this.textBox7.TabIndex = 13;
+            this.textBox7.Text = "Đối tượng đọc giả:\r\n";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(11, 42);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(641, 21);
+            this.textBox6.TabIndex = 12;
+            this.textBox6.Text = "để lại đánh giá";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.White;
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(11, 17);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(129, 21);
+            this.textBox5.TabIndex = 11;
+            this.textBox5.Text = "Thiết kế bìa:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.White;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Goldenrod;
+            this.textBox4.Location = new System.Drawing.Point(405, 87);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(172, 21);
+            this.textBox4.TabIndex = 9;
+            this.textBox4.Text = "Tuyệt vời";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.White;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(3, 87);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(172, 21);
+            this.textBox3.TabIndex = 3;
+            this.textBox3.Text = "Chất lượng sản phẩm";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.DarkGray;
+            this.textBox2.Location = new System.Drawing.Point(73, 28);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(585, 21);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "Sản phẩm đã mua";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(73, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(634, 21);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Tên bài đăng";
+            // 
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -549,40 +515,6 @@
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox19
-            // 
-            this.textBox19.BackColor = System.Drawing.Color.White;
-            this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox19.Location = new System.Drawing.Point(3, 87);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.ReadOnly = true;
-            this.textBox19.Size = new System.Drawing.Size(172, 19);
-            this.textBox19.TabIndex = 3;
-            this.textBox19.Text = "Chất lượng sản phẩm";
-            // 
-            // textBox20
-            // 
-            this.textBox20.BackColor = System.Drawing.Color.White;
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox20.ForeColor = System.Drawing.Color.DarkGray;
-            this.textBox20.Location = new System.Drawing.Point(73, 28);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(585, 19);
-            this.textBox20.TabIndex = 2;
-            this.textBox20.Text = "Sản phẩm đã mua";
-            // 
-            // textBox21
-            // 
-            this.textBox21.BackColor = System.Drawing.Color.White;
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox21.Location = new System.Drawing.Point(73, 3);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(634, 19);
-            this.textBox21.TabIndex = 1;
-            this.textBox21.Text = "Tên bài đăng";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
@@ -591,33 +523,111 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // star5
+            // 
+            this.star5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.star5.FlatAppearance.BorderSize = 0;
+            this.star5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.star5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.star5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.star5.Image = global::Program.Properties.Resources.star1;
+            this.star5.Location = new System.Drawing.Point(358, 75);
+            this.star5.Name = "star5";
+            this.star5.Size = new System.Drawing.Size(40, 40);
+            this.star5.TabIndex = 8;
+            this.star5.UseVisualStyleBackColor = true;
+            // 
+            // star4
+            // 
+            this.star4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.star4.FlatAppearance.BorderSize = 0;
+            this.star4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.star4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.star4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.star4.Image = global::Program.Properties.Resources.star1;
+            this.star4.Location = new System.Drawing.Point(320, 75);
+            this.star4.Name = "star4";
+            this.star4.Size = new System.Drawing.Size(40, 40);
+            this.star4.TabIndex = 7;
+            this.star4.UseVisualStyleBackColor = true;
+            // 
+            // star3
+            // 
+            this.star3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.star3.FlatAppearance.BorderSize = 0;
+            this.star3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.star3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.star3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.star3.Image = global::Program.Properties.Resources.star1;
+            this.star3.Location = new System.Drawing.Point(280, 75);
+            this.star3.Name = "star3";
+            this.star3.Size = new System.Drawing.Size(40, 40);
+            this.star3.TabIndex = 6;
+            this.star3.UseVisualStyleBackColor = true;
+            // 
+            // star2
+            // 
+            this.star2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.star2.FlatAppearance.BorderSize = 0;
+            this.star2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.star2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.star2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.star2.Image = global::Program.Properties.Resources.star1;
+            this.star2.Location = new System.Drawing.Point(240, 75);
+            this.star2.Name = "star2";
+            this.star2.Size = new System.Drawing.Size(40, 40);
+            this.star2.TabIndex = 5;
+            this.star2.UseVisualStyleBackColor = true;
+            // 
+            // star1
+            // 
+            this.star1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.star1.FlatAppearance.BorderSize = 0;
+            this.star1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.star1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.star1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.star1.Image = global::Program.Properties.Resources.star1;
+            this.star1.Location = new System.Drawing.Point(200, 75);
+            this.star1.Name = "star1";
+            this.star1.Size = new System.Drawing.Size(40, 40);
+            this.star1.TabIndex = 4;
+            this.star1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // DanhGiaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(765, 707);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.ListDanhGiaFLP);
             this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.HTThemDiaChi_Button);
+            this.Controls.Add(this.hoanThanhButton);
             this.Controls.Add(this.troVeButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DanhGiaForm";
             this.Text = "DanhGiaForm";
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.ListDanhGiaFLP.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,10 +635,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button HTThemDiaChi_Button;
+        private System.Windows.Forms.Button hoanThanhButton;
         private System.Windows.Forms.Button troVeButton;
         private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel ListDanhGiaFLP;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;

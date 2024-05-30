@@ -45,6 +45,13 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, param1, param2, param3);
         }
 
+        public void NhanHang(string maSP)
+        {
+            string query = "UPDATE SanPham SET luocBan = luocBan + 1 WHERE maSP = @maSP";
+            SqlParameter param = new SqlParameter("@maSP", maSP);
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
         public int LoadSoLuongFromMaSP(string maSP)
         {
             string query = "SELECT soLuong FROM SanPham WHERE maSP = @maSP";
@@ -161,6 +168,7 @@ namespace Program.DAL
                 ten = row["ten"].ToString(),
                 gia = Convert.ToInt32(row["gia"]),
                 soLuong = Convert.ToInt32(row["soLuong"]),
+                luocBan = Convert.ToInt32(row["luocBan"]),
                 tacGia = row["tacGia"].ToString(),
                 dichGia = row["dichGia"].ToString(),
                 ngonNgu = row["ngonNgu"].ToString(),

@@ -59,7 +59,7 @@ namespace Program.BLL
         public void GiaoHang(Shop shop, string maDH)
         {
             int index = shop.listDonHang.IndexOf(maDH);
-            shop.listDonHang.list[index].ngayGiaoHang = DateTime.Now; // another
+            shop.listDonHang.list[index].ngayGiaoHang = DateTime.Now.AddMinutes(2); // another
             shop.listDonHang.list[index].tinhTrang = 1;
 
             foreach (SanPham sanPham in shop.listDonHang.list[index].list)
@@ -80,7 +80,7 @@ namespace Program.BLL
             };
 
             BLL_ThongBao.Instance.ThemThongBao(thongBao);
-            BLL_DonHang.Instance.GiaoHang(shop.listDonHang.list[index].maDH, shop.listDonHang.list[index].ngayDatHang);
+            BLL_DonHang.Instance.GiaoHang(shop.listDonHang.list[index].maDH, shop.listDonHang.list[index].ngayGiaoHang);
 
         }
 
@@ -97,16 +97,6 @@ namespace Program.BLL
         public string GetMaMoi()
         {
             return Database.Instance.MaMoi("maS");
-        }
-
-        public void giaoHang(DonHang donHang)
-        {
-            DAL_DonHang.Instance.CapNhatTinhTrangDonHang(donHang.maDH, donHang.tinhTrang, donHang.ngayGiaoHang);
-
-            foreach (SanPham sanPham in donHang.list)
-            {
-                DAL_SanPham.Instance.GiaoHang(sanPham.maSP, sanPham.soLuong);
-            }
         }
 
         public void TaoShopByTaiKhoan(string taiKhoan, Shop shop)

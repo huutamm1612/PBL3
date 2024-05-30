@@ -53,6 +53,15 @@ namespace Program
             this.FLPBaiDang1 = new System.Windows.Forms.FlowLayoutPanel();
             this.titlePanel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.panel31 = new System.Windows.Forms.Panel();
+            this.pictureBox26 = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox74 = new System.Windows.Forms.TextBox();
+            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.textBox75 = new System.Windows.Forms.TextBox();
+            this.textBox72 = new System.Windows.Forms.TextBox();
+            this.textBox76 = new System.Windows.Forms.TextBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.PageListP = new System.Windows.Forms.Panel();
             this.PageListFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.prevPageButton = new System.Windows.Forms.Button();
@@ -84,7 +93,6 @@ namespace Program
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.userNameTxt = new System.Windows.Forms.TextBox();
-            this.userImagePB = new System.Windows.Forms.PictureBox();
             this.funcFLPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.myAccount_Button = new System.Windows.Forms.Button();
             this.userProfile_Botton = new System.Windows.Forms.Button();
@@ -93,8 +101,17 @@ namespace Program
             this.button27 = new System.Windows.Forms.Button();
             this.DonMuaButton = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
+            this.XuButton = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
+            this.thongBaoUserButton = new System.Windows.Forms.Button();
+            this.capNhatDHButton = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
             this.diaChiUser_Panel = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.themDiaChi_Button = new System.Windows.Forms.Button();
@@ -143,6 +160,23 @@ namespace Program
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
+            this.ThongBaoXuPanel = new System.Windows.Forms.Panel();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.button44 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.AllLichSuXuButton = new System.Windows.Forms.Button();
+            this.xuHienCoText = new System.Windows.Forms.TextBox();
+            this.pictureBox27 = new System.Windows.Forms.PictureBox();
+            this.XuFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.userImagePB = new System.Windows.Forms.PictureBox();
+            this.capNhatDHPanel = new System.Windows.Forms.Panel();
+            this.TBDonHangFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.button30 = new System.Windows.Forms.Button();
+            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.textBox59 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.DonMuaPanel = new System.Windows.Forms.Panel();
             this.HeaderDHPanel = new System.Windows.Forms.Panel();
             this.DHDaHuyButton = new System.Windows.Forms.Button();
@@ -178,11 +212,13 @@ namespace Program
             this.currImage = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.titleTxt = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panel27 = new System.Windows.Forms.Panel();
             this.daBanTxt = new System.Windows.Forms.TextBox();
+            this.saoTxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.saoPTB = new System.Windows.Forms.PictureBox();
+            this.danhGiaTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.giaGocTxt = new System.Windows.Forms.TextBox();
@@ -224,9 +260,38 @@ namespace Program
             this.textBox42 = new System.Windows.Forms.TextBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.moTaBaiDangTxt = new System.Windows.Forms.TextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.DGPanelInBDPanel = new System.Windows.Forms.Panel();
+            this.ListDGInBDPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.KhongCoDanhGiaPanel = new System.Windows.Forms.Panel();
+            this.textBox61 = new System.Windows.Forms.TextBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.textBox70 = new System.Windows.Forms.TextBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.textBox68 = new System.Windows.Forms.TextBox();
+            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.textBox66 = new System.Windows.Forms.TextBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.textBox64 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.saoPicBD = new System.Windows.Forms.PictureBox();
+            this.listButtonSaoFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.tatCaDGButton = new System.Windows.Forms.Button();
+            this.Sao5Button = new System.Windows.Forms.Button();
+            this.Sao4Button = new System.Windows.Forms.Button();
+            this.Sao3Button = new System.Windows.Forms.Button();
+            this.Sao2Button = new System.Windows.Forms.Button();
+            this.Sao1Button = new System.Windows.Forms.Button();
+            this.textBox60 = new System.Windows.Forms.TextBox();
+            this.saoBD = new System.Windows.Forms.TextBox();
+            this.textBox46 = new System.Windows.Forms.TextBox();
             this.textBox49 = new System.Windows.Forms.TextBox();
             this.spKhacCuaShopFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.panel25 = new System.Windows.Forms.Panel();
@@ -323,6 +388,10 @@ namespace Program
             this.HomePanel.SuspendLayout();
             this.FLPBaiDang1.SuspendLayout();
             this.titlePanel1.SuspendLayout();
+            this.panel31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
+            this.flowLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.PageListP.SuspendLayout();
             this.PageListFLP.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -330,7 +399,6 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).BeginInit();
             this.funcFLPanel.SuspendLayout();
             this.diaChiUser_Panel.SuspendLayout();
             this.panel21.SuspendLayout();
@@ -342,6 +410,14 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.doiMatKhauPanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
+            this.ThongBaoXuPanel.SuspendLayout();
+            this.panel30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).BeginInit();
+            this.capNhatDHPanel.SuspendLayout();
+            this.TBDonHangFLP.SuspendLayout();
+            this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             this.DonMuaPanel.SuspendLayout();
             this.HeaderDHPanel.SuspendLayout();
             this.DonHangFLP.SuspendLayout();
@@ -356,6 +432,8 @@ namespace Program
             this.BaiDangSubPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currImage)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saoPTB)).BeginInit();
             this.panel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -369,8 +447,21 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.shopAvtInBaiDang)).BeginInit();
             this.moTaPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panel12.SuspendLayout();
+            this.DGPanelInBDPanel.SuspendLayout();
+            this.ListDGInBDPanel.SuspendLayout();
+            this.KhongCoDanhGiaPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saoPicBD)).BeginInit();
+            this.listButtonSaoFLP.SuspendLayout();
             this.spKhacCuaShopFLP.SuspendLayout();
             this.coTheBanCungThichFLP.SuspendLayout();
             this.PageListBDP.SuspendLayout();
@@ -707,10 +798,11 @@ namespace Program
             // 
             this.FLPBaiDang1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.FLPBaiDang1.Controls.Add(this.titlePanel1);
+            this.FLPBaiDang1.Controls.Add(this.panel31);
             this.FLPBaiDang1.Controls.Add(this.PageListP);
             this.FLPBaiDang1.Location = new System.Drawing.Point(40, 777);
             this.FLPBaiDang1.Name = "FLPBaiDang1";
-            this.FLPBaiDang1.Size = new System.Drawing.Size(1335, 160);
+            this.FLPBaiDang1.Size = new System.Drawing.Size(1335, 512);
             this.FLPBaiDang1.TabIndex = 9;
             // 
             // titlePanel1
@@ -732,10 +824,154 @@ namespace Program
             this.label11.TabIndex = 0;
             this.label11.Text = "GỢI Ý HÔM NAY";
             // 
+            // panel31
+            // 
+            this.panel31.BackColor = System.Drawing.Color.White;
+            this.panel31.Controls.Add(this.pictureBox26);
+            this.panel31.Controls.Add(this.flowLayoutPanel9);
+            this.panel31.Controls.Add(this.textBox72);
+            this.panel31.Controls.Add(this.textBox76);
+            this.panel31.Controls.Add(this.pictureBox25);
+            this.panel31.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel31.Location = new System.Drawing.Point(10, 63);
+            this.panel31.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel31.Name = "panel31";
+            this.panel31.Size = new System.Drawing.Size(202, 320);
+            this.panel31.TabIndex = 16;
+            this.panel31.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.panel31.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.panel31.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // pictureBox26
+            // 
+            this.pictureBox26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox26.Location = new System.Drawing.Point(3, 285);
+            this.pictureBox26.Name = "pictureBox26";
+            this.pictureBox26.Size = new System.Drawing.Size(100, 20);
+            this.pictureBox26.TabIndex = 21;
+            this.pictureBox26.TabStop = false;
+            this.pictureBox26.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.pictureBox26.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.pictureBox26.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // flowLayoutPanel9
+            // 
+            this.flowLayoutPanel9.Controls.Add(this.textBox74);
+            this.flowLayoutPanel9.Controls.Add(this.textBox73);
+            this.flowLayoutPanel9.Controls.Add(this.textBox75);
+            this.flowLayoutPanel9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(6, 256);
+            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(191, 24);
+            this.flowLayoutPanel9.TabIndex = 20;
+            this.flowLayoutPanel9.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.flowLayoutPanel9.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.flowLayoutPanel9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // textBox74
+            // 
+            this.textBox74.BackColor = System.Drawing.Color.White;
+            this.textBox74.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox74.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox74.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox74.ForeColor = System.Drawing.Color.OrangeRed;
+            this.textBox74.Location = new System.Drawing.Point(0, 0);
+            this.textBox74.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox74.Name = "textBox74";
+            this.textBox74.ReadOnly = true;
+            this.textBox74.Size = new System.Drawing.Size(90, 21);
+            this.textBox74.TabIndex = 19;
+            this.textBox74.Text = "₫1.820.400";
+            this.textBox74.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.textBox74.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.textBox74.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // textBox73
+            // 
+            this.textBox73.BackColor = System.Drawing.Color.White;
+            this.textBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox73.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox73.Location = new System.Drawing.Point(90, 0);
+            this.textBox73.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox73.Name = "textBox73";
+            this.textBox73.ReadOnly = true;
+            this.textBox73.Size = new System.Drawing.Size(68, 16);
+            this.textBox73.TabIndex = 18;
+            this.textBox73.Text = "₫1.103.000";
+            this.textBox73.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.textBox73.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.textBox73.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // textBox75
+            // 
+            this.textBox75.BackColor = System.Drawing.Color.MistyRose;
+            this.textBox75.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox75.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox75.ForeColor = System.Drawing.Color.Red;
+            this.textBox75.Location = new System.Drawing.Point(158, 0);
+            this.textBox75.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox75.Name = "textBox75";
+            this.textBox75.ReadOnly = true;
+            this.textBox75.Size = new System.Drawing.Size(33, 16);
+            this.textBox75.TabIndex = 20;
+            this.textBox75.Text = "-20%";
+            this.textBox75.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.textBox75.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.textBox75.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // textBox72
+            // 
+            this.textBox72.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox72.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox72.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox72.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox72.Location = new System.Drawing.Point(8, 205);
+            this.textBox72.Multiline = true;
+            this.textBox72.Name = "textBox72";
+            this.textBox72.Size = new System.Drawing.Size(184, 42);
+            this.textBox72.TabIndex = 1;
+            this.textBox72.Text = "Tiêu đề, Tiêu đề, Tiêu đề, Tiêu đề,Tiêu đề,ggg ";
+            this.textBox72.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.textBox72.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.textBox72.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // textBox76
+            // 
+            this.textBox76.BackColor = System.Drawing.Color.White;
+            this.textBox76.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox76.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox76.Location = new System.Drawing.Point(106, 289);
+            this.textBox76.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox76.Name = "textBox76";
+            this.textBox76.ReadOnly = true;
+            this.textBox76.Size = new System.Drawing.Size(91, 16);
+            this.textBox76.TabIndex = 21;
+            this.textBox76.Text = "Đã bán 1232";
+            this.textBox76.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.textBox76.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.textBox76.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox25.Image = global::Program.Properties.Resources.noPicture;
+            this.pictureBox25.Location = new System.Drawing.Point(1, 0);
+            this.pictureBox25.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox25.TabIndex = 0;
+            this.pictureBox25.TabStop = false;
+            this.pictureBox25.MouseLeave += new System.EventHandler(this.MouseOutPanel);
+            this.pictureBox25.MouseHover += new System.EventHandler(this.MouseInPanel);
+            this.pictureBox25.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseInPanel);
+            // 
             // PageListP
             // 
             this.PageListP.Controls.Add(this.PageListFLP);
-            this.PageListP.Location = new System.Drawing.Point(3, 63);
+            this.PageListP.Location = new System.Drawing.Point(3, 389);
             this.PageListP.Name = "PageListP";
             this.PageListP.Size = new System.Drawing.Size(1326, 66);
             this.PageListP.TabIndex = 14;
@@ -1076,18 +1312,9 @@ namespace Program
             this.userNameTxt.TabIndex = 35;
             this.userNameTxt.Text = "Tên đăng nhập";
             // 
-            // userImagePB
-            // 
-            this.userImagePB.ImageLocation = "";
-            this.userImagePB.Location = new System.Drawing.Point(68, 181);
-            this.userImagePB.Name = "userImagePB";
-            this.userImagePB.Size = new System.Drawing.Size(64, 64);
-            this.userImagePB.TabIndex = 35;
-            this.userImagePB.TabStop = false;
-            this.userImagePB.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
-            // 
             // funcFLPanel
             // 
+            this.funcFLPanel.AutoScroll = true;
             this.funcFLPanel.Controls.Add(this.myAccount_Button);
             this.funcFLPanel.Controls.Add(this.userProfile_Botton);
             this.funcFLPanel.Controls.Add(this.diaChiUser_Button);
@@ -1095,11 +1322,20 @@ namespace Program
             this.funcFLPanel.Controls.Add(this.button27);
             this.funcFLPanel.Controls.Add(this.DonMuaButton);
             this.funcFLPanel.Controls.Add(this.button29);
-            this.funcFLPanel.Controls.Add(this.button30);
+            this.funcFLPanel.Controls.Add(this.XuButton);
+            this.funcFLPanel.Controls.Add(this.button43);
+            this.funcFLPanel.Controls.Add(this.thongBaoUserButton);
+            this.funcFLPanel.Controls.Add(this.capNhatDHButton);
+            this.funcFLPanel.Controls.Add(this.button36);
             this.funcFLPanel.Controls.Add(this.button31);
-            this.funcFLPanel.Location = new System.Drawing.Point(56, 265);
+            this.funcFLPanel.Controls.Add(this.button37);
+            this.funcFLPanel.Controls.Add(this.button39);
+            this.funcFLPanel.Controls.Add(this.button38);
+            this.funcFLPanel.Controls.Add(this.button40);
+            this.funcFLPanel.Controls.Add(this.button41);
+            this.funcFLPanel.Location = new System.Drawing.Point(37, 265);
             this.funcFLPanel.Name = "funcFLPanel";
-            this.funcFLPanel.Size = new System.Drawing.Size(256, 513);
+            this.funcFLPanel.Size = new System.Drawing.Size(279, 513);
             this.funcFLPanel.TabIndex = 14;
             // 
             // myAccount_Button
@@ -1112,17 +1348,20 @@ namespace Program
             this.myAccount_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.myAccount_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myAccount_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.myAccount_Button.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.myAccount_Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.myAccount_Button.Image = global::Program.Properties.Resources.user;
             this.myAccount_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.myAccount_Button.Location = new System.Drawing.Point(3, 3);
             this.myAccount_Button.Name = "myAccount_Button";
-            this.myAccount_Button.Size = new System.Drawing.Size(221, 32);
+            this.myAccount_Button.Size = new System.Drawing.Size(250, 32);
             this.myAccount_Button.TabIndex = 7;
             this.myAccount_Button.Text = "        Tài Khoản Của Tôi";
             this.myAccount_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.myAccount_Button.UseVisualStyleBackColor = false;
-            this.myAccount_Button.Click += new System.EventHandler(this.SpreadOutClick);
+            this.myAccount_Button.Click += new System.EventHandler(this.UserAccountButton_Click);
+            this.myAccount_Button.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.myAccount_Button.MouseHover += new System.EventHandler(this.MouseIn);
+            this.myAccount_Button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
             // 
             // userProfile_Botton
             // 
@@ -1139,7 +1378,7 @@ namespace Program
             this.userProfile_Botton.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.userProfile_Botton.Size = new System.Drawing.Size(221, 26);
             this.userProfile_Botton.TabIndex = 8;
-            this.userProfile_Botton.Text = "Hồ sơ";
+            this.userProfile_Botton.Text = "Hồ Sơ";
             this.userProfile_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.userProfile_Botton.UseVisualStyleBackColor = false;
             this.userProfile_Botton.Click += new System.EventHandler(this.userProfile_Botton_Click);
@@ -1162,7 +1401,7 @@ namespace Program
             this.diaChiUser_Button.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.diaChiUser_Button.Size = new System.Drawing.Size(221, 26);
             this.diaChiUser_Button.TabIndex = 9;
-            this.diaChiUser_Button.Text = "Địa chỉ";
+            this.diaChiUser_Button.Text = "Địa Chỉ";
             this.diaChiUser_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.diaChiUser_Button.UseVisualStyleBackColor = false;
             this.diaChiUser_Button.Click += new System.EventHandler(this.diaChiUser_Button_Click);
@@ -1185,7 +1424,7 @@ namespace Program
             this.doiMK_Botton.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.doiMK_Botton.Size = new System.Drawing.Size(221, 26);
             this.doiMK_Botton.TabIndex = 10;
-            this.doiMK_Botton.Text = "Đổi mật khẩu";
+            this.doiMK_Botton.Text = "Đổi Mật Khẩu";
             this.doiMK_Botton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.doiMK_Botton.UseVisualStyleBackColor = false;
             this.doiMK_Botton.Click += new System.EventHandler(this.doiMK_Botton_Click);
@@ -1205,7 +1444,7 @@ namespace Program
             this.button27.Location = new System.Drawing.Point(3, 137);
             this.button27.Name = "button27";
             this.button27.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button27.Size = new System.Drawing.Size(277, 5);
+            this.button27.Size = new System.Drawing.Size(231, 10);
             this.button27.TabIndex = 18;
             this.button27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button27.UseVisualStyleBackColor = true;
@@ -1220,17 +1459,20 @@ namespace Program
             this.DonMuaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.DonMuaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DonMuaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonMuaButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.DonMuaButton.Image = global::Program.Properties.Resources.purchase;
+            this.DonMuaButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DonMuaButton.Image = global::Program.Properties.Resources.bill;
             this.DonMuaButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DonMuaButton.Location = new System.Drawing.Point(3, 148);
+            this.DonMuaButton.Location = new System.Drawing.Point(3, 153);
             this.DonMuaButton.Name = "DonMuaButton";
-            this.DonMuaButton.Size = new System.Drawing.Size(221, 32);
+            this.DonMuaButton.Size = new System.Drawing.Size(250, 32);
             this.DonMuaButton.TabIndex = 11;
             this.DonMuaButton.Text = "        Đơn Mua";
             this.DonMuaButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DonMuaButton.UseVisualStyleBackColor = false;
             this.DonMuaButton.Click += new System.EventHandler(this.DonMuaButton_Click);
+            this.DonMuaButton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.DonMuaButton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.DonMuaButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
             // 
             // button29
             // 
@@ -1241,34 +1483,125 @@ namespace Program
             this.button29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.Location = new System.Drawing.Point(3, 186);
+            this.button29.Location = new System.Drawing.Point(3, 191);
             this.button29.Name = "button29";
             this.button29.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button29.Size = new System.Drawing.Size(277, 5);
+            this.button29.Size = new System.Drawing.Size(230, 10);
             this.button29.TabIndex = 19;
             this.button29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button29.UseVisualStyleBackColor = true;
             // 
-            // button30
+            // XuButton
             // 
-            this.button30.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button30.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button30.FlatAppearance.BorderSize = 0;
-            this.button30.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button30.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button30.Image = global::Program.Properties.Resources.bell;
-            this.button30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button30.Location = new System.Drawing.Point(3, 197);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(221, 32);
-            this.button30.TabIndex = 20;
-            this.button30.Text = "        Thông Báo";
-            this.button30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button30.UseVisualStyleBackColor = false;
+            this.XuButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.XuButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.XuButton.FlatAppearance.BorderSize = 0;
+            this.XuButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.XuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.XuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.XuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XuButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XuButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.XuButton.Image = global::Program.Properties.Resources.coin2;
+            this.XuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.XuButton.Location = new System.Drawing.Point(3, 207);
+            this.XuButton.Name = "XuButton";
+            this.XuButton.Size = new System.Drawing.Size(250, 32);
+            this.XuButton.TabIndex = 31;
+            this.XuButton.Text = "        Xu";
+            this.XuButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.XuButton.UseVisualStyleBackColor = false;
+            this.XuButton.Click += new System.EventHandler(this.XuButton_Click);
+            this.XuButton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.XuButton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.XuButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button43
+            // 
+            this.button43.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button43.FlatAppearance.BorderSize = 0;
+            this.button43.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button43.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button43.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button43.Location = new System.Drawing.Point(3, 245);
+            this.button43.Name = "button43";
+            this.button43.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button43.Size = new System.Drawing.Size(230, 10);
+            this.button43.TabIndex = 32;
+            this.button43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button43.UseVisualStyleBackColor = true;
+            // 
+            // thongBaoUserButton
+            // 
+            this.thongBaoUserButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.thongBaoUserButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.thongBaoUserButton.FlatAppearance.BorderSize = 0;
+            this.thongBaoUserButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.thongBaoUserButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.thongBaoUserButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.thongBaoUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.thongBaoUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongBaoUserButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.thongBaoUserButton.Image = global::Program.Properties.Resources.bell;
+            this.thongBaoUserButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.thongBaoUserButton.Location = new System.Drawing.Point(3, 261);
+            this.thongBaoUserButton.Name = "thongBaoUserButton";
+            this.thongBaoUserButton.Size = new System.Drawing.Size(250, 32);
+            this.thongBaoUserButton.TabIndex = 20;
+            this.thongBaoUserButton.Text = "        Thông Báo";
+            this.thongBaoUserButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.thongBaoUserButton.UseVisualStyleBackColor = false;
+            this.thongBaoUserButton.Click += new System.EventHandler(this.ThongBaoUserButton_Click);
+            this.thongBaoUserButton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.thongBaoUserButton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.thongBaoUserButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // capNhatDHButton
+            // 
+            this.capNhatDHButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.capNhatDHButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.capNhatDHButton.FlatAppearance.BorderSize = 0;
+            this.capNhatDHButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.capNhatDHButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.capNhatDHButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.capNhatDHButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.capNhatDHButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.capNhatDHButton.Location = new System.Drawing.Point(3, 299);
+            this.capNhatDHButton.Name = "capNhatDHButton";
+            this.capNhatDHButton.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.capNhatDHButton.Size = new System.Drawing.Size(221, 26);
+            this.capNhatDHButton.TabIndex = 22;
+            this.capNhatDHButton.Text = "Cập Nhật Đơn Hàng";
+            this.capNhatDHButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.capNhatDHButton.UseVisualStyleBackColor = false;
+            this.capNhatDHButton.Click += new System.EventHandler(this.CapNhatDonHangButton_Click);
+            this.capNhatDHButton.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.capNhatDHButton.MouseHover += new System.EventHandler(this.MouseIn);
+            this.capNhatDHButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button36
+            // 
+            this.button36.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button36.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button36.FlatAppearance.BorderSize = 0;
+            this.button36.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button36.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button36.Location = new System.Drawing.Point(3, 331);
+            this.button36.Name = "button36";
+            this.button36.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.button36.Size = new System.Drawing.Size(221, 26);
+            this.button36.TabIndex = 24;
+            this.button36.Text = "Thông Báo Hệ Thống";
+            this.button36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button36.UseVisualStyleBackColor = false;
+            this.button36.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.button36.MouseHover += new System.EventHandler(this.MouseIn);
+            this.button36.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
             // 
             // button31
             // 
@@ -1279,13 +1612,121 @@ namespace Program
             this.button31.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button31.Location = new System.Drawing.Point(3, 235);
+            this.button31.Location = new System.Drawing.Point(3, 363);
             this.button31.Name = "button31";
             this.button31.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button31.Size = new System.Drawing.Size(277, 12);
+            this.button31.Size = new System.Drawing.Size(230, 10);
             this.button31.TabIndex = 21;
             this.button31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button31.UseVisualStyleBackColor = true;
+            // 
+            // button37
+            // 
+            this.button37.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button37.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button37.FlatAppearance.BorderSize = 0;
+            this.button37.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button37.Image = global::Program.Properties.Resources.other;
+            this.button37.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button37.Location = new System.Drawing.Point(3, 379);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(250, 32);
+            this.button37.TabIndex = 25;
+            this.button37.Text = "        Khác";
+            this.button37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button37.UseVisualStyleBackColor = false;
+            this.button37.Click += new System.EventHandler(this.SpreadOutClick);
+            this.button37.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.button37.MouseHover += new System.EventHandler(this.MouseIn);
+            this.button37.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button39
+            // 
+            this.button39.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button39.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button39.FlatAppearance.BorderSize = 0;
+            this.button39.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button39.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button39.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button39.Location = new System.Drawing.Point(3, 417);
+            this.button39.Name = "button39";
+            this.button39.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.button39.Size = new System.Drawing.Size(221, 26);
+            this.button39.TabIndex = 27;
+            this.button39.Text = "Đã Xem Gần Đây";
+            this.button39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button39.UseVisualStyleBackColor = false;
+            this.button39.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.button39.MouseHover += new System.EventHandler(this.MouseIn);
+            this.button39.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button38
+            // 
+            this.button38.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button38.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button38.FlatAppearance.BorderSize = 0;
+            this.button38.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button38.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button38.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button38.Location = new System.Drawing.Point(3, 449);
+            this.button38.Name = "button38";
+            this.button38.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.button38.Size = new System.Drawing.Size(221, 26);
+            this.button38.TabIndex = 28;
+            this.button38.Text = "Đánh Giá Của Tôi";
+            this.button38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button38.UseVisualStyleBackColor = false;
+            this.button38.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.button38.MouseHover += new System.EventHandler(this.MouseIn);
+            this.button38.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button40
+            // 
+            this.button40.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button40.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button40.FlatAppearance.BorderSize = 0;
+            this.button40.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button40.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button40.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button40.Location = new System.Drawing.Point(3, 481);
+            this.button40.Name = "button40";
+            this.button40.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.button40.Size = new System.Drawing.Size(221, 26);
+            this.button40.TabIndex = 29;
+            this.button40.Text = "Đã Thích";
+            this.button40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button40.UseVisualStyleBackColor = false;
+            this.button40.MouseLeave += new System.EventHandler(this.MouseOut);
+            this.button40.MouseHover += new System.EventHandler(this.MouseIn);
+            this.button40.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseIn);
+            // 
+            // button41
+            // 
+            this.button41.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button41.FlatAppearance.BorderSize = 0;
+            this.button41.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button41.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button41.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button41.Location = new System.Drawing.Point(3, 513);
+            this.button41.Name = "button41";
+            this.button41.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button41.Size = new System.Drawing.Size(230, 10);
+            this.button41.TabIndex = 30;
+            this.button41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button41.UseVisualStyleBackColor = true;
             // 
             // diaChiUser_Panel
             // 
@@ -2083,13 +2524,15 @@ namespace Program
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UserPanel.AutoScroll = true;
             this.UserPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.UserPanel.Controls.Add(this.DonMuaPanel);
-            this.UserPanel.Controls.Add(this.profilePanel);
+            this.UserPanel.Controls.Add(this.ThongBaoXuPanel);
             this.UserPanel.Controls.Add(this.userNameTxt);
             this.UserPanel.Controls.Add(this.userImagePB);
             this.UserPanel.Controls.Add(this.funcFLPanel);
+            this.UserPanel.Controls.Add(this.capNhatDHPanel);
+            this.UserPanel.Controls.Add(this.profilePanel);
             this.UserPanel.Controls.Add(this.diaChiUser_Panel);
             this.UserPanel.Controls.Add(this.doiMatKhauPanel);
+            this.UserPanel.Controls.Add(this.DonMuaPanel);
             this.UserPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserPanel.Location = new System.Drawing.Point(0, 0);
             this.UserPanel.Name = "UserPanel";
@@ -2097,6 +2540,205 @@ namespace Program
             this.UserPanel.TabIndex = 12;
             this.UserPanel.Visible = false;
             this.UserPanel.VisibleChanged += new System.EventHandler(this.UserPanel_VisibleChanged);
+            // 
+            // ThongBaoXuPanel
+            // 
+            this.ThongBaoXuPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ThongBaoXuPanel.Controls.Add(this.panel30);
+            this.ThongBaoXuPanel.Controls.Add(this.XuFLP);
+            this.ThongBaoXuPanel.Location = new System.Drawing.Point(318, 161);
+            this.ThongBaoXuPanel.Name = "ThongBaoXuPanel";
+            this.ThongBaoXuPanel.Size = new System.Drawing.Size(1023, 631);
+            this.ThongBaoXuPanel.TabIndex = 36;
+            this.ThongBaoXuPanel.Visible = false;
+            // 
+            // panel30
+            // 
+            this.panel30.BackColor = System.Drawing.Color.White;
+            this.panel30.Controls.Add(this.button44);
+            this.panel30.Controls.Add(this.button35);
+            this.panel30.Controls.Add(this.AllLichSuXuButton);
+            this.panel30.Controls.Add(this.xuHienCoText);
+            this.panel30.Controls.Add(this.pictureBox27);
+            this.panel30.Location = new System.Drawing.Point(0, 0);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(1023, 171);
+            this.panel30.TabIndex = 1;
+            // 
+            // button44
+            // 
+            this.button44.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button44.FlatAppearance.BorderSize = 0;
+            this.button44.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button44.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button44.Location = new System.Drawing.Point(691, 109);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(340, 59);
+            this.button44.TabIndex = 42;
+            this.button44.Text = "ĐÃ DÙNG";
+            this.button44.UseVisualStyleBackColor = true;
+            // 
+            // button35
+            // 
+            this.button35.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button35.FlatAppearance.BorderSize = 0;
+            this.button35.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button35.Location = new System.Drawing.Point(347, 109);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(340, 59);
+            this.button35.TabIndex = 41;
+            this.button35.Text = "ĐÃ NHẬN";
+            this.button35.UseVisualStyleBackColor = true;
+            // 
+            // AllLichSuXuButton
+            // 
+            this.AllLichSuXuButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AllLichSuXuButton.FlatAppearance.BorderSize = 0;
+            this.AllLichSuXuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AllLichSuXuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AllLichSuXuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AllLichSuXuButton.Location = new System.Drawing.Point(2, 109);
+            this.AllLichSuXuButton.Name = "AllLichSuXuButton";
+            this.AllLichSuXuButton.Size = new System.Drawing.Size(340, 59);
+            this.AllLichSuXuButton.TabIndex = 40;
+            this.AllLichSuXuButton.Text = "TẤT CẢ LỊCH SỬ";
+            this.AllLichSuXuButton.UseVisualStyleBackColor = true;
+            // 
+            // xuHienCoText
+            // 
+            this.xuHienCoText.BackColor = System.Drawing.Color.White;
+            this.xuHienCoText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.xuHienCoText.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.xuHienCoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xuHienCoText.ForeColor = System.Drawing.Color.Orange;
+            this.xuHienCoText.Location = new System.Drawing.Point(93, 32);
+            this.xuHienCoText.Name = "xuHienCoText";
+            this.xuHienCoText.ReadOnly = true;
+            this.xuHienCoText.Size = new System.Drawing.Size(476, 38);
+            this.xuHienCoText.TabIndex = 39;
+            this.xuHienCoText.Text = "3.000 Xu hiện có";
+            // 
+            // pictureBox27
+            // 
+            this.pictureBox27.Image = global::Program.Properties.Resources.coin3;
+            this.pictureBox27.ImageLocation = "";
+            this.pictureBox27.Location = new System.Drawing.Point(20, 18);
+            this.pictureBox27.Name = "pictureBox27";
+            this.pictureBox27.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox27.TabIndex = 38;
+            this.pictureBox27.TabStop = false;
+            // 
+            // XuFLP
+            // 
+            this.XuFLP.BackColor = System.Drawing.Color.White;
+            this.XuFLP.Location = new System.Drawing.Point(0, 171);
+            this.XuFLP.Name = "XuFLP";
+            this.XuFLP.Size = new System.Drawing.Size(1023, 326);
+            this.XuFLP.TabIndex = 0;
+            // 
+            // userImagePB
+            // 
+            this.userImagePB.ImageLocation = "";
+            this.userImagePB.Location = new System.Drawing.Point(68, 181);
+            this.userImagePB.Name = "userImagePB";
+            this.userImagePB.Size = new System.Drawing.Size(64, 64);
+            this.userImagePB.TabIndex = 35;
+            this.userImagePB.TabStop = false;
+            this.userImagePB.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxToCircle_Paint);
+            // 
+            // capNhatDHPanel
+            // 
+            this.capNhatDHPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.capNhatDHPanel.Controls.Add(this.TBDonHangFLP);
+            this.capNhatDHPanel.Location = new System.Drawing.Point(318, 161);
+            this.capNhatDHPanel.Name = "capNhatDHPanel";
+            this.capNhatDHPanel.Size = new System.Drawing.Size(1023, 631);
+            this.capNhatDHPanel.TabIndex = 35;
+            this.capNhatDHPanel.Visible = false;
+            // 
+            // TBDonHangFLP
+            // 
+            this.TBDonHangFLP.BackColor = System.Drawing.Color.White;
+            this.TBDonHangFLP.Controls.Add(this.panel28);
+            this.TBDonHangFLP.Location = new System.Drawing.Point(0, 0);
+            this.TBDonHangFLP.Name = "TBDonHangFLP";
+            this.TBDonHangFLP.Size = new System.Drawing.Size(1023, 439);
+            this.TBDonHangFLP.TabIndex = 0;
+            // 
+            // panel28
+            // 
+            this.panel28.BackColor = System.Drawing.Color.White;
+            this.panel28.Controls.Add(this.button30);
+            this.panel28.Controls.Add(this.textBox71);
+            this.panel28.Controls.Add(this.textBox59);
+            this.panel28.Controls.Add(this.textBox11);
+            this.panel28.Controls.Add(this.pictureBox24);
+            this.panel28.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel28.Location = new System.Drawing.Point(3, 3);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(1017, 140);
+            this.panel28.TabIndex = 0;
+            // 
+            // button30
+            // 
+            this.button30.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button30.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button30.Location = new System.Drawing.Point(880, 5);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(134, 33);
+            this.button30.TabIndex = 4;
+            this.button30.Text = "Xem chi tiết";
+            this.button30.UseVisualStyleBackColor = true;
+            // 
+            // textBox71
+            // 
+            this.textBox71.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox71.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox71.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox71.Location = new System.Drawing.Point(138, 102);
+            this.textBox71.Name = "textBox71";
+            this.textBox71.Size = new System.Drawing.Size(132, 16);
+            this.textBox71.TabIndex = 3;
+            this.textBox71.Text = "Thời gian";
+            // 
+            // textBox59
+            // 
+            this.textBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox59.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox59.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox59.Location = new System.Drawing.Point(138, 46);
+            this.textBox59.Multiline = true;
+            this.textBox59.Name = "textBox59";
+            this.textBox59.Size = new System.Drawing.Size(736, 54);
+            this.textBox59.TabIndex = 2;
+            this.textBox59.Text = "Nội dung thông báo";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(138, 19);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(635, 21);
+            this.textBox11.TabIndex = 1;
+            this.textBox11.Text = "Tình trạng đơn hàng";
+            // 
+            // pictureBox24
+            // 
+            this.pictureBox24.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox24.Location = new System.Drawing.Point(20, 20);
+            this.pictureBox24.Name = "pictureBox24";
+            this.pictureBox24.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox24.TabIndex = 0;
+            this.pictureBox24.TabStop = false;
             // 
             // DonMuaPanel
             // 
@@ -2527,16 +3169,17 @@ namespace Program
             // 
             // baiDangFLP
             // 
+            this.baiDangFLP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.baiDangFLP.Controls.Add(this.BaiDangSubPanel);
             this.baiDangFLP.Controls.Add(this.panel4);
             this.baiDangFLP.Controls.Add(this.moTaPanel);
-            this.baiDangFLP.Controls.Add(this.panel12);
+            this.baiDangFLP.Controls.Add(this.DGPanelInBDPanel);
             this.baiDangFLP.Controls.Add(this.textBox49);
             this.baiDangFLP.Controls.Add(this.spKhacCuaShopFLP);
             this.baiDangFLP.Controls.Add(this.coTheBanCungThichFLP);
-            this.baiDangFLP.Location = new System.Drawing.Point(110, 143);
+            this.baiDangFLP.Location = new System.Drawing.Point(36, 1668);
             this.baiDangFLP.Name = "baiDangFLP";
-            this.baiDangFLP.Size = new System.Drawing.Size(1335, 1805);
+            this.baiDangFLP.Size = new System.Drawing.Size(1340, 2565);
             this.baiDangFLP.TabIndex = 4;
             // 
             // BaiDangSubPanel
@@ -2548,7 +3191,7 @@ namespace Program
             this.BaiDangSubPanel.Location = new System.Drawing.Point(0, 10);
             this.BaiDangSubPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.BaiDangSubPanel.Name = "BaiDangSubPanel";
-            this.BaiDangSubPanel.Size = new System.Drawing.Size(1326, 594);
+            this.BaiDangSubPanel.Size = new System.Drawing.Size(1326, 628);
             this.BaiDangSubPanel.TabIndex = 0;
             // 
             // thichButton
@@ -2582,11 +3225,7 @@ namespace Program
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.titleTxt);
-            this.flowLayoutPanel1.Controls.Add(this.textBox11);
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.textBox12);
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.daBanTxt);
+            this.flowLayoutPanel1.Controls.Add(this.panel27);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
             this.flowLayoutPanel1.Controls.Add(this.textBox17);
             this.flowLayoutPanel1.Controls.Add(this.panel6);
@@ -2597,11 +3236,13 @@ namespace Program
             this.flowLayoutPanel1.Controls.Add(this.panel9);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(484, 15);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(835, 576);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(835, 608);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // titleTxt
             // 
+            this.titleTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.titleTxt.BackColor = System.Drawing.Color.White;
             this.titleTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.titleTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -2610,65 +3251,24 @@ namespace Program
             this.titleTxt.Multiline = true;
             this.titleTxt.Name = "titleTxt";
             this.titleTxt.ReadOnly = true;
-            this.titleTxt.Size = new System.Drawing.Size(821, 87);
+            this.titleTxt.Size = new System.Drawing.Size(826, 87);
             this.titleTxt.TabIndex = 1;
             this.titleTxt.Text = "Sách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản đồ - 2H" +
     " BooksSách - Combo Ngôi nhà kỳ quái và Bức tranh kỳ quái - Tặng Bookmark và Bản " +
     "đồ - 2H Books";
             // 
-            // textBox11
+            // panel27
             // 
-            this.textBox11.BackColor = System.Drawing.Color.White;
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox11.Location = new System.Drawing.Point(3, 96);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(139, 21);
-            this.textBox11.TabIndex = 2;
-            this.textBox11.Text = "Sao";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Silver;
-            this.label3.Location = new System.Drawing.Point(148, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 25);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "|";
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.Color.White;
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox12.Location = new System.Drawing.Point(171, 96);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(139, 21);
-            this.textBox12.TabIndex = 14;
-            this.textBox12.Text = "Đánh giá";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(316, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 25);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "|";
+            this.panel27.Controls.Add(this.daBanTxt);
+            this.panel27.Controls.Add(this.saoTxt);
+            this.panel27.Controls.Add(this.label3);
+            this.panel27.Controls.Add(this.saoPTB);
+            this.panel27.Controls.Add(this.danhGiaTxt);
+            this.panel27.Controls.Add(this.label4);
+            this.panel27.Location = new System.Drawing.Point(3, 96);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(826, 41);
+            this.panel27.TabIndex = 23;
             // 
             // daBanTxt
             // 
@@ -2677,18 +3277,81 @@ namespace Program
             this.daBanTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.daBanTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.daBanTxt.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.daBanTxt.Location = new System.Drawing.Point(339, 96);
+            this.daBanTxt.Location = new System.Drawing.Point(335, 9);
             this.daBanTxt.Name = "daBanTxt";
             this.daBanTxt.ReadOnly = true;
-            this.daBanTxt.Size = new System.Drawing.Size(139, 21);
+            this.daBanTxt.Size = new System.Drawing.Size(105, 21);
             this.daBanTxt.TabIndex = 16;
             this.daBanTxt.Text = "Đã bán";
+            // 
+            // saoTxt
+            // 
+            this.saoTxt.BackColor = System.Drawing.Color.White;
+            this.saoTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.saoTxt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saoTxt.ForeColor = System.Drawing.Color.Red;
+            this.saoTxt.Location = new System.Drawing.Point(3, 9);
+            this.saoTxt.Name = "saoTxt";
+            this.saoTxt.ReadOnly = true;
+            this.saoTxt.Size = new System.Drawing.Size(44, 21);
+            this.saoTxt.TabIndex = 2;
+            this.saoTxt.Text = "Sao";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Silver;
+            this.label3.Location = new System.Drawing.Point(311, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 25);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "|";
+            // 
+            // saoPTB
+            // 
+            this.saoPTB.Location = new System.Drawing.Point(47, 10);
+            this.saoPTB.Name = "saoPTB";
+            this.saoPTB.Size = new System.Drawing.Size(126, 21);
+            this.saoPTB.TabIndex = 0;
+            this.saoPTB.TabStop = false;
+            // 
+            // danhGiaTxt
+            // 
+            this.danhGiaTxt.BackColor = System.Drawing.Color.White;
+            this.danhGiaTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.danhGiaTxt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.danhGiaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.danhGiaTxt.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.danhGiaTxt.Location = new System.Drawing.Point(197, 9);
+            this.danhGiaTxt.Name = "danhGiaTxt";
+            this.danhGiaTxt.ReadOnly = true;
+            this.danhGiaTxt.Size = new System.Drawing.Size(117, 21);
+            this.danhGiaTxt.TabIndex = 14;
+            this.danhGiaTxt.Text = "Đánh giá";
+            this.danhGiaTxt.Click += new System.EventHandler(this.danhGiaTxt_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Silver;
+            this.label4.Location = new System.Drawing.Point(174, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 25);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "|";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.panel5.Controls.Add(this.flowLayoutPanel3);
-            this.panel5.Location = new System.Drawing.Point(3, 123);
+            this.panel5.Location = new System.Drawing.Point(3, 143);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(826, 77);
             this.panel5.TabIndex = 1;
@@ -2751,7 +3414,7 @@ namespace Program
             this.textBox17.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox17.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox17.Location = new System.Drawing.Point(3, 206);
+            this.textBox17.Location = new System.Drawing.Point(3, 226);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(123, 21);
@@ -2764,7 +3427,7 @@ namespace Program
             this.panel6.Controls.Add(this.flowLayoutPanel2);
             this.panel6.Controls.Add(this.textBox22);
             this.panel6.Controls.Add(this.textBox20);
-            this.panel6.Location = new System.Drawing.Point(132, 206);
+            this.panel6.Location = new System.Drawing.Point(132, 226);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(697, 69);
             this.panel6.TabIndex = 18;
@@ -2843,7 +3506,7 @@ namespace Program
             this.textBox18.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox18.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox18.Location = new System.Drawing.Point(3, 281);
+            this.textBox18.Location = new System.Drawing.Point(3, 301);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(123, 21);
@@ -2853,7 +3516,7 @@ namespace Program
             // listItemFLP
             // 
             this.listItemFLP.AutoScroll = true;
-            this.listItemFLP.Location = new System.Drawing.Point(132, 281);
+            this.listItemFLP.Location = new System.Drawing.Point(132, 301);
             this.listItemFLP.Name = "listItemFLP";
             this.listItemFLP.Size = new System.Drawing.Size(697, 158);
             this.listItemFLP.TabIndex = 1;
@@ -2862,7 +3525,7 @@ namespace Program
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.textBox19);
-            this.panel7.Location = new System.Drawing.Point(3, 445);
+            this.panel7.Location = new System.Drawing.Point(3, 465);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(123, 49);
             this.panel7.TabIndex = 19;
@@ -2886,7 +3549,7 @@ namespace Program
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.panel10);
             this.panel8.Controls.Add(this.soLuongSanCoTxt);
-            this.panel8.Location = new System.Drawing.Point(132, 445);
+            this.panel8.Location = new System.Drawing.Point(132, 465);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(697, 49);
             this.panel8.TabIndex = 21;
@@ -2976,7 +3639,7 @@ namespace Program
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.addToCartButton);
             this.panel9.Controls.Add(this.muaNgayButton);
-            this.panel9.Location = new System.Drawing.Point(3, 500);
+            this.panel9.Location = new System.Drawing.Point(3, 520);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(826, 64);
             this.panel9.TabIndex = 22;
@@ -3034,7 +3697,7 @@ namespace Program
             this.panel4.Controls.Add(this.followButton);
             this.panel4.Controls.Add(this.tenShopTxt);
             this.panel4.Controls.Add(this.shopAvtInBaiDang);
-            this.panel4.Location = new System.Drawing.Point(0, 624);
+            this.panel4.Location = new System.Drawing.Point(0, 658);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1326, 142);
@@ -3184,7 +3847,7 @@ namespace Program
             this.moTaPanel.Controls.Add(this.textBox42);
             this.moTaPanel.Controls.Add(this.pictureBox10);
             this.moTaPanel.Controls.Add(this.moTaBaiDangTxt);
-            this.moTaPanel.Location = new System.Drawing.Point(0, 786);
+            this.moTaPanel.Location = new System.Drawing.Point(0, 820);
             this.moTaPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.moTaPanel.Name = "moTaPanel";
             this.moTaPanel.Size = new System.Drawing.Size(1326, 279);
@@ -3225,39 +3888,431 @@ namespace Program
             this.moTaBaiDangTxt.Size = new System.Drawing.Size(991, 148);
             this.moTaBaiDangTxt.TabIndex = 0;
             // 
+            // DGPanelInBDPanel
+            // 
+            this.DGPanelInBDPanel.BackColor = System.Drawing.Color.White;
+            this.DGPanelInBDPanel.Controls.Add(this.ListDGInBDPanel);
+            this.DGPanelInBDPanel.Controls.Add(this.panel24);
+            this.DGPanelInBDPanel.Controls.Add(this.textBox46);
+            this.DGPanelInBDPanel.Location = new System.Drawing.Point(0, 1119);
+            this.DGPanelInBDPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.DGPanelInBDPanel.Name = "DGPanelInBDPanel";
+            this.DGPanelInBDPanel.Size = new System.Drawing.Size(1332, 940);
+            this.DGPanelInBDPanel.TabIndex = 2;
+            // 
+            // ListDGInBDPanel
+            // 
+            this.ListDGInBDPanel.Controls.Add(this.KhongCoDanhGiaPanel);
+            this.ListDGInBDPanel.Controls.Add(this.panel12);
+            this.ListDGInBDPanel.Location = new System.Drawing.Point(25, 207);
+            this.ListDGInBDPanel.Name = "ListDGInBDPanel";
+            this.ListDGInBDPanel.Size = new System.Drawing.Size(1280, 707);
+            this.ListDGInBDPanel.TabIndex = 33;
+            // 
+            // KhongCoDanhGiaPanel
+            // 
+            this.KhongCoDanhGiaPanel.Controls.Add(this.textBox61);
+            this.KhongCoDanhGiaPanel.Controls.Add(this.pictureBox14);
+            this.KhongCoDanhGiaPanel.Location = new System.Drawing.Point(0, 0);
+            this.KhongCoDanhGiaPanel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.KhongCoDanhGiaPanel.Name = "KhongCoDanhGiaPanel";
+            this.KhongCoDanhGiaPanel.Size = new System.Drawing.Size(1280, 319);
+            this.KhongCoDanhGiaPanel.TabIndex = 0;
+            // 
+            // textBox61
+            // 
+            this.textBox61.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox61.BackColor = System.Drawing.Color.White;
+            this.textBox61.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox61.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox61.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox61.Location = new System.Drawing.Point(562, 223);
+            this.textBox61.Name = "textBox61";
+            this.textBox61.ReadOnly = true;
+            this.textBox61.Size = new System.Drawing.Size(177, 25);
+            this.textBox61.TabIndex = 34;
+            this.textBox61.Text = "Chưa có đánh giá";
+            this.textBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox14.Image = global::Program.Properties.Resources.star;
+            this.pictureBox14.Location = new System.Drawing.Point(588, 89);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(121, 119);
+            this.pictureBox14.TabIndex = 0;
+            this.pictureBox14.TabStop = false;
+            // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.Controls.Add(this.textBox46);
-            this.panel12.Controls.Add(this.pictureBox14);
-            this.panel12.Location = new System.Drawing.Point(0, 1085);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panel12.Controls.Add(this.textBox70);
+            this.panel12.Controls.Add(this.pictureBox23);
+            this.panel12.Controls.Add(this.textBox69);
+            this.panel12.Controls.Add(this.textBox68);
+            this.panel12.Controls.Add(this.textBox67);
+            this.panel12.Controls.Add(this.textBox66);
+            this.panel12.Controls.Add(this.pictureBox21);
+            this.panel12.Controls.Add(this.pictureBox22);
+            this.panel12.Controls.Add(this.pictureBox20);
+            this.panel12.Controls.Add(this.pictureBox19);
+            this.panel12.Controls.Add(this.pictureBox18);
+            this.panel12.Controls.Add(this.textBox64);
+            this.panel12.Controls.Add(this.textBox12);
+            this.panel12.Controls.Add(this.pictureBox17);
+            this.panel12.Location = new System.Drawing.Point(0, 329);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1326, 100);
-            this.panel12.TabIndex = 2;
+            this.panel12.Size = new System.Drawing.Size(1280, 350);
+            this.panel12.TabIndex = 35;
+            // 
+            // textBox70
+            // 
+            this.textBox70.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox70.BackColor = System.Drawing.Color.White;
+            this.textBox70.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox70.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox70.ForeColor = System.Drawing.Color.Gray;
+            this.textBox70.Location = new System.Drawing.Point(123, 305);
+            this.textBox70.Name = "textBox70";
+            this.textBox70.ReadOnly = true;
+            this.textBox70.Size = new System.Drawing.Size(139, 19);
+            this.textBox70.TabIndex = 45;
+            this.textBox70.Text = "Hữu Ích?";
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox23.Image = global::Program.Properties.Resources.like0;
+            this.pictureBox23.Location = new System.Drawing.Point(94, 302);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox23.TabIndex = 44;
+            this.pictureBox23.TabStop = false;
+            // 
+            // textBox69
+            // 
+            this.textBox69.BackColor = System.Drawing.Color.White;
+            this.textBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox69.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox69.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox69.Location = new System.Drawing.Point(94, 200);
+            this.textBox69.Multiline = true;
+            this.textBox69.Name = "textBox69";
+            this.textBox69.ReadOnly = true;
+            this.textBox69.Size = new System.Drawing.Size(1089, 89);
+            this.textBox69.TabIndex = 43;
+            this.textBox69.Text = "Nội dung đánh giá";
+            // 
+            // textBox68
+            // 
+            this.textBox68.BackColor = System.Drawing.Color.White;
+            this.textBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox68.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox68.ForeColor = System.Drawing.Color.Gray;
+            this.textBox68.Location = new System.Drawing.Point(94, 155);
+            this.textBox68.Name = "textBox68";
+            this.textBox68.ReadOnly = true;
+            this.textBox68.Size = new System.Drawing.Size(885, 19);
+            this.textBox68.TabIndex = 42;
+            this.textBox68.Text = "Đối tượng đọc giả:";
+            // 
+            // textBox67
+            // 
+            this.textBox67.BackColor = System.Drawing.Color.White;
+            this.textBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox67.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox67.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox67.ForeColor = System.Drawing.Color.Gray;
+            this.textBox67.Location = new System.Drawing.Point(94, 116);
+            this.textBox67.Name = "textBox67";
+            this.textBox67.ReadOnly = true;
+            this.textBox67.Size = new System.Drawing.Size(843, 19);
+            this.textBox67.TabIndex = 41;
+            this.textBox67.Text = "Thiết kế bìa:";
+            // 
+            // textBox66
+            // 
+            this.textBox66.BackColor = System.Drawing.Color.White;
+            this.textBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox66.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox66.ForeColor = System.Drawing.Color.Gray;
+            this.textBox66.Location = new System.Drawing.Point(94, 77);
+            this.textBox66.Name = "textBox66";
+            this.textBox66.ReadOnly = true;
+            this.textBox66.Size = new System.Drawing.Size(411, 16);
+            this.textBox66.TabIndex = 40;
+            this.textBox66.Text = "Ngày đánh giá";
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.Image = global::Program.Properties.Resources.star3;
+            this.pictureBox21.Location = new System.Drawing.Point(142, 61);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox21.TabIndex = 39;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.Image = global::Program.Properties.Resources.star4;
+            this.pictureBox22.Location = new System.Drawing.Point(158, 61);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox22.TabIndex = 38;
+            this.pictureBox22.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.Image = global::Program.Properties.Resources.star3;
+            this.pictureBox20.Location = new System.Drawing.Point(110, 61);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox20.TabIndex = 37;
+            this.pictureBox20.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Image = global::Program.Properties.Resources.star3;
+            this.pictureBox19.Location = new System.Drawing.Point(126, 61);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox19.TabIndex = 36;
+            this.pictureBox19.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = global::Program.Properties.Resources.star3;
+            this.pictureBox18.Location = new System.Drawing.Point(94, 61);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox18.TabIndex = 35;
+            this.pictureBox18.TabStop = false;
+            // 
+            // textBox64
+            // 
+            this.textBox64.BackColor = System.Drawing.Color.White;
+            this.textBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox64.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox64.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox64.Location = new System.Drawing.Point(94, 41);
+            this.textBox64.Name = "textBox64";
+            this.textBox64.ReadOnly = true;
+            this.textBox64.Size = new System.Drawing.Size(541, 17);
+            this.textBox64.TabIndex = 34;
+            this.textBox64.Text = "Sản phẩm đã mua";
+            // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.White;
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox12.Location = new System.Drawing.Point(94, 17);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(541, 19);
+            this.textBox12.TabIndex = 33;
+            this.textBox12.Text = "Tên khách hàng";
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Location = new System.Drawing.Point(16, 16);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox17.TabIndex = 29;
+            this.pictureBox17.TabStop = false;
+            // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel24.Controls.Add(this.saoPicBD);
+            this.panel24.Controls.Add(this.listButtonSaoFLP);
+            this.panel24.Controls.Add(this.textBox60);
+            this.panel24.Controls.Add(this.saoBD);
+            this.panel24.Location = new System.Drawing.Point(25, 75);
+            this.panel24.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(1280, 125);
+            this.panel24.TabIndex = 32;
+            // 
+            // saoPicBD
+            // 
+            this.saoPicBD.Location = new System.Drawing.Point(31, 65);
+            this.saoPicBD.Name = "saoPicBD";
+            this.saoPicBD.Size = new System.Drawing.Size(201, 41);
+            this.saoPicBD.TabIndex = 41;
+            this.saoPicBD.TabStop = false;
+            // 
+            // listButtonSaoFLP
+            // 
+            this.listButtonSaoFLP.Controls.Add(this.tatCaDGButton);
+            this.listButtonSaoFLP.Controls.Add(this.Sao5Button);
+            this.listButtonSaoFLP.Controls.Add(this.Sao4Button);
+            this.listButtonSaoFLP.Controls.Add(this.Sao3Button);
+            this.listButtonSaoFLP.Controls.Add(this.Sao2Button);
+            this.listButtonSaoFLP.Controls.Add(this.Sao1Button);
+            this.listButtonSaoFLP.Location = new System.Drawing.Point(254, 39);
+            this.listButtonSaoFLP.Name = "listButtonSaoFLP";
+            this.listButtonSaoFLP.Size = new System.Drawing.Size(832, 49);
+            this.listButtonSaoFLP.TabIndex = 40;
+            // 
+            // tatCaDGButton
+            // 
+            this.tatCaDGButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tatCaDGButton.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.tatCaDGButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.tatCaDGButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.tatCaDGButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.tatCaDGButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tatCaDGButton.ForeColor = System.Drawing.Color.OrangeRed;
+            this.tatCaDGButton.Location = new System.Drawing.Point(5, 5);
+            this.tatCaDGButton.Margin = new System.Windows.Forms.Padding(5);
+            this.tatCaDGButton.Name = "tatCaDGButton";
+            this.tatCaDGButton.Size = new System.Drawing.Size(128, 38);
+            this.tatCaDGButton.TabIndex = 34;
+            this.tatCaDGButton.Text = "Tất Cả";
+            this.tatCaDGButton.UseVisualStyleBackColor = true;
+            this.tatCaDGButton.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // Sao5Button
+            // 
+            this.Sao5Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sao5Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.Sao5Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.Sao5Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Sao5Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Sao5Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sao5Button.Location = new System.Drawing.Point(143, 5);
+            this.Sao5Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Sao5Button.Name = "Sao5Button";
+            this.Sao5Button.Size = new System.Drawing.Size(128, 38);
+            this.Sao5Button.TabIndex = 35;
+            this.Sao5Button.Text = "5 Sao (0)";
+            this.Sao5Button.UseVisualStyleBackColor = true;
+            this.Sao5Button.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // Sao4Button
+            // 
+            this.Sao4Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sao4Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.Sao4Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.Sao4Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Sao4Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Sao4Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sao4Button.Location = new System.Drawing.Point(281, 5);
+            this.Sao4Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Sao4Button.Name = "Sao4Button";
+            this.Sao4Button.Size = new System.Drawing.Size(128, 38);
+            this.Sao4Button.TabIndex = 36;
+            this.Sao4Button.Text = "4 Sao (0)";
+            this.Sao4Button.UseVisualStyleBackColor = true;
+            this.Sao4Button.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // Sao3Button
+            // 
+            this.Sao3Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sao3Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.Sao3Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.Sao3Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Sao3Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Sao3Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sao3Button.Location = new System.Drawing.Point(419, 5);
+            this.Sao3Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Sao3Button.Name = "Sao3Button";
+            this.Sao3Button.Size = new System.Drawing.Size(128, 38);
+            this.Sao3Button.TabIndex = 37;
+            this.Sao3Button.Text = "3 Sao (0)";
+            this.Sao3Button.UseVisualStyleBackColor = true;
+            this.Sao3Button.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // Sao2Button
+            // 
+            this.Sao2Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sao2Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.Sao2Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.Sao2Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Sao2Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Sao2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sao2Button.Location = new System.Drawing.Point(557, 5);
+            this.Sao2Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Sao2Button.Name = "Sao2Button";
+            this.Sao2Button.Size = new System.Drawing.Size(128, 38);
+            this.Sao2Button.TabIndex = 38;
+            this.Sao2Button.Text = "2 Sao (0)";
+            this.Sao2Button.UseVisualStyleBackColor = true;
+            this.Sao2Button.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // Sao1Button
+            // 
+            this.Sao1Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sao1Button.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.Sao1Button.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.Sao1Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Sao1Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Sao1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sao1Button.Location = new System.Drawing.Point(695, 5);
+            this.Sao1Button.Margin = new System.Windows.Forms.Padding(5);
+            this.Sao1Button.Name = "Sao1Button";
+            this.Sao1Button.Size = new System.Drawing.Size(128, 38);
+            this.Sao1Button.TabIndex = 39;
+            this.Sao1Button.Text = "1 Sao (0)";
+            this.Sao1Button.UseVisualStyleBackColor = true;
+            this.Sao1Button.Click += new System.EventHandler(this.ChuyenSaoDGButton_Click);
+            // 
+            // textBox60
+            // 
+            this.textBox60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.textBox60.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox60.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox60.ForeColor = System.Drawing.Color.Red;
+            this.textBox60.Location = new System.Drawing.Point(113, 36);
+            this.textBox60.Name = "textBox60";
+            this.textBox60.ReadOnly = true;
+            this.textBox60.Size = new System.Drawing.Size(64, 25);
+            this.textBox60.TabIndex = 33;
+            this.textBox60.Text = "trên 5";
+            // 
+            // saoBD
+            // 
+            this.saoBD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.saoBD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.saoBD.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.saoBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saoBD.ForeColor = System.Drawing.Color.Red;
+            this.saoBD.Location = new System.Drawing.Point(56, 27);
+            this.saoBD.Name = "saoBD";
+            this.saoBD.ReadOnly = true;
+            this.saoBD.Size = new System.Drawing.Size(51, 38);
+            this.saoBD.TabIndex = 33;
+            this.saoBD.Text = "0 ";
+            this.saoBD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox46
             // 
-            this.textBox46.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox46.BackColor = System.Drawing.Color.White;
             this.textBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox46.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox46.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox46.Location = new System.Drawing.Point(50, 37);
+            this.textBox46.Location = new System.Drawing.Point(25, 36);
             this.textBox46.Name = "textBox46";
             this.textBox46.ReadOnly = true;
             this.textBox46.Size = new System.Drawing.Size(235, 25);
             this.textBox46.TabIndex = 31;
             this.textBox46.Text = "ĐÁNH GIÁ SẢN PHẨM";
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBox14.Location = new System.Drawing.Point(20, 17);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(1297, 62);
-            this.pictureBox14.TabIndex = 30;
-            this.pictureBox14.TabStop = false;
             // 
             // textBox49
             // 
@@ -3266,7 +4321,7 @@ namespace Program
             this.textBox49.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox49.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox49.Location = new System.Drawing.Point(3, 1198);
+            this.textBox49.Location = new System.Drawing.Point(3, 2072);
             this.textBox49.Name = "textBox49";
             this.textBox49.ReadOnly = true;
             this.textBox49.Size = new System.Drawing.Size(541, 25);
@@ -3277,7 +4332,7 @@ namespace Program
             // 
             this.spKhacCuaShopFLP.AutoScroll = true;
             this.spKhacCuaShopFLP.Controls.Add(this.panel25);
-            this.spKhacCuaShopFLP.Location = new System.Drawing.Point(0, 1236);
+            this.spKhacCuaShopFLP.Location = new System.Drawing.Point(0, 2110);
             this.spKhacCuaShopFLP.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.spKhacCuaShopFLP.Name = "spKhacCuaShopFLP";
             this.spKhacCuaShopFLP.Size = new System.Drawing.Size(1335, 351);
@@ -3296,7 +4351,7 @@ namespace Program
             // 
             this.coTheBanCungThichFLP.Controls.Add(this.textBox51);
             this.coTheBanCungThichFLP.Controls.Add(this.PageListBDP);
-            this.coTheBanCungThichFLP.Location = new System.Drawing.Point(3, 1607);
+            this.coTheBanCungThichFLP.Location = new System.Drawing.Point(3, 2481);
             this.coTheBanCungThichFLP.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.coTheBanCungThichFLP.Name = "coTheBanCungThichFLP";
             this.coTheBanCungThichFLP.Size = new System.Drawing.Size(1335, 118);
@@ -4441,6 +5496,12 @@ namespace Program
             this.FLPBaiDang1.ResumeLayout(false);
             this.titlePanel1.ResumeLayout(false);
             this.titlePanel1.PerformLayout();
+            this.panel31.ResumeLayout(false);
+            this.panel31.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
+            this.flowLayoutPanel9.ResumeLayout(false);
+            this.flowLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.PageListP.ResumeLayout(false);
             this.PageListFLP.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -4449,7 +5510,6 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).EndInit();
             this.funcFLPanel.ResumeLayout(false);
             this.diaChiUser_Panel.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
@@ -4465,6 +5525,16 @@ namespace Program
             this.doiMatKhauPanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.UserPanel.PerformLayout();
+            this.ThongBaoXuPanel.ResumeLayout(false);
+            this.panel30.ResumeLayout(false);
+            this.panel30.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userImagePB)).EndInit();
+            this.capNhatDHPanel.ResumeLayout(false);
+            this.TBDonHangFLP.ResumeLayout(false);
+            this.panel28.ResumeLayout(false);
+            this.panel28.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             this.DonMuaPanel.ResumeLayout(false);
             this.HeaderDHPanel.ResumeLayout(false);
             this.DonHangFLP.ResumeLayout(false);
@@ -4484,6 +5554,9 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.currImage)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.panel27.ResumeLayout(false);
+            this.panel27.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saoPTB)).EndInit();
             this.panel5.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
@@ -4505,9 +5578,25 @@ namespace Program
             this.moTaPanel.ResumeLayout(false);
             this.moTaPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            this.DGPanelInBDPanel.ResumeLayout(false);
+            this.DGPanelInBDPanel.PerformLayout();
+            this.ListDGInBDPanel.ResumeLayout(false);
+            this.KhongCoDanhGiaPanel.ResumeLayout(false);
+            this.KhongCoDanhGiaPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saoPicBD)).EndInit();
+            this.listButtonSaoFLP.ResumeLayout(false);
             this.spKhacCuaShopFLP.ResumeLayout(false);
             this.coTheBanCungThichFLP.ResumeLayout(false);
             this.coTheBanCungThichFLP.PerformLayout();
@@ -4654,8 +5743,8 @@ namespace Program
         private System.Windows.Forms.Button nextPageButton;
         private System.Windows.Forms.Panel BaiDangPanel;
         private System.Windows.Forms.PictureBox currImage;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox saoTxt;
+        private System.Windows.Forms.TextBox danhGiaTxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox daBanTxt;
@@ -4686,7 +5775,7 @@ namespace Program
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox giaGocTxt;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel DGPanelInBDPanel;
         private System.Windows.Forms.PictureBox shopAvtInBaiDang;
         private System.Windows.Forms.TextBox tenShopTxt;
         private System.Windows.Forms.Button followButton;
@@ -4783,7 +5872,6 @@ namespace Program
         private System.Windows.Forms.TextBox textBox42;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.TextBox textBox46;
-        private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.TextBox textBox49;
         private System.Windows.Forms.TextBox textBox51;
         private System.Windows.Forms.FlowLayoutPanel coTheBanCungThichFLP;
@@ -4808,7 +5896,7 @@ namespace Program
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.PictureBox miniAvt;
         private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button thongBaoUserButton;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.FlowLayoutPanel DonHangFLP;
@@ -4838,6 +5926,72 @@ namespace Program
         private System.Windows.Forms.TextBox textBox55;
         private System.Windows.Forms.Panel waittingPanel;
         private System.Windows.Forms.TextBox textBox58;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Button Sao4Button;
+        private System.Windows.Forms.Button Sao5Button;
+        private System.Windows.Forms.Button tatCaDGButton;
+        private System.Windows.Forms.TextBox textBox60;
+        private System.Windows.Forms.TextBox saoBD;
+        private System.Windows.Forms.FlowLayoutPanel ListDGInBDPanel;
+        private System.Windows.Forms.Button Sao1Button;
+        private System.Windows.Forms.Button Sao2Button;
+        private System.Windows.Forms.Button Sao3Button;
+        private System.Windows.Forms.Panel KhongCoDanhGiaPanel;
+        private System.Windows.Forms.TextBox textBox61;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TextBox textBox64;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.PictureBox pictureBox21;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.TextBox textBox66;
+        private System.Windows.Forms.TextBox textBox69;
+        private System.Windows.Forms.TextBox textBox68;
+        private System.Windows.Forms.TextBox textBox67;
+        private System.Windows.Forms.TextBox textBox70;
+        private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.FlowLayoutPanel listButtonSaoFLP;
+        private System.Windows.Forms.PictureBox saoPTB;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.PictureBox saoPicBD;
+        private System.Windows.Forms.Button capNhatDHButton;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button XuButton;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Panel capNhatDHPanel;
+        private System.Windows.Forms.FlowLayoutPanel TBDonHangFLP;
+        private System.Windows.Forms.Panel panel28;
+        private System.Windows.Forms.PictureBox pictureBox24;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.TextBox textBox71;
+        private System.Windows.Forms.TextBox textBox59;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Panel ThongBaoXuPanel;
+        private System.Windows.Forms.FlowLayoutPanel XuFLP;
+        private System.Windows.Forms.Panel panel31;
+        private System.Windows.Forms.PictureBox pictureBox25;
+        private System.Windows.Forms.TextBox textBox72;
+        private System.Windows.Forms.TextBox textBox73;
+        private System.Windows.Forms.TextBox textBox74;
+        private System.Windows.Forms.PictureBox pictureBox26;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.TextBox textBox75;
+        private System.Windows.Forms.TextBox textBox76;
+        private System.Windows.Forms.Panel panel30;
+        private System.Windows.Forms.PictureBox pictureBox27;
+        private System.Windows.Forms.TextBox xuHienCoText;
+        private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button AllLichSuXuButton;
     }
 }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,21 @@ namespace Program.BLL
         private BLL_BaiDang()
         {
 
+        }
+
+        public string GetURLFromMaDH(string maDH)
+        {
+            return DAL_BaiDang.Instance.Load1URLFromMaDH(maDH);
+        }
+
+        public string GetTieuDeFromMaBD(string maBD)
+        {
+            return DAL_BaiDang.Instance.LoadTieuDeFromMaBD(maBD);
+        }
+
+        public string GetURLFromMaBD(string maBD)
+        {
+            return DAL_BaiDang.Instance.LoadURLFromMaBD(maBD);
         }
 
         public void ThemBaiDang(BaiDang baiDang)
