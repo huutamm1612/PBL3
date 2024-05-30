@@ -110,6 +110,12 @@
     <Compile Include="DAL\DAL_Shop.cs" />
     <Compile Include="DTO\QLThongBao.cs" />
     <Compile Include="DTO\ThongBao.cs" />
+    <Compile Include="GUI\BaiDangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaiDangForm.Designer.cs">
+      <DependentUpon>BaiDangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     <Compile Include="DTO\TaiKhoan.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="BLL\Utils.cs" />
+    <EmbeddedResource Include="GUI\BaiDangForm.resx">
+      <DependentUpon>BaiDangForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>

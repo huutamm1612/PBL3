@@ -55,7 +55,16 @@ namespace Program.BLL
             }
             return -1;
         }
-
+        public void CapNhatSanPham(Shop shop, SanPham sanPham)
+        {
+            shop.listBaiDang.GetSanPhamFromMaSP(sanPham.maSP).SuaSanPham(sanPham);
+            BLL_SanPham.Instance.CapNhatSanPham(sanPham);
+        }
+        public void CapNhatBaiDang(Shop shop, BaiDang baiDang)
+        {
+            shop.listBaiDang.GetBaiDangFromMaBD(baiDang.maBD).SuaBaiDang(baiDang);
+            BLL_BaiDang.Instance.CapNhatBaiDang(baiDang);
+        }
         public void GiaoHang(Shop shop, string maDH)
         {
             int index = shop.listDonHang.IndexOf(maDH);

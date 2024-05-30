@@ -204,6 +204,9 @@ namespace Program
             this.textBox62 = new System.Windows.Forms.TextBox();
             this.textBox65 = new System.Windows.Forms.TextBox();
             this.KhachHang_Panel = new System.Windows.Forms.Panel();
+            this.littleMenuPanel = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.waittingForm = new System.Windows.Forms.Panel();
             this.BaiDangPanel = new System.Windows.Forms.Panel();
             this.baiDangFLP = new System.Windows.Forms.FlowLayoutPanel();
@@ -376,9 +379,6 @@ namespace Program
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listSPTrongGHFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.littleMenuPanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.HeaderPannel.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
@@ -427,6 +427,7 @@ namespace Program
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.panel26.SuspendLayout();
             this.KhachHang_Panel.SuspendLayout();
+            this.littleMenuPanel.SuspendLayout();
             this.BaiDangPanel.SuspendLayout();
             this.baiDangFLP.SuspendLayout();
             this.BaiDangSubPanel.SuspendLayout();
@@ -490,7 +491,6 @@ namespace Program
             this.panel13.SuspendLayout();
             this.spPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.littleMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderPannel
@@ -2525,6 +2525,7 @@ namespace Program
             this.UserPanel.AutoScroll = true;
             this.UserPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.UserPanel.Controls.Add(this.ThongBaoXuPanel);
+            this.UserPanel.Controls.Add(this.profilePanel);
             this.UserPanel.Controls.Add(this.userNameTxt);
             this.UserPanel.Controls.Add(this.userImagePB);
             this.UserPanel.Controls.Add(this.funcFLPanel);
@@ -3127,18 +3128,69 @@ namespace Program
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KhachHang_Panel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.KhachHang_Panel.Controls.Add(this.littleMenuPanel);
             this.KhachHang_Panel.Controls.Add(this.HeaderPannel);
-            this.KhachHang_Panel.Controls.Add(this.UserPanel);
-            this.KhachHang_Panel.Controls.Add(this.waittingForm);
             this.KhachHang_Panel.Controls.Add(this.BaiDangPanel);
-            this.KhachHang_Panel.Controls.Add(this.HomePanel);
             this.KhachHang_Panel.Controls.Add(this.thanhToanPanel);
             this.KhachHang_Panel.Controls.Add(this.gioHangPanel);
-            this.KhachHang_Panel.Controls.Add(this.littleMenuPanel);
+            this.KhachHang_Panel.Controls.Add(this.HomePanel);
+            this.KhachHang_Panel.Controls.Add(this.UserPanel);
+            this.KhachHang_Panel.Controls.Add(this.waittingForm);
             this.KhachHang_Panel.Location = new System.Drawing.Point(0, 0);
             this.KhachHang_Panel.Name = "KhachHang_Panel";
             this.KhachHang_Panel.Size = new System.Drawing.Size(1390, 813);
             this.KhachHang_Panel.TabIndex = 14;
+            // 
+            // littleMenuPanel
+            // 
+            this.littleMenuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.littleMenuPanel.BackColor = System.Drawing.Color.White;
+            this.littleMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.littleMenuPanel.Controls.Add(this.button6);
+            this.littleMenuPanel.Controls.Add(this.button1);
+            this.littleMenuPanel.Controls.Add(this.user_DangXuat_Button);
+            this.littleMenuPanel.Location = new System.Drawing.Point(1130, 35);
+            this.littleMenuPanel.Name = "littleMenuPanel";
+            this.littleMenuPanel.Size = new System.Drawing.Size(180, 130);
+            this.littleMenuPanel.TabIndex = 19;
+            this.littleMenuPanel.Visible = false;
+            this.littleMenuPanel.MouseLeave += new System.EventHandler(this.littleMenuPanel_MouseLeave);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.Location = new System.Drawing.Point(9, 43);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(166, 38);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Đơn Mua";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.DonMuaButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(8, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 36);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Tài Khoản Của Tôi";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.userProfile_Button_Click);
             // 
             // waittingForm
             // 
@@ -3174,10 +3226,15 @@ namespace Program
             this.baiDangFLP.Controls.Add(this.panel4);
             this.baiDangFLP.Controls.Add(this.moTaPanel);
             this.baiDangFLP.Controls.Add(this.DGPanelInBDPanel);
+            this.baiDangFLP.Controls.Add(this.panel12);
             this.baiDangFLP.Controls.Add(this.textBox49);
+            this.baiDangFLP.Controls.Add(this.coTheBanCungThichFLP);
+            this.baiDangFLP.Controls.Add(this.BaiDangSubPanel);
+            this.baiDangFLP.Controls.Add(this.moTaPanel);
             this.baiDangFLP.Controls.Add(this.spKhacCuaShopFLP);
             this.baiDangFLP.Controls.Add(this.coTheBanCungThichFLP);
             this.baiDangFLP.Location = new System.Drawing.Point(36, 1668);
+            this.baiDangFLP.Location = new System.Drawing.Point(110, 143);
             this.baiDangFLP.Name = "baiDangFLP";
             this.baiDangFLP.Size = new System.Drawing.Size(1340, 2565);
             this.baiDangFLP.TabIndex = 4;
@@ -3188,7 +3245,7 @@ namespace Program
             this.BaiDangSubPanel.Controls.Add(this.thichButton);
             this.BaiDangSubPanel.Controls.Add(this.currImage);
             this.BaiDangSubPanel.Controls.Add(this.flowLayoutPanel1);
-            this.BaiDangSubPanel.Location = new System.Drawing.Point(0, 10);
+            this.BaiDangSubPanel.Location = new System.Drawing.Point(0, 461);
             this.BaiDangSubPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.BaiDangSubPanel.Name = "BaiDangSubPanel";
             this.BaiDangSubPanel.Size = new System.Drawing.Size(1326, 628);
@@ -3698,6 +3755,7 @@ namespace Program
             this.panel4.Controls.Add(this.tenShopTxt);
             this.panel4.Controls.Add(this.shopAvtInBaiDang);
             this.panel4.Location = new System.Drawing.Point(0, 658);
+            this.panel4.Location = new System.Drawing.Point(0, 10);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1326, 142);
@@ -3848,6 +3906,7 @@ namespace Program
             this.moTaPanel.Controls.Add(this.pictureBox10);
             this.moTaPanel.Controls.Add(this.moTaBaiDangTxt);
             this.moTaPanel.Location = new System.Drawing.Point(0, 820);
+            this.moTaPanel.Location = new System.Drawing.Point(0, 1075);
             this.moTaPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.moTaPanel.Name = "moTaPanel";
             this.moTaPanel.Size = new System.Drawing.Size(1326, 279);
@@ -3967,6 +4026,11 @@ namespace Program
             this.panel12.Controls.Add(this.pictureBox17);
             this.panel12.Location = new System.Drawing.Point(0, 329);
             this.panel12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel12.BackColor = System.Drawing.Color.White;
+            this.panel12.Controls.Add(this.textBox46);
+            this.panel12.Controls.Add(this.pictureBox14);
+            this.panel12.Location = new System.Drawing.Point(0, 172);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1280, 350);
             this.panel12.TabIndex = 35;
@@ -4322,6 +4386,7 @@ namespace Program
             this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox49.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBox49.Location = new System.Drawing.Point(3, 2072);
+            this.textBox49.Location = new System.Drawing.Point(3, 285);
             this.textBox49.Name = "textBox49";
             this.textBox49.ReadOnly = true;
             this.textBox49.Size = new System.Drawing.Size(541, 25);
@@ -4333,6 +4398,7 @@ namespace Program
             this.spKhacCuaShopFLP.AutoScroll = true;
             this.spKhacCuaShopFLP.Controls.Add(this.panel25);
             this.spKhacCuaShopFLP.Location = new System.Drawing.Point(0, 2110);
+            this.spKhacCuaShopFLP.Location = new System.Drawing.Point(0, 1374);
             this.spKhacCuaShopFLP.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.spKhacCuaShopFLP.Name = "spKhacCuaShopFLP";
             this.spKhacCuaShopFLP.Size = new System.Drawing.Size(1335, 351);
@@ -4352,6 +4418,7 @@ namespace Program
             this.coTheBanCungThichFLP.Controls.Add(this.textBox51);
             this.coTheBanCungThichFLP.Controls.Add(this.PageListBDP);
             this.coTheBanCungThichFLP.Location = new System.Drawing.Point(3, 2481);
+            this.coTheBanCungThichFLP.Location = new System.Drawing.Point(3, 323);
             this.coTheBanCungThichFLP.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.coTheBanCungThichFLP.Name = "coTheBanCungThichFLP";
             this.coTheBanCungThichFLP.Size = new System.Drawing.Size(1335, 118);
@@ -5418,57 +5485,6 @@ namespace Program
             this.listSPTrongGHFLP.Size = new System.Drawing.Size(1250, 10);
             this.listSPTrongGHFLP.TabIndex = 0;
             // 
-            // littleMenuPanel
-            // 
-            this.littleMenuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.littleMenuPanel.BackColor = System.Drawing.Color.White;
-            this.littleMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.littleMenuPanel.Controls.Add(this.button6);
-            this.littleMenuPanel.Controls.Add(this.button1);
-            this.littleMenuPanel.Controls.Add(this.user_DangXuat_Button);
-            this.littleMenuPanel.Location = new System.Drawing.Point(1130, 35);
-            this.littleMenuPanel.Name = "littleMenuPanel";
-            this.littleMenuPanel.Size = new System.Drawing.Size(180, 130);
-            this.littleMenuPanel.TabIndex = 19;
-            this.littleMenuPanel.Visible = false;
-            this.littleMenuPanel.MouseLeave += new System.EventHandler(this.littleMenuPanel_MouseLeave);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(9, 43);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(166, 38);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Đơn Mua";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.DonMuaButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(8, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 36);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Tài Khoản Của Tôi";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.userProfile_Button_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
@@ -5547,6 +5563,7 @@ namespace Program
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.KhachHang_Panel.ResumeLayout(false);
+            this.littleMenuPanel.ResumeLayout(false);
             this.BaiDangPanel.ResumeLayout(false);
             this.baiDangFLP.ResumeLayout(false);
             this.baiDangFLP.PerformLayout();
@@ -5637,7 +5654,6 @@ namespace Program
             this.spPanel.ResumeLayout(false);
             this.spPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.littleMenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -41,6 +41,11 @@ namespace Program.BLL
             return DAL_BaiDang.Instance.LoadURLFromMaBD(maBD);
         }
 
+        public void XoaBaiDang(BaiDang baiDang)
+        {
+            DAL_BaiDang.Instance.XoaBaiDang(baiDang);
+        }
+
         public void ThemBaiDang(BaiDang baiDang)
         {
             DAL_BaiDang.Instance.ThemBaiDang(baiDang);

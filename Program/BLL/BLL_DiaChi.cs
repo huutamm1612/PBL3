@@ -26,6 +26,18 @@ namespace Program.BLL
 
         }
 
+        public string GetTenTTPFromMaTTP(int maTTP)
+        {
+            return DAL_DiaChi.Instance.LoadTenT_TP(maTTP);
+        }
+        public string GetTenPXFromMaPX(int maPX)
+        {
+            return DAL_DiaChi.Instance.LoadTenPX(maPX);
+        }
+        public string GetTenQHFromMaQH(int maQH)
+        {
+            return DAL_DiaChi.Instance.LoadTenQH(maQH);
+        }
         public void CapNhatDiaChi(KhachHang khachHang, DiaChi diaChi)
         {
             if (diaChi.maDC == khachHang.diaChi.maDC)

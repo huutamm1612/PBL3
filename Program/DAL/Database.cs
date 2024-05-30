@@ -30,7 +30,7 @@ namespace Program
 
         private Database()
         {
-            string strCon = @"Data Source=ASUS\HUUTAM;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
+            string strCon = @"Data Source=DOCHANHHIEU\SQLEXPRESS;Initial Catalog=PBL3_Database;Integrated Security=True;MultipleActiveResultSets=true;";
             con = new SqlConnection(strCon);
         }
 
