@@ -1185,23 +1185,9 @@ namespace Program
             p.Controls.Add(picImage);
 
             btnTTSP1.Click += TTBD_Button;
-            btnXoa1.Click += Xoa_Button;
             return p;
         }
 
-        private void Xoa_Button(object sender, EventArgs e)
-        {
-            
-            Button clickedButton = sender as Button;
-            Panel panelToRemove = clickedButton.Parent as Panel;
-            int panelIndex = FLLayout_TatCaBaiDang.Controls.IndexOf(panelToRemove);
-         
-            if (panelIndex != -1 && panelIndex < FLLayout_TatCaBaiDang.Controls.Count)
-            {
-                FLLayout_TatCaBaiDang.Controls.RemoveAt(panelIndex);
-                BLL_BaiDang.Instance.XoaBaiDang(QLBD.list[index]);        
-            }
-        }
 
         private void XoaBaiDang()
         {
