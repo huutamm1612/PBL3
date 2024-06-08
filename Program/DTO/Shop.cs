@@ -148,7 +148,7 @@ namespace Program
             return qlSP.list.ToArray();
         }
 
-        public double tinhSao()
+        public double TinhSao()
         {
             double total = 0.0;
             int count = 0;
@@ -161,8 +161,8 @@ namespace Program
                 }
                 count += baiDang.listDanhGia.list.Count;
             }
-
-            return total / count;
+            
+            return Math.Ceiling(total / count * 10) / 10;
         }
 
         public SanPham searchSanPham(string maSP)

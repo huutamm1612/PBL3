@@ -27,11 +27,32 @@ namespace Program.DAL
 
         }
 
+        public void SuaDanhGia(DanhGia danhGia)
+        {
+            string query = "UPDATE DanhGia SET doiTuong = @doiTuong, thietKeBia = @thietKeBia, noiDung = @noiDung, sao = @sao, ngayThem = @ngayThem WHERE maDG = @maDG";
+            Database.Instance.ExecuteNonQuery(query, danhGia.GetParameters().ToArray());
+        }
+
+        public List<string> LoadAllLyDoBaoCaoDanhGia()
+        {
+            string query = "SELECT * FROM LyDo WHERE loaiLyDo = 3";
+
+            List<string> list = new List<string>();
+
+            DataTable table = Database.Instance.ExecuteQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["noiDung"].ToString());
+            }
+
+            return list;
+        }
+
         public QLDanhGia LoadAllDanhGiaFromMaKH(string maKH)
         {
             QLDanhGia qLDanhGia = new QLDanhGia();
 
-            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGKH.maKH = @maKH";
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGKH.maKH = @maKH ORDER BY ngayThem DESC";
             SqlParameter param = new SqlParameter("@maKH", maKH);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -47,7 +68,7 @@ namespace Program.DAL
         {
             QLDanhGia qLDanhGia = new QLDanhGia();
 
-            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = @maBD";
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = @maBD ORDER BY ngayThem DESC";
             SqlParameter param = new SqlParameter("@maBD", maBD);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 

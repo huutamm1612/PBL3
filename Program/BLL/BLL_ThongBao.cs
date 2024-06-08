@@ -36,6 +36,26 @@ namespace Program.BLL
             return DAL_ThongBao.Instance.IsVanChuyenDaGui(maDH);
         }
 
+        public string GetMaDHFromNoiDungTB(string noiDung)
+        {
+            foreach (string s in noiDung.Split())
+            {
+                if (s.Contains("DH"))
+                    return s;
+            }
+            return "";
+        }
+
+        public int GetXuFromThongBao(string noiDung)
+        {
+            foreach(string s in noiDung.Split())
+            {
+                if(int.TryParse(s, out int xu)) 
+                    return xu;
+            }
+            return 0;
+        }
+
         public string ThongBaoTinhTrangDHChoKH(string noiDung)
         {
             string tinhTrangDH = "";

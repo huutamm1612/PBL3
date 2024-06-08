@@ -1,3 +1,22 @@
 ﻿INSERT INTO CauHoi VALUES(0, N'Tên sách bạn yêu thích là gì?')
 INSERT INTO CauHoi VALUES(1, N'Thể loại sách bạn yêu thích là gì?')
 INSERT INTO CauHoi VALUES(2, N'Tên của bố/mẹ bạn là gì?')
+
+INSERT INTO LyDo VALUES(0, N'Tôi muốn thay đổi sản phẩm')
+INSERT INTO LyDo VALUES(0, N'Tôi muốn thay đổi phương thức thanh toán')
+INSERT INTO LyDo VALUES(0, N'Tôi muốn cập nhật địa chỉ/sđt nhận hàng')
+INSERT INTO LyDo VALUES(0, N'Tôi không có nhu cầu mua nữa')
+INSERT INTO LyDo VALUES(0, N'Tôi không tìm thấy lý do hủy phù hợp')
+
+INSERT INTO LyDo VALUES(2, N'Sản phẩm không hợp lệ(không phải sách,...)')
+INSERT INTO LyDo VALUES(2, N'Sản phẩm vi phạm cộng đồng(18+, PBCT,...)')
+INSERT INTO LyDo VALUES(2, N'Sản phẩm có hình ảnh, nội dung phản cảm')
+INSERT INTO LyDo VALUES(2, N'Hình ảnh sản phẩm không rõ ràng')
+INSERT INTO LyDo VALUES(2, N'Hình ảnh không hợp với sản phẩm')
+INSERT INTO LyDo VALUES(2, N'Hàng giả, hàng nhái')
+
+INSERT INTO LyDo VALUES(3, N'Đánh giá thô tục phản cảm')
+INSERT INTO LyDo VALUES(3, N'Đánh giá trùng lặp (thông tin rác)')
+INSERT INTO LyDo VALUES(3, N'Chứa thông tin cá nhân')
+INSERT INTO LyDo VALUES(3, N'Quảng cáo trái phép')
+INSERT INTO LyDo VALUES(3, N'Đánh giá không chính xác/gây hiểu lầm')

@@ -1183,14 +1183,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
+            this.screen_Panel.Controls.Add(this.hoSoShop_Panel);
             this.screen_Panel.Controls.Add(this.tatCaBaiDang_Panel);
             this.screen_Panel.Controls.Add(this.tatCaPanel);
             this.screen_Panel.Controls.Add(this.TatCaDHPanel);
             this.screen_Panel.Controls.Add(this.trangChuPanel);
             this.screen_Panel.Controls.Add(this.thietlapShop_panel);
             this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
-            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
-            this.screen_Panel.Controls.Add(this.hoSoShop_Panel);
             this.screen_Panel.Location = new System.Drawing.Point(320, 60);
             this.screen_Panel.Name = "screen_Panel";
             this.screen_Panel.Size = new System.Drawing.Size(1072, 761);
@@ -3710,8 +3710,8 @@
             this.ClientSize = new System.Drawing.Size(1392, 819);
             this.Controls.Add(this.choice_Panel);
             this.Controls.Add(this.headerPanel);
-            this.Controls.Add(this.dangKyPanel);
             this.Controls.Add(this.screen_Panel);
+            this.Controls.Add(this.dangKyPanel);
             this.Name = "BanHang_Form";
             this.Text = "Kênh bán hàng";
             this.headerPanel.ResumeLayout(false);

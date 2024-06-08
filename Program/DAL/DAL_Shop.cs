@@ -27,6 +27,15 @@ namespace Program.DAL
 
         }
 
+        public string LoadMaSFromMaDH(string maDH)
+        {
+            string query = "SELECT maS FROM DonHang_Shop WHERE maDH = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", maDH);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return row["maS"].ToString();
+        }
+
         public void GiaoHangThanhCong(string maS, int giaTriDH)
         {
             string query = "UPDATE Shop SET doanhThu = doanhThu + @giaTriDH WHERE maS = @maS";
@@ -75,6 +84,15 @@ namespace Program.DAL
             return row["maS"].ToString();
         }
 
+        public string LoadTenShopFromMaBD(string maBD)
+        {
+            string query = "SELECT S.ten FROM Shop S JOIN BaiDang_Shop BDS ON BDS.maS = S.maS WHERE maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return row["ten"].ToString();
+        }
+
         public string LoadTenShopFromMaS(string maS)
         {
             string query = "SELECT S.ten FROM Shop S WHERE maS = @maS";
@@ -94,6 +112,27 @@ namespace Program.DAL
         {
             string query = "SELECT * FROM Shop S JOIN BaiDang_Shop BDS ON BDS.maS = S.maS WHERE BDS.maBD = @maBD";
             SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return new Shop
+            {
+                maSo = row["maS"].ToString(),
+                ten = row["ten"].ToString(),
+                soDT = row["soDT"].ToString(),
+                email = row["email"].ToString(),
+                avt = row["avt"].ToString(),
+                diaChi = DAL_DiaChi.Instance.LoadDiaChiFromMaS(row["maDC"].ToString()),
+                tinhTrang = Convert.ToInt32(row["tinhTrang"].ToString()),
+                ngaySinh = Convert.ToDateTime(row["ngayTao"].ToString()),
+                listFollower = LoadListFollowFromMaS(row["maS"].ToString()),
+                listBaiDang = DAL_BaiDang.Instance.LoadAllBaiDangFromMaS(row["maS"].ToString()),
+                listDonHang = null,
+            };
+        }
+        public Shop LoadShopFromMaDH(string maDH)
+        {
+            string query = "SELECT * FROM Shop S JOIN DonHang_Shop DHS ON DHS.maS = S.maS WHERE DHS.maDH = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", maDH);
             DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
 
             return new Shop

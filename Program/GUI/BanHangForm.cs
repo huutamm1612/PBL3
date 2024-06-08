@@ -876,9 +876,7 @@ namespace Program
 
                 QLSP.Clear();
                 index = -1;
-                shop.Insert(0, baiDang);
-                shop.Add(baiDang);
-                BLL_BaiDang.Instance.ThemBaiDang(baiDang);
+                BLL_Shop.Instance.ThemBaiDang(shop, baiDang);
 
                 trangChuPanel.Visible = true;
                 themSanPhamPanel.Visible = false;

@@ -34,6 +34,14 @@ namespace Program.GUI
             string maDH = FindControl(headPanel, "maDH").Text.Substring(15);
             return maDH;
         }
+        public bool IsMouseOverControl(Control control, Point cursorPos)
+        {
+            // Chuyển đổi tọa độ của control thành tọa độ trên màn hình
+            Rectangle screenRectangle = control.RectangleToScreen(control.ClientRectangle);
+
+            // Kiểm tra xem tọa độ của con trỏ chuột có nằm trong vùng hình chữ nhật của control không
+            return screenRectangle.Contains(cursorPos);
+        }
 
         public PictureBox CreateStarRatingPictureBox(double rating, int starCount = 5, int starSize = 20, int padding = 5)
         {
@@ -80,6 +88,18 @@ namespace Program.GUI
             return pictureBox;
         }
 
+        public void FitFLPHeight(Control con)
+        {
+            int height = 0;
+
+
+            foreach(Control c in con.Controls)
+            {
+                height += c.Height + c.Margin.Top + c.Margin.Bottom;
+            }
+            con.Height = height;
+        }
+
         private void DrawStar(Graphics g, Brush brush, float x, float y, int size)
         {
             var starPoints = CreateStarPoints(x, y, size);
@@ -112,10 +132,15 @@ namespace Program.GUI
             return points;
         }
 
+        public void FitTextBoxMultiLines(TextBox textBox)
+        {
+            Size size = TextRenderer.MeasureText(textBox.Text, textBox.Font, new Size(textBox.Width, int.MaxValue), TextFormatFlags.WordBreak);
+            textBox.Height = size.Height + textBox.Margin.Vertical;
+        }
+
         public void FitTextBox(Control textBox, int w = 10, int h = 10)
         {
             Size textSize = TextRenderer.MeasureText(textBox.Text, textBox.Font);
-            //MessageBox.Show(textBox.Width.ToString());
             textBox.Height = textSize.Height * (1 + textSize.Width / textBox.Width) + h;
             textBox.Width = textSize.Width + w;
         }

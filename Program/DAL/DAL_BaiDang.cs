@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -25,6 +26,49 @@ namespace Program.DAL
         private DAL_BaiDang()
         {
 
+        }
+
+        public List<string> LoadLyDoToCaoBaiDang()
+        {
+            string query = "SELECT * FROM LyDo WHERE loaiLyDo = 2";
+
+            List<string> list = new List<string>();
+
+            DataTable table = Database.Instance.ExecuteQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["noiDung"].ToString());
+            }
+
+            return list;
+        }
+
+        public List<string> LoadGoiYTimKiemBaiDang(string noiDung)
+        {
+            string query = $"SELECT DISTINCT TOP 10 tieuDe FROM BaiDang WHERE tieuDe LIKE '{noiDung}%'";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            List<string> list = new List<string>();
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["tieuDe"].ToString());
+            }
+
+            return list;
+        }
+
+        public List<string> LoadMaBDWithQuery(string query)
+        {
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            List<string> list = new List<string>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["maBD"].ToString());
+            }
+
+            return list;
         }
 
         public string Load1URLFromMaDH(string maDH)

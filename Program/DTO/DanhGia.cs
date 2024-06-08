@@ -52,6 +52,8 @@ namespace Program
 
 
         public static bool CompareSao(object o1, object o2) => ((DanhGia)o1).sao < ((DanhGia)o2).sao;
+        public static bool CompareNgayThem(object o1, object o2) => DateTime.Compare(((DanhGia)o1).ngayThem, ((DanhGia)o2).ngayThem) < 0;
+        public static bool EqualNgayThem(object o1, object o2) => DateTime.Equals(((DanhGia)o1).ngayThem, ((DanhGia)o2).ngayThem);
         public static bool EqualMaDH(object o1, object o2) => String.Equals(((DanhGia)o1).maDG, ((DanhGia)o2).maDG);
 
     }

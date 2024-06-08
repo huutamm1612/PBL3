@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Program.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,30 @@ namespace Program.BLL
         private BLL_DanhGia()
         {
 
+        }
+
+        public List<string> GetAllLyDoBaoCaoDanhGia()
+        {
+            return DAL_DanhGia.Instance.LoadAllLyDoBaoCaoDanhGia();
+        }
+
+        public QLDanhGia GetListChuaDGFromListDH(QLDonHang qLDonHang)
+        {
+            QLDanhGia qlDanhGia = new QLDanhGia();
+
+            foreach (DonHang donHang in qLDonHang.list)
+            {
+                if (donHang.tinhTrang == 2)
+                    qlDanhGia.list.AddRange(TaoDGMoiTuDH(donHang).ToArray());
+            }
+
+            return qlDanhGia;
+        }
+
+        public void SuaDanhGia(DanhGia danhGia)
+        {
+            danhGia.ngayThem = DateTime.Now;
+            DAL_DanhGia.Instance.SuaDanhGia(danhGia);
         }
 
         public List<DanhGia> TaoDGMoiTuDH(DonHang donHang)

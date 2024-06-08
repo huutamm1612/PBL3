@@ -143,9 +143,11 @@ namespace Program
         public static bool CompareMaBD(object o1, object o2) => String.Compare(((BaiDang)o1).maBD, ((BaiDang)o2).maBD) <= 0;
 
         public static bool CompareSao(object o1,object o2) => ((BaiDang)o1).tinhSao() < ((BaiDang)o2).tinhSao();
-        public static bool ComareGiaMin(object o1,object o2) => ((BaiDang)o1).tinhSao() < ((BaiDang)o2).tinhSao();
-        public static bool ComareGiaMax(object o1, object o2) => ((BaiDang)o1).giaMax() < ((BaiDang)o2).giaMax();
+        public static bool CompareGiaMin(object o1,object o2) => ((BaiDang)o1).giaMin() < ((BaiDang)o2).giaMin();
+        public static bool CompareGiaMax(object o1, object o2) => ((BaiDang)o1).giaMax() < ((BaiDang)o2).giaMax();
         public static bool EqualMaBD(object o1, object o2) => String.Equals(((BaiDang)o1).maBD, ((BaiDang)o2).maBD);
+        public static bool EqualLuocBan(object o1, object o2) => ((BaiDang)o1).luocBan() == ((BaiDang)o2).luocBan();
+        public static bool EqualGiaMin(object o1, object o2) => ((BaiDang)o1).giaMin() == ((BaiDang)o2).giaMin();
 
         public bool Equals(string obj) => maBD == obj;
         public override bool Equals(object obj) => ((BaiDang)obj).maBD == this.maBD;

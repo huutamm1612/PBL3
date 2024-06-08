@@ -20,6 +20,7 @@ namespace Program
         public List<string> listFollow { get; set; }
         public List<string> listThich { get; set; }
         public List<string> listDaXem { get; set; }
+        public List<string> lichSuTimKiem { get; set; }
         public List<DiaChi> listDiaChi { get; set; }
         public QLDonHang listDonHang { get; set; }
         public GioHang gioHang { get; set; }
@@ -43,6 +44,7 @@ namespace Program
             this.avt = "";
             this.xu = 0;
             this.chiTieu = 0;
+            this.lichSuTimKiem = new List<string>();
             this.listFollow = new List<string>();
             this.listThich = new List<string>();
             this.listDaXem = new List<string>();
@@ -55,6 +57,10 @@ namespace Program
 
         public List<SqlParameter> GetParameters()
         {
+            string maDC = "";
+            if(diaChi != null )
+                maDC = diaChi.maDC;
+
             return new List<SqlParameter>
             {
                 new SqlParameter("@maKH", maSo),
@@ -65,7 +71,7 @@ namespace Program
                 new SqlParameter("@ngaySinh", ngaySinh),
                 new SqlParameter("@gioiTinh", gioiTinh),
                 new SqlParameter("@avt", avt),
-                new SqlParameter("@maDC", diaChi.maDC)
+                new SqlParameter("@maDC", maDC)
             };
         }
 
@@ -124,15 +130,6 @@ namespace Program
             this.listDiaChi.Remove(diaChi);
 
             this.diaChi = diaChi;
-        }
-
-        public void xemBaiDang(string maBD)
-        {
-            listDaXem.Insert(0, maBD);
-            if (listDaXem.Count == 20)
-            {
-                listDaXem.RemoveAt(19);
-            }
         }
 
         public void XoaSPKhoiGioHang(int index)

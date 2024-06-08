@@ -16,10 +16,12 @@ namespace Program.GUI
     public partial class DanhGiaForm : Form
     {
         public SendData send;
-        List<DanhGia> listDanhGia = null;
+        private bool isAdd = true;
+        private List<DanhGia> listDanhGia = null;
 
         public DanhGiaForm(SendData sender, DonHang donHang)
         {
+            isAdd = true;
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterParent;
@@ -27,6 +29,44 @@ namespace Program.GUI
             this.send = sender;
             listDanhGia = BLL_DanhGia.Instance.TaoDGMoiTuDH(donHang);
             Init();
+        }
+
+        public DanhGiaForm(SendData sender, DanhGia danhGia)
+        {
+            isAdd = false;
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.send = sender;
+            listDanhGia = new List<DanhGia>
+            {
+                danhGia
+            };
+            ListDanhGiaFLP.Controls.Clear();
+            ListDanhGiaFLP.Controls.Add(DrawDanhGiaPanel(danhGia));
+
+            if (danhGia.sao == 1)
+            {
+                StarButton_Click(GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "star1"), null);
+            }
+            else if (danhGia.sao == 2)
+            {
+                StarButton_Click(GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "star2"), null);
+            }
+            else if (danhGia.sao == 3)
+            {
+                StarButton_Click(GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "star3"), null);
+            }
+            else if (danhGia.sao == 4)
+            {
+                StarButton_Click(GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "star4"), null);
+            }
+            else if (danhGia.sao == 5)
+            {
+                StarButton_Click(GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "star5"), null);
+            }
+
         }
 
         private void Init()
@@ -45,17 +85,28 @@ namespace Program.GUI
 
         private void hoanThanhButton_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < listDanhGia.Count; i++)
+            if (isAdd)
             {
-                Panel danhGiaPanel = ListDanhGiaFLP.Controls[i] as Panel;
+                for (int i = 0; i < listDanhGia.Count; i++)
+                {
+                    Panel danhGiaPanel = ListDanhGiaFLP.Controls[i] as Panel;
 
-                listDanhGia[i].ngayThem = DateTime.Now;
-                listDanhGia[i].thietKeBia = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "thietKeBia")).Text;
-                listDanhGia[i].doiTuong = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "doiTuong")).Text;
-                listDanhGia[i].noiDung = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "noiDung")).Text;
+                    listDanhGia[i].ngayThem = DateTime.Now;
+                    listDanhGia[i].thietKeBia = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "thietKeBia")).Text;
+                    listDanhGia[i].doiTuong = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "doiTuong")).Text;
+                    listDanhGia[i].noiDung = ((TextBox)GUI_Utils.Instance.FindControl(danhGiaPanel, "noiDung")).Text;
 
+                }
+                send(listDanhGia.ToArray());
             }
-            send(listDanhGia.ToArray());
+            else
+            {
+                listDanhGia[0].ngayThem = DateTime.Now;
+                listDanhGia[0].thietKeBia = ((TextBox)GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "thietKeBia")).Text;
+                listDanhGia[0].doiTuong = ((TextBox)GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "doiTuong")).Text;
+                listDanhGia[0].noiDung = ((TextBox)GUI_Utils.Instance.FindControl(ListDanhGiaFLP.Controls[0] as Panel, "noiDung")).Text;
+                send(listDanhGia.ToArray());
+            }
 
             Close();
         }
@@ -222,7 +273,6 @@ namespace Program.GUI
             button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
             panel.Controls.Add(button5);
 
-
             TextBox chatLuongSPTex = new TextBox
             {
                 Name = "ChatLuongSP",
@@ -265,6 +315,7 @@ namespace Program.GUI
                 Font = textBox5.Font,
                 Location = textBox5.Location,
                 BorderStyle = BorderStyle.None,
+                ForeColor = Color.DimGray,
                 ReadOnly = true,
                 BackColor = Color.White,
                 Parent = textPanel
@@ -273,6 +324,7 @@ namespace Program.GUI
 
             TextBox thietKeBia = new TextBox
             {
+                Text = danhGia.thietKeBia,
                 Name = "thietKeBia",
                 Size = textBox6.Size,
                 Font = textBox6.Font,
@@ -290,6 +342,7 @@ namespace Program.GUI
                 Font = textBox7.Font,
                 Location = textBox7.Location,
                 BorderStyle = BorderStyle.None,
+                ForeColor = Color.DimGray,
                 ReadOnly = true,
                 BackColor = Color.White,
                 Parent = textPanel
@@ -298,6 +351,7 @@ namespace Program.GUI
 
             TextBox dtDocGia = new TextBox
             {
+                Text = danhGia.doiTuong,
                 Name = "doiTuong",
                 Size = textBox8.Size,
                 Font = textBox8.Font,
@@ -315,6 +369,7 @@ namespace Program.GUI
                 Font = textBox9.Font,
                 Location = textBox9.Location,
                 BorderStyle = BorderStyle.None,
+                ForeColor = Color.DimGray,
                 ReadOnly = true,
                 BackColor = Color.White,
                 Parent = textPanel
@@ -323,6 +378,7 @@ namespace Program.GUI
 
             TextBox noiDungDG = new TextBox
             {
+                Text = danhGia.noiDung,
                 Name = "noiDung",
                 Size = textBox10.Size,
                 Font = textBox10.Font,

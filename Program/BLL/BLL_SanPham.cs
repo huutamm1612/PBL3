@@ -42,6 +42,11 @@ namespace Program.BLL
             return DAL_SanPham.Instance.LoadSoLuongFromMaSP(maSP);
         }
 
+        public SanPham GetSanPhamFromMaSP(string maSP)
+        {
+            return DAL_SanPham.Instance.LoadSanPhamFromMaSP(maSP);
+        }
+
         public List<CBBItem> GetAllLoaiSanPham()
         {
             List<CBBItem> list = new List<CBBItem>();

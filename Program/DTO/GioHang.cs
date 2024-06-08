@@ -20,17 +20,16 @@ namespace Program
 
         public override void Add(object item)
         {
-            SanPham sanPham = item as SanPham;
+            SanPham sanPham = (item as SanPham).Clone();
             sanPham.ngayThem = DateTime.Now;
 
             foreach(SanPham sp in list)
             {
                 if(SanPham.EqualMaSP(sanPham, sp))
                 {
-                    sp.ngayThem = sanPham.ngayThem;
-                    sp.soLuong += sanPham.soLuong;
-
-                    return;
+                    sanPham.soLuong += sp.soLuong;
+                    list.Remove(sp);
+                    break;
                 }
             }
 

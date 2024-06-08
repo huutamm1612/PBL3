@@ -70,7 +70,7 @@ CREATE TABLE KhachHang (
 
 CREATE TABLE Shop (	
 	maS varchar(10) PRIMARY KEY,
-	ten nvarchar(50),
+	ten nvarchar(50) COLLATE Vietnamese_CI_AI,
 	soDT varchar(10),
 	email varchar(50),
 	maDC varchar(10),
@@ -116,14 +116,14 @@ CREATE TABLE KhachHang_Shop (
 )
 
 CREATE TABLE LoaiSanPham (
-	maLoaiSP varchar(10) PRIMARY KEY,
+	maLoaiSP varchar(10) PRIMARY KEY COLLATE Vietnamese_CI_AI,
 	tenLoaiSP nvarchar(50)
 )
 
 CREATE TABLE SanPham(
 	maSP varchar(10) PRIMARY KEY,
 	maLoaiSP varchar(10),
-	ten nvarchar(100),
+	ten nvarchar(100) COLLATE Vietnamese_CI_AI,
 	gia int,
 	soLuong int,
 	tacGia nvarchar(50),
@@ -142,7 +142,7 @@ CREATE TABLE SanPham(
 
 CREATE TABLE BaiDang(
 	maBD varchar(10) PRIMARY KEY,
-	tieuDe nvarchar(120),
+	tieuDe nvarchar(120) COLLATE Vietnamese_CI_AI,
 	moTa nvarchar(1000),
 	luocThich int DEFAULT 0,
 	giamGia int DEFAULT 0,
@@ -295,4 +295,37 @@ CREATE TABLE ThongBao
 	noiDung nvarchar(500),
 	tinhTrang int,
 	ngayGui datetime
+)
+
+CREATE TABLE LichSuTimKiem
+(
+	maKH varchar(10),
+	noiDung nvarchar(120),
+	ngayTim datetime,
+	
+	CONSTRAINT FK_LichSuTimKiem_KhachHang FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+)
+
+CREATE TABLE LyDo
+(
+	loaiLyDo int,
+	noiDung nvarchar(120),
+)
+
+CREATE TABLE DonHangBiHuy
+(
+	maDH varchar(10) PRIMARY KEY,
+	lyDo nvarchar(120),
+	isKhachHang bit,
+	ngayHuy datetime,
+
+	CONSTRAINT FK_DonHangBiHuy_DonHang FOREIGN KEY (maDH) REFERENCES DonHang(maDH),
+)
+
+CREATE TABLE BaiDangViPham
+(
+	maBD varchar(10) PRIMARY KEY,
+	lyDo nvarchar(120),
+
+	CONSTRAINT FK_BaiDangViPham_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD)
 )

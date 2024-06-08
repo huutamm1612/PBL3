@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Program.BLL
 {
@@ -28,6 +29,119 @@ namespace Program.BLL
         private BLL_KhachHang()
         {
 
+        }
+
+        public void SuaDanhGia(KhachHang khachHang, DanhGia danhGia)
+        {
+            khachHang.listDanhGia.list[khachHang.listDanhGia.IndexOf(danhGia)] = danhGia;
+            BLL_DanhGia.Instance.SuaDanhGia(danhGia);
+        }
+
+        public void ToCaoBaiDang(string maBD, string lyDo)
+        {
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "AnDanh",
+                to = "HeThong",
+                dinhKem = "BD" + maBD,
+                noiDung = $"Bài đăng BĐ{maBD} được một khách hàng báo cáo vi phạm với lý do: {lyDo}",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
+        }
+
+        public void HuyDonHang(KhachHang khachHang, string maDH, string lyDo)
+        {
+            khachHang.listDonHang.GetDonHangFromMaDH(maDH).tinhTrang = -1;
+
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "KH" + khachHang.maSo,
+                to = "S" + DAL_Shop.Instance.LoadMaSFromMaDH(maDH),
+                dinhKem = "DH" + maDH,
+                noiDung = $"Đơn hàng ĐH{maDH} của bạn đã bị hủy vào lúc {Utils.Instance.MoTaThoiGian(DateTime.Now)} với lý do: {lyDo}",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            DAL_DonHang.Instance.KhachHangHuyHang(maDH, lyDo);
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
+        }
+
+        public List<string> GoiYTimKiem(List<string> lichSuTimKiem, string noiDung)
+        {
+            if (noiDung == "") return lichSuTimKiem;
+
+            List<string> list = new List<string>();
+
+            foreach(string s in lichSuTimKiem)
+            {
+                try
+                {
+                    if (noiDung.ToLower().Equals(s.Substring(0, noiDung.Length).ToLower()))
+                        list.Add(s);
+                }
+                catch { }
+            }
+
+            List<string> tmp = new List<string>();
+            tmp.AddRange(DAL_SanPham.Instance.LoadGoiYTimKiemTheLoai(noiDung).ToArray());
+            tmp.AddRange(DAL_SanPham.Instance.LoadGoiYTimKiemSanPham(noiDung).ToArray());
+            tmp.AddRange(DAL_SanPham.Instance.LoadGoiYTimKiemTacGia(noiDung).ToArray());
+            tmp.AddRange(DAL_BaiDang.Instance.LoadGoiYTimKiemBaiDang(noiDung).ToArray());
+
+            tmp.Sort();
+
+            foreach(string goiY in tmp)
+            {
+                if(!list.Contains(goiY))
+                    list.Add(goiY);
+
+                if (list.Count >= 10)
+                    break;
+            }
+
+            return list;
+        }
+
+        public void LuuLichSuTimKiem(KhachHang khachHang, string noiDung)
+        {
+            if(khachHang.lichSuTimKiem.Count >= 10)
+            {
+                DAL_KhachHang.Instance.XoaMotLichSuTimKiem(khachHang.maSo, khachHang.lichSuTimKiem.Last());
+                khachHang.lichSuTimKiem.Remove(khachHang.lichSuTimKiem.Last());
+            }
+
+            if (khachHang.lichSuTimKiem.Contains(noiDung))
+            {
+                khachHang.lichSuTimKiem.Remove(noiDung);
+                khachHang.lichSuTimKiem.Insert(0, noiDung);
+
+                DAL_KhachHang.Instance.CapNhatLichSuTimKiem(khachHang.maSo, noiDung);
+            }
+            else
+            {
+                khachHang.lichSuTimKiem.Insert(0, noiDung);
+                DAL_KhachHang.Instance.LuuLichSuTimKiem(khachHang.maSo, noiDung);
+            }
+        }
+
+        public void XoaLichSuTimKiem(KhachHang khachHang)
+        {
+            khachHang.lichSuTimKiem.Clear();
+            DAL_KhachHang.Instance.XoaTatCaLichSu(khachHang.maSo);
+        }
+
+        public void MuaLai(KhachHang khachHang, string maDH)
+        {
+            foreach(SanPham sanPham in khachHang.listDonHang.GetDonHangFromMaDH(maDH).list)
+            {
+                if(BLL_SanPham.Instance.GetSoLuongFromMaSP(sanPham.maSP) != 0)
+                    khachHang.gioHang.Add(sanPham);
+            }
         }
 
         public void DanhGia(KhachHang khachHang, DanhGia danhGia, string maDH)
@@ -53,7 +167,7 @@ namespace Program.BLL
                 maTB = BLL_ThongBao.Instance.GetMaMoi(),
                 from = "HeThongXu",
                 to = "KH" + khachHang.maSo,
-                noiDung = $"Chúc mừng bạn đã nhận được 200 xu từ việc đánh giá sản phẩm đã mua từ đơn hàng DH{maDH}.",
+                noiDung = $"Chúc mừng bạn đã nhận được 200 xu từ việc đánh giá sản phẩm.",
                 ngayGui = DateTime.Now,
                 tinhTrang = 0
             };
@@ -83,6 +197,21 @@ namespace Program.BLL
             DAL_BaiDang.Instance.Thich(baiDang.maBD);
             baiDang.luocThich += 1;
             khachHang.Thich(baiDang.maBD);
+        }
+
+        public void XemBaiDang(KhachHang khachHang, string maBD)
+        {
+            if (khachHang.listDaXem.Contains(maBD)){
+                return;
+            }
+
+            khachHang.listDaXem.Insert(0, maBD);
+            DAL_KhachHang.Instance.ThemDaXem(khachHang.maSo, maBD);
+            if (khachHang.listDaXem.Count == 20)
+            {
+                DAL_KhachHang.Instance.XoaDaXem(khachHang.maSo, khachHang.listDaXem.Last());
+                khachHang.listDaXem.Remove(khachHang.listDaXem.Last());
+            }
         }
 
         public void HuyThich(KhachHang khachHang, BaiDang baiDang)
@@ -185,11 +314,6 @@ namespace Program.BLL
         public string GetTenFromMaKH(string maKH)
         {
             return DAL_KhachHang.Instance.LoadTenFromMaKH(maKH);
-        }
-
-        public void HuyDonHang(DonHang donHang)
-        {
-            DAL_DonHang.Instance.CapNhatTinhTrangDonHang(donHang.maDH, donHang.tinhTrang, donHang.ngayGiaoHang);
         }
 
         public bool DaTheoDoi(List<string> listFollow, string maS)

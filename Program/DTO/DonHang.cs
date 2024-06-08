@@ -74,6 +74,16 @@ namespace Program
                 return "";
         }
 
+        public string PhuongThucThanhToan()
+        {
+            if (ptThanhToan == 0)
+                return "Thanh toán khi nhận hàng";
+            else if (ptThanhToan == 1)
+                return "Chuyển khoản ngân hàng";
+            else
+                return "";
+        }
+
         public void diDon()
         {
             Random random = new Random();

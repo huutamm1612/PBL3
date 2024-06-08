@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Program.BLL
 {
@@ -24,6 +25,73 @@ namespace Program.BLL
         private BLL_BaiDang()
         {
 
+        }
+
+        public List<string> GetAllLyDoToCaoBaiDang()
+        {
+            return DAL_BaiDang.Instance.LoadLyDoToCaoBaiDang();
+        }
+
+        public QLBaiDang GetBaiDangFromTextSearch(string text)
+        {
+            text = Utils.Instance.XoaDau(text);
+
+            QLBaiDang qLBaiDang = new QLBaiDang();
+
+            string query = $"SELECT DISTINCT BD.maBD FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN SanPham SP ON SP.maSP = SPBD.maSP WHERE SP.ten LIKE N'%{text}%' OR BD.tieuDe LIKE '%{text}%' OR SP.tacGia LIKE '%{text}%'";
+
+            foreach (string maLoaiSP in DAL_SanPham.Instance.LoadMaLoaiSPFromText(text))
+            {
+                query += $" OR maLoaiSP = '{maLoaiSP}'";
+            }
+
+            foreach (string maBD in DAL_BaiDang.Instance.LoadMaBDWithQuery(query))
+            {
+                BaiDang baiDang = DAL_BaiDang.Instance.LoadBaiDangFromMaBD(maBD);
+                qLBaiDang.Add(baiDang);
+            }
+
+            return qLBaiDang;
+        }
+
+        public List<string> TaoListDanhMucVaSoLuong(QLBaiDang qLBaiDang)
+        {
+            Dictionary<string, int> soLuongMap = new Dictionary<string, int>();
+
+            foreach(BaiDang baiDang in qLBaiDang.list)
+            {
+                foreach(SanPham sanPham in baiDang.list)
+                {
+                    if (!soLuongMap.ContainsKey(sanPham.loaiSP.tenLoaiSP))
+                    {
+                        soLuongMap.Add(sanPham.loaiSP.tenLoaiSP, 1);
+                    }
+                }
+            }
+
+            List<string> list = new List<string>();
+
+            foreach (var item in soLuongMap.OrderBy(kv => kv.Value).ToList())
+            {
+                list.Add(item.Key);
+            }
+
+            return list;
+        }
+
+        public QLBaiDang GetBaiDangInKhoangGia(QLBaiDang qLBaiDang, int min, int max)
+        {
+            QLBaiDang newQLBD = new QLBaiDang();
+            
+            foreach(BaiDang baiDang in qLBaiDang.list)
+            {
+                int gia = Utils.Instance.GiamGia(baiDang.giaMin(), baiDang.giamGia);
+                //MessageBox.Show(gia.ToString());
+                if (min < gia && gia < max)
+                    newQLBD.Add(baiDang);
+            }
+
+            return newQLBD;
         }
 
         public string GetURLFromMaDH(string maDH)

@@ -33,6 +33,11 @@ namespace Program.BLL
             return Database.Instance.MaMoi("maDH");
         }
 
+        public List<string> GetAllLyDoHuyDonByKhachHang()
+        {
+            return DAL_DonHang.Instance.LoadAllLyDoHuyDonByKhachHang();
+        }
+
         public List<DonHang> PhanRaDonHang(QLSanPham qLSanPham)
         {
             List<DonHang> list = new List<DonHang>();
@@ -50,6 +55,11 @@ namespace Program.BLL
             }
 
             return list;
+        }
+
+        public int TongTien(QLSanPham qLSanPham, int xu)
+        {
+            return qLSanPham.tinhTongTien() + 30000 * qLSanPham.SoLuongShop() - xu;
         }
 
         public void DatHang(DonHang donHang)

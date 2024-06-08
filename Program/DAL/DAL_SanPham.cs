@@ -28,6 +28,63 @@ namespace Program.DAL
 
         }
 
+        public List<string> LoadMaLoaiSPFromText(string text)
+        {
+            string query = $"SELECT * FROM LoaiSanPham WHERE tenLoaiSP LIKE N'%{text}%'";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            List<string> list = new List<string>();
+            foreach(DataRow row in table.Rows)
+            {
+                list.Add(row["maLoaiSP"].ToString());
+            }
+
+            return list;
+        }
+
+        public List<string> LoadGoiYTimKiemTheLoai(string noiDung)
+        {
+            string query = $"SELECT DISTINCT TOP 10 tenLoaiSP FROM LoaiSanPham WHERE tenLoaiSP LIKE '{noiDung}%'";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+
+            List<string> list = new List<string>();
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["tenLoaiSP"].ToString());
+            }
+
+            return list;
+        }
+
+        public List<string> LoadGoiYTimKiemTacGia(string noiDung)
+        {
+            string query = $"SELECT DISTINCT TOP 10 tacGia from SanPham WHERE tacGia LIKE '{noiDung}%'";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            List<string> list = new List<string>();
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["tacGia"].ToString());
+            }
+
+            return list;
+        }
+
+        public List<string> LoadGoiYTimKiemSanPham(string noiDung)
+        {
+            string query = $"SELECT DISTINCT TOP 10 ten from SanPham WHERE ten LIKE '{noiDung}%'";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            List<string> list = new List<string>();
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["ten"].ToString());
+            }
+
+            return list;
+        }
+        
         public void GiaoHang(string maSP, int soLuong)
         {
             string query = "UPDATE SanPham SET soLuong = soLuong - @soLuong WHERE maSP = @maSP";

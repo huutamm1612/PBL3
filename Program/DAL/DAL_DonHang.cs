@@ -1,4 +1,5 @@
 ﻿using Program.BLL;
+using Program.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,6 +27,21 @@ namespace Program.DAL
         {
 
         }
+
+        public List<string> LoadAllLyDoHuyDonByKhachHang()
+        {
+            string query = "SELECT * FROM LyDo WHERE loaiLyDo = 0";
+
+            List<string> list = new List<string>();
+
+            DataTable table = Database.Instance.ExecuteQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["noiDung"].ToString());
+            }
+
+            return list;
+        } 
 
         public QLDonHang LoadAllDonHangFromMaKH(string maKH)    
         {
@@ -73,6 +89,19 @@ namespace Program.DAL
             SqlParameter param1 = new SqlParameter("@maDH", maDH);
             SqlParameter param2 = new SqlParameter("@ngayGiaoHang", ngayGiaoHang);
             Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
+        public void KhachHangHuyHang(string maDH, string lyDo)
+        {
+            string query = "INSERT INTO DonHangBiHuy VALUES(@maDH, @lyDo, 1, @ngayHuy)";
+            SqlParameter param1 = new SqlParameter("@maDH", maDH);
+            SqlParameter param2 = new SqlParameter("@lyDo", lyDo);
+            SqlParameter param3 = new SqlParameter("@ngayHuy", DateTime.Now);
+            Database.Instance.ExecuteNonQuery(query, param1, param2, param3);
+
+            query = "UPDATE DonHang SET tinhTrang = -1 WHERE maDH = @maDH";
+            SqlParameter param4 = new SqlParameter("@maDH", maDH);
+            Database.Instance.ExecuteNonQuery(query, param4);
         }
 
         public void CapNhatTinhTrangDonHang(string maDH, int tinhTrang, DateTime ngayGiaoHang)

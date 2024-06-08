@@ -162,6 +162,12 @@
     </Compile>
     <Compile Include="DTO\LoaiSanPham.cs" />
     <Compile Include="DTO\Nguoi.cs" />
+    <Compile Include="GUI\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHangForm.resx">
       <DependentUpon>KhachHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -316,6 +325,99 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\coin3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bell2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cantSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\following1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bill5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truct1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truct2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truct3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spinner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spinner1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

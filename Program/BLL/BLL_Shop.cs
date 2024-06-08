@@ -26,6 +26,11 @@ namespace Program.BLL
 
         }
 
+        public string GetTenShopFromMaBD(string maBD)
+        {
+            return DAL_Shop.Instance.LoadTenShopFromMaBD(maBD);
+        }
+
         public void CapNhatThongTin(Shop Shop)
         {
             DAL_Shop.Instance.CapNhatThongTin(Shop);
@@ -55,6 +60,13 @@ namespace Program.BLL
             }
             return -1;
         }
+
+        public void ThemBaiDang(Shop shop, BaiDang baiDang)
+        {
+            shop.Insert(0, baiDang);
+            BLL_BaiDang.Instance.ThemBaiDang(baiDang);
+        }
+
         public void CapNhatSanPham(Shop shop, SanPham sanPham)
         {
             shop.listBaiDang.GetSanPhamFromMaSP(sanPham.maSP).SuaSanPham(sanPham);
@@ -88,6 +100,20 @@ namespace Program.BLL
                 tinhTrang = 0
             };
 
+            if(shop.listDonHang.list[index].xu != 0)
+            {
+                ThongBao thongBao2 = new ThongBao
+                {
+                    maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                    from = "HeThongXu",
+                    to = "KH" + shop.listDonHang.list[index].maKH,
+                    noiDung = $"Bạn đã dùng {shop.listDonHang.list[index].xu} cho đơn hàng DH{shop.listDonHang.list[index].maDH}.",
+                    ngayGui = DateTime.Now,
+                    tinhTrang = 0
+                };
+                BLL_ThongBao.Instance.ThemThongBao(thongBao2);
+            }
+
             BLL_ThongBao.Instance.ThemThongBao(thongBao);
             BLL_DonHang.Instance.GiaoHang(shop.listDonHang.list[index].maDH, shop.listDonHang.list[index].ngayGiaoHang);
 
@@ -96,6 +122,10 @@ namespace Program.BLL
         public string GetTenShopFromMaS(string maS)
         {
             return DAL_Shop.Instance.LoadTenShopFromMaS(maS);
+        }
+        public Shop GetShopFromMaDH(string maDH)
+        {
+            return DAL_Shop.Instance.LoadShopFromMaDH(maDH);
         }
 
         public void ThemDiaChi(DiaChi diaChi, string maS)
