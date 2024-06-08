@@ -11,7 +11,6 @@ namespace Program
 {
     public class SanPham
     {
-
         public string maSP { get; set; }
         public LoaiSanPham loaiSP { get; set; }
         public string maS { get; set; }

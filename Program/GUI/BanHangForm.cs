@@ -207,6 +207,12 @@ namespace Program
             switch (currTab.Text)
             {
                 case "Trang Chủ":
+                    btnChoXacNhan.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 0) + ("\nChờ Xác Nhận");
+                    btnDangGiao.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang,  1) +  "\nĐang giao";
+                    btnDonHuy.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, -1) + "\nĐơn Hủy";
+                    btnHoanThanh.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 2) + "\nHoàn thành";
+                    btnSanPhamBiTamKhoa.Text = "Sản phẩm bị tạm khóa";
+                    btnSanPhamHetHang.Text = "Sản phẩm hết hàng";
                     SwitchPanel(trangChuPanel);
                     break;
 
@@ -226,6 +232,8 @@ namespace Program
                 case "Tất Cả Sản Phẩm":
                     QLSP = new QLSanPham();
                     SwitchPanel(tatCaSanPhamPanel);
+                    HetHangPanel.Visible = false;
+                    ViPhamPanel.Visible = false;
                     layTCSP();
                     break;
 
@@ -243,6 +251,9 @@ namespace Program
                     QLBD = new QLBaiDang();
                     SwitchPanel(tatCaBaiDang_Panel);
                     layTCBD();
+                    break;
+                case "Doanh Thu":
+                    SwitchPanel(doanhThuPanel);
                     break;
             }
 
@@ -772,6 +783,7 @@ namespace Program
                 Size = luuSPButton.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
+                Cursor = Cursors.Hand,
             };
             Button btnXoa = new Button
             {
@@ -781,6 +793,7 @@ namespace Program
                 Size = huyThemSPButton.Size,
                 Font = font1,
                 BackColor = color1,
+                Cursor = Cursors.Hand,
             };
 
             panel.Controls.Add(btnXoa);
@@ -1035,6 +1048,7 @@ namespace Program
                 Size = btnThongTinSanPham.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
+                Cursor = Cursors.Hand,
             };
           
             p.Controls.Add(txtTenSP);
@@ -1163,6 +1177,7 @@ namespace Program
                 Size = btnThongTinSanPham.Size,
                 Font = font1,
                 BackColor = Color.OrangeRed,
+                Cursor = Cursors.Hand,
             };
 
             Button btnXoa1 = new Button
@@ -1174,7 +1189,9 @@ namespace Program
                 Font = font1,
                 BackColor = btnXoa.BackColor,
                 FlatStyle = FlatStyle.Flat,
-                FlatAppearance = { BorderSize = 0 }
+                FlatAppearance = { BorderSize = 0 },
+                Cursor = Cursors.Hand,
+
             };
             p.Controls.Add(txtTieuDe1);
             p.Controls.Add(txtGiamGia1);
@@ -1518,7 +1535,8 @@ namespace Program
                 BackColor = Color.DarkGray,
                 Cursor = Cursors.Hand,
                 FlatStyle = FlatStyle.Flat,
-                Parent = tailPanel
+                Parent = tailPanel,
+
             };
             button.FlatAppearance.BorderSize = 0;
             button.FlatAppearance.MouseOverBackColor = Color.Silver;
@@ -1677,6 +1695,190 @@ namespace Program
         private void btnTTSP_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnChoXacNhan_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(TatCaDHPanel);
+            ChuyenLoaiDH_Click(DHChoXNButton, null);
+        }
+
+        private void btnDangGiao_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(TatCaDHPanel);
+            ChuyenLoaiDH_Click(DHDangVCButton, null);
+        }
+
+        private void btnHoanThanh_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(TatCaDHPanel);
+            ChuyenLoaiDH_Click(DHDaHTButton, null);
+        }
+
+        private void btnDonHuy_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(TatCaDHPanel);
+            ChuyenLoaiDH_Click(DHDaHuyButton, null);
+            
+        }
+
+        private void btnTatCa_Click(object sender, EventArgs e)
+        {
+            btnHetHang.ForeColor = Color.Black;
+            btnTatCa.ForeColor = Color.Red;
+            btnViPham.ForeColor = Color.Black;
+            tcsp_Panel.Visible = true;
+            HetHangPanel.Visible = false;
+            ViPhamPanel.Visible = false;
+
+        }
+
+        private void btnHetHang_Click(object sender, EventArgs e)
+        {
+            btnHetHang.ForeColor = Color.Red;
+            btnTatCa.ForeColor = Color.Black;
+            btnViPham.ForeColor = Color.Black;
+            tcsp_Panel.Visible = false;
+            HetHangPanel.Visible = true;
+            ViPhamPanel.Visible = false;
+            //FL_HetHang.Controls.Add(hetSanPhamPanel(sanPham);
+            layTCSPHH();
+        }
+        private void layTCSPHH()
+        {
+            FL_HetHang.Controls.Clear();
+            foreach (BaiDang baiDang in shop.listBaiDang.list)
+            {
+                foreach (SanPham sanPham in baiDang.GetAllSP())
+                {
+                    if (sanPham.luocBan > 100) //
+                    ThemThongTinSanPhamHH(sanPham);
+                }
+            }
+        }
+        private void ThemThongTinSanPhamHH(SanPham sanPham)
+        {
+            QLSP.list.Add(sanPham);
+            FL_HetHang.Size = new Size(FL_HetHang.Size.Width, FL_HetHang.Size.Height + panel13.Size.Height + 20);
+            FL_HetHang.Controls.Add(this.hetSanPhamPanel(sanPham));
+            FL_HetHang.Visible = true;
+        }
+        private Panel hetSanPhamPanel(SanPham sanPham)
+        {
+            Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Panel p = new Panel
+            {
+                Location = new Point(0, 0),
+                Size = panel13.Size,
+                BackColor = Color.White
+            };
+            PictureBox picImage = new PictureBox
+            {
+                Location = pic1.Location,
+                Size = pic1.Size,
+                Font = font1,
+                Name = "pic1",
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = System.Drawing.Image.FromFile(sanPham.anh)
+            };
+
+            TextBox txtTieuDe1 = new TextBox
+            {
+                Location = txt1.Location,
+                Text = sanPham.ten,
+                Size = txt1.Size,
+                Name = "txtTieuDe",
+                Font = font1,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                Multiline = true,
+                ReadOnly = true,
+            };
+
+            TextBox txtGiamGia1 = new TextBox
+            {
+                Location = txt2.Location,
+                Text = sanPham.luocBan.ToString(),
+                Size = txt2.Size,
+                Name = "txt2",
+                Font = font1,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            TextBox txtMoTa = new TextBox
+            {
+                Location = textBox60.Location,
+                Text = sanPham.gia.ToString() + "đ",
+                Size = textBox60.Size,
+                Name = "txt3",
+                Font = font1,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            TextBox txtLuocThich1 = new TextBox
+            {
+                Location = textBox61.Location,
+                Text = "0",
+                Size = textBox61.Size,
+                Name = "txtKhoHang",
+                Font = font1,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                TabIndex = 0,
+                ReadOnly = true,
+            };
+            Button btnTTSP1 = new Button
+            {
+                Location = btnTTSP.Location,
+                Text = "Thông tin chi tiết",
+                ForeColor = Color.MistyRose,
+                Size = btnThongTinSanPham.Size,
+                Font = font1,
+                BackColor = Color.OrangeRed,
+                Cursor = Cursors.Hand,
+            };
+            p.Controls.Add(txtTieuDe1);
+            p.Controls.Add(txtGiamGia1);
+            p.Controls.Add(txtMoTa);
+            p.Controls.Add(txtLuocThich1);
+            p.Controls.Add(btnTTSP1);
+            p.Controls.Add(picImage);
+
+            btnTTSP1.Click += TTBD_Button;
+            return p;
+        }
+
+        private void btnViPham_Click(object sender, EventArgs e)
+        {
+            btnHetHang.ForeColor = Color.Black;
+            btnTatCa.ForeColor = Color.Black;
+            btnViPham.ForeColor = Color.Red;
+            tcsp_Panel.Visible = false;
+            HetHangPanel.Visible = false;
+            ViPhamPanel.Visible = true;
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            FL_PanelDaThanhToan.Visible = true;
+            FL_PanelChuaThanhToan.Visible = false;
+            btnDaThanhToan.ForeColor = Color.Red;
+            btnChuaThanhToan.ForeColor = Color.Black;
+        }
+
+        private void btnChuaThanhToan_Click(object sender, EventArgs e)
+        {
+            FL_PanelDaThanhToan.Visible = false;
+            FL_PanelChuaThanhToan.Visible = true;
+            btnDaThanhToan.ForeColor = Color.Black;
+            btnChuaThanhToan.ForeColor = Color.Red;
         }
     }
 }
