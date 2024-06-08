@@ -1068,7 +1068,6 @@ namespace Program
             panel.MouseMove += new MouseEventHandler(MouseMovePanel);
             //panel.Click += new EventHandler(func);
             // pictureBox25
-
             using (Bitmap bmp = new Bitmap(baiDang.anhBia))
             {
                 PictureBox anhBia = new PictureBox

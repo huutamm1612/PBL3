@@ -104,6 +104,17 @@ namespace Program.BLL
             DAL_KhachHang.Instance.NhanHang(donHang.maKH, donHang.tongTien);
             DAL_Shop.Instance.GiaoHangThanhCong(donHang.list[0].maS, donHang.tongTien + donHang.xu);
         }
+        public int DemSoLuong(QLDonHang donHangList, int tinhTrang) // =0
+        {
+            int count = 0;
 
+            foreach(DonHang donHang in donHangList.list)
+            {
+                if (donHang.tinhTrang == tinhTrang)
+                    count++;
+            }
+
+            return count;
+        }
     }
 }
