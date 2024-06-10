@@ -35,6 +35,13 @@ CREATE TABLE UserAccount(
 	CONSTRAINT FK_UserAccount_CauHoi FOREIGN KEY (maCH) REFERENCES CauHoi(maCH)
 )
 
+CREATE TABLE AdminAccount(
+	taiKhoan varchar(50) PRIMARY KEY,
+	matKhau varchar(50)
+)
+
+INSERT INTO AdminAccount VALUES('admin1', 'Admin@123')
+
 CREATE TABLE DiaChi (
 	maDC varchar(10) PRIMARY KEY,
 	maSo varchar(10),

@@ -28,6 +28,14 @@ namespace Program.DAL
 
         }
 
+        public void ThemBaiDangViPham(string maBD, string lyDo)
+        {
+            string query = "INSERT INTO BaiDangViPham VALUES(@maBD, @lyDo)";
+            SqlParameter param1 = new SqlParameter("@maBD", maBD);
+            SqlParameter param2 = new SqlParameter("@lyDo", lyDo);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
         public List<string> LoadLyDoToCaoBaiDang()
         {
             string query = "SELECT * FROM LyDo WHERE loaiLyDo = 2";
@@ -133,7 +141,7 @@ namespace Program.DAL
         public QLBaiDang LoadALLBaiDang()
         {
             QLBaiDang list = new QLBaiDang();
-            string query = "SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD";
+            string query = "SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD AND BD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
             DataTable table = Database.Instance.ExecuteQuery(query);
 
             foreach (DataRow row in table.Rows)
@@ -147,8 +155,9 @@ namespace Program.DAL
         public QLBaiDang LoadAllBaiDangFromMaS(string maS)
         {
             QLBaiDang list = new QLBaiDang();
-            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BDS.maS = '{maS}'";
-            DataTable table = Database.Instance.ExecuteQuery(query);
+            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BDS.maS = @maS AND BD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
+            SqlParameter param = new SqlParameter("@maS", maS);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
 
             foreach(DataRow row in table.Rows)
             {
@@ -160,10 +169,13 @@ namespace Program.DAL
 
         public BaiDang LoadBaiDangFromMaBD(string maBD)
         {
-            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = '{maBD}'";
-            DataRow row = Database.Instance.ExecuteQuery(query).Rows[0];
+            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD AND BD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
 
-            return LoadBaiDang(row);
+            if(table.Rows.Count != 0)
+                return LoadBaiDang(table.Rows[0]);
+            return null;
         }
 
         public void CapNhatBaiDang(BaiDang baiDang)

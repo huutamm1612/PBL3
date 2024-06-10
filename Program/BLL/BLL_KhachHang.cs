@@ -37,6 +37,21 @@ namespace Program.BLL
             BLL_DanhGia.Instance.SuaDanhGia(danhGia);
         }
 
+        public void BaoCaoDanhGia(string maDG, string lyDo)
+        {
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "AnDanh",
+                to = "HeThong",
+                dinhKem = "DG" + maDG,
+                noiDung = $"Đánh giá của một khách hàng bị báo cáo vi phạm với lý do: {lyDo}",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
+        }
+
         public void ToCaoBaiDang(string maBD, string lyDo)
         {
             ThongBao thongBao = new ThongBao

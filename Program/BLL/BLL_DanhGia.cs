@@ -25,6 +25,11 @@ namespace Program.BLL
 
         }
 
+        public QLDanhGia GetAllDanhGiaViPhamFromMaKH(string maKH)
+        {
+            return DAL_DanhGia.Instance.LoadAllDanhGiaViPhamFromMaKH(maKH);
+        }
+
         public List<string> GetAllLyDoBaoCaoDanhGia()
         {
             return DAL_DanhGia.Instance.LoadAllLyDoBaoCaoDanhGia();
@@ -41,6 +46,11 @@ namespace Program.BLL
             }
 
             return qlDanhGia;
+        }
+
+        public DanhGia GetDanhGiaFromMaDG(string maDG)
+        {
+            return DAL_DanhGia.Instance.LoadDanhGiaFromMaDG(maDG);
         }
 
         public void SuaDanhGia(DanhGia danhGia)

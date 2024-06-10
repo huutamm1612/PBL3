@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Program.DTO
 {
-    public class User : TaiKhoan
+    public class Admin : TaiKhoan
     {
-        public bool biKhoa { get; private set; } = false;
-        
-        public User()
+        public Admin()
         {
             taiKhoan = "";
             matKhau = "";
@@ -19,11 +17,10 @@ namespace Program
 
         public List<SqlParameter> GetParameters()
         {
-            return new List<SqlParameter>
+            return new List<SqlParameter> 
             {
-                new SqlParameter("@taiKhoan", taiKhoan),
-                new SqlParameter("@matKhau", matKhau),
-                new SqlParameter("@biKhoa", biKhoa)
+                new SqlParameter("@taiKhoan", this.taiKhoan),
+                new SqlParameter("@matKhau", this.matKhau)
             };
         }
         
@@ -32,19 +29,10 @@ namespace Program
             this.taiKhoan = taiKhoan;
             this.matKhau = matKhau;
         }
+
         public override void doiMatKhau(string matKhauMoi)
         {
             this.matKhau = matKhauMoi;
-        }
-        public void dangKy(string taiKhoan, string matKhau)
-        {
-            this.taiKhoan = taiKhoan;
-            this.matKhau = matKhau;
-        }
-
-        public bool kiemTraMatKhau(string matKhau)
-        {
-            return this.matKhau == matKhau;
         }
     }
 }

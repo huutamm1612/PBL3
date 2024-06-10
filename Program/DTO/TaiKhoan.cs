@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    internal abstract class TaiKhoan
+    public abstract class TaiKhoan
     {
         public string taiKhoan { get; set; }
         public string matKhau { get; set; }

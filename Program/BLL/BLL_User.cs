@@ -86,6 +86,11 @@ namespace Program.BLL
             DAL_User.Instance.DoiMatKhau(taiKhoan, matKhau);
         }
 
+        public User DangNhapAsShop(string taiKhoan, string matKhau)
+        {
+            return DAL_User.Instance.DangNhapAsShop(taiKhoan, matKhau);
+        }
+
         public void DoiMatKhau(User user, string matKhauMoi)
         {
             user.doiMatKhau(matKhauMoi);

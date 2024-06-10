@@ -27,6 +27,21 @@ namespace Program.DAL
 
         }
 
+        public QLDanhGia LoadAllDanhGiaViPhamFromMaKH(string maKH)
+        {
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGiaViPham DGVP ON DG.maDG = DGVP.maDG JOIN DanhGia_KhachHang DGKH ON DGKH.maDG = DG.maDG WHERE DGKH.maKH = '0000000001'";
+
+            return null;
+        }
+
+        public void ThemDanhGiaViPham(string maDG, string lyDo)
+        {
+            string query = "INSERT INTO DanhGiaViPham VALUES(@maDG, @lyDo)";
+            SqlParameter param1 = new SqlParameter("@maDG", maDG);
+            SqlParameter param2 = new SqlParameter("@lyDo", lyDo);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
         public void SuaDanhGia(DanhGia danhGia)
         {
             string query = "UPDATE DanhGia SET doiTuong = @doiTuong, thietKeBia = @thietKeBia, noiDung = @noiDung, sao = @sao, ngayThem = @ngayThem WHERE maDG = @maDG";
@@ -48,11 +63,20 @@ namespace Program.DAL
             return list;
         }
 
+        public DanhGia LoadDanhGiaFromMaDG(string maDG)
+        {
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG JOIN DanhGia_KhachHang DGKH ON DGKH.maDG = DG.maDG WHERE DG.maDG = @maDG AND DG.maDG NOT IN (SELECT maDG FROM DanhGiaViPham)";
+            SqlParameter param = new SqlParameter("@maDG", maDG);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+
+            return LoadDanhGia(row);
+        }
+
         public QLDanhGia LoadAllDanhGiaFromMaKH(string maKH)
         {
             QLDanhGia qLDanhGia = new QLDanhGia();
 
-            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGKH.maKH = @maKH ORDER BY ngayThem DESC";
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGKH.maKH = @maKH AND DG.maDG NOT IN (SELECT maDG FROM DanhGiaViPham) ORDER BY ngayThem DESC";
             SqlParameter param = new SqlParameter("@maKH", maKH);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -68,7 +92,7 @@ namespace Program.DAL
         {
             QLDanhGia qLDanhGia = new QLDanhGia();
 
-            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = @maBD ORDER BY ngayThem DESC";
+            string query = "SELECT * FROM DanhGia DG JOIN DanhGia_KhachHang DGKH ON DG.maDG = DGKH.maDG JOIN DanhGia_BaiDang DGBD ON DGBD.maDG = DG.maDG WHERE DGBD.maBD = @maBD AND DG.maDG NOT IN (SELECT maDG FROM DanhGiaViPham) ORDER BY ngayThem DESC";
             SqlParameter param = new SqlParameter("@maBD", maBD);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 

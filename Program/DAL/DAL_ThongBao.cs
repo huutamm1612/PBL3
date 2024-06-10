@@ -27,6 +27,13 @@ namespace Program.DAL
 
         }
 
+        public void XoaThongBaoFromMaTB(string maTB)
+        {
+            string query = "DELETE FROM ThongBao WHERE maTB = @maTB";
+            SqlParameter param = new SqlParameter("@maTB", maTB);
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
         public bool IsVanChuyenDaGui(string maDH)
         {
             string query = "SELECT * FROM ThongBao WHERE _From = 'BenVanChuyen' AND dinhKem = @maDH";
@@ -48,6 +55,21 @@ namespace Program.DAL
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
             foreach(DataRow row in table.Rows)
+            {
+                list.Add(LoadThongBao(row));
+            }
+
+            return list;
+        }
+
+        public QLThongBao LoadAllThongBaoToHeThong()
+        {
+            QLThongBao list = new QLThongBao();
+
+            string query = "SELECT * FROM ThongBao WHERE _To = 'HeThong' ORDER BY ngayGui DESC";
+            DataTable table = Database.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in table.Rows)
             {
                 list.Add(LoadThongBao(row));
             }

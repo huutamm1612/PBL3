@@ -38,7 +38,7 @@ namespace Program.BLL
 
             QLBaiDang qLBaiDang = new QLBaiDang();
 
-            string query = $"SELECT DISTINCT BD.maBD FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN SanPham SP ON SP.maSP = SPBD.maSP WHERE SP.ten LIKE N'%{text}%' OR BD.tieuDe LIKE '%{text}%' OR SP.tacGia LIKE '%{text}%'";
+            string query = $"SELECT DISTINCT BD.maBD FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN SanPham SP ON SP.maSP = SPBD.maSP WHERE (SP.ten LIKE N'%{text}%' OR BD.tieuDe LIKE '%{text}%' OR SP.tacGia LIKE '%{text}%') AND BD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
 
             foreach (string maLoaiSP in DAL_SanPham.Instance.LoadMaLoaiSPFromText(text))
             {

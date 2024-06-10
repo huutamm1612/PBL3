@@ -170,6 +170,18 @@ namespace Program.DAL
 
             return LoadUser(table.Rows[0]);
         }
+        public User DangNhapAsShop(string taiKhoan, string matKhau)
+        {
+            string query = "SELECT UA.* From UserAccount UA JOIN KhachHang KH ON UA.taiKhoan = KH.taiKhoan JOIN KhachHang_Shop KHS ON KHS.maKH = KH.maKH WHERE UA.taiKhoan = @taiKhoan AND UA.matKhau = @matKhau";
+            SqlParameter param1 = new SqlParameter("@taiKhoan", taiKhoan);
+            SqlParameter param2 = new SqlParameter("@matKhau", matKhau);
+            DataTable table = Database.Instance.ExecuteQuery(query, param1, param2);
+
+            if (table.Rows.Count == 0)
+                return null;
+
+            return LoadUser(table.Rows[0]);
+        }
 
         private User LoadUser(DataRow row)
         {

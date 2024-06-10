@@ -79,44 +79,6 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.screen_Panel = new System.Windows.Forms.Panel();
-            this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnViPham = new System.Windows.Forms.Button();
-            this.btnHetHang = new System.Windows.Forms.Button();
-            this.btnTatCa = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tcsp_Panel = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.chiTietSP_Panel = new System.Windows.Forms.Panel();
-            this.btnThongTinSanPham = new System.Windows.Forms.Button();
-            this.txtLuocBanTCSP = new System.Windows.Forms.TextBox();
-            this.txtSoLuongTCSP = new System.Windows.Forms.TextBox();
-            this.txtDonGiaTCSP = new System.Windows.Forms.TextBox();
-            this.txtTenTCSP = new System.Windows.Forms.TextBox();
-            this.picAnhTCSP = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ViPhamPanel = new System.Windows.Forms.Panel();
-            this.HetHangPanel = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.textBox55 = new System.Windows.Forms.TextBox();
-            this.textBox53 = new System.Windows.Forms.TextBox();
-            this.textBox50 = new System.Windows.Forms.TextBox();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.textBox48 = new System.Windows.Forms.TextBox();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.btn = new System.Windows.Forms.Button();
-            this.textBox61 = new System.Windows.Forms.TextBox();
-            this.textBox60 = new System.Windows.Forms.TextBox();
-            this.txt2 = new System.Windows.Forms.TextBox();
-            this.txt1 = new System.Windows.Forms.TextBox();
-            this.pic1 = new System.Windows.Forms.PictureBox();
-            this.FL_HetHang = new System.Windows.Forms.FlowLayoutPanel();
             this.themSanPhamPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -236,32 +198,6 @@
             this.textBox44 = new System.Windows.Forms.TextBox();
             this.textBox45 = new System.Windows.Forms.TextBox();
             this.textBox46 = new System.Windows.Forms.TextBox();
-            this.doanhThuPanel = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.btnDaThanhToan = new System.Windows.Forms.Button();
-            this.btnChuaThanhToan = new System.Windows.Forms.Button();
-            this.textBox67 = new System.Windows.Forms.TextBox();
-            this.FL_PanelChuaThanhToan = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.textBox72 = new System.Windows.Forms.TextBox();
-            this.textBox73 = new System.Windows.Forms.TextBox();
-            this.textBox74 = new System.Windows.Forms.TextBox();
-            this.textBox75 = new System.Windows.Forms.TextBox();
-            this.FL_PanelDaThanhToan = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.textBox71 = new System.Windows.Forms.TextBox();
-            this.textBox70 = new System.Windows.Forms.TextBox();
-            this.textBox69 = new System.Windows.Forms.TextBox();
-            this.textBox68 = new System.Windows.Forms.TextBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.textBox66 = new System.Windows.Forms.TextBox();
-            this.textBox65 = new System.Windows.Forms.TextBox();
-            this.textBox64 = new System.Windows.Forms.TextBox();
-            this.textBox63 = new System.Windows.Forms.TextBox();
-            this.textBox62 = new System.Windows.Forms.TextBox();
-            this.textBox59 = new System.Windows.Forms.TextBox();
-            this.textBox58 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tatCaPanel = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.TatCaDHPanel = new System.Windows.Forms.Panel();
@@ -333,20 +269,84 @@
             this.pic_SDT = new System.Windows.Forms.PictureBox();
             this.pic_Email = new System.Windows.Forms.PictureBox();
             this.pic_DiaChi = new System.Windows.Forms.PictureBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.button27 = new System.Windows.Forms.Button();
-            this.ChuaThanhToan_Panel = new System.Windows.Forms.Panel();
-            this.txtDonHangCTT = new System.Windows.Forms.TextBox();
-            this.txtTrangThaiCTT = new System.Windows.Forms.TextBox();
-            this.txtPhuongThucCTT = new System.Windows.Forms.TextBox();
-            this.txtSoTienCTT = new System.Windows.Forms.TextBox();
+            this.tatCaSanPhamPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnViPham = new System.Windows.Forms.Button();
+            this.btnHetHang = new System.Windows.Forms.Button();
+            this.btnTatCa = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tcsp_Panel = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.chiTietSP_Panel = new System.Windows.Forms.Panel();
+            this.btnThongTinSanPham = new System.Windows.Forms.Button();
+            this.txtLuocBanTCSP = new System.Windows.Forms.TextBox();
+            this.txtSoLuongTCSP = new System.Windows.Forms.TextBox();
+            this.txtDonGiaTCSP = new System.Windows.Forms.TextBox();
+            this.txtTenTCSP = new System.Windows.Forms.TextBox();
+            this.picAnhTCSP = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ViPhamPanel = new System.Windows.Forms.Panel();
+            this.HetHangPanel = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.textBox55 = new System.Windows.Forms.TextBox();
+            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.textBox50 = new System.Windows.Forms.TextBox();
+            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btn = new System.Windows.Forms.Button();
+            this.textBox61 = new System.Windows.Forms.TextBox();
+            this.textBox60 = new System.Windows.Forms.TextBox();
+            this.txt2 = new System.Windows.Forms.TextBox();
+            this.txt1 = new System.Windows.Forms.TextBox();
+            this.pic1 = new System.Windows.Forms.PictureBox();
+            this.FL_HetHang = new System.Windows.Forms.FlowLayoutPanel();
+            this.doanhThuPanel = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
             this.DaThanhToanPanel = new System.Windows.Forms.Panel();
             this.txtSoTienDTT = new System.Windows.Forms.TextBox();
             this.txtPhuongThucDTT = new System.Windows.Forms.TextBox();
             this.txtTrangThaiDTT = new System.Windows.Forms.TextBox();
             this.txtDonHangDTT = new System.Windows.Forms.TextBox();
+            this.ChuaThanhToan_Panel = new System.Windows.Forms.Panel();
+            this.txtSoTienCTT = new System.Windows.Forms.TextBox();
+            this.txtPhuongThucCTT = new System.Windows.Forms.TextBox();
+            this.txtTrangThaiCTT = new System.Windows.Forms.TextBox();
+            this.txtDonHangCTT = new System.Windows.Forms.TextBox();
+            this.btnDaThanhToan = new System.Windows.Forms.Button();
+            this.btnChuaThanhToan = new System.Windows.Forms.Button();
+            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.FL_PanelChuaThanhToan = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.textBox72 = new System.Windows.Forms.TextBox();
+            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.textBox74 = new System.Windows.Forms.TextBox();
+            this.textBox75 = new System.Windows.Forms.TextBox();
+            this.FL_PanelDaThanhToan = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.textBox70 = new System.Windows.Forms.TextBox();
+            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.textBox68 = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.textBox66 = new System.Windows.Forms.TextBox();
+            this.textBox65 = new System.Windows.Forms.TextBox();
+            this.textBox64 = new System.Windows.Forms.TextBox();
+            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.textBox59 = new System.Windows.Forms.TextBox();
+            this.textBox58 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.button27 = new System.Windows.Forms.Button();
             this.headerPanel.SuspendLayout();
             this.dangKyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.borderEmail)).BeginInit();
@@ -356,16 +356,6 @@
             this.choice_Panel.SuspendLayout();
             this.funcFLPanel.SuspendLayout();
             this.screen_Panel.SuspendLayout();
-            this.tatCaSanPhamPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tcsp_Panel.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.chiTietSP_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAnhTCSP)).BeginInit();
-            this.HetHangPanel.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.themSanPhamPanel.SuspendLayout();
             this.miniConTrolPanel.SuspendLayout();
             this.TTBH_Panel.SuspendLayout();
@@ -398,13 +388,6 @@
             this.chiTietBaiDang_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAnh)).BeginInit();
             this.panel6.SuspendLayout();
-            this.doanhThuPanel.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.FL_PanelChuaThanhToan.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.FL_PanelDaThanhToan.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel14.SuspendLayout();
             this.tatCaPanel.SuspendLayout();
             this.TatCaDHPanel.SuspendLayout();
             this.HeaderDHPanel.SuspendLayout();
@@ -425,8 +408,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_SDT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_DiaChi)).BeginInit();
-            this.ChuaThanhToan_Panel.SuspendLayout();
+            this.tatCaSanPhamPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tcsp_Panel.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.chiTietSP_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnhTCSP)).BeginInit();
+            this.HetHangPanel.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
+            this.doanhThuPanel.SuspendLayout();
+            this.panel15.SuspendLayout();
             this.DaThanhToanPanel.SuspendLayout();
+            this.ChuaThanhToan_Panel.SuspendLayout();
+            this.FL_PanelChuaThanhToan.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.FL_PanelDaThanhToan.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -1266,445 +1266,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
-            this.screen_Panel.Controls.Add(this.hoSoShop_Panel);
-            this.screen_Panel.Controls.Add(this.tatCaBaiDang_Panel);
-            this.screen_Panel.Controls.Add(this.tatCaPanel);
             this.screen_Panel.Controls.Add(this.TatCaDHPanel);
             this.screen_Panel.Controls.Add(this.trangChuPanel);
             this.screen_Panel.Controls.Add(this.thietlapShop_panel);
             this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
+            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
+            this.screen_Panel.Controls.Add(this.hoSoShop_Panel);
+            this.screen_Panel.Controls.Add(this.tatCaBaiDang_Panel);
+            this.screen_Panel.Controls.Add(this.tatCaPanel);
             this.screen_Panel.Location = new System.Drawing.Point(320, 60);
             this.screen_Panel.Name = "screen_Panel";
             this.screen_Panel.Size = new System.Drawing.Size(1072, 761);
             this.screen_Panel.TabIndex = 3;
             this.screen_Panel.Visible = false;
-            // 
-            // tatCaSanPhamPanel
-            // 
-            this.tatCaSanPhamPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tatCaSanPhamPanel.AutoScroll = true;
-            this.tatCaSanPhamPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.tatCaSanPhamPanel.Controls.Add(this.panel1);
-            this.tatCaSanPhamPanel.Controls.Add(this.label6);
-            this.tatCaSanPhamPanel.Controls.Add(this.tcsp_Panel);
-            this.tatCaSanPhamPanel.Controls.Add(this.ViPhamPanel);
-            this.tatCaSanPhamPanel.Controls.Add(this.HetHangPanel);
-            this.tatCaSanPhamPanel.Controls.Add(this.FL_HetHang);
-            this.tatCaSanPhamPanel.Location = new System.Drawing.Point(10, 0);
-            this.tatCaSanPhamPanel.Name = "tatCaSanPhamPanel";
-            this.tatCaSanPhamPanel.Size = new System.Drawing.Size(1072, 761);
-            this.tatCaSanPhamPanel.TabIndex = 7;
-            this.tatCaSanPhamPanel.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnViPham);
-            this.panel1.Controls.Add(this.btnHetHang);
-            this.panel1.Controls.Add(this.btnTatCa);
-            this.panel1.Location = new System.Drawing.Point(31, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1618, 60);
-            this.panel1.TabIndex = 4;
-            // 
-            // btnViPham
-            // 
-            this.btnViPham.FlatAppearance.BorderSize = 0;
-            this.btnViPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViPham.ForeColor = System.Drawing.Color.Black;
-            this.btnViPham.Location = new System.Drawing.Point(351, 8);
-            this.btnViPham.Name = "btnViPham";
-            this.btnViPham.Size = new System.Drawing.Size(151, 37);
-            this.btnViPham.TabIndex = 2;
-            this.btnViPham.Text = "Vi phạm";
-            this.btnViPham.UseVisualStyleBackColor = true;
-            this.btnViPham.Click += new System.EventHandler(this.btnViPham_Click);
-            // 
-            // btnHetHang
-            // 
-            this.btnHetHang.FlatAppearance.BorderSize = 0;
-            this.btnHetHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHetHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHetHang.ForeColor = System.Drawing.Color.Black;
-            this.btnHetHang.Location = new System.Drawing.Point(160, 7);
-            this.btnHetHang.Name = "btnHetHang";
-            this.btnHetHang.Size = new System.Drawing.Size(147, 37);
-            this.btnHetHang.TabIndex = 1;
-            this.btnHetHang.Text = "Hết hàng";
-            this.btnHetHang.UseVisualStyleBackColor = true;
-            this.btnHetHang.Click += new System.EventHandler(this.btnHetHang_Click);
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.FlatAppearance.BorderSize = 0;
-            this.btnTatCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTatCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTatCa.ForeColor = System.Drawing.Color.Red;
-            this.btnTatCa.Location = new System.Drawing.Point(18, 9);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(95, 37);
-            this.btnTatCa.TabIndex = 0;
-            this.btnTatCa.Text = "Tất cả";
-            this.btnTatCa.UseVisualStyleBackColor = true;
-            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Tất Cả Sản Phẩm Panel";
-            // 
-            // tcsp_Panel
-            // 
-            this.tcsp_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcsp_Panel.AutoScroll = true;
-            this.tcsp_Panel.Controls.Add(this.panel7);
-            this.tcsp_Panel.Controls.Add(this.chiTietSP_Panel);
-            this.tcsp_Panel.Controls.Add(this.flowLayoutPanel);
-            this.tcsp_Panel.Location = new System.Drawing.Point(31, 115);
-            this.tcsp_Panel.Name = "tcsp_Panel";
-            this.tcsp_Panel.Size = new System.Drawing.Size(10701, 592);
-            this.tcsp_Panel.TabIndex = 5;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.textBox12);
-            this.panel7.Controls.Add(this.textBox14);
-            this.panel7.Controls.Add(this.textBox11);
-            this.panel7.Controls.Add(this.textBox10);
-            this.panel7.Controls.Add(this.textBox9);
-            this.panel7.Location = new System.Drawing.Point(18, 13);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1600, 53);
-            this.panel7.TabIndex = 2;
-            // 
-            // textBox12
-            // 
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(270, 14);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(71, 19);
-            this.textBox12.TabIndex = 6;
-            this.textBox12.Text = "Tên";
-            // 
-            // textBox14
-            // 
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(1051, 14);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(111, 19);
-            this.textBox14.TabIndex = 5;
-            this.textBox14.Text = "Lược bán";
-            // 
-            // textBox11
-            // 
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(544, 14);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(71, 19);
-            this.textBox11.TabIndex = 3;
-            this.textBox11.Text = "Đơn giá";
-            // 
-            // textBox10
-            // 
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(810, 14);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(71, 19);
-            this.textBox10.TabIndex = 2;
-            this.textBox10.Text = "Số lượng";
-            // 
-            // textBox9
-            // 
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(18, 14);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(71, 19);
-            this.textBox9.TabIndex = 1;
-            this.textBox9.Text = "Ảnh";
-            // 
-            // chiTietSP_Panel
-            // 
-            this.chiTietSP_Panel.Controls.Add(this.btnThongTinSanPham);
-            this.chiTietSP_Panel.Controls.Add(this.txtLuocBanTCSP);
-            this.chiTietSP_Panel.Controls.Add(this.txtSoLuongTCSP);
-            this.chiTietSP_Panel.Controls.Add(this.txtDonGiaTCSP);
-            this.chiTietSP_Panel.Controls.Add(this.txtTenTCSP);
-            this.chiTietSP_Panel.Controls.Add(this.picAnhTCSP);
-            this.chiTietSP_Panel.Location = new System.Drawing.Point(18, 374);
-            this.chiTietSP_Panel.Name = "chiTietSP_Panel";
-            this.chiTietSP_Panel.Size = new System.Drawing.Size(1600, 171);
-            this.chiTietSP_Panel.TabIndex = 1;
-            this.chiTietSP_Panel.Visible = false;
-            // 
-            // btnThongTinSanPham
-            // 
-            this.btnThongTinSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinSanPham.Location = new System.Drawing.Point(1295, 57);
-            this.btnThongTinSanPham.Name = "btnThongTinSanPham";
-            this.btnThongTinSanPham.Size = new System.Drawing.Size(196, 56);
-            this.btnThongTinSanPham.TabIndex = 5;
-            this.btnThongTinSanPham.Text = "Thông tin chi tiết";
-            this.btnThongTinSanPham.UseVisualStyleBackColor = true;
-            // 
-            // txtLuocBanTCSP
-            // 
-            this.txtLuocBanTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLuocBanTCSP.Location = new System.Drawing.Point(1085, 72);
-            this.txtLuocBanTCSP.Name = "txtLuocBanTCSP";
-            this.txtLuocBanTCSP.ReadOnly = true;
-            this.txtLuocBanTCSP.Size = new System.Drawing.Size(77, 15);
-            this.txtLuocBanTCSP.TabIndex = 4;
-            this.txtLuocBanTCSP.Text = "0";
-            // 
-            // txtSoLuongTCSP
-            // 
-            this.txtSoLuongTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSoLuongTCSP.Location = new System.Drawing.Point(829, 67);
-            this.txtSoLuongTCSP.Name = "txtSoLuongTCSP";
-            this.txtSoLuongTCSP.ReadOnly = true;
-            this.txtSoLuongTCSP.Size = new System.Drawing.Size(122, 15);
-            this.txtSoLuongTCSP.TabIndex = 3;
-            this.txtSoLuongTCSP.Text = "10000000";
-            // 
-            // txtDonGiaTCSP
-            // 
-            this.txtDonGiaTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDonGiaTCSP.Location = new System.Drawing.Point(561, 66);
-            this.txtDonGiaTCSP.Name = "txtDonGiaTCSP";
-            this.txtDonGiaTCSP.ReadOnly = true;
-            this.txtDonGiaTCSP.Size = new System.Drawing.Size(122, 15);
-            this.txtDonGiaTCSP.TabIndex = 2;
-            this.txtDonGiaTCSP.Text = "100000k";
-            // 
-            // txtTenTCSP
-            // 
-            this.txtTenTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTenTCSP.Location = new System.Drawing.Point(179, 66);
-            this.txtTenTCSP.Multiline = true;
-            this.txtTenTCSP.Name = "txtTenTCSP";
-            this.txtTenTCSP.ReadOnly = true;
-            this.txtTenTCSP.Size = new System.Drawing.Size(316, 47);
-            this.txtTenTCSP.TabIndex = 1;
-            this.txtTenTCSP.Text = "Chiec quan que than thien";
-            // 
-            // picAnhTCSP
-            // 
-            this.picAnhTCSP.Location = new System.Drawing.Point(15, 37);
-            this.picAnhTCSP.Name = "picAnhTCSP";
-            this.picAnhTCSP.Size = new System.Drawing.Size(108, 96);
-            this.picAnhTCSP.TabIndex = 0;
-            this.picAnhTCSP.TabStop = false;
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.Location = new System.Drawing.Point(18, 93);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1600, 220);
-            this.flowLayoutPanel.TabIndex = 3;
-            // 
-            // ViPhamPanel
-            // 
-            this.ViPhamPanel.Location = new System.Drawing.Point(31, 115);
-            this.ViPhamPanel.Name = "ViPhamPanel";
-            this.ViPhamPanel.Size = new System.Drawing.Size(1685, 613);
-            this.ViPhamPanel.TabIndex = 7;
-            // 
-            // HetHangPanel
-            // 
-            this.HetHangPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HetHangPanel.AutoScroll = true;
-            this.HetHangPanel.Controls.Add(this.panel11);
-            this.HetHangPanel.Controls.Add(this.panel13);
-            this.HetHangPanel.Location = new System.Drawing.Point(31, 115);
-            this.HetHangPanel.Name = "HetHangPanel";
-            this.HetHangPanel.Size = new System.Drawing.Size(6837, 592);
-            this.HetHangPanel.TabIndex = 6;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.SystemColors.Control;
-            this.panel11.Controls.Add(this.textBox55);
-            this.panel11.Controls.Add(this.textBox53);
-            this.panel11.Controls.Add(this.textBox50);
-            this.panel11.Controls.Add(this.textBox49);
-            this.panel11.Controls.Add(this.textBox48);
-            this.panel11.Controls.Add(this.textBox47);
-            this.panel11.Location = new System.Drawing.Point(0, 3);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1600, 59);
-            this.panel11.TabIndex = 0;
-            // 
-            // textBox55
-            // 
-            this.textBox55.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox55.Location = new System.Drawing.Point(54, 11);
-            this.textBox55.Name = "textBox55";
-            this.textBox55.Size = new System.Drawing.Size(81, 19);
-            this.textBox55.TabIndex = 5;
-            this.textBox55.Text = "Ảnh";
-            // 
-            // textBox53
-            // 
-            this.textBox53.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox53.Location = new System.Drawing.Point(1293, 11);
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(74, 19);
-            this.textBox53.TabIndex = 4;
-            this.textBox53.Text = "Thao tác";
-            // 
-            // textBox50
-            // 
-            this.textBox50.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox50.Location = new System.Drawing.Point(983, 11);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.Size = new System.Drawing.Size(83, 19);
-            this.textBox50.TabIndex = 3;
-            this.textBox50.Text = "Kho hàng";
-            // 
-            // textBox49
-            // 
-            this.textBox49.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox49.Location = new System.Drawing.Point(750, 11);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(60, 19);
-            this.textBox49.TabIndex = 2;
-            this.textBox49.Text = "Giá";
-            // 
-            // textBox48
-            // 
-            this.textBox48.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox48.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox48.Location = new System.Drawing.Point(523, 11);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(75, 19);
-            this.textBox48.TabIndex = 1;
-            this.textBox48.Text = "Lược bán";
-            // 
-            // textBox47
-            // 
-            this.textBox47.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox47.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox47.Location = new System.Drawing.Point(218, 11);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(127, 19);
-            this.textBox47.TabIndex = 0;
-            this.textBox47.Text = "Tên sản phẩm";
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.btn);
-            this.panel13.Controls.Add(this.textBox61);
-            this.panel13.Controls.Add(this.textBox60);
-            this.panel13.Controls.Add(this.txt2);
-            this.panel13.Controls.Add(this.txt1);
-            this.panel13.Controls.Add(this.pic1);
-            this.panel13.Location = new System.Drawing.Point(28, 590);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1590, 165);
-            this.panel13.TabIndex = 1;
-            this.panel13.Visible = false;
-            // 
-            // btn
-            // 
-            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn.Location = new System.Drawing.Point(1281, 65);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(107, 42);
-            this.btn.TabIndex = 5;
-            this.btn.Text = "button27";
-            this.btn.UseVisualStyleBackColor = true;
-            // 
-            // textBox61
-            // 
-            this.textBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox61.Location = new System.Drawing.Point(970, 73);
-            this.textBox61.Name = "textBox61";
-            this.textBox61.Size = new System.Drawing.Size(114, 26);
-            this.textBox61.TabIndex = 4;
-            this.textBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox61.Visible = false;
-            // 
-            // textBox60
-            // 
-            this.textBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox60.Location = new System.Drawing.Point(708, 73);
-            this.textBox60.Name = "textBox60";
-            this.textBox60.Size = new System.Drawing.Size(114, 26);
-            this.textBox60.TabIndex = 3;
-            this.textBox60.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox60.Visible = false;
-            // 
-            // txt2
-            // 
-            this.txt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt2.Location = new System.Drawing.Point(509, 73);
-            this.txt2.Name = "txt2";
-            this.txt2.Size = new System.Drawing.Size(114, 26);
-            this.txt2.TabIndex = 2;
-            this.txt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt2.Visible = false;
-            // 
-            // txt1
-            // 
-            this.txt1.Location = new System.Drawing.Point(181, 73);
-            this.txt1.Multiline = true;
-            this.txt1.Name = "txt1";
-            this.txt1.Size = new System.Drawing.Size(289, 55);
-            this.txt1.TabIndex = 1;
-            this.txt1.Visible = false;
-            // 
-            // pic1
-            // 
-            this.pic1.Location = new System.Drawing.Point(25, 28);
-            this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(110, 110);
-            this.pic1.TabIndex = 0;
-            this.pic1.TabStop = false;
-            this.pic1.Visible = false;
-            // 
-            // FL_HetHang
-            // 
-            this.FL_HetHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FL_HetHang.AutoScroll = true;
-            this.FL_HetHang.BackColor = System.Drawing.Color.White;
-            this.FL_HetHang.Location = new System.Drawing.Point(31, 183);
-            this.FL_HetHang.Name = "FL_HetHang";
-            this.FL_HetHang.Size = new System.Drawing.Size(6731, 777);
-            this.FL_HetHang.TabIndex = 0;
             // 
             // themSanPhamPanel
             // 
@@ -3196,298 +2770,6 @@
             this.textBox46.TabIndex = 7;
             this.textBox46.Text = "Ảnh";
             // 
-            // doanhThuPanel
-            // 
-            this.doanhThuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.doanhThuPanel.AutoScroll = true;
-            this.doanhThuPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.doanhThuPanel.Controls.Add(this.panel15);
-            this.doanhThuPanel.Controls.Add(this.panel14);
-            this.doanhThuPanel.Controls.Add(this.label13);
-            this.doanhThuPanel.Location = new System.Drawing.Point(10, 0);
-            this.doanhThuPanel.Name = "doanhThuPanel";
-            this.doanhThuPanel.Size = new System.Drawing.Size(1062, 761);
-            this.doanhThuPanel.TabIndex = 10;
-            this.doanhThuPanel.Visible = false;
-            // 
-            // panel15
-            // 
-            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel15.AutoScroll = true;
-            this.panel15.BackColor = System.Drawing.Color.White;
-            this.panel15.Controls.Add(this.DaThanhToanPanel);
-            this.panel15.Controls.Add(this.ChuaThanhToan_Panel);
-            this.panel15.Controls.Add(this.btnDaThanhToan);
-            this.panel15.Controls.Add(this.btnChuaThanhToan);
-            this.panel15.Controls.Add(this.textBox67);
-            this.panel15.Controls.Add(this.FL_PanelChuaThanhToan);
-            this.panel15.Controls.Add(this.FL_PanelDaThanhToan);
-            this.panel15.Location = new System.Drawing.Point(40, 329);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(3910, 369);
-            this.panel15.TabIndex = 2;
-            // 
-            // btnDaThanhToan
-            // 
-            this.btnDaThanhToan.FlatAppearance.BorderSize = 0;
-            this.btnDaThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDaThanhToan.Location = new System.Drawing.Point(245, 49);
-            this.btnDaThanhToan.Name = "btnDaThanhToan";
-            this.btnDaThanhToan.Size = new System.Drawing.Size(201, 35);
-            this.btnDaThanhToan.TabIndex = 4;
-            this.btnDaThanhToan.Text = "Đã thanh toán";
-            this.btnDaThanhToan.UseVisualStyleBackColor = true;
-            this.btnDaThanhToan.Click += new System.EventHandler(this.button28_Click);
-            // 
-            // btnChuaThanhToan
-            // 
-            this.btnChuaThanhToan.FlatAppearance.BorderSize = 0;
-            this.btnChuaThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChuaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChuaThanhToan.ForeColor = System.Drawing.Color.Red;
-            this.btnChuaThanhToan.Location = new System.Drawing.Point(25, 48);
-            this.btnChuaThanhToan.Name = "btnChuaThanhToan";
-            this.btnChuaThanhToan.Size = new System.Drawing.Size(201, 35);
-            this.btnChuaThanhToan.TabIndex = 3;
-            this.btnChuaThanhToan.Text = "Chưa thanh toán";
-            this.btnChuaThanhToan.UseVisualStyleBackColor = true;
-            this.btnChuaThanhToan.Click += new System.EventHandler(this.btnChuaThanhToan_Click);
-            // 
-            // textBox67
-            // 
-            this.textBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox67.Font = new System.Drawing.Font("Yu Gothic", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox67.Location = new System.Drawing.Point(25, 7);
-            this.textBox67.Name = "textBox67";
-            this.textBox67.Size = new System.Drawing.Size(146, 35);
-            this.textBox67.TabIndex = 1;
-            this.textBox67.Text = "Chi tiết";
-            // 
-            // FL_PanelChuaThanhToan
-            // 
-            this.FL_PanelChuaThanhToan.Controls.Add(this.panel17);
-            this.FL_PanelChuaThanhToan.Location = new System.Drawing.Point(34, 112);
-            this.FL_PanelChuaThanhToan.Name = "FL_PanelChuaThanhToan";
-            this.FL_PanelChuaThanhToan.Size = new System.Drawing.Size(1517, 106);
-            this.FL_PanelChuaThanhToan.TabIndex = 6;
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.SystemColors.Control;
-            this.panel17.Controls.Add(this.textBox72);
-            this.panel17.Controls.Add(this.textBox73);
-            this.panel17.Controls.Add(this.textBox74);
-            this.panel17.Controls.Add(this.textBox75);
-            this.panel17.Location = new System.Drawing.Point(3, 3);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(1514, 50);
-            this.panel17.TabIndex = 0;
-            // 
-            // textBox72
-            // 
-            this.textBox72.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox72.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox72.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox72.Location = new System.Drawing.Point(1058, 11);
-            this.textBox72.Name = "textBox72";
-            this.textBox72.Size = new System.Drawing.Size(200, 19);
-            this.textBox72.TabIndex = 3;
-            this.textBox72.Text = "Số tiền chưa thanh toán";
-            // 
-            // textBox73
-            // 
-            this.textBox73.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox73.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox73.Location = new System.Drawing.Point(578, 11);
-            this.textBox73.Name = "textBox73";
-            this.textBox73.Size = new System.Drawing.Size(200, 19);
-            this.textBox73.TabIndex = 2;
-            this.textBox73.Text = "Phương thức thanh toán";
-            // 
-            // textBox74
-            // 
-            this.textBox74.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox74.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox74.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox74.Location = new System.Drawing.Point(265, 11);
-            this.textBox74.Name = "textBox74";
-            this.textBox74.Size = new System.Drawing.Size(130, 19);
-            this.textBox74.TabIndex = 1;
-            this.textBox74.Text = "Trạng thái";
-            // 
-            // textBox75
-            // 
-            this.textBox75.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox75.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox75.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox75.Location = new System.Drawing.Point(27, 11);
-            this.textBox75.Name = "textBox75";
-            this.textBox75.Size = new System.Drawing.Size(130, 19);
-            this.textBox75.TabIndex = 0;
-            this.textBox75.Text = "Đơn hàng";
-            // 
-            // FL_PanelDaThanhToan
-            // 
-            this.FL_PanelDaThanhToan.Controls.Add(this.panel16);
-            this.FL_PanelDaThanhToan.Location = new System.Drawing.Point(34, 112);
-            this.FL_PanelDaThanhToan.Name = "FL_PanelDaThanhToan";
-            this.FL_PanelDaThanhToan.Size = new System.Drawing.Size(1517, 106);
-            this.FL_PanelDaThanhToan.TabIndex = 5;
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.SystemColors.Control;
-            this.panel16.Controls.Add(this.textBox71);
-            this.panel16.Controls.Add(this.textBox70);
-            this.panel16.Controls.Add(this.textBox69);
-            this.panel16.Controls.Add(this.textBox68);
-            this.panel16.Location = new System.Drawing.Point(3, 3);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1514, 50);
-            this.panel16.TabIndex = 0;
-            // 
-            // textBox71
-            // 
-            this.textBox71.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox71.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox71.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox71.Location = new System.Drawing.Point(1058, 11);
-            this.textBox71.Name = "textBox71";
-            this.textBox71.Size = new System.Drawing.Size(200, 19);
-            this.textBox71.TabIndex = 3;
-            this.textBox71.Text = "Số tiền đã thanh toán";
-            // 
-            // textBox70
-            // 
-            this.textBox70.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox70.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox70.Location = new System.Drawing.Point(578, 11);
-            this.textBox70.Name = "textBox70";
-            this.textBox70.Size = new System.Drawing.Size(200, 19);
-            this.textBox70.TabIndex = 2;
-            this.textBox70.Text = "Phương thức thanh toán";
-            // 
-            // textBox69
-            // 
-            this.textBox69.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox69.Location = new System.Drawing.Point(265, 11);
-            this.textBox69.Name = "textBox69";
-            this.textBox69.Size = new System.Drawing.Size(130, 19);
-            this.textBox69.TabIndex = 1;
-            this.textBox69.Text = "Trạng thái";
-            // 
-            // textBox68
-            // 
-            this.textBox68.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox68.Location = new System.Drawing.Point(27, 11);
-            this.textBox68.Name = "textBox68";
-            this.textBox68.Size = new System.Drawing.Size(130, 19);
-            this.textBox68.TabIndex = 0;
-            this.textBox68.Text = "Đơn hàng";
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.White;
-            this.panel14.Controls.Add(this.textBox66);
-            this.panel14.Controls.Add(this.textBox65);
-            this.panel14.Controls.Add(this.textBox64);
-            this.panel14.Controls.Add(this.textBox63);
-            this.panel14.Controls.Add(this.textBox62);
-            this.panel14.Controls.Add(this.textBox59);
-            this.panel14.Controls.Add(this.textBox58);
-            this.panel14.Location = new System.Drawing.Point(40, 61);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1600, 248);
-            this.panel14.TabIndex = 1;
-            // 
-            // textBox66
-            // 
-            this.textBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox66.Location = new System.Drawing.Point(727, 158);
-            this.textBox66.Name = "textBox66";
-            this.textBox66.Size = new System.Drawing.Size(90, 29);
-            this.textBox66.TabIndex = 6;
-            this.textBox66.Text = "đ0";
-            // 
-            // textBox65
-            // 
-            this.textBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox65.Location = new System.Drawing.Point(30, 166);
-            this.textBox65.Name = "textBox65";
-            this.textBox65.Size = new System.Drawing.Size(90, 29);
-            this.textBox65.TabIndex = 5;
-            this.textBox65.Text = "đ0";
-            // 
-            // textBox64
-            // 
-            this.textBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox64.Location = new System.Drawing.Point(727, 142);
-            this.textBox64.Name = "textBox64";
-            this.textBox64.Size = new System.Drawing.Size(90, 15);
-            this.textBox64.TabIndex = 4;
-            this.textBox64.Text = "Tổng cộng";
-            // 
-            // textBox63
-            // 
-            this.textBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox63.Location = new System.Drawing.Point(29, 136);
-            this.textBox63.Name = "textBox63";
-            this.textBox63.Size = new System.Drawing.Size(90, 15);
-            this.textBox63.TabIndex = 3;
-            this.textBox63.Text = "Tổng cộng";
-            // 
-            // textBox62
-            // 
-            this.textBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox62.Font = new System.Drawing.Font("Yu Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox62.Location = new System.Drawing.Point(727, 113);
-            this.textBox62.Name = "textBox62";
-            this.textBox62.Size = new System.Drawing.Size(171, 27);
-            this.textBox62.TabIndex = 2;
-            this.textBox62.Text = "Đã thanh toán";
-            // 
-            // textBox59
-            // 
-            this.textBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox59.Font = new System.Drawing.Font("Yu Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox59.Location = new System.Drawing.Point(29, 101);
-            this.textBox59.Name = "textBox59";
-            this.textBox59.Size = new System.Drawing.Size(185, 27);
-            this.textBox59.TabIndex = 1;
-            this.textBox59.Text = "Chưa thanh toán";
-            // 
-            // textBox58
-            // 
-            this.textBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox58.Font = new System.Drawing.Font("Yu Gothic", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox58.Location = new System.Drawing.Point(27, 13);
-            this.textBox58.Name = "textBox58";
-            this.textBox58.Size = new System.Drawing.Size(146, 35);
-            this.textBox58.TabIndex = 0;
-            this.textBox58.Text = "Tổng quan";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Doanh Thu";
-            // 
             // tatCaPanel
             // 
             this.tatCaPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -4426,68 +3708,466 @@
             this.pic_DiaChi.TabIndex = 24;
             this.pic_DiaChi.TabStop = false;
             // 
-            // openFileDialog1
+            // tatCaSanPhamPanel
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.tatCaSanPhamPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tatCaSanPhamPanel.AutoScroll = true;
+            this.tatCaSanPhamPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.tatCaSanPhamPanel.Controls.Add(this.panel1);
+            this.tatCaSanPhamPanel.Controls.Add(this.label6);
+            this.tatCaSanPhamPanel.Controls.Add(this.tcsp_Panel);
+            this.tatCaSanPhamPanel.Controls.Add(this.ViPhamPanel);
+            this.tatCaSanPhamPanel.Controls.Add(this.HetHangPanel);
+            this.tatCaSanPhamPanel.Controls.Add(this.FL_HetHang);
+            this.tatCaSanPhamPanel.Location = new System.Drawing.Point(10, 0);
+            this.tatCaSanPhamPanel.Name = "tatCaSanPhamPanel";
+            this.tatCaSanPhamPanel.Size = new System.Drawing.Size(1072, 761);
+            this.tatCaSanPhamPanel.TabIndex = 7;
+            this.tatCaSanPhamPanel.Visible = false;
             // 
-            // contextMenuStrip1
+            // panel1
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnViPham);
+            this.panel1.Controls.Add(this.btnHetHang);
+            this.panel1.Controls.Add(this.btnTatCa);
+            this.panel1.Location = new System.Drawing.Point(31, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1618, 60);
+            this.panel1.TabIndex = 4;
             // 
-            // openFileDialog2
+            // btnViPham
             // 
-            this.openFileDialog2.FileName = "openFileDialog2";
+            this.btnViPham.FlatAppearance.BorderSize = 0;
+            this.btnViPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViPham.ForeColor = System.Drawing.Color.Black;
+            this.btnViPham.Location = new System.Drawing.Point(351, 8);
+            this.btnViPham.Name = "btnViPham";
+            this.btnViPham.Size = new System.Drawing.Size(151, 37);
+            this.btnViPham.TabIndex = 2;
+            this.btnViPham.Text = "Vi phạm";
+            this.btnViPham.UseVisualStyleBackColor = true;
+            this.btnViPham.Click += new System.EventHandler(this.btnViPham_Click);
             // 
-            // button27
+            // btnHetHang
             // 
-            this.button27.Location = new System.Drawing.Point(404, 0);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(8, 8);
-            this.button27.TabIndex = 4;
-            this.button27.Text = "button27";
-            this.button27.UseVisualStyleBackColor = true;
+            this.btnHetHang.FlatAppearance.BorderSize = 0;
+            this.btnHetHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHetHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHetHang.ForeColor = System.Drawing.Color.Black;
+            this.btnHetHang.Location = new System.Drawing.Point(160, 7);
+            this.btnHetHang.Name = "btnHetHang";
+            this.btnHetHang.Size = new System.Drawing.Size(147, 37);
+            this.btnHetHang.TabIndex = 1;
+            this.btnHetHang.Text = "Hết hàng";
+            this.btnHetHang.UseVisualStyleBackColor = true;
+            this.btnHetHang.Click += new System.EventHandler(this.btnHetHang_Click);
             // 
-            // ChuaThanhToan_Panel
+            // btnTatCa
             // 
-            this.ChuaThanhToan_Panel.Controls.Add(this.txtSoTienCTT);
-            this.ChuaThanhToan_Panel.Controls.Add(this.txtPhuongThucCTT);
-            this.ChuaThanhToan_Panel.Controls.Add(this.txtTrangThaiCTT);
-            this.ChuaThanhToan_Panel.Controls.Add(this.txtDonHangCTT);
-            this.ChuaThanhToan_Panel.Location = new System.Drawing.Point(32, 238);
-            this.ChuaThanhToan_Panel.Name = "ChuaThanhToan_Panel";
-            this.ChuaThanhToan_Panel.Size = new System.Drawing.Size(1519, 111);
-            this.ChuaThanhToan_Panel.TabIndex = 7;
+            this.btnTatCa.FlatAppearance.BorderSize = 0;
+            this.btnTatCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTatCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTatCa.ForeColor = System.Drawing.Color.Red;
+            this.btnTatCa.Location = new System.Drawing.Point(18, 9);
+            this.btnTatCa.Name = "btnTatCa";
+            this.btnTatCa.Size = new System.Drawing.Size(95, 37);
+            this.btnTatCa.TabIndex = 0;
+            this.btnTatCa.Text = "Tất cả";
+            this.btnTatCa.UseVisualStyleBackColor = true;
+            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
             // 
-            // txtDonHangCTT
+            // label6
             // 
-            this.txtDonHangCTT.Location = new System.Drawing.Point(32, 31);
-            this.txtDonHangCTT.Multiline = true;
-            this.txtDonHangCTT.Name = "txtDonHangCTT";
-            this.txtDonHangCTT.Size = new System.Drawing.Size(197, 58);
-            this.txtDonHangCTT.TabIndex = 0;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(150, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Tất Cả Sản Phẩm Panel";
             // 
-            // txtTrangThaiCTT
+            // tcsp_Panel
             // 
-            this.txtTrangThaiCTT.Location = new System.Drawing.Point(235, 45);
-            this.txtTrangThaiCTT.Name = "txtTrangThaiCTT";
-            this.txtTrangThaiCTT.Size = new System.Drawing.Size(154, 22);
-            this.txtTrangThaiCTT.TabIndex = 1;
+            this.tcsp_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcsp_Panel.AutoScroll = true;
+            this.tcsp_Panel.Controls.Add(this.panel7);
+            this.tcsp_Panel.Controls.Add(this.chiTietSP_Panel);
+            this.tcsp_Panel.Controls.Add(this.flowLayoutPanel);
+            this.tcsp_Panel.Location = new System.Drawing.Point(31, 115);
+            this.tcsp_Panel.Name = "tcsp_Panel";
+            this.tcsp_Panel.Size = new System.Drawing.Size(11989, 592);
+            this.tcsp_Panel.TabIndex = 5;
             // 
-            // txtPhuongThucCTT
+            // panel7
             // 
-            this.txtPhuongThucCTT.Location = new System.Drawing.Point(563, 48);
-            this.txtPhuongThucCTT.Name = "txtPhuongThucCTT";
-            this.txtPhuongThucCTT.Size = new System.Drawing.Size(220, 22);
-            this.txtPhuongThucCTT.TabIndex = 2;
+            this.panel7.Controls.Add(this.textBox12);
+            this.panel7.Controls.Add(this.textBox14);
+            this.panel7.Controls.Add(this.textBox11);
+            this.panel7.Controls.Add(this.textBox10);
+            this.panel7.Controls.Add(this.textBox9);
+            this.panel7.Location = new System.Drawing.Point(18, 13);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1600, 53);
+            this.panel7.TabIndex = 2;
             // 
-            // txtSoTienCTT
+            // textBox12
             // 
-            this.txtSoTienCTT.Location = new System.Drawing.Point(1043, 48);
-            this.txtSoTienCTT.Name = "txtSoTienCTT";
-            this.txtSoTienCTT.Size = new System.Drawing.Size(220, 22);
-            this.txtSoTienCTT.TabIndex = 3;
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.Location = new System.Drawing.Point(270, 14);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(71, 19);
+            this.textBox12.TabIndex = 6;
+            this.textBox12.Text = "Tên";
+            // 
+            // textBox14
+            // 
+            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox14.Location = new System.Drawing.Point(1051, 14);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(111, 19);
+            this.textBox14.TabIndex = 5;
+            this.textBox14.Text = "Lược bán";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(544, 14);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(71, 19);
+            this.textBox11.TabIndex = 3;
+            this.textBox11.Text = "Đơn giá";
+            // 
+            // textBox10
+            // 
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(810, 14);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            this.textBox10.Size = new System.Drawing.Size(71, 19);
+            this.textBox10.TabIndex = 2;
+            this.textBox10.Text = "Số lượng";
+            // 
+            // textBox9
+            // 
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(18, 14);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(71, 19);
+            this.textBox9.TabIndex = 1;
+            this.textBox9.Text = "Ảnh";
+            // 
+            // chiTietSP_Panel
+            // 
+            this.chiTietSP_Panel.Controls.Add(this.btnThongTinSanPham);
+            this.chiTietSP_Panel.Controls.Add(this.txtLuocBanTCSP);
+            this.chiTietSP_Panel.Controls.Add(this.txtSoLuongTCSP);
+            this.chiTietSP_Panel.Controls.Add(this.txtDonGiaTCSP);
+            this.chiTietSP_Panel.Controls.Add(this.txtTenTCSP);
+            this.chiTietSP_Panel.Controls.Add(this.picAnhTCSP);
+            this.chiTietSP_Panel.Location = new System.Drawing.Point(18, 374);
+            this.chiTietSP_Panel.Name = "chiTietSP_Panel";
+            this.chiTietSP_Panel.Size = new System.Drawing.Size(1600, 171);
+            this.chiTietSP_Panel.TabIndex = 1;
+            this.chiTietSP_Panel.Visible = false;
+            // 
+            // btnThongTinSanPham
+            // 
+            this.btnThongTinSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongTinSanPham.Location = new System.Drawing.Point(1295, 57);
+            this.btnThongTinSanPham.Name = "btnThongTinSanPham";
+            this.btnThongTinSanPham.Size = new System.Drawing.Size(196, 56);
+            this.btnThongTinSanPham.TabIndex = 5;
+            this.btnThongTinSanPham.Text = "Thông tin chi tiết";
+            this.btnThongTinSanPham.UseVisualStyleBackColor = true;
+            // 
+            // txtLuocBanTCSP
+            // 
+            this.txtLuocBanTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLuocBanTCSP.Location = new System.Drawing.Point(1085, 72);
+            this.txtLuocBanTCSP.Name = "txtLuocBanTCSP";
+            this.txtLuocBanTCSP.ReadOnly = true;
+            this.txtLuocBanTCSP.Size = new System.Drawing.Size(77, 15);
+            this.txtLuocBanTCSP.TabIndex = 4;
+            this.txtLuocBanTCSP.Text = "0";
+            // 
+            // txtSoLuongTCSP
+            // 
+            this.txtSoLuongTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSoLuongTCSP.Location = new System.Drawing.Point(829, 67);
+            this.txtSoLuongTCSP.Name = "txtSoLuongTCSP";
+            this.txtSoLuongTCSP.ReadOnly = true;
+            this.txtSoLuongTCSP.Size = new System.Drawing.Size(122, 15);
+            this.txtSoLuongTCSP.TabIndex = 3;
+            this.txtSoLuongTCSP.Text = "10000000";
+            // 
+            // txtDonGiaTCSP
+            // 
+            this.txtDonGiaTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDonGiaTCSP.Location = new System.Drawing.Point(561, 66);
+            this.txtDonGiaTCSP.Name = "txtDonGiaTCSP";
+            this.txtDonGiaTCSP.ReadOnly = true;
+            this.txtDonGiaTCSP.Size = new System.Drawing.Size(122, 15);
+            this.txtDonGiaTCSP.TabIndex = 2;
+            this.txtDonGiaTCSP.Text = "100000k";
+            // 
+            // txtTenTCSP
+            // 
+            this.txtTenTCSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTenTCSP.Location = new System.Drawing.Point(179, 66);
+            this.txtTenTCSP.Multiline = true;
+            this.txtTenTCSP.Name = "txtTenTCSP";
+            this.txtTenTCSP.ReadOnly = true;
+            this.txtTenTCSP.Size = new System.Drawing.Size(316, 47);
+            this.txtTenTCSP.TabIndex = 1;
+            this.txtTenTCSP.Text = "Chiec quan que than thien";
+            // 
+            // picAnhTCSP
+            // 
+            this.picAnhTCSP.Location = new System.Drawing.Point(15, 37);
+            this.picAnhTCSP.Name = "picAnhTCSP";
+            this.picAnhTCSP.Size = new System.Drawing.Size(108, 96);
+            this.picAnhTCSP.TabIndex = 0;
+            this.picAnhTCSP.TabStop = false;
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Location = new System.Drawing.Point(18, 93);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1600, 220);
+            this.flowLayoutPanel.TabIndex = 3;
+            // 
+            // ViPhamPanel
+            // 
+            this.ViPhamPanel.Location = new System.Drawing.Point(31, 115);
+            this.ViPhamPanel.Name = "ViPhamPanel";
+            this.ViPhamPanel.Size = new System.Drawing.Size(1685, 613);
+            this.ViPhamPanel.TabIndex = 7;
+            // 
+            // HetHangPanel
+            // 
+            this.HetHangPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HetHangPanel.AutoScroll = true;
+            this.HetHangPanel.Controls.Add(this.panel11);
+            this.HetHangPanel.Controls.Add(this.panel13);
+            this.HetHangPanel.Location = new System.Drawing.Point(31, 115);
+            this.HetHangPanel.Name = "HetHangPanel";
+            this.HetHangPanel.Size = new System.Drawing.Size(8125, 592);
+            this.HetHangPanel.TabIndex = 6;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.SystemColors.Control;
+            this.panel11.Controls.Add(this.textBox55);
+            this.panel11.Controls.Add(this.textBox53);
+            this.panel11.Controls.Add(this.textBox50);
+            this.panel11.Controls.Add(this.textBox49);
+            this.panel11.Controls.Add(this.textBox48);
+            this.panel11.Controls.Add(this.textBox47);
+            this.panel11.Location = new System.Drawing.Point(0, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1600, 59);
+            this.panel11.TabIndex = 0;
+            // 
+            // textBox55
+            // 
+            this.textBox55.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox55.Location = new System.Drawing.Point(54, 11);
+            this.textBox55.Name = "textBox55";
+            this.textBox55.Size = new System.Drawing.Size(81, 19);
+            this.textBox55.TabIndex = 5;
+            this.textBox55.Text = "Ảnh";
+            // 
+            // textBox53
+            // 
+            this.textBox53.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox53.Location = new System.Drawing.Point(1293, 11);
+            this.textBox53.Name = "textBox53";
+            this.textBox53.Size = new System.Drawing.Size(74, 19);
+            this.textBox53.TabIndex = 4;
+            this.textBox53.Text = "Thao tác";
+            // 
+            // textBox50
+            // 
+            this.textBox50.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox50.Location = new System.Drawing.Point(983, 11);
+            this.textBox50.Name = "textBox50";
+            this.textBox50.Size = new System.Drawing.Size(83, 19);
+            this.textBox50.TabIndex = 3;
+            this.textBox50.Text = "Kho hàng";
+            // 
+            // textBox49
+            // 
+            this.textBox49.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox49.Location = new System.Drawing.Point(750, 11);
+            this.textBox49.Name = "textBox49";
+            this.textBox49.Size = new System.Drawing.Size(60, 19);
+            this.textBox49.TabIndex = 2;
+            this.textBox49.Text = "Giá";
+            // 
+            // textBox48
+            // 
+            this.textBox48.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox48.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox48.Location = new System.Drawing.Point(523, 11);
+            this.textBox48.Name = "textBox48";
+            this.textBox48.Size = new System.Drawing.Size(75, 19);
+            this.textBox48.TabIndex = 1;
+            this.textBox48.Text = "Lược bán";
+            // 
+            // textBox47
+            // 
+            this.textBox47.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox47.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox47.Location = new System.Drawing.Point(218, 11);
+            this.textBox47.Name = "textBox47";
+            this.textBox47.Size = new System.Drawing.Size(127, 19);
+            this.textBox47.TabIndex = 0;
+            this.textBox47.Text = "Tên sản phẩm";
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.btn);
+            this.panel13.Controls.Add(this.textBox61);
+            this.panel13.Controls.Add(this.textBox60);
+            this.panel13.Controls.Add(this.txt2);
+            this.panel13.Controls.Add(this.txt1);
+            this.panel13.Controls.Add(this.pic1);
+            this.panel13.Location = new System.Drawing.Point(28, 590);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1590, 165);
+            this.panel13.TabIndex = 1;
+            this.panel13.Visible = false;
+            // 
+            // btn
+            // 
+            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn.Location = new System.Drawing.Point(1281, 65);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(107, 42);
+            this.btn.TabIndex = 5;
+            this.btn.Text = "button27";
+            this.btn.UseVisualStyleBackColor = true;
+            // 
+            // textBox61
+            // 
+            this.textBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox61.Location = new System.Drawing.Point(970, 73);
+            this.textBox61.Name = "textBox61";
+            this.textBox61.Size = new System.Drawing.Size(114, 26);
+            this.textBox61.TabIndex = 4;
+            this.textBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox61.Visible = false;
+            // 
+            // textBox60
+            // 
+            this.textBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox60.Location = new System.Drawing.Point(708, 73);
+            this.textBox60.Name = "textBox60";
+            this.textBox60.Size = new System.Drawing.Size(114, 26);
+            this.textBox60.TabIndex = 3;
+            this.textBox60.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox60.Visible = false;
+            // 
+            // txt2
+            // 
+            this.txt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt2.Location = new System.Drawing.Point(509, 73);
+            this.txt2.Name = "txt2";
+            this.txt2.Size = new System.Drawing.Size(114, 26);
+            this.txt2.TabIndex = 2;
+            this.txt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt2.Visible = false;
+            // 
+            // txt1
+            // 
+            this.txt1.Location = new System.Drawing.Point(181, 73);
+            this.txt1.Multiline = true;
+            this.txt1.Name = "txt1";
+            this.txt1.Size = new System.Drawing.Size(289, 55);
+            this.txt1.TabIndex = 1;
+            this.txt1.Visible = false;
+            // 
+            // pic1
+            // 
+            this.pic1.Location = new System.Drawing.Point(25, 28);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(110, 110);
+            this.pic1.TabIndex = 0;
+            this.pic1.TabStop = false;
+            this.pic1.Visible = false;
+            // 
+            // FL_HetHang
+            // 
+            this.FL_HetHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FL_HetHang.AutoScroll = true;
+            this.FL_HetHang.BackColor = System.Drawing.Color.White;
+            this.FL_HetHang.Location = new System.Drawing.Point(31, 183);
+            this.FL_HetHang.Name = "FL_HetHang";
+            this.FL_HetHang.Size = new System.Drawing.Size(8019, 777);
+            this.FL_HetHang.TabIndex = 0;
+            // 
+            // doanhThuPanel
+            // 
+            this.doanhThuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.doanhThuPanel.AutoScroll = true;
+            this.doanhThuPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.doanhThuPanel.Controls.Add(this.panel15);
+            this.doanhThuPanel.Controls.Add(this.panel14);
+            this.doanhThuPanel.Controls.Add(this.label13);
+            this.doanhThuPanel.Location = new System.Drawing.Point(10, 0);
+            this.doanhThuPanel.Name = "doanhThuPanel";
+            this.doanhThuPanel.Size = new System.Drawing.Size(1062, 761);
+            this.doanhThuPanel.TabIndex = 10;
+            this.doanhThuPanel.Visible = false;
+            // 
+            // panel15
+            // 
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel15.AutoScroll = true;
+            this.panel15.BackColor = System.Drawing.Color.White;
+            this.panel15.Controls.Add(this.DaThanhToanPanel);
+            this.panel15.Controls.Add(this.ChuaThanhToan_Panel);
+            this.panel15.Controls.Add(this.btnDaThanhToan);
+            this.panel15.Controls.Add(this.btnChuaThanhToan);
+            this.panel15.Controls.Add(this.textBox67);
+            this.panel15.Controls.Add(this.FL_PanelChuaThanhToan);
+            this.panel15.Controls.Add(this.FL_PanelDaThanhToan);
+            this.panel15.Location = new System.Drawing.Point(40, 329);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(5066, 369);
+            this.panel15.TabIndex = 2;
             // 
             // DaThanhToanPanel
             // 
@@ -4529,12 +4209,331 @@
             this.txtDonHangDTT.Size = new System.Drawing.Size(197, 58);
             this.txtDonHangDTT.TabIndex = 0;
             // 
+            // ChuaThanhToan_Panel
+            // 
+            this.ChuaThanhToan_Panel.Controls.Add(this.txtSoTienCTT);
+            this.ChuaThanhToan_Panel.Controls.Add(this.txtPhuongThucCTT);
+            this.ChuaThanhToan_Panel.Controls.Add(this.txtTrangThaiCTT);
+            this.ChuaThanhToan_Panel.Controls.Add(this.txtDonHangCTT);
+            this.ChuaThanhToan_Panel.Location = new System.Drawing.Point(32, 238);
+            this.ChuaThanhToan_Panel.Name = "ChuaThanhToan_Panel";
+            this.ChuaThanhToan_Panel.Size = new System.Drawing.Size(1519, 111);
+            this.ChuaThanhToan_Panel.TabIndex = 7;
+            // 
+            // txtSoTienCTT
+            // 
+            this.txtSoTienCTT.Location = new System.Drawing.Point(1043, 48);
+            this.txtSoTienCTT.Name = "txtSoTienCTT";
+            this.txtSoTienCTT.Size = new System.Drawing.Size(220, 22);
+            this.txtSoTienCTT.TabIndex = 3;
+            // 
+            // txtPhuongThucCTT
+            // 
+            this.txtPhuongThucCTT.Location = new System.Drawing.Point(563, 48);
+            this.txtPhuongThucCTT.Name = "txtPhuongThucCTT";
+            this.txtPhuongThucCTT.Size = new System.Drawing.Size(220, 22);
+            this.txtPhuongThucCTT.TabIndex = 2;
+            // 
+            // txtTrangThaiCTT
+            // 
+            this.txtTrangThaiCTT.Location = new System.Drawing.Point(235, 45);
+            this.txtTrangThaiCTT.Name = "txtTrangThaiCTT";
+            this.txtTrangThaiCTT.Size = new System.Drawing.Size(154, 22);
+            this.txtTrangThaiCTT.TabIndex = 1;
+            // 
+            // txtDonHangCTT
+            // 
+            this.txtDonHangCTT.Location = new System.Drawing.Point(32, 31);
+            this.txtDonHangCTT.Multiline = true;
+            this.txtDonHangCTT.Name = "txtDonHangCTT";
+            this.txtDonHangCTT.Size = new System.Drawing.Size(197, 58);
+            this.txtDonHangCTT.TabIndex = 0;
+            // 
+            // btnDaThanhToan
+            // 
+            this.btnDaThanhToan.FlatAppearance.BorderSize = 0;
+            this.btnDaThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaThanhToan.Location = new System.Drawing.Point(245, 49);
+            this.btnDaThanhToan.Name = "btnDaThanhToan";
+            this.btnDaThanhToan.Size = new System.Drawing.Size(201, 35);
+            this.btnDaThanhToan.TabIndex = 4;
+            this.btnDaThanhToan.Text = "Đã thanh toán";
+            this.btnDaThanhToan.UseVisualStyleBackColor = true;
+            this.btnDaThanhToan.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // btnChuaThanhToan
+            // 
+            this.btnChuaThanhToan.FlatAppearance.BorderSize = 0;
+            this.btnChuaThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChuaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChuaThanhToan.ForeColor = System.Drawing.Color.Red;
+            this.btnChuaThanhToan.Location = new System.Drawing.Point(25, 48);
+            this.btnChuaThanhToan.Name = "btnChuaThanhToan";
+            this.btnChuaThanhToan.Size = new System.Drawing.Size(201, 35);
+            this.btnChuaThanhToan.TabIndex = 3;
+            this.btnChuaThanhToan.Text = "Chưa thanh toán";
+            this.btnChuaThanhToan.UseVisualStyleBackColor = true;
+            this.btnChuaThanhToan.Click += new System.EventHandler(this.btnChuaThanhToan_Click);
+            // 
+            // textBox67
+            // 
+            this.textBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox67.Font = new System.Drawing.Font("Yu Gothic", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox67.Location = new System.Drawing.Point(25, 7);
+            this.textBox67.Name = "textBox67";
+            this.textBox67.Size = new System.Drawing.Size(146, 35);
+            this.textBox67.TabIndex = 1;
+            this.textBox67.Text = "Chi tiết";
+            // 
+            // FL_PanelChuaThanhToan
+            // 
+            this.FL_PanelChuaThanhToan.Controls.Add(this.panel17);
+            this.FL_PanelChuaThanhToan.Location = new System.Drawing.Point(34, 112);
+            this.FL_PanelChuaThanhToan.Name = "FL_PanelChuaThanhToan";
+            this.FL_PanelChuaThanhToan.Size = new System.Drawing.Size(1517, 106);
+            this.FL_PanelChuaThanhToan.TabIndex = 6;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.SystemColors.Control;
+            this.panel17.Controls.Add(this.textBox72);
+            this.panel17.Controls.Add(this.textBox73);
+            this.panel17.Controls.Add(this.textBox74);
+            this.panel17.Controls.Add(this.textBox75);
+            this.panel17.Location = new System.Drawing.Point(3, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(1514, 50);
+            this.panel17.TabIndex = 0;
+            // 
+            // textBox72
+            // 
+            this.textBox72.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox72.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox72.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox72.Location = new System.Drawing.Point(1058, 11);
+            this.textBox72.Name = "textBox72";
+            this.textBox72.Size = new System.Drawing.Size(200, 19);
+            this.textBox72.TabIndex = 3;
+            this.textBox72.Text = "Số tiền chưa thanh toán";
+            // 
+            // textBox73
+            // 
+            this.textBox73.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox73.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox73.Location = new System.Drawing.Point(578, 11);
+            this.textBox73.Name = "textBox73";
+            this.textBox73.Size = new System.Drawing.Size(200, 19);
+            this.textBox73.TabIndex = 2;
+            this.textBox73.Text = "Phương thức thanh toán";
+            // 
+            // textBox74
+            // 
+            this.textBox74.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox74.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox74.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox74.Location = new System.Drawing.Point(265, 11);
+            this.textBox74.Name = "textBox74";
+            this.textBox74.Size = new System.Drawing.Size(130, 19);
+            this.textBox74.TabIndex = 1;
+            this.textBox74.Text = "Trạng thái";
+            // 
+            // textBox75
+            // 
+            this.textBox75.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox75.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox75.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox75.Location = new System.Drawing.Point(27, 11);
+            this.textBox75.Name = "textBox75";
+            this.textBox75.Size = new System.Drawing.Size(130, 19);
+            this.textBox75.TabIndex = 0;
+            this.textBox75.Text = "Đơn hàng";
+            // 
+            // FL_PanelDaThanhToan
+            // 
+            this.FL_PanelDaThanhToan.Controls.Add(this.panel16);
+            this.FL_PanelDaThanhToan.Location = new System.Drawing.Point(34, 112);
+            this.FL_PanelDaThanhToan.Name = "FL_PanelDaThanhToan";
+            this.FL_PanelDaThanhToan.Size = new System.Drawing.Size(1517, 106);
+            this.FL_PanelDaThanhToan.TabIndex = 5;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.SystemColors.Control;
+            this.panel16.Controls.Add(this.textBox71);
+            this.panel16.Controls.Add(this.textBox70);
+            this.panel16.Controls.Add(this.textBox69);
+            this.panel16.Controls.Add(this.textBox68);
+            this.panel16.Location = new System.Drawing.Point(3, 3);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(1514, 50);
+            this.panel16.TabIndex = 0;
+            // 
+            // textBox71
+            // 
+            this.textBox71.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox71.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox71.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox71.Location = new System.Drawing.Point(1058, 11);
+            this.textBox71.Name = "textBox71";
+            this.textBox71.Size = new System.Drawing.Size(200, 19);
+            this.textBox71.TabIndex = 3;
+            this.textBox71.Text = "Số tiền đã thanh toán";
+            // 
+            // textBox70
+            // 
+            this.textBox70.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox70.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox70.Location = new System.Drawing.Point(578, 11);
+            this.textBox70.Name = "textBox70";
+            this.textBox70.Size = new System.Drawing.Size(200, 19);
+            this.textBox70.TabIndex = 2;
+            this.textBox70.Text = "Phương thức thanh toán";
+            // 
+            // textBox69
+            // 
+            this.textBox69.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox69.Location = new System.Drawing.Point(265, 11);
+            this.textBox69.Name = "textBox69";
+            this.textBox69.Size = new System.Drawing.Size(130, 19);
+            this.textBox69.TabIndex = 1;
+            this.textBox69.Text = "Trạng thái";
+            // 
+            // textBox68
+            // 
+            this.textBox68.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox68.Location = new System.Drawing.Point(27, 11);
+            this.textBox68.Name = "textBox68";
+            this.textBox68.Size = new System.Drawing.Size(130, 19);
+            this.textBox68.TabIndex = 0;
+            this.textBox68.Text = "Đơn hàng";
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.White;
+            this.panel14.Controls.Add(this.textBox66);
+            this.panel14.Controls.Add(this.textBox65);
+            this.panel14.Controls.Add(this.textBox64);
+            this.panel14.Controls.Add(this.textBox63);
+            this.panel14.Controls.Add(this.textBox62);
+            this.panel14.Controls.Add(this.textBox59);
+            this.panel14.Controls.Add(this.textBox58);
+            this.panel14.Location = new System.Drawing.Point(40, 61);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1600, 248);
+            this.panel14.TabIndex = 1;
+            // 
+            // textBox66
+            // 
+            this.textBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox66.Location = new System.Drawing.Point(727, 158);
+            this.textBox66.Name = "textBox66";
+            this.textBox66.Size = new System.Drawing.Size(90, 29);
+            this.textBox66.TabIndex = 6;
+            this.textBox66.Text = "đ0";
+            // 
+            // textBox65
+            // 
+            this.textBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox65.Location = new System.Drawing.Point(30, 166);
+            this.textBox65.Name = "textBox65";
+            this.textBox65.Size = new System.Drawing.Size(90, 29);
+            this.textBox65.TabIndex = 5;
+            this.textBox65.Text = "đ0";
+            // 
+            // textBox64
+            // 
+            this.textBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox64.Location = new System.Drawing.Point(727, 142);
+            this.textBox64.Name = "textBox64";
+            this.textBox64.Size = new System.Drawing.Size(90, 15);
+            this.textBox64.TabIndex = 4;
+            this.textBox64.Text = "Tổng cộng";
+            // 
+            // textBox63
+            // 
+            this.textBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox63.Location = new System.Drawing.Point(29, 136);
+            this.textBox63.Name = "textBox63";
+            this.textBox63.Size = new System.Drawing.Size(90, 15);
+            this.textBox63.TabIndex = 3;
+            this.textBox63.Text = "Tổng cộng";
+            // 
+            // textBox62
+            // 
+            this.textBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox62.Font = new System.Drawing.Font("Yu Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox62.Location = new System.Drawing.Point(727, 113);
+            this.textBox62.Name = "textBox62";
+            this.textBox62.Size = new System.Drawing.Size(171, 27);
+            this.textBox62.TabIndex = 2;
+            this.textBox62.Text = "Đã thanh toán";
+            // 
+            // textBox59
+            // 
+            this.textBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox59.Font = new System.Drawing.Font("Yu Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox59.Location = new System.Drawing.Point(29, 101);
+            this.textBox59.Name = "textBox59";
+            this.textBox59.Size = new System.Drawing.Size(185, 27);
+            this.textBox59.TabIndex = 1;
+            this.textBox59.Text = "Chưa thanh toán";
+            // 
+            // textBox58
+            // 
+            this.textBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox58.Font = new System.Drawing.Font("Yu Gothic", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox58.Location = new System.Drawing.Point(27, 13);
+            this.textBox58.Name = "textBox58";
+            this.textBox58.Size = new System.Drawing.Size(146, 35);
+            this.textBox58.TabIndex = 0;
+            this.textBox58.Text = "Tổng quan";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(0, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Doanh Thu";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(404, 0);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(8, 8);
+            this.button27.TabIndex = 4;
+            this.button27.Text = "button27";
+            this.button27.UseVisualStyleBackColor = true;
+            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1392, 819);
-            this.Controls.Add(this.screen_Panel);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.choice_Panel);
             this.Controls.Add(this.headerPanel);
@@ -4554,21 +4553,6 @@
             this.choice_Panel.ResumeLayout(false);
             this.funcFLPanel.ResumeLayout(false);
             this.screen_Panel.ResumeLayout(false);
-            this.tatCaSanPhamPanel.ResumeLayout(false);
-            this.tatCaSanPhamPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.tcsp_Panel.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.chiTietSP_Panel.ResumeLayout(false);
-            this.chiTietSP_Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAnhTCSP)).EndInit();
-            this.HetHangPanel.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.themSanPhamPanel.ResumeLayout(false);
             this.themSanPhamPanel.PerformLayout();
             this.miniConTrolPanel.ResumeLayout(false);
@@ -4608,18 +4592,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAnh)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.doanhThuPanel.ResumeLayout(false);
-            this.doanhThuPanel.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.FL_PanelChuaThanhToan.ResumeLayout(false);
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            this.FL_PanelDaThanhToan.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.tatCaPanel.ResumeLayout(false);
             this.tatCaPanel.PerformLayout();
             this.TatCaDHPanel.ResumeLayout(false);
@@ -4650,10 +4622,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_SDT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_DiaChi)).EndInit();
-            this.ChuaThanhToan_Panel.ResumeLayout(false);
-            this.ChuaThanhToan_Panel.PerformLayout();
+            this.tatCaSanPhamPanel.ResumeLayout(false);
+            this.tatCaSanPhamPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.tcsp_Panel.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.chiTietSP_Panel.ResumeLayout(false);
+            this.chiTietSP_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAnhTCSP)).EndInit();
+            this.HetHangPanel.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
+            this.doanhThuPanel.ResumeLayout(false);
+            this.doanhThuPanel.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
             this.DaThanhToanPanel.ResumeLayout(false);
             this.DaThanhToanPanel.PerformLayout();
+            this.ChuaThanhToan_Panel.ResumeLayout(false);
+            this.ChuaThanhToan_Panel.PerformLayout();
+            this.FL_PanelChuaThanhToan.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.FL_PanelDaThanhToan.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }

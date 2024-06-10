@@ -1,6 +1,7 @@
 ﻿using Program.BLL;
 using Program.DTO;
 using Program.GUI;
+using Program.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,23 +18,42 @@ namespace Program
     public partial class DangNhap_Form : Form
     {
         public bool dangNhapF;
-        public sendData send;
+        private string typeLog = "All";
+        public sendData send = null;
+        private Timer timer;
 
-        public DangNhap_Form(bool dangNhapState = true)
+        public DangNhap_Form()
+        {
+            KhachHangForm form = new KhachHangForm(BLL_User.Instance.DangNhapBangCache());
+            form.ShowDialog();
+            timer = new Timer();
+            timer.Interval = 1;
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            this.Close();
+        }
+
+        public DangNhap_Form(bool dangNhapState)
         {
             InitializeComponent();
             this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             state(dangNhapState);
         }
 
-        public DangNhap_Form(sendData sender, bool isDangNhap = true)
+        public DangNhap_Form(sendData sender, string typeLog, bool isDangNhap = true)
         {
             InitializeComponent();
             this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.typeLog = typeLog;
             
             this.send = sender;
             state(isDangNhap);
@@ -62,6 +82,24 @@ namespace Program
 
         private void dangNhap()
         {
+            if(typeLog == "All")
+            {
+                typeLogInCBB.SelectedIndex = 0;
+                typeLogInCBB.Enabled = true;
+            }
+            else if(typeLog == "KhachHang")
+            {
+                typeLogInCBB.SelectedIndex = 0;
+                typeLogInCBB.Visible = false;
+                label1.Text += " User";
+            }
+            else if(typeLog == "Shop")
+            {
+                typeLogInCBB.SelectedIndex = 1;
+                typeLogInCBB.Visible = false;
+                label1.Text += " Shop";
+            }
+
             dangNhapF = true;
             LoginPanel.Visible = true;
             Signup_Panel.Visible = false;
@@ -83,9 +121,9 @@ namespace Program
             taiKhoan_DK_Box.Text = "";
             matKhau1_DK_Box.Text = "";
             cauTraLoi_Box.Text = "";
-            matKhau1_DK_Box.UseSystemPasswordChar = false;
+            showPasswordButton.Image = Resources.eyeClose;
+            matKhau1_DK_Box.UseSystemPasswordChar = true;
             taiKhoanSai_DK_Text.Visible = false;
-            hienMK_DK_Check.Checked = false;
             cauHoi_CB.SelectedIndex = 0;
         }
 
@@ -115,17 +153,64 @@ namespace Program
             string taiKhoan = taiKhoan_DN_Box.Text;
             string matKhau = matKhau_DN_Box.Text;
 
-            if (BLL_User.Instance.DangNhap(taiKhoan, matKhau) != null)
+            if(typeLogInCBB.SelectedIndex == 0)
             {
-                LoginError.Visible = false;
-                this.send(taiKhoan, matKhau);
-                Close();
+                if (BLL_User.Instance.DangNhap(taiKhoan, matKhau) != null)
+                {
+                    if (rememberMeCB.Checked)
+                        BLL_User.Instance.LuuTaiKhoan(new User { taiKhoan = taiKhoan, matKhau = matKhau });
+
+                    if(send != null)
+                    {
+                        send(taiKhoan, matKhau);
+                        Close();
+                    }
+                    else
+                    {
+                        KhachHangForm form = new KhachHangForm(new User { taiKhoan = taiKhoan, matKhau = matKhau });
+                        Close();
+                        form.ShowDialog();
+                    }
+                }
+                else
+                {
+                    LoginError.Text = "Username or passwork is not correct!!";
+                    LoginError.Visible = true;
+                }
             }
-            else
+            else if (typeLogInCBB.SelectedIndex == 1)
             {
-                LoginError.Text = "Username or passwork is not correct!!";
-                LoginError.Visible = true;
+                if(BLL_User.Instance.DangNhapAsShop(taiKhoan, matKhau) != null)
+                {
+                    Hide();
+                    Close();
+                    BanHang_Form form = new BanHang_Form();
+                    sendData send = new sendData(form.setData);
+                    send(taiKhoan, matKhau);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    LoginError.Text = "Username or passwork is not correct!!";
+                    LoginError.Visible = true;
+                }
             }
+            else if (typeLogInCBB.SelectedIndex == 2)
+            {
+                if(BLL_Admin.Instance.DangNhap(taiKhoan, matKhau) != null)
+                {
+                    Hide();
+                    Close();
+                    AdminForm form = new AdminForm(new Admin { taiKhoan = taiKhoan, matKhau = matKhau });
+                    form.ShowDialog();
+                }
+                else
+                {
+                    LoginError.Text = "Username or passwork is not correct!!";
+                    LoginError.Visible = true;
+                }
+            }
+
         }
 
         private void quenMK_Button_Click(object sender, EventArgs e)
@@ -148,7 +233,6 @@ namespace Program
         
             cauHoiQMK_CB.SelectedIndex = 0;
             thongBao_Text.Visible = false;
-            hienMK_QMK_Check.Checked = false;
         }
 
         private void dangKy_Button_Click(object sender, EventArgs e)
@@ -160,12 +244,13 @@ namespace Program
 
         private void troVe_button_Click(object sender, EventArgs e)
         {
-            LoginPanel.Visible = false;
-
-            KhachHangForm KHForm = new KhachHangForm();
-            this.Hide();
-            KHForm.Show();
-            Dispose();
+            Close();
+            if (send == null)
+            {
+                Close();
+                KhachHangForm form = new KhachHangForm(null);
+                form.ShowDialog();
+            }
         }
 
         private void dangKy_Botton_Click(object sender, EventArgs e)
@@ -191,21 +276,25 @@ namespace Program
 
         private void refreshDangNhap_Panel()
         {
-            taiKhoan_DN_Box.Text = "Tài Khoản";
-            matKhau_DN_Box.Text = "Mật khẩu";
-            matKhau_DN_Box.UseSystemPasswordChar = false;
-            hienMK_DN_Check.Checked = false;
+            taiKhoan_DN_Box.Text = "";
+            matKhau_DN_Box.Text = "";
+            LoginError.Visible = false;
+            typeLogInCBB.SelectedIndex = 0;
+
+            matKhau_DN_Box.UseSystemPasswordChar = true;
+            showPasswordButton.Image = Resources.eyeClose;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             LoginPanel.Visible = true;
             Signup_Panel.Visible = false;
+            refreshDangNhap_Panel();
         }
 
         private void troVe_DK_Button_Click(object sender, EventArgs e)
         {
-            if(this.dangNhapF == true)
+            if(dangNhapF == true)
             {
                 LoginPanel.Visible = true;
                 Signup_Panel.Visible = false;
@@ -214,16 +303,11 @@ namespace Program
             else
             {
                 KhachHangForm KHForm = new KhachHangForm();
-                this.Hide();
-                KHForm.Show();
-                Dispose();
+                Hide();
+                Close();
+                KHForm.ShowDialog();
             }
 
-        }
-
-        private void hienMK_QMK_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            this.hienMatKhau(hienMK_DK_Check, matKhau1_DK_Box);
         }
 
         private void hienMatKhau(CheckBox hienMK, TextBox box)
@@ -289,18 +373,6 @@ namespace Program
             LoginPanel.Visible = true;
             quenMK_Panel.Visible = false;
             this.Size = new System.Drawing.Size(892, 563);
-        }
-
-        private void hienMK_DK_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            if (hienMK_DK_Check.Checked == true)
-            {
-                matKhau1_DK_Box.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                matKhau1_DK_Box.UseSystemPasswordChar = true;
-            }
         }
 
         private void taiKhoan_DN_Box_TextChanged(object sender, EventArgs e)
@@ -382,14 +454,7 @@ namespace Program
         {
             LoginPanel.Visible = true;
             Signup_Panel.Visible = false;
-        }
-
-        private void matKhau1_QMK_Box_TextChanged_1(object sender, EventArgs e)
-        {
-            if (hienMK_DN_Check.Checked)
-                matKhau_DN_Box.UseSystemPasswordChar = false;
-            else
-                matKhau_DN_Box.UseSystemPasswordChar = true;
+            refreshDangNhap_Panel();
         }
 
         private void xacNhan_QMK_Button_Click_1(object sender, EventArgs e)
@@ -421,22 +486,6 @@ namespace Program
             }
         }
 
-        private void hienMK_QMK_Check_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (hienMK_DN_Check.Checked)
-                matKhau1_QMK_Box.UseSystemPasswordChar = false;
-            else
-                matKhau1_QMK_Box.UseSystemPasswordChar = true;
-        }
-
-        private void hienMK_DN_Check_CheckedChanged(object sender, EventArgs e)
-        {
-            if (hienMK_DN_Check.Checked)
-                matKhau_DN_Box.UseSystemPasswordChar = false;
-            else
-                matKhau_DN_Box.UseSystemPasswordChar = true;
-        }
-
         private void matKhau1_QMK_Box_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -448,6 +497,70 @@ namespace Program
         {
             if (e.KeyCode == Keys.Enter)
                 dangKy_Botton_Click(sender, e);
+        }
+
+        private void ShowPasswordButton(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            if(matKhau_DN_Box.UseSystemPasswordChar)
+            {
+                button.Image = Resources.eye;
+            }
+            else
+            {
+                button.Image = Resources.eyeClose;
+            }
+            matKhau_DN_Box.UseSystemPasswordChar = !matKhau_DN_Box.UseSystemPasswordChar;
+        }
+
+        private void ShowPasswordButton1_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            if (matKhau1_DK_Box.UseSystemPasswordChar)
+            {
+                button.Image = Resources.eye;
+            }
+            else
+            {
+                button.Image = Resources.eyeClose;
+            }
+            matKhau1_DK_Box.UseSystemPasswordChar = !matKhau1_DK_Box.UseSystemPasswordChar;
+        }
+
+        private void ShowPasswordButton2_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            if (matKhau1_QMK_Box.UseSystemPasswordChar)
+            {
+                button.Image = Resources.eye;
+            }
+            else
+            {
+                button.Image = Resources.eyeClose;
+            }
+            matKhau1_QMK_Box.UseSystemPasswordChar = !matKhau1_QMK_Box.UseSystemPasswordChar;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void typeLogInCBB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(typeLogInCBB.SelectedIndex == 0)
+            {
+                rememberMeCB.Visible = true;
+                rememberMeCB.Checked = true;
+            }
+            else
+            {
+                rememberMeCB.Visible = false;
+                rememberMeCB.Checked = false;
+            }
         }
     }
 }

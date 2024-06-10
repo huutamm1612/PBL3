@@ -16,7 +16,7 @@ namespace Program
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KhachHangForm());
+            Application.Run(new DangNhap_Form());
         }
     }
 }

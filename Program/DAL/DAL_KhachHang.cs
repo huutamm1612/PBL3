@@ -42,6 +42,14 @@ namespace Program.DAL
             return list;
         }
 
+        public string LoadMaKHFromMaDG(string maDG)
+        {
+            string query = "SELECT maKH FROM DanhGia_KhachHang WHERE maDG = @maDG";
+            SqlParameter param = new SqlParameter("@maDG", maDG);
+            DataRow row = Database.Instance.ExecuteQuery(query, param).Rows[0];
+            return row["maKH"].ToString();
+        }
+
         public string LoadURLFromMaKH(string maKH)
         {
             string query = "SELECT avt FROM KhachHang WHERE maKH = @maKH";
