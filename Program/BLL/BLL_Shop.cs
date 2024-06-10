@@ -119,6 +119,26 @@ namespace Program.BLL
 
         }
 
+        public void HuyDonHang(Shop shop, string maDH, string lyDo)
+        {
+            DonHang donHang = shop.listDonHang.GetDonHangFromMaDH(maDH);
+            donHang.tinhTrang = -1;
+
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "S" + shop.maSo,
+                to = "KH" + donHang.maKH,
+                dinhKem = "DH" + maDH,
+                noiDung = $"Đơn hàng DH{maDH} của bạn đã bị hủy vào lúc {Utils.Instance.MoTaThoiGian(DateTime.Now)} với lý do: {lyDo}",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+
+            DAL_DonHang.Instance.ShopHuyHang(maDH, lyDo);
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
+        }
+
         public string GetTenShopFromMaS(string maS)
         {
             return DAL_Shop.Instance.LoadTenShopFromMaS(maS);

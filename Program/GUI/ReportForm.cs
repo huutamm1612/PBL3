@@ -39,6 +39,13 @@ namespace Program.GUI
                 textBox13.Text = "Lý Do Hủy";
                 GUI_Utils.Instance.FitTextBox(textBox13);
             }
+            else if(loaiBaoCao == "Shop hủy đơn")
+            {
+                SetFLP(BLL_DonHang.Instance.GetAllLyDoHuyDonByShop());
+                hoanThanhButton.Text = "HỦY ĐƠN HÀNG";
+                textBox13.Text = "Lý Do Hủy";
+                GUI_Utils.Instance.FitTextBox(textBox13);
+            }
             else if(loaiBaoCao == "Tố cáo bài đăng")
             {
                 SetFLP(BLL_BaiDang.Instance.GetAllLyDoToCaoBaiDang());

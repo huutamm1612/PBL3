@@ -28,6 +28,15 @@ namespace Program.DAL
 
         }
 
+        public bool KiemTraViPham(string maSP)
+        {
+            string query = "SELECT * FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SP.maSP = @maSP AND SPBD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
+            SqlParameter param = new SqlParameter("@maSP", maSP);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            return table.Rows.Count == 0;
+        }
+
         public List<string> LoadMaLoaiSPFromText(string text)
         {
             string query = $"SELECT * FROM LoaiSanPham WHERE tenLoaiSP LIKE N'%{text}%'";
@@ -210,7 +219,7 @@ namespace Program.DAL
 
         public void CapNhatSanPham(SanPham sanPham)
         {
-            string query = $"UPDATE SanPham SET maLoaiSP = @maLoaiSP, ten = @ten, gia = @gia, soLuong = @soLuong, tacGia = @tacGia, ngonNgu = @ngonNgu, soTrang = @soTrang, namXuatBan = @namXuatBan, nhaXuatBan = @nhaXuatBan, loaiBia = @loaiBia, moTa = @moTa, luocBan = @luocBan WHERE maSP = @maSP";
+            string query = $"UPDATE SanPham SET maLoaiSP = @maLoaiSP, ten = @ten, gia = @gia, soLuong = @soLuong, tacGia = @tacGia, ngonNgu = @ngonNgu, soTrang = @soTrang, namXuatBan = @namXuatBan, nhaXuatBan = @nhaXuatBan, loaiBia = @loaiBia, moTa = @moTa WHERE maSP = @maSP";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
         }
 
@@ -225,6 +234,7 @@ namespace Program.DAL
                 ten = row["ten"].ToString(),
                 gia = Convert.ToInt32(row["gia"]),
                 soLuong = Convert.ToInt32(row["soLuong"]),
+                soTrang = Convert.ToInt32(row["soTrang"]),
                 luocBan = Convert.ToInt32(row["luocBan"]),
                 tacGia = row["tacGia"].ToString(),
                 dichGia = row["dichGia"].ToString(),

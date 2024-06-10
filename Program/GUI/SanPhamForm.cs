@@ -14,7 +14,6 @@ namespace Program
 {
     public partial class SanPhamForm : Form
     {
-        private QLSanPham QLSP = null;
         private string url = null;
         public SendSanPham send;
         private string maSP = null;

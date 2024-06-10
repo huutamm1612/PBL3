@@ -25,9 +25,9 @@ namespace Program.BLL
 
         }
 
-        public QLDanhGia GetAllDanhGiaViPhamFromMaKH(string maKH)
+        public QLDanhGia GetAllDanhGiaViPhamFromMaKH(string maKH, out List<string> listLyDo)
         {
-            return DAL_DanhGia.Instance.LoadAllDanhGiaViPhamFromMaKH(maKH);
+            return DAL_DanhGia.Instance.LoadAllDanhGiaViPhamFromMaKH(maKH, out listLyDo);
         }
 
         public List<string> GetAllLyDoBaoCaoDanhGia()

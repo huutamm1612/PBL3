@@ -23,7 +23,7 @@ namespace Program.GUI
             this.StartPosition = FormStartPosition.CenterParent;
         }
 
-        public BaiDangForm(SendBaiDang send,  bool isAdd = true)
+        public BaiDangForm(SendBaiDang send)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;

@@ -1,6 +1,7 @@
 ﻿using Program.DAL;
 using Program.DTO;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,20 @@ namespace Program.BLL
 
         }
 
+        public string KiemTraTinhTrang(string maSP)
+        {
+            if (GetSoLuongFromMaSP(maSP) == 0)
+                return "HẾT HÀNG";
+            if (DAL_SanPham.Instance.KiemTraViPham(maSP))
+                return "KHÔNG HIỆU LỰC";
+
+            return "TỐT";
+        }
+
         public void CapNhatSanPham(SanPham sanPham)
         {
             DAL_SanPham.Instance.CapNhatSanPham(sanPham);
         }
-
 
         public string GetMaMoi()
         {

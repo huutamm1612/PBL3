@@ -41,7 +41,21 @@ namespace Program.DAL
             }
 
             return list;
-        } 
+        }
+        public List<string> LoadAllLyDoHuyDonByShop()
+        {
+            string query = "SELECT * FROM LyDo WHERE loaiLyDo = 1";
+
+            List<string> list = new List<string>();
+
+            DataTable table = Database.Instance.ExecuteQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(row["noiDung"].ToString());
+            }
+
+            return list;
+        }
 
         public QLDonHang LoadAllDonHangFromMaKH(string maKH)    
         {
@@ -94,6 +108,19 @@ namespace Program.DAL
         public void KhachHangHuyHang(string maDH, string lyDo)
         {
             string query = "INSERT INTO DonHangBiHuy VALUES(@maDH, @lyDo, 1, @ngayHuy)";
+            SqlParameter param1 = new SqlParameter("@maDH", maDH);
+            SqlParameter param2 = new SqlParameter("@lyDo", lyDo);
+            SqlParameter param3 = new SqlParameter("@ngayHuy", DateTime.Now);
+            Database.Instance.ExecuteNonQuery(query, param1, param2, param3);
+
+            query = "UPDATE DonHang SET tinhTrang = -1 WHERE maDH = @maDH";
+            SqlParameter param4 = new SqlParameter("@maDH", maDH);
+            Database.Instance.ExecuteNonQuery(query, param4);
+        }
+
+        public void ShopHuyHang(string maDH, string lyDo)
+        {
+            string query = "INSERT INTO DonHangBiHuy VALUES(@maDH, @lyDo, 0, @ngayHuy)";
             SqlParameter param1 = new SqlParameter("@maDH", maDH);
             SqlParameter param2 = new SqlParameter("@lyDo", lyDo);
             SqlParameter param3 = new SqlParameter("@ngayHuy", DateTime.Now);

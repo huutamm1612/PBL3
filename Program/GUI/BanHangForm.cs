@@ -35,6 +35,8 @@ namespace Program
         private QLBaiDang QLBD = null;
         private SanPham currSanPham = null;
         private DiaChi diaChi = null;
+        private string currMaDH = null;
+
         public BanHang_Form()
         {
             InitializeComponent();
@@ -50,7 +52,6 @@ namespace Program
             currPanel = newPanel;
             currPanel.Visible = true;
             currPanel.AutoScrollPosition = new Point(0, 0);
-            miniConTrolPanel.Visible = false;
         }
 
         private void RefreshHomePanel()
@@ -166,7 +167,7 @@ namespace Program
 
         private void layTCSP()
         {
-            flowLayoutPanel.Controls.Clear();
+            listSanPham.Controls.Clear();
             foreach(BaiDang baiDang in shop.listBaiDang.list)
             {
                 foreach(SanPham sanPham in baiDang.GetAllSP())
@@ -174,6 +175,8 @@ namespace Program
                     ThemThongTinSanPham(sanPham);
                 }
             }
+            GUI_Utils.Instance.FitFLPHeight(listSanPham);
+            tcsp_Panel.Height = listSanPham.Height + 150;
         }
         private void layTCBD()
         {
@@ -210,7 +213,7 @@ namespace Program
                     btnChoXacNhan.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 0) + ("\nChờ Xác Nhận");
                     btnDangGiao.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang,  1) +  "\nĐang giao";
                     btnDonHuy.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, -1) + "\nĐơn Hủy";
-                    btnHoanThanh.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 2) + "\nHoàn thành";
+                    btnHoanThanh.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 2) + BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 3) + "\nHoàn thành";
                     btnSanPhamBiTamKhoa.Text = "Sản phẩm bị tạm khóa";
                     btnSanPhamHetHang.Text = "Sản phẩm hết hàng";
                     SwitchPanel(trangChuPanel);
@@ -232,8 +235,6 @@ namespace Program
                 case "Tất Cả Sản Phẩm":
                     QLSP = new QLSanPham();
                     SwitchPanel(tatCaSanPhamPanel);
-                    HetHangPanel.Visible = false;
-                    ViPhamPanel.Visible = false;
                     layTCSP();
                     break;
 
@@ -300,13 +301,16 @@ namespace Program
             miniConTrolPanel.Top = 732;
             QLSP.list.Add(sanPham);
 
-            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + formThemSPPanel.Size.Height + 20);
-            panel8.Location = new Point(panel8.Location.X, panel8.Location.Y + formThemSPPanel.Size.Height + 20);
-            formThemSPPanel.Location = themSPButton.Location;
-            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y + formThemSPPanel.Size.Height + 20);
+            Panel panel = sanPhamForm(sanPham);
 
-            listSP_FLPanel.Size = new Size(listSP_FLPanel.Size.Width, listSP_FLPanel.Size.Height + formThemSPPanel.Size.Height + 20);
-            listSP_FLPanel.Controls.Add(this.sanPhamForm(sanPham));
+            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + panel.Height + 20);
+
+            listSP_FLPanel.Controls.Add(panel);
+            GUI_Utils.Instance.FitFLPHeight(listSP_FLPanel);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel1);
+            TTBH_Panel.Height = flowLayoutPanel1.Height + 100;
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel2);
+            flowLayoutPanel2.Height += 100;
             listSP_FLPanel.Visible = true;
         }
 
@@ -826,12 +830,24 @@ namespace Program
             {
                 listSP_FLPanel.Controls.RemoveAt(panelIndex);
             }
-            themSPButton.Location = new Point(themSPButton.Location.X, themSPButton.Location.Y - formThemSPPanel.Size.Height + 20);
+
+            GUI_Utils.Instance.FitFLPHeight(listSP_FLPanel);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel1);
+            TTBH_Panel.Height = flowLayoutPanel1.Height + 100;
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel2);
+            flowLayoutPanel2.Height += 100;
+
         }
         private void UpdateSanPham(SanPham sanPham)
         {
             QLSP.list[index] = sanPham;
             BLL_Shop.Instance.CapNhatSanPham(shop, sanPham);
+            tabClick(button7, null);
+        }
+
+        private void CapNhatSP(SanPham sanPham)
+        {
+            QLSP.list[index] = sanPham;
         }
 
         private void Update_Button(object sender, EventArgs e)
@@ -843,7 +859,7 @@ namespace Program
             DimForm dimForm = new DimForm();
             dimForm.Show();
 
-            SanPhamForm form = new SanPhamForm(UpdateSanPham);
+            SanPhamForm form = new SanPhamForm(CapNhatSP);
             SendSanPham send = new SendSanPham(form.setSanPham);
             send(QLSP.list[index]);
 
@@ -1042,10 +1058,10 @@ namespace Program
             {
                 Location = btnThongTinSanPham.Location,
                 Text = "Thông tin sản phẩm",
-                ForeColor = Color.MistyRose,
+                ForeColor = Color.White,
                 Size = btnThongTinSanPham.Size,
                 Font = font1,
-                BackColor = Color.OrangeRed,
+                BackColor = Color.DimGray,
                 Cursor = Cursors.Hand,
             };
           
@@ -1064,12 +1080,12 @@ namespace Program
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
-            index = flowLayoutPanel.Controls.IndexOf(panelToUpdate);
+            index = listSanPham.Controls.IndexOf(panelToUpdate);
 
             DimForm dimForm = new DimForm();
             dimForm.Show();
 
-            SanPhamForm form = new SanPhamForm(this.UpdateSanPham);
+            SanPhamForm form = new SanPhamForm(UpdateSanPham);
             SendSanPham send = new SendSanPham(form.setSanPham);
             send(QLSP.list[index]);
 
@@ -1084,16 +1100,22 @@ namespace Program
         private void ThemThongTinSanPham(SanPham sanPham)
         {
             QLSP.list.Add(sanPham);
-            flowLayoutPanel.Size = new Size(flowLayoutPanel.Size.Width, flowLayoutPanel.Size.Height + chiTietSP_Panel.Size.Height + 20);
-            flowLayoutPanel.Controls.Add(this.themCTSP(sanPham));
-            flowLayoutPanel.Visible = true;
+            listSanPham.Size = new Size(listSanPham.Size.Width, listSanPham.Size.Height + chiTietSP_Panel.Size.Height + 20);
+            listSanPham.Controls.Add(themCTSP(sanPham));
+            listSanPham.Visible = true;
         }
         private void ThemThongTinBaiDang(BaiDang baiDang)
         {
             QLBD.list.Add(baiDang);
             FLLayout_TatCaBaiDang.Size = new Size(FLLayout_TatCaBaiDang.Size.Width, FLLayout_TatCaBaiDang.Size.Height + chiTietBaiDang_Panel.Size.Height + 20);
-            FLLayout_TatCaBaiDang.Controls.Add(this.themCTBD(baiDang));
+            FLLayout_TatCaBaiDang.Controls.Add(themCTBD(baiDang));
             FLLayout_TatCaBaiDang.Visible = true;
+
+            GUI_Utils.Instance.FitFLPHeight(FLLayout_TatCaBaiDang);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
+            flowLayoutPanel3.Height += 50;
+
+
         }
 
         private Panel themCTBD(BaiDang baiDang)
@@ -1102,8 +1124,9 @@ namespace Program
             Panel p = new Panel
             {
                 Location = new Point(0, 0),
-                Size = chiTietSP_Panel.Size,
-                BackColor = Color.White
+                Size = chiTietBaiDang_Panel.Size,
+                BackColor = Color.White,
+                Margin = chiTietBaiDang_Panel.Margin,
             };
             PictureBox picImage = new PictureBox
             {
@@ -1143,18 +1166,6 @@ namespace Program
                 TabIndex = 0,
                 ReadOnly = true,
             };
-            TextBox txtMoTa = new TextBox
-            {
-                Location = txtMoTa1.Location,
-                Text = baiDang.moTa,
-                Size = txtMoTa1.Size,
-                Name = "txtMoTa",
-                Font = font1,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                TabIndex = 0,
-                ReadOnly = true,
-            };
             TextBox txtLuocThich1 = new TextBox
             {
                 Location = txtLuotThich.Location,
@@ -1170,43 +1181,64 @@ namespace Program
             Button btnTTSP1 = new Button
             {
                 Location = btnTTSP.Location,
-                Text = "Thông tin chi tiết",
-                ForeColor = Color.MistyRose,
-                Size = btnThongTinSanPham.Size,
-                Font = font1,
-                BackColor = Color.OrangeRed,
-                Cursor = Cursors.Hand,
-            };
-
-            Button btnXoa1 = new Button
-            {
-                Location = btnXoa.Location,
-                Text = "Xóa",
-                ForeColor = Color.Black,
-                Size = btnXoa.Size,
-                Font = font1,
-                BackColor = btnXoa.BackColor,
+                Text = "Thông Tin Chi Tiết",
+                ForeColor = Color.White,
+                Size = btnTTSP.Size,
                 FlatStyle = FlatStyle.Flat,
-                FlatAppearance = { BorderSize = 0 },
+                Font = font1,
+                BackColor = Color.Gray,
                 Cursor = Cursors.Hand,
-
             };
+            btnTTSP1.FlatAppearance.BorderSize = 0;
+            btnTTSP1.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btnTTSP1.FlatAppearance.MouseDownBackColor = Color.Silver;
+
+            Button btnTTSP2 = new Button
+            {
+                Location = button22.Location,
+                Text = "Ẩn Bài Đăng",
+                ForeColor = Color.Black,
+                Size = button22.Size,
+                FlatStyle = FlatStyle.Flat,
+                Font = font1,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+            };
+            btnTTSP2.FlatAppearance.BorderSize = 1;
+            btnTTSP2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            btnTTSP2.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+
+            Button btnTTSP3 = new Button
+            {
+                Location = button5.Location,
+                Text = "Xem Sản Phẩm",
+                ForeColor = Color.Black,
+                Size = button5.Size,
+                FlatStyle = FlatStyle.Flat,
+                Font = font1,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+            };
+            btnTTSP3.FlatAppearance.BorderSize = 1;
+            btnTTSP3.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            btnTTSP3.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+
             p.Controls.Add(txtTieuDe1);
             p.Controls.Add(txtGiamGia1);
-            p.Controls.Add(txtMoTa);
             p.Controls.Add(txtLuocThich1);
             p.Controls.Add(btnTTSP1);
-            p.Controls.Add(btnXoa1);
+            p.Controls.Add(btnTTSP2);
+            p.Controls.Add(btnTTSP3);
             p.Controls.Add(picImage);
 
+            btnTTSP2.Click += XemSanPhamOfBaiDang_Click;
             btnTTSP1.Click += TTBD_Button;
             return p;
         }
 
-
-        private void XoaBaiDang()
+        private void XemSanPhamOfBaiDang_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void UpdateBaiDang(BaiDang baiDang)
@@ -1223,7 +1255,7 @@ namespace Program
             DimForm dimForm = new DimForm();
             dimForm.Show();
 
-            BaiDangForm form = new BaiDangForm(this.UpdateBaiDang);
+            BaiDangForm form = new BaiDangForm(UpdateBaiDang);
             SendBaiDang send = new SendBaiDang(form.SetBaiDang);
             send(QLBD.list[index]);
 
@@ -1232,7 +1264,6 @@ namespace Program
             ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = System.Drawing.Image.FromFile(QLBD.list[index].anhBia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();
-            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtMoTa")).Text = QLBD.list[index].moTa;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtLuocThich")).Text = QLBD.list[index].luocThich.ToString();
         }
         private void hoSoShop()
@@ -1371,7 +1402,7 @@ namespace Program
             DonHangFLP.Controls.Clear();
             foreach (DonHang donHang in shop.listDonHang.list)
             {
-                if (loaiDH == -2 || loaiDH == donHang.tinhTrang)
+                if (loaiDH == -2 || loaiDH == donHang.tinhTrang || (loaiDH == 2 && donHang.tinhTrang == 3))
                 {
                     Panel panel = DrawDonHangPanel(donHang);
                     DonHangFLP.Controls.Add(panel);
@@ -1470,6 +1501,7 @@ namespace Program
 
             Panel headPanel = new Panel
             {
+                Name = "headPanel",
                 Size = panel22.Size,
                 BackColor = Color.WhiteSmoke,
                 Margin = panel22.Margin,
@@ -1536,6 +1568,7 @@ namespace Program
                 Parent = tailPanel,
 
             };
+            button.Click += XemChiTietDonHangButton_Click;
             button.FlatAppearance.BorderSize = 0;
             button.FlatAppearance.MouseOverBackColor = Color.Silver;
             button.FlatAppearance.MouseOverBackColor = Color.Silver;
@@ -1572,30 +1605,108 @@ namespace Program
                     FlatStyle = FlatStyle.Flat,
                     Parent = tailPanel
                 };
+                button2.Click += HuyDonHangButton_Click;
                 button2.FlatAppearance.BorderColor = Color.DarkGray;
                 button2.FlatAppearance.BorderSize = 1;
                 button2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
                 button2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
                 tailPanel.Controls.Add(button2);
             }
-            //tailPanel.Paint += DrawPanelBorder;
             flp.Controls.Add (tailPanel);
 
             flp.Height = height + tailPanel.Height + tailPanel.Margin.Top + tailPanel.Margin.Bottom;
             return flp;
         }
 
+        private void XemChiTietDonHangButton_Click(object sender, EventArgs e)
+        {
+
+            cloneButton.Text += "    ‣     Chi Tiết Đơn Hàng";
+
+            currPanel.Visible = false;
+            chiTietDonHangPanel.Visible = true;
+            currPanel = chiTietBaiDang_Panel;
+            Panel headPanel = GUI_Utils.Instance.FindControl(((Control)sender).Parent.Parent as FlowLayoutPanel, "headPanel") as Panel;
+            currMaDH = GUI_Utils.Instance.FindControl(headPanel, "maDH").Text.Substring(15);
+
+            DonHang donHang = shop.listDonHang.GetDonHangFromMaDH(currMaDH);
+
+            ListChiTietSP.Controls.Clear();
+            maDHInChiTietDHTxt.Text = "MÃ ĐƠN HÀNG: ĐH" + donHang.maDH;
+            ttdhInChiTietDH.Text = "TÌNH TRẠNG: " + donHang.TinhTrang().ToUpper();
+            tenNhanHangTxt.Text = donHang.diaChi.ten;
+            sdtNhanHangTxt.Text = donHang.diaChi.soDT;
+            dcctNhanHangTxt.Text = donHang.diaChi.diaChiCuThe + ", " + BLL_DiaChi.Instance.MoTaDiaChi(donHang.diaChi);
+
+            if(donHang.tinhTrang == 0)
+            {
+                buttonFunc1.Visible = true;
+                buttonFunc2.Visible = true;
+            }
+
+            ttHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien - 30000 + donHang.xu);
+            phiVCTxt.Text = "₫30.000";
+            xuDaDungTxt.Text = "-₫" + Utils.Instance.SetGia(donHang.xu);
+            ttDonHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien);
+            ptttTxt.Text = donHang.PhuongThucThanhToan();
+
+            foreach(SanPham sanPham in donHang.list)
+            {
+                Panel panel = DrawSPPanelInDHFLP(sanPham, ListChiTietSP);
+                ListChiTietSP.Controls.Add(panel);
+            }
+
+            GUI_Utils.Instance.FitFLPHeight(ListChiTietSP);
+            GUI_Utils.Instance.FitFLPHeight(chiTietDHFLP);
+
+        }
+        private void GiaoHang(string maDH)
+        {
+            BLL_Shop.Instance.GiaoHang(shop, maDH);
+            ThongBaoForm form = new ThongBaoForm("Đơn hàng đã được giao cho đơn vị vận chuyển!!");
+            form.Show();
+
+            ChuyenLoaiDH_Click(DHDangVCButton, null);
+        }
+
+        private void GiaoHangInChiTiet_Click(object sender, EventArgs e)
+        {
+            GiaoHang(currMaDH);
+        }
+
         private void GiaoHangButton_Click(object sender, EventArgs e)
         {
             string maDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+            GiaoHang(maDH);
+        }
 
-            BLL_Shop.Instance.GiaoHang(shop, maDH);
+        private void HuyDon(string lyDo)
+        {
+            BLL_Shop.Instance.HuyDonHang(shop, currMaDH, lyDo);
+            ChuyenLoaiDH_Click(DHDaHuyButton, null);
 
-            MessageBox.Show("Giao hàng thành công");
+            ThongBaoForm form = new ThongBaoForm("Hủy đơn hàng thành công!!");
+            form.Show();
+        }
 
-            if (loaiDH == -2)
-                ChuyenLoaiDH_Click(tatCaButton, null);
+        private void HuyDonHangInChiTiet_Click(object sender, EventArgs e)
+        {
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            ReportForm form = new ReportForm(HuyDon, "Shop hủy đơn");
+            form.ShowDialog();
+            dimForm.Close();
+        }
 
+        private void HuyDonHangButton_Click(object sender, EventArgs e)
+        {
+            currMaDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            ReportForm form = new ReportForm(HuyDon, "Shop hủy đơn");
+            form.ShowDialog();
+            dimForm.Close();
         }
 
         private void DHMouseIn(object sender, EventArgs e)
@@ -1726,8 +1837,6 @@ namespace Program
             btnTatCa.ForeColor = Color.Red;
             btnViPham.ForeColor = Color.Black;
             tcsp_Panel.Visible = true;
-            HetHangPanel.Visible = false;
-            ViPhamPanel.Visible = false;
 
         }
 
@@ -1737,120 +1846,6 @@ namespace Program
             btnTatCa.ForeColor = Color.Black;
             btnViPham.ForeColor = Color.Black;
             tcsp_Panel.Visible = false;
-            HetHangPanel.Visible = true;
-            ViPhamPanel.Visible = false;
-            //FL_HetHang.Controls.Add(hetSanPhamPanel(sanPham);
-            layTCSPHH();
-        }
-        private void layTCSPHH()
-        {
-            FL_HetHang.Controls.Clear();
-            foreach (BaiDang baiDang in shop.listBaiDang.list)
-            {
-                foreach (SanPham sanPham in baiDang.GetAllSP())
-                {
-                    if (sanPham.luocBan > 100) //
-                    ThemThongTinSanPhamHH(sanPham);
-                }
-            }
-        }
-        private void ThemThongTinSanPhamHH(SanPham sanPham)
-        {
-            QLSP.list.Add(sanPham);
-            FL_HetHang.Size = new Size(FL_HetHang.Size.Width, FL_HetHang.Size.Height + panel13.Size.Height + 20);
-            FL_HetHang.Controls.Add(this.hetSanPhamPanel(sanPham));
-            FL_HetHang.Visible = true;
-        }
-        private Panel hetSanPhamPanel(SanPham sanPham)
-        {
-            Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Panel p = new Panel
-            {
-                Location = new Point(0, 0),
-                Size = panel13.Size,
-                BackColor = Color.White
-            };
-            PictureBox picImage = new PictureBox
-            {
-                Location = pic1.Location,
-                Size = pic1.Size,
-                Font = font1,
-                Name = "pic1",
-                BorderStyle = BorderStyle.FixedSingle,
-                BackColor = Color.White,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = System.Drawing.Image.FromFile(sanPham.anh)
-            };
-
-            TextBox txtTieuDe1 = new TextBox
-            {
-                Location = txt1.Location,
-                Text = sanPham.ten,
-                Size = txt1.Size,
-                Name = "txtTieuDe",
-                Font = font1,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                TabIndex = 0,
-                Multiline = true,
-                ReadOnly = true,
-            };
-
-            TextBox txtGiamGia1 = new TextBox
-            {
-                Location = txt2.Location,
-                Text = sanPham.luocBan.ToString(),
-                Size = txt2.Size,
-                Name = "txt2",
-                Font = font1,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                TabIndex = 0,
-                ReadOnly = true,
-            };
-            TextBox txtMoTa = new TextBox
-            {
-                Location = textBox60.Location,
-                Text = sanPham.gia.ToString() + "đ",
-                Size = textBox60.Size,
-                Name = "txt3",
-                Font = font1,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                TabIndex = 0,
-                ReadOnly = true,
-            };
-            TextBox txtLuocThich1 = new TextBox
-            {
-                Location = textBox61.Location,
-                Text = "0",
-                Size = textBox61.Size,
-                Name = "txtKhoHang",
-                Font = font1,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                TabIndex = 0,
-                ReadOnly = true,
-            };
-            Button btnTTSP1 = new Button
-            {
-                Location = btnTTSP.Location,
-                Text = "Thông tin chi tiết",
-                ForeColor = Color.MistyRose,
-                Size = btnThongTinSanPham.Size,
-                Font = font1,
-                BackColor = Color.OrangeRed,
-                Cursor = Cursors.Hand,
-            };
-            p.Controls.Add(txtTieuDe1);
-            p.Controls.Add(txtGiamGia1);
-            p.Controls.Add(txtMoTa);
-            p.Controls.Add(txtLuocThich1);
-            p.Controls.Add(btnTTSP1);
-            p.Controls.Add(picImage);
-
-            btnTTSP1.Click += TTBD_Button;
-            return p;
         }
 
         private void btnViPham_Click(object sender, EventArgs e)
@@ -1859,8 +1854,6 @@ namespace Program
             btnTatCa.ForeColor = Color.Black;
             btnViPham.ForeColor = Color.Red;
             tcsp_Panel.Visible = false;
-            HetHangPanel.Visible = false;
-            ViPhamPanel.Visible = true;
         }
 
         private void button28_Click(object sender, EventArgs e)
@@ -1877,6 +1870,21 @@ namespace Program
             FL_PanelChuaThanhToan.Visible = true;
             btnDaThanhToan.ForeColor = Color.Black;
             btnChuaThanhToan.ForeColor = Color.Red;
+        }
+
+        private void troLaiDHButton_Click(object sender, EventArgs e)
+        {
+            tabClick(tatCaButton, null);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hoverMouse(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

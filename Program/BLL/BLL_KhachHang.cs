@@ -164,7 +164,7 @@ namespace Program.BLL
             khachHang.listDanhGia.Add(danhGia);
             khachHang.listDonHang.GetDonHangFromMaDH(maDH).tinhTrang = 3;
             khachHang.xu += 200;
-            danhGia.maDG = BLL_BaiDang.Instance.GetMaMoi();
+            danhGia.maDG = BLL_DanhGia.Instance.GetMaMoi();
 
             ThongBao thongBao1 = new ThongBao
             {

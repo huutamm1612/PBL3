@@ -38,6 +38,11 @@ namespace Program.BLL
             return DAL_DonHang.Instance.LoadAllLyDoHuyDonByKhachHang();
         }
 
+        public List<string> GetAllLyDoHuyDonByShop()
+        {
+            return DAL_DonHang.Instance.LoadAllLyDoHuyDonByShop();
+        }
+
         public List<DonHang> PhanRaDonHang(QLSanPham qLSanPham)
         {
             List<DonHang> list = new List<DonHang>();

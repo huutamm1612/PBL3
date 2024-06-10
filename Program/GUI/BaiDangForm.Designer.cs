@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FLLayout_BaiDang = new System.Windows.Forms.FlowLayoutPanel();
             this.baiDang_Panel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -50,13 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAnh)).BeginInit();
             this.SuspendLayout();
             // 
-            // FLLayout_BaiDang
-            // 
-            this.FLLayout_BaiDang.Location = new System.Drawing.Point(42, 11);
-            this.FLLayout_BaiDang.Name = "FLLayout_BaiDang";
-            this.FLLayout_BaiDang.Size = new System.Drawing.Size(1226, 14);
-            this.FLLayout_BaiDang.TabIndex = 0;
-            // 
             // baiDang_Panel
             // 
             this.baiDang_Panel.BackColor = System.Drawing.Color.White;
@@ -73,16 +65,17 @@
             this.baiDang_Panel.Controls.Add(this.textBox3);
             this.baiDang_Panel.Controls.Add(this.textBox2);
             this.baiDang_Panel.Controls.Add(this.picAnh);
-            this.baiDang_Panel.Location = new System.Drawing.Point(42, 54);
+            this.baiDang_Panel.Location = new System.Drawing.Point(0, 0);
             this.baiDang_Panel.Name = "baiDang_Panel";
-            this.baiDang_Panel.Size = new System.Drawing.Size(1226, 673);
+            this.baiDang_Panel.Size = new System.Drawing.Size(730, 612);
             this.baiDang_Panel.TabIndex = 1;
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(393, 607);
+            this.button3.Location = new System.Drawing.Point(487, 550);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(216, 41);
             this.button3.TabIndex = 112;
@@ -92,11 +85,12 @@
             // 
             // btnLuu
             // 
+            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLuu.BackColor = System.Drawing.Color.OrangeRed;
             this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(111, 607);
+            this.btnLuu.Location = new System.Drawing.Point(266, 550);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(216, 41);
             this.btnLuu.TabIndex = 110;
@@ -120,7 +114,7 @@
             // 
             this.txtMoTa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoTa.Location = new System.Drawing.Point(120, 316);
+            this.txtMoTa.Location = new System.Drawing.Point(120, 278);
             this.txtMoTa.Multiline = true;
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Size = new System.Drawing.Size(571, 214);
@@ -130,24 +124,24 @@
             // 
             this.txtGiamGia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtGiamGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiamGia.Location = new System.Drawing.Point(120, 259);
+            this.txtGiamGia.Location = new System.Drawing.Point(120, 221);
             this.txtGiamGia.Name = "txtGiamGia";
-            this.txtGiamGia.Size = new System.Drawing.Size(111, 19);
+            this.txtGiamGia.Size = new System.Drawing.Size(571, 19);
             this.txtGiamGia.TabIndex = 9;
             // 
             // txtTieuDe
             // 
             this.txtTieuDe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTieuDe.Location = new System.Drawing.Point(120, 202);
+            this.txtTieuDe.Location = new System.Drawing.Point(120, 164);
             this.txtTieuDe.Name = "txtTieuDe";
-            this.txtTieuDe.Size = new System.Drawing.Size(362, 19);
+            this.txtTieuDe.Size = new System.Drawing.Size(571, 19);
             this.txtTieuDe.TabIndex = 8;
             // 
             // picMoTa
             // 
             this.picMoTa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMoTa.Location = new System.Drawing.Point(111, 306);
+            this.picMoTa.Location = new System.Drawing.Point(111, 268);
             this.picMoTa.Name = "picMoTa";
             this.picMoTa.Size = new System.Drawing.Size(592, 261);
             this.picMoTa.TabIndex = 7;
@@ -156,16 +150,16 @@
             // picGiamGia
             // 
             this.picGiamGia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picGiamGia.Location = new System.Drawing.Point(111, 250);
+            this.picGiamGia.Location = new System.Drawing.Point(111, 212);
             this.picGiamGia.Name = "picGiamGia";
-            this.picGiamGia.Size = new System.Drawing.Size(281, 37);
+            this.picGiamGia.Size = new System.Drawing.Size(592, 37);
             this.picGiamGia.TabIndex = 6;
             this.picGiamGia.TabStop = false;
             // 
             // picTieuDe
             // 
             this.picTieuDe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picTieuDe.Location = new System.Drawing.Point(111, 193);
+            this.picTieuDe.Location = new System.Drawing.Point(111, 155);
             this.picTieuDe.Name = "picTieuDe";
             this.picTieuDe.Size = new System.Drawing.Size(592, 37);
             this.picTieuDe.TabIndex = 5;
@@ -173,10 +167,12 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.Color.White;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(20, 306);
+            this.textBox4.Location = new System.Drawing.Point(20, 268);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(71, 19);
             this.textBox4.TabIndex = 4;
             this.textBox4.Text = "Mô tả";
@@ -184,10 +180,12 @@
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.Color.White;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(20, 253);
+            this.textBox3.Location = new System.Drawing.Point(20, 215);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(71, 19);
             this.textBox3.TabIndex = 3;
             this.textBox3.Text = "Giảm giá";
@@ -195,10 +193,12 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(20, 202);
+            this.textBox2.Location = new System.Drawing.Point(20, 164);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(71, 19);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "Tiêu đề";
@@ -216,10 +216,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1402, 753);
+            this.ClientSize = new System.Drawing.Size(731, 611);
             this.Controls.Add(this.baiDang_Panel);
-            this.Controls.Add(this.FLLayout_BaiDang);
             this.Name = "BaiDangForm";
             this.Text = "BaiDangForm";
             this.baiDang_Panel.ResumeLayout(false);
@@ -233,8 +231,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel FLLayout_BaiDang;
         private System.Windows.Forms.Panel baiDang_Panel;
         private System.Windows.Forms.PictureBox picAnh;
         private System.Windows.Forms.TextBox textBox2;

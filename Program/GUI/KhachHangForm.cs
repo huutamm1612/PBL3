@@ -1077,13 +1077,13 @@ namespace Program
 
         private void DenBaiDangTuGioHang(object sender, EventArgs e)
         {
-            int index = listSPTrongGHFLP.Controls.IndexOf(((Control)sender).Parent);
-            currBaiDang = BLL_BaiDang.Instance.GetBaiDangFromMaBD(khachHang.gioHang.list[index].maBD);
+            string maSP = GUI_Utils.Instance.FindControl(((Control)sender).Parent as Panel, "maSP").Text;
+            currBaiDang = BLL_BaiDang.Instance.GetBaiDangFromMaBD(khachHang.gioHang.GetSanPhamFromMaSP(maSP).maBD);
 
             if(currBaiDang != null)
             {
                 currShop = DAL_Shop.Instance.LoadShopFromMaBD(currBaiDang.maBD);
-                currSanPham = khachHang.gioHang.list[index];
+                currSanPham = currBaiDang.GetSanPhamFromMaSP(maSP);
             }
 
             SwitchPanel(ref currPanel, ref BaiDangPanel);
@@ -1751,6 +1751,8 @@ namespace Program
 
         private Panel DrawSPTrongGioHang(SanPham sanPham)
         {
+            string tinhTrangSP = BLL_SanPham.Instance.KiemTraTinhTrang(sanPham.maSP);
+
             int giamGia = BLL_BaiDang.Instance.GetGiamGiaFromMaSP(sanPham.maSP);
             Panel panel = new Panel
             {
@@ -1759,20 +1761,16 @@ namespace Program
                 Margin = spPanel.Margin,
                 Parent = listSPTrongGHFLP
             };
-
             panel.Paint += DrawPanelBorder;
 
-            CheckBox checkBox = new CheckBox
+            Label maSP = new Label
             {
-                Name = "ChoseCheckBox",
-                Location = checkBox1.Location,
-                Text = checkBox1.Text,
-                Size = checkBox1.Size,
-                Cursor = Cursors.Hand,
+                Name = "maSP",
+                Text = sanPham.maSP,
+                Visible = false,
                 Parent = panel
             };
-            checkBox.CheckedChanged += CB_CheckChanged;
-            panel.Controls.Add(checkBox);
+            panel.Controls.Add(maSP);
 
             PictureBox pictureBox = new PictureBox
             {
@@ -1787,6 +1785,7 @@ namespace Program
             };
             pictureBox.Click += DenBaiDangTuGioHang;
             panel.Controls.Add(pictureBox);
+
 
             TextBox tenSP = new TextBox
             {
@@ -1819,7 +1818,7 @@ namespace Program
                 Parent = panel
             };
             panel.Controls.Add(giaGoc);
-
+            
             TextBox giaBan = new TextBox
             {
                 Name = "giaBan",
@@ -1833,39 +1832,7 @@ namespace Program
                 Parent = panel
             };
             panel.Controls.Add(giaBan);
-
-            Button giamButton = new Button
-            {
-                Name = "giamButton",
-                Text = giamSLButton.Text,
-                Size = giamSLButton.Size,
-                Location = giamSLButton.Location,
-                FlatStyle = FlatStyle.Flat,
-                Cursor = Cursors.Hand,
-                Parent = panel
-            };
-            giamButton.FlatAppearance.BorderSize = 1;
-            giamButton.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            giamButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            giamButton.Click += giamSLButton_Click;
-            panel.Controls.Add(giamButton);
-
-            Button tangButton = new Button
-            {
-                Name = "tangButton",
-                Text = tangSLButton.Text,
-                Size = tangSLButton.Size,
-                Location = tangSLButton.Location,
-                FlatStyle = FlatStyle.Flat,
-                Cursor = Cursors.Hand,
-                Parent = panel
-            };
-            tangButton.FlatAppearance.BorderSize = 1;
-            tangButton.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            tangButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            tangButton.Click += tangSLButton_Click;
-            panel.Controls.Add(tangButton);
-
+            
             TextBox soLuong = new TextBox
             {
                 Name = "soluongSP",
@@ -1895,7 +1862,7 @@ namespace Program
                 Parent = panel
             };
             panel.Controls.Add(soTien);
-
+            
             Button xoa = new Button
             {
                 Name = "xoa",
@@ -1912,6 +1879,79 @@ namespace Program
             xoa.FlatAppearance.MouseOverBackColor = Color.Transparent;
             xoa.FlatAppearance.MouseDownBackColor = Color.Transparent;
             panel.Controls.Add(xoa);
+
+            if (tinhTrangSP == "TỐT")
+            {
+                CheckBox checkBox = new CheckBox
+                {
+                    Name = "ChoseCheckBox",
+                    Location = checkBox1.Location,
+                    Text = checkBox1.Text,
+                    Size = checkBox1.Size,
+                    Cursor = Cursors.Hand,
+                    Parent = panel
+                };
+                checkBox.CheckedChanged += CB_CheckChanged;
+                panel.Controls.Add(checkBox);
+
+                Button giamButton = new Button
+                {
+                    Name = "giamButton",
+                    Text = giamSLButton.Text,
+                    Size = giamSLButton.Size,
+                    Location = giamSLButton.Location,
+                    FlatStyle = FlatStyle.Flat,
+                    Cursor = Cursors.Hand,
+                    Parent = panel
+                };
+                giamButton.FlatAppearance.BorderSize = 1;
+                giamButton.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                giamButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                giamButton.Click += giamSLButton_Click;
+                panel.Controls.Add(giamButton);
+
+                Button tangButton = new Button
+                {
+                    Name = "tangButton",
+                    Text = tangSLButton.Text,
+                    Size = tangSLButton.Size,
+                    Location = tangSLButton.Location,
+                    FlatStyle = FlatStyle.Flat,
+                    Cursor = Cursors.Hand,
+                    Parent = panel
+                };
+                tangButton.FlatAppearance.BorderSize = 1;
+                tangButton.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                tangButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                tangButton.Click += tangSLButton_Click;
+                panel.Controls.Add(tangButton);
+            }
+            else
+            {
+                giaGoc.Enabled = false;
+                giaBan.Enabled = false;
+                soLuong.Enabled = false;
+                soTien.Enabled = false;
+
+                TextBox tinhTrang = new TextBox
+                {
+                    Text = tinhTrangSP,
+                    Location = textBox117.Location,
+                    Font = textBox117.Font,
+                    Size = textBox117.Size,
+                    BackColor = Color.WhiteSmoke,
+                    ForeColor = Color.Red,
+                    BorderStyle = BorderStyle.None,
+                    ReadOnly = true,
+                    Parent = panel
+                };
+                GUI_Utils.Instance.FitTextBox(tinhTrang, 0, 0);
+                panel.Controls.Add(tinhTrang);
+
+                pictureBox.Location = new Point(pictureBox.Location.X + 50, pictureBox.Location.Y);
+                tenSP.Location = new Point(tenSP.Location.X + 50, tenSP.Location.Y);
+                soLuong.BorderStyle = BorderStyle.None;
+            }
 
             return panel;
         }
@@ -2004,7 +2044,7 @@ namespace Program
 
             int index = listSPTrongGHFLP.Controls.IndexOf(panel);
 
-            if (((CheckBox)GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox")).Checked)
+            if (GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox") != null && ((CheckBox)GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox")).Checked)
             {
                 qlSanPham.Remove(khachHang.gioHang.list[index]);
             }
@@ -2045,7 +2085,8 @@ namespace Program
         {
             foreach (Panel panel in listSPTrongGHFLP.Controls)
             {
-                ((CheckBox)GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox")).Checked = chooseAllButton.Checked;
+                if(GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox") != null)
+                    ((CheckBox)GUI_Utils.Instance.FindControl(panel, "ChoseCheckBox")).Checked = chooseAllButton.Checked;
             }
         }
 
@@ -2417,10 +2458,18 @@ namespace Program
                 Utils.Instance.Sort(khachHang.gioHang.list, 0, khachHang.gioHang.list.Count - 1, SanPham.CompareNgayThem, SanPham.EqualNgayThem);
                 khachHang.gioHang.list.Reverse();
 
+
+                List<Panel> listSP = new List<Panel>();
                 foreach (SanPham sanPham in khachHang.gioHang.list)
                 {
-                    listSPTrongGHFLP.Controls.Add(DrawSPTrongGioHang(sanPham));
+                    Panel panel = DrawSPTrongGioHang(sanPham);
+
+                    if(GUI_Utils.Instance.FindControl(panel, "soluongSP").Enabled)
+                        listSPTrongGHFLP.Controls.Add(panel);
+                    else 
+                        listSP.Add(panel);
                 }
+                listSPTrongGHFLP.Controls.AddRange(listSP.ToArray());   
 
                 int height = 0;
                 foreach (Control control in listSPTrongGHFLP.Controls)
@@ -3631,7 +3680,6 @@ namespace Program
                     BorderStyle = BorderStyle.None,
                     SizeMode = PictureBoxSizeMode.Zoom,
                     BackColor = Color.White,
-                    Cursor = Cursors.Hand,
                     Parent = panel
                 };
                 panel.Controls.Add(pictureBox);
@@ -3646,13 +3694,13 @@ namespace Program
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.None,
                 ReadOnly = true,
-                Cursor = Cursors.Hand,
                 Parent = panel
             };
             panel.Controls.Add(tinhTrang);
 
             TextBox noiDung = new TextBox
             {
+                Name = "noiDung",
                 Text = thongBao.noiDung,
                 Location = textBox59.Location,
                 Font = textBox59.Font,
@@ -3661,7 +3709,6 @@ namespace Program
                 ForeColor = Color.DimGray,
                 BorderStyle = BorderStyle.None,
                 ReadOnly = true,
-                Cursor = Cursors.Hand,
                 Multiline = true,
                 Parent = panel
             };
@@ -3677,13 +3724,42 @@ namespace Program
                 ForeColor = Color.DimGray,
                 BorderStyle = BorderStyle.None,
                 ReadOnly = true,
-                Cursor = Cursors.Hand,
                 Parent = panel
             };
             panel.Controls.Add(thoiGian);
 
+            //button30
+            Button xemChiTiet = new Button
+            {
+                Text = "Xem Chi Tiết",
+                Location = button30.Location,
+                Size = button30.Size,
+                ForeColor = Color.DarkGray,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                FlatStyle = FlatStyle.Flat,
+                Anchor = button30.Anchor,
+                Parent = panel
+            };
+            xemChiTiet.Click += XemChiTietDonHangButton_Click;
+            xemChiTiet.FlatAppearance.BorderColor = Color.DimGray;
+            xemChiTiet.FlatAppearance.BorderSize = 1;
+            xemChiTiet.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            xemChiTiet.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            panel.Controls.Add(xemChiTiet);
+
 
             return panel;
+        }
+
+        private void XemChiTietDonHangButton_Click(object sender, EventArgs e)
+        {
+            string noiDung = GUI_Utils.Instance.FindControl(((Control)sender).Parent as Panel, "noiDung").Text;
+            currMaDH = noiDung.Substring(noiDung.IndexOf("DH") + 2, 10);
+            capNhatDHPanel.Visible = false;
+            troLaiTuChiTietDHButton.Click -= TroVeDonMuaButton_Click;
+            troLaiTuChiTietDHButton.Click += TroVeThongBaoDHButotn_Click;
+            DrawChiTietDonHang();
         }
 
         private void MouseOutPanel(object sender, EventArgs e)
@@ -4558,10 +4634,8 @@ namespace Program
             }
         }
 
-        private void XemChiTietDonHang_Click(object sender, EventArgs e)
+        private void DrawChiTietDonHang()
         {
-            currMaDH = GUI_Utils.Instance.GetMaDHByClick(sender);
-
             DonHang donHang = khachHang.listDonHang.GetDonHangFromMaDH(currMaDH);
 
             DrawTinhTrangDonHang(donHang.tinhTrang);
@@ -4593,10 +4667,18 @@ namespace Program
             ttDonHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien);
             ptttTxt.Text = donHang.PhuongThucThanhToan();
 
-            DonMuaPanel.Visible = false;
             chiTietDHPanel.Visible = true;
             chiTietDHPanel.BringToFront();
             currChildPanel = chiTietDHPanel;
+        }
+
+        private void XemChiTietDonHang_Click(object sender, EventArgs e)
+        {
+            DonMuaPanel.Visible = false;
+            currMaDH = GUI_Utils.Instance.GetMaDHByClick(sender);
+            troLaiTuChiTietDHButton.Click -= TroVeThongBaoDHButotn_Click;
+            troLaiTuChiTietDHButton.Click += TroVeDonMuaButton_Click;
+            DrawChiTietDonHang();
         }
 
         private void TroVeDonMuaButton_Click(object sender, EventArgs e)
@@ -4605,6 +4687,14 @@ namespace Program
             DonMuaPanel.Visible = true;
             DonMuaPanel.BringToFront();
             currChildPanel = DonMuaPanel;
+        }
+
+        private void TroVeThongBaoDHButotn_Click(object sender, EventArgs e)
+        {
+            chiTietDHPanel.Visible = false;
+            capNhatDHPanel.Visible = true;
+            capNhatDHPanel.BringToFront();
+            currChildPanel = capNhatDHPanel;
         }
 
         public void PictureBoxToCircle1(object sender, PaintEventArgs e)
@@ -4708,6 +4798,7 @@ namespace Program
                 Panel panel = DrawDaDanhGia(danhGia);
                 danhGiaCuaToiFLP.Controls.Add(panel);
             }
+
             if (danhGiaCuaToiFLP.Controls.Count == 0)
                 danhGiaCuaToiFLP.Controls.Add(panel46);
 
@@ -4726,13 +4817,36 @@ namespace Program
             }
             Button button = sender as Button;
             button.ForeColor = Color.Red;
+
+            int i = 0;
             danhGiaCuaToiFLP.Controls.Clear();
+            foreach (DanhGia danhGia in BLL_DanhGia.Instance.GetAllDanhGiaViPhamFromMaKH(khachHang.maSo, out List<string> listLyDo).list)
+            {
+                Panel panel = DrawDanhGiaViPham(danhGia, listLyDo[i++]);
+                danhGiaCuaToiFLP.Controls.Add(panel);
+            }
+            if (danhGiaCuaToiFLP.Controls.Count == 0)
+                danhGiaCuaToiFLP.Controls.Add(panel46);
 
-
-
-            danhGiaCuaToiFLP.Controls.Add(panel46);
             GUI_Utils.Instance.FitFLPHeight(danhGiaCuaToiFLP);
-            danhGiaCuaToiPanel.Height = danhGiaCuaToiFLP.Height + 50;
+            danhGiaCuaToiPanel.Height = danhGiaCuaToiFLP.Height + 100;
+        }
+
+        public Panel DrawDanhGiaViPham(DanhGia danhGia, string lyDo)
+        {
+            Panel panel = DrawDaDanhGia(danhGia);
+            GUI_Utils.Instance.FindControl(panel, "tenShop").Text = "Lý Do Vi Phạm: " + lyDo;
+            GUI_Utils.Instance.FindControl(panel, "control").Text = "Xóa Đánh Giá";
+            GUI_Utils.Instance.FindControl(panel, "control").Click -= SuaDanhGiaButton_Click;
+            GUI_Utils.Instance.FindControl(panel, "control").Click += XoaDanhGia_Click;
+
+            ((PictureBox)GUI_Utils.Instance.FindControl(panel, "icon")).Image = Resources.error1;
+            return panel;
+        }
+
+        private void XoaDanhGia_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("as");
         }
 
         public Panel DrawDaDanhGia(DanhGia danhGia)
@@ -4748,6 +4862,7 @@ namespace Program
 
             PictureBox shopIcon = new PictureBox
             {
+                Name = "icon",
                 Size = pictureBox42.Size,
                 Location = pictureBox42.Location,
                 BackColor = Color.White,
@@ -4758,6 +4873,7 @@ namespace Program
 
             TextBox tenShop = new TextBox
             {
+                Name = "tenShop",
                 Text = BLL_Shop.Instance.GetTenShopFromMaBD(danhGia.maBD),
                 Size = textBox96.Size,
                 Location = textBox96.Location,
@@ -4889,6 +5005,7 @@ namespace Program
 
             Button danhGiaButton = new Button
             {
+                Name = "control",
                 Text = "Sửa Đánh Giá",
                 Size = button52.Size,
                 Location = button52.Location,
@@ -5057,6 +5174,59 @@ namespace Program
             ChuaDanhGiaButton_Click(chuaDanhGiaButton, null);
         }
 
+        private Panel DrawThongBaoHeThongPanel(ThongBao thongBao)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel52.Size,
+                BackColor = Color.White,
+                Margin = panel52.Margin,
+                Parent = TBDonHangFLP
+            };
+            panel.Paint += DrawPanelBorder;
+
+            PictureBox pictureBox = new PictureBox
+            {
+                Image = Resources.error2,
+                Size = pictureBox50.Size,
+                Location = pictureBox50.Location,
+                BorderStyle = BorderStyle.None,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BackColor = Color.White,
+                Parent = panel
+            };
+            panel.Controls.Add(pictureBox);
+
+            TextBox noiDung = new TextBox
+            {
+                Text = thongBao.noiDung,
+                Location = textBox11.Location,
+                Font = textBox11.Font,
+                Size = textBox11.Size,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            GUI_Utils.Instance.FitTextBox(noiDung);
+            panel.Controls.Add(noiDung);
+
+            TextBox thoiGian = new TextBox
+            {
+                Text = Utils.Instance.MoTaThoiGian(thongBao.ngayGui),
+                Location = textBox71.Location,
+                Font = textBox71.Font,
+                Size = textBox71.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(thoiGian);
+
+            return panel;
+        }
 
         private void TBHTButton_Click(object sender, EventArgs e)
         {
@@ -5064,11 +5234,11 @@ namespace Program
             tbHeThongFLP.Height = 0;
             foreach (ThongBao thongBao in khachHang.listThongBao.list)
             {
-                if (thongBao.from.Contains("HeThong"))
+                if (thongBao.from == "HeThong")
                 {
-                    Panel panel = DrawThongBaoDH(thongBao);
-                    TBDonHangFLP.Controls.Add(panel);
-                    TBDonHangFLP.Controls.SetChildIndex(panel, 0);
+                    Panel panel = DrawThongBaoHeThongPanel(thongBao);
+                    tbHeThongFLP.Controls.Add(panel);
+                    tbHeThongFLP.Controls.SetChildIndex(panel, 0);
                 }
             }
             if (tbHeThongFLP.Controls.Count == 0)
@@ -5080,16 +5250,6 @@ namespace Program
 
             SwitchPanel(ref currChildPanel, ref tbHeThongPanel);
             ChangeColorOfButtonInFLP(sender as Button);
-        }
-
-        private void userProfile_Button_MouseHover(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void MouseIn(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

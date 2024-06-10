@@ -1,4 +1,4 @@
-CREATE DATABASE PBL3_Database
+﻿CREATE DATABASE PBL3_Database
 USE PBL3_Database
 
 CREATE TABLE Tinh_ThanhPho (
@@ -143,9 +143,11 @@ CREATE TABLE SanPham(
 	moTa nvarchar(500),
 	luocBan int DEFAULT 0,
 	anh varchar(255) NULL,
+	tinhTrang  int DEFAULT 0,
 
 	CONSTRAINT FK_SanPham_LoaiSanPham FOREIGN KEY (maLoaiSP) REFERENCES LoaiSanPham(maLoaiSP)
 )
+
 
 CREATE TABLE BaiDang(
 	maBD varchar(10) PRIMARY KEY,
@@ -153,7 +155,8 @@ CREATE TABLE BaiDang(
 	moTa nvarchar(1000),
 	luocThich int DEFAULT 0,
 	giamGia int DEFAULT 0,
-	anh varchar(255) null
+	anh varchar(255) null,
+	tinhTrang  int DEFAULT 0,
 )
 
 CREATE TABLE BaiDang_Anh(
@@ -336,3 +339,16 @@ CREATE TABLE BaiDangViPham
 
 	CONSTRAINT FK_BaiDangViPham_BaiDang FOREIGN KEY (maBD) REFERENCES BaiDang(maBD)
 )
+
+CREATE TABLE DanhGiaViPham
+(
+	maDG varchar(10) PRIMARY KEY,
+	lyDo nvarchar(120)
+	
+	CONSTRAINT FK_DanhGiaViPham_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
+)
+
+INSERT INTO LyDo VALUES(1, N'Sản phẩm đã hết hàng')
+INSERT INTO LyDo VALUES(1, N'Sản phẩm tạm ngừng kinh doanh')
+INSERT INTO LyDo VALUES(1, N'Shop không thích bán nữa')
+INSERT INTO LyDo VALUES(1, N'Shop không tìm thấy lý do hủy phù hợp')

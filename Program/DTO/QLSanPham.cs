@@ -120,7 +120,7 @@ namespace Program
 
         public SanPham GetSanPhamFromMaSP(string maSP)
         {
-            foreach(SanPham sanPham in list)
+            foreach(SanPham sanPham in list)    
             {
                 if(maSP.Equals(sanPham.maSP))
                     return sanPham;

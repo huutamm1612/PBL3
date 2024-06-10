@@ -78,12 +78,9 @@ namespace Program
         public void SuaSanPham(SanPham sanPham)
         {
             loaiSP = sanPham.loaiSP;
-            maS = sanPham.maS;
-            maBD = sanPham.maBD;
             ten = sanPham.ten;
             gia = sanPham.gia;
             soLuong = sanPham.soLuong;
-            luocBan = sanPham.luocBan;
             tacGia = sanPham.tacGia;
             dichGia = sanPham.dichGia;
             ngonNgu = sanPham.ngonNgu;
