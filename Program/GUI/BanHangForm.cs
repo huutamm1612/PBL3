@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -33,6 +34,7 @@ namespace Program
         private Panel currPanel = null;
         private QLSanPham QLSP = null;
         private QLBaiDang QLBD = null;
+        private QLDanhGia listDanhGia = null;
         private SanPham currSanPham = null;
         private DiaChi diaChi = null;
         private string currMaDH = null;
@@ -46,7 +48,7 @@ namespace Program
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void SwitchPanel(Panel newPanel)
+        private void SwitchPanel(ref Panel newPanel)
         {
             currPanel.Visible = false;
             currPanel = newPanel;
@@ -60,6 +62,21 @@ namespace Program
             screen_Panel.Visible = true;
             currPanel = trangChuPanel;
             currPanel.Visible = true;
+
+            try
+            {
+                miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(shop.avt), miniAvt.Size);
+            }
+            catch
+            {
+                miniAvt.Image = null;
+            }
+            userProfile_Button.Text = user.taiKhoan;
+            Size textSize = TextRenderer.MeasureText(userProfile_Button.Text, userProfile_Button.Font);
+            userProfile_Button.Width = textSize.Width + 30;
+
+            tabClick(trangChuButton, null);
+            tabClick(trangChuButton, null);
         }
 
         private void RefreshDangKyShopPanel()
@@ -74,7 +91,9 @@ namespace Program
             shop = BLL_Shop.Instance.GetShopFromTaiKhoan(taiKhoan);
 
             if (shop != null)
+            {
                 RefreshHomePanel();
+            }
             else
             {
                 RefreshDangKyShopPanel();
@@ -165,28 +184,6 @@ namespace Program
                 button.ForeColor = Color.Black;
         }
 
-        private void layTCSP()
-        {
-            listSanPham.Controls.Clear();
-            foreach(BaiDang baiDang in shop.listBaiDang.list)
-            {
-                foreach(SanPham sanPham in baiDang.GetAllSP())
-                {
-                    ThemThongTinSanPham(sanPham);
-                }
-            }
-            GUI_Utils.Instance.FitFLPHeight(listSanPham);
-            tcsp_Panel.Height = listSanPham.Height + 150;
-        }
-        private void layTCBD()
-        {
-            FLLayout_TatCaBaiDang.Controls.Clear();
-            foreach (BaiDang baiDang in shop.listBaiDang.list)
-            {
-                 ThemThongTinBaiDang(baiDang);    
-            }
-        }
-
         private void themSanPhamPanel_Scroll(object sender, ScrollEventArgs e)
         {
             miniConTrolPanel.Top = 732;
@@ -207,70 +204,79 @@ namespace Program
 
             currTab = sender as Button;
 
+            if (currTab == trangChuButton)
+            {
+                cloneButton.Text = "";
+                arrowLabel.Visible = false;
+            }
+            else
+            {
+                cloneButton.Text = currTab.Text;
+                arrowLabel.Visible = true;
+                currTab.Font = new Font(currTab.Font, FontStyle.Bold);
+                currTab.ForeColor = Color.OrangeRed;
+            }
+
             switch (currTab.Text)
             {
                 case "Trang Chủ":
                     btnChoXacNhan.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 0) + ("\nChờ Xác Nhận");
-                    btnDangGiao.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang,  1) +  "\nĐang giao";
+                    btnDangGiao.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 1) + "\nĐang giao";
                     btnDonHuy.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, -1) + "\nĐơn Hủy";
                     btnHoanThanh.Text = BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 2) + BLL_DonHang.Instance.DemSoLuong(shop.listDonHang, 3) + "\nHoàn thành";
-                    btnSanPhamBiTamKhoa.Text = "Sản phẩm bị tạm khóa";
-                    btnSanPhamHetHang.Text = "Sản phẩm hết hàng";
-                    SwitchPanel(trangChuPanel);
+                    btnSanPhamBiTamKhoa.Text = BLL_BaiDang.Instance.GetSoLuongBaiDangViPhamFromMaS(shop.maSo) + "\nBài Đăng Vi Phạm";
+                    btnSanPhamHetHang.Text = BLL_Shop.Instance.GetSoLuongSPHetHang(shop.listBaiDang) + "\nSản Phẩm Hết Hàng";
+                    SwitchPanel(ref trangChuPanel);
                     break;
 
-                case "Tất Cả":
-                    SwitchPanel(TatCaDHPanel);
+                case "Tất Cả Đơn Hàng":
+                    SwitchPanel(ref TatCaDHPanel);
                     ChuyenLoaiDH_Click(tatCaDHButton, null);
+                    break;
+
+                case "Đơn Hủy":
+                    SwitchPanel(ref TatCaDHPanel);
+                    ChuyenLoaiDH_Click(DHDaHuyButton, null);
                     break;
 
                 case "Thêm Sản Phẩm":
                     RefreshThemSPPanel();
                     miniConTrolPanel.Top = 732;
                     QLSP = new QLSanPham();
-                    SwitchPanel(themSanPhamPanel);
+                    SwitchPanel(ref themSanPhamPanel);
                     themSanPhamPanel.MouseWheel += ThemSPP_MouseWheel;
                     break;
 
                 case "Tất Cả Sản Phẩm":
                     QLSP = new QLSanPham();
-                    SwitchPanel(tatCaSanPhamPanel);
-                    layTCSP();
+                    SwitchPanel(ref tatCaSanPhamPanel);
+                    btnTatCa_Click(btnTatCa, null);
                     break;
 
                 case "Hồ Sơ Shop":
-                    SwitchPanel(hoSoShop_Panel);
+                    SwitchPanel(ref hoSoShop_Panel);
                     hoSoShop();
                     break;
                 case "Thiết Lập Shop":
                     DiaChi diachi = new DiaChi();
-                    SwitchPanel(thietlapShop_panel);
+                    SwitchPanel(ref thietlapShop_panel);
                     thietlapShop(diachi);
                     break;
                 case "Tất Cả Bài Đăng":
                     QLSP = new QLSanPham();
                     QLBD = new QLBaiDang();
-                    SwitchPanel(tatCaBaiDang_Panel);
-                    layTCBD();
+                    SwitchPanel(ref tatCaBaiDang_Panel);
+                    TatCaBDButton_Click(button6, null);
                     break;
                 case "Doanh Thu":
-                    SwitchPanel(doanhThuPanel);
+                    SwitchPanel(ref doanhThuPanel);
+                    break;
+
+                case "Quản Lý Đánh Giá":
+                    SwitchPanel(ref danhGiaSPanel);
+                    DanhGiaShopShow();
                     break;
             }
-
-            if (currTab == trangChuButton)
-            {
-                cloneButton.Text = "";
-                cloneButton.Visible = false;
-                arrowLabel.Visible = false;
-                return;
-            }
-
-            cloneButton.Text = currTab.Text;
-            cloneButton.Visible = true;
-            arrowLabel.Visible = true;
-            currTab.Font = new Font(currTab.Font, FontStyle.Bold);
-            currTab.ForeColor = Color.OrangeRed;
         }
 
         private void thietlapShop(DiaChi diachi)
@@ -842,7 +848,6 @@ namespace Program
         {
             QLSP.list[index] = sanPham;
             BLL_Shop.Instance.CapNhatSanPham(shop, sanPham);
-            tabClick(button7, null);
         }
 
         private void CapNhatSP(SanPham sanPham)
@@ -983,7 +988,7 @@ namespace Program
             }
         }
 
-        private Panel themCTSP(SanPham sanPham)
+        private Panel themCTSP(SanPham sanPham, int tinhTrang = 0)
         {
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Panel p = new Panel
@@ -998,7 +1003,6 @@ namespace Program
                 Size = picAnhTCSP.Size,
                 Font = font1,
                 Name = "picImage",
-                BorderStyle = BorderStyle.FixedSingle,
                 BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Image = System.Drawing.Image.FromFile(sanPham.anh)
@@ -1021,7 +1025,7 @@ namespace Program
             TextBox txtDonGia = new TextBox
             {
                 Location = txtDonGiaTCSP.Location,
-                Text = sanPham.gia.ToString(),
+                Text = Utils.Instance.SetGia(sanPham.gia),
                 Size = txtDonGiaTCSP.Size,
                 Name = "txtDonGia",
                 Font = font1,
@@ -1030,6 +1034,8 @@ namespace Program
                 TabIndex = 0,
                 ReadOnly = true,
             };
+            GUI_Utils.Instance.FitTextBox(txtDonGia);
+
             TextBox txtSoLuong = new TextBox
             {
                 Location = txtSoLuongTCSP.Location,
@@ -1058,29 +1064,100 @@ namespace Program
             {
                 Location = btnThongTinSanPham.Location,
                 Text = "Thông tin sản phẩm",
-                ForeColor = Color.White,
+                ForeColor = Color.Black,
                 Size = btnThongTinSanPham.Size,
                 Font = font1,
-                BackColor = Color.DimGray,
+                BackColor = Color.White,
                 Cursor = Cursors.Hand,
             };
-          
+
+            if(tinhTrang == 0) // san Pham dang hoat dong
+            {
+                Button btnASP = new Button
+                {
+                    Location = button23.Location,
+                    Text = "Ẩn Sản Phẩm",
+                    ForeColor = Color.White,
+                    Size = button23.Size,
+                    Font = font1,
+                    BackColor = Color.Silver,
+                    Cursor = Cursors.Hand,
+                };
+                btnASP.Click += AnSanPhamButton_Click;
+                p.Controls.Add(btnASP);
+                btnTTSP.Click += TTSP_Button;
+            }
+            else if(tinhTrang == 2) // SAN PHAM DA AN NHUNG BAI DANG KHONG AN
+            {
+                Button btnASP = new Button
+                {
+                    Location = button23.Location,
+                    Text = "Hoàn Tác",
+                    ForeColor = Color.White,
+                    Size = button23.Size,
+                    Font = font1,
+                    BackColor = Color.Silver,
+                    Cursor = Cursors.Hand,
+                };
+                btnASP.Click += HoanTacSanPhamButton_Click;
+                p.Controls.Add(btnASP);
+                btnTTSP.Click += CapNhatThongTinSPKhongHoatDong_Click;
+            }
+            else
+            {
+                btnTTSP.Click += CapNhatThongTinSPKhongHoatDong_Click;
+            }
+            
             p.Controls.Add(txtTenSP);
             p.Controls.Add(txtDonGia);
             p.Controls.Add(txtSoLuong);
             p.Controls.Add(txtLuocBan);
             p.Controls.Add(btnTTSP);
-
             p.Controls.Add(picImage);
-            btnTTSP.Click += TTSP_Button;
             return p;
+        }
+
+        private void HoanTacSanPhamButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+            DialogResult result = MessageBox.Show("Bạn có muốn hoàn tác sản phẩm này không?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                BLL_Shop.Instance.HoanTacSanPham(shop, QLSP.list[index]);
+                QLSP.RemoveAt(index);
+                panelToUpdate.Parent.Controls.Remove(panelToUpdate);
+
+                ThongBaoForm form = new ThongBaoForm("Sản phẩm đã được hoàn tác thành công!!");
+                form.Show();
+            }
+        }
+
+        private void AnSanPhamButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+            DialogResult result = MessageBox.Show("Bạn có muốn ẩn sản phẩm này không?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                BLL_Shop.Instance.AnSanPham(shop, QLSP.list[index].maSP);
+                QLSP.RemoveAt(index);
+                panelToUpdate.Parent.Controls.Remove(panelToUpdate);
+
+                ThongBaoForm form = new ThongBaoForm("Sản phẩm đã bị ẩn đi!!");
+                form.Show();
+            }
         }
 
         private void TTSP_Button(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
-            index = listSanPham.Controls.IndexOf(panelToUpdate);
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
 
             DimForm dimForm = new DimForm();
             dimForm.Show();
@@ -1093,32 +1170,50 @@ namespace Program
             dimForm.Close();
             ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
-            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtDonGia")).Text = QLSP.list[index].gia.ToString();
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtDonGia")).Text = Utils.Instance.SetGia(QLSP.list[index].gia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
-            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtLuocBan")).Text = QLSP.list[index].luocBan.ToString();
-        }
-        private void ThemThongTinSanPham(SanPham sanPham)
+        } 
+
+        private void CapNhatThongTinSPKhongHoatDong_Click(object sender, EventArgs e)
         {
-            QLSP.list.Add(sanPham);
-            listSanPham.Size = new Size(listSanPham.Size.Width, listSanPham.Size.Height + chiTietSP_Panel.Size.Height + 20);
-            listSanPham.Controls.Add(themCTSP(sanPham));
-            listSanPham.Visible = true;
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+
+            SanPhamForm form = new SanPhamForm(CapNhatThongTinSPKhongHoatDong);
+            SendSanPham send = new SendSanPham(form.setSanPham);
+            send(QLSP.list[index]);
+            form.ShowDialog();
+            dimForm.Close();
+
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtDonGia")).Text = Utils.Instance.SetGia(QLSP.list[index].gia);
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
         }
+
+        private void CapNhatThongTinSPKhongHoatDong(SanPham sanPham)
+        {
+            QLSP.list[index] = sanPham;
+            BLL_SanPham.Instance.CapNhatSanPham(sanPham);
+        }
+
         private void ThemThongTinBaiDang(BaiDang baiDang)
         {
             QLBD.list.Add(baiDang);
-            FLLayout_TatCaBaiDang.Size = new Size(FLLayout_TatCaBaiDang.Size.Width, FLLayout_TatCaBaiDang.Size.Height + chiTietBaiDang_Panel.Size.Height + 20);
-            FLLayout_TatCaBaiDang.Controls.Add(themCTBD(baiDang));
-            FLLayout_TatCaBaiDang.Visible = true;
+            baiDangFLP.Size = new Size(baiDangFLP.Size.Width, baiDangFLP.Size.Height + chiTietBaiDang_Panel.Size.Height + 20);
+            baiDangFLP.Controls.Add(themCTBD(baiDang));
+            baiDangFLP.Visible = true;
 
-            GUI_Utils.Instance.FitFLPHeight(FLLayout_TatCaBaiDang);
+            GUI_Utils.Instance.FitFLPHeight(baiDangFLP);
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
             flowLayoutPanel3.Height += 50;
-
-
         }
 
-        private Panel themCTBD(BaiDang baiDang)
+        private Panel themCTBD(BaiDang baiDang, int tinhTrang = 0)
         {
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             Panel p = new Panel
@@ -1193,21 +1288,6 @@ namespace Program
             btnTTSP1.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnTTSP1.FlatAppearance.MouseDownBackColor = Color.Silver;
 
-            Button btnTTSP2 = new Button
-            {
-                Location = button22.Location,
-                Text = "Ẩn Bài Đăng",
-                ForeColor = Color.Black,
-                Size = button22.Size,
-                FlatStyle = FlatStyle.Flat,
-                Font = font1,
-                BackColor = Color.White,
-                Cursor = Cursors.Hand,
-            };
-            btnTTSP2.FlatAppearance.BorderSize = 1;
-            btnTTSP2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
-            btnTTSP2.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-
             Button btnTTSP3 = new Button
             {
                 Location = button5.Location,
@@ -1223,22 +1303,182 @@ namespace Program
             btnTTSP3.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             btnTTSP3.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
 
+            if(tinhTrang == 0) // bai dang dang hoat dong
+            {
+                Button btnTTSP2 = new Button
+                {
+                    Location = button22.Location,
+                    Text = "Ẩn Bài Đăng",
+                    ForeColor = Color.Black,
+                    Size = button22.Size,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = font1,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                };
+                btnTTSP2.FlatAppearance.BorderSize = 1;
+                btnTTSP2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                btnTTSP2.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+                p.Controls.Add(btnTTSP2);
+                btnTTSP3.Click += XemSanPhamOfBaiDang_Click;
+                btnTTSP2.Click += AnBaiDangButton_Click;
+                btnTTSP1.Click += TTBD_Button;
+            }
+            else if(tinhTrang == 1) // bai dang vi pham
+            {
+                Button btnTTSP2 = new Button
+                {
+                    Location = button22.Location,
+                    Text = "Y/C Gỡ Vi Phạm",
+                    ForeColor = Color.Black,
+                    Size = button22.Size,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = font1,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                };
+                btnTTSP2.FlatAppearance.BorderSize = 1;
+                btnTTSP2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                btnTTSP2.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+                p.Controls.Add(btnTTSP2);
+                btnTTSP3.Click += XemSPOfBDKhongHoatDong_Click;
+                btnTTSP2.Click += YeuCauGoViPhamButton_Click;
+                btnTTSP1.Click += TTBD_Button;
+            }
+            else if(tinhTrang == 2) // bai dang da an
+            {
+                Button btnTTSP2 = new Button
+                {
+                    Location = button22.Location,
+                    Text = "Hoàn Tác",
+                    ForeColor = Color.Black,
+                    Size = button22.Size,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = font1,
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                };
+                btnTTSP2.FlatAppearance.BorderSize = 1;
+                btnTTSP2.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+                btnTTSP2.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+                p.Controls.Add(btnTTSP2);
+                btnTTSP3.Click += XemSPOfBDKhongHoatDong_Click;
+                btnTTSP2.Click += HoanTacBaiDangButton_Click;
+                btnTTSP1.Click += TTBD_Button;
+            }
+
             p.Controls.Add(txtTieuDe1);
             p.Controls.Add(txtGiamGia1);
             p.Controls.Add(txtLuocThich1);
             p.Controls.Add(btnTTSP1);
-            p.Controls.Add(btnTTSP2);
             p.Controls.Add(btnTTSP3);
             p.Controls.Add(picImage);
 
-            btnTTSP2.Click += XemSanPhamOfBaiDang_Click;
-            btnTTSP1.Click += TTBD_Button;
             return p;
+        }
+
+        private void YeuCauGoViPhamButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+            BLL_Shop.Instance.YeuCauGoViPham(QLBD.list[index].maBD);
+
+            ThongBaoForm form = new ThongBaoForm("Đã gửi yêu cầu quản trị viên xem xét lại!!");
+            form.Show();
+        }
+
+        private void HoanTacBaiDangButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+            DialogResult result = MessageBox.Show("Bạn có muốn hoàn tác bài đăng này không?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                BLL_Shop.Instance.HoanTacBaiDang(shop, QLBD.list[index]);
+                QLBD.RemoveAt(index);
+                panelToUpdate.Parent.Controls.Remove(panelToUpdate);
+
+                ThongBaoForm form = new ThongBaoForm("Bài đăng đã được hoàn tác thành công!!");
+                form.Show();
+            }
+        }
+
+        private void AnBaiDangButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+
+
+            DialogResult result = MessageBox.Show("Bạn có muốn ẩn bài đăng này không?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                BLL_Shop.Instance.AnBaiDang(shop, QLBD.list[index].maBD);
+                QLBD.RemoveAt(index);
+                panelToUpdate.Parent.Controls.Remove(panelToUpdate);
+
+                ThongBaoForm form = new ThongBaoForm("Bài đăng đã bị ẩn!!");
+                form.Show();
+            }
+        }
+
+        private void XemSPOfBDKhongHoatDong_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+            cloneButton.Text += "    ‣   Sản Phẩm";
+
+            currPanel = chiTietSanPhamBDPanel;
+            chiTietSanPhamBDPanel.Visible = true;
+            tatCaBaiDang_Panel.Visible = false;
+
+            flowLayoutPanel5.Controls.Clear();
+            QLSP.list.Clear();
+
+            foreach (SanPham sanPham in QLBD.list[index].list)
+            {
+                QLSP.Add(sanPham);
+                flowLayoutPanel5.Controls.Add(themCTSP(sanPham, 3));
+            }
+
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel5);
+            panel24.Height = flowLayoutPanel5.Height + 100;
         }
 
         private void XemSanPhamOfBaiDang_Click(object sender, EventArgs e)
         {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = panelToUpdate.Parent.Controls.IndexOf(panelToUpdate);
+            cloneButton.Text += "    ‣   Sản Phẩm";
 
+            currPanel = chiTietSanPhamBDPanel;
+            chiTietSanPhamBDPanel.Visible = true;
+            tatCaBaiDang_Panel.Visible = false;
+
+            flowLayoutPanel5.Controls.Clear();
+            QLSP.list.Clear();
+
+            foreach (SanPham sanPham in QLBD.list[index].list)
+            {
+                QLSP.Add(sanPham);
+                flowLayoutPanel5.Controls.Add(themCTSP(sanPham));
+            }
+
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel5);
+            panel24.Height = flowLayoutPanel5.Height + 100;
+        }
+        private void troLaiTuChiTietDHButton_Click(object sender, EventArgs e)
+        {
+            chiTietSanPhamBDPanel.Visible = false;
+            currPanel = tatCaBaiDang_Panel;
+            currPanel.Visible = true;
+            cloneButton.Text = cloneButton.Text.Substring(0, cloneButton.Text.Length - 16);
         }
 
         private void UpdateBaiDang(BaiDang baiDang)
@@ -1246,11 +1486,12 @@ namespace Program
             QLBD.list[index] = baiDang;
             BLL_Shop.Instance.CapNhatBaiDang(shop, baiDang);
         }
+
         private void TTBD_Button(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             Panel panelToUpdate = clickedButton.Parent as Panel;
-            index = FLLayout_TatCaBaiDang.Controls.IndexOf(panelToUpdate);
+            index = baiDangFLP.Controls.IndexOf(panelToUpdate);
 
             DimForm dimForm = new DimForm();
             dimForm.Show();
@@ -1264,8 +1505,34 @@ namespace Program
             ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = System.Drawing.Image.FromFile(QLBD.list[index].anhBia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();
-            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtLuocThich")).Text = QLBD.list[index].luocThich.ToString();
         }
+
+        private void UpdateBaiDangKhongHoatDong(BaiDang baiDang)
+        {
+            QLBD.list[index] = baiDang;
+            BLL_BaiDang.Instance.CapNhatBaiDang(baiDang);
+        }
+
+        private void UpdateBaiDangKhongHoatDong(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Panel panelToUpdate = clickedButton.Parent as Panel;
+            index = baiDangFLP.Controls.IndexOf(panelToUpdate);
+
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+
+            BaiDangForm form = new BaiDangForm(UpdateBaiDangKhongHoatDong);
+            SendBaiDang send = new SendBaiDang(form.SetBaiDang);
+            send(QLBD.list[index]);
+
+            form.ShowDialog();
+            dimForm.Close();
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = System.Drawing.Image.FromFile(QLBD.list[index].anhBia);
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
+            ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();
+        }
+
         private void hoSoShop()
         {
             txtTenShop.Text = shop.ten;
@@ -1375,14 +1642,7 @@ namespace Program
 
         private void ChuyenLoaiDH_Click(object sender, EventArgs e)
         {
-            foreach (Control control in HeaderDHPanel.Controls)
-            {
-                if (control.ForeColor == Color.Red)
-                {
-                    control.ForeColor = Color.Black;
-                    break;
-                }
-            }
+            HighLightButton(sender, e);
             Button button = sender as Button;
             button.ForeColor = Color.Red;
 
@@ -1397,8 +1657,9 @@ namespace Program
             else if (button.Text == "Đơn hủy")
                 loaiDH = -1;
 
+            cloneButton.Text = "Tất Cả Đơn Hàng    ‣    " + button.Text;
+
             int n = 0;
-            int height = 10;
             DonHangFLP.Controls.Clear();
             foreach (DonHang donHang in shop.listDonHang.list)
             {
@@ -1406,14 +1667,18 @@ namespace Program
                 {
                     Panel panel = DrawDonHangPanel(donHang);
                     DonHangFLP.Controls.Add(panel);
-                    height += panel.Height + panel.Margin.Bottom + panel.Margin.Top;
                     n++;
                 }
             }
             soLuongDHTxt.Text = n.ToString() + " Đơn hàng";
 
-            DonHangFLP.Height = height + 200;
-            TatCaDHP.Height = height + 200;
+            if(n == 0)
+            {
+
+            }
+            GUI_Utils.Instance.FitFLPHeight(DonHangFLP);
+            DonHangFLP.Height += 200;
+            TatCaDHP.Height = DonHangFLP.Height;
 
         }
 
@@ -1620,9 +1885,8 @@ namespace Program
 
         private void XemChiTietDonHangButton_Click(object sender, EventArgs e)
         {
-
-            cloneButton.Text += "    ‣     Chi Tiết Đơn Hàng";
-
+            cloneButton.Text += "    ‣    Chi Tiết Đơn Hàng";
+            
             currPanel.Visible = false;
             chiTietDonHangPanel.Visible = true;
             currPanel = chiTietBaiDang_Panel;
@@ -1808,44 +2072,134 @@ namespace Program
 
         private void btnChoXacNhan_Click(object sender, EventArgs e)
         {
-            SwitchPanel(TatCaDHPanel);
+            SwitchPanel(ref TatCaDHPanel);
             ChuyenLoaiDH_Click(DHChoXNButton, null);
         }
 
         private void btnDangGiao_Click(object sender, EventArgs e)
         {
-            SwitchPanel(TatCaDHPanel);
+            SwitchPanel(ref TatCaDHPanel);
             ChuyenLoaiDH_Click(DHDangVCButton, null);
         }
 
         private void btnHoanThanh_Click(object sender, EventArgs e)
         {
-            SwitchPanel(TatCaDHPanel);
+            SwitchPanel(ref TatCaDHPanel);
             ChuyenLoaiDH_Click(DHDaHTButton, null);
         }
 
         private void btnDonHuy_Click(object sender, EventArgs e)
         {
-            SwitchPanel(TatCaDHPanel);
+            SwitchPanel(ref TatCaDHPanel);
             ChuyenLoaiDH_Click(DHDaHuyButton, null);
             
         }
 
+        private void HighLightButton(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            foreach(Control con in button.Parent.Controls)
+            {
+                con.ForeColor = Color.Black;
+            }
+
+            button.ForeColor = Color.Red;
+        }
+
         private void btnTatCa_Click(object sender, EventArgs e)
         {
-            btnHetHang.ForeColor = Color.Black;
-            btnTatCa.ForeColor = Color.Red;
-            btnViPham.ForeColor = Color.Black;
-            tcsp_Panel.Visible = true;
+            HighLightButton(sender, e);
 
+            listSanPham.Controls.Clear();
+            QLSP = new QLSanPham();
+            
+            foreach(BaiDang baiDang in shop.listBaiDang.list)
+            {
+                foreach(SanPham sanPham in baiDang.list)
+                {
+                    QLSP.Add(sanPham);
+                    listSanPham.Controls.Add(themCTSP(sanPham, 0));
+                }
+            }
+
+            if (listSanPham.Controls.Count == 0)
+                listSanPham.Controls.Add(noItemPanel);
+
+            cloneButton.Text = "Tất Cả Sản Phâm    ‣    " + (sender as Button).Text;
+
+            GUI_Utils.Instance.FitFLPHeight(listSanPham);
+            tcsp_Panel.Height = listSanPham.Height + 100;
         }
 
         private void btnHetHang_Click(object sender, EventArgs e)
         {
-            btnHetHang.ForeColor = Color.Red;
-            btnTatCa.ForeColor = Color.Black;
-            btnViPham.ForeColor = Color.Black;
-            tcsp_Panel.Visible = false;
+            HighLightButton(sender, e);
+
+            listSanPham.Controls.Clear();
+            QLSP = new QLSanPham();
+
+            foreach (BaiDang baiDang in shop.listBaiDang.list)
+            {
+                foreach (SanPham sanPham in baiDang.list)
+                {
+                    if(sanPham.soLuong == 0)
+                        listSanPham.Controls.Add(themCTSP(sanPham, 0));
+                }
+            }
+
+            if (listSanPham.Controls.Count == 0)
+                listSanPham.Controls.Add(noItemPanel);
+
+            cloneButton.Text = "Tất Cả Sản Phâm    ‣    " + (sender as Button).Text;
+
+            GUI_Utils.Instance.FitFLPHeight(listSanPham);
+            tcsp_Panel.Height = listSanPham.Height + 100;
+        }
+
+        private void SPDaAnButton_Click(object sender, EventArgs e)
+        {
+            HighLightButton(sender, e);
+
+            listSanPham.Controls.Clear();
+            QLSP = BLL_SanPham.Instance.GetAllSanPhamDaAnFromMaS(shop.maSo);
+
+            foreach(SanPham sanPham in QLSP.list)
+            {
+                if(BLL_SanPham.Instance.KiemTraBaiDangDaAn(sanPham.maSP))
+                    listSanPham.Controls.Add(themCTSP(sanPham, 3));
+                else
+                    listSanPham.Controls.Add(themCTSP(sanPham, 2));
+            }
+
+            if (listSanPham.Controls.Count == 0)
+                listSanPham.Controls.Add(noItemPanel);
+
+            cloneButton.Text = "Tất Cả Sản Phâm    ‣    " + (sender as Button).Text;
+
+            GUI_Utils.Instance.FitFLPHeight(listSanPham);
+            tcsp_Panel.Height = listSanPham.Height + 100;
+        }
+
+        private void SPViPhamButton_Click(object sender, EventArgs e)
+        {
+            HighLightButton(sender, e);
+
+            listSanPham.Controls.Clear();
+            QLSP = BLL_SanPham.Instance.GetAllSanPhamViPhamFromMaS(shop.maSo);
+
+            foreach (SanPham sanPham in QLSP.list)
+            {
+                listSanPham.Controls.Add(themCTSP(sanPham, 1));
+            }
+
+            if (listSanPham.Controls.Count == 0)
+                listSanPham.Controls.Add(noItemPanel);
+
+            cloneButton.Text = "Tất Cả Sản Phâm    ‣    " + (sender as Button).Text;
+
+            GUI_Utils.Instance.FitFLPHeight(listSanPham);
+            tcsp_Panel.Height = listSanPham.Height + 100;
         }
 
         private void btnViPham_Click(object sender, EventArgs e)
@@ -1874,17 +2228,402 @@ namespace Program
 
         private void troLaiDHButton_Click(object sender, EventArgs e)
         {
-            tabClick(tatCaButton, null);
+            currPanel.Visible = false;
+            TatCaDHPanel.Visible = true;
+            cloneButton.Text = cloneButton.Text.Substring(0, cloneButton.Text.Length - 26);
+            currPanel = TatCaDHPanel;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void TatCaBDButton_Click(object sender, EventArgs e)
         {
+            HighLightButton(sender, e);
 
+            QLBD.Clear();
+            baiDangFLP.Controls.Clear();
+
+            foreach(BaiDang baiDang in shop.listBaiDang.list)
+            {
+                QLBD.Add(baiDang);
+                baiDangFLP.Controls.Add(themCTBD(baiDang));
+            }
+
+            if (baiDangFLP.Controls.Count == 0)
+                baiDangFLP.Controls.Add(noBaiDangPanel);
+
+            GUI_Utils.Instance.FitFLPHeight(baiDangFLP);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
+            flowLayoutPanel3.Height += 50;
         }
 
-        private void hoverMouse(object sender, MouseEventArgs e)
+        private void BDDaAnButton_Click(object sender, EventArgs e)
         {
+            HighLightButton(sender, e);
 
+            QLBD.Clear();
+            QLBD = BLL_BaiDang.Instance.GetAllBaiDangDaAnFromMaS(shop.maSo);
+            baiDangFLP.Controls.Clear();
+
+            foreach (BaiDang baiDang in QLBD.list)
+            {
+                baiDangFLP.Controls.Add(themCTBD(baiDang, 2));
+            }
+
+            if (baiDangFLP.Controls.Count == 0)
+                baiDangFLP.Controls.Add(noBaiDangPanel);
+
+            GUI_Utils.Instance.FitFLPHeight(baiDangFLP);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
+            flowLayoutPanel3.Height += 50;
         }
+
+        private void BDViPhamButton_Click(object sender, EventArgs e)
+        {
+            HighLightButton(sender, e);
+
+            QLBD = BLL_BaiDang.Instance.GetAllBaiDangViPhamFromMaS(shop.maSo);
+            baiDangFLP.Controls.Clear();
+
+            foreach (BaiDang baiDang in QLBD.list)
+            {
+                baiDangFLP.Controls.Add(themCTBD(baiDang, 1));
+            }
+
+            if (baiDangFLP.Controls.Count == 0)
+                baiDangFLP.Controls.Add(noBaiDangPanel);
+
+            GUI_Utils.Instance.FitFLPHeight(baiDangFLP);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
+            flowLayoutPanel3.Height += 50;
+        }
+
+        private void SPBiKhoaButton_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref tatCaBaiDang_Panel);
+            BDViPhamButton_Click(btnViPham, null);
+        }
+
+        private void SPHetHang_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref tatCaSanPhamPanel);
+            btnHetHang_Click(btnHetHang, null);
+        }
+
+        private void PictureBoxToCircle_Paint(object sender, PaintEventArgs e)
+        {
+            GUI_Utils.Instance.PictureBoxToCircle_Paint(sender, e);
+        }
+
+        private void MouseInFunc(object sender, EventArgs e)
+        {
+            miniPanel.Visible = true;
+        }
+
+        private void MouseOutFunc(object sender, EventArgs e)
+        {
+            if (!miniPanel.Bounds.Contains(PointToClient(MousePosition)))
+            {
+                miniPanel.Visible = false;
+            }
+        }
+
+        private void MouseOutPanel(object sender, EventArgs e)
+        {
+            if (!miniPanel.Bounds.Contains(PointToClient(MousePosition)))
+            {
+                miniPanel.Visible = false;
+            }
+        }
+
+        private void DangXuatButton_Click(object sender, EventArgs e)
+        {
+            miniPanel.Visible = false;
+            Hide();
+            Dispose();
+            DangNhap_Form form = new DangNhap_Form(true);
+            form.ShowDialog();
+        }
+
+        private void KenhMuaHangButton_Click(object sender, EventArgs e)
+        {
+            miniPanel.Visible = false;
+            Hide();
+            Dispose();
+            KhachHangForm form = new KhachHangForm(user);
+            form.ShowDialog();
+        }
+
+        private void HoSoShopButton_Click(object sender, EventArgs e)
+        {
+            miniPanel.Visible = false;
+            SwitchPanel(ref hoSoShop_Panel);
+            hoSoShop();
+        }
+
+        private void DanhGiaShopShow()
+        {
+            if(listDanhGia == null)
+            {
+                listDanhGia = BLL_Shop.Instance.GetDanhGiaShop(shop.listBaiDang);
+
+                saoS.Text = listDanhGia.tinhSao().ToString();
+                nDanhGia.Text = $"/5 ({listDanhGia.list.Count} Đánh giá)";
+
+                sao5CB.Text = $"5 Sao({listDanhGia.SoluongDanhGia(5)})";
+                sao4CB.Text = $"4 Sao({listDanhGia.SoluongDanhGia(4)})";
+                sao3CB.Text = $"3 Sao({listDanhGia.SoluongDanhGia(3)})";
+                sao2CB.Text = $"2 Sao({listDanhGia.SoluongDanhGia(2)})";
+                sao1CB.Text = $"1 Sao({listDanhGia.SoluongDanhGia(1)})";
+            }
+
+            danhGiaFLP.Controls.Clear();
+            foreach (DanhGia danhGia in listDanhGia.list)
+            {
+                danhGiaFLP.Controls.Add(DrawDanhGiaPanel(danhGia)); 
+            }
+
+            GUI_Utils.Instance.FitFLPHeight(danhGiaFLP);
+            panel20.Height = danhGiaFLP.Height + 200;
+        }
+
+        private Panel DrawDanhGiaPanel(DanhGia danhGia)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel25.Size,
+                Margin = panel25.Margin,
+                BackColor = Color.White,
+                Parent = danhGiaFLP
+            };
+
+            TextBox baiDangLB = new TextBox
+            {
+                Text = "Bài Đăng:",
+                Font = textBox100.Font,
+                Size = textBox100.Size,
+                Location = textBox100.Location,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(baiDangLB);
+
+            TextBox baiDang = new TextBox
+            {
+                Text = BLL_BaiDang.Instance.GetTieuDeFromMaBD(danhGia.maBD),
+                Font = textBox101.Font,
+                Size = textBox101.Size,
+                Location = textBox101.Location,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                Multiline = true,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(baiDang);
+
+            TextBox sanPhamDaMuaLB = new TextBox
+            {
+                Text = "Sản phẩm đã mua:",
+                Font = textBox102.Font,
+                Size = textBox102.Size,
+                Location = textBox102.Location,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(sanPhamDaMuaLB);
+
+            TextBox sanPhamDaMua = new TextBox
+            {
+                Text = danhGia.sanPhamDaMua,
+                Font = textBox103.Font,
+                Size = textBox103.Size,
+                Location = textBox103.Location,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                Multiline = true,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(sanPhamDaMua);
+
+            TextBox doiTuongLB = new TextBox
+            {
+                Text = "Đối tượng đọc giả:",
+                Font = textBox104.Font,
+                Size = textBox104.Size,
+                Location = textBox104.Location,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(doiTuongLB);
+
+            TextBox doiTuong = new TextBox
+            {
+                Text = danhGia.doiTuong,
+                Font = textBox105.Font,
+                Size = textBox105.Size,
+                Location = textBox105.Location,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(doiTuong);
+
+            TextBox thietKeBiaLB = new TextBox
+            {
+                Text = "Thiết kế bìa:",
+                Font = textBox106.Font,
+                Size = textBox106.Size,
+                Location = textBox106.Location,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(thietKeBiaLB);
+
+            TextBox thietKeBia = new TextBox
+            {
+                Text = danhGia.thietKeBia,
+                Font = textBox107.Font,
+                Size = textBox107.Size,
+                Location = textBox107.Location,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(thietKeBia);
+
+            TextBox noiDungLB = new TextBox
+            {
+                Text = "Nội dung:",
+                Font = textBox108.Font,
+                Size = textBox108.Size,
+                Location = textBox108.Location,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(noiDungLB);
+
+            TextBox noiDung = new TextBox
+            {
+                Text = danhGia.noiDung,
+                Font = textBox109.Font,
+                Size = textBox109.Size,
+                Location = textBox109.Location,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                Multiline = true,
+                ReadOnly = true,
+                Cursor = Cursors.IBeam,
+                BorderStyle = BorderStyle.None,
+                Parent = panel
+            };
+            panel.Controls.Add(noiDung);
+
+            PictureBox line = new PictureBox
+            {
+                Size = pictureBox4.Size,
+                Location = pictureBox4.Location,
+                BackColor = Color.DimGray,
+                Parent = panel
+            };
+            panel.Controls.Add(line);
+
+            PictureBox sao = new PictureBox
+            {
+                Image = GUI_Utils.Instance.CreateStarRatingPictureBox(danhGia.sao, 5, 16, 1).Image,
+                Size = pictureBox6.Size,
+                Location = pictureBox6.Location,
+                BackColor = Color.White,
+                Parent = panel
+            };
+            panel.Controls.Add(sao);
+
+            return panel;
+        }
+
+        private void tatCaSao_CheckedChanged(object sender, EventArgs e)
+        {
+            danhGiaFLP.Controls.Remove(panel28);
+            sao5CB.Checked = tatCaSao.Checked;
+            sao4CB.Checked = tatCaSao.Checked;
+            sao3CB.Checked = tatCaSao.Checked;
+            sao2CB.Checked = tatCaSao.Checked;
+            sao1CB.Checked = tatCaSao.Checked;
+
+            if (tatCaSao.Checked)
+            {
+                foreach (Control con in danhGiaFLP.Controls)
+                    con.Visible = true;
+            }
+            else
+            {
+                foreach (Control con in danhGiaFLP.Controls)
+                    con.Visible = false;
+                danhGiaFLP.Controls.Add(panel28);
+            }
+
+            GUI_Utils.Instance.FitFLPHeight(danhGiaFLP);
+            panel20.Height = danhGiaFLP.Height + 200;
+        }
+
+        private void SaoCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            danhGiaFLP.Controls.Remove(panel28);
+
+            CheckBox checkBox = sender as CheckBox;
+            int sao = int.Parse(checkBox.Name.Substring(3, 1));
+
+            int n = 0;
+            
+            for(int i = 0; i < listDanhGia.list.Count; i++)
+            {
+                if (listDanhGia.list[i].sao == sao)
+                    danhGiaFLP.Controls[i].Visible = checkBox.Checked;
+
+                if (danhGiaFLP.Controls[i].Visible)
+                    n++;
+            }
+
+            if(n == 0)
+            {
+                danhGiaFLP.Controls.Add(panel28);
+            }
+            if(n == listDanhGia.list.Count)
+            {
+                tatCaSao.Checked = true;
+            }
+            GUI_Utils.Instance.FitFLPHeight(danhGiaFLP);
+            panel20.Height = danhGiaFLP.Height + 200;
+        }
+
     }
 }

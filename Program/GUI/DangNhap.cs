@@ -302,7 +302,7 @@ namespace Program
             }
             else
             {
-                KhachHangForm KHForm = new KhachHangForm();
+                KhachHangForm KHForm = new KhachHangForm(null);
                 Hide();
                 Close();
                 KHForm.ShowDialog();

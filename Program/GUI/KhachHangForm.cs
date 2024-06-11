@@ -57,19 +57,6 @@ namespace Program
 
         private delegate void ClickEvent(object sender, EventArgs e);
 
-        public KhachHangForm()
-        {
-            InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.gioHangPanel.MouseWheel += GioHangPanel_MouseWheel;
-
-            TuDongDangNhap();
-            qlBaiDang = BLL_BaiDang.Instance.GetBaiDangForHomeList();
-            currPanel = HomePanel;
-        }
         public KhachHangForm(User user)
         {
             InitializeComponent();
@@ -100,14 +87,6 @@ namespace Program
             user_DangXuat_Button.Visible = true;
             flowLayoutPanel6.Visible = true;
 
-            try
-            {
-                miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), miniAvt.Size);
-            }
-            catch
-            {
-                miniAvt.Image = null;
-            }
         }
 
         public void SetData(string taiKhoan, string matKhau)
@@ -127,17 +106,6 @@ namespace Program
                 box.UseSystemPasswordChar = true;
         }
 
-        private void TuDongDangNhap()
-        {
-            user = BLL_User.Instance.DangNhapBangCache();
-            if (user != null)
-            {
-                khachHang = BLL_KhachHang.Instance.GetKhachHangFromTaiKhoan(user.taiKhoan);
-                SetHeaderPanel();
-                DangNhapThanhCong();
-            }
-        }
-
         private void RefreshCartButton()
         {
             if (khachHang == null)
@@ -153,6 +121,14 @@ namespace Program
             RefreshCartButton();
             if (user != null)
             {
+                try
+                {
+                    miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), miniAvt.Size);
+                }
+                catch
+                {
+                    miniAvt.Image = null;
+                }
                 userProfile_Button.Text = user.taiKhoan + "◀";
             }
         }
@@ -522,7 +498,7 @@ namespace Program
         private void dangNhap_Button_Click(object sender, EventArgs e)
         {
             Hide();
-            Close();
+            Dispose();
             DangNhap_Form form = new DangNhap_Form(true);
             form.ShowDialog();
         }
@@ -530,7 +506,7 @@ namespace Program
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
             Hide();
-            Close();
+            Dispose();
             DangNhap_Form form = new DangNhap_Form(false);
             form.ShowDialog();
         }
@@ -756,7 +732,7 @@ namespace Program
             {
                 Hide();
                 DangNhap_Form form = new DangNhap_Form(null, "Shop");
-                Close();
+                Dispose();
                 form.ShowDialog();
             }
             else
@@ -765,7 +741,7 @@ namespace Program
                 BanHang_Form BHForm = new BanHang_Form();
                 sendData send = new sendData(BHForm.setData);
                 send(user.taiKhoan, user.matKhau);
-                Close();
+                Dispose();
                 BHForm.ShowDialog();
             }
         }

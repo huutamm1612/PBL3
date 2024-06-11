@@ -45,12 +45,32 @@ namespace Program
                     list.Remove(i);
         }
 
+        public void Remove(string maBD)
+        {
+            foreach (BaiDang baiDang in list)
+            {
+                if (baiDang.maBD.Equals(maBD))
+                {
+                    list.Remove(baiDang);
+                    return;
+                }
+            }
+        }
+
         public void RemoveAt(int index)
         {
             if(index == -1)
                 list.RemoveAt(list.Count - 1);
                 
             list.RemoveAt(index);
+        }
+
+        public void RemoveSanPhamFromMaSP(string maSP)
+        {
+            foreach(BaiDang baiDang in list)
+            {
+                baiDang.Remove(maSP);
+            }
         }
 
         public SanPham GetSanPhamFromMaSP(string maSP)

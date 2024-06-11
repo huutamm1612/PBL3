@@ -443,9 +443,39 @@ namespace Program.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noBaiDang {
+            get {
+                object obj = ResourceManager.GetObject("noBaiDang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noDanhGia {
+            get {
+                object obj = ResourceManager.GetObject("noDanhGia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noItem {
             get {
                 object obj = ResourceManager.GetObject("noItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noItem2 {
+            get {
+                object obj = ResourceManager.GetObject("noItem2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

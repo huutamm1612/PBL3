@@ -31,6 +31,11 @@ namespace Program.BLL
         {
             return DAL_BaiDang.Instance.LoadLyDoToCaoBaiDang();
         }
+        public int GetSoLuongBaiDangViPhamFromMaS(string maS) => DAL_BaiDang.Instance.LoadSoLuongBaiDangViPhamFromMaS(maS);
+
+        public QLBaiDang GetAllBaiDangViPhamFromMaS(string maS) => DAL_BaiDang.Instance.LoadAllBaiDangViPhamFromMaS(maS);
+
+        public QLBaiDang GetAllBaiDangDaAnFromMaS(string maS) => DAL_BaiDang.Instance.LoadAllBaiDangDaAnFromMaS(maS);
 
         public QLBaiDang GetBaiDangFromTextSearch(string text)
         {

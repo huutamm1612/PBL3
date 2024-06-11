@@ -88,6 +88,8 @@ namespace Program
 
         public int giaMin()
         {
+            if (list.Count == 0)
+                return 0;
             int min = list[0].gia;
 
             foreach (SanPham sanPham in list)
@@ -101,6 +103,8 @@ namespace Program
 
         public int giaMax()
         {
+            if (list.Count == 0)
+                return 0;
             int max = list[0].gia;
 
             foreach (SanPham sanPham in list)
@@ -114,7 +118,7 @@ namespace Program
 
         public double tinhSao()
         {
-            return Math.Ceiling(listDanhGia.tinhSao() * 10) / 10;
+            return listDanhGia.tinhSao() * 10;
         }
 
         public int doanhThu()

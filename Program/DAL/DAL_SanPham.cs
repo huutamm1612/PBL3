@@ -192,14 +192,48 @@ namespace Program.DAL
             return list;
         }
 
+
         public List<SanPham> LoadAllSanPhamFromMaBD(string maBD)
         {
             List<SanPham> list = new List<SanPham>();
 
-            string query = $"SELECT * FROM SanPham SP JOIN LoaiSanPham LSP ON LSP.maLoaiSP = SP.maLoaiSP JOIN SanPham_BaiDang SPBD ON SPBD.maSP = SP.maSP JOIN BaiDang_Shop BDS ON BDS.maBD = SPBD.maBD WHERE SPBD.maBD = '{maBD}'";
-            DataTable table = Database.Instance.ExecuteQuery(query);
+            string query = $"SELECT SP.*, BD.maBD, BDS.maS, LSP.tenLoaiSP FROM SanPham SP JOIN LoaiSanPham LSP ON LSP.maLoaiSP = SP.maLoaiSP JOIN SanPham_BaiDang SPBD ON SPBD.maSP = SP.maSP JOIN BaiDang_Shop BDS ON BDS.maBD = SPBD.maBD JOIN BaiDang BD ON BD.maBD = BDS.maBD WHERE BDS.maBD = @maBD AND BD.tinhTrang = SP.tinhTrang";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
 
-            foreach(DataRow row in table.Rows)
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(LoadSanPham(row));
+            }
+
+            return list;
+        }
+
+        public List<SanPham> LoadAllSanPhamViPhamFromMaS(string maS)
+        {
+            List<SanPham> list = new List<SanPham>();
+
+            string query = $"SELECT * FROM SanPham SP JOIN LoaiSanPham LSP ON LSP.maLoaiSP = SP.maLoaiSP JOIN SanPham_BaiDang SPBD ON SPBD.maSP = SP.maSP JOIN BaiDang_Shop BDS ON BDS.maBD = SPBD.maBD WHERE BDS.maS = @maS AND SP.tinhTrang = 1";
+            SqlParameter param = new SqlParameter("@maS", maS);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            foreach (DataRow row in table.Rows)
+            {
+                list.Add(LoadSanPham(row));
+            }
+
+            return list;
+        }
+
+        public List<SanPham> LoadAllSanPhamDaAnFromMaS(string maS)
+        {
+            List<SanPham> list = new List<SanPham>();
+
+            string query = $"SELECT * FROM SanPham SP JOIN LoaiSanPham LSP ON LSP.maLoaiSP = SP.maLoaiSP JOIN SanPham_BaiDang SPBD ON SPBD.maSP = SP.maSP JOIN BaiDang_Shop BDS ON BDS.maBD = SPBD.maBD WHERE BDS.maS = @maS AND SP.tinhTrang = 2";
+            SqlParameter param = new SqlParameter("@maS", maS);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            foreach (DataRow row in table.Rows)
             {
                 list.Add(LoadSanPham(row));
             }
@@ -211,16 +245,72 @@ namespace Program.DAL
         {
             string query = "INSERT INTO SanPham VALUES(@maSP, @maLoaiSP, @ten, @gia, @soLuong, @tacGia, @dichGia, @ngonNgu, @soTrang, @namXuatBan, @nhaXuatBan, @loaiBia, @moTa, 0, @anh)";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
-
+            
             query = $"INSERT INTO SanPham_BaiDang VALUES(@maSP, @maBD)";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
         }
 
+        public void XacNhanSanPhamViPham(string maBD)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 1 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SPBD.maBD = @maBD AND SP.tinhTrang = 0";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
+        public void KhoiPhucSanPhamViPham(string maBD)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 0 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SPBD.maBD = @maBD AND SP.tinhTrang = 1";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
 
         public void CapNhatSanPham(SanPham sanPham)
         {
             string query = $"UPDATE SanPham SET maLoaiSP = @maLoaiSP, ten = @ten, gia = @gia, soLuong = @soLuong, tacGia = @tacGia, ngonNgu = @ngonNgu, soTrang = @soTrang, namXuatBan = @namXuatBan, nhaXuatBan = @nhaXuatBan, loaiBia = @loaiBia, moTa = @moTa WHERE maSP = @maSP";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
+        }
+
+        public void AnSanPham(string maSP)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 2 WHERE maSP = @maSP";
+            SqlParameter param = new SqlParameter("@maSP", maSP);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+        public void HoanTacSanPham(string maSP)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 0 WHERE maSP = @maSP";
+            SqlParameter param = new SqlParameter("@maSP", maSP);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
+        public void AnSanPhamTuMaBD(string maBD)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 2 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SPBD.maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
+        public void HoanTacAnSanPhamFromMaBD(string maBD)
+        {
+            string query = "UPDATE SanPham SET tinhTrang = 0 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP JOIN BaiDang BD ON BD.maBD = SPBD.maBD WHERE SPBD.maBD = @maBD AND SP.tinhTrang = BD.tinhTrang";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+
+            Database.Instance.ExecuteNonQuery(query, param);
+        }
+
+        public bool KiemTraBaiDangDaAn(string maSP)
+        {
+            string query = "SELECT 1 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SPBD.maSP = SP.maSP JOIN BaiDang BD on SPBD.maBD = BD.maBD WHERE SP.maSP = @maSP AND BD.tinhTrang = 2";
+
+            SqlParameter param = new SqlParameter("@maSP", maSP);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            return table.Rows.Count == 1;
         }
 
         private SanPham LoadSanPham(DataRow row)

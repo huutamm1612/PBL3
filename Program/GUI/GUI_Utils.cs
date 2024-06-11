@@ -95,7 +95,8 @@ namespace Program.GUI
 
             foreach(Control c in con.Controls)
             {
-                height += c.Height + c.Margin.Top + c.Margin.Bottom;
+                if(c.Visible)
+                    height += c.Height + c.Margin.Top + c.Margin.Bottom;
             }
             con.Height = height;
         }

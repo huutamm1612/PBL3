@@ -71,6 +71,7 @@ namespace Program.BLL
         {
             DAL_Admin.Instance.XacNhanBDViPham(maTB, maBD);
             DAL_BaiDang.Instance.ThemBaiDangViPham(maBD, lyDo);
+            DAL_SanPham.Instance.XacNhanSanPhamViPham(maBD);
         }
         public void XacNhanDGViPham(string maTB, string maDG, string lyDo)
         {

@@ -83,8 +83,7 @@ namespace Program
             {
                 total += danhGia.sao;
             }
-
-            return total / list.Count;
+            return Math.Ceiling(total / list.Count * 10) / 10;
         }
     }
 }

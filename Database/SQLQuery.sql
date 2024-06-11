@@ -347,8 +347,3 @@ CREATE TABLE DanhGiaViPham
 	
 	CONSTRAINT FK_DanhGiaViPham_DanhGia FOREIGN KEY (maDG) REFERENCES DanhGia(maDG)
 )
-
-INSERT INTO LyDo VALUES(1, N'Sản phẩm đã hết hàng')
-INSERT INTO LyDo VALUES(1, N'Sản phẩm tạm ngừng kinh doanh')
-INSERT INTO LyDo VALUES(1, N'Shop không thích bán nữa')
-INSERT INTO LyDo VALUES(1, N'Shop không tìm thấy lý do hủy phù hợp')

@@ -26,6 +26,71 @@ namespace Program.BLL
 
         }
 
+        public QLDanhGia GetDanhGiaShop(QLBaiDang listBaiDang, int sao = 0)
+        {
+            QLDanhGia list = new QLDanhGia();
+
+            foreach (BaiDang baiDang in listBaiDang.list)
+                foreach (DanhGia danhGia in baiDang.listDanhGia.list)
+                    if (sao == 0 || sao == danhGia.sao)
+                        list.Add(danhGia);
+
+            return list;
+        }
+
+        public int GetSoLuongSPHetHang(QLBaiDang qLBaiDang)
+        {
+            int n = 0;
+            foreach (BaiDang baiDang in qLBaiDang.list)
+                foreach (SanPham sanPham in baiDang.list)
+                    if (sanPham.soLuong == 0)
+                        n++;
+
+            return n;
+        }
+
+        public void AnSanPham(Shop shop, string maSP)
+        {
+            shop.listBaiDang.RemoveSanPhamFromMaSP(maSP);
+            DAL_SanPham.Instance.AnSanPham(maSP);
+        }
+
+
+        public void HoanTacSanPham(Shop shop, SanPham sanPham)
+        {
+            shop.listBaiDang.GetBaiDangFromMaBD(sanPham.maBD).Add(sanPham);
+            DAL_SanPham.Instance.HoanTacSanPham(sanPham.maSP);
+        }
+
+        public void AnBaiDang(Shop shop, string maBD)
+        {
+            shop.listBaiDang.Remove(maBD);
+            DAL_BaiDang.Instance.AnBaiDang(maBD);
+            DAL_SanPham.Instance.AnSanPhamTuMaBD(maBD);
+        }
+
+        public void HoanTacBaiDang(Shop shop, BaiDang baiDang)
+        {
+            shop.listBaiDang.Add(baiDang);
+            DAL_SanPham.Instance.HoanTacAnSanPhamFromMaBD(baiDang.maBD);
+            DAL_BaiDang.Instance.HoanTacBaiDang(baiDang.maBD);
+        }
+
+        public void YeuCauGoViPham(string maBD)
+        {
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "ShopAnDanh",
+                to = "HeThong",
+                dinhKem = "BD" + maBD,
+                noiDung = $"Shop, chủ sở hữu của bài đăng BD{maBD} đã yêu cầu xem xét lại bài đăng và mong muốn gỡ vi phạm.",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+            BLL_ThongBao.Instance.ThemThongBao(thongBao);
+        }
+
         public string GetTenShopFromMaBD(string maBD)
         {
             return DAL_Shop.Instance.LoadTenShopFromMaBD(maBD);

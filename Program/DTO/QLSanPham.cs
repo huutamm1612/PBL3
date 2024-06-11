@@ -79,6 +79,18 @@ namespace Program
             }
         }
 
+        public void Remove(string maSP)
+        {
+            foreach (SanPham item in list)
+            {
+                if (item.maSP.Equals(maSP))
+                {
+                    list.Remove(item);
+                    return;
+                }
+            }
+        }
+
         public void RemoveAt(int index)
         {
             if (index == -1)

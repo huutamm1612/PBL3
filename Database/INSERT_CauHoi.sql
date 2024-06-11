@@ -8,6 +8,11 @@ INSERT INTO LyDo VALUES(0, N'Tôi muốn cập nhật địa chỉ/sđt nhận h
 INSERT INTO LyDo VALUES(0, N'Tôi không có nhu cầu mua nữa')
 INSERT INTO LyDo VALUES(0, N'Tôi không tìm thấy lý do hủy phù hợp')
 
+INSERT INTO LyDo VALUES(1, N'Sản phẩm đã hết hàng')
+INSERT INTO LyDo VALUES(1, N'Sản phẩm tạm ngừng kinh doanh')
+INSERT INTO LyDo VALUES(1, N'Shop không thích bán nữa')
+INSERT INTO LyDo VALUES(1, N'Shop không tìm thấy lý do hủy phù hợp')
+
 INSERT INTO LyDo VALUES(2, N'Sản phẩm không hợp lệ(không phải sách,...)')
 INSERT INTO LyDo VALUES(2, N'Sản phẩm vi phạm cộng đồng(18+, PBCT,...)')
 INSERT INTO LyDo VALUES(2, N'Sản phẩm có hình ảnh, nội dung phản cảm')

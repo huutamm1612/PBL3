@@ -458,5 +458,14 @@
   <ItemGroup>
     <None Include="Resources\error2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noItem2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noBaiDang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noDanhGia.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
