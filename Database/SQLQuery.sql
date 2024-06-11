@@ -1,5 +1,5 @@
-﻿CREATE DATABASE PBL3_Databasee
-USE PBL3_Databasee
+﻿CREATE DATABASE PBL3_Database
+USE PBL3_Database
 
 CREATE TABLE Tinh_ThanhPho (
 	maT_TP int PRIMARY KEY,
