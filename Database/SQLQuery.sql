@@ -1,5 +1,5 @@
-﻿CREATE DATABASE PBL3_Database
-USE PBL3_Database
+﻿CREATE DATABASE PBL3_Databasee
+USE PBL3_Databasee
 
 CREATE TABLE Tinh_ThanhPho (
 	maT_TP int PRIMARY KEY,
@@ -123,8 +123,8 @@ CREATE TABLE KhachHang_Shop (
 )
 
 CREATE TABLE LoaiSanPham (
-	maLoaiSP varchar(10) PRIMARY KEY COLLATE Vietnamese_CI_AI,
-	tenLoaiSP nvarchar(50)
+	maLoaiSP varchar(10) PRIMARY KEY,
+	tenLoaiSP nvarchar(50) COLLATE Vietnamese_CI_AI 
 )
 
 CREATE TABLE SanPham(

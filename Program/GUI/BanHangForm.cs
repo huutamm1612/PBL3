@@ -2625,5 +2625,100 @@ namespace Program
             panel20.Height = danhGiaFLP.Height + 200;
         }
 
+        private Panel DrawTBCapNhatDHPanel(ThongBao thongBao)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel28.Size,
+                Cursor = Cursors.Hand,
+                BackColor = Color.White,
+                Margin = panel28.Margin,
+                Parent = TBDonHangFLP
+            };
+            panel.Paint += DrawPanelBorder;
+
+            string maDH = thongBao.dinhKem.Substring(2);
+
+            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaDH(maDH)))
+            {
+                PictureBox pictureBox = new PictureBox
+                {
+                    Image = GUI_Utils.Instance.Resize(bmp, pictureBox8.Size),
+                    Size = pictureBox8.Size,
+                    Location = pictureBox8.Location,
+                    BorderStyle = BorderStyle.None,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White,
+                    Parent = panel
+                };
+                panel.Controls.Add(pictureBox);
+            }
+
+            TextBox tinhTrang = new TextBox
+            {
+                Text = BLL_ThongBao.Instance.ThongBaoTinhTrangDHChoKH(thongBao.noiDung),
+                Location = textBox88.Location,
+                Font = textBox88.Font,
+                Size = textBox88.Size,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(tinhTrang);
+
+            TextBox noiDung = new TextBox
+            {
+                Name = "noiDung",
+                Text = thongBao.noiDung,
+                Location = textBox77.Location,
+                Font = textBox77.Font,
+                Size = textBox77.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Multiline = true,
+                Parent = panel
+            };
+            panel.Controls.Add(noiDung);
+
+            TextBox thoiGian = new TextBox
+            {
+                Text = Utils.Instance.MoTaThoiGian(thongBao.ngayGui),
+                Location = textBox60.Location,
+                Font = textBox60.Font,
+                Size = textBox60.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(thoiGian);
+
+            //button30
+            Button xemChiTiet = new Button
+            {
+                Text = "Xem Chi Tiết",
+                Location = button51.Location,
+                Size = button51.Size,
+                ForeColor = Color.DarkGray,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                FlatStyle = FlatStyle.Flat,
+                Anchor = button51.Anchor,
+                Parent = panel
+            };
+            xemChiTiet.Click += XemChiTietDonHangButton_Click;
+            xemChiTiet.FlatAppearance.BorderColor = Color.DimGray;
+            xemChiTiet.FlatAppearance.BorderSize = 1;
+            xemChiTiet.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            xemChiTiet.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            panel.Controls.Add(xemChiTiet);
+
+
+            return panel;
+        }
     }
 }
