@@ -277,5 +277,10 @@ namespace Program.GUI
 
             DGBiBaoCaoButton_Click(dgBiBaoCaoButton, null);
         }
+
+        private void MouseIn(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }   

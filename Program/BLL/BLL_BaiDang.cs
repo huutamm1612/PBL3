@@ -27,10 +27,7 @@ namespace Program.BLL
 
         }
 
-        public List<string> GetAllLyDoToCaoBaiDang()
-        {
-            return DAL_BaiDang.Instance.LoadLyDoToCaoBaiDang();
-        }
+        public List<string> GetAllLyDoToCaoBaiDang() => DAL_BaiDang.Instance.LoadLyDoToCaoBaiDang();
         public int GetSoLuongBaiDangViPhamFromMaS(string maS) => DAL_BaiDang.Instance.LoadSoLuongBaiDangViPhamFromMaS(maS);
 
         public QLBaiDang GetAllBaiDangViPhamFromMaS(string maS) => DAL_BaiDang.Instance.LoadAllBaiDangViPhamFromMaS(maS);
@@ -42,13 +39,16 @@ namespace Program.BLL
             text = Utils.Instance.XoaDau(text);
 
             QLBaiDang qLBaiDang = new QLBaiDang();
+            qLBaiDang.Clear();
 
-            string query = $"SELECT DISTINCT BD.maBD FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN SanPham SP ON SP.maSP = SPBD.maSP WHERE (SP.ten LIKE N'%{text}%' OR BD.tieuDe LIKE '%{text}%' OR SP.tacGia LIKE '%{text}%') AND BD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
+            string query = $"SELECT DISTINCT BD.maBD FROM BaiDang BD JOIN SanPham_BaiDang SPBD ON SPBD.maBD = BD.maBD JOIN SanPham SP ON SP.maSP = SPBD.maSP WHERE (SP.ten LIKE N'%{text}%' OR BD.tieuDe LIKE '%{text}%' OR SP.tacGia LIKE '%{text}%'";
 
             foreach (string maLoaiSP in DAL_SanPham.Instance.LoadMaLoaiSPFromText(text))
             {
                 query += $" OR maLoaiSP = '{maLoaiSP}'";
             }
+
+            query += ") AND BD.tinhTrang = 0";
 
             foreach (string maBD in DAL_BaiDang.Instance.LoadMaBDWithQuery(query))
             {

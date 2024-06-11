@@ -55,12 +55,12 @@ namespace Program.DAL
         public List<string> LoadListFollowFromMaS(string maS)
         {
             List<string> list = new List<string>();
-            string query = $"SELECT maS FROM Follow WHERE maS = {maS}";
+            string query = $"SELECT maKH FROM Follow WHERE maS = {maS}";
             DataTable table = Database.Instance.ExecuteQuery(query);
 
             foreach (DataRow row in table.Rows)
             {
-                list.Add(row["maS"].ToString());
+                list.Add(row["maKH"].ToString());
             }
 
             return list;

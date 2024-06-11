@@ -197,7 +197,7 @@ namespace Program.DAL
 
         public BaiDang LoadBaiDangFromMaBD(string maBD)
         {
-            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD AND NOT EXISTS (SELECT 1 FROM BaiDangViPham BDVP WHERE BDVP.maBD = BD.maBD)";
+            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD AND BD.tinhTrang = 0";
             SqlParameter param = new SqlParameter("@maBD", maBD);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 

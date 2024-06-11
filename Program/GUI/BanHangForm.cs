@@ -2,6 +2,7 @@
 using Program.DAL;
 using Program.DTO;
 using Program.GUI;
+using Program.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -275,6 +276,11 @@ namespace Program
                 case "Quản Lý Đánh Giá":
                     SwitchPanel(ref danhGiaSPanel);
                     DanhGiaShopShow();
+                    break;
+
+                case "Quản Lý Thông Báo":
+                    SwitchPanel(ref thongBaoPanel);
+                    CapNhatDonHangButton_Click(button18, null);
                     break;
             }
         }
@@ -1438,7 +1444,7 @@ namespace Program
             tatCaBaiDang_Panel.Visible = false;
 
             flowLayoutPanel5.Controls.Clear();
-            QLSP.list.Clear();
+            QLSP = new QLSanPham();
 
             foreach (SanPham sanPham in QLBD.list[index].list)
             {
@@ -1883,15 +1889,10 @@ namespace Program
             return flp;
         }
 
-        private void XemChiTietDonHangButton_Click(object sender, EventArgs e)
+        private void ShowChiTietDonHang()
         {
-            cloneButton.Text += "    ‣    Chi Tiết Đơn Hàng";
-            
-            currPanel.Visible = false;
             chiTietDonHangPanel.Visible = true;
-            currPanel = chiTietBaiDang_Panel;
-            Panel headPanel = GUI_Utils.Instance.FindControl(((Control)sender).Parent.Parent as FlowLayoutPanel, "headPanel") as Panel;
-            currMaDH = GUI_Utils.Instance.FindControl(headPanel, "maDH").Text.Substring(15);
+            currPanel = chiTietDonHangPanel;
 
             DonHang donHang = shop.listDonHang.GetDonHangFromMaDH(currMaDH);
 
@@ -1902,7 +1903,7 @@ namespace Program
             sdtNhanHangTxt.Text = donHang.diaChi.soDT;
             dcctNhanHangTxt.Text = donHang.diaChi.diaChiCuThe + ", " + BLL_DiaChi.Instance.MoTaDiaChi(donHang.diaChi);
 
-            if(donHang.tinhTrang == 0)
+            if (donHang.tinhTrang == 0)
             {
                 buttonFunc1.Visible = true;
                 buttonFunc2.Visible = true;
@@ -1914,7 +1915,7 @@ namespace Program
             ttDonHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien);
             ptttTxt.Text = donHang.PhuongThucThanhToan();
 
-            foreach(SanPham sanPham in donHang.list)
+            foreach (SanPham sanPham in donHang.list)
             {
                 Panel panel = DrawSPPanelInDHFLP(sanPham, ListChiTietSP);
                 ListChiTietSP.Controls.Add(panel);
@@ -1923,6 +1924,20 @@ namespace Program
             GUI_Utils.Instance.FitFLPHeight(ListChiTietSP);
             GUI_Utils.Instance.FitFLPHeight(chiTietDHFLP);
 
+        }
+
+        private void XemChiTietDonHangButton_Click(object sender, EventArgs e)
+        {
+            cloneButton.Text += "    ‣    Chi Tiết Đơn Hàng";
+            
+            currPanel.Visible = false;
+            Panel headPanel = GUI_Utils.Instance.FindControl(((Control)sender).Parent.Parent as FlowLayoutPanel, "headPanel") as Panel;
+            currMaDH = GUI_Utils.Instance.FindControl(headPanel, "maDH").Text.Substring(15);
+
+            troLaiTuCTTDButton.Click += troLaiDHButton_Click;
+            troLaiTuCTTDButton.Click -= TroLaiTBButton_Click;
+
+            ShowChiTietDonHang();
         }
         private void GiaoHang(string maDH)
         {
@@ -2232,6 +2247,14 @@ namespace Program
             TatCaDHPanel.Visible = true;
             cloneButton.Text = cloneButton.Text.Substring(0, cloneButton.Text.Length - 26);
             currPanel = TatCaDHPanel;
+        }
+
+        private void TroLaiTBButton_Click(Object sender, EventArgs e)
+        {
+            currPanel.Visible = false;
+            thongBaoPanel.Visible = true;
+            cloneButton.Text = "Quản Lý Thông Báo    ‣    Cập Nhật Đơn Hàng";
+            currPanel = thongBaoPanel;
         }
 
         private void TatCaBDButton_Click(object sender, EventArgs e)
@@ -2625,14 +2648,15 @@ namespace Program
             panel20.Height = danhGiaFLP.Height + 200;
         }
 
+        
+
         private Panel DrawTBCapNhatDHPanel(ThongBao thongBao)
         {
             Panel panel = new Panel
             {
-                Size = panel28.Size,
-                Cursor = Cursors.Hand,
+                Size = panel32.Size,
                 BackColor = Color.White,
-                Margin = panel28.Margin,
+                Margin = panel32.Margin,
                 Parent = TBDonHangFLP
             };
             panel.Paint += DrawPanelBorder;
@@ -2656,7 +2680,7 @@ namespace Program
 
             TextBox tinhTrang = new TextBox
             {
-                Text = BLL_ThongBao.Instance.ThongBaoTinhTrangDHChoKH(thongBao.noiDung),
+                Text = BLL_ThongBao.Instance.ThongBaoTinhTrangDHChoS(thongBao.noiDung),
                 Location = textBox88.Location,
                 Font = textBox88.Font,
                 Size = textBox88.Size,
@@ -2710,15 +2734,162 @@ namespace Program
                 Anchor = button51.Anchor,
                 Parent = panel
             };
-            xemChiTiet.Click += XemChiTietDonHangButton_Click;
+            xemChiTiet.Click += XemChiTietDonHang1Button_Click;
             xemChiTiet.FlatAppearance.BorderColor = Color.DimGray;
             xemChiTiet.FlatAppearance.BorderSize = 1;
             xemChiTiet.FlatAppearance.MouseDownBackColor = Color.Transparent;
             xemChiTiet.FlatAppearance.MouseOverBackColor = Color.Transparent;
             panel.Controls.Add(xemChiTiet);
 
+            return panel;
+        }
+
+        private void XemChiTietDonHang1Button_Click(object sender, EventArgs e)
+        {
+            string noiDung = GUI_Utils.Instance.FindControl(((Control)sender).Parent as Panel, "noiDung").Text;
+            currMaDH = noiDung.Substring(noiDung.IndexOf("ơn hàng DH") + 10, 10);
+
+            thongBaoPanel.Visible = false;
+            ShowChiTietDonHang();
+
+            troLaiTuCTTDButton.Click -= troLaiDHButton_Click;
+            troLaiTuCTTDButton.Click += TroLaiTBButton_Click;
+        }
+
+        private Panel DrawThongBaoHeThongPanel(ThongBao thongBao)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel32.Size,
+                BackColor = Color.White,
+                Margin = panel32.Margin,
+                Parent = TBDonHangFLP
+            };
+            panel.Paint += DrawPanelBorder;
+
+            string maDH = thongBao.dinhKem.Substring(2);
+
+            System.Drawing.Image image;
+
+            if (thongBao.noiDung.Contains("vi phạm"))
+            {
+                image = GUI_Utils.Instance.Resize(Resources.error2, pictureBox8.Size);
+
+                TextBox tinhTrang = new TextBox
+                {
+                    Text = "Đơn hàng bị khóa do vi phạm",
+                    Location = textBox88.Location,
+                    Font = textBox88.Font,
+                    Size = textBox88.Size,
+                    BackColor = Color.White,
+                    BorderStyle = BorderStyle.None,
+                    ReadOnly = true,
+                    Parent = panel
+                };
+                panel.Controls.Add(tinhTrang);
+            }
+            else
+            {
+                image = GUI_Utils.Instance.Resize(Resources.correct, pictureBox8.Size);
+
+                TextBox tinhTrang = new TextBox
+                {
+                    Text = "Bài đăng đã được gỡ vi phạm",
+                    Location = textBox88.Location,
+                    Font = textBox88.Font,
+                    Size = textBox88.Size,
+                    BackColor = Color.White,
+                    BorderStyle = BorderStyle.None,
+                    ReadOnly = true,
+                    Parent = panel
+                };
+                panel.Controls.Add(tinhTrang);
+            }
+
+
+            PictureBox pictureBox = new PictureBox
+            {
+                Image = image,
+                Size = pictureBox8.Size,
+                Location = pictureBox8.Location,
+                BorderStyle = BorderStyle.None,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BackColor = Color.White,
+                Parent = panel
+            };
+            panel.Controls.Add(pictureBox);
+
+            TextBox noiDung = new TextBox
+            {
+                Name = "noiDung",
+                Text = thongBao.noiDung,
+                Location = textBox77.Location,
+                Font = textBox77.Font,
+                Size = textBox77.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Multiline = true,
+                Parent = panel
+            };
+            panel.Controls.Add(noiDung);
+
+            TextBox thoiGian = new TextBox
+            {
+                Text = Utils.Instance.MoTaThoiGian(thongBao.ngayGui),
+                Location = textBox60.Location,
+                Font = textBox60.Font,
+                Size = textBox60.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(thoiGian);
 
             return panel;
+        }
+
+        private void CapNhatDonHangButton_Click(object sender, EventArgs e)
+        {
+            HighLightButton(sender, e);
+
+            TBDonHangFLP.Controls.Clear();
+            foreach(ThongBao thongBao in shop.listThongBao.list)
+            {
+                if (thongBao.dinhKem.Contains("DH"))
+                {
+                    TBDonHangFLP.Controls.Add(DrawTBCapNhatDHPanel(thongBao));
+                }
+            }
+
+            cloneButton.Text += "    ‣    Cập Nhật Đơn Hàng";
+
+            GUI_Utils.Instance.FitFLPHeight(TBDonHangFLP);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel4);
+            flowLayoutPanel4.Height += 50;
+        }
+
+        private void ThongBaoHeThongButton_Click(object sender, EventArgs e)
+        {
+            HighLightButton(sender, e);
+
+            TBDonHangFLP.Controls.Clear();
+            foreach (ThongBao thongBao in shop.listThongBao.list)
+            {
+                if (thongBao.from.Contains("HeThong"))
+                {
+                    TBDonHangFLP.Controls.Add(DrawThongBaoHeThongPanel(thongBao));
+                }
+            }
+
+            cloneButton.Text += "    ‣    Thông Báo Hệ Thống";
+
+            GUI_Utils.Instance.FitFLPHeight(TBDonHangFLP);
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel4);
+            flowLayoutPanel4.Height += 50;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Program.GUI
                 GUI_Utils.Instance.FitTextBox(textBox13);
             }
             else if(loaiBaoCao == "Tố cáo bài đăng")
-            {
+            { 
                 SetFLP(BLL_BaiDang.Instance.GetAllLyDoToCaoBaiDang());
                 hoanThanhButton.Text = "Gửi";
                 textBox13.Text = "Lý Do Sản Phẩm Vi phạm";
@@ -287,9 +287,9 @@ namespace Program.GUI
 
         private void SetFLP(List<string> listLyDo)
         {
-            this.Size = baoCaoPanel.Size;
             baoCaoPanel.BringToFront();
             baoCaoPanel.Visible = true;
+            flowLayoutPanel1.Visible = true;
             flowLayoutPanel1.Controls.Clear();
             foreach (string s in listLyDo)
             {
@@ -314,12 +314,12 @@ namespace Program.GUI
                 Cursor = Cursors.Hand,
                 Parent = flowLayoutPanel1
             };
-            khac.CheckedChanged += RadioButton_CheckedChanged;
             flowLayoutPanel1.Controls.Add(khac);
+            khac.CheckedChanged += RadioButton_CheckedChanged;
 
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel1);
             baoCaoPanel.Height = flowLayoutPanel1.Height + 150;
-            this.Height = flowLayoutPanel1.Height + 150;
+            Height = baoCaoPanel.Height;
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -335,7 +335,8 @@ namespace Program.GUI
                 flowLayoutPanel1.Controls.Remove(panel1);
             }
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel1);
-            this.Height = flowLayoutPanel1.Height + 150;
+            baoCaoPanel.Height = flowLayoutPanel1.Height + 150;
+            Height = baoCaoPanel.Height;
             noiDung = obj.Text;
         }
 

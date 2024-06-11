@@ -4200,6 +4200,8 @@ namespace Program
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            if (search_Text.Text == "") return;
+
             kqTimKiemTxt.Text = $"Kết quả tìm kiếm có liên quan cho từ khóa '{search_Text.Text}'";
             qlBaiDang = BLL_BaiDang.Instance.GetBaiDangFromTextSearch(search_Text.Text);
             qlBaiDangTmp = BLL_BaiDang.Instance.GetBaiDangFromTextSearch(search_Text.Text);

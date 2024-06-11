@@ -92,10 +92,9 @@ namespace Program.GUI
         {
             int height = 0;
 
-
             foreach(Control c in con.Controls)
             {
-                if(c.Visible)
+                if(c.Visible == con.Visible)
                     height += c.Height + c.Margin.Top + c.Margin.Bottom;
             }
             con.Height = height;

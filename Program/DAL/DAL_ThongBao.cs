@@ -93,7 +93,7 @@ namespace Program.DAL
 
             foreach (DataRow row in table.Rows)
             {
-                list.Add(LoadThongBao(row));
+                list.list.Add(LoadThongBao(row));
             }
 
             return list;

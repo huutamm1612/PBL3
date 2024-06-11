@@ -210,7 +210,7 @@
             this.danhGiaViPhamPanel.Location = new System.Drawing.Point(0, 0);
             this.danhGiaViPhamPanel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.danhGiaViPhamPanel.Name = "danhGiaViPhamPanel";
-            this.danhGiaViPhamPanel.Size = new System.Drawing.Size(1108, 559);
+            this.danhGiaViPhamPanel.Size = new System.Drawing.Size(1108, 545);
             this.danhGiaViPhamPanel.TabIndex = 79;
             // 
             // panel8
@@ -352,7 +352,7 @@
             this.baiDangViPhamPanel.Location = new System.Drawing.Point(0, 0);
             this.baiDangViPhamPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.baiDangViPhamPanel.Name = "baiDangViPhamPanel";
-            this.baiDangViPhamPanel.Size = new System.Drawing.Size(1106, 559);
+            this.baiDangViPhamPanel.Size = new System.Drawing.Size(1106, 545);
             this.baiDangViPhamPanel.TabIndex = 1;
             this.baiDangViPhamPanel.Visible = false;
             // 
@@ -627,11 +627,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1108, 682);
+            this.ClientSize = new System.Drawing.Size(573, 682);
+            this.Controls.Add(this.baoCaoPanel);
             this.Controls.Add(this.headPanel);
             this.Controls.Add(this.tailPanel);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.baoCaoPanel);
             this.Name = "ReportForm";
             this.Text = "ReportForm";
             this.flowLayoutPanel1.ResumeLayout(false);

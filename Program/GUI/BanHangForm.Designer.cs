@@ -74,7 +74,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.screen_Panel = new System.Windows.Forms.Panel();
-            this.panel29 = new System.Windows.Forms.Panel();
+            this.thongBaoPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel30 = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
@@ -114,7 +114,7 @@
             this.ttdhInChiTietDH = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.maDHInChiTietDHTxt = new System.Windows.Forms.TextBox();
-            this.troLaiDHButton = new System.Windows.Forms.Button();
+            this.troLaiTuCTTDButton = new System.Windows.Forms.Button();
             this.panel42 = new System.Windows.Forms.Panel();
             this.buttonFunc2 = new System.Windows.Forms.Button();
             this.buttonFunc1 = new System.Windows.Forms.Button();
@@ -426,6 +426,9 @@
             this.button27 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
+            this.khongCoTBPanel = new System.Windows.Forms.Panel();
+            this.textBox89 = new System.Windows.Forms.TextBox();
+            this.pictureBox52 = new System.Windows.Forms.PictureBox();
             this.headerPanel.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.miniAvt)).BeginInit();
@@ -437,7 +440,7 @@
             this.choice_Panel.SuspendLayout();
             this.funcFLPanel.SuspendLayout();
             this.screen_Panel.SuspendLayout();
-            this.panel29.SuspendLayout();
+            this.thongBaoPanel.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.panel30.SuspendLayout();
             this.TBDonHangFLP.SuspendLayout();
@@ -544,6 +547,8 @@
             this.panel16.SuspendLayout();
             this.panel14.SuspendLayout();
             this.miniPanel.SuspendLayout();
+            this.khongCoTBPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -1207,6 +1212,7 @@
             this.button19.Text = "Quản Lý Thông Báo";
             this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.tabClick);
             this.button19.MouseLeave += new System.EventHandler(this.leaveMouse);
             this.button19.MouseHover += new System.EventHandler(this.hoverMouse);
             this.button19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.hoverMouse);
@@ -1252,7 +1258,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.screen_Panel.Controls.Add(this.panel29);
+            this.screen_Panel.Controls.Add(this.thongBaoPanel);
             this.screen_Panel.Controls.Add(this.tatCaBaiDang_Panel);
             this.screen_Panel.Controls.Add(this.chiTietDonHangPanel);
             this.screen_Panel.Controls.Add(this.TatCaDHPanel);
@@ -1269,19 +1275,19 @@
             this.screen_Panel.TabIndex = 3;
             this.screen_Panel.Visible = false;
             // 
-            // panel29
+            // thongBaoPanel
             // 
-            this.panel29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.thongBaoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel29.AutoScroll = true;
-            this.panel29.BackColor = System.Drawing.SystemColors.Control;
-            this.panel29.Controls.Add(this.flowLayoutPanel4);
-            this.panel29.Location = new System.Drawing.Point(10, 0);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(1062, 761);
-            this.panel29.TabIndex = 11;
-            this.panel29.Visible = false;
+            this.thongBaoPanel.AutoScroll = true;
+            this.thongBaoPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.thongBaoPanel.Controls.Add(this.flowLayoutPanel4);
+            this.thongBaoPanel.Location = new System.Drawing.Point(10, 0);
+            this.thongBaoPanel.Name = "thongBaoPanel";
+            this.thongBaoPanel.Size = new System.Drawing.Size(1062, 761);
+            this.thongBaoPanel.TabIndex = 11;
+            this.thongBaoPanel.Visible = false;
             // 
             // flowLayoutPanel4
             // 
@@ -1289,7 +1295,7 @@
             this.flowLayoutPanel4.Controls.Add(this.TBDonHangFLP);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(40, 23);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(1600, 454);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1600, 593);
             this.flowLayoutPanel4.TabIndex = 4;
             // 
             // panel30
@@ -1318,6 +1324,10 @@
             this.button16.TabIndex = 3;
             this.button16.Text = "Thông báo hệ thống";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.ThongBaoHeThongButton_Click);
+            this.button16.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.button16.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.button16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
             // 
             // button18
             // 
@@ -1334,14 +1344,19 @@
             this.button18.TabIndex = 0;
             this.button18.Text = "Cập nhật đơn hàng";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.CapNhatDonHangButton_Click);
+            this.button18.MouseLeave += new System.EventHandler(this.DHMouseOut);
+            this.button18.MouseHover += new System.EventHandler(this.DHMouseIn);
+            this.button18.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DHMouseIn);
             // 
             // TBDonHangFLP
             // 
+            this.TBDonHangFLP.Controls.Add(this.khongCoTBPanel);
             this.TBDonHangFLP.Controls.Add(this.panel32);
             this.TBDonHangFLP.Location = new System.Drawing.Point(0, 75);
             this.TBDonHangFLP.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.TBDonHangFLP.Name = "TBDonHangFLP";
-            this.TBDonHangFLP.Size = new System.Drawing.Size(1594, 240);
+            this.TBDonHangFLP.Size = new System.Drawing.Size(1594, 571);
             this.TBDonHangFLP.TabIndex = 3;
             // 
             // panel32
@@ -1352,7 +1367,7 @@
             this.panel32.Controls.Add(this.textBox77);
             this.panel32.Controls.Add(this.textBox88);
             this.panel32.Controls.Add(this.pictureBox8);
-            this.panel32.Location = new System.Drawing.Point(0, 5);
+            this.panel32.Location = new System.Drawing.Point(0, 517);
             this.panel32.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(1594, 150);
@@ -1721,7 +1736,7 @@
             this.panel43.Controls.Add(this.ttdhInChiTietDH);
             this.panel43.Controls.Add(this.label14);
             this.panel43.Controls.Add(this.maDHInChiTietDHTxt);
-            this.panel43.Controls.Add(this.troLaiDHButton);
+            this.panel43.Controls.Add(this.troLaiTuCTTDButton);
             this.panel43.Location = new System.Drawing.Point(0, 0);
             this.panel43.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.panel43.Name = "panel43";
@@ -1767,26 +1782,25 @@
             this.maDHInChiTietDHTxt.Text = "MÃ ĐƠN HÀNG:";
             this.maDHInChiTietDHTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // troLaiDHButton
+            // troLaiTuCTTDButton
             // 
-            this.troLaiDHButton.BackColor = System.Drawing.Color.White;
-            this.troLaiDHButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.troLaiDHButton.FlatAppearance.BorderSize = 0;
-            this.troLaiDHButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.troLaiDHButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.troLaiDHButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.troLaiDHButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.troLaiDHButton.ForeColor = System.Drawing.Color.DimGray;
-            this.troLaiDHButton.Image = global::Program.Properties.Resources.back1;
-            this.troLaiDHButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.troLaiDHButton.Location = new System.Drawing.Point(14, 10);
-            this.troLaiDHButton.Name = "troLaiDHButton";
-            this.troLaiDHButton.Size = new System.Drawing.Size(130, 38);
-            this.troLaiDHButton.TabIndex = 0;
-            this.troLaiDHButton.Text = "TRỞ LẠI";
-            this.troLaiDHButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.troLaiDHButton.UseVisualStyleBackColor = false;
-            this.troLaiDHButton.Click += new System.EventHandler(this.troLaiDHButton_Click);
+            this.troLaiTuCTTDButton.BackColor = System.Drawing.Color.White;
+            this.troLaiTuCTTDButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.troLaiTuCTTDButton.FlatAppearance.BorderSize = 0;
+            this.troLaiTuCTTDButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.troLaiTuCTTDButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.troLaiTuCTTDButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.troLaiTuCTTDButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.troLaiTuCTTDButton.ForeColor = System.Drawing.Color.DimGray;
+            this.troLaiTuCTTDButton.Image = global::Program.Properties.Resources.back1;
+            this.troLaiTuCTTDButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.troLaiTuCTTDButton.Location = new System.Drawing.Point(14, 10);
+            this.troLaiTuCTTDButton.Name = "troLaiTuCTTDButton";
+            this.troLaiTuCTTDButton.Size = new System.Drawing.Size(130, 38);
+            this.troLaiTuCTTDButton.TabIndex = 0;
+            this.troLaiTuCTTDButton.Text = "TRỞ LẠI";
+            this.troLaiTuCTTDButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.troLaiTuCTTDButton.UseVisualStyleBackColor = false;
             // 
             // panel42
             // 
@@ -5331,7 +5345,7 @@
             this.panel15.Controls.Add(this.FL_PanelDaThanhToan);
             this.panel15.Location = new System.Drawing.Point(40, 329);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(66113, 0);
+            this.panel15.Size = new System.Drawing.Size(65535, 0);
             this.panel15.TabIndex = 2;
             // 
             // DaThanhToanPanel
@@ -5760,16 +5774,55 @@
             this.button37.Click += new System.EventHandler(this.DangXuatButton_Click);
             this.button37.MouseLeave += new System.EventHandler(this.MouseOutFunc);
             // 
+            // khongCoTBPanel
+            // 
+            this.khongCoTBPanel.BackColor = System.Drawing.Color.White;
+            this.khongCoTBPanel.Controls.Add(this.pictureBox52);
+            this.khongCoTBPanel.Controls.Add(this.textBox89);
+            this.khongCoTBPanel.Location = new System.Drawing.Point(0, 0);
+            this.khongCoTBPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.khongCoTBPanel.Name = "khongCoTBPanel";
+            this.khongCoTBPanel.Size = new System.Drawing.Size(1594, 512);
+            this.khongCoTBPanel.TabIndex = 46;
+            // 
+            // textBox89
+            // 
+            this.textBox89.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox89.BackColor = System.Drawing.Color.White;
+            this.textBox89.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox89.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox89.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox89.ForeColor = System.Drawing.Color.Black;
+            this.textBox89.Location = new System.Drawing.Point(383, 367);
+            this.textBox89.Name = "textBox89";
+            this.textBox89.ReadOnly = true;
+            this.textBox89.Size = new System.Drawing.Size(863, 23);
+            this.textBox89.TabIndex = 46;
+            this.textBox89.Text = "KHÔNG CÓ THÔNG BÁO";
+            this.textBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox52
+            // 
+            this.pictureBox52.Image = global::Program.Properties.Resources.bell2;
+            this.pictureBox52.ImageLocation = "";
+            this.pictureBox52.Location = new System.Drawing.Point(700, 137);
+            this.pictureBox52.Name = "pictureBox52";
+            this.pictureBox52.Size = new System.Drawing.Size(194, 201);
+            this.pictureBox52.TabIndex = 47;
+            this.pictureBox52.TabStop = false;
+            // 
             // BanHang_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1392, 819);
-            this.Controls.Add(this.screen_Panel);
             this.Controls.Add(this.miniPanel);
+            this.Controls.Add(this.screen_Panel);
             this.Controls.Add(this.choice_Panel);
-            this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.dangKyPanel);
+            this.Controls.Add(this.headerPanel);
             this.Name = "BanHang_Form";
             this.Text = "Kênh bán hàng";
             this.headerPanel.ResumeLayout(false);
@@ -5786,7 +5839,7 @@
             this.choice_Panel.ResumeLayout(false);
             this.funcFLPanel.ResumeLayout(false);
             this.screen_Panel.ResumeLayout(false);
-            this.panel29.ResumeLayout(false);
+            this.thongBaoPanel.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
             this.panel30.ResumeLayout(false);
             this.TBDonHangFLP.ResumeLayout(false);
@@ -5928,6 +5981,9 @@
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.miniPanel.ResumeLayout(false);
+            this.khongCoTBPanel.ResumeLayout(false);
+            this.khongCoTBPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6199,7 +6255,7 @@
         private System.Windows.Forms.TextBox ttdhInChiTietDH;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox maDHInChiTietDHTxt;
-        private System.Windows.Forms.Button troLaiDHButton;
+        private System.Windows.Forms.Button troLaiTuCTTDButton;
         private System.Windows.Forms.Panel panel42;
         private System.Windows.Forms.Button buttonFunc2;
         private System.Windows.Forms.Button buttonFunc1;
@@ -6319,7 +6375,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Panel thongBaoPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Panel panel30;
         private System.Windows.Forms.Button button16;
@@ -6331,5 +6387,8 @@
         private System.Windows.Forms.TextBox textBox60;
         private System.Windows.Forms.TextBox textBox77;
         private System.Windows.Forms.TextBox textBox88;
+        private System.Windows.Forms.Panel khongCoTBPanel;
+        private System.Windows.Forms.PictureBox pictureBox52;
+        private System.Windows.Forms.TextBox textBox89;
     }
 }

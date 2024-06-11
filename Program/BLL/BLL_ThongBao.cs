@@ -71,6 +71,19 @@ namespace Program.BLL
 
             return tinhTrangDH;
         }
+        public string ThongBaoTinhTrangDHChoS(string noiDung)
+        {
+            string tinhTrangDH = "";
+
+            if (noiDung.Contains("đã đặt"))
+                tinhTrangDH = "Chờ xác nhận";
+            else if (noiDung.Contains("đã bị hủy"))
+                tinhTrangDH = "Đơn hàng đã bị hủy";
+            else if (noiDung.Contains("giao thành công"))
+                tinhTrangDH = "Đơn hàng đã được giao thành công";
+
+            return tinhTrangDH;
+        }
 
         public string GetMaMoi()
         {
