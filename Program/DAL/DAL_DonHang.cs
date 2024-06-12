@@ -28,6 +28,23 @@ namespace Program.DAL
 
         }
 
+        public int LoadXuFromMaDH(string maDH)
+        {
+            string query = "SELECT xu FROM DonHang WHERE maDH = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", maDH);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            return Convert.ToInt32(table.Rows[0]["xu"]);
+        }
+
+        public bool IsKhachHangHuyDon(string maDH){
+            string query = "SELECT * FROM DonHangBiHuy WHERE maDH = @maDH";
+            SqlParameter param = new SqlParameter("@maDH", maDH);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            return Convert.ToBoolean(table.Rows[0]["isKhachHang"]);
+        }
+
         public List<string> LoadAllLyDoHuyDonByKhachHang()
         {
             string query = "SELECT * FROM LyDo WHERE loaiLyDo = 0";
@@ -68,7 +85,7 @@ namespace Program.DAL
             foreach(DataRow row in table.Rows)
             {
                 DonHang donHang = LoadDonHang(row);
-                qlDonHang.Add(donHang);
+                qlDonHang.list.Add(donHang);
                 BLL_DonHang.Instance.KiemTraDHLaDaDen(donHang);
             }
 

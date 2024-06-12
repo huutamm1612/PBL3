@@ -52,7 +52,7 @@ namespace Program.BLL
 
             foreach (string maBD in DAL_BaiDang.Instance.LoadMaBDWithQuery(query))
             {
-                BaiDang baiDang = DAL_BaiDang.Instance.LoadBaiDangFromMaBD(maBD);
+                BaiDang baiDang = DAL_BaiDang.Instance.LoadBaiDangHoatDongFromMaBD(maBD);
                 qLBaiDang.Add(baiDang);
             }
 
@@ -129,10 +129,11 @@ namespace Program.BLL
             DAL_BaiDang.Instance.CapNhatBaiDang(baiDang);
         }
 
-        public BaiDang GetBaiDangFromMaBD(string maBD)
-        {
-            return DAL_BaiDang.Instance.LoadBaiDangFromMaBD(maBD);
-        }
+        public BaiDang GetBaiDangDangHoatDongFromMaBD(string maBD) => DAL_BaiDang.Instance.LoadBaiDangHoatDongFromMaBD(maBD);
+
+        public BaiDang GetBaiDangViPhamFromMaBD(string maBD) => DAL_BaiDang.Instance.LoadBaiDangViPhamFromMaBD(maBD); 
+
+        public BaiDang GetBaiDangFromMaBD(string maBD) => DAL_BaiDang.Instance.LoadBaiDangFromMaBD(maBD);
 
         public bool IsSamePrice(BaiDang baiDang)
         {

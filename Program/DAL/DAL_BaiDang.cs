@@ -50,6 +50,17 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, param3);
         }
 
+        public void GoBaiDangViPham(string maBD)
+        {
+            string query = "DELETE From BaiDangViPham WHERE maBD = @maBD";
+            SqlParameter param1 = new SqlParameter("@maBD", maBD);
+            Database.Instance.ExecuteNonQuery(query, param1);
+
+            query = "UPDATE BaiDang SET tinhTrang = 0 WHERE maBD = @maBD";
+            SqlParameter param2 = new SqlParameter("@maBD", maBD);
+            Database.Instance.ExecuteNonQuery(query, param2);
+        }
+
         public void AnBaiDang(string maBD)
         {
             string query = "UPDATE BaiDang SET tinhTrang = 2 WHERE maBD = @maBD";
@@ -195,13 +206,35 @@ namespace Program.DAL
             return list;
         }
 
-        public BaiDang LoadBaiDangFromMaBD(string maBD)
+        public BaiDang LoadBaiDangHoatDongFromMaBD(string maBD)
         {
             string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD AND BD.tinhTrang = 0";
             SqlParameter param = new SqlParameter("@maBD", maBD);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
             if(table.Rows.Count != 0)
+                return LoadBaiDang(table.Rows[0]);
+            return null;
+        }
+
+        public BaiDang LoadBaiDangFromMaBD(string maBD)
+        {
+            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            if (table.Rows.Count != 0)
+                return LoadBaiDang(table.Rows[0]);
+            return null;
+        }
+
+        public BaiDang LoadBaiDangViPhamFromMaBD(string maBD)
+        {
+            string query = $"SELECT * FROM BaiDang BD JOIN BaiDang_Shop BDS ON BDS.maBD = BD.maBD WHERE BD.maBD = @maBD AND BD.tinhTrang = 1";
+            SqlParameter param = new SqlParameter("@maBD", maBD);
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            if (table.Rows.Count != 0)
                 return LoadBaiDang(table.Rows[0]);
             return null;
         }
@@ -244,7 +277,7 @@ namespace Program.DAL
 
         public void ThemBaiDang(BaiDang baiDang)
         {
-            string query = $"INSERT INTO BaiDang VALUES(@maBD, @tieuDe, @moTa, @luocThich, @giamGia, @anhBia)";
+            string query = $"INSERT INTO BaiDang VALUES(@maBD, @tieuDe, @moTa, @luocThich, @giamGia, @anhBia, 0)";
             Database.Instance.ExecuteNonQuery(query, baiDang.GetParameters().ToArray());
 
             query = $"INSERT INTO BaiDang_Shop VALUES(@maBD, @maS)";

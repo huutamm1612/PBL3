@@ -55,6 +55,8 @@ namespace Program.GUI
 
         private void BDBiToCaoButton_Click(object sender, EventArgs e)
         {
+            label1.Text = "Bài Đăng Bị Tố Cáo";
+
             foreach (Control con in funcFLPanel.Controls)
                 con.ForeColor = Color.Black;
 
@@ -71,30 +73,135 @@ namespace Program.GUI
             {
                 baoCaoFLP.Controls.Add(DrawBaoCaoBDPanel(listStr[i], listNoiDung[i]));
             }
+            if (baoCaoFLP.Controls.Count == 0)
+                baoCaoFLP.Controls.Add(khongCoTBPanel);
             GUI_Utils.Instance.FitFLPHeight(baoCaoFLP);
 
         }
 
         private void DGBiBaoCaoButton_Click(object sender, EventArgs e)
         {
+            label1.Text = "Đánh Giá Bị Báo Cáo";
+
             foreach (Control con in funcFLPanel.Controls)
                 con.ForeColor = Color.Black;
 
             Button button = sender as Button;
             button.ForeColor = Color.Red;
 
-            listStr = new List<string>();
-            listNoiDung = new List<string>();
-            baoCaoFLP.Controls.Clear();
-
             BLL_Admin.Instance.SetListDGViPham(ref listStr, ref listNoiDung, ref listMaTB);
 
+            baoCaoFLP.Controls.Clear();
             for (int i = 0; i < listStr.Count; i++)
             {
                 baoCaoFLP.Controls.Add(DrawBaoCaoDGPanel(listStr[i], listNoiDung[i]));
             }
+            if (baoCaoFLP.Controls.Count == 0)
+                baoCaoFLP.Controls.Add(khongCoTBPanel);
+
             GUI_Utils.Instance.FitFLPHeight(baoCaoFLP);
         }
+
+        private void YCGoBDViPhamButton_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Yêu Cầu Gỡ Bài Đăng Vi Phạm";
+
+            foreach (Control con in funcFLPanel.Controls)
+                con.ForeColor = Color.Black;
+
+            Button button = sender as Button;
+            button.ForeColor = Color.Red;
+
+            BLL_Admin.Instance.SetListYCGoViPhamBD(ref listStr, ref listNoiDung, ref listMaTB);
+
+            baoCaoFLP.Controls.Clear();
+            for (int i = 0; i < listStr.Count; i++)
+            {
+                baoCaoFLP.Controls.Add(DrawYCGoViPhamBDPane(listStr[i], listNoiDung[i]));
+            }
+            if (baoCaoFLP.Controls.Count == 0)
+                baoCaoFLP.Controls.Add(khongCoTBPanel);
+            GUI_Utils.Instance.FitFLPHeight(baoCaoFLP);
+        }
+
+        private Panel DrawYCGoViPhamBDPane(string maBD, string noiDungBC)
+        {
+            Panel panel = new Panel
+            {
+                BackColor = Color.White,
+                Margin = panel5.Margin,
+                Size = panel5.Size,
+                Parent = baoCaoFLP,
+            };
+            panel.Paint += DrawPanelBorder;
+
+            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(maBD)))
+            {
+                PictureBox pictureBox = new PictureBox
+                {
+                    Image = GUI_Utils.Instance.Resize(bmp, pictureBox1.Size),
+                    Size = pictureBox1.Size,
+                    Location = pictureBox1.Location,
+                    BorderStyle = BorderStyle.None,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White,
+                    Parent = panel
+                };
+                panel.Controls.Add(pictureBox);
+            }
+
+            TextBox tieuDe = new TextBox
+            {
+                Text = BLL_BaiDang.Instance.GetTieuDeFromMaBD(maBD),
+                Location = textBox1.Location,
+                Font = textBox1.Font,
+                Size = textBox1.Size,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Multiline = true,
+                Parent = panel
+            };
+            GUI_Utils.Instance.FitTextBoxMultiLines(tieuDe);
+            panel.Controls.Add(tieuDe);
+
+
+            TextBox noiDung = new TextBox
+            {
+                Text = noiDungBC,
+                Location = textBox2.Location,
+                Font = textBox2.Font,
+                Size = textBox2.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            GUI_Utils.Instance.FitTextBox(noiDung);
+            panel.Controls.Add(noiDung);
+
+            Button xemChiTiet = new Button
+            {
+                Text = "Xem Chi Tiết",
+                Location = button3.Location,
+                Size = button3.Size,
+                ForeColor = Color.DarkGray,
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                FlatStyle = FlatStyle.Flat,
+                Anchor = button3.Anchor,
+                Parent = panel
+            };
+            xemChiTiet.Click += XemChiTiet1BDButton_Click;
+            xemChiTiet.FlatAppearance.BorderSize = 1;
+            xemChiTiet.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            xemChiTiet.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+            return panel;
+        }
+
         private Panel DrawBaoCaoDGPanel(string maDG, string noiDungBC)
         {
             DanhGia danhGia = BLL_DanhGia.Instance.GetDanhGiaFromMaDG(maDG);
@@ -252,13 +359,26 @@ namespace Program.GUI
             return panel;
         }
 
+        private void XemChiTiet1BDButton_Click(object sender, EventArgs e)
+        {
+            int index = baoCaoFLP.Controls.IndexOf(((Button)sender).Parent);
+
+            DimForm dim = new DimForm();
+            dim.Show();
+            ReportForm form = new ReportForm(BLL_BaiDang.Instance.GetBaiDangViPhamFromMaBD(listStr[index]), listNoiDung[index], listMaTB[index], true);
+            form.ShowDialog();
+            dim.Close();
+
+            YCGoBDViPhamButton_Click(button4, null);
+        }
+
         private void XemChiTietBDButton_Click(object sender, EventArgs e)
         {
             int index = baoCaoFLP.Controls.IndexOf(((Button)sender).Parent);
 
             DimForm dim = new DimForm();
             dim.Show();
-            ReportForm form = new ReportForm(BLL_BaiDang.Instance.GetBaiDangFromMaBD(listStr[index]), listNoiDung[index], listMaTB[index]);
+            ReportForm form = new ReportForm(BLL_BaiDang.Instance.GetBaiDangDangHoatDongFromMaBD(listStr[index]), listNoiDung[index], listMaTB[index]);
             form.ShowDialog();
             dim.Close();
 

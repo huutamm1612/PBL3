@@ -31,6 +31,8 @@ namespace Program.BLL
 
         }
 
+        public void XoaDanhGia(string maDG) => DAL_DanhGia.Instance.XoaDanhGia(maDG);
+
         public void SuaDanhGia(KhachHang khachHang, DanhGia danhGia)
         {
             khachHang.listDanhGia.list[khachHang.listDanhGia.IndexOf(danhGia)] = danhGia;
@@ -70,6 +72,10 @@ namespace Program.BLL
         public void HuyDonHang(KhachHang khachHang, string maDH, string lyDo)
         {
             khachHang.listDonHang.GetDonHangFromMaDH(maDH).tinhTrang = -1;
+
+            int xu = DAL_DonHang.Instance.LoadXuFromMaDH(maDH);
+            khachHang.xu += xu;
+            DAL_KhachHang.Instance.HoanTraXu(khachHang.maSo, xu);
 
             ThongBao thongBao = new ThongBao
             {
@@ -257,9 +263,10 @@ namespace Program.BLL
             int xu = 0;
             if (dungXu)
             {
-                xu = khachHang.xu;
-                khachHang.xu = 0;
-                DAL_KhachHang.Instance.DungXu(khachHang.maSo);
+                int xuConLai = Math.Max(0, khachHang.xu - (listSanPham.tinhTongTien() + soLuongShop * 30000));
+                xu = khachHang.xu - xuConLai;
+                khachHang.xu = xuConLai;
+                DAL_KhachHang.Instance.DungXu(khachHang.maSo, xuConLai);    
             }
 
             foreach(DonHang donHang in BLL_DonHang.Instance.PhanRaDonHang(listSanPham))
@@ -269,7 +276,20 @@ namespace Program.BLL
                 donHang.maDH = BLL_DonHang.Instance.GetMaMoi();
                 donHang.maKH = khachHang.maSo;
                 donHang.ptThanhToan = ptThanhToan;
-                donHang.xu = xu / soLuongShop;
+
+                if(donHang.tongTien <= xu / soLuongShop)
+                {
+                    donHang.xu = donHang.tongTien;
+                    donHang.tongTien = 0;
+                    xu -= donHang.tongTien;
+                    soLuongShop--;
+                }
+                else
+                {
+                    donHang.xu = xu / soLuongShop;
+                    donHang.tongTien -= donHang.xu;
+                }
+
                 donHang.maS = maS;
                 donHang.diaChi = diaChi;
 

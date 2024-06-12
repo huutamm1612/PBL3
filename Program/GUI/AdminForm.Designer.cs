@@ -58,6 +58,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.khongCoTBPanel = new System.Windows.Forms.Panel();
+            this.textBox89 = new System.Windows.Forms.TextBox();
+            this.pictureBox52 = new System.Windows.Forms.PictureBox();
             this.funcFLPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.khongCoTBPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
             this.SuspendLayout();
             // 
             // funcFLPanel
@@ -80,8 +85,8 @@
             this.funcFLPanel.Controls.Add(this.bdBiToCaoButton);
             this.funcFLPanel.Controls.Add(this.dgBiBaoCaoButton);
             this.funcFLPanel.Controls.Add(this.button4);
-            this.funcFLPanel.Controls.Add(this.button16);
             this.funcFLPanel.Controls.Add(this.button15);
+            this.funcFLPanel.Controls.Add(this.button16);
             this.funcFLPanel.Controls.Add(this.button17);
             this.funcFLPanel.Controls.Add(this.button20);
             this.funcFLPanel.Controls.Add(this.button18);
@@ -166,7 +171,7 @@
             this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(3, 207);
+            this.button15.Location = new System.Drawing.Point(3, 162);
             this.button15.Name = "button15";
             this.button15.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button15.Size = new System.Drawing.Size(288, 12);
@@ -184,7 +189,7 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.Black;
-            this.button16.Location = new System.Drawing.Point(3, 162);
+            this.button16.Location = new System.Drawing.Point(3, 180);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(288, 39);
             this.button16.TabIndex = 19;
@@ -358,9 +363,10 @@
             this.baoCaoFLP.BackColor = System.Drawing.Color.White;
             this.baoCaoFLP.Controls.Add(this.panel5);
             this.baoCaoFLP.Controls.Add(this.panel48);
+            this.baoCaoFLP.Controls.Add(this.khongCoTBPanel);
             this.baoCaoFLP.Location = new System.Drawing.Point(0, 74);
             this.baoCaoFLP.Name = "baoCaoFLP";
-            this.baoCaoFLP.Size = new System.Drawing.Size(1042, 462);
+            this.baoCaoFLP.Size = new System.Drawing.Size(1042, 673);
             this.baoCaoFLP.TabIndex = 0;
             // 
             // panel5
@@ -541,6 +547,49 @@
             this.button4.Text = "Yêu Cầu Gỡ Bài Đăng Vi Phạm";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.YCGoBDViPhamButton_Click);
+            // 
+            // khongCoTBPanel
+            // 
+            this.khongCoTBPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.khongCoTBPanel.BackColor = System.Drawing.Color.White;
+            this.khongCoTBPanel.Controls.Add(this.textBox89);
+            this.khongCoTBPanel.Controls.Add(this.pictureBox52);
+            this.khongCoTBPanel.Location = new System.Drawing.Point(0, 282);
+            this.khongCoTBPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.khongCoTBPanel.Name = "khongCoTBPanel";
+            this.khongCoTBPanel.Size = new System.Drawing.Size(1040, 402);
+            this.khongCoTBPanel.TabIndex = 47;
+            // 
+            // textBox89
+            // 
+            this.textBox89.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox89.BackColor = System.Drawing.Color.White;
+            this.textBox89.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox89.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox89.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox89.ForeColor = System.Drawing.Color.Black;
+            this.textBox89.Location = new System.Drawing.Point(689, 292);
+            this.textBox89.Name = "textBox89";
+            this.textBox89.ReadOnly = true;
+            this.textBox89.Size = new System.Drawing.Size(312, 23);
+            this.textBox89.TabIndex = 46;
+            this.textBox89.Text = "KHÔNG DỮ LIỆU";
+            this.textBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox52
+            // 
+            this.pictureBox52.Image = global::Program.Properties.Resources.bell2;
+            this.pictureBox52.ImageLocation = "";
+            this.pictureBox52.Location = new System.Drawing.Point(689, 21);
+            this.pictureBox52.Name = "pictureBox52";
+            this.pictureBox52.Size = new System.Drawing.Size(312, 294);
+            this.pictureBox52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox52.TabIndex = 48;
+            this.pictureBox52.TabStop = false;
             // 
             // AdminForm
             // 
@@ -565,6 +614,9 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.khongCoTBPanel.ResumeLayout(false);
+            this.khongCoTBPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,5 +653,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel khongCoTBPanel;
+        private System.Windows.Forms.TextBox textBox89;
+        private System.Windows.Forms.PictureBox pictureBox52;
     }
 }

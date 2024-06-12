@@ -36,7 +36,6 @@ namespace Program
         private QLSanPham QLSP = null;
         private QLBaiDang QLBD = null;
         private QLDanhGia listDanhGia = null;
-        private SanPham currSanPham = null;
         private DiaChi diaChi = null;
         private string currMaDH = null;
 
@@ -76,7 +75,27 @@ namespace Program
             Size textSize = TextRenderer.MeasureText(userProfile_Button.Text, userProfile_Button.Font);
             userProfile_Button.Width = textSize.Width + 30;
 
-            tabClick(trangChuButton, null);
+            dgShopTxt.Text = shop.TinhSao().ToString();
+            slDanhGiaTxt.Text = "/5 (" +  shop.SoLuongDanhGia().ToString() + " Đánh Giá)";
+            slSanPhamTxt.Text = shop.listBaiDang.SoLuongSanPham().ToString() + " Sản Phẩm";
+            slDonHangTxt.Text = shop.listDonHang.list.Count.ToString() + " Đơn Gàng";
+            doanhThuTxt.Text = "₫" + Utils.Instance.SetGia(shop.doanhThu);
+
+            flowLayoutPanel7.Controls.Clear();
+            int i = 0;
+            foreach(ThongBao thongBao in shop.listThongBao.list)
+            {
+                if (thongBao.dinhKem.Contains("DH"))
+                {
+                    flowLayoutPanel7.Controls.Add(DrawLittleThongBao(thongBao));
+
+                    i++;
+                    if (i == 3)
+                        break;
+                }
+
+            }
+
             tabClick(trangChuButton, null);
         }
 
@@ -240,7 +259,7 @@ namespace Program
                     ChuyenLoaiDH_Click(DHDaHuyButton, null);
                     break;
 
-                case "Thêm Sản Phẩm":
+                case "Thêm Bài Đăng":
                     RefreshThemSPPanel();
                     miniConTrolPanel.Top = 732;
                     QLSP = new QLSanPham();
@@ -1442,6 +1461,7 @@ namespace Program
             currPanel = chiTietSanPhamBDPanel;
             chiTietSanPhamBDPanel.Visible = true;
             tatCaBaiDang_Panel.Visible = false;
+            themSPvaoBDButton.Visible = true;
 
             flowLayoutPanel5.Controls.Clear();
             QLSP = new QLSanPham();
@@ -1466,6 +1486,7 @@ namespace Program
             currPanel = chiTietSanPhamBDPanel;
             chiTietSanPhamBDPanel.Visible = true;
             tatCaBaiDang_Panel.Visible = false;
+            themSPvaoBDButton.Visible = true;
 
             flowLayoutPanel5.Controls.Clear();
             QLSP.list.Clear();
@@ -1568,7 +1589,6 @@ namespace Program
             }
             btnLuuShop.Visible = true;
             btnThoatShop.Visible = true;
-            btnXemShop.Visible = false;
             btnEditShop.Visible = false;
             btnThemAnhShop.Visible = true;
         }
@@ -1595,7 +1615,6 @@ namespace Program
             picMotaShop.BackColor = Color.Gainsboro;
             btnLuuShop.Visible = false;
             btnThoatShop.Visible = false;
-            btnXemShop.Visible = true;
             btnEditShop.Visible = true;
             btnThemAnhShop.Visible = false;
         }
@@ -1631,7 +1650,6 @@ namespace Program
             picMotaShop.BackColor = Color.Gainsboro;
             btnLuuShop.Visible = false;
             btnThoatShop.Visible = false;
-            btnXemShop.Visible = true;
             btnEditShop.Visible = true;
             btnThemAnhShop.Visible = false;
         }
@@ -1909,11 +1927,24 @@ namespace Program
                 buttonFunc2.Visible = true;
             }
 
-            ttHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien - 30000 + donHang.xu);
-            phiVCTxt.Text = "₫30.000";
-            xuDaDungTxt.Text = "-₫" + Utils.Instance.SetGia(donHang.xu);
-            ttDonHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien);
-            ptttTxt.Text = donHang.PhuongThucThanhToan();
+            if (donHang.tinhTrang == -1)
+            {
+                textBox84.Text = "Người hủy Đơn: " + BLL_DonHang.Instance.NguoiHuyDon(currMaDH);
+                ptttTxt.Visible = false;
+                panel44.Height = 50;
+            }
+            else
+            {
+                textBox84.Text = "Phương thức thanh toán: ";
+                ptttTxt.Visible = true;
+                panel44.Height = 216;
+                ttHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien - 30000 + donHang.xu);
+                phiVCTxt.Text = "₫30.000";
+                xuDaDungTxt.Text = "-₫" + Utils.Instance.SetGia(donHang.xu);
+                ttDonHangTxt.Text = "₫" + Utils.Instance.SetGia(donHang.tongTien);
+                ptttTxt.Text = donHang.PhuongThucThanhToan();
+            }
+
 
             foreach (SanPham sanPham in donHang.list)
             {
@@ -1934,6 +1965,7 @@ namespace Program
             Panel headPanel = GUI_Utils.Instance.FindControl(((Control)sender).Parent.Parent as FlowLayoutPanel, "headPanel") as Panel;
             currMaDH = GUI_Utils.Instance.FindControl(headPanel, "maDH").Text.Substring(15);
 
+            troLaiTuCTTDButton.Click -= troLaiDHButton_Click;
             troLaiTuCTTDButton.Click += troLaiDHButton_Click;
             troLaiTuCTTDButton.Click -= TroLaiTBButton_Click;
 
@@ -2245,6 +2277,7 @@ namespace Program
         {
             currPanel.Visible = false;
             TatCaDHPanel.Visible = true;
+            MessageBox.Show(cloneButton.Text);
             cloneButton.Text = cloneButton.Text.Substring(0, cloneButton.Text.Length - 26);
             currPanel = TatCaDHPanel;
         }
@@ -2648,8 +2681,6 @@ namespace Program
             panel20.Height = danhGiaFLP.Height + 200;
         }
 
-        
-
         private Panel DrawTBCapNhatDHPanel(ThongBao thongBao)
         {
             Panel panel = new Panel
@@ -2753,6 +2784,7 @@ namespace Program
             ShowChiTietDonHang();
 
             troLaiTuCTTDButton.Click -= troLaiDHButton_Click;
+            troLaiTuCTTDButton.Click -= TroLaiTBButton_Click;
             troLaiTuCTTDButton.Click += TroLaiTBButton_Click;
         }
 
@@ -2771,7 +2803,7 @@ namespace Program
 
             System.Drawing.Image image;
 
-            if (thongBao.noiDung.Contains("vi phạm"))
+            if (thongBao.noiDung.Contains("vi phạm với lý do"))
             {
                 image = GUI_Utils.Instance.Resize(Resources.error2, pictureBox8.Size);
 
@@ -2855,17 +2887,20 @@ namespace Program
         private void CapNhatDonHangButton_Click(object sender, EventArgs e)
         {
             HighLightButton(sender, e);
+            cloneButton.Text = "Quản Lý Thông Báo    ‣    Cập Nhật Đơn Hàng";
 
             TBDonHangFLP.Controls.Clear();
+
             foreach(ThongBao thongBao in shop.listThongBao.list)
             {
                 if (thongBao.dinhKem.Contains("DH"))
                 {
                     TBDonHangFLP.Controls.Add(DrawTBCapNhatDHPanel(thongBao));
+                    index++;
                 }
             }
-
-            cloneButton.Text += "    ‣    Cập Nhật Đơn Hàng";
+            if (TBDonHangFLP.Controls.Count == 0)
+                TBDonHangFLP.Controls.Add(khongCoTBPanel);
 
             GUI_Utils.Instance.FitFLPHeight(TBDonHangFLP);
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel4);
@@ -2875,6 +2910,7 @@ namespace Program
         private void ThongBaoHeThongButton_Click(object sender, EventArgs e)
         {
             HighLightButton(sender, e);
+            cloneButton.Text = "Quản Lý Thông Báo    ‣    Thông Báo Hệ Thống";
 
             TBDonHangFLP.Controls.Clear();
             foreach (ThongBao thongBao in shop.listThongBao.list)
@@ -2884,12 +2920,117 @@ namespace Program
                     TBDonHangFLP.Controls.Add(DrawThongBaoHeThongPanel(thongBao));
                 }
             }
-
-            cloneButton.Text += "    ‣    Thông Báo Hệ Thống";
+            if (TBDonHangFLP.Controls.Count == 0)
+                TBDonHangFLP.Controls.Add(khongCoTBPanel);
+            
 
             GUI_Utils.Instance.FitFLPHeight(TBDonHangFLP);
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel4);
             flowLayoutPanel4.Height += 50;
+        }
+
+        private void ThemSanPhamVaoBD(SanPham sanPham)
+        {
+            QLSP.Add(sanPham);
+            flowLayoutPanel5.Controls.Add(themCTSP(sanPham, 0));
+
+            BLL_Shop.Instance.ThemSanPham(shop.listBaiDang.list[index], sanPham);
+
+            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel5);
+            panel24.Height = flowLayoutPanel5.Height + 100;
+        }
+
+        private void ThemSanPhamVaoBDButton_Click(object sender, EventArgs e)
+        {
+            DimForm dimForm = new DimForm();
+            dimForm.Show();
+            SanPhamForm form = new SanPhamForm(ThemSanPhamVaoBD);
+            form.ShowDialog();
+            dimForm.Close();
+        }
+
+        private void DanhGiaButton_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref danhGiaSPanel);
+            DanhGiaShopShow();
+        }
+
+        private void SanPhamButtonn_Click(object sender, EventArgs e)
+        {
+            QLSP = new QLSanPham();
+            SwitchPanel(ref tatCaSanPhamPanel);
+            btnTatCa_Click(btnTatCa, null);
+        }
+
+        private void DonHangButton_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref TatCaDHPanel);
+            ChuyenLoaiDH_Click(tatCaDHButton, null);
+        }
+
+        private void ThongBaoButton_Click(object sender, EventArgs e)
+        {
+            SwitchPanel(ref thongBaoPanel);
+            CapNhatDonHangButton_Click(button18, null);
+        }
+
+        private Panel DrawLittleThongBao(ThongBao thongBao)
+        {
+            Panel panel = new Panel
+            {
+                Size = panel3.Size,
+                BackColor = Color.White,
+                Margin = panel3.Margin,
+                Parent = flowLayoutPanel7
+            };
+            panel.Paint += DrawPanelBorder;
+
+            string maDH = thongBao.dinhKem.Substring(2);
+
+            TextBox tinhTrang = new TextBox
+            {
+                Text = BLL_ThongBao.Instance.ThongBaoTinhTrangDHChoS(thongBao.noiDung),
+                Location = textBox90.Location,
+                Font = textBox90.Font,
+                Size = textBox90.Size,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(tinhTrang);
+
+            TextBox noiDung = new TextBox
+            {
+                Name = "noiDung",
+                Text = thongBao.noiDung,
+                Location = textBox91.Location,
+                Font = textBox91.Font,
+                Size = textBox91.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Multiline = true,
+                Parent = panel
+            };
+            panel.Controls.Add(noiDung);
+
+            TextBox thoiGian = new TextBox
+            {
+                Text = Utils.Instance.MoTaThoiGian(thongBao.ngayGui),
+                Location = textBox97.Location,
+                Font = textBox97.Font,
+                Size = textBox97.Size,
+                BackColor = Color.White,
+                ForeColor = Color.DimGray,
+                BorderStyle = BorderStyle.None,
+                ReadOnly = true,
+                Parent = panel
+            };
+            panel.Controls.Add(thoiGian);
+
+            return panel;
         }
     }
 }

@@ -33,6 +33,8 @@ namespace Program.BLL
             return Database.Instance.MaMoi("maDH");
         }
 
+        public string NguoiHuyDon(string maDH) => DAL_DonHang.Instance.IsKhachHangHuyDon(maDH) ? "Khách Hàng" : "Shop";
+
         public List<string> GetAllLyDoHuyDonByKhachHang()
         {
             return DAL_DonHang.Instance.LoadAllLyDoHuyDonByKhachHang();

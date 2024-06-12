@@ -118,7 +118,7 @@ namespace Program
 
         public double tinhSao()
         {
-            return listDanhGia.tinhSao() * 10;
+            return listDanhGia.tinhSao();
         }
 
         public int doanhThu()

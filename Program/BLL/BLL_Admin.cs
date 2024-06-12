@@ -40,7 +40,7 @@ namespace Program.BLL
             QLThongBao listThongBao = DAL_ThongBao.Instance.LoadAllThongBaoToHeThong();
             foreach(ThongBao thongBao in listThongBao.list)
             {
-                if (thongBao.dinhKem.Contains("BD"))
+                if (thongBao.from == "AnDanh" && thongBao.dinhKem.Contains("BD"))
                 {
                     listMaBD.Add(thongBao.dinhKem.Substring(2));
                     listNoiDung.Add(thongBao.noiDung);
@@ -67,6 +67,24 @@ namespace Program.BLL
             }
         }
 
+        public void SetListYCGoViPhamBD(ref List<string> listMaBD, ref List<string> listNoiDung, ref List<string> listMaTB)
+        {
+            listMaBD = new List<string>();
+            listNoiDung = new List<string>();
+            listMaTB = new List<string>();
+
+            QLThongBao listThongBao = DAL_ThongBao.Instance.LoadAllThongBaoToHeThong();
+            foreach (ThongBao thongBao in listThongBao.list)
+            {
+                if (thongBao.from.Contains("ShopAnDanh"))
+                {
+                    listMaBD.Add(thongBao.dinhKem.Substring(2));
+                    listNoiDung.Add(thongBao.noiDung);
+                    listMaTB.Add(thongBao.maTB);
+                }
+            }
+        }
+
         public void XacNhanBDViPham(string maTB, string maBD, string lyDo)
         {
             DAL_Admin.Instance.XacNhanBDViPham(maTB, maBD);
@@ -77,6 +95,25 @@ namespace Program.BLL
         {
             DAL_Admin.Instance.XacNhanDGViPham(maTB, maDG);
             DAL_DanhGia.Instance.ThemDanhGiaViPham(maDG, lyDo);
+        }
+
+        public void GoViPham(string maBD, string maTB)
+        {
+            DAL_BaiDang.Instance.GoBaiDangViPham(maBD);
+            DAL_SanPham.Instance.GoSanPhamViPham(maBD);
+            DAL_ThongBao.Instance.XoaThongBaoFromMaTB(maTB);
+
+            ThongBao thongBao = new ThongBao
+            {
+                maTB = BLL_ThongBao.Instance.GetMaMoi(),
+                from = "HeThong",
+                to = "S" + DAL_Shop.Instance.LoadMaSFromMaBD(maBD),
+                dinhKem = "BD" + maBD,
+                noiDung = $"Bài Đăng {maBD} của bạn đã được quản trị viên gỡ vi phạm.",
+                ngayGui = DateTime.Now,
+                tinhTrang = 0
+            };
+            DAL_ThongBao.Instance.ThemThongBao(thongBao);
         }
 
         public void XacNhanKhongViPham(string maTB)

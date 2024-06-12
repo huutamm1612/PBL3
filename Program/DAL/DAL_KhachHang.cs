@@ -27,6 +27,14 @@ namespace Program.DAL
 
         }
 
+        public void HoanTraXu(string maKH, int xu)
+        {
+            string query = "UPDATE KhachHang SET xu = xu + @xu WHERE maKH = @maKH";
+            SqlParameter param1 = new SqlParameter("@maKH", maKH);
+            SqlParameter param2 = new SqlParameter("@xu", xu);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);
+        }
+
         public List<string> LoadLichSuTimKiemFromMaKH(string maKH)
         {
             List<string> list = new List<string>();
@@ -100,11 +108,12 @@ namespace Program.DAL
             return row["ten"].ToString();
         }
 
-        public void DungXu(string maKH)
+        public void DungXu(string maKH, int xu)
         {
-            string query = "UPDATE KhachHang SET xu = 0 WHERE maKH = @maKH";
-            SqlParameter param = new SqlParameter("@maKH", maKH);
-            Database.Instance.ExecuteNonQuery(query, param);   
+            string query = "UPDATE KhachHang SET xu = @xu WHERE maKH = @maKH";
+            SqlParameter param1 = new SqlParameter("@maKH", maKH);
+            SqlParameter param2 = new SqlParameter("@xu", xu);
+            Database.Instance.ExecuteNonQuery(query, param1, param2);   
         }
 
         public void ThemXu(string maKH, int xu)

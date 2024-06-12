@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -62,7 +63,7 @@ namespace Program.GUI
             }
         }
 
-        public ReportForm(BaiDang baiDang, string noiDung, string maTB)
+        public ReportForm(BaiDang baiDang, string noiDung, string maTB, bool isVP = false)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -70,10 +71,24 @@ namespace Program.GUI
             currBaiDang = baiDang;
             this.noiDung = noiDung;
             this.maBC = maTB;
-            lyDoViPhamTxt.Text = "Lý Do Vi Phạm :" + noiDung.Substring(69);
 
-            xacNhanVPButton.Click += XacNhanBDViPham_Click;
 
+            if (isVP)
+            {
+                lyDoViPhamTxt.Text = "Yêu cầu gỡ vi phạm";
+                button3.Text = "GỠ VI PHẠM";
+                button3.Click += GoViPhamButton_Click;
+                xacNhanVPButton.Text = "KHÔNG GỠ VI PHẠM";
+                xacNhanVPButton.Click += XacNhanBDViPham_Click;
+            }
+            else
+            {
+                lyDoViPhamTxt.Text = "Lý Do Vi Phạm :" + noiDung.Substring(69);
+                button3.Text = "KHÔNG VI PHẠM";
+                button3.Click += KhongViPham_Click;
+                xacNhanVPButton.Text = "XÁC NHẬN VI PHẠM";
+                xacNhanVPButton.Click += XacNhanBDViPham_Click;
+            }
             SetBaoCaoBaiDang();
         }
 
@@ -288,6 +303,7 @@ namespace Program.GUI
         private void SetFLP(List<string> listLyDo)
         {
             baoCaoPanel.BringToFront();
+            Size = baoCaoPanel.Size;
             baoCaoPanel.Visible = true;
             flowLayoutPanel1.Visible = true;
             flowLayoutPanel1.Controls.Clear();
@@ -354,6 +370,12 @@ namespace Program.GUI
         private void XacNhanBDViPham_Click(object sender, EventArgs e)
         {
             BLL_Admin.Instance.XacNhanBDViPham(maBC, currBaiDang.maBD, noiDung.Substring(69));
+            Close();
+        }
+
+        private void GoViPhamButton_Click(object sender, EventArgs e)
+        {
+            BLL_Admin.Instance.GoViPham(currBaiDang.maBD, maBC);
             Close();
         }
 

@@ -26,6 +26,16 @@ namespace Program.BLL
 
         }
 
+        public void ThemSanPham(BaiDang baiDang, SanPham sanPham)
+        {
+            sanPham.maSP = BLL_SanPham.Instance.GetMaMoi();
+            sanPham.maBD = baiDang.maBD;
+            sanPham.maS = baiDang.maS;
+            baiDang.Add(sanPham);
+
+            DAL_SanPham.Instance.ThemSanPham(sanPham);
+        }
+
         public QLDanhGia GetDanhGiaShop(QLBaiDang listBaiDang, int sao = 0)
         {
             QLDanhGia list = new QLDanhGia();
@@ -142,6 +152,7 @@ namespace Program.BLL
             shop.listBaiDang.GetBaiDangFromMaBD(baiDang.maBD).SuaBaiDang(baiDang);
             BLL_BaiDang.Instance.CapNhatBaiDang(baiDang);
         }
+
         public void GiaoHang(Shop shop, string maDH)
         {
             int index = shop.listDonHang.IndexOf(maDH);
@@ -181,7 +192,6 @@ namespace Program.BLL
 
             BLL_ThongBao.Instance.ThemThongBao(thongBao);
             BLL_DonHang.Instance.GiaoHang(shop.listDonHang.list[index].maDH, shop.listDonHang.list[index].ngayGiaoHang);
-
         }
 
         public void HuyDonHang(Shop shop, string maDH, string lyDo)

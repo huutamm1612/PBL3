@@ -27,6 +27,7 @@ namespace Program.BLL
 
         }
 
+        public void ThemSanPham(SanPham sanPham) => DAL_SanPham.Instance.ThemSanPham(sanPham);
         public QLSanPham GetAllSanPhamDaAnFromMaS(string maS) => new QLSanPham { list = DAL_SanPham.Instance.LoadAllSanPhamDaAnFromMaS(maS) };
         public QLSanPham GetAllSanPhamViPhamFromMaS(string maS) => new QLSanPham { list = DAL_SanPham.Instance.LoadAllSanPhamViPhamFromMaS(maS) };
 
@@ -34,7 +35,7 @@ namespace Program.BLL
         {
             if (GetSoLuongFromMaSP(maSP) == 0)
                 return "HẾT HÀNG";
-            if (DAL_SanPham.Instance.KiemTraViPham(maSP))
+            if (DAL_SanPham.Instance.KiemTraHoatDong(maSP))
                 return "KHÔNG HIỆU LỰC";
 
             return "TỐT";

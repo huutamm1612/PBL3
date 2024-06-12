@@ -165,6 +165,18 @@ namespace Program
             return Math.Ceiling(total / count * 10) / 10;
         }
 
+        public int SoLuongDanhGia()
+        {
+            int n = 0;
+
+            foreach(BaiDang baiDang in listBaiDang.list)
+            {
+                n += baiDang.listDanhGia.list.Count;
+            }
+
+            return n;
+        }
+
         public SanPham searchSanPham(string maSP)
         {
             foreach (var baiDang in listBaiDang.list)

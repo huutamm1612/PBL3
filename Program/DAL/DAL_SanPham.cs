@@ -28,9 +28,9 @@ namespace Program.DAL
 
         }
 
-        public bool KiemTraViPham(string maSP)
+        public bool KiemTraHoatDong(string maSP)
         {
-            string query = "SELECT * FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SP.maSP = @maSP AND SPBD.maBD NOT IN (SELECT maBD FROM BaiDangViPham)";
+            string query = "SELECT * FROM SanPham WHERE maSP = @maSP AND tinhTrang = 0";
             SqlParameter param = new SqlParameter("@maSP", maSP);
             DataTable table = Database.Instance.ExecuteQuery(query, param);
 
@@ -243,7 +243,7 @@ namespace Program.DAL
 
         public void ThemSanPham(SanPham sanPham)
         {
-            string query = "INSERT INTO SanPham VALUES(@maSP, @maLoaiSP, @ten, @gia, @soLuong, @tacGia, @dichGia, @ngonNgu, @soTrang, @namXuatBan, @nhaXuatBan, @loaiBia, @moTa, 0, @anh)";
+            string query = "INSERT INTO SanPham VALUES(@maSP, @maLoaiSP, @ten, @gia, @soLuong, @tacGia, @dichGia, @ngonNgu, @soTrang, @namXuatBan, @nhaXuatBan, @loaiBia, @moTa, 0, @anh, 0)";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
             
             query = $"INSERT INTO SanPham_BaiDang VALUES(@maSP, @maBD)";
@@ -258,7 +258,7 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, param);
         }
 
-        public void KhoiPhucSanPhamViPham(string maBD)
+        public void GoSanPhamViPham(string maBD)
         {
             string query = "UPDATE SanPham SET tinhTrang = 0 FROM SanPham SP JOIN SanPham_BaiDang SPBD ON SP.maSP = SPBD.maSP WHERE SPBD.maBD = @maBD AND SP.tinhTrang = 1";
             SqlParameter param = new SqlParameter("@maBD", maBD);
