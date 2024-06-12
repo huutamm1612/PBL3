@@ -25,7 +25,7 @@ namespace Program
 
         }
 
-        public SanPhamForm(SendSanPham sender, bool isAdd = true)
+        public SanPhamForm(SendSanPham sender)
         {
             InitializeComponent();
             theLoai_CBBox.Items.AddRange(BLL_SanPham.Instance.GetAllLoaiSanPham().ToArray());
@@ -39,7 +39,16 @@ namespace Program
         {
             maSP = sanPham.maSP;
             url = sanPham.anh;
-            picImage.Image = GUI_Utils.Instance.Resize(Image.FromFile(sanPham.anh), picImage.Size);
+
+            try
+            {
+                picImage.Image = GUI_Utils.Instance.Resize(Image.FromFile(sanPham.anh), picImage.Size);
+            }
+            catch
+            {
+                picImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(sanPham.anh), picImage.Size);
+            }
+
             tenSP_Text.Text = sanPham.ten;
             tenTacGia_Text.Text = sanPham.tacGia;
             tenDichGia_Text.Text = sanPham.dichGia;
@@ -256,6 +265,7 @@ namespace Program
             {
                 picImage.Image = GUI_Utils.Instance.Resize(Image.FromFile(openFile.FileName), picImage.Size);
                 url = openFile.FileName;
+                //MessageBox.Show(url);
             }
         }
 

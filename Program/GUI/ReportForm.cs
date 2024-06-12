@@ -119,7 +119,7 @@ namespace Program.GUI
             baiDangViPhamPanel.Visible = false;
             tailPanel.Visible = true;
 
-            pictureBox1.Image = GUI_Utils.Instance.Resize(new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(currDanhGia.maBD)), pictureBox1.Size);
+            pictureBox1.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(currDanhGia.maBD)), pictureBox1.Size);
             tenBDTxt.Text = Utils.Instance.GioiHangKyTu(BLL_BaiDang.Instance.GetTieuDeFromMaBD(currDanhGia.maBD), 120);
             sanPhamDaMuaTxt.Text = Utils.Instance.GioiHangKyTu("Sản phẩm đã mua: " + currDanhGia.sanPhamDaMua, 100);
             thietKeBiaTxt.Text = currDanhGia.thietKeBia;
@@ -138,7 +138,7 @@ namespace Program.GUI
 
             titleTxt.Text = currBaiDang.tieuDe;
             GUI_Utils.Instance.FitTextBoxMultiLines(titleTxt);
-            currImage.Image = GUI_Utils.Instance.Resize(new Bitmap(currBaiDang.anhBia), currImage.Size);
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), currImage.Size);
 
             if (!BLL_BaiDang.Instance.IsSamePrice(currBaiDang))
             {
@@ -160,7 +160,7 @@ namespace Program.GUI
             {
                 Size textSize = TextRenderer.MeasureText(item.ten, font);
 
-                using (Bitmap bmp = new Bitmap(item.anh))
+                using (Bitmap bmp = GUI_Utils.Instance.LoadImage(item.anh))
                 {
                     Button button = new Button
                     {
@@ -171,7 +171,7 @@ namespace Program.GUI
                         FlatStyle = FlatStyle.Flat,
                         Cursor = Cursors.Hand,
                         TextAlign = System.Drawing.ContentAlignment.MiddleRight,
-                        Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
+                        Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
                         ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
                     };
 
@@ -208,7 +208,7 @@ namespace Program.GUI
             Button obj = sender as Button;
             int index = listItemFLP.Controls.IndexOf(obj);
 
-            currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.list[index].anh), currImage.Size);
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.list[index].anh), currImage.Size);
             obj.FlatAppearance.BorderColor = Color.OrangeRed;
             obj.ForeColor = Color.OrangeRed;
         }
@@ -222,7 +222,7 @@ namespace Program.GUI
 
             int index = listItemFLP.Controls.IndexOf(obj);
 
-            currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.list[index].anh), currImage.Size);
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.list[index].anh), currImage.Size);
             obj.FlatAppearance.BorderColor = Color.OrangeRed;
             obj.ForeColor = Color.OrangeRed;
         }
@@ -232,7 +232,7 @@ namespace Program.GUI
             Button obj = sender as Button;
             if (currSanPham != null)
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currSanPham.anh), currImage.Size);
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currSanPham.anh), currImage.Size);
                 if (currSanPham.ten != obj.Text)
                 {
                     obj.FlatAppearance.BorderColor = Color.LightGray;
@@ -241,7 +241,7 @@ namespace Program.GUI
             }
             else
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), currImage.Size);
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), currImage.Size);
                 obj.FlatAppearance.BorderColor = Color.LightGray;
                 obj.ForeColor = Color.Black;
             }
@@ -261,7 +261,7 @@ namespace Program.GUI
 
             if (currSanPham != null && currSanPham.ten == obj.Text)
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), currImage.Size);
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), currImage.Size);
                 if (currBaiDang.giaMin() != currBaiDang.giaMax())
                 {
                     giaGocTxt.Text = "₫" + Utils.Instance.SetGia(currBaiDang.giaMin()) + " - ₫" + Utils.Instance.SetGia(currBaiDang.giaMax());
@@ -292,7 +292,7 @@ namespace Program.GUI
                         giaTxt.Text = "₫" + Utils.Instance.SetGia(Utils.Instance.GiamGia(item.gia, currBaiDang.giamGia));
                         GUI_Utils.Instance.FitTextBox(giaGocTxt, 20);
                         GUI_Utils.Instance.FitTextBox(giaTxt, 20);
-                        currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(item.anh), currImage.Size);
+                        currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(item.anh), currImage.Size);
                         currSanPham = item;
                         break;
                     }

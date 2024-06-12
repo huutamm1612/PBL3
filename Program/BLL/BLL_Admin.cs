@@ -26,6 +26,12 @@ namespace Program.BLL
 
         }
 
+        public void DoiMatKhau(Admin admin, string matKhauMoi)
+        {
+            admin.matKhau = matKhauMoi;
+            DAL_Admin.Instance.DoiMatKhau(admin);
+        }
+
         public Admin DangNhap(string username, string password)
         {
             return DAL_Admin.Instance.DangNhap(username, password);

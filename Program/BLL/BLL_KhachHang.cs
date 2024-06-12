@@ -202,16 +202,10 @@ namespace Program.BLL
             DAL_ThongBao.Instance.ThemThongBao(thongBao2);
         }
 
-        public void ThemDiaChi(DiaChi diaChi, string maKH)
-        {
-            DAL_DiaChi.Instance.ThemDiaChi(diaChi, maKH, 1);
-        }
+        public void ThemDiaChi(DiaChi diaChi, string maKH) => DAL_DiaChi.Instance.ThemDiaChi(diaChi, maKH, 1);
 
-        public KhachHang GetKhachHangFromTaiKhoan(string taiKhoan)
-        {
-            return DAL_KhachHang.Instance.LoadKhachHangFromTaiKhoan(taiKhoan);
-        }
-
+        public KhachHang GetKhachHangFromTaiKhoan(string taiKhoan) => DAL_KhachHang.Instance.LoadKhachHangFromTaiKhoan(taiKhoan);
+            
         public void Thich(KhachHang khachHang, BaiDang baiDang)
         {
             DAL_KhachHang.Instance.ThemThich(khachHang.maSo, baiDang.maBD);
@@ -341,26 +335,6 @@ namespace Program.BLL
             DAL_Shop.Instance.GiaoHangThanhCong(khachHang.listDonHang.list[index].maS, khachHang.listDonHang.list[index].tongTien + khachHang.listDonHang.list[index].xu);
         }
 
-        public string GetURLFromMaKH(string maKH)
-        {
-            return DAL_KhachHang.Instance.LoadURLFromMaKH(maKH);
-        }
-
-        public string GetTenFromMaKH(string maKH)
-        {
-            return DAL_KhachHang.Instance.LoadTenFromMaKH(maKH);
-        }
-
-        public bool DaTheoDoi(List<string> listFollow, string maS)
-        {
-            return listFollow.Contains(maS);
-        }
-
-        public bool DaThich(List<string> listThich, string maBD)
-        {
-            return listThich.Contains(maBD);
-        }
-
         public void CapNhatDiaChiMacDinh(KhachHang khachHang, DiaChi diaChi)
         {
             khachHang.thayDoiDiaChiMacDinh(diaChi);
@@ -369,13 +343,18 @@ namespace Program.BLL
 
         public void XoaDiaChi(KhachHang khachHang, DiaChi diaChi)
         {
-            DAL_DiaChi.Instance.XoaDiaChi(diaChi.maDC);
+            BLL_DiaChi.Instance.XoaDiaChi(diaChi.maDC);
             khachHang.xoaDiaChi(diaChi);
         }
 
-        public bool KiemTraTaoShop(string maKH)
-        {
-            return DAL_KhachHang.Instance.KiemTraKhachHang_Shop(maKH);
-        }
+        public string GetURLFromMaKH(string maKH) => DAL_KhachHang.Instance.LoadURLFromMaKH(maKH);
+
+        public string GetTenFromMaKH(string maKH) => DAL_KhachHang.Instance.LoadTenFromMaKH(maKH);
+
+        public bool DaTheoDoi(List<string> listFollow, string maS) => listFollow.Contains(maS);
+
+        public bool DaThich(List<string> listThich, string maBD) => listThich.Contains(maBD);
+
+        public bool KiemTraTaoShop(string maKH) => DAL_KhachHang.Instance.KiemTraKhachHang_Shop(maKH);
     }
 }

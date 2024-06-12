@@ -38,6 +38,7 @@ namespace Program
         private QLDanhGia listDanhGia = null;
         private DiaChi diaChi = null;
         private string currMaDH = null;
+        private string url = null;
 
         public BanHang_Form()
         {
@@ -65,7 +66,7 @@ namespace Program
 
             try
             {
-                miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(shop.avt), miniAvt.Size);
+                miniAvt.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(shop.avt), miniAvt.Size);
             }
             catch
             {
@@ -334,15 +335,13 @@ namespace Program
 
             Panel panel = sanPhamForm(sanPham);
 
-            TTBH_Panel.Size = new Size(TTBH_Panel.Width, TTBH_Panel.Height + panel.Height + 20);
-
             listSP_FLPanel.Controls.Add(panel);
+            listSP_FLPanel.Visible = true;
             GUI_Utils.Instance.FitFLPHeight(listSP_FLPanel);
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel1);
             TTBH_Panel.Height = flowLayoutPanel1.Height + 100;
             GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel2);
             flowLayoutPanel2.Height += 100;
-            listSP_FLPanel.Visible = true;
         }
 
         private Panel sanPhamForm(SanPham sanPham)
@@ -1030,7 +1029,7 @@ namespace Program
                 Name = "picImage",
                 BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = System.Drawing.Image.FromFile(sanPham.anh)
+                Image = GUI_Utils.Instance.LoadImage(sanPham.anh)
             };
 
             TextBox txtTenSP = new TextBox
@@ -1193,11 +1192,11 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
-            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = GUI_Utils.Instance.LoadImage(QLSP.list[index].anh);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtDonGia")).Text = Utils.Instance.SetGia(QLSP.list[index].gia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
-        } 
+        }
 
         private void CapNhatThongTinSPKhongHoatDong_Click(object sender, EventArgs e)
         {
@@ -1214,7 +1213,7 @@ namespace Program
             form.ShowDialog();
             dimForm.Close();
 
-            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = System.Drawing.Image.FromFile(QLSP.list[index].anh);
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picImage")).Image = GUI_Utils.Instance.LoadImage(QLSP.list[index].anh);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTenSP")).Text = QLSP.list[index].ten;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtDonGia")).Text = Utils.Instance.SetGia(QLSP.list[index].gia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtSoLuong")).Text = QLSP.list[index].soLuong.ToString();
@@ -1257,7 +1256,7 @@ namespace Program
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Image = System.Drawing.Image.FromFile(baiDang.anhBia)
+                Image = GUI_Utils.Instance.LoadImage(baiDang.anhBia)
             };
 
             TextBox txtTieuDe1 = new TextBox
@@ -1529,7 +1528,7 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
-            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = System.Drawing.Image.FromFile(QLBD.list[index].anhBia);
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = GUI_Utils.Instance.LoadImage(QLBD.list[index].anhBia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();
         }
@@ -1555,7 +1554,7 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
-            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = System.Drawing.Image.FromFile(QLBD.list[index].anhBia);
+            ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = GUI_Utils.Instance.LoadImage(QLBD.list[index].anhBia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();
         }
@@ -1566,7 +1565,7 @@ namespace Program
             txtEmailShop.Text = shop.email;
             txtSdtShop.Text = shop.soDT;
             if (shop.avt != "")
-                picLogo.Image = System.Drawing.Image.FromFile(shop.avt);
+                picLogo.Image = GUI_Utils.Instance.LoadImage(shop.avt);
         }
 
         private void btnEditShop_Click(object sender, EventArgs e)
@@ -1580,12 +1579,9 @@ namespace Program
             txtSdtShop.ReadOnly = false;
             txtSdtShop.BackColor = Color.White;
             picSdtShop.BackColor = Color.White;
-            txtMoTaShop.ReadOnly = false;
-            txtMoTaShop.BackColor = Color.White;
-            picMotaShop.BackColor = Color.White;
             if (shop.avt != "")
             {
-                picLogo.Image = System.Drawing.Image.FromFile(shop.avt);
+                picLogo.Image = GUI_Utils.Instance.LoadImage(shop.avt);
             }
             btnLuuShop.Visible = true;
             btnThoatShop.Visible = true;
@@ -1595,8 +1591,12 @@ namespace Program
 
         private void btnLuuShop_Click(object sender, EventArgs e)
         {
-            if(shop.avt != "")
-                shop.avt = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(shop.avt));
+            if(url != "")
+            {
+                GUI_Utils.Instance.RemoveImage(shop.avt);
+                shop.avt = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(url));
+                miniAvt.Image = GUI_Utils.Instance.LoadImage(shop.avt);
+            }
 
             shop.Sua(txtTenShop.Text, txtEmailShop.Text, txtSdtShop.Text, 0, DateTime.Now);
             BLL_Shop.Instance.CapNhatThongTin(shop);
@@ -1610,9 +1610,6 @@ namespace Program
             txtSdtShop.ReadOnly = true;
             txtSdtShop.BackColor = Color.Gainsboro;
             picSdtShop.BackColor = Color.Gainsboro;
-            txtMoTaShop.ReadOnly = true;
-            txtMoTaShop.BackColor = Color.Gainsboro;
-            picMotaShop.BackColor = Color.Gainsboro;
             btnLuuShop.Visible = false;
             btnThoatShop.Visible = false;
             btnEditShop.Visible = true;
@@ -1628,7 +1625,7 @@ namespace Program
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 picLogo.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(openFile.FileName), picLogo.Size);
-                shop.avt = openFile.FileName;
+                url = openFile.FileName;
             }
 
             picLogo.Visible = true;
@@ -1645,9 +1642,6 @@ namespace Program
             txtSdtShop.ReadOnly = true;
             txtSdtShop.BackColor = Color.Gainsboro;
             picSdtShop.BackColor = Color.Gainsboro;
-            txtMoTaShop.ReadOnly = true;
-            txtMoTaShop.BackColor = Color.Gainsboro;
-            picMotaShop.BackColor = Color.Gainsboro;
             btnLuuShop.Visible = false;
             btnThoatShop.Visible = false;
             btnEditShop.Visible = true;
@@ -1717,7 +1711,7 @@ namespace Program
             };
             panel.Paint += DrawPanelBorder;
 
-            using (Bitmap bmp = new Bitmap(sanPham.anh))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(sanPham.anh))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -2694,7 +2688,7 @@ namespace Program
 
             string maDH = thongBao.dinhKem.Substring(2);
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaDH(maDH)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaDH(maDH)))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -3031,6 +3025,11 @@ namespace Program
             panel.Controls.Add(thoiGian);
 
             return panel;
+        }
+
+        private void danhGiaSPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

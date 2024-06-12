@@ -124,7 +124,7 @@ namespace Program
             {
                 try
                 {
-                    miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), miniAvt.Size);
+                    miniAvt.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(khachHang.avt), miniAvt.Size);
                 }
                 catch
                 {
@@ -1097,7 +1097,7 @@ namespace Program
             panel.MouseMove += new MouseEventHandler(MouseMovePanel);
             //panel.Click += new EventHandler(func);
             // pictureBox25
-            using (Bitmap bmp = new Bitmap(baiDang.anhBia))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(baiDang.anhBia))
             {
                 PictureBox anhBia = new PictureBox
                 {
@@ -1421,10 +1421,10 @@ namespace Program
                 }
             }
 
+            ListDGInBDPanel.Visible = true;
             GUI_Utils.Instance.FitFLPHeight(ListDGInBDPanel);
             GUI_Utils.Instance.FitFLPHeight(listDanhGiaFLP);
             DGPanelInBDPanel.Height = listDanhGiaFLP.Height + 230;
-            ListDGInBDPanel.Visible = true;
         }
 
         private void increaseButton_Click(object sender, EventArgs e)
@@ -1449,7 +1449,7 @@ namespace Program
             giaTxt.Text = "₫" + Utils.Instance.SetGia(Utils.Instance.GiamGia(sanPham.gia, currBaiDang.giamGia));
             GUI_Utils.Instance.FitTextBox(giaGocTxt, 20);
             GUI_Utils.Instance.FitTextBox(giaTxt, 20);
-            currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(sanPham.anh), new Size(450, 450));
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(sanPham.anh), new Size(450, 450));
             soLuongSanCoTxt.Text = sanPham.soLuong.ToString() + " sản phẩm có sẵn";
             soLuongTxt.Text = "1";
         }
@@ -1472,7 +1472,7 @@ namespace Program
             Button obj = sender as Button;
             int index = listItemFLP.Controls.IndexOf(obj);
 
-            currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.list[index].anh), new Size(450, 450));
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.list[index].anh), new Size(450, 450));
             obj.FlatAppearance.BorderColor = Color.OrangeRed;
             obj.ForeColor = Color.OrangeRed;
         }
@@ -1486,7 +1486,7 @@ namespace Program
 
             int index = listItemFLP.Controls.IndexOf(obj);
 
-            currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.list[index].anh), new Size(450, 450));
+            currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.list[index].anh), new Size(450, 450));
             obj.FlatAppearance.BorderColor = Color.OrangeRed;
             obj.ForeColor = Color.OrangeRed;
         }
@@ -1496,7 +1496,7 @@ namespace Program
             Button obj = sender as Button;
             if (currSanPham != null)
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currSanPham.anh), new Size(450, 450));
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currSanPham.anh), new Size(450, 450));
                 if (currSanPham.ten != obj.Text)
                 {
                     obj.FlatAppearance.BorderColor = Color.LightGray;
@@ -1505,7 +1505,7 @@ namespace Program
             }
             else
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), new Size(450, 450));
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), new Size(450, 450));
                 obj.FlatAppearance.BorderColor = Color.LightGray;
                 obj.ForeColor = Color.Black;
             }
@@ -1525,7 +1525,7 @@ namespace Program
 
             if (currSanPham != null && currSanPham.ten == obj.Text)
             {
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), currImage.Size);
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), currImage.Size);
                 if (currBaiDang.giaMin() != currBaiDang.giaMax())
                 {
                     giaGocTxt.Text = "₫" + Utils.Instance.SetGia(currBaiDang.giaMin()) + " - ₫" + Utils.Instance.SetGia(currBaiDang.giaMax());
@@ -1707,13 +1707,14 @@ namespace Program
 
         private void cartButton_Click(object sender, EventArgs e)
         {
-            while ((khachHang == null))
+            if(khachHang == null)
             {
                 GoToLoginForm();
-                SwitchPanel(ref currPanel, ref BaiDangPanel);
-                Show();
             }
-            SwitchPanel(ref currPanel, ref gioHangPanel);
+            else
+            {
+                SwitchPanel(ref currPanel, ref gioHangPanel);
+            }
         }
 
         private void DrawPanelBorder(object sender, PaintEventArgs e)
@@ -1754,7 +1755,7 @@ namespace Program
                 Name = "anhSanPham",
                 Location = pictureBox9.Location,
                 Size = pictureBox9.Size,
-                Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(sanPham.anh), pictureBox9.Size),
+                Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(sanPham.anh), pictureBox9.Size),
                 BackColor = Color.White,
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Cursor = Cursors.Hand,
@@ -2111,7 +2112,7 @@ namespace Program
                 Name = "anhSP",
                 Size = pictureBox12.Size,
                 Location = pictureBox12.Location,
-                Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(sanPham.anh), pictureBox12.Size),
+                Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(sanPham.anh), pictureBox12.Size),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BackColor = Color.White,
                 Parent = panel
@@ -2379,19 +2380,19 @@ namespace Program
             if (khachHang == null)
             {
                 GoToLoginForm();
-                SwitchPanel(ref currPanel, ref BaiDangPanel);
-                Show();
             }
-
-            if (currSanPham != null)
+            else
             {
-                qlSanPham = new QLSanPham();
-                qlSanPham.Add(currSanPham.Clone());
-                qlSanPham.list[0].soLuong = int.Parse(soLuongTxt.Text);
-                BLL_GioHang.Instance.ThemSPVaoGioHang(khachHang.gioHang, currSanPham, int.Parse(soLuongTxt.Text));
-                RefreshCartButton();
+                if (currSanPham != null)
+                {
+                    qlSanPham = new QLSanPham();
+                    qlSanPham.Add(currSanPham.Clone());
+                    qlSanPham.list[0].soLuong = int.Parse(soLuongTxt.Text);
+                    BLL_GioHang.Instance.ThemSPVaoGioHang(khachHang.gioHang, currSanPham, int.Parse(soLuongTxt.Text));
+                    RefreshCartButton();
 
-                muaHangButton_Click(sender, e);
+                    muaHangButton_Click(sender, e);
+                }
             }
         }
 
@@ -2402,11 +2403,26 @@ namespace Program
 
         private void DCNhanHangButton_Click(object sender, EventArgs e)
         {
-            DimForm dimForm = new DimForm();
-            dimForm.Show();
-            DiaChiForm form = new DiaChiForm(ThemDiaChi, ThayDoiDiaChiGiaoHang, khachHang.diaChi, khachHang.listDiaChi.ToArray());
-            form.ShowDialog();
-            dimForm.Close();
+            if(khachHang.diaChi == null)
+            {
+                DimForm dimForm = new DimForm();
+                dimForm.Show();
+                DiaChiForm form = new DiaChiForm(ThemDiaChi);
+                form.ShowDialog();
+                dimForm.Close();
+
+                if (khachHang.diaChi == null) return;
+                currDiaChi = khachHang.diaChi;
+            }
+            else
+            {
+                DimForm dimForm = new DimForm();
+                dimForm.Show();
+                DiaChiForm form = new DiaChiForm(ThemDiaChi, ThayDoiDiaChiGiaoHang, khachHang.diaChi, khachHang.listDiaChi.ToArray());
+                form.ShowDialog();
+                dimForm.Close();
+            }
+
             TextBox textBox = ((Control)sender).Parent.Controls[0] as TextBox;
 
             if (textBox.Name == "vanChuyenTxt")
@@ -2564,7 +2580,7 @@ namespace Program
                 titleTxt.Text = currBaiDang.tieuDe;
                 GUI_Utils.Instance.FitTextBoxMultiLines(titleTxt);
 
-                currImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currBaiDang.anhBia), new Size(450, 450));
+                currImage.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currBaiDang.anhBia), new Size(450, 450));
                 daBanTxt.Text = currBaiDang.luocBan().ToString() + " Đã bán";
                 danhGiaTxt.Text = currBaiDang.listDanhGia.list.Count.ToString() + " Đánh giá";
 
@@ -2590,7 +2606,7 @@ namespace Program
                 {
                     Size textSize = TextRenderer.MeasureText(item.ten, font);
 
-                    using (Bitmap bmp = new Bitmap(item.anh))
+                    using (Bitmap bmp = GUI_Utils.Instance.LoadImage(item.anh))
                     {
                         Button button = new Button
                         {
@@ -2601,7 +2617,7 @@ namespace Program
                             FlatStyle = FlatStyle.Flat,
                             Cursor = Cursors.Hand,
                             TextAlign = System.Drawing.ContentAlignment.MiddleRight,
-                            Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
+                            Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(item.anh), new Size(textSize.Height + 10, textSize.Height + 10)),
                             ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
                         };
 
@@ -2649,7 +2665,7 @@ namespace Program
 
                 try
                 {
-                    shopAvtInBaiDang.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(currShop.avt), shopAvtInBaiDang.Size);
+                    shopAvtInBaiDang.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(currShop.avt), shopAvtInBaiDang.Size);
                 }
                 catch
                 {
@@ -2854,9 +2870,9 @@ namespace Program
             {
                 try
                 {
-                    miniAvt.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), miniAvt.Size);
-                    userImagePB.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), userImagePB.Size);
-                    avtInUserProfile.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(khachHang.avt), avtInUserProfile.Size);
+                    miniAvt.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(khachHang.avt), miniAvt.Size);
+                    userImagePB.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(khachHang.avt), userImagePB.Size);
+                    avtInUserProfile.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(khachHang.avt), avtInUserProfile.Size);
                 }
                 catch
                 {
@@ -2988,6 +3004,10 @@ namespace Program
                     DonHangFLP.Controls.Add(panel);
                 }
             }
+
+            if (DonHangFLP.Controls.Count == 0)
+                DonHangFLP.Controls.Add(chuaCoDHPanel);
+
             GUI_Utils.Instance.FitFLPHeight(DonHangFLP);
             DonMuaPanel.Height = DonHangFLP.Height + 50 + HeaderDHPanel.Height;
         }
@@ -3005,7 +3025,7 @@ namespace Program
             };
             panel.Paint += DrawPanelBorder;
 
-            using (Bitmap bmp = new Bitmap(sanPham.anh))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(sanPham.anh))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -3461,7 +3481,7 @@ namespace Program
             };
             try
             {
-                using (Bitmap bmp = new Bitmap(BLL_KhachHang.Instance.GetURLFromMaKH(danhGia.maKH)))
+                using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_KhachHang.Instance.GetURLFromMaKH(danhGia.maKH)))
                 {
                     pictureBox.Image = GUI_Utils.Instance.Resize(bmp, pictureBox.Size);
                 }
@@ -3679,7 +3699,7 @@ namespace Program
 
             string maDH = thongBao.dinhKem.Substring(2);
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaDH(maDH)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaDH(maDH)))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -4320,7 +4340,7 @@ namespace Program
 
                 try
                 {
-                    using (Bitmap bmp = new Bitmap(currShop.avt))
+                    using (Bitmap bmp = GUI_Utils.Instance.LoadImage(currShop.avt))
                     {
                         avtShop.Image = GUI_Utils.Instance.Resize(bmp, avtShop.Size);
                     }
@@ -4957,7 +4977,7 @@ namespace Program
             };
             panel.Controls.Add(tenShop);
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
             {
                 PictureBox image = new PictureBox
                 {
@@ -5149,7 +5169,7 @@ namespace Program
             };
             panel.Controls.Add(tenShop);
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(list[0].maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(list[0].maBD)))
             {
                 PictureBox image = new PictureBox
                 {
@@ -5280,7 +5300,7 @@ namespace Program
                 Parent = panel
             };
             GUI_Utils.Instance.FitTextBox(noiDung);
-            panel.Controls.Add(noiDung);
+            panel.Controls.Add(noiDung);    
 
             TextBox thoiGian = new TextBox
             {
@@ -5321,16 +5341,6 @@ namespace Program
 
             SwitchPanel(ref currChildPanel, ref tbHeThongPanel);
             ChangeColorOfButtonInFLP(sender as Button);
-        }
-
-        private void userProfile_Button_MouseHover(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void MouseIn(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

@@ -154,6 +154,16 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query, listParam.ToArray());
         }
 
+        public bool KiemTraDCGH(string maDC)
+        {
+            string query = "select 1 from DiaChi DC JOIN DonHang DH ON DC.maDC = DH.maDH WHERE DH.maDC = @maDC";
+            SqlParameter param = new SqlParameter("@maDC", maDC);
+
+            DataTable table = Database.Instance.ExecuteQuery(query, param);
+
+            return table.Rows.Count == 0;
+        }
+
         public void CapNhatDiaChi(DiaChi diaChi)
         {
             string query = $"UPDATE DiaChi SET ten = @ten, soDT = @soDT, maT_TP = @maT_TP, maQH = @maQH, maPX = @maPX, diaChiCuThe = @diaChiCuThe WHERE maDC = maDC";
@@ -166,6 +176,13 @@ namespace Program.DAL
             Database.Instance.ExecuteNonQuery(query);
         }
 
+        public void AnDiaChi(string maDC)
+        {
+            string query = "UPDATE DiaChi SET maSo = '0000000000' WHERE maDC = @maDC";
+            SqlParameter param = new SqlParameter("@maDC", maDC);
+            Database.Instance.ExecuteNonQuery(query);
+        }
+        
         private DiaChi LoadDiaChi(DataRow row)
         {
             return new DiaChi

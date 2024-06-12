@@ -131,20 +131,6 @@ namespace Program
         { 
             if(taiKhoan_DN_Box.Text == "" || matKhau_DN_Box.Text == "")
             {
-                Graphics g = LoginPanel.CreateGraphics();
-                Color color = Color.FromArgb(255, 153, 153);
-                if (taiKhoan_DN_Box.Text == "")
-                {
-                    GUI_Utils.Instance.DrawRectangle(g, new RectangleF(40, 210, 350, 50), color, 7);
-                    taiKhoan_DN_Box.BackColor = color;
-                }
-
-                if (matKhau_DN_Box.Text == "")
-                {
-                    GUI_Utils.Instance.DrawRectangle(g, new RectangleF(40, 290, 350, 50), color, 7);
-                    matKhau_DN_Box.BackColor = color;   
-                }
-
                 LoginError.Text = "You must fill out all box!!!";
                 LoginError.Visible = true;
                 return;
@@ -268,8 +254,11 @@ namespace Program
             string cauTraLoi = cauTraLoi_Box.Text;
 
             BLL_User.Instance.DangKy(taiKhoan, matKhau, maCH, cauTraLoi);
-            MessageBox.Show("Đăng ký thành công!!!");
+            ThongBaoForm form = new ThongBaoForm("Đăng ký thành công!!");
+            form.Show();
             refreshDangKy_Panel();
+            typeLogInCBB.SelectedIndex = 0;
+            typeLogInCBB.Enabled = true;
             Signup_Panel.Visible = false;
             LoginPanel.Visible = true;
         }
@@ -337,42 +326,12 @@ namespace Program
             }
         }
 
-
-        private bool kiemTra()
-        {
-            return !(taiKhoan_DK_Box.Text == "" || matKhau1_DK_Box.Text == "" || cauHoi_CB.SelectedIndex == 0 || cauTraLoi_Box.Text == "");
-        }
-
-        private void taiKhoan_DK_Box_TextChanged(object sender, EventArgs e)
-        {
-            dangKy_Botton.Enabled = kiemTra();
-        }
-
-        private void matKhau1_DK_Box_TextChanged(object sender, EventArgs e)
-        {
-            dangKy_Botton.Enabled = kiemTra();
-        }
-
         private void cauHoi_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dangKy_Botton.Enabled = kiemTra();
             if (cauHoi_CB.SelectedIndex != 0)
                 cauTraLoi_Box.Enabled = true;
             else
                 cauTraLoi_Box.Enabled = false;
-        }
-
-        private void cauTraLoi_Box_TextChanged(object sender, EventArgs e)
-        {
-           
-            dangKy_Botton.Enabled = kiemTra();
-        }
-
-        private void troVe_QMK_Button_Click(object sender, EventArgs e)
-        {
-            LoginPanel.Visible = true;
-            quenMK_Panel.Visible = false;
-            this.Size = new System.Drawing.Size(892, 563);
         }
 
         private void taiKhoan_DN_Box_TextChanged(object sender, EventArgs e)
@@ -461,7 +420,7 @@ namespace Program
         {
             if (BLL_User.Instance.KiemTraTaiKhoan(taiKhoan_QMK_Box.Text))
             {
-                thongBao_Text.Text = "Tài khoản không tồn tại";
+                thongBao_Text.Text = "Username is not exits!!";
                 thongBao_Text.Visible = true;
                 return;
             }
@@ -474,7 +433,8 @@ namespace Program
             {
                 BLL_User.Instance.DoiMatKhau(taiKhoan_QMK_Box.Text, matKhau1_QMK_Box.Text);
 
-                MessageBox.Show("Đổi mật khẩu thành công");
+                ThongBaoForm form = new ThongBaoForm("Đổi mật khẩu thành công!!");
+                form.Show();
 
                 this.refreshDangNhap_Panel();
                 quenMK_Panel.Visible = false;
@@ -482,7 +442,8 @@ namespace Program
             }
             else
             {
-                MessageBox.Show("Sai câu hỏi bảo mật,vui lòng thử lại");  
+                thongBao_Text.Visible = true;
+                thongBao_Text.Text = "Infomation incorrect, please try again!!";
             }
         }
 
@@ -542,11 +503,6 @@ namespace Program
                 button.Image = Resources.eyeClose;
             }
             matKhau1_QMK_Box.UseSystemPasswordChar = !matKhau1_QMK_Box.UseSystemPasswordChar;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void typeLogInCBB_SelectedIndexChanged(object sender, EventArgs e)

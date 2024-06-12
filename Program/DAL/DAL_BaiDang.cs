@@ -283,8 +283,7 @@ namespace Program.DAL
             query = $"INSERT INTO BaiDang_Shop VALUES(@maBD, @maS)";
             Database.Instance.ExecuteNonQuery(query, baiDang.GetParameters().ToArray());
 
-            foreach (SanPham sanPham in baiDang.list)
-                DAL_SanPham.Instance.ThemSanPham(sanPham);
+            
         }
 
         public void XoaBaiDang(BaiDang baiDang)

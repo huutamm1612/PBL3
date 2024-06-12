@@ -92,7 +92,7 @@ namespace Program
             Bitmap bitmap = new Bitmap(GUI_Utils.Instance.Resize(image, new Size(min, min)));
             bitmap.Save(url, System.Drawing.Imaging.ImageFormat.Png);
 
-            return url;
+            return $"img{maAnh}.png";
         }
 
         public string SetPath()

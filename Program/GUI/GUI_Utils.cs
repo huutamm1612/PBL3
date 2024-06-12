@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,9 +25,21 @@ namespace Program.GUI
             }
             private set { }
         }
+
         private GUI_Utils()
         {
 
+        }
+
+        public Bitmap LoadImage(string imgName)
+        {
+            string path = Utils.Instance.SetPath() + imgName;
+            return new Bitmap(path);
+        }
+
+        public void RemoveImage(string imgName)
+        {
+            string path = Utils.Instance.SetPath() + imgName;
         }
 
         public string GetMaDHByClick(object sender)
@@ -36,7 +50,7 @@ namespace Program.GUI
         }
         public bool IsMouseOverControl(Control control, Point cursorPos)
         {
-            // Chuyển đổi tọa độ của control thành tọa độ trên màn hình
+            // Chuyển đổi tọa độ của control thành tọa độ trên màn hìnhx
             Rectangle screenRectangle = control.RectangleToScreen(control.ClientRectangle);
 
             // Kiểm tra xem tọa độ của con trỏ chuột có nằm trong vùng hình chữ nhật của control không

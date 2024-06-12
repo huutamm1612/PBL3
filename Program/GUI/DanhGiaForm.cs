@@ -121,7 +121,7 @@ namespace Program.GUI
                 Parent = ListDanhGiaFLP
             };
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
             {
                 PictureBox image = new PictureBox
                 {

@@ -122,6 +122,8 @@ namespace Program.BLL
         public void ThemBaiDang(BaiDang baiDang)
         {
             DAL_BaiDang.Instance.ThemBaiDang(baiDang);
+            foreach (SanPham sanPham in baiDang.list)
+                DAL_SanPham.Instance.ThemSanPham(sanPham);
         }
 
         public void CapNhatBaiDang(BaiDang baiDang)

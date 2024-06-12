@@ -37,7 +37,7 @@ namespace Program
             this.doanhThu = 0;
             this.tinhTrang = 1;
             this.listFollower = new List<string>();
-            this.listDonHang = null;
+            this.listDonHang = new QLDonHang();
         }
 
         public List<SqlParameter> GetParameters()

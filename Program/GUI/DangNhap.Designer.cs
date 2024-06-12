@@ -718,11 +718,8 @@
             this.cauTraLoi_Box.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cauTraLoi_Box.Location = new System.Drawing.Point(510, 375);
             this.cauTraLoi_Box.Name = "cauTraLoi_Box";
-            this.cauTraLoi_Box.PasswordChar = '4';
             this.cauTraLoi_Box.Size = new System.Drawing.Size(322, 21);
             this.cauTraLoi_Box.TabIndex = 3;
-            this.cauTraLoi_Box.TextChanged += new System.EventHandler(this.cauTraLoi_Box_TextChanged);
-            this.cauTraLoi_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // cauHoi_CB
             // 
@@ -799,7 +796,6 @@
             this.matKhau1_DK_Box.Size = new System.Drawing.Size(284, 21);
             this.matKhau1_DK_Box.TabIndex = 1;
             this.matKhau1_DK_Box.UseSystemPasswordChar = true;
-            this.matKhau1_DK_Box.TextChanged += new System.EventHandler(this.matKhau1_DK_Box_TextChanged);
             this.matKhau1_DK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // taiKhoan_DK_Box
@@ -813,7 +809,6 @@
             this.taiKhoan_DK_Box.Name = "taiKhoan_DK_Box";
             this.taiKhoan_DK_Box.Size = new System.Drawing.Size(322, 21);
             this.taiKhoan_DK_Box.TabIndex = 0;
-            this.taiKhoan_DK_Box.TextChanged += new System.EventHandler(this.taiKhoan_DK_Box_TextChanged);
             this.taiKhoan_DK_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cauTraLoi_Box_KeyDown);
             // 
             // contextMenuStrip1
@@ -827,9 +822,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
+            this.Controls.Add(this.Signup_Panel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.quenMK_Panel);
-            this.Controls.Add(this.Signup_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";

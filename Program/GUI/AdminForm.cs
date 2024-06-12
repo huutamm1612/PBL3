@@ -27,6 +27,8 @@ namespace Program.GUI
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            BDBiToCaoButton_Click(bdBiToCaoButton, null);
+
             this.admin = admin;
         }
 
@@ -56,6 +58,8 @@ namespace Program.GUI
         private void BDBiToCaoButton_Click(object sender, EventArgs e)
         {
             label1.Text = "Bài Đăng Bị Tố Cáo";
+            baoCaoPanel.Visible = true;
+            doiMatKhauPanel.Visible = false;
 
             foreach (Control con in funcFLPanel.Controls)
                 con.ForeColor = Color.Black;
@@ -82,6 +86,8 @@ namespace Program.GUI
         private void DGBiBaoCaoButton_Click(object sender, EventArgs e)
         {
             label1.Text = "Đánh Giá Bị Báo Cáo";
+            baoCaoPanel.Visible = true;
+            doiMatKhauPanel.Visible = false;
 
             foreach (Control con in funcFLPanel.Controls)
                 con.ForeColor = Color.Black;
@@ -105,6 +111,8 @@ namespace Program.GUI
         private void YCGoBDViPhamButton_Click(object sender, EventArgs e)
         {
             label1.Text = "Yêu Cầu Gỡ Bài Đăng Vi Phạm";
+            baoCaoPanel.Visible = true;
+            doiMatKhauPanel.Visible = false;
 
             foreach (Control con in funcFLPanel.Controls)
                 con.ForeColor = Color.Black;
@@ -135,7 +143,7 @@ namespace Program.GUI
             };
             panel.Paint += DrawPanelBorder;
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(maBD)))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -215,7 +223,7 @@ namespace Program.GUI
             };
             panel.Paint += DrawPanelBorder;
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(danhGia.maBD)))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -292,7 +300,7 @@ namespace Program.GUI
             };
             panel.Paint += DrawPanelBorder;
 
-            using (Bitmap bmp = new Bitmap(BLL_BaiDang.Instance.GetURLFromMaBD(maBD)))
+            using (Bitmap bmp = GUI_Utils.Instance.LoadImage(BLL_BaiDang.Instance.GetURLFromMaBD(maBD)))
             {
                 PictureBox pictureBox = new PictureBox
                 {
@@ -398,9 +406,46 @@ namespace Program.GUI
             DGBiBaoCaoButton_Click(dgBiBaoCaoButton, null);
         }
 
-        private void MouseIn(object sender, MouseEventArgs e)
+        private void DangXuatButton_Click(object sender, EventArgs e)
         {
+            Hide();
+            Dispose();
+            DangNhap_Form form = new DangNhap_Form(true);
+            form.ShowDialog();
+        }
 
+        private void DoiMatKhauButton_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in funcFLPanel.Controls)
+                con.ForeColor = Color.Black;
+
+            Button button = sender as Button;
+            button.ForeColor = Color.Red;
+
+            baoCaoPanel.Visible = false;
+            doiMatKhauPanel.Visible = true;
+
+
+        }
+
+        private void xacNhan_UP_Button_Click(object sender, EventArgs e)
+        {
+            if (!admin.matKhau.Equals(matKhauCu_Box.Text))
+                saiMKC_Text.Visible = true;
+            else
+            {
+                BLL_Admin.Instance.DoiMatKhau(admin, matKhauMoi1_Box.Text);
+
+                ThongBaoForm form = new ThongBaoForm("Đổi mật khẩu thành công!!");
+                form.Show();
+
+                if (saiMKC_Text.Visible)
+                    saiMKC_Text.Visible = false;
+
+                matKhauCu_Box.Clear();
+                matKhauMoi1_Box.Clear();
+                matKhauMoi2_Box.Clear();
+            }
         }
     }
 }   

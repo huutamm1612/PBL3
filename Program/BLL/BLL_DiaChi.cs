@@ -72,6 +72,13 @@ namespace Program.BLL
             }
         }
 
+        public void XoaDiaChi(string maDC)
+        {
+            if (DAL_DiaChi.Instance.KiemTraDCGH(maDC))
+                DAL_DiaChi.Instance.XoaDiaChi(maDC);
+            else
+                DAL_DiaChi.Instance.AnDiaChi(maDC);
+        }
 
         public string GetMaMoi()
         {
