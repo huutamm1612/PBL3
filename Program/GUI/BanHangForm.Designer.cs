@@ -291,8 +291,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.ttCBPanel = new System.Windows.Forms.Panel();
-            this.btnXoaCoverImage = new System.Windows.Forms.Button();
-            this.btnSuaCoverImage = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox52 = new System.Windows.Forms.TextBox();
             this.giamGia_txt = new System.Windows.Forms.TextBox();
@@ -1259,6 +1257,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screen_Panel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
+            this.screen_Panel.Controls.Add(this.danhGiaSPanel);
             this.screen_Panel.Controls.Add(this.hoSoShop_Panel);
             this.screen_Panel.Controls.Add(this.chiTietSanPhamBDPanel);
             this.screen_Panel.Controls.Add(this.thongBaoPanel);
@@ -1268,8 +1268,6 @@
             this.screen_Panel.Controls.Add(this.trangChuPanel);
             this.screen_Panel.Controls.Add(this.thietlapShop_panel);
             this.screen_Panel.Controls.Add(this.tatCaSanPhamPanel);
-            this.screen_Panel.Controls.Add(this.themSanPhamPanel);
-            this.screen_Panel.Controls.Add(this.danhGiaSPanel);
             this.screen_Panel.Location = new System.Drawing.Point(320, 60);
             this.screen_Panel.Name = "screen_Panel";
             this.screen_Panel.Size = new System.Drawing.Size(1072, 761);
@@ -4128,8 +4126,6 @@
             // ttCBPanel
             // 
             this.ttCBPanel.BackColor = System.Drawing.Color.White;
-            this.ttCBPanel.Controls.Add(this.btnXoaCoverImage);
-            this.ttCBPanel.Controls.Add(this.btnSuaCoverImage);
             this.ttCBPanel.Controls.Add(this.textBox6);
             this.ttCBPanel.Controls.Add(this.textBox52);
             this.ttCBPanel.Controls.Add(this.giamGia_txt);
@@ -4151,26 +4147,6 @@
             this.ttCBPanel.Name = "ttCBPanel";
             this.ttCBPanel.Size = new System.Drawing.Size(1574, 730);
             this.ttCBPanel.TabIndex = 1;
-            // 
-            // btnXoaCoverImage
-            // 
-            this.btnXoaCoverImage.Location = new System.Drawing.Point(264, 148);
-            this.btnXoaCoverImage.Name = "btnXoaCoverImage";
-            this.btnXoaCoverImage.Size = new System.Drawing.Size(48, 29);
-            this.btnXoaCoverImage.TabIndex = 25;
-            this.btnXoaCoverImage.Text = "Xóa";
-            this.btnXoaCoverImage.UseVisualStyleBackColor = true;
-            this.btnXoaCoverImage.Visible = false;
-            // 
-            // btnSuaCoverImage
-            // 
-            this.btnSuaCoverImage.Location = new System.Drawing.Point(216, 148);
-            this.btnSuaCoverImage.Name = "btnSuaCoverImage";
-            this.btnSuaCoverImage.Size = new System.Drawing.Size(48, 29);
-            this.btnSuaCoverImage.TabIndex = 24;
-            this.btnSuaCoverImage.Text = "Sửa";
-            this.btnSuaCoverImage.UseVisualStyleBackColor = true;
-            this.btnSuaCoverImage.Visible = false;
             // 
             // textBox6
             // 
@@ -5615,7 +5591,7 @@
             this.panel15.Controls.Add(this.FL_PanelDaThanhToan);
             this.panel15.Location = new System.Drawing.Point(40, 329);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(67847, 0);
+            this.panel15.Size = new System.Drawing.Size(68425, 0);
             this.panel15.TabIndex = 2;
             // 
             // DaThanhToanPanel
@@ -6351,8 +6327,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button btnCoverImage;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btnSuaCoverImage;
-        private System.Windows.Forms.Button btnXoaCoverImage;
         private System.Windows.Forms.Panel hoSoShop_Panel;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.TextBox textBox20;

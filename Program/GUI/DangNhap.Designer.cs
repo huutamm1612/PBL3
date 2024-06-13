@@ -524,7 +524,6 @@
             this.matKhau_DN_Box.Size = new System.Drawing.Size(270, 21);
             this.matKhau_DN_Box.TabIndex = 2;
             this.matKhau_DN_Box.UseSystemPasswordChar = true;
-            this.matKhau_DN_Box.TextChanged += new System.EventHandler(this.matKhau_DN_Box_TextChanged);
             this.matKhau_DN_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_DangNhap);
             // 
             // dangKy_Button
@@ -822,9 +821,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 563);
-            this.Controls.Add(this.Signup_Panel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.quenMK_Panel);
+            this.Controls.Add(this.Signup_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DangNhap_Form";

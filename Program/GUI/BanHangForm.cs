@@ -844,7 +844,7 @@ namespace Program
         {
             DimForm dimForm = new DimForm();
             dimForm.Show();
-            SanPhamForm form = new SanPhamForm(ThemSanPham);
+            SanPhamForm form = new SanPhamForm(ThemSanPham, true);
             form.ShowDialog();
             dimForm.Close();
             miniConTrolPanel.Top = 732;
@@ -912,7 +912,6 @@ namespace Program
 
         private void luuBaiDangButton_Click(object sender, EventArgs e)
         {
-
             if (picCoverImage != null && tieuDe_txt.Text != "" && giamGia_txt.Text != "" && moTa_txt.Text != "")
             {
                 BaiDang baiDang = new BaiDang
@@ -923,11 +922,14 @@ namespace Program
                     moTa = moTa_txt.Text,
                     giamGia = int.Parse(giamGia_txt.Text),
                     luocThich = 0,
-                    anhBia = Utils.Instance.GetImageURL(picCoverImage.Image)
+                    anhBia = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(url))
                 };
 
                 foreach (var sanPham in QLSP.list)
                 {
+                    sanPham.maSP = BLL_SanPham.Instance.GetMaMoi();
+                    sanPham.maBD = baiDang.maBD;
+                    sanPham.maS = shop.maSo;
                     sanPham.anh = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(sanPham.anh));
                     baiDang.Add(sanPham);
                 }
@@ -936,8 +938,8 @@ namespace Program
                 index = -1;
                 BLL_Shop.Instance.ThemBaiDang(shop, baiDang);
 
-                trangChuPanel.Visible = true;
-                themSanPhamPanel.Visible = false;
+                SwitchPanel(ref tatCaBaiDang_Panel);
+                tabClick(button26, null);
             }
             else
             {
@@ -975,30 +977,8 @@ namespace Program
             {
                 picCoverImage.Image = GUI_Utils.Instance.Resize(System.Drawing.Image.FromFile(openFile.FileName), picCoverImage.Size);
                 btnCoverImage.Visible = false;
-                picCoverImage.MouseHover += new EventHandler(Edit_Image);
-                picCoverImage.MouseLeave += new EventHandler(Leave_Image);
+                url = openFile.FileName;
             }
-        }
-
-        private void Edit_Image(object sender, EventArgs e)
-        {
-            PictureBox pic = sender as PictureBox;
-            btnSuaCoverImage.Visible = true;
-            btnXoaCoverImage.Visible = true;
-            btnXoaCoverImage.Location = new Point(40 + pic.Location.X, pic.Location.Y + 55);
-            btnSuaCoverImage.Location = new Point(5 + pic.Location.X, pic.Location.Y + 55);
-        }
-
-        private void Leave_Image(object sender, EventArgs e)
-        {
-            PictureBox pic = sender as PictureBox;
-            Point mousePosition = Cursor.Position;
-            if ((mousePosition.X <= pic.Location.X) && (mousePosition.X >= 328) && (mousePosition.Y <= pic.Location.Y) && (mousePosition.Y >= 143))
-            {
-                btnSuaCoverImage.Visible = false;
-                btnXoaCoverImage.Visible = false;
-            }
-
         }
 
         private void btnSuaImage_Click(object sender, EventArgs e)
@@ -1225,18 +1205,6 @@ namespace Program
             BLL_SanPham.Instance.CapNhatSanPham(sanPham);
         }
 
-        private void ThemThongTinBaiDang(BaiDang baiDang)
-        {
-            QLBD.list.Add(baiDang);
-            baiDangFLP.Size = new Size(baiDangFLP.Size.Width, baiDangFLP.Size.Height + chiTietBaiDang_Panel.Size.Height + 20);
-            baiDangFLP.Controls.Add(themCTBD(baiDang));
-            baiDangFLP.Visible = true;
-
-            GUI_Utils.Instance.FitFLPHeight(baiDangFLP);
-            GUI_Utils.Instance.FitFLPHeight(flowLayoutPanel3);
-            flowLayoutPanel3.Height += 50;
-        }
-
         private Panel themCTBD(BaiDang baiDang, int tinhTrang = 0)
         {
             Font font1 = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1348,6 +1316,7 @@ namespace Program
                 btnTTSP2.Click += AnBaiDangButton_Click;
                 btnTTSP1.Click += TTBD_Button;
             }
+
             else if(tinhTrang == 1) // bai dang vi pham
             {
                 Button btnTTSP2 = new Button
@@ -1528,6 +1497,7 @@ namespace Program
 
             form.ShowDialog();
             dimForm.Close();
+
             ((PictureBox)GUI_Utils.Instance.FindControl(panelToUpdate, "picAnh")).Image = GUI_Utils.Instance.LoadImage(QLBD.list[index].anhBia);
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtTieuDe")).Text = QLBD.list[index].tieuDe;
             ((TextBox)GUI_Utils.Instance.FindControl(panelToUpdate, "txtGiamGia")).Text = QLBD.list[index].giamGia.ToString();

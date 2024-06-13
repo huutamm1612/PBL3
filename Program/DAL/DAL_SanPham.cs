@@ -268,7 +268,7 @@ namespace Program.DAL
 
         public void CapNhatSanPham(SanPham sanPham)
         {
-            string query = $"UPDATE SanPham SET maLoaiSP = @maLoaiSP, ten = @ten, gia = @gia, soLuong = @soLuong, tacGia = @tacGia, ngonNgu = @ngonNgu, soTrang = @soTrang, namXuatBan = @namXuatBan, nhaXuatBan = @nhaXuatBan, loaiBia = @loaiBia, moTa = @moTa WHERE maSP = @maSP";
+            string query = $"UPDATE SanPham SET maLoaiSP = @maLoaiSP, ten = @ten, gia = @gia, soLuong = @soLuong, tacGia = @tacGia, ngonNgu = @ngonNgu, soTrang = @soTrang, namXuatBan = @namXuatBan, nhaXuatBan = @nhaXuatBan, loaiBia = @loaiBia, moTa = @moTa, anh = @anh WHERE maSP = @maSP";
             Database.Instance.ExecuteNonQuery(query, sanPham.GetParameters().ToArray());
         }
 

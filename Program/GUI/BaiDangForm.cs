@@ -33,8 +33,8 @@ namespace Program.GUI
 
         public void SetBaiDang(BaiDang baiDang)
         {
-            url = baiDang.anhBia;
-            picAnh.Image = GUI_Utils.Instance.Resize(Image.FromFile(url), picAnh.Size);
+            url = Utils.Instance.SetPath() + baiDang.anhBia;
+            picAnh.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage(baiDang.anhBia), picAnh.Size);
             txtTieuDe.Text = baiDang.tieuDe;
             txtGiamGia.Text = baiDang.giamGia.ToString();
             txtMoTa.Text = baiDang.moTa;
@@ -47,7 +47,7 @@ namespace Program.GUI
             if (txtTieuDe.Text != "" && txtMoTa.Text != "" && txtGiamGia.Text != "")
             {
                 this.send(new BaiDang {
-                    anhBia = url,
+                    anhBia = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(url)),
                     maBD = maBD,
                     maS = maS,
                     tieuDe = txtTieuDe.Text,
@@ -61,6 +61,17 @@ namespace Program.GUI
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "File anh|*.jpg.; *.gif; *.png; |All file| *.*";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                picAnh.Image = GUI_Utils.Instance.Resize(Image.FromFile(openFile.FileName), picAnh.Size);
+                url = openFile.FileName;
+            }
         }
     }
 }

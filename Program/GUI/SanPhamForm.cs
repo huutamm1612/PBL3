@@ -14,6 +14,7 @@ namespace Program
 {
     public partial class SanPhamForm : Form
     {
+        private bool isAdd = false;
         private string url = null;
         public SendSanPham send;
         private string maSP = null;
@@ -25,7 +26,7 @@ namespace Program
 
         }
 
-        public SanPhamForm(SendSanPham sender)
+        public SanPhamForm(SendSanPham sender, bool isAdd = false)
         {
             InitializeComponent();
             theLoai_CBBox.Items.AddRange(BLL_SanPham.Instance.GetAllLoaiSanPham().ToArray());
@@ -33,12 +34,13 @@ namespace Program
             this.StartPosition = FormStartPosition.CenterParent;
 
             this.send = sender;
+            this.isAdd = isAdd;
         }
 
         public void setSanPham(SanPham sanPham)
         {
             maSP = sanPham.maSP;
-            url = sanPham.anh;
+            url = Utils.Instance.SetPath() + sanPham.anh;
 
             try
             {
@@ -75,25 +77,52 @@ namespace Program
              && moTaSP_Text.Text != "" && namXuatBan_Text.Text != "" && soLuong_Text.Text != "" && ngonNgu_CBBox.SelectedIndex != -1
              && theLoai_CBBox.SelectedIndex != -1 && loaiBia_CBBox.SelectedIndex != -1 && soTrang_Text.Text != "")
             {
-                this.send(new SanPham
+                if (isAdd)
                 {
-                    maSP = maSP,
-                    loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
-                    ten = tenSP_Text.Text,
-                    tacGia = tenTacGia_Text.Text,
-                    dichGia = tenDichGia_Text.Text,
-                    nhaXuatBan = nhaXuatBan_Text.Text,
-                    moTa = moTaSP_Text.Text,
-                    gia = int.Parse(gia_Text.Text),
-                    namXuatBan = int.Parse(namXuatBan_Text.Text),
-                    soLuong = int.Parse(soLuong_Text.Text),
-                    soTrang = int.Parse(soTrang_Text.Text),
-                    ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
-                    loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
-                    luocBan = 0,
-                    ngayThem = DateTime.Now,
-                    anh = url
-                });
+                    this.send(new SanPham
+                    {
+                        maSP = maSP,
+                        loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
+                        ten = tenSP_Text.Text,
+                        tacGia = tenTacGia_Text.Text,
+                        dichGia = tenDichGia_Text.Text,
+                        nhaXuatBan = nhaXuatBan_Text.Text,
+                        moTa = moTaSP_Text.Text,
+                        gia = int.Parse(gia_Text.Text),
+                        namXuatBan = int.Parse(namXuatBan_Text.Text),
+                        soLuong = int.Parse(soLuong_Text.Text),
+                        soTrang = int.Parse(soTrang_Text.Text),
+                        ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
+                        loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
+                        luocBan = 0,
+                        ngayThem = DateTime.Now,
+                        anh = url
+                    }) ;
+
+                    MessageBox.Show("asdfasf");
+                }
+                else
+                {
+                    this.send(new SanPham
+                    {
+                        maSP = maSP,
+                        loaiSP = new LoaiSanPham { maLoaiSP = theLoai_CBBox.SelectedIndex.ToString("D10"), tenLoaiSP = theLoai_CBBox.SelectedItem.ToString() },
+                        ten = tenSP_Text.Text,
+                        tacGia = tenTacGia_Text.Text,
+                        dichGia = tenDichGia_Text.Text,
+                        nhaXuatBan = nhaXuatBan_Text.Text,
+                        moTa = moTaSP_Text.Text,
+                        gia = int.Parse(gia_Text.Text),
+                        namXuatBan = int.Parse(namXuatBan_Text.Text),
+                        soLuong = int.Parse(soLuong_Text.Text),
+                        soTrang = int.Parse(soTrang_Text.Text),
+                        ngonNgu = ngonNgu_CBBox.SelectedItem.ToString(),
+                        loaiBia = loaiBia_CBBox.SelectedItem.ToString(),
+                        luocBan = 0,
+                        ngayThem = DateTime.Now,
+                        anh = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(url))
+                    });
+                }
                 Close();
             }
             else

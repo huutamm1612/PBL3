@@ -109,6 +109,7 @@
             this.btnImage.TabIndex = 109;
             this.btnImage.Text = "Ảnh";
             this.btnImage.UseVisualStyleBackColor = false;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
             // 
             // txtMoTa
             // 

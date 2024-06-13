@@ -158,6 +158,7 @@ namespace Program.GUI
             textBox.Height = textSize.Height * (1 + textSize.Width / textBox.Width) + h;
             textBox.Width = textSize.Width + w;
         }
+
         public Image Resize(Image image, Size newSize)
         {
             int nw = newSize.Width; int nh = newSize.Height;

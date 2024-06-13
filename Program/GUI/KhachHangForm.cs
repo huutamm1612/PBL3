@@ -458,7 +458,9 @@ namespace Program
                 gioiTinh = 2;
 
             if (URL != null)
+            {
                 khachHang.avt = Utils.Instance.GetImageURL(System.Drawing.Image.FromFile(URL));
+            }
 
             khachHang.Sua(ten_UP_Box.Text, email_UP_Box.Text, soDT_UP_Box.Text, gioiTinh, ngaySinh);
             DAL_KhachHang.Instance.CapNhatKhachHang(khachHang);
@@ -951,7 +953,12 @@ namespace Program
                 waittingPanel.Visible = true;
                 KhachHang_Panel.Controls.Add(HeaderPannel);
                 HeaderPannel.Location = new Point(0, 0);
-
+                if (wallpaper1.Image == null)
+                {
+                    wallpaper1.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage("pic2.png"), wallpaper1.Size);
+                    wallpaper2.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage("pic1.png"), wallpaper2.Size);
+                    wallpaper3.Image = GUI_Utils.Instance.Resize(GUI_Utils.Instance.LoadImage("pic3.png"), wallpaper3.Size);
+                }
 
                 qlBaiDang = BLL_BaiDang.Instance.GetBaiDangForHomeList();
                 HomePanel.AutoScrollPosition = new Point(0, 0);
@@ -2337,12 +2344,19 @@ namespace Program
         {
             if (qlSanPham.list.Count > 0)
             {
+                if (khachHang.diaChi == null)
+                {
+
+                    DimForm dimForm = new DimForm();
+                    dimForm.Show();
+                    DiaChiForm form = new DiaChiForm(ThemDiaChi);
+                    form.ShowDialog();
+                    dimForm.Close();
+
+                    if (khachHang.diaChi == null) return;
+                    currDiaChi = khachHang.diaChi;
+                }
                 SwitchPanel(ref currPanel, ref thanhToanPanel);
-
-            }
-            else
-            {
-
             }
         }
 

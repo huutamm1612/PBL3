@@ -148,13 +148,15 @@ namespace Program
 
                     if(send != null)
                     {
+                        Hide();
+                        Dispose();
                         send(taiKhoan, matKhau);
-                        Close();
                     }
                     else
                     {
+                        Hide();
+                        Dispose();
                         KhachHangForm form = new KhachHangForm(new User { taiKhoan = taiKhoan, matKhau = matKhau });
-                        Close();
                         form.ShowDialog();
                     }
                 }
@@ -230,10 +232,10 @@ namespace Program
 
         private void troVe_button_Click(object sender, EventArgs e)
         {
-            Close();
+            Hide();
+            Dispose();
             if (send == null)
             {
-                Close();
                 KhachHangForm form = new KhachHangForm(null);
                 form.ShowDialog();
             }
@@ -257,10 +259,7 @@ namespace Program
             ThongBaoForm form = new ThongBaoForm("Đăng ký thành công!!");
             form.Show();
             refreshDangKy_Panel();
-            typeLogInCBB.SelectedIndex = 0;
-            typeLogInCBB.Enabled = true;
-            Signup_Panel.Visible = false;
-            LoginPanel.Visible = true;
+            button1_Click(button1, null);
         }
 
         private void refreshDangNhap_Panel()
@@ -299,19 +298,7 @@ namespace Program
 
         }
 
-        private void hienMatKhau(CheckBox hienMK, TextBox box)
-        {
-            if (hienMK.Checked) 
-            {
-                box.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                box.UseSystemPasswordChar = true;
-            }
-        }
-
-        private void matKhau_DN_Box_TextChanged(object sender, EventArgs e)
+        private void matKhau_DN_Box_TextChangedmatKhau_DN_Box_TextChanged(object sender, EventArgs e)
         {
             if (matKhau_DN_Box.BackColor != Color.FromArgb(236, 230, 255))
             {
